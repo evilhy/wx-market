@@ -1,0 +1,7 @@
+/build/
+/config/
+/dist/
+/wechat/
+/src/utils/assist.js
+/src/assets/swiper/*.js
+/*.js
