@@ -10,13 +10,16 @@
 </template>
 
 <script>
+import helper from 'utils/helper'
 export default {
   data () {
     return {
     }
   },
+  created () {
+    helper.title('身份验证')
+  },
   mounted () {
-    document.title = '身份验证'
   },
   methods: {
     toBindIdCard () {

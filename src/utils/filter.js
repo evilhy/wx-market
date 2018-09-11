@@ -23,7 +23,10 @@ function date (timeVal, format = 'Y-m-d H:i:s') {
       .replace('H', time.hours)
       .replace('i', time.minutes)
       .replace('s', time.seconds)
-  } else if (typeOf(timeVal) === 'date') {
+  } else if (typeOf(timeVal) === 'date' || typeOf(timeVal) === 'number') {
+    if (typeOf(timeVal) === 'number') {
+      timeVal = new Date(timeVal)
+    }
     time.year = timeVal.getFullYear()
     time.month = timeVal.getMonth() + 1
     time.date = timeVal.getDate()

@@ -3,11 +3,12 @@
    <div class="logo-wrap">
       <img src="../assets/img/logo.png" alt="" class="logo"/>
     </div>
-    <p class="tip">请先选择一个手机号</p>
+    <p class="tip">发现您在多个企业任职，请选择任意一项进行验证</p>
     <div class="phone-list card-form">
-      <div @click="choosePhone(employee, index)" class="phone-item input" :class="{ active:  chooseIndex === index }" v-for="(employee, index) in employeeList" :key="index">
-        <span class="phone">{{employee.phone_star}}</span>
-        <span class="count">{{employee.count}}家企业在用</span>
+      <div @click="choosePhone(employee, index)" class="phone-item input" :class="{ active:  selectedIndex === index, disabled: !employee.phone }" v-for="(employee, index) in employeeList" :key="index">
+        <span class="phone" v-if="employee.phoneStar">{{employee.phoneStar}}</span>
+        <span class="no-phone" v-else>无手机号</span>
+        <span class="count">{{employee.entName}}</span>
       </div>
     </div>
     <div class="point">
@@ -25,25 +26,31 @@ import sysConfig from 'utils/constant'
 export default {
   data () {
     return {
-      employeeList: [],
-      chooseIndex: -1
+      employeeList: storage.getSession('employeeList', []),
+      selectedIndex: -1
     }
   },
   created () {
-    document.title = '身份验证'
-    this.employeeList = storage.getSession('employeeList', []).filter(item => item.phone_star)
+    helper.title('身份验证')
     helper.pushBaiduEvent(sysConfig.baidu_event.choosePhone)
   },
   mounted () {
   },
   methods: {
     choosePhone (item, index) {
-      this.chooseIndex = index
-      setTimeout(() => {
-        storage.setSession('employeeInfo', { id_number: this.$route.query.id_number, ...item })
-        helper.saveIdInfo({ id_number_hash: item.id_number_hash })
-        this.$router.push({name: 'sendCode'})
-      }, 500)
+      if (!item.phone) return false
+      this.selectedIndex = index
+      helper.saveUserInfo(item)
+      this.sendCode()
+    },
+    sendCode () {
+      this
+        .$Inside
+        .sendCode()
+        .then((res) => {
+          helper.saveRemainTime()
+          this.$router.push({ name: 'sendCode'})
+        })
     }
   }
 }

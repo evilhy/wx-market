@@ -49,12 +49,12 @@ module.exports = {
   },
   test: {
     // Template for index.html
-    index: path.resolve(__dirname, '../wechat/index.html'),
+    index: path.resolve(__dirname, '../fx-payroll/index.html'),
 
     // Paths
-    assetsRoot: path.resolve(__dirname, '../wechat'),
+    assetsRoot: path.resolve(__dirname, '../fx-payroll'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/wechat/',
+    assetsPublicPath: '/fx-payroll/',
 
     /**
      * Source Maps
@@ -79,12 +79,12 @@ module.exports = {
   },
   build: {
     // Template for index.html
-    index: path.resolve(__dirname, '../wechat/index.html'),
+    index: path.resolve(__dirname, '../fx-payroll/index.html'),
 
     // Paths
-    assetsRoot: path.resolve(__dirname, '../wechat'),
+    assetsRoot: path.resolve(__dirname, '../fx-payroll'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/wechat/',
+    assetsPublicPath: '/fx-payroll/',
 
     /**
      * Source Maps

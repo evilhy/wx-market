@@ -867,6 +867,12 @@
                 color: white;
             }
         }
+        &.disabled{
+            color: $color-text-tip;
+            .phone{
+                color: red;
+            }
+        }
         .phone {
             color: $color-text-tone;
         }

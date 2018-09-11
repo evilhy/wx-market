@@ -3,7 +3,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import myPlugin from './utils/plugin'
-import { Loadmore, Popup } from 'mint-ui'
+import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
 import './assets/fonts/iconfont.css'
 import './assets/scss/common.scss'
@@ -18,8 +18,7 @@ import VueClipboard from 'vue-clipboard2'
 
 Vue.config.productionTip = false
 
-Vue.component(Loadmore.name, Loadmore)
-Vue.component(Popup.name, Popup)
+Vue.use(MintUI)
 Vue.use(myPlugin)
 Vue.use(VueClipboard)
 Vue.use(VueAwesomeSwiper)

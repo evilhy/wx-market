@@ -3,15 +3,15 @@
     <div class="logo-wrap">
       <img src="../assets/img/logo.png" alt="" class="logo" />
     </div>
-    <p class="tip">{{employeeInfo.employee_name}}{{employeeInfo.sex}}女士，欢迎您使用放薪管家<br/>已发送验证码至手机号{{employeeInfo.phone_star}}</p>
+    <p class="tip">{{userInfo.employeeName}}，您好，欢迎您使用放薪管家工资条，<br/>验证短信已发送至您{{userInfo.phoneStar}}手机</p>
     <div class="card-form">
-      <input ref="code-input" class="input code-input" :class="{ 'hidden': hidden }" type="tel" maxlength="6" v-model="verifyCode" @focus="hidden=true" @blur="hidden=false" />
+      <input ref="code-input" class="input code-input" :class="{ 'hidden': hidden }" type="tel" maxlength="6" v-model="code" @focus="hidden=true" @blur="hidden=false" />
       <p class="code-wrap">
-        <span v-for="(code, index) in verifyCode" :key="index" class="code-item">{{code}}</span>
+        <span v-for="(codeChar, index) in code" :key="index" class="code-item">{{codeChar}}</span>
       </p>
-      <p class="get-code-btn" :class="{'disabled': btnDisabled}">
-        <span v-show="btnDisabled">再次获取,{{remainTime}}s</span>
-        <span v-show="!btnDisabled" @click="getCode">再次获取</span>
+      <p class="get-code-btn">
+        <span v-if="countDownInfo.seconds > 0 && countDownInfo.seconds < 60">已发送({{remainTime}}s)</span>
+        <span v-else @click="sendCode">再次获取</span>
       </p>
     </div>
     <div class="point">
@@ -27,77 +27,76 @@ import helper from 'utils/helper'
 export default {
   data () {
     return {
-      employeeInfo: storage.getSession('employeeInfo', {}),
-      verifyCode: '',
-      codeId: '',
-      responseDate: '',
+      userInfo: helper.getUserInfo('userInfo', {}),
+      code: '',
       hidden: false,
-      timer: null,
-      remainTime: storage.getSession('remainTime', 60),
-      btnDisabled: true
+      countDownInfo: {
+        timer: null,
+        seconds: 60
+      }
     }
   },
-  computed: {},
   watch: {
-    verifyCode (val) {
+    code (val) {
       if (val.length === 6) {
         this.$refs['code-input'].blur()
-        let params = {
-          open_id: storage.getSession('ID', {}).open_id,
-          id_number: this.employeeInfo.id_number,
-          phone: this.employeeInfo.phone,
-          code: this.verifyCode,
-          id_number_hash: this.employeeInfo.id_number_hash,
-          phone_star: this.employeeInfo.phone_star,
-          response_date: this.responseDate,
-          code_id: this.codeId
-        }
-        this.codeId && this.Http.connect(false).post('entUser100702.json', params).then((data) => {
-          if (data.ret_code === '0000') {
-            storage.removeSession('remainTime')
-            this.$router.replace({ name: 'feedBack' })
-          } else {
-            this.verifyCode = ''
-          }
-        })
+        this.bindWX()
       }
     }
   },
   created () {
-    if (!storage.getSession('remainTime', 0)) {
-      storage.setSession('remainTime', 60)
-      this.getCode()
-    }
-    this.countdown()
+    this.checkCountDownInfo()
   },
   mounted () {
   },
   methods: {
-    getCode () {
-      this.Http
-        .connect(false)
-        .post('pubMsg100302.json', { mobile: this.employeeInfo.phone, busi_type: '0' })
-        .then((data) => {
-          if (data.ret_code === '0000') {
-            this.codeId = data.code_id
-            this.responseDate = data.response_date
-          }
-          if (data.ret_code === '9999') {
-            helper.toast('60秒内同一手机号只发送一次验证码')
-          }
+    checkCountDownInfo () {
+      let now = new Date()
+      let remainTime = helper.getRemainTime()
+      this.countDownInfo.seconds = parseInt((remainTime + 60 * 1000 - now.getTime()) / 1000)
+      if (this.countDownInfo.seconds > 0 && this.countDownInfo.seconds < 60) {
+        this.countDown()
+      } else {
+        this.initCountDown()
+      }
+    },
+    bindWX () {
+      this
+        $Roll
+        .bindWX(this.code)
+        .then(() => {
+          this.initCountDown()
+          this.$router.replace({ name: 'feedBack' })
+        })
+        .catch(() => {
+          this.code = ''
         })
     },
-    countdown () {
-      this.timer = setInterval(() => {
-        this.remainTime--
-        storage.setSession('remainTime', this.remainTime)
-        if (!this.remainTime) {
-          this.btnDisabled = false
-          clearInterval(this.timer)
-          this.remainTime = 60
-          storage.removeSession('remainTime')
+    sendCode () {
+      this
+        .$Inside
+        .sendCode()
+        .then((res) => {
+          helper.saveRemainTime()
+          this.countDown()
+        })
+    },
+    countDown () {
+      clearInterval(this.countDownInfo.timer)
+      this.countDownInfo.timer = setInterval(() => {
+        this.countDownInfo.seconds--
+        if (this.countDownInfo.seconds <= 0) {
+          this.initCountDown()
         }
       }, 1000)
+    },
+    initCountDown () {
+      clearInterval(this.countDownInfo.timer)
+      this.countDownInfo = {
+        timer: null,
+        seconds: 60
+      }
+      helper.removeRemainTime()
     }
   },
   components: {}

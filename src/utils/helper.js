@@ -6,7 +6,7 @@ import { Toast } from 'mint-ui'
 let timer = null
 const helper = {
   title (title) {
-    title = title || 'demo'
+    title = title || '放薪管家'
     window.document.title = title
   },
   logout (routerName = 'login') {
@@ -25,19 +25,19 @@ const helper = {
   },
   getUserInfo (infoKey = '', defaultValue = '') {
     if (infoKey) {
-      let userInfo = storage.getLocal('userInfo', {})
+      let userInfo = storage.getSession('userInfo', {})
       return userInfo[infoKey] || defaultValue
     } else {
-      return storage.getLocal('userInfo', defaultValue)
+      return storage.getSession('userInfo', defaultValue)
     }
   },
   saveUserInfo (infoObj) { // 保存或更新部分字段
     if (typeOf(infoObj) !== 'object') return false
-    let userInfo = storage.getLocal('userInfo', {})
-    storage.setLocal('userInfo', Object.assign(userInfo, infoObj))
+    let userInfo = storage.getSession('userInfo', {})
+    storage.setSession('userInfo', Object.assign(userInfo, infoObj))
   },
   clearUserInfo () {
-    storage.removeLocal('userInfo')
+    storage.removeSession('userInfo')
   },
   getImgUrl (tailUrl = '', urlKey) {
     urlKey = Object.keys(sysConfig.img_base_url).includes(urlKey) ? urlKey : sysConfig.node_env
@@ -54,10 +54,30 @@ const helper = {
       instance.close()
     }, 1500)
   },
+  saveRemainTime () {
+    let phone = helper.getUserInfo('phone', '')
+    storage.setSession(`${phone}-remaintime`, new Date().getTime())
+  },
+  getRemainTime () {
+    let phone = helper.getUserInfo('phone', '')
+    return storage.getSession(`${phone}-remaintime`, new Date().getTime())
+  },
+  removeRemainTime () {
+    let phone = helper.getUserInfo('phone', '')
+    storage.removeSession(`${phone}-remaintime`)
+  },
   saveIdInfo (infoObj) { // 保存或更新部分字段
     if (typeOf(infoObj) !== 'object') return false
-    let idInfo = storage.getSession('ID', {})
-    storage.setSession('ID', Object.assign(idInfo, infoObj))
+    let idInfo = storage.getSession('idInfo', {})
+    storage.setSession('idInfo', Object.assign(idInfo, infoObj))
+  },
+  getIdInfo (infoKey = '', defaultValue = '') {
+    if (infoKey) {
+      let idInfo = storage.getSession('idInfo', {})
+      return idInfo[infoKey] || defaultValue
+    } else {
+      return storage.getSession('idInfo', defaultValue)
+    }
   },
   exit () {
     if (window.WeixinJSBridge) {

@@ -14,88 +14,62 @@ import sysConfig from 'utils/constant'
 export default {
   data () {
     return {
+      openId: this.$route.query.openId,
+      userInfo: {}
     }
   },
   computed: {},
   created () {
-    this.$route.query.open_id && helper.saveIdInfo(this.$route.query)
+    this.initUserInfo()
+    this.isBind()
     this.getIdMessage()
   },
-  mounted () {
-  },
   methods: {
-    getIdMessage () {
-      let ID = storage.getSession('ID', {})
-      this.Http
-        .connect(false)
-        .post('entUser100705.json', { open_id: ID.open_id ? ID.open_id : '' })
-        .then((data) => {
-          if (data.ret_code === '0000') {
-            storage.setSession('bank_list', data.bank_list)
-            if (data.bind_status === '0') { // 未绑定
+    initUserInfo () {
+      if (this.openId) {
+        this.userInfo = this.$route.query
+        helper.saveUserInfo(this.userInfo)
+      }
+    },
+    isBind () {
+      this
+        .$Roll
+        .isBind()
+        .then((res) => {
+          let data = res.data
+          storage.setSession('bankList', data.bankList)
+          if (data.bindStatus === '0') {
               this.$router.push({ name: 'bindIdCard' })
-            } else {
-              helper.saveIdInfo({ id_number_hash: data.id_number_hash })
-              if (data.data_list.length > 0) {
-                this.setSessionData(data.data_list)
-              }
-              this.getOtherInfo()
-            }
+          } else {
+            helper.saveUserInfo({ idNumber: data.idNumber })
+            data.dataList.length && this.setSessionData(data.dataList)
+            this.toPage()
           }
         })
     },
     setSessionData (dataList) {
-      storage.setSession('institution', dataList)
-      let recentDate = ''
-      let recentEntId = ''
-      dataList.forEach((item) => {
-        if (Number(item.create_date) > Number(recentDate)) {
-          recentDate = item.create_date
-          recentEntId = item.ent_id
-        }
-      })
+      storage.setSession('institutionList', dataList)
+      let recentDate = dataList[0].createDate
+      let recentEntId = recentEntId[0].entId
       storage.removeSession(recentEntId + 'ManagerInfo')
-      storage.setSession('recent_date', recentDate)
-      helper.saveIdInfo({ ent_id: recentEntId })
+      storage.setSession('recentDate', recentDate)
+      helper.saveUserInfo({ entId: recentEntId })
     },
-    getOtherInfo () {
-      let query = this.$route.query
-      if (query.entrance === 'menu') {
+    toPage () {
+      if (this.userInfo.entrance === 'menu') {
         storage.setSession('entrance', 'menu')
-        this.getKey('home')
+        this.$router.push({ name: 'home' })
       } else {
-        if (query.plan_id && query.group_id) {
-          this.getKey('billIndex')
-        } else {
-          if (query.open_id) {
-            this.$router.push({ name: 'feedBack' })
-          } else {
-            this.getKey('home')
-          }
+        if (this.userInfo.planId && this.userInfo.groupId) {
+          this.$router.push({ name: 'billIndex' })
+          return
         }
+        if (this.userInfo.openId) {
+          this.$router.push({ name: 'feedBack' })
+          return
+        }
+        this.$router.push({ name: 'home' })
       }
-    },
-    getKey (routerName) {
-      let ID = storage.getSession('ID', {})
-      let openId = ID.open_id ? ID.open_id : ''
-      this.Http
-        .connect(false)
-        .post(sysConfig.main_key_url, { head_osnumber: openId })
-        .then((data) => {
-          if (data.ret_code === '0000') {
-            let mainKey = data.base_key
-            this.Http
-              .connect(false)
-              .post(sysConfig.work_key_url, { head_osnumber: openId })
-              .then((item) => {
-                if (item.ret_code === '0000') {
-                  storage.setSession('mKey', mainKey)
-                  storage.setSession('wKey', item)
-                  this.$router.push({ name: routerName })
-                }
-              })
-          }
-        })
     }
   },
   components: {}

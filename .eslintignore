@@ -1,7 +1,5 @@
 /build/
 /config/
-/dist/
-/wechat/
+/fx-payroll/
 /src/utils/assist.js
 /src/assets/swiper/*.js
-/*.js

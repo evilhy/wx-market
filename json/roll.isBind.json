@@ -1,0 +1,21 @@
+{
+    "bindStatus": "1",
+    "idNumber": "001",
+    "dataList": [
+      {
+        "entId": "entId001",
+        "groupId": "groupId001",
+        "groupName": "北京开科技术有限公公司",
+        "planId": "planId001",
+        "createDate": 1536665842237,
+        "inServiceStatus": "在职",
+        "isSeeStatus": "0"
+      }
+    ],
+    "bankList": [
+      {
+        "subbranchBankName": "华夏银行",
+        "subbranchBankId": "bank001"
+      }
+    ]
+  }

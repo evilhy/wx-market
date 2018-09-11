@@ -63,7 +63,7 @@ export default {
     initData () {
       this.recentTime = storage.getSession('recent_date', '')
       this.bankList = storage.getSession('bank_list', [])
-      this.dataList = storage.getSession('institution', [])
+      this.dataList = storage.getSession('institutionList', [])
       this.bankList.forEach((item) => {
         item.bank_icon_transparent = this.imgBaseUrl + item.bank_icon_transparent
       })

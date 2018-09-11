@@ -131,7 +131,7 @@ export default {
       }).then((data) => {
         if (data.ret_code === '0000') {
           this.groupList = data.data_list
-          storage.setSession('institution', this.groupList)
+          storage.setSession('institutionList', this.groupList)
           let groupIndex = collect.indexOf(this.groupList, 'group_id', this.idInfo.group_id)
           this.currentGroup = this.groupList[groupIndex !== -1 ? groupIndex : 0]
           this.idInfo = { open_id: this.idInfo.open_id, plan_id: this.currentGroup.plan_id, ent_id: this.currentGroup.ent_id, group_id: this.currentGroup.group_id }

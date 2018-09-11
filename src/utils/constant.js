@@ -3,8 +3,7 @@ export default {
   node_env: process.env.NODE_ENV,
   debug: process.env.NODE_ENV !== 'production',
   http_base_url: {
-    mock: 'http://10.5.2.152:8018/mock/',
-    development: 'https://sitwx.cardpu.com/easysp/',
+    development: 'http://10.5.1.92:8080/rest',
     test: 'https://sitwx.cardpu.com/easysp/',
     production: 'https://wxpwechat.cardpu.com/easysp/'
   },

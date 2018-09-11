@@ -49,7 +49,7 @@ export default new Router({
       component: resolve => { require(['../views/phoneEmpty.vue'], resolve) }
     },
     {
-      path: '/send-code', // 发送验证码页面codeFBill
+      path: '/send-code/', // 发送验证码页面codeFBill
       name: 'sendCode',
       component: resolve => { require(['../views/sendCode.vue'], resolve) }
     },

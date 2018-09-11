@@ -1,6 +1,6 @@
 .DS_Store
 node_modules/
-wechat/
+fx-payroll/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*

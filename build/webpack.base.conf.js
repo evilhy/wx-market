@@ -38,7 +38,8 @@ module.exports = {
       'assets': resolve('src/assets'),
       'utils': resolve('src/utils'),
       'views': resolve('src/views'),
-      'mixins': resolve('src/mixins')
+      'mixins': resolve('src/mixins'),
+      'core': resolve('core')
     }
   },
   module: {
@@ -52,7 +53,7 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [resolve('src'), resolve('test')]
+        include: [resolve('src'), resolve('test'), resolve('core')]
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
