@@ -9,9 +9,9 @@
       </swiper>
     </div>
     <div class="links-wrap">
-      <div class="my-income" @click="salaryList">
+      <div class="my-income" @click="enterWageList">
         <div class="title">我的收入</div>
-        <div class="recent-one" v-if="recentTime">最近一笔：{{recentTime | deteData}}</div>
+        <div class="recent-one" v-if="recentInfo.createDate">最近一笔：{{recentInfo.createDate | date('Y/m/d')}}</div>
       </div>
       <div class="link-right">
         <div class="hx-manager" @click="toPage('managerContact')">
@@ -29,24 +29,24 @@
       </div>
     </div>
     <div class="bottom-logo">
-      <img :src="bank.bank_icon_transparent" v-for="(bank, index) in bankList" :key="index" />
+      <img src="../assets/img/hx-gray-logo.png"/>
     </div>
     <img-viewer :img-list="imgList" :index="imgViewIndex" :flag="imgViewerFlag" @close="imgViewerFlag=false"></img-viewer>
   </div>
 </template>
 <script type="text/ecmascript-6">
-import storage from 'utils/storage'
-import sysConfig from 'utils/constant'
 import helper from 'utils/helper'
 import ImgViewer from 'components/imgViewer'
 export default {
   data () {
     return {
-      imgBaseUrl: sysConfig.img_base_url[sysConfig.node_env],
-      idInfo: storage.getSession('ID', {}),
-      recentTime: '',
-      bankList: [],
-      dataList: [],
+      recentInfo: {
+        entId: '',
+        groupId: '',
+        groupName: '',
+        createDate: 0,
+        isSeeStatus: ''
+      },
       hasNewMsg: '0',
       imgViewerFlag: false,
       imgViewIndex: 0,
@@ -54,46 +54,26 @@ export default {
     }
   },
   created () {
-    this.initData()
-    this.getStatus()
+    this.getRecentInfo()
   },
   mounted () {
   },
   methods: {
-    initData () {
-      this.recentTime = storage.getSession('recent_date', '')
-      this.bankList = storage.getSession('bank_list', [])
-      this.dataList = storage.getSession('institutionList', [])
-      this.bankList.forEach((item) => {
-        item.bank_icon_transparent = this.imgBaseUrl + item.bank_icon_transparent
-      })
-    },
-    getStatus () {
-      this.Http
-        .connect(true)
-        .post('entUser100707.json', {
-          open_id: this.idInfo.open_id ? this.idInfo.open_id : ''
-        })
-        .then((response) => {
-          if (response.ret_code === '0000' && response.ent_id) {
-            helper.saveIdInfo({ ent_id: response.ent_id })
-            this.idInfo = storage.getSession('ID', {})
-            this.getMsgInfo()
+    getRecentInfo () {
+      this
+        .$Roll
+        .index()
+        .then((res) => {
+          if (Object.keys(res.data.bean).length) {
+            this.recentInfo = res.data.bean
+            helper.saveUserInfo({ entId: this.recentInfo.entId })
+            // this.getMsgInfo()
           }
         })
     },
-    salaryList () {
-      if (this.dataList.length === 1) {
-        if (this.dataList[0].plan_id === '' && this.dataList[0].ent_id === '' && this.dataList[0].group_id === '') {
-          this.toPage('nosalary')
-        } else {
-          this.toPage('institution')
-        }
-      } else if (this.dataList.length === 0) {
-        this.toPage('nosalary')
-      } else {
-        this.toPage('institution')
-      }
+    enterWageList () {
+      let routeName = this.recentInfo.groupId ? 'wageList' : 'noWage'
+      this.$router.push({ name: routeName })
     },
     toPage (routerName, query = {}) {
       this.$router.push({ name: routerName, query: query })

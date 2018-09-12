@@ -1,0 +1,26 @@
+[
+  {
+    "entId": "entId001",
+    "groupId": "groupId001",
+    "groupName": "机构1",
+    "createDate": 1536740851551,
+    "isSeeStatus": "0",
+    "inServiceStatus": "0"
+  },
+  {
+    "entId": "entId002",
+    "groupId": "groupId002",
+    "groupName": "机构2",
+    "createDate": 1538928000000,
+    "isSeeStatus": "0",
+    "inServiceStatus": "1"
+  },
+  {
+    "entId": "entId003",
+    "groupId": "groupId003",
+    "groupName": "机构3",
+    "createDate": 1538928000000,
+    "isSeeStatus": "1",
+    "inServiceStatus": "0"
+  }
+]

@@ -24,14 +24,14 @@ export default new Router({
       component: resolve => { require(['../views/home.vue'], resolve) }
     },
     {
-      path: '/bill-index', // 工资条首页
-      name: 'billIndex',
-      component: resolve => { require(['../views/billIndex.vue'], resolve) }
+      path: '/wage-index/:planId', // 工资首页
+      name: 'wageIndex',
+      component: resolve => { require(['../views/wageIndex.vue'], resolve) }
     },
     {
-      path: '/bill-detail', // 工资条详情页面
-      name: 'billDetail',
-      component: resolve => { require(['../views/billDetail.vue'], resolve) }
+      path: '/wage-detail', // 工资条详情页面
+      name: 'wageDetail',
+      component: resolve => { require(['../views/wageDetail.vue'], resolve) }
     },
     {
       path: '/choose-phone', // 选择手机号页面 chooseCardID
@@ -59,9 +59,9 @@ export default new Router({
       component: resolve => { require(['../views/feedBack.vue'], resolve) }
     },
     {
-      path: '/institution', // 机构选择页面
-      name: 'institution',
-      component: resolve => { require(['../views/institution.vue'], resolve) }
+      path: '/wage-list', // 薪资列表页
+      name: 'wageList',
+      component: resolve => { require(['../views/wageList.vue'], resolve) }
     },
     {
       path: '/personal', // 个人信息页面
@@ -69,9 +69,9 @@ export default new Router({
       component: resolve => { require(['../views/personal.vue'], resolve) }
     },
     {
-      path: '/nosalary', // 身份证绑定页面
-      name: 'nosalary',
-      component: resolve => { require(['../views/nosalary.vue'], resolve) }
+      path: '/no-wage',
+      name: 'noWage',
+      component: resolve => { require(['../views/noWage.vue'], resolve) }
     },
     {
       path: '/invoice', // 发票信息页面

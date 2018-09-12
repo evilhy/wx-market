@@ -1,0 +1,38 @@
+[
+  {
+    "id": "invoice001",
+    "groupName": "机构名1",
+    "groupTaxNo": "税号001",
+    "groupAddress": "湖北省武汉市武昌区凯德1818二期中心",
+    "openBankAccount": "开户行账号102200",
+    "openBankName": "华夏银行",
+    "groupPhonePrefix": "027",
+    "groupPhone": "83888133",
+    "entCommonQr": "普票二维码",
+    "entQrPath": "专票二维码"
+  },
+  {
+    "id": "invoice002",
+    "groupName": "机构名2",
+    "groupTaxNo": "税号002",
+    "groupAddress": "",
+    "openBankAccount": "",
+    "openBankName": "华夏银行",
+    "groupPhonePrefix": "027",
+    "groupPhone": "83888133",
+    "entCommonQr": "普票二维码",
+    "entQrPath": "专票二维码"
+  },
+  {
+    "id": "invoice003",
+    "groupName": "机构名3",
+    "groupTaxNo": "税号003",
+    "groupAddress": "湖北省武汉市武昌区凯德1818二期中心",
+    "openBankAccount": "开户行账号102200",
+    "openBankName": "华夏银行",
+    "groupPhonePrefix": "",
+    "groupPhone": "",
+    "entCommonQr": "",
+    "entQrPath": ""
+  }
+]

@@ -11,8 +11,7 @@ export default class HttpForApplication extends HttpEngine {
   // requestedSever = true
   beforeSendRequestHandler (config) {
     config.headers = Object.assign(config.headers, {
-      jsessionId: helper.getUserInfo('jsessionId', ''),
-      entId: helper.getUserInfo('entId', '')
+      jsessionId: helper.getUserInfo('openId', '')
     })
     if (_.isUndefined(config.loading)) {
         config.loading = true

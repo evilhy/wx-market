@@ -8,64 +8,40 @@
 </template>
 
 <script>
-import storage from 'utils/storage'
 import helper from 'utils/helper'
-import sysConfig from 'utils/constant'
 export default {
   data () {
     return {
-      openId: this.$route.query.openId,
-      userInfo: {}
+      query: this.$route.query
     }
   },
   computed: {},
   created () {
-    this.initUserInfo()
+    helper.saveUserInfo({ openId: this.query.openId })
     this.isBind()
-    this.getIdMessage()
   },
   methods: {
-    initUserInfo () {
-      if (this.openId) {
-        this.userInfo = this.$route.query
-        helper.saveUserInfo(this.userInfo)
-      }
-    },
     isBind () {
       this
         .$Roll
         .isBind()
         .then((res) => {
           let data = res.data
-          storage.setSession('bankList', data.bankList)
           if (data.bindStatus === '0') {
               this.$router.push({ name: 'bindIdCard' })
           } else {
             helper.saveUserInfo({ idNumber: data.idNumber })
-            data.dataList.length && this.setSessionData(data.dataList)
             this.toPage()
           }
         })
     },
-    setSessionData (dataList) {
-      storage.setSession('institutionList', dataList)
-      let recentDate = dataList[0].createDate
-      let recentEntId = recentEntId[0].entId
-      storage.removeSession(recentEntId + 'ManagerInfo')
-      storage.setSession('recentDate', recentDate)
-      helper.saveUserInfo({ entId: recentEntId })
-    },
     toPage () {
-      if (this.userInfo.entrance === 'menu') {
-        storage.setSession('entrance', 'menu')
+      if (this.query.entrance === 'menu') {
         this.$router.push({ name: 'home' })
       } else {
-        if (this.userInfo.planId && this.userInfo.groupId) {
-          this.$router.push({ name: 'billIndex' })
-          return
-        }
-        if (this.userInfo.openId) {
-          this.$router.push({ name: 'feedBack' })
+        if (this.query.planId && this.query.groupId) {
+          helper.saveUserInfo({ groupId: this.query.groupId })
+          this.$router.push({ name: 'wageIndex', params: { planId: this.query.planId } })
           return
         }
         this.$router.push({ name: 'home' })

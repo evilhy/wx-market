@@ -1,0 +1,49 @@
+[
+  {
+    "years": ["2018", "2017", "2016"],
+    "dataList": [
+      {
+        "shouldTotalAmt": 8000,
+        "deductTotalAmt": 1000,
+        "realTotalAmt": 7000,
+        "pushDateTime": 1536508800000,
+        "month": "8月"
+      },
+      {
+        "shouldTotalAmt": 7000,
+        "deductTotalAmt": 100,
+        "realTotalAmt": 6900,
+        "pushDateTime": 1533830400000,
+        "month": "7月"
+      },
+      {
+        "shouldTotalAmt": 7020.91,
+        "deductTotalAmt": 100,
+        "realTotalAmt": 6920.91,
+        "pushDateTime": 1531152000000,
+        "month": "6月"
+      },
+      {
+        "shouldTotalAmt": 8000,
+        "deductTotalAmt": 1000,
+        "realTotalAmt": 7000,
+        "pushDateTime": 1528560000000,
+        "month": "5月"
+      },
+      {
+        "shouldTotalAmt": 7000,
+        "deductTotalAmt": 100,
+        "realTotalAmt": 6900,
+        "pushDateTime": 1525881600000,
+        "month": "4月"
+      },
+      {
+        "shouldTotalAmt": 7020.91,
+        "deductTotalAmt": 100,
+        "realTotalAmt": 6920.91,
+        "pushDateTime": 1523289600000,
+        "month": "3月"
+      }
+    ]
+  }
+]

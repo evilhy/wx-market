@@ -22,7 +22,6 @@
 </template>
 
 <script>
-import storage from 'utils/storage'
 import helper from 'utils/helper'
 export default {
   data () {
@@ -62,7 +61,7 @@ export default {
     },
     bindWX () {
       this
-        $Roll
+        .$Roll
         .bindWX(this.code)
         .then(() => {
           this.initCountDown()

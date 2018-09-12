@@ -49,7 +49,7 @@ export default {
         .sendCode()
         .then((res) => {
           helper.saveRemainTime()
-          this.$router.push({ name: 'sendCode'})
+          this.$router.push({name: 'sendCode'})
         })
     }
   }

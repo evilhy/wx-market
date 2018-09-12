@@ -46,7 +46,7 @@ function date (timeVal, format = 'Y-m-d H:i:s') {
     return timeVal
   }
 }
-function money (number, precision = 0, thousand = ',') {
+function money (number, precision = 2, thousand = ',') {
   if (typeOf(number) === 'array') {
     return number.map(val => money(val, precision, thousand))
   }

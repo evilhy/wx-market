@@ -1,0 +1,565 @@
+[
+  {
+    "bankName": "华夏银行",
+    "cardNo": "6201182200***2309",
+    "wageName": "8月份工资",
+    "realAmt": 7920.05,
+    "differRealAmt": 0,
+    "differShouldAmt": 0,
+    "differDeductAmt": 0,
+    "entName": "北京开科",
+    "groupName": "机构名",
+    "groupId": "groupId001",
+    "pushDateTime": 1536508800000,
+    "receiptStautus": 0,
+    "wageHeadDTO": {
+      "headIndex": 0,
+      "heads": [
+        {
+          "colName": "未知",
+          "colNum": [
+            0
+          ],
+          "type": "UNKNOWN",
+          "index": 0,
+          "hidden": false
+        },
+        {
+          "colName": "姓名",
+          "colNum": [
+            1
+          ],
+          "type": "NAME",
+          "index": 0,
+          "hidden": false
+        },
+        {
+          "colName": "实发",
+          "colNum": [
+            2
+          ],
+          "type": "REAL_AMT",
+          "index": 0,
+          "hidden": false
+        },
+        {
+          "colName": "基础工资",
+          "colNum": [
+            3
+          ],
+          "type": "SHOULD_AMT",
+          "index": 0,
+          "hidden": false
+        },
+        {
+          "colName": "全勤奖励",
+          "colNum": [
+            4
+          ],
+          "type": "SHOULD_AMT",
+          "index": 0,
+          "hidden": false
+        },
+        {
+          "colName": "公司福利",
+          "colNum": [
+            5
+          ],
+          "type": "SHOULD_AMT",
+          "index": 0,
+          "hidden": false
+        },
+        {
+          "colName": "个税扣款",
+          "colNum": [
+            6
+          ],
+          "type": "DEDUCT_AMT",
+          "index": 0,
+          "hidden": false
+        },
+        {
+          "colName": "五险一金",
+          "colNum": [
+            7
+          ],
+          "type": "REMARK",
+          "index": 0,
+          "hidden": false
+        },
+        {
+          "colName": "备注",
+          "colNum": [
+            8
+          ],
+          "type": "REMARK",
+          "index": 0,
+          "hidden": false
+        },
+        {
+          "colName": "出勤出勤天数出勤天数出勤天数出勤天数出勤天数天数",
+          "colNum": [
+            9
+          ],
+          "type": "REMARK",
+          "index": 0,
+          "hidden": false
+        },
+        {
+          "colName": "出勤天数",
+          "colNum": [
+            10
+          ],
+          "type": "REMARK",
+          "index": 0,
+          "hidden": false
+        },
+        {
+          "colName": "出勤天数",
+          "colNum": [
+            11
+          ],
+          "type": "REMARK",
+          "index": 0,
+          "hidden": false
+        },
+        {
+          "colName": "出勤天数",
+          "colNum": [
+            12
+          ],
+          "type": "REMARK",
+          "index": 0,
+          "hidden": false
+        },
+        {
+          "colName": "出勤天数",
+          "colNum": [
+            13
+          ],
+          "type": "REMARK",
+          "index": 0,
+          "hidden": false
+        },
+        {
+          "colName": "出勤天数",
+          "colNum": [
+            14
+          ],
+          "type": "REMARK",
+          "index": 0,
+          "hidden": false
+        },
+        {
+          "colName": "出勤天数",
+          "colNum": [
+            15
+          ],
+          "type": "REMARK",
+          "index": 0,
+          "hidden": false
+        },
+        {
+          "colName": "出勤天数",
+          "colNum": [
+            16
+          ],
+          "type": "REMARK",
+          "index": 0,
+          "hidden": false
+        }
+      ],
+      "doubleRow": true
+    },
+    "wageShowDTO": {
+      "isShow0": "0",
+      "isReceipt": "1",
+      "receiptDay": 3
+    },
+    "content": [
+      {
+        "colNum": 0,
+        "value": "未知的内容"
+      },
+      {
+        "colNum": 1,
+        "value": "张三2"
+      },
+      {
+        "colNum": 2,
+        "value": 3038.00
+      },
+      {
+        "colNum": 3,
+        "value": 2038.00
+      },
+      {
+        "colNum": 4,
+        "value": 100.00
+      },
+      {
+        "colNum": 5,
+        "value": 1000.00
+      },
+      {
+        "colNum": 6,
+        "value": 500.00
+      },
+      {
+        "colNum": 7,
+        "value": 500.00
+      },
+      {
+        "colNum": 8,
+        "value": "备注的内容备注的内容备注的内容备注的内容"
+      },
+      {
+        "colNum": 9,
+        "value": "22天"
+      },
+      {
+        "colNum": 10,
+        "value": "22天"
+      },
+      {
+        "colNum": 11,
+        "value": "22天"
+      },
+      {
+        "colNum": 12,
+        "value": "22天"
+      },
+      {
+        "colNum": 13,
+        "value": "22天"
+      },
+      {
+        "colNum": 14,
+        "value": "22天"
+      },
+      {
+        "colNum": 15,
+        "value": "22天"
+      },
+      {
+        "colNum": 16,
+        "value": "22天"
+      }
+    ]
+  },
+  {
+    "bankName": "建设银行",
+    "cardNo": "6201182200***2309",
+    "wageName": "8月份奖金",
+    "realAmt": 2920.05,
+    "differRealAmt": 1006,
+    "differShouldAmt": 0,
+    "differDeductAmt": 0,
+    "entName": "北京开科",
+    "groupName": "机构名",
+    "groupId": "groupId001",
+    "pushDateTime": 1536506400000,
+    "receiptStautus": 1,
+    "wageHeadDTO": {
+      "headIndex": 0,
+      "heads": [
+        {
+          "colName": "实发",
+          "colNum": [
+            2
+          ],
+          "type": "REAL_AMT",
+          "index": 0,
+          "hidden": false
+        },
+        {
+          "colName": "基础工资",
+          "colNum": [
+            3
+          ],
+          "type": "SHOULD_AMT",
+          "index": 0,
+          "hidden": false
+        },
+        {
+          "colName": "全勤奖励",
+          "colNum": [
+            4
+          ],
+          "type": "SHOULD_AMT",
+          "index": 0,
+          "hidden": false
+        },
+        {
+          "colName": "公司福利",
+          "colNum": [
+            5
+          ],
+          "type": "SHOULD_AMT",
+          "index": 0,
+          "hidden": false
+        },
+        {
+          "colName": "个税扣款",
+          "colNum": [
+            6
+          ],
+          "type": "DEDUCT_AMT",
+          "index": 0,
+          "hidden": false
+        },
+        {
+          "colName": "五险一金",
+          "colNum": [
+            7
+          ],
+          "type": "REMARK",
+          "index": 0,
+          "hidden": false
+        }
+      ],
+      "doubleRow": true
+    },
+    "wageShowDTO": {
+      "isShow0": "1",
+      "isReceipt": "1",
+      "receiptDay": 3
+    },
+    "content": [
+      {
+        "colNum": 2,
+        "value": 3038.00
+      },
+      {
+        "colNum": 3,
+        "value": 2038.00
+      },
+      {
+        "colNum": 4,
+        "value": 100.00
+      },
+      {
+        "colNum": 5,
+        "value": 1000.00
+      },
+      {
+        "colNum": 6,
+        "value": 500.00
+      },
+      {
+        "colNum": 7,
+        "value": 500.00
+      }
+    ]
+  },
+  {
+    "bankName": "华夏银行",
+    "cardNo": "6201182200***2309",
+    "wageName": "8月份奖金",
+    "realAmt": 2920.05,
+    "differRealAmt": 1006,
+    "differShouldAmt": 0,
+    "differDeductAmt": 0,
+    "entName": "北京开科",
+    "groupName": "机构名",
+    "groupId": "groupId001",
+    "pushDateTime": 1536506400000,
+    "receiptStautus": 2,
+    "wageHeadDTO": {
+      "headIndex": 0,
+      "heads": [
+        {
+          "colName": "实发",
+          "colNum": [
+            2
+          ],
+          "type": "REAL_AMT",
+          "index": 0,
+          "hidden": false
+        },
+        {
+          "colName": "基础工资",
+          "colNum": [
+            3
+          ],
+          "type": "SHOULD_AMT",
+          "index": 0,
+          "hidden": false
+        },
+        {
+          "colName": "全勤奖励",
+          "colNum": [
+            4
+          ],
+          "type": "SHOULD_AMT",
+          "index": 0,
+          "hidden": false
+        },
+        {
+          "colName": "公司福利",
+          "colNum": [
+            5
+          ],
+          "type": "SHOULD_AMT",
+          "index": 0,
+          "hidden": false
+        },
+        {
+          "colName": "个税扣款",
+          "colNum": [
+            6
+          ],
+          "type": "DEDUCT_AMT",
+          "index": 0,
+          "hidden": false
+        },
+        {
+          "colName": "五险一金",
+          "colNum": [
+            7
+          ],
+          "type": "REMARK",
+          "index": 0,
+          "hidden": false
+        }
+      ],
+      "doubleRow": true
+    },
+    "wageShowDTO": {
+      "isShow0": "0",
+      "isReceipt": "1",
+      "receiptDay": 3
+    },
+    "content": [
+      {
+        "colNum": 2,
+        "value": 3038.00
+      },
+      {
+        "colNum": 3,
+        "value": 2038.00
+      },
+      {
+        "colNum": 4,
+        "value": 100.00
+      },
+      {
+        "colNum": 5,
+        "value": 1000.00
+      },
+      {
+        "colNum": 6,
+        "value": 500.00
+      },
+      {
+        "colNum": 7,
+        "value": 500.00
+      }
+    ]
+  },
+  {
+    "bankName": "华夏银行",
+    "cardNo": "6201182200***2309",
+    "wageName": "8月份奖金",
+    "realAmt": 2920.05,
+    "differRealAmt": 100,
+    "differShouldAmt": 0,
+    "differDeductAmt": 0,
+    "entName": "北京开科",
+    "groupName": "机构名",
+    "groupId": "groupId001",
+    "pushDateTime": 1536506400000,
+    "receiptStautus": 3,
+    "wageHeadDTO": {
+      "headIndex": 0,
+      "heads": [
+        {
+          "colName": "实发",
+          "colNum": [
+            2
+          ],
+          "type": "REAL_AMT",
+          "index": 0,
+          "hidden": false
+        },
+        {
+          "colName": "基础工资",
+          "colNum": [
+            3
+          ],
+          "type": "SHOULD_AMT",
+          "index": 0,
+          "hidden": false
+        },
+        {
+          "colName": "全勤奖励",
+          "colNum": [
+            4
+          ],
+          "type": "SHOULD_AMT",
+          "index": 0,
+          "hidden": false
+        },
+        {
+          "colName": "公司福利",
+          "colNum": [
+            5
+          ],
+          "type": "SHOULD_AMT",
+          "index": 0,
+          "hidden": false
+        },
+        {
+          "colName": "个税扣款",
+          "colNum": [
+            6
+          ],
+          "type": "DEDUCT_AMT",
+          "index": 0,
+          "hidden": false
+        },
+        {
+          "colName": "五险一金",
+          "colNum": [
+            7
+          ],
+          "type": "REMARK",
+          "index": 0,
+          "hidden": false
+        }
+      ],
+      "doubleRow": true
+    },
+    "wageShowDTO": {
+      "isShow0": "0",
+      "isReceipt": "1",
+      "receiptDay": 3
+    },
+    "content": [
+      {
+        "colNum": 2,
+        "value": 3038.00
+      },
+      {
+        "colNum": 3,
+        "value": 2038.00
+      },
+      {
+        "colNum": 4,
+        "value": 100.00
+      },
+      {
+        "colNum": 5,
+        "value": 1000.00
+      },
+      {
+        "colNum": 6,
+        "value": 500.00
+      },
+      {
+        "colNum": 7,
+        "value": 500.00
+      }
+    ]
+  }
+]

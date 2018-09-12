@@ -109,9 +109,9 @@ export default {
     'hmd5_key'
   ],
   baidu_event: {  // 百度事件统计相关
-    billDetail: ['_trackEvent', '放薪工资条', '我的工资条'],
+    wageDetail: ['_trackEvent', '放薪工资条', '我的工资条'],
     mainMessage: ['_trackEvent', '放薪工资条', '个人信息'],
-    institution: ['_trackEvent', '查看工资', '选择机构'],
+    wageList: ['_trackEvent', '查看工资', '选择机构'],
     choosePhone: ['_trackEvent', '身份验证', '选择手机号'],
     emptyPhone: ['_trackEvent', '身份验证', '空手机号'],
     hiddenBill: ['_trackEvent', '工资明细', '隐藏工资']

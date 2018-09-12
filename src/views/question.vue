@@ -45,7 +45,7 @@ export default {
         if (data.ret_code === '0000') {
           helper.toast('提交成功')
           setTimeout(() => {
-            this.$router.replace({ name: 'billDetail' })
+            this.$router.replace({ name: 'wageDetail' })
           }, 1000)
         }
       })

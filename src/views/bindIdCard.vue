@@ -14,7 +14,7 @@
 import storage from 'utils/storage'
 import helper from 'utils/helper'
 import collect from 'utils/collect'
-import { typeOf, validIdCard } from 'utils/assist'
+import { validIdCard } from 'utils/assist'
 export default {
   data () {
     return {
@@ -65,7 +65,7 @@ export default {
         .sendCode()
         .then((res) => {
           helper.saveRemainTime()
-          this.$router.push({ name: 'sendCode'})
+          this.$router.push({name: 'sendCode'})
         })
     }
   }

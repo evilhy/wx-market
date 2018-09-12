@@ -1,0 +1,40 @@
+{
+  "shouldTotalAmt": 67290.05,
+  "deductTotalAmt": 10000,
+  "realTotalAmt": 66290.05,
+  "years": ["2018", "2017", "2016"],
+  "planList": [
+    {
+      "wageSheetId": "wageSheetId001",
+      "spName": "8月份工资",
+      "fundType": "工资",
+      "spTypeIcon": "0",
+      "totalAmt": 6270.05,
+      "createDateTime": 1536508800000
+    },
+    {
+      "wageSheetId": "wageSheetId002",
+      "spName": "7月份奖金",
+      "fundType": "奖金",
+      "spTypeIcon": "1",
+      "totalAmt": 2210,
+      "createDateTime": 1535558400000
+    },
+    {
+      "wageSheetId": "wageSheetId003",
+      "spName": "7月份工资",
+      "fundType": "工资",
+      "spTypeIcon": "2",
+      "totalAmt": 6210,
+      "createDateTime": 1533830400000
+    },
+    {
+      "wageSheetId": "wageSheetId003",
+      "spName": "6月份工资",
+      "fundType": "工资",
+      "spTypeIcon": "3",
+      "totalAmt": 6210,
+      "createDateTime": 1533830400000
+    }
+  ]
+}
