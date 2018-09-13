@@ -11,7 +11,7 @@
     <div class="links-wrap">
       <div class="my-income" @click="enterWageList">
         <div class="title">我的收入</div>
-        <div class="recent-one" v-if="recentInfo.createDate">最近一笔：{{recentInfo.createDate | date('Y/m/d')}}</div>
+        <div class="recent-one" v-if="recentInfo.createDate">最近一笔:{{recentInfo.createDate | date('Y/m/d')}}</div>
       </div>
       <div class="link-right">
         <div class="hx-manager" @click="toPage('managerContact')">
@@ -50,7 +50,7 @@ export default {
       hasNewMsg: '0',
       imgViewerFlag: false,
       imgViewIndex: 0,
-      imgList: [require('../assets/img/home-banner1.jpg')]
+      imgList: [require('../assets/img/home-banner1.png')]
     }
   },
   created () {

@@ -10,9 +10,9 @@
         <ul class="group-list" :class="[flag ? 'show' : '']">
             <li v-for="(item, index) in groupList" @click="chooseGroup(item, index)" :key="index" class="group-item">
                 <p class="group-name">{{item.groupName}}</p>
-                <span class="recent">最近一笔：{{item.createDate | date('Y/m/d')}}</span>
+                <span class="recent">最近一笔:{{item.createDate | date('Y/m/d')}}</span>
                 <i class="iconfont icon-yilizhi" v-if="item.inServiceStatus==='0'"></i>
-                <i class="iconfont icon-jiaobiao" v-if="item.isSeeStatus=='0'"></i>
+                <i class="iconfont icon-jiaobiao" v-if="item.isSeeStatus==='0'"></i>
             </li>
         </ul>
     </div>
@@ -29,10 +29,13 @@ export default {
     },
     data () {
         return {
-           flag: false 
+           flag: false
         }
     },
     methods: {
+        toggle () {
+            this.flag = !this.flag
+        },
         chooseGroup (group, index) {
             this.flag = false
             if (group.groupId === this.currentGroup.groupId) return

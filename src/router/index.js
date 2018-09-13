@@ -79,7 +79,7 @@ export default new Router({
       component: resolve => { require(['../views/invoice.vue'], resolve) }
     },
     {
-      path: '/question', // 我有疑问页面
+      path: '/question/:detailId', // 我有疑问页面
       name: 'question',
       component: resolve => { require(['../views/question.vue'], resolve) }
     },
@@ -87,11 +87,6 @@ export default new Router({
       path: '/trend', // 走势图页面
       name: 'trend',
       component: resolve => { require(['../views/trend.vue'], resolve) }
-    },
-    {
-      path: '/withdrawals', // 电商提现页面
-      name: 'withdrawals',
-      component: resolve => { require(['../views/withdrawals.vue'], resolve) }
     },
     {
       path: '/manager',  // 华夏管家页面

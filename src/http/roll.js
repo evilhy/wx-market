@@ -16,7 +16,7 @@ class Roll {
         let phone = helper.getUserInfo('phone', '')
         let idNumber = helper.getUserInfo('idNumber', '')
         let http = new Http()
-        http.path = '/roll/bandWX'
+        http.path = '/roll/bindWX'
         http.body = { code, phone, idNumber }
         return http.post()
     }
@@ -47,7 +47,8 @@ class Roll {
         http.query = { wageSheetId: planId }
         return http.get()
     }
-    wageTrend (groupId, year, salaryType) {
+    wageTrend (year, salaryType) {
+        let groupId = helper.getUserInfo('groupId', '')
         let http = new Http()
         http.path = '/roll/wageTrend'
         http.query = { groupId, year, salaryType }
@@ -66,7 +67,7 @@ class Roll {
             receiptsStatus,
             msg
         }
-        return http.get()
+        return http.post()
     }
 }
 export default new Roll()

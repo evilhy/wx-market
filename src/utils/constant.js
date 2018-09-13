@@ -7,8 +7,6 @@ export default {
     test: 'https://sitwx.cardpu.com/easysp/',
     production: 'https://wxpwechat.cardpu.com/easysp/'
   },
-  main_key_url: 'pub010101.json',
-  work_key_url: 'pub010102.json',
   img_base_url: {
     mock: 'https://sitwx.cardpu.com/easysp/platform/showimg.json?resource_id=',
     development: 'https://sitwx.cardpu.com/easysp/platform/showimg.json?resource_id=',
@@ -59,38 +57,6 @@ export default {
     { label: '医疗补助', value: '0009', type: '3' },
     { label: '其他', value: '0002', type: '3' }
   ],
-  invoiceInfoList: [
-    {
-      label: '公司名称',
-      key: 'ent_name',
-      type: '1'
-    },
-    {
-      label: '税号',
-      key: 'ent_tax_no',
-      type: '1'
-    },
-    {
-      label: '公司地址',
-      key: 'ent_address',
-      type: '2'
-    },
-    {
-      label: '公司电话',
-      key: 'ent_phone',
-      type: '2'
-    },
-    {
-      label: '开户银行',
-      key: 'ent_open_bank_name',
-      type: '2'
-    },
-    {
-      label: '开户账号',
-      key: 'ent_open_bank_account',
-      type: '2'
-    }
-  ],
   service_status_info: {
     '0': '离职',
     '1': '在职',
@@ -98,16 +64,6 @@ export default {
     '3': '停薪留职',
     '4': '兼职'
   },
-  encode_words: [
-    'total_amt',
-    'sp_total_amt',
-    'bank_total_amt',
-    'plus_total_amt',
-    'sub_total_amt',
-    'item_amt',
-    'aes_key',
-    'hmd5_key'
-  ],
   baidu_event: {  // 百度事件统计相关
     wageDetail: ['_trackEvent', '放薪工资条', '我的工资条'],
     mainMessage: ['_trackEvent', '放薪工资条', '个人信息'],

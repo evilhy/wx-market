@@ -1,9 +1,9 @@
 <template>
   <div class="wage-list-page group-select">
-    <wage-group-list :group-list="groupList" :current-group="currentGroup" :choose-group="initCurrentData"></wage-group-list>
-    <year-wage-outline :wage="outlineWage" :flag="flag" @toggle="flag = !flag"></year-wage-outline>
+    <wage-group-list :group-list="groupList" :current-group="currentGroup" @choose-group="initCurrentData"></wage-group-list>
+    <year-wage-outline :wage="outlineWage" :flag="flag" @toggle="toggle"></year-wage-outline>
     <ul class="bill-list">
-      <wage-item :wage="item" v-for="(item, index) in wageList" :key="index"></wage-item>
+      <wage-item :wage="item" v-for="(item, index) in wageList" :key="index" :flag="flag"></wage-item>
     </ul>
     <!-- swiper -->
     <year-swiper ref="year-swiper" :years="years" @transitionEnd="changeYear"></year-swiper>
@@ -18,6 +18,7 @@ import yearSwiper from 'components/yearSwiper'
 import helper from 'utils/helper'
 import filter from 'utils/filter'
 import sysConfig from 'utils/constant'
+import storage from 'utils/storage'
 export default {
   components: {
     wageGroupList,
@@ -38,7 +39,7 @@ export default {
         realTotalAmt: 0
       },
       wageList: [],
-      flag: false
+      flag: storage.getSession('amtFlag', true)
     }
   },
   computed: {
@@ -88,6 +89,10 @@ export default {
     changeYear () {
       this.currentYear = this.years[this.swiper.activeIndex]
       this.getWageList()
+    },
+    toggle () {
+      this.flag = !this.flag
+      storage.setSession('amtFlag', this.flag)
     }
   }
 }

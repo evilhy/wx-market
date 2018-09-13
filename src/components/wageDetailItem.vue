@@ -3,12 +3,12 @@
         <div class="detail-wrap">
             <!-- 银行卡相关 -->
             <div class="bank-wrap">
-                <span class="bank-name"><img :src="item.bank_icon_white" alt="" class="bank-img">{{item.bank_name}}</span>
-                <span class="bank-no">{{item.bank_card_star | bankSpace}}</span>
+                <span class="bank-name"><img class="bank-img" src="../assets/img/icon-bank.png" />{{wage.bankName}}</span>
+                <span class="bank-no">{{wage.cardNo | bankSpace}}</span>
             </div>
             <!-- 实发总额 -->
             <div class="total-wrap">
-                <p class="total-amt" v-show="flag">{{item.bank_total_amt | money(2)}}
+                <p class="total-amt" v-show="flag">{{wage.realAmt | money}}
                     <i class="icon-ai44 iconfont" @click="changeFlag"></i>
                 </p>
                 <p class="total-amt" v-show="!flag">****
@@ -24,9 +24,9 @@
                         应发金额
                     </div>
                     <ul class="amt-list">
-                        <li class="amt-item" v-for="(realItem, index) in item.plus_list" :key="'real-'+index">
-                            <span class="label">{{realItem.item_name}}</span>
-                            <span class="value">{{realItem.item_amt | money(2)}}</span>
+                        <li class="amt-item" v-for="(item, index) in shouldList" :key="'real-'+index" v-if="!item.hidden && (isShow0 === '1' || (isShow0 === '0' && item.colValue !== 0))">
+                            <span class="label">{{item.colName}}</span>
+                            <span class="value" v-if="item.colValue">{{item.colValue | money}}</span>
                         </li>
                     </ul>
                 </div>
@@ -36,9 +36,9 @@
                         扣除金额
                     </div>
                     <ul class="amt-list">
-                        <li class="amt-item" v-for="(subItem, index) in item.sub_list" :key="'sub-'+index">
-                            <span class="label">{{subItem.item_name}}</span>
-                            <span class="value">{{subItem.item_amt | money(2)}}</span>
+                        <li class="amt-item" v-for="(item, index) in deductList" :key="'sub-'+index" v-if="!item.hidden && (isShow0 === '1' || (isShow0 === '0' && item.colValue !== 0))">
+                            <span class="label">{{item.colName}}</span>
+                            <span class="value">{{item.colValue | money}}</span>
                         </li>
                     </ul>
                 </div>
@@ -48,30 +48,27 @@
                         事项说明
                     </div>
                     <ul class="amt-list">
-                        <li class="amt-item" v-for="(remarkItem, index) in item.remark_list" :key="'remark-'+index">
-                            <span class="label">{{remarkItem.item_name}}</span>
-                            <span class="value">{{remarkItem.item_amt}}</span>
+                        <li class="amt-item" v-for="(item, index) in remarkList" :key="'remark-'+index" v-if="!item.hidden">
+                            <span class="label">{{item.colName}}</span>
+                            <span class="value">{{item.colValue}}</span>
                         </li>
                     </ul>
                 </div>
             </div>
             <div class="action-wrap">
-                <template v-if="billOtherData.employee_feedback === '0'">
-                    <span class="btn sured">
-                        <i class="iconfont icon-dui"></i>已向企业回执无误</span>
-                </template>
-                <template v-else>
-                    <span class="btn sure" @click="noQuestion">确认无误</span>
-                    <span class="btn question" v-if="billOtherData.employee_feedback === ''" @click="toQuestionPage(true)">我有疑问</span>
-                    <span class="btn question" v-if="billOtherData.employee_feedback !== ''" @click="toQuestionPage(false)">已反馈</span>
-                </template>
+                <template v-if="isReceipt === '1'">
+                    <span class="btn sured" v-if="wage.receiptStautus === 0"><i class="iconfont icon-dui"></i>已向企业回执无误</span>
+                    <span class="btn sure" @click="receipt" v-else>确认无误</span>
+                </template> 
+                <span class="btn question" v-if="wage.receiptStautus === 3" @click="toQuestionPage(true)">我有疑问</span>
+                <span class="btn question" v-if="wage.receiptStautus === 1 || wage.receiptStautus === 2">已反馈</span>
             </div>
         </div>
     </swiper-slide>
 </template>
 <script>
-// todo
 import storage from 'utils/storage'
+import collect from 'utils/collect'
 export default {
     props: {
         wage: {
@@ -80,13 +77,59 @@ export default {
     },
     data () {
         return {
+            shouldList: [],
+            deductList: [],
+            remarkList: [],
+            isShow0: '',      // 是否展示金额为0的数据
+            isReceipt: '',    // 是否开启回执功能
+            receiptDay: 0,    // 默认回执时间天
+            receiptStautus: -1, // 回执状态
             flag: storage.getSession('amtFlag', true)
         }
     },
+    watch: {
+        wage: {
+            deep: true,
+            handler (val) {
+                this.initSettingData()
+                this.initContentData()
+            }
+        }
+    },
+    created () {
+        this.initSettingData()
+        this.initContentData()
+    },
     methods: {
+        initSettingData () {
+            this.isShow0 = this.wage.wageShowDTO.isShow0
+            this.isReceipt = this.wage.wageShowDTO.isReceipt
+            this.receiptDay = this.wage.wageShowDTO.receiptDay
+            this.receiptStautus = this.wage.receiptStautus
+        },
+        initContentData () {
+            let heads = this.wage.wageHeadDTO.heads
+            heads.forEach((item) => {
+                item.colValue = collect.getItem(this.wage.content, 'colNum', item.colNum[0]).value
+            })
+            this.shouldList = heads.filter(item => item.type === 'SHOULD_AMT')
+            this.deductList = heads.filter(item => item.type === 'DEDUCT_AMT')
+            this.remarkList = heads.filter(item => item.type === 'REMARK')
+        },
         changeFlag () {
             this.flag = !this.flag
             storage.setSession('amtFlag', this.flag)
+        },
+        toQuestionPage () {
+            this.$router.push({ name: 'question', params: { detailId: this.wage.wageDetailId } })
+        },
+        receipt () {
+            this
+                .$Roll
+                .receipt(this.wage.wageDetailId, 0)
+                .then(() => {
+                    this.wage.receiptStautus = 0
+                })
         }
     }
 }

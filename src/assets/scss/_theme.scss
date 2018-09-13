@@ -541,7 +541,7 @@
         -webkit-flex: 1;
     }
     .my-income {
-        width: px2rem(266px);
+        width: px2rem(270px);
         border-right: 1px solid $color-border-gray;
         padding: px2rem(44px) px2rem(30px);
         line-height: px2rem(32px);
@@ -869,7 +869,7 @@
         }
         &.disabled{
             color: $color-text-tip;
-            .phone{
+            .no-phone{
                 color: red;
             }
         }
@@ -1591,7 +1591,7 @@
         line-height: px2rem(80px);
         background: #fff;
         border-bottom: 1px solid #DFDFDF;
-        .choose-this {
+        .active {
             border: 0;
             color: #fff;
             background: #52BDBD;
@@ -1844,11 +1844,9 @@
         line-height: px2rem(80px);
         border-top: 1px solid #E9EBEC;
         display: flex;
-        display: -webkit-flex;
         .action {
-            width: 50%;
+            width: 100%;
             display: flex;
-            display: webkit-flex;
             justify-content: center;
             text-align: center;
             &:first-child {
@@ -1859,7 +1857,6 @@
     .bottom {
         padding: px2rem(30px) 0;
         display: flex;
-        display: webkit-flex;
         justify-content: space-between;
         @include font-dpr(24px);
         .time {
@@ -1973,6 +1970,7 @@
       }
       &.remark{
         .amt-item{
+          line-height: 1.5;
           @include clearfix;
         }
         .title{

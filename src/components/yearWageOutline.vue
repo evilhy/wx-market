@@ -43,6 +43,7 @@
 </template>
 <script>
 import billExplain from 'components/billExplain'
+import amtPercentLine from 'components/amtPercentLine'
 export default {
     props: {
         wage: {
@@ -63,7 +64,8 @@ export default {
         }
     },
     components: {
-        billExplain
+        billExplain,
+        amtPercentLine
     }
 }
 </script>

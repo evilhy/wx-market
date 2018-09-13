@@ -10,14 +10,13 @@
         <div class="swiper-pagination" slot="pagination"></div>
       </swiper>
       <div class="action-wrap">
-        <div class="action" @click="toPage('trend')">
-          <i class="iconfont icon-chakanzoushi"></i>查看走势</div>
+        <!-- <div class="action" @click="toPage('trend')">
+          <i class="iconfont icon-chakanzoushi"></i>查看走势</div> -->
         <div class="action" @click="toDetail">
           <i class="iconfont icon-chakanxiangqing"></i>查看详情</div>
       </div>
     </div>
     <div class="bottom">
-      <span class="time">推送时间{{bankWageList[0].pushDateTime | date('Y/m/d')}}</span>
       <span class="return" @click="toPage('wageList')">返回列表</span>
     </div>
   </div>

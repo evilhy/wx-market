@@ -20,11 +20,11 @@ export default class HttpForApplication extends HttpEngine {
   }
 
   afterResolveResponseHandler (response) {
-    config.loading && Indicator.close()
+    response.config.loading && Indicator.close()
   }
 
   beforeErrorResponseHandler (error) {
-    config.loading && Indicator.close()
+    error.config.loading && Indicator.close()
     let errorMsg = error.message
     if (_.isObject(error.response)) {
       if (_.isObject(error.response.data)) {

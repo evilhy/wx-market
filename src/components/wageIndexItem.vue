@@ -7,11 +7,11 @@
         <div class="amt-wrap">
             <div class="amt">
                 <span @click="toDetail">
-                    <template v-show="flag">
+                    <template v-if="flag">
                         {{wage.realAmt | money}}
                         <i class="icon-ai44 iconfont" @click.stop="changeFlag"></i>
                     </template>
-                    <template v-show="!flag">
+                    <template v-if="!flag">
                         ****
                         <i class="icon-ai47 iconfont" @click.stop="changeFlag"></i>
                     </template>

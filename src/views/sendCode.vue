@@ -10,7 +10,7 @@
         <span v-for="(codeChar, index) in code" :key="index" class="code-item">{{codeChar}}</span>
       </p>
       <p class="get-code-btn">
-        <span v-if="countDownInfo.seconds > 0 && countDownInfo.seconds < 60">已发送({{remainTime}}s)</span>
+        <span v-if="countDownInfo.seconds > 0 && countDownInfo.seconds < 60">已发送({{countDownInfo.seconds}}s)</span>
         <span v-else @click="sendCode">再次获取</span>
       </p>
     </div>
@@ -26,7 +26,7 @@ import helper from 'utils/helper'
 export default {
   data () {
     return {
-      userInfo: helper.getUserInfo('userInfo', {}),
+      userInfo: helper.getUserInfo(),
       code: '',
       hidden: false,
       countDownInfo: {

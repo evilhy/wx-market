@@ -5,10 +5,7 @@
             <div class="item_before"></div>
             <div class="bill-left">
                 <div class="bill-type">
-                    <i class="iconfont icon-x-1" v-if="wage.spTypeIcon=='0'"></i>
-                    <i class="iconfont icon-x-2" v-if="wage.spTypeIcon=='1'"></i>
-                    <i class="iconfont icon-x-" v-if="wage.spTypeIcon=='2'"></i>
-                    <i class="iconfont icon-x-_fuzhi-copy" v-if="wage.spTypeIcon=='3'"></i>
+                    <i class="iconfont" :class="typeIcon[wage.spTypeIcon]"></i>
                     <span>{{wage.fundType}}</span>
                 </div>
                 <p class="bill-name">{{wage.spName}}</p>
@@ -32,7 +29,14 @@ export default {
         }
     },
     data () {
-        return {}
+        return {
+            typeIcon: {
+                0: 'icon-x-1',
+                1: 'icon-x-2',
+                2: 'icon-x-',
+                3: 'icon-x-_fuzhi-copy'
+            }
+        }
     },
     methods: {
         toWage () {
