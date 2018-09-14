@@ -12,7 +12,7 @@
         <p>{{item.groupName}}</p>
       </li>
     </ul>
-    <invoice-item :invoice="currentInvoice" refs="invoice-item"></invoice-item>
+    <invoice-item :invoice="currentInvoice" ref="invoice-item"></invoice-item>
     <invoice-rule></invoice-rule>
   </div>
 </template>

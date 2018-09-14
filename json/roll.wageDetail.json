@@ -13,6 +13,7 @@
     "groupId": "groupId001",
     "pushDateTime": 1536508800000,
     "receiptStautus": 0,
+    "payStatus": "0",
     "wageHeadDTO": {
       "headIndex": 0,
       "heads": [
@@ -262,6 +263,7 @@
     "groupId": "groupId001",
     "pushDateTime": 1536506400000,
     "receiptStautus": 1,
+    "payStatus": "1",
     "wageHeadDTO": {
       "headIndex": 0,
       "heads": [
@@ -368,6 +370,7 @@
     "groupId": "groupId001",
     "pushDateTime": 1536506400000,
     "receiptStautus": 2,
+    "payStatus": "0",
     "wageHeadDTO": {
       "headIndex": 0,
       "heads": [
@@ -474,6 +477,7 @@
     "groupId": "groupId001",
     "pushDateTime": 1536506400000,
     "receiptStautus": 3,
+    "payStatus": "0",
     "wageHeadDTO": {
       "headIndex": 0,
       "heads": [

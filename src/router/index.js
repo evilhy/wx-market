@@ -91,25 +91,7 @@ export default new Router({
     {
       path: '/manager',  // 华夏管家页面
       component: manager,
-      name: 'manager',
-      redirect: '/manager/contact',
-      children: [
-        {
-          path: 'contact', // 联系我们
-          component: resolve => { require(['../views/managerContact.vue'], resolve) },
-          name: 'managerContact'
-        },
-        {
-          path: 'business', // 业务办理
-          component: resolve => { require(['../views/managerBusiness.vue'], resolve) },
-          name: 'managerBusiness'
-        },
-        {
-          path: 'msg',  // 留言咨询
-          component: resolve => { require(['../views/managerMsg.vue'], resolve) },
-          name: 'managerMsg'
-        }
-      ]
+      name: 'manager'
     },
     {
       path: '/manager-detail',

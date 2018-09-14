@@ -11,9 +11,14 @@
                 <p class="bill-name">{{wage.spName}}</p>
             </div>
             <div class="bill-right">
-                <i v-show="flag">&yen;</i>
-                <span v-show="flag">{{wage.totalAmt | money}}</span>
-                <span class="star" v-show="!flag">****</span>
+                <div class="bill-amt">
+                    <i v-show="flag">&yen;</i>
+                    <span v-show="flag">{{wage.totalAmt | money}}</span>
+                    <span class="star" v-show="!flag">****</span>
+                </div>
+                <div class="bill-status error" v-if="wage.payStatus === '0'">资金未到账</div>
+                <div class="bill-status success" v-if="wage.payStatus === '1'">资金已到账</div>
+                <div class="bill-status success" v-if="wage.payStatus === '2'">{{wage.payCnt}}笔资金到账</div>
             </div>
         </div>
     </li>

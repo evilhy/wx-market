@@ -2,7 +2,7 @@
   "shouldTotalAmt": 67290.05,
   "deductTotalAmt": 10000,
   "realTotalAmt": 66290.05,
-  "years": ["2015", "2016", "2017", "2018"],
+  "years": [2015, 2016, 2017, 2018],
   "planList": [
     {
       "wageSheetId": "wageSheetId001",
@@ -10,7 +10,9 @@
       "fundType": "工资",
       "spTypeIcon": "0",
       "totalAmt": 6270.05,
-      "createDateTime": 1536508800000
+      "createDateTime": 1536508800000,
+      "payStatus": "0",
+      "payCnt": 1
     },
     {
       "wageSheetId": "wageSheetId002",
@@ -18,7 +20,9 @@
       "fundType": "奖金",
       "spTypeIcon": "1",
       "totalAmt": 2210,
-      "createDateTime": 1535558400000
+      "createDateTime": 1535558400000,
+      "payStatus": "1",
+      "payCnt": 1
     },
     {
       "wageSheetId": "wageSheetId003",
@@ -26,7 +30,9 @@
       "fundType": "工资",
       "spTypeIcon": "2",
       "totalAmt": 6210,
-      "createDateTime": 1533916800000
+      "createDateTime": 1533916800000,
+      "payStatus": "2",
+      "payCnt": 1
     },
     {
       "wageSheetId": "wageSheetId003",
@@ -34,7 +40,9 @@
       "fundType": "工资",
       "spTypeIcon": "3",
       "totalAmt": 6210,
-      "createDateTime": 1531152000000
+      "createDateTime": 1531152000000,
+      "payStatus": "0",
+      "payCnt": 1
     }
   ]
 }

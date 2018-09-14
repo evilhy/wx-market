@@ -105,7 +105,6 @@
         left: 0;
         background: #fff;
         padding: px2rem(25px);
-        box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.2);
         z-index: 10;
         .group-item {
             display: flex;
@@ -561,6 +560,17 @@
         border-bottom: 1px solid $color-border-gray;
         background: url('../img/icon-hx-manager.png') no-repeat px2rem(206px) px2rem(34px);
         background-size: px2rem(126px) auto;
+        &.hx-manager-gray{
+            background: url('../img/icon-hx-manager-gray.png') no-repeat px2rem(206px) px2rem(34px);
+            background-size: px2rem(126px) auto;
+            color: $color-text-gray;
+            .icon-await{
+                position: absolute;
+                right: px2rem(20px);
+                top:0;
+                width: px2rem(50px);
+            }
+        }
     }
     .news-flag {
         position: absolute;
@@ -616,55 +626,132 @@
         letter-spacing: px2rem(6px);
         padding-left: px2rem(6px);
     }
-    .group-list {
-        .icon-yilizhi {
+    .wage-list-select{
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: px2rem(80px);
+        background: white;
+        z-index:3;
+        display: flex;
+        &:after{
+            content: '';
             position: absolute;
-            z-index: 50;
-            right: px2rem(20px);
-            top: px2rem(4px);
-            display: block;
-            width: px2rem(118px);
-            height: px2rem(64px);
-            text-align: center;
-            line-height: px2rem(64px);
-            @include font-dpr(60px);
-            color: #6F8F8F;
+            right: 50%;
+            top: 20%;
+            height: 60%;
+            width: 1px;
+            background: $color-color-light;
+            z-index: 3;
         }
-        .icon-jiaobiao {
-            position: absolute;
-            right: px2rem(20px);
-            top: px2rem(-4px);
-            @include font-dpr(30px);
-            line-height: px2rem(30px);
-            color: #FB5D5D;
-            &:after {
-                content: '新';
-                position: absolute;
-                left: 0;
-                width: 100%;
-                text-align: center;
-                @include font-dpr(18px);
-                line-height: px2rem(28px);
-                color: white;
+        .select-item{
+            position: relative;
+            width: 50%;
+            display: flex;
+            height: 100%;
+            align-items: center;
+            justify-content: center;
+            height: px2rem(80px);
+            padding: 0 px2rem(20px);
+            z-index:3;
+            background: white;
+            border-bottom: 1px solid $color-color-light;
+            &.active{
+                color: $fx-main-color;
+                .triangle{
+                    transform: rotate(180deg);
+                    border-top-color: $fx-main-color;
+                }
+            }
+            .name-item{
+                @extend %text-overflow;
+                max-width: 80%;
             }
         }
-        .recent {
-            color: #999999;
-            @include font-dpr(18px);
-            text-align: right;
-            width: 120px;
+        .triangle{
+            margin-left: px2rem(10px);
+            @include triangle(bottom, px2rem(10px), #BFCBD8);
+            transition: all 0.2s;
         }
-        .group-name {
-            flex: 1;
+        .list{
+            position: fixed;
+            top: px2rem(80px);
+            left: 0;
+            width: 100%;
+            background: white;
+            padding: 0 px2rem(30px);
+            z-index:3;
+            .list-item{
+                display: flex;
+                align-items: center;
+                height: px2rem(90px);
+                border-bottom: 1px solid $color-color-light;
+                &:last-child{
+                    border-bottom: 0;
+                }
+                .iconfont{
+                    @include font-dpr(24px);
+                    color: #bfcbd7;
+                    margin-right: px2rem(10px);
+                }
+            }
         }
-        .iconNew {
-            position: absolute;
-            z-index: 60;
-            right: px2rem(20px);
-            top: px2rem(-4px);
-            width: px2rem(28px);
-            height: px2rem(30px);
+        .group-list {
+            padding-top: px2rem(20px);
+            display: block;
+            .icon-yilizhi {
+                position: absolute;
+                z-index: 50;
+                right: px2rem(20px);
+                top: px2rem(4px);
+                display: block;
+                width: px2rem(118px);
+                height: px2rem(64px);
+                text-align: center;
+                line-height: px2rem(64px);
+                @include font-dpr(60px);
+                color: #6F8F8F;
+            }
+            .icon-jiaobiao {
+                position: absolute;
+                right: px2rem(20px);
+                top: px2rem(-4px);
+                @include font-dpr(30px);
+                line-height: px2rem(30px);
+                color: #FB5D5D;
+                &:after {
+                    content: '新';
+                    position: absolute;
+                    left: 0;
+                    width: 100%;
+                    text-align: center;
+                    @include font-dpr(18px);
+                    line-height: px2rem(28px);
+                    color: white;
+                }
+            }
+            .group-name {
+                flex: 1;
+            }
+            .iconNew {
+                position: absolute;
+                z-index: 60;
+                right: px2rem(20px);
+                top: px2rem(-4px);
+                width: px2rem(28px);
+                height: px2rem(30px);
+            }
         }
+    }
+    .mask{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        bottom: 0;
+        background: rgba(0,0,0,0.6);
+        z-index:-1；
     }
     .bill-list {
         padding: 0 px2rem(30px) px2rem(30px);
@@ -708,7 +795,7 @@
     }
     .bill-main {
         float: right;
-        padding: px2rem(34px);
+        padding: px2rem(30px);
         width: px2rem(516px);
         height: px2rem(148px);
         position: relative;
@@ -749,16 +836,20 @@
         color: #999999;
         @extend %text-overflow;
     }
-    .bill-right {
+    .bill-right{
         float: right;
-        margin-top: px2rem(20px);
+        width: px2rem(170px);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .bill-amt {
         @include font-dpr(20px);
-        color: $fx-main-color;
         line-height: px2rem(44px);
-        span {
-            font-weight: bold;
-            @include font-dpr(32px);
-        }
+        line-height: 1.2;
+        @include font-dpr(32px);
     }
     .pop-dialog {
         box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.20);
@@ -799,7 +890,20 @@
         }
     }
 }
-
+.bill-status{
+    padding: 0 px2rem(10px);
+    line-height: 1.5;
+    border-radius: 2px;
+    @include font-dpr(20px);
+    &.success{
+        color: $fx-main-color;
+        border: 1px solid $fx-main-color;
+    }
+    &.error{
+        color: $fx-reverse-color;
+        border: 1px solid $fx-reverse-color;
+    }
+}
 // 绑定身份证页面
 .bind-id-card-page,
 .choose-phone-page,
@@ -1074,7 +1178,7 @@
     .switch {
         line-height: px2rem(42px);
         @include font-dpr(22px);
-        color: #52BDBD;
+        color: $fx-main-color;
         float: right;
         i {
             @include font-dpr(30px);
@@ -1760,6 +1864,7 @@
         background: #fff;
         box-shadow: 0 7px 10px 0 rgba(201, 205, 216, 0.52);
         overflow: hidden;
+        z-index: 99;
         img {
             @include circle(180px);
         }
@@ -1767,6 +1872,11 @@
     .bill-item {
         padding-top: px2rem(120px);
         text-align: center;
+        .bill-status{
+            position: absolute;
+            right: px2rem(20px);
+            top: px2rem(20px);
+        }
     }
     .swiper-pagination {
         padding-left: px2rem(px2rem(26px));
@@ -1944,8 +2054,14 @@
           background:#999;
         }
       }
+      .amt-list{
+          padding: px2rem(10px) 0;
+      }
       .amt-item{
         margin-top: px2rem(20px);
+        &:first-child{
+            margin-top: 0;
+        }
         .label{
           color: #999;
         }

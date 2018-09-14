@@ -39,7 +39,6 @@ export default {
               let employeeList = res.data.employeeList
               let telList = collect.getValueList(employeeList, 'phone').filter(item => item)
               if (telList.length === 1) {
-                // todo 后端返回字段不一致
                 helper.saveUserInfo(collect.getItem(employeeList, 'phone', telList[0]))
                 this.sendCode()
               } else if (telList.length > 1) {

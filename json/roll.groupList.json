@@ -1,26 +1,29 @@
 [
   {
     "entId": "entId001",
+    "entName": "entName",
     "groupId": "groupId001",
-    "groupName": "机构1",
+    "groupName": "北京开科唯识技术有限公司",
     "createDate": 1536740851551,
-    "isSeeStatus": "0",
+    "isRead": "0",
     "inServiceStatus": "0"
   },
   {
     "entId": "entId002",
+    "entName": "entName",
     "groupId": "groupId002",
-    "groupName": "机构2",
+    "groupName": "武汉开科唯识技术有限公司分公司",
     "createDate": 1538928000000,
-    "isSeeStatus": "0",
+    "isRead": "0",
     "inServiceStatus": "1"
   },
   {
     "entId": "entId003",
+    "entName": "entName",
     "groupId": "groupId003",
     "groupName": "机构3",
     "createDate": 1538928000000,
-    "isSeeStatus": "1",
+    "isRead": "1",
     "inServiceStatus": "0"
   }
 ]

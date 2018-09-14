@@ -14,7 +14,7 @@
         <div class="recent-one" v-if="recentInfo.createDate">最近一笔:{{recentInfo.createDate | date('Y/m/d')}}</div>
       </div>
       <div class="link-right">
-        <div class="hx-manager" @click="toPage('managerContact')">
+        <div class="hx-manager" @click="toPage('manager')">
           <div class="title">华夏管家</div>
           <span class="news-flag" v-if="hasNewMsg === '1'">新消息</span>
         </div>
@@ -45,7 +45,7 @@ export default {
         groupId: '',
         groupName: '',
         createDate: 0,
-        isSeeStatus: ''
+        isRead: ''
       },
       hasNewMsg: '0',
       imgViewerFlag: false,
@@ -67,7 +67,6 @@ export default {
           if (Object.keys(res.data.bean).length) {
             this.recentInfo = res.data.bean
             helper.saveUserInfo({ entId: this.recentInfo.entId })
-            // this.getMsgInfo()
           }
         })
     },
@@ -77,19 +76,6 @@ export default {
     },
     toPage (routerName, query = {}) {
       this.$router.push({ name: routerName, query: query })
-    },
-    getMsgInfo () {
-      this.Http
-        .connect(true)
-        .post('entUser100795.json', {
-          open_id: this.idInfo.open_id ? this.idInfo.open_id : '',
-          ent_id: this.idInfo.ent_id ? this.idInfo.ent_id : ''
-        })
-        .then((response) => {
-          if (response.ret_code === '0000' && response.cust_manager_info.has_new_message) {
-            this.hasNewMsg = response.cust_manager_info.has_new_message
-          }
-        })
     },
     viewImg (index) {
       this.imgViewIndex = index

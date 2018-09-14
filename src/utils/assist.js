@@ -100,3 +100,20 @@ export function validIdCard(id) {
   }
   return true
 }
+export function getPageQueryObject (fullPath = window.decodeURIComponent(window.location.href)) {
+  let queryIndex = fullPath.indexOf('?')
+  if (fullPath.indexOf('?') === -1) return {}
+  let hashIndex = fullPath.indexOf('#')
+  let str = fullPath
+    .substring(fullPath.indexOf('?') + 1, queryIndex > hashIndex ? fullPath.length : hashIndex)
+    .replace('/', '')
+  let pairArr = str.split('&')
+  let result = {}
+  pairArr.forEach(item => {
+    let indexOf = item.indexOf('=')
+    if (indexOf !== -1) {
+      result[item.substring(0, indexOf)] = item.substring(indexOf + 1)
+    }
+  })
+  return result
+}

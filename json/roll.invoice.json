@@ -9,7 +9,8 @@
     "groupPhonePrefix": "027",
     "groupPhone": "83888133",
     "entCommonQr": "普票二维码",
-    "entQrPath": "专票二维码"
+    "entQrPath": "专票二维码",
+    "flag": "0"
   },
   {
     "id": "invoice002",
@@ -21,7 +22,8 @@
     "groupPhonePrefix": "027",
     "groupPhone": "83888133",
     "entCommonQr": "普票二维码",
-    "entQrPath": "专票二维码"
+    "entQrPath": "专票二维码",
+    "flag": "1"
   },
   {
     "id": "invoice003",
@@ -33,6 +35,7 @@
     "groupPhonePrefix": "",
     "groupPhone": "",
     "entCommonQr": "",
-    "entQrPath": ""
+    "entQrPath": "",
+    "flag": "1"
   }
 ]

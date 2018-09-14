@@ -9,24 +9,27 @@
 
 <script>
 import helper from 'utils/helper'
+import { getPageQueryObject } from 'utils/assist'
 export default {
   data () {
     return {
-      query: this.$route.query
+      query: {}
     }
   },
   computed: {},
   created () {
-    helper.saveUserInfo({ openId: this.query.openId })
-    this.isBind()
+    helper.clearUserInfo()
+    this.query = getPageQueryObject()
+    this.getJsessionId()
   },
   methods: {
-    isBind () {
+    getJsessionId () {
       this
-        .$Roll
-        .isBind()
+        .$Weixin
+        .wxCallback(this.query.code)
         .then((res) => {
           let data = res.data
+          helper.saveUserInfo({ jsessionId: data.jsessionId })
           if (data.bindStatus === '0') {
               this.$router.push({ name: 'bindIdCard' })
           } else {

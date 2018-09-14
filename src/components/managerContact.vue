@@ -4,15 +4,15 @@
       <div class="item">
         <div class="label">联系方式</div>
         <div class="value">
-          <a :href="`tel:${managerInfo.cust_manager_mobile}`" v-if="managerInfo.cust_manager_mobile">
-            <span>{{managerInfo.cust_manager_mobile}}</span><span class="v-arrow"></span>
+          <a :href="`tel:${managerInfo.mobile}`" v-if="managerInfo.mobile">
+            <span>{{managerInfo.mobile}}</span><span class="v-arrow"></span>
           </a>
           <span class="v-arrow" v-else></span>
         </div>
       </div>
       <div class="item">
         <div class="label">经理微信</div>
-        <div class="value"><span v-if="managerInfo.wechat_qr_imgae" @click="popupVisible=true">{{managerInfo.wechat_id}}</span><span class="v-arrow"></span></div>
+        <div class="value"><span v-if="managerInfo.wechatQrImgae" @click="popupVisible=true">{{managerInfo.wechatId}}</span><span class="v-arrow"></span></div>
       </div>
       <div class="item">
         <div class="label">所属单位</div>
@@ -20,10 +20,10 @@
       </div>
       <div class="item">
         <div class="label">吸存码</div>
-        <div class="value"><span>{{managerInfo.bank_officer}}</span></div>
+        <div class="value"><span>{{managerInfo.officer}}</span></div>
       </div>
     </div>
-    <ewm-popup :visible="popupVisible" @close="popupVisible=false" :ewm-img="managerInfo.wechat_qr_imgae"></ewm-popup>
+    <ewm-popup :visible="popupVisible" @close="popupVisible=false" :ewm-img="managerInfo.wechatQrImgae"></ewm-popup>
   </div>
 </template>
 
@@ -35,12 +35,12 @@ export default {
       type: Object,
       default () {
         return {
-          cust_manager_mobile: '',
-          wechat_id: '',
-          branch_bank_name: '',
-          org_remark: '',
-          bank_officer: '',
-          wechat_qr_imgae: ''
+          mobile: '',
+          wechatId: '',
+          branchOrgName: '',
+          subBranchOrgName: '',
+          officer: '',
+          wechatQrImgae: ''
         }
       }
     }
@@ -53,10 +53,10 @@ export default {
   computed: {
     managerUnit () {
       let managerInfo = this.managerInfo
-      if (managerInfo.branch_bank_name && managerInfo.org_remark) {
-        return managerInfo.branch_bank_name + '/' + managerInfo.org_remark
+      if (managerInfo.branchOrgName && managerInfo.subBranchOrgName) {
+        return managerInfo.branchOrgName + '/' + managerInfo.subBranchOrgName
       } else {
-        return managerInfo.branch_bank_name ? managerInfo.branch_bank_name : managerInfo.org_remark
+        return managerInfo.branchOrgName ? managerInfo.branchOrgName : managerInfo.subBranchOrgName
       }
     }
   },

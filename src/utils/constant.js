@@ -4,7 +4,8 @@ export default {
   debug: process.env.NODE_ENV !== 'production',
   http_base_url: {
     development: 'http://10.5.1.92:8080/rest',
-    test: 'https://sitwx.cardpu.com/easysp/',
+    // test: 'https://sitwx.cardpu.com/easysp/',
+    test: 'https://ae05dcc4.ngrok.io/rest',
     production: 'https://wxpwechat.cardpu.com/easysp/'
   },
   img_base_url: {
