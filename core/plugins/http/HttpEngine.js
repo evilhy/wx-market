@@ -7,9 +7,9 @@ import _ from "lodash";
 import Utils from "./Utils";
 import DebugOk from "./DebugOk";
 import DebugFail from "./DebugFail";
-
+import sysConfig from 'utils/constant'
 let MockerEngine;
-if (Utils.isDevelopmentEnv()) {
+if (Utils.isDevelopmentEnv() && !sysConfig.requested_sever) {
   MockerEngine = require("../../mock/MockerEngine").default;
 }
 
@@ -26,6 +26,7 @@ const printResponseInfo = Symbol("printResponseInfo");
 const printResponseError = Symbol("printResponseError");
 const adapterHandler = Symbol("adapterHandler");
 const requestedSever = Symbol("requestedSever");
+const $loading = Symbol("$loading");
 
 export default class HttpEngine {
   [$baseURL] = "";
@@ -124,12 +125,16 @@ export default class HttpEngine {
     if (!_.isBoolean(value)) throw TypeError("isRequestSever类型应为Boolean");
     this[requestedSever] = value;
   }
-
+  set loading(value) {
+    if (!_.isBoolean(value)) throw TypeError("loading类型应为Boolean");
+    this[$loading] = value;
+  }
   [createInstance]() {
     let instance = axios.create({
       baseURL: this[$baseURL],
       timeout: this[$timeout],
       headers: this[$headers],
+      loading: _.isBoolean(this[$loading]) ? this[$loading] : true,
       adapter: Utils.enableAdapterMode(this[requestedSever])
         ? config => this[adapterHandler](config)
         : undefined

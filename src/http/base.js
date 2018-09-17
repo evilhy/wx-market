@@ -1,21 +1,18 @@
 import HttpEngine from 'core/plugins/http/HttpEngine'
-import config from 'src/utils/constant'
+import sysConfig from 'src/utils/constant'
 import helper from 'src/utils/helper'
 import { Indicator } from 'mint-ui'
 import _ from 'lodash'
 
 export default class HttpForApplication extends HttpEngine {
 
-  baseURL = config.http_base_url[config.node_env]
+  baseURL = sysConfig.http_base_url[sysConfig.node_env]
   mockTimeout = 1
-  // requestedSever = true
+  requestedSever = sysConfig.requested_sever
   beforeSendRequestHandler (config) {
     config.headers = Object.assign(config.headers, {
       jsessionId: helper.getUserInfo('jsessionId', '')
     })
-    if (_.isUndefined(config.loading)) {
-        config.loading = true
-    }
     config.loading && Indicator.open({ spinnerType: 'double-bounce' })
   }
 

@@ -13,24 +13,32 @@
     </div>
 </template>
 <script>
+import storage from 'utils/storage'
+import helper from 'utils/helper'
 export default {
     data () {
         return {
-            step: '1'
+            step: '',
+            jsessionId: helper.getUserInfo('jsessionId', '')
         }
     },
+    created () {
+        this.getStep()
+    },
     methods: {
+        getStep () {
+            this.step = storage.getSession(`${this.jsessionId}-no-manager`, '1')
+        },
         assignManager () {
-            this.Http
-                .connect(true)
-                .post('entUser100798.json', {
-                    open_id: this.idInfo.open_id ? this.idInfo.open_id : '',
-                    ent_id: this.idInfo.ent_id ? this.idInfo.ent_id : ''
-                })
-                .then((response) => {
-                    if (response.ret_code === '0000') {
-                        this.noManagerStep = '2'
-                    }
+            this
+                .$Manager
+                .distribute()
+                .then((res) => {
+                    this.step = '2'
+                    storage.setSession(`${this.jsessionId}-no-manager`, '2')
+                    setTimeout(() => {
+                        this.$router.push({ name: 'home' })
+                    }, 3000)
                 })
         }
     }

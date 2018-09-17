@@ -66,19 +66,6 @@ const helper = {
     let phone = helper.getUserInfo('phone', '')
     storage.removeSession(`${phone}-remaintime`)
   },
-  saveIdInfo (infoObj) { // 保存或更新部分字段
-    if (typeOf(infoObj) !== 'object') return false
-    let idInfo = storage.getSession('idInfo', {})
-    storage.setSession('idInfo', Object.assign(idInfo, infoObj))
-  },
-  getIdInfo (infoKey = '', defaultValue = '') {
-    if (infoKey) {
-      let idInfo = storage.getSession('idInfo', {})
-      return idInfo[infoKey] || defaultValue
-    } else {
-      return storage.getSession('idInfo', defaultValue)
-    }
-  },
   exit () {
     if (window.WeixinJSBridge) {
       window.WeixinJSBridge.invoke('closeWindow')

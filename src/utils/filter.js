@@ -88,13 +88,6 @@ function banCard (time) {
 function banCardLast (card) {
   return card.substr(card.length - 4, card.length)
 }
-function fundType (str = '') {
-  let fundItem = sysConfig.account_money_type.filter(item => item.value === str)
-  return fundItem.length ? fundItem[0].label : ''
-}
-function serviceStatus (status) {
-  return sysConfig.service_status_info[status]
-}
 
 function monthZh (month, hasUnit = false) {
   if (typeOf(month) !== 'string' && typeOf(month) !== 'number') return ''
@@ -131,8 +124,6 @@ export default {
   deteData: deteData,
   banCard: banCard,
   banCardLast: banCardLast,
-  fundType: fundType,
-  serviceStatus: serviceStatus,
   monthZh: monthZh,
   msgTime: msgTime,
   bankSpace: bankSpace

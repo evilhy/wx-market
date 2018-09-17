@@ -5,6 +5,7 @@ class Wechat {
         let http = new Http()
         http.path = `/${moduleName}/wxCallback`
         http.query = { code }
+        http.loading = false
         return http.get()
     }
 }

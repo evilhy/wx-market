@@ -20,7 +20,7 @@ class Roll {
     }
     empInfo () {
         let http = new Http()
-        http.path = `/r${moduleName}/empInfo`
+        http.path = `/${moduleName}/empInfo`
         return http.get()
     }
     groupList () {
@@ -34,10 +34,11 @@ class Roll {
         http.query = { groupId, year, type }
         return http.get()
     }
-    wageDetail (planId) {
+    wageDetail (wageSheetId) {
+        let groupId = helper.getUserInfo('groupId', '')
         let http = new Http()
         http.path = `/${moduleName}/wageDetail`
-        http.query = { wageSheetId: planId }
+        http.query = { wageSheetId, groupId }
         return http.get()
     }
     wageTrend (year, salaryType) {

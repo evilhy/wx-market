@@ -2,6 +2,7 @@
 export default {
   node_env: process.env.NODE_ENV,
   debug: process.env.NODE_ENV !== 'production',
+  requested_sever: process.env.NODE_ENV !== 'development',
   http_base_url: {
     development: 'http://10.5.1.92:8080/rest',
     // test: 'https://sitwx.cardpu.com/easysp/',
@@ -19,51 +20,6 @@ export default {
     development: 'https://sitwxp.cardpu.com/wechat/images/',
     test: 'https://sitwxp.cardpu.com/wechat/images/',
     production: 'https://wxp.cardpu.com/wechat/images/'
-  },
-  http_headers: {
-    'Content-type': 'application/json;charset=utf-8',
-    'Accept': 'application/json, text/plain, */*'
-  },
-  http_timeout: 30000,
-  http_fail_message: '网络异常，请重试！',
-  http_over_message: '请求超时，请重试！',
-  skin_type: 'newyear',
-  error_info: {
-  },
-  account_money_type: [    // 华夏工资类型
-    { label: '工资', value: '1', type: '0' },
-    { label: '奖金', value: '2', type: '0' },
-    { label: '过节费', value: '3', type: '0' },
-    { label: '住房补贴', value: '4', type: '1' },
-    { label: '交通补贴', value: '5', type: '1' },
-    { label: '防暑降温费', value: '6', type: '1' },
-    { label: '物业费', value: '7', type: '3' },
-    { label: '取暖费', value: '8', type: '3' },
-    { label: '报销款', value: '9', type: '1' },
-    { label: '养老金', value: '10', type: '2' },
-    { label: '社保金', value: '11', type: '2' },
-    { label: '保险金', value: '12', type: '2' },
-    { label: '公积金', value: '13', type: '2' },
-    { label: '拆迁款', value: '14', type: '3' },
-    { label: '加班费', value: '15', type: '0' },
-    { label: '其他', value: '16', type: '3' },
-    // 农信银工资类型
-    { label: '工资', value: '0001', type: '0' },
-    { label: '奖金', value: '0003', type: '0' },
-    { label: '补助', value: '0004', type: '0' },
-    { label: '补贴', value: '0005', type: '0' },
-    { label: '医疗保险', value: '0006', type: '1' },
-    { label: '养老保险', value: '0007', type: '1' },
-    { label: '农业补贴', value: '0008', type: '3' },
-    { label: '医疗补助', value: '0009', type: '3' },
-    { label: '其他', value: '0002', type: '3' }
-  ],
-  service_status_info: {
-    '0': '离职',
-    '1': '在职',
-    '2': '退休',
-    '3': '停薪留职',
-    '4': '兼职'
   },
   baidu_event: {  // 百度事件统计相关
     wageDetail: ['_trackEvent', '放薪工资条', '我的工资条'],

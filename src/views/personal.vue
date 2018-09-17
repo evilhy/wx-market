@@ -11,7 +11,7 @@
             <span>{{item.employeeName}}</span>
           </li>
           <li>身份证
-            <span>{{item.idNumber}}</span>
+            <span>{{item.idNumberStar}}</span>
           </li>
           <li>手机号
             <span>{{item.phoneStar}}</span>

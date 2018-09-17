@@ -12,6 +12,7 @@ var wageList = require('./json/roll.wageList.json')
 var wageTrend = require('./json/roll.wageTrend.json')
 var wxCallback = require('./json/weixin.wxCallback.json')
 var managerInfo = require('./json/manager.managerInfo.json')
+var distribute = require('./json/manager.distribute.json')
 module.exports = {
   openApi: [{
     baseURL: 'http://10.5.1.92:8080/rest',
@@ -57,6 +58,9 @@ module.exports = {
       },
       '/manager/managerInfo': {
         get: managerInfo
+      },
+      '/manager/distribute': {
+        post: distribute
       }
     }
   }],

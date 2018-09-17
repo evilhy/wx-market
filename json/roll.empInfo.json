@@ -1,11 +1,10 @@
 [
   {
-    "phone": "18702759177",
     "phoneStar": "187****177",
     "employeeNo": "工号002",
     "employeeName": "测试姓名",
     "sex": "0",
-    "idNumber": "001",
+    "idNumberStar": "001",
     "groupName": "北京开科唯识技术有限公司",
     "inServiceStatus": "在职",
     "position": "前端开发工程师",
@@ -22,12 +21,11 @@
     ]
   },
   {
-    "phone": "18571511021",
     "phoneStar": "185****021",
     "employeeNo": "工号001",
     "employeeName": "巴先生",
     "sex": "1",
-    "idNumber": "001",
+    "idNumberStar": "001",
     "groupName": "北京开科唯识技术有限公司",
     "inServiceStatus": "兼职",
     "position": "web前端",
