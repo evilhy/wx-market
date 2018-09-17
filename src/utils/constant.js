@@ -5,21 +5,9 @@ export default {
   requested_sever: process.env.NODE_ENV !== 'development',
   http_base_url: {
     development: 'http://10.5.1.92:8080/rest',
-    // test: 'https://sitwx.cardpu.com/easysp/',
-    test: 'https://ae05dcc4.ngrok.io/rest',
+    // test: 'https://sitwx.cardpu.com:7128/rest',
+    test: 'https://sitwx.cardpu.com:7128/rest',
     production: 'https://wxpwechat.cardpu.com/easysp/'
-  },
-  img_base_url: {
-    mock: 'https://sitwx.cardpu.com/easysp/platform/showimg.json?resource_id=',
-    development: 'https://sitwx.cardpu.com/easysp/platform/showimg.json?resource_id=',
-    test: 'https://sitwx.cardpu.com/easysp/platform/showimg.json?resource_id=',
-    production: 'https://wx.cardpu.com/easysp/platform/showimg.json?resource_id='
-  },
-  img_skin_url: {   // cdn加速
-    mock: 'https://sitwx.cardpu.com/easysp/platform/showimg.json?resource_id=',
-    development: 'https://sitwxp.cardpu.com/wechat/images/',
-    test: 'https://sitwxp.cardpu.com/wechat/images/',
-    production: 'https://wxp.cardpu.com/wechat/images/'
   },
   baidu_event: {  // 百度事件统计相关
     wageDetail: ['_trackEvent', '放薪工资条', '我的工资条'],
