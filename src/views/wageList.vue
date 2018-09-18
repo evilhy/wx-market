@@ -18,6 +18,7 @@ import yearSwiper from 'components/yearSwiper'
 import helper from 'utils/helper'
 import sysConfig from 'utils/constant'
 import storage from 'utils/storage'
+import filter from 'utils/filter'
 export default {
   components: {
     wageListSelect,
@@ -65,6 +66,7 @@ export default {
     initCurrentData (group, type = this.currentType) {
       this.currentGroup = group
       this.currentType = type
+      this.currentYear = Number(filter.date(group.createDate, 'Y'))
       helper.saveUserInfo({ groupId: this.currentGroup.groupId })
       this.getWageList(true)
     },
