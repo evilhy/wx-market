@@ -37,9 +37,7 @@ const webpackConfig = merge(baseWebpackConfig, {
         compress: {
           warnings: false
         },
-        mangle: {
-          safari10: true
-        }
+        mangle: true
       },
       sourceMap: config.test.productionSourceMap,
       parallel: true
@@ -83,14 +81,12 @@ const webpackConfig = merge(baseWebpackConfig, {
     // split vendor js into its own file
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
-      minChunks (module) {
+      minChunks(module) {
         // any required modules inside node_modules are extracted to vendor
         return (
           module.resource &&
           /\.js$/.test(module.resource) &&
-          module.resource.indexOf(
-            path.join(__dirname, '../node_modules')
-          ) === 0
+          module.resource.indexOf(path.join(__dirname, '../node_modules')) === 0
         )
       }
     }),
@@ -129,9 +125,7 @@ if (config.test.productionGzip) {
       asset: '[path].gz[query]',
       algorithm: 'gzip',
       test: new RegExp(
-        '\\.(' +
-        config.test.productionGzipExtensions.join('|') +
-        ')$'
+        '\\.(' + config.test.productionGzipExtensions.join('|') + ')$'
       ),
       threshold: 10240,
       minRatio: 0.8
@@ -140,7 +134,8 @@ if (config.test.productionGzip) {
 }
 
 if (config.test.bundleAnalyzerReport) {
-  const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+  const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+    .BundleAnalyzerPlugin
   webpackConfig.plugins.push(new BundleAnalyzerPlugin())
 }
 
