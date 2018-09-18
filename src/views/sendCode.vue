@@ -61,7 +61,7 @@ export default {
     },
     bindWX () {
       this
-        .$Roll
+        .$Inside
         .bindWX(this.code)
         .then(() => {
           this.initCountDown()
