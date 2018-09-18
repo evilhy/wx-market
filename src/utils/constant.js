@@ -5,8 +5,8 @@ export default {
   requested_sever: process.env.NODE_ENV !== 'development',
   http_base_url: {
     development: 'http://10.5.1.92:8080/rest',
-    // test: 'https://sitwx.cardpu.com:7128/rest',
-    test: 'https://sitwx.cardpu.com:7128/rest',
+    // test: 'https://sitwx.cardpu.com/rest',
+    test: 'https://sitwx.cardpu.com/rest',
     production: 'https://wxpwechat.cardpu.com/easysp/'
   },
   baidu_event: {  // 百度事件统计相关

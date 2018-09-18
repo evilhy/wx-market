@@ -24,7 +24,7 @@ export default new Router({
       component: resolve => { require(['../views/home.vue'], resolve) }
     },
     {
-      path: '/wage-index/:planId', // 工资首页
+      path: '/wage-index/:wageSheetId', // 工资首页
       name: 'wageIndex',
       component: resolve => { require(['../views/wageIndex.vue'], resolve) }
     },

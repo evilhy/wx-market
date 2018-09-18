@@ -42,9 +42,9 @@ export default {
       if (this.query.entrance === 'menu') {
         this.$router.push({ name: 'home' })
       } else {
-        if (this.query.planId && this.query.groupId) {
+        if (this.query.wageSheetId && this.query.groupId) {
           helper.saveUserInfo({ groupId: this.query.groupId })
-          this.$router.push({ name: 'wageIndex', params: { planId: this.query.planId } })
+          this.$router.push({ name: 'wageIndex', params: { wageSheetId: this.query.wageSheetId } })
           return
         }
         this.$router.push({ name: 'home' })

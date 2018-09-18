@@ -33,7 +33,7 @@ export default {
           .$Roll
           .entEmp(this.idCard)
           .then((res) => {
-            if (res.data.bindStatus === '0') {
+            if (res.data.bindStatus === '1') {
               this.$router.replace({ name: 'idCardBinded' })
             } else {
               let employeeList = res.data.employeeList

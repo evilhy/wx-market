@@ -30,7 +30,7 @@ import helper from 'utils/helper'
 export default {
   data () {
     return {
-      planId: this.$route.params.planId,
+      wageSheetId: this.$route.params.wageSheetId,
       bankWageList: [],
       swiperOption: {
         pagination: {
@@ -48,7 +48,7 @@ export default {
     getWageDetail () {
       this
         .$Roll
-        .wageDetail(this.planId)
+        .wageDetail(this.wageSheetId)
         .then((res) => {
           this.bankWageList = res.data
           helper.title(this.bankWageList[0].wageName)

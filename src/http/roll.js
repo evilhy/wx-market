@@ -13,11 +13,6 @@ class Roll {
         http.query = { idNumber }
         return http.get()
     }
-    isBind () {
-        let http = new Http()
-        http.path = `/${moduleName}/isBind`
-        return http.get()
-    }
     empInfo () {
         let http = new Http()
         http.path = `/${moduleName}/empInfo`

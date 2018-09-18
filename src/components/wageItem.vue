@@ -45,7 +45,7 @@ export default {
     },
     methods: {
         toWage () {
-            this.$router.push({ name: 'wageIndex', params: { planId: this.wage.wageSheetId } })
+            this.$router.push({ name: 'wageIndex', params: { wageSheetId: this.wage.wageSheetId } })
         }
     }
 }
