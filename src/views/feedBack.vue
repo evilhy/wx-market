@@ -14,7 +14,7 @@ export default {
   },
   mounted () {
     setTimeout(() => {
-      this.$router.push({ name: 'getId' })
+      this.$router.push({ name: 'home' })
     }, 2000)
   },
   methods: {
