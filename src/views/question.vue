@@ -24,7 +24,7 @@ export default {
   methods: {
     sentQuestion () {
       this
-        .$Roll
+        .$Inside
         .receipt(this.detailId, 1, this.msg)
         .then(() => {
           this.$router.replace({ name: 'wageDetail' })
