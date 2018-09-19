@@ -5,17 +5,18 @@ import sysConfig from './constant'
 import { Toast } from 'mint-ui'
 let timer = null
 const helper = {
-  title (title) {
+  title(title) {
     title = title || '放薪管家'
     window.document.title = title
   },
-  logout (routerName = 'login') {
+  logout(routerName = 'login') {
     this.clearUserInfo()
     router.push({ name: routerName })
   },
-  isLogin (toLogin) {
+  isLogin(toLogin) {
     if (!storage.getLocal('token', '')) {
-      if (toLogin) {      // toLogin=true时，跳转登录
+      if (toLogin) {
+        // toLogin=true时，跳转登录
         router.push({ name: 'login' })
       }
       return false
@@ -23,7 +24,7 @@ const helper = {
       return true
     }
   },
-  getUserInfo (infoKey = '', defaultValue = '') {
+  getUserInfo(infoKey = '', defaultValue = '') {
     if (infoKey) {
       let userInfo = storage.getSession('userInfo', {})
       return userInfo[infoKey] || defaultValue
@@ -31,19 +32,25 @@ const helper = {
       return storage.getSession('userInfo', defaultValue)
     }
   },
-  saveUserInfo (infoObj) { // 保存或更新部分字段
+  saveUserInfo(infoObj) {
+    // 保存或更新部分字段
     if (typeOf(infoObj) !== 'object') return false
     let userInfo = storage.getSession('userInfo', {})
     storage.setSession('userInfo', Object.assign(userInfo, infoObj))
   },
-  clearUserInfo () {
+  clearUserInfo() {
     storage.removeSession('userInfo')
   },
-  getImgUrl (tailUrl = '', urlKey) {
-    urlKey = Object.keys(sysConfig.img_base_url).includes(urlKey) ? urlKey : sysConfig.node_env
-    return sysConfig.img_base_url[urlKey] + (typeOf(tailUrl) === 'string' ? tailUrl : '')
+  getImgUrl(tailUrl = '', urlKey) {
+    urlKey = Object.keys(sysConfig.img_base_url).includes(urlKey)
+      ? urlKey
+      : sysConfig.node_env
+    return (
+      sysConfig.img_base_url[urlKey] +
+      (typeOf(tailUrl) === 'string' ? tailUrl : '')
+    )
   },
-  toast (msg, position = 'bottom', duration = 3000) {
+  toast(msg, position = 'bottom', duration = 3000) {
     clearTimeout(timer)
     let instance = Toast({
       message: msg,
@@ -54,24 +61,34 @@ const helper = {
       instance.close()
     }, 1500)
   },
-  saveRemainTime () {
+  saveRemainTime() {
     let phone = helper.getUserInfo('phone', '')
     storage.setSession(`${phone}-remaintime`, new Date().getTime())
   },
-  getRemainTime () {
+  getRemainTime() {
     let phone = helper.getUserInfo('phone', '')
     return storage.getSession(`${phone}-remaintime`, new Date().getTime())
   },
-  removeRemainTime () {
+  removeRemainTime() {
     let phone = helper.getUserInfo('phone', '')
     storage.removeSession(`${phone}-remaintime`)
   },
-  exit () {
+  saveReceiptStatus(wageDetailId, status) {
+    let bankWageList = storage.getSession('bankWageList', [])
+    for (let item of bankWageList.values()) {
+      if (item.wageDetailId === wageDetailId) {
+        item.receiptStautus = status
+        storage.setSession('bankWageList', bankWageList)
+        return
+      }
+    }
+  },
+  exit() {
     if (window.WeixinJSBridge) {
       window.WeixinJSBridge.invoke('closeWindow')
     }
   },
-  pushBaiduEvent (event) {
+  pushBaiduEvent(event) {
     window._hmt.push(event)
   }
 }

@@ -70,6 +70,7 @@
 import storage from 'utils/storage'
 import collect from 'utils/collect'
 import { typeOf } from 'utils/assist'
+import helper from 'utils/helper'
 export default {
     props: {
         wage: {
@@ -129,8 +130,12 @@ export default {
                 .$Inside
                 .receipt(this.wage.wageDetailId, 0)
                 .then(() => {
-                    this.wage.receiptStautus = 0
+                    this.modifyLocalWageDetail()
                 })
+        },
+        modifyLocalWageDetail () {
+            this.wage.receiptStautus = 0
+            helper.saveReceiptStatus(this.wage.wageDetailId, 0)
         }
     }
 }
