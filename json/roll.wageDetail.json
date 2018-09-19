@@ -174,8 +174,8 @@
       "doubleRow": true
     },
     "wageShowDTO": {
-      "isShow0": "0",
-      "isReceipt": "1",
+      "isShow0": 0,
+      "isReceipt": 1,
       "receiptDay": 3
     },
     "content": [
@@ -325,8 +325,8 @@
       "doubleRow": true
     },
     "wageShowDTO": {
-      "isShow0": "1",
-      "isReceipt": "1",
+      "isShow0": 1,
+      "isReceipt": 1,
       "receiptDay": 3
     },
     "content": [
@@ -432,8 +432,8 @@
       "doubleRow": true
     },
     "wageShowDTO": {
-      "isShow0": "0",
-      "isReceipt": "1",
+      "isShow0": 0,
+      "isReceipt": 1,
       "receiptDay": 3
     },
     "content": [
@@ -539,8 +539,8 @@
       "doubleRow": true
     },
     "wageShowDTO": {
-      "isShow0": "0",
-      "isReceipt": "1",
+      "isShow0": 0,
+      "isReceipt": 1,
       "receiptDay": 3
     },
     "content": [

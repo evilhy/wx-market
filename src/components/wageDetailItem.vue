@@ -24,7 +24,7 @@
                         应发金额
                     </div>
                     <ul class="amt-list">
-                        <li class="amt-item" v-for="(item, index) in shouldList" :key="'real-'+index" v-if="!item.hidden && (isShow0 === '1' || (isShow0 === '0' && item.colValue !== 0))">
+                        <li class="amt-item" v-for="(item, index) in shouldList" :key="'real-'+index" v-if="!item.hidden && (isShow0 === 1 || (isShow0 === 0 && item.colValue !== 0))">
                             <span class="label">{{item.colName}}</span>
                             <span class="value" v-if="item.colValue">{{item.colValue | money}}</span>
                         </li>
@@ -36,7 +36,7 @@
                         扣除金额
                     </div>
                     <ul class="amt-list">
-                        <li class="amt-item" v-for="(item, index) in deductList" :key="'sub-'+index" v-if="!item.hidden && (isShow0 === '1' || (isShow0 === '0' && item.colValue !== 0))">
+                        <li class="amt-item" v-for="(item, index) in deductList" :key="'sub-'+index" v-if="!item.hidden && (isShow0 === 1 || (isShow0 === 0 && item.colValue !== 0))">
                             <span class="label">{{item.colName}}</span>
                             <span class="value">{{item.colValue | money}}</span>
                         </li>
@@ -56,7 +56,7 @@
                 </div>
             </div>
             <div class="action-wrap">
-                <template v-if="isReceipt === '1'">
+                <template v-if="isReceipt === 1">
                     <span class="btn sured" v-if="wage.receiptStautus === 0"><i class="iconfont icon-dui"></i>已向企业回执无误</span>
                     <span class="btn sure" @click="receipt" v-else>确认无误</span>
                 </template> 
@@ -69,6 +69,7 @@
 <script>
 import storage from 'utils/storage'
 import collect from 'utils/collect'
+import { typeOf } from 'utils/assist'
 export default {
     props: {
         wage: {
@@ -80,8 +81,8 @@ export default {
             shouldList: [],
             deductList: [],
             remarkList: [],
-            isShow0: '',      // 是否展示金额为0的数据
-            isReceipt: '',    // 是否开启回执功能
+            isShow0: 0,      // 是否展示金额为0的数据
+            isReceipt: 1,    // 是否开启回执功能
             receiptDay: 0,    // 默认回执时间天
             receiptStautus: -1, // 回执状态
             flag: storage.getSession('amtFlag', true)
@@ -103,8 +104,8 @@ export default {
     methods: {
         initSettingData () {
             this.isShow0 = this.wage.wageShowDTO.isShow0
-            this.isReceipt = this.wage.wageShowDTO.isReceipt
-            this.receiptDay = this.wage.wageShowDTO.receiptDay
+            this.isReceipt = typeOf(this.wage.wageShowDTO.isReceipt) === 'number' ? this.wage.wageShowDTO.isReceipt : 1
+            this.receiptDay = typeOf(this.wage.wageShowDTO.receiptDay) === 'number' ? this.wage.wageShowDTO.receiptDay : 0
             this.receiptStautus = this.wage.receiptStautus
         },
         initContentData () {
