@@ -126,7 +126,7 @@ export default {
         },
         receipt () {
             this
-                .$Roll
+                .$Inside
                 .receipt(this.wage.wageDetailId, 0)
                 .then(() => {
                     this.wage.receiptStautus = 0
