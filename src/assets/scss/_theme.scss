@@ -918,6 +918,9 @@
         height: px2rem(200px);
         margin: 0 auto;
     }
+    .card-form-wrap{
+        background-color: $color-gray-bg;
+    }
     .card-form {
         padding: 0 px2rem(40px);
         .input {

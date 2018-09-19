@@ -39,5 +39,15 @@ class Inside {
         http.body = { code, phone, idNumber }
         return http.post()
     }
+    /**
+     * @description 已读工资条
+     * @param {*} wageSheetId 工资表id
+     */
+    read (wageSheetId) {
+        let http = new Http()
+        http.path = `/${moduleName}/read`
+        http.body = { wageSheetId }
+        return http.post()
+    }
 }
 export default new Inside()

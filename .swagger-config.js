@@ -6,6 +6,7 @@ var groupList = require('./json/roll.groupList.json')
 var index = require('./json/roll.index.json')
 var invoice = require('./json/roll.invoice.json')
 var receipt = require('./json/inside.receipt.json')
+var read = require('./json/inside.read.json')
 var wageDetail = require('./json/roll.wageDetail.json')
 var wageList = require('./json/roll.wageList.json')
 var wageTrend = require('./json/roll.wageTrend.json')
@@ -24,6 +25,9 @@ module.exports = {
       },
       '/inside/bindWX': {
         post: bindWX
+      },
+      '/inside/read': {
+        post: read
       },
       '/roll/empInfo': {
         get: empInfo

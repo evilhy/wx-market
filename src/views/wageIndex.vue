@@ -42,6 +42,7 @@ export default {
   computed: {},
   created () {
     this.getWageDetail()
+    this.isRead()
   },
   mounted () { },
   methods: {
@@ -53,6 +54,11 @@ export default {
           this.bankWageList = res.data
           helper.title(this.bankWageList[0].wageName)
         })
+    },
+    isRead () {
+      this
+        .$Inside
+        .read(this.wageSheetId)
     },
     toDetail () {
       storage.setSession('bankWageList', this.bankWageList)

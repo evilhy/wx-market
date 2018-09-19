@@ -12,7 +12,7 @@
             <div class="list group-list" v-if="selectType === '1'">
                 <div class="group-item" v-for="(item, index) in groupList" @click="chooseGroup(item, index)" :key="index">
                     <p class="group-name">{{item.groupName}}</p>
-                    <i class="iconfont icon-yilizhi" v-if="item.inServiceStatus==='0'"></i>
+                    <i class="iconfont icon-yilizhi" v-if="item.inServiceStatus==='1'"></i>
                     <i class="iconfont icon-jiaobiao" v-if="item.isRead==='0'"></i>
                 </div>
             </div>

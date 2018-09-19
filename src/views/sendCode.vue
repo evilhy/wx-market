@@ -3,16 +3,18 @@
     <div class="logo-wrap">
       <img src="../assets/img/logo.png" alt="" class="logo" />
     </div>
-    <p class="tip">{{userInfo.employeeName}}，您好，欢迎您使用放薪管家工资条，<br/>验证短信已发送至您{{userInfo.phoneStar}}手机</p>
-    <div class="card-form">
-      <input ref="code-input" class="input code-input" :class="{ 'hidden': hidden }" type="tel" maxlength="6" v-model="code" @focus="hidden=true" @blur="hidden=false" />
-      <p class="code-wrap">
-        <span v-for="(codeChar, index) in code" :key="index" class="code-item">{{codeChar}}</span>
-      </p>
-      <p class="get-code-btn">
-        <span v-if="countDownInfo.seconds > 0 && countDownInfo.seconds < 60">已发送({{countDownInfo.seconds}}s)</span>
-        <span v-else @click="sendCode">再次获取</span>
-      </p>
+    <div class="card-form-wrap">
+      <p class="tip">{{userInfo.employeeName}}，您好，欢迎您使用放薪管家工资条，<br/>验证短信已发送至您{{userInfo.phoneStar}}手机</p>
+      <div class="card-form">
+        <input ref="code-input" class="input code-input" :class="{ 'hidden': hidden }" type="tel" maxlength="6" v-model="code" @focus="hidden=true" @blur="hidden=false" />
+        <p class="code-wrap">
+          <span v-for="(codeChar, index) in code" :key="index" class="code-item">{{codeChar}}</span>
+        </p>
+        <p class="get-code-btn">
+          <span v-if="countDownInfo.seconds > 0 && countDownInfo.seconds < 60">已发送({{countDownInfo.seconds}}s)</span>
+          <span v-else @click="sendCode">再次获取</span>
+        </p>
+      </div>
     </div>
     <div class="point">
       <i class="iconfont icon-tanhao"></i>
