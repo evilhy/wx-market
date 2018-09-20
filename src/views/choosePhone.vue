@@ -11,7 +11,7 @@
         <span class="count">{{employee.entName}}</span>
       </div>
     </div>
-    <div class="point">
+    <div class="bottom-tip">
       <i class="iconfont icon-tanhao"></i>
       <span>如以上手机号不正确<br/>请尽快联系您所在企业修改手机号</span>
     </div>

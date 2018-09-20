@@ -39,12 +39,13 @@ export default {
         })
     },
     toPage () {
-      if (this.query.entrance === 'menu') {
+      let stateObj = JSON.parse(this.query.state)
+      if (stateObj.entrance === 'menu') {
         this.$router.push({ name: 'home' })
       } else {
-        if (this.query.wageSheetId && this.query.groupId) {
-          helper.saveUserInfo({ groupId: this.query.groupId })
-          this.$router.push({ name: 'wageIndex', params: { wageSheetId: this.query.wageSheetId } })
+        if (stateObj.wageSheetId && stateObj.groupId) {
+          helper.saveUserInfo({ groupId: stateObj.groupId })
+          this.$router.push({ name: 'wageIndex', params: { wageSheetId: stateObj.wageSheetId } })
           return
         }
         this.$router.push({ name: 'home' })
