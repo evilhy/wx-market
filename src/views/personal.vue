@@ -41,7 +41,6 @@
 </template>
 
 <script type="text/ecmascript-6">
-import sysConfig from 'utils/constant'
 import helper from 'utils/helper'
 
 export default {
@@ -66,7 +65,6 @@ export default {
         .empInfo()
         .then((res) => {
           this.empList = res.data
-          helper.pushBaiduEvent(sysConfig.baidu_event.mainMessage)
         })
     }
   }

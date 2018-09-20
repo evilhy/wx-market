@@ -21,7 +21,6 @@
 <script>
 import storage from 'utils/storage'
 import helper from 'utils/helper'
-import sysConfig from 'utils/constant'
 
 export default {
   data () {
@@ -32,7 +31,6 @@ export default {
   },
   created () {
     helper.title('身份验证')
-    helper.pushBaiduEvent(sysConfig.baidu_event.choosePhone)
   },
   mounted () {
   },

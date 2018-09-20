@@ -11,7 +11,6 @@
 
 <script type="text/ecmascript-6">
 import helper from 'utils/helper'
-import sysConfig from 'utils/constant'
 let $scope = {
   index: 1,
   goods_list: [],
@@ -24,7 +23,6 @@ export default {
   },
   mounted () {
     document.title = '身份验证'
-    helper.pushBaiduEvent(sysConfig.baidu_event.emptyPhone)
   },
   methods: {
     exit () {

@@ -16,7 +16,6 @@ import wageItem from 'components/wageItem'
 import amtPercentLine from 'components/amtPercentLine'
 import yearSwiper from 'components/yearSwiper'
 import helper from 'utils/helper'
-import sysConfig from 'utils/constant'
 import storage from 'utils/storage'
 import filter from 'utils/filter'
 export default {
@@ -50,7 +49,6 @@ export default {
   },
   created () {
     helper.title('我的收入')
-    helper.pushBaiduEvent(sysConfig.baidu_event.wageList)
     this.getGroupList()
   },
   methods: {

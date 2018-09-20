@@ -2,21 +2,13 @@
 export default {
   node_env: process.env.NODE_ENV,
   debug: process.env.NODE_ENV !== 'production',
-  requested_sever: true,
+  requested_sever: process.env.NODE_ENV !== 'development',
   http_base_url: {
-    // development: 'http://10.5.1.92:8080/rest',
-    development: 'https://sitwx.cardpu.com/rest',
+    development: 'http://10.5.1.92:8080/rest',
+    // development: 'https://sitwx.cardpu.com/rest',
     // test: 'https://sitwx.cardpu.com/rest',
     test: 'https://sitwx.cardpu.com/rest',
     production: 'https://wxpwechat.cardpu.com/easysp/'
-  },
-  baidu_event: {  // 百度事件统计相关
-    wageDetail: ['_trackEvent', '放薪工资条', '我的工资条'],
-    mainMessage: ['_trackEvent', '放薪工资条', '个人信息'],
-    wageList: ['_trackEvent', '查看工资', '选择机构'],
-    choosePhone: ['_trackEvent', '身份验证', '选择手机号'],
-    emptyPhone: ['_trackEvent', '身份验证', '空手机号'],
-    hiddenBill: ['_trackEvent', '工资明细', '隐藏工资']
   },
   month_zh: {
     '01': '1月',
