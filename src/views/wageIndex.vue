@@ -17,7 +17,8 @@
       </div>
     </div>
     <div class="bottom">
-      <span class="return" @click="toPage('wageList')">返回列表</span>
+      <span class="return" @click="toPage('home')">首页</span>
+      <span class="return" @click="toPage('wageList')">我的收入</span>
     </div>
   </div>
 </template>
