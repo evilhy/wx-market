@@ -39,10 +39,10 @@ export default {
         })
     },
     toPage () {
-      let stateObj = JSON.parse(this.query.state)
-      if (stateObj.entrance === 'menu') {
+      if (this.query.entrance === 'menu') {
         this.$router.push({ name: 'home' })
       } else {
+        let stateObj = JSON.parse(this.query.state)
         if (stateObj.wageSheetId && stateObj.groupId) {
           helper.saveUserInfo({ groupId: stateObj.groupId })
           this.$router.push({ name: 'wageIndex', params: { wageSheetId: stateObj.wageSheetId } })
