@@ -39,7 +39,7 @@ export default {
         })
     },
     toPage () {
-      if (this.query.entrance === 'menu') {
+      if (!this.query.state) {
         this.$router.push({ name: 'home' })
       } else {
         let stateObj = JSON.parse(this.query.state)
