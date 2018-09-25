@@ -15,7 +15,7 @@ var managerInfo = require('./json/manager.managerInfo.json')
 var distribute = require('./json/manager.distribute.json')
 module.exports = {
   openApi: [{
-    baseURL: 'http://10.5.1.92:8080/rest',
+    baseURL: 'http://10.5.1.71:8080/rest',
     paths: {
       '/roll/entEmp': {
         get: entEmp

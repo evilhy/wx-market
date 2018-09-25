@@ -76,10 +76,12 @@ export default {
           this.initOutlineWage(res.data)
           this.wageList = res.data.planList
           this.years = res.data.years
-          this.currentYear = this.years[this.years.length - 1]
-          isInit && this.$nextTick(() => {
-            this.swiper.slideTo(this.years.indexOf(this.currentYear))
-          })
+          if (isInit) {
+            this.currentYear = this.years[this.years.length - 1]
+            this.$nextTick(() => {
+              this.swiper.slideTo(this.years.indexOf(this.currentYear))
+            })
+          }
         })
     },
     initOutlineWage (data) {
