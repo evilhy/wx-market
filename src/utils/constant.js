@@ -1,7 +1,7 @@
 export default {
   node_env: process.env.NODE_ENV,
   debug: process.env.NODE_ENV !== 'production',
-  requested_sever: false,
+  requested_sever: process.env.NODE_ENV !== 'development',
   http_base_url: {
     development: 'http://10.5.1.71:8080/rest',
     // development: 'https://sitwx.cardpu.com/rest',
