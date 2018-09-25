@@ -1,4 +1,3 @@
-
 export default {
   node_env: process.env.NODE_ENV,
   debug: process.env.NODE_ENV !== 'production',
@@ -8,7 +7,7 @@ export default {
     // development: 'https://sitwx.cardpu.com/rest',
     // test: 'https://sitwx.cardpu.com/rest',
     test: 'https://sitwx.cardpu.com/rest',
-    production: 'https://wxpwechat.cardpu.com/easysp/'
+    production: 'https://fxpush.cardpu.com/rest/'
   },
   month_zh: {
     '01': '1月',
