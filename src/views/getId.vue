@@ -31,7 +31,7 @@ export default {
           let data = res.data
           helper.saveUserInfo({ jsessionId: data.jsessionId })
           if (data.bindStatus === '0') {
-              this.$router.push({ name: 'bindIdCard' })
+              this.$router.replace({ name: 'bindIdCard' })
           } else {
             helper.saveUserInfo({ idNumber: data.idNumber })
             this.toPage()
@@ -40,15 +40,15 @@ export default {
     },
     toPage () {
       if (!this.query.state) {
-        this.$router.push({ name: 'home' })
+        this.$router.replace({ name: 'home' })
       } else {
         let stateObj = JSON.parse(this.query.state)
         if (stateObj.wageSheetId && stateObj.groupId) {
           helper.saveUserInfo({ groupId: stateObj.groupId })
-          this.$router.push({ name: 'wageIndex', params: { wageSheetId: stateObj.wageSheetId } })
+          this.$router.replace({ name: 'wageIndex', params: { wageSheetId: stateObj.wageSheetId } })
           return
         }
-        this.$router.push({ name: 'home' })
+        this.$router.replace({ name: 'home' })
       }
     }
   },
