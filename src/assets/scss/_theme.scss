@@ -1991,6 +1991,7 @@
       }
       .icon-chakanxiangqing{
         display: block;
+        @include font-dpr(28px);
       }
     }
   }
@@ -2038,6 +2039,7 @@
     .bank-img {
       margin-right: px2rem(8px);
       height: px2rem(30px);
+      display: block;
     }
     .bank-no {
       color: #969696;
@@ -2098,7 +2100,7 @@
         color: #999;
       }
     }
-    &.real {
+    &.should {
       .amt-item {
         display: flex;
         justify-content: space-between;

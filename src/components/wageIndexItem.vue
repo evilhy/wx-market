@@ -24,11 +24,11 @@
         <div class="diff-wrap">
             <div class="label">对比上次</div>
             <div class="value" :class="wage.differRealAmt >= 0 ? 'shang' : 'xia'">
-                <span>
+                <div>
                     <i class="icon-jiantouxia iconfont" v-show="wage.differRealAmt < 0"></i>
                     <i class="icon-jiantoushang iconfont" v-show="wage.differRealAmt >= 0"></i>
                     {{wage.differRealAmt | money}}
-                </span>
+                </div>
             </div>
         </div>
     </swiper-slide>

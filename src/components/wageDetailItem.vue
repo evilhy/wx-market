@@ -3,7 +3,9 @@
         <div class="detail-wrap">
             <!-- 银行卡相关 -->
             <div class="bank-wrap">
-                <div class="bank-name"><img class="bank-img" src="../assets/img/icon-bank.png" />{{wage.bankName}}</div>
+                <div class="bank-name">
+                    <img class="bank-img" src="../assets/img/icon-bank.png" />
+                    <p>{{wage.bankName}}</p></div>
                 <div class="bank-no">{{wage.cardNo | bankSpace}}</div>
             </div>
             <!-- 实发总额 -->
@@ -19,7 +21,7 @@
             <!-- 详情 -->
             <div class="main-wrap">
                 <!-- 应发 -->
-                <div class="amt-box real">
+                <div class="amt-box should">
                     <div class="title">
                         应发金额
                     </div>
