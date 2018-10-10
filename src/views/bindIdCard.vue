@@ -5,7 +5,7 @@
     </div>
     <div class="card-form">
       <input class="input id-card-input" type="text" maxlength="18" v-model="idCard" placeholder="请输入身份证绑定" />
-      <button class="btn-green" :disabled="!idCard" @click="getPhone">下一步</button>
+      <button class="btn-green" :disabled="idCard.length < 6" @click="getPhone">下一步</button>
     </div>
   </div>
 </template>
@@ -28,8 +28,7 @@ export default {
   },
   methods: {
     getPhone () {
-      if (this.checkValue()) {
-        this
+      this
           .$Roll
           .entEmp(this.idCard)
           .then((res) => {
@@ -49,7 +48,6 @@ export default {
               }
             }
           })
-      }
     },
     checkValue () {
       if (!validIdCard(this.idCard)) {
