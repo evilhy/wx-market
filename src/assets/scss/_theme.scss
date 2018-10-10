@@ -2083,6 +2083,7 @@
       &:before,
       &:after {
         content: '';
+        display: block;
         width: px2rem(179px);
         height: 1px;
         background: #999;
@@ -2145,7 +2146,7 @@
     left: px2rem(20px);
     bottom: px2rem(22px);
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     .iconfont {
       @include font-dpr(26px);
       margin-right: px2rem(8px);

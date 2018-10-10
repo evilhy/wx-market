@@ -23,7 +23,7 @@
                 <!-- 应发 -->
                 <div class="amt-box should">
                     <div class="title">
-                        应发金额
+                        <p>应发金额</p>
                     </div>
                     <ul class="amt-list">
                         <li class="amt-item" v-for="(item, index) in shouldList" :key="'real-'+index" v-if="!item.hidden && (isShow0 === 1 || (isShow0 === 0 && item.colValue !== 0))">
@@ -35,7 +35,7 @@
                 <!-- 扣除 -->
                 <div class="amt-box sub">
                     <div class="title">
-                        扣除金额
+                        <p>扣除金额</p>
                     </div>
                     <ul class="amt-list">
                         <li class="amt-item" v-for="(item, index) in deductList" :key="'sub-'+index" v-if="!item.hidden && (isShow0 === 1 || (isShow0 === 0 && item.colValue !== 0))">
@@ -47,7 +47,7 @@
                 <!-- 备注 -->
                 <div class="amt-box remark">
                     <div class="title">
-                        事项说明
+                        <p>事项说明</p>
                     </div>
                     <ul class="amt-list">
                         <li class="amt-item" v-for="(item, index) in remarkList" :key="'remark-'+index" v-if="!item.hidden">
