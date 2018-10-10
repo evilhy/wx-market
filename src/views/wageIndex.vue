@@ -13,12 +13,13 @@
         <!-- <div class="action" @click="toPage('trend')">
           <i class="iconfont icon-chakanzoushi"></i>查看走势</div> -->
         <div class="action" @click="toDetail">
-          <i class="iconfont icon-chakanxiangqing"></i>查看详情</div>
+          <i class="iconfont icon-chakanxiangqing"></i>
+          <p>查看详情</p></div>
       </div>
     </div>
     <div class="bottom">
-      <span class="return" @click="toPage('home')">首页</span>
-      <span class="return" @click="toPage('wageList')">我的收入</span>
+      <div class="return" @click="toPage('home')">首页</div>
+      <div class="return" @click="toPage('wageList')">我的收入</div>
     </div>
   </div>
 </template>

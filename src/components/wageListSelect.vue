@@ -1,12 +1,12 @@
 <template>
     <div class="wage-list-select">
         <div class="select-item" :class="{ active: flag && selectType === '1'}" @click="toggle('1')">
-            <span class="name-item">{{currentGroup.groupName}}</span>
-            <span class="triangle"></span>
+            <div class="name-item">{{currentGroup.groupName}}</div>
+            <div class="triangle"></div>
         </div>
         <div class="select-item" :class="{active: flag && selectType === '2'}" @click="toggle('2')">
-            <span>{{currentType === '0' ? '资金已到账' : '合计'}}</span>
-            <span class="triangle"></span>
+            <div>{{currentType === '0' ? '资金已到账' : '合计'}}</div>
+            <div class="triangle"></div>
         </div>
         <template v-if="flag">
             <div class="list group-list" v-if="selectType === '1'">
