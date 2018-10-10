@@ -4,7 +4,7 @@
         <div class="bill-status success" v-if="wage.payStatus === '1'">资金已到账</div>
         <div class="bank">
             <img class="bank-logo" src="../assets/img/icon-bank.png" />
-            <span class="bank-name">{{wage.bankName}}（{{wage.cardNo}}）</span>
+            <div class="bank-name">{{wage.bankName}}（{{wage.cardNo}}）</div>
         </div>
         <div class="amt-wrap">
             <div class="amt">

@@ -1788,7 +1788,6 @@
   }
   .main-wrap {
     display: flex;
-    display: -webkit-flex;
   }
   .pic-wrap {
     @include circle(102px);
@@ -1924,12 +1923,12 @@
   }
   .bank {
     display: flex;
-    display: -webkit-flex;
     height: px2rem(34px);
     align-items: center;
     justify-content: center;
   }
   .bank-logo {
+    display: block;
     height: px2rem(26px);
     margin-right: px2rem(8px);
   }
@@ -1989,6 +1988,9 @@
       text-align: center;
       &:first-child {
         border-right: 1px solid #e9ebec;
+      }
+      .icon-chakanxiangqing{
+        display: block;
       }
     }
   }
