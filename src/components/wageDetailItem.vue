@@ -26,7 +26,7 @@
                         <p>应发金额</p>
                     </div>
                     <ul class="amt-list">
-                        <li class="amt-item" v-for="(item, index) in shouldList" :key="'real-'+index" v-if="!item.hidden && (isShow0 === 1 || (isShow0 === 0 && item.colValue !== 0))">
+                        <li class="amt-item" v-for="(item, index) in shouldList" :key="'real-'+index" v-if="!item.hidden && (isShow0 === 1 || (isShow0 === 0 && item.colValue != 0))">
                             <div class="label">{{item.colName}}</div>
                             <div class="value" v-if="item.colValue">{{item.colValue | money}}</div>
                         </li>
@@ -38,7 +38,7 @@
                         <p>扣除金额</p>
                     </div>
                     <ul class="amt-list">
-                        <li class="amt-item" v-for="(item, index) in deductList" :key="'sub-'+index" v-if="!item.hidden && (isShow0 === 1 || (isShow0 === 0 && item.colValue !== 0))">
+                        <li class="amt-item" v-for="(item, index) in deductList" :key="'sub-'+index" v-if="!item.hidden && (isShow0 === 1 || (isShow0 === 0 && item.colValue != 0))">
                             <div class="label">{{item.colName}}</div>
                             <div class="value">{{item.colValue | money}}</div>
                         </li>
