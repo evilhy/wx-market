@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import manager from '../views/manager.vue'
 import getId from '../views/getId.vue'
+import taxCalculator from '../views/taxCalculator'
 
 Vue.use(Router)
 
@@ -97,6 +98,11 @@ export default new Router({
       path: '/manager-detail',
       name: 'managerDetail',
       component: resolve => { require(['../views/managerDetail.vue'], resolve) }
+    },
+    {
+      path: '/tax-calculator',  // 个税计算器
+      component: taxCalculator,
+      name: 'taxCalculator'
     }
   ]
 })
