@@ -114,7 +114,8 @@ export default {
         initContentData () {
             let heads = this.wage.wageHeadDTO.heads
             heads.forEach((item) => {
-                item.colValue = collect.getItem(this.wage.content, 'colNum', item.colNum[0]).value
+                let resultObj = collect.getItem(this.wage.content, 'colNum', item.colNum[0])
+                item.colValue = typeOf(resultObj) === 'object' ? resultObj.value : 0
             })
             this.shouldList = heads.filter(item => item.type === 'SHOULD_AMT')
             this.deductList = heads.filter(item => item.type === 'DEDUCT_AMT')
