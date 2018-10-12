@@ -8,7 +8,6 @@ import _ from 'lodash'
 const $grossPay = Symbol('$grossPay')
 const $socialSecurityFund = Symbol('$socialSecurityFund')
 const $taxBase = Symbol('$taxBase')
-const taxAmount = Symbol('taxAmount')
 
 export default class TaxCalculator {
 
@@ -60,7 +59,7 @@ export default class TaxCalculator {
    * @description  应扣税额
    * @return Number
    * */
-  [taxAmount] () {
+  taxAmount () {
     return _.floor(this.taxableIncome() * this.taxRate() -
       this.quickCalculationDeduction(), 2)
   }
@@ -69,7 +68,7 @@ export default class TaxCalculator {
    * @description  实发金额
    * @return Number
    * */
-  getWagePayment () {
-    return this[$grossPay] - this[$socialSecurityFund] - this[taxAmount]()
+  wagePayment () {
+    return this[$grossPay] - this[$socialSecurityFund] - this.taxAmount()
   }
 }

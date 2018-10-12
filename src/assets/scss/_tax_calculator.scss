@@ -5,6 +5,13 @@
   background-color: #ffffff;
   box-shadow: 0 0 18px 0 rgba(0,0,0,0.08);
   border-radius: px2rem(6px);
+  overflow: hidden;
+
+  & > img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
 
   & > .main-form {
     padding: px2rem(28px) px2rem(34px) px2rem(191px);
@@ -34,6 +41,82 @@
     color: #5DCBC8;
     background-color: #ffffff;
     @include font-dpr(22px);
+
+    & > i.iconfont {
+      display: inline-block;
+      margin: 0 px2rem(16px);
+    }
+  }
+
+  & > .modal-info {
+    display: flex;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,.6);
+    justify-content: center;
+    align-items: center;
+
+    .modal-main {
+      width: px2rem(533px);
+      height: px2rem(516px);
+      background-image: url("../img/tax/modal-bg.png");
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      padding: px2rem(40px) px2rem(62px) px2rem(69px);
+      position: relative;
+
+      &:after {
+        content: '';
+        display: block;
+        width: 1px;
+        height: px2rem(70px);
+        background-color: #ffffff;
+        position: absolute;
+        bottom: px2rem(-70px);
+        left: 50%;
+      }
+    }
+
+    h1 {
+      @include font-dpr(26px);
+      color: #333333;
+      font-weight: bold;
+      text-align: center;
+      line-height: px2rem(37px);
+      margin-bottom: px2rem(26px);
+    }
+
+    p {
+      @include font-dpr(26px);
+      color: #333333;
+      line-height: px2rem(36px);
+      margin-bottom: px2rem(20px);
+
+      &.gray {
+        color: #A1A3AE;
+      }
+    }
+
+    button.close {
+      display: inline-block;
+      width: auto;
+      background-color: transparent;
+      color: #ffffff;
+      position: absolute;
+      bottom: px2rem(-110px);
+      left: 50%;
+      margin-left: px2rem(-19px);
+      padding-left: 0;
+      padding-right: 0;
+
+      i {
+        @include font-dpr(45px);
+      }
+    }
   }
 }
 
@@ -90,6 +173,13 @@
       line-height: px2rem(36px);
       margin-top: px2rem(20px);
     }
+  }
+
+  img.text-img {
+    display: block;
+    width: px2rem(340px);
+    height: auto;
+    margin: 0 auto;
   }
 
   .text-1, .text-2 {

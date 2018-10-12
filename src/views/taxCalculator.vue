@@ -1,23 +1,20 @@
 <template>
-  <component v-bind:is="currentStep"
-             :toggle-method="toggleStep"></component>
+  <component v-bind:is="currentStep"></component>
 </template>
 
 <script>
   import helper from '../utils/helper'
   import taxCalculatorStep1 from './taxCalculatorStep1'
   import taxCalculatorStep2 from './taxCalculatorStep2'
+  import TaxState from '../utils/TaxCalculator/TaxState'
   export default {
     components: {
       taxCalculatorStep1,
       taxCalculatorStep2
     },
-    data: () => ({
-      currentStep: 'taxCalculatorStep1'
-    }),
-    methods: {
-      toggleStep () {
-        this.currentStep = this.currentStep === 'taxCalculatorStep1' ? 'taxCalculatorStep2' : 'taxCalculatorStep1'
+    computed: {
+      currentStep () {
+        return TaxState.state.currentStep
       }
     },
     created () {
