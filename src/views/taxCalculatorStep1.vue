@@ -4,13 +4,17 @@
     <div class="main-form">
       <div class="page-title">个税计算器</div>
       <input type="tel" placeholder="您的月收入金额" v-model.number="income">
-      <input type="tel" placeholder="五险一金（免税扣除）" v-model.number="deduction">
+      <input type="tel" placeholder="免税收入额（五险一金等）" v-model.number="deduction">
       <button class="guide" @click="toggleVisible"><i class="iconfont icon-shurushuoming"></i>输入说明</button>
       <button class="submit-btn"
               :disabled="disabledSubmit"
               @click="submitFun">算一算</button>
     </div>
-
+    <div class="bottom-logo">
+      <img src="../assets/img/hx-gray-logo.png" class="hx"/>
+      <div class="line"></div>
+      <img src="../assets/img/fx-gray-logo.png" class="fx"/>
+    </div>
     <div class="modal-info" v-show="visibleModal">
       <div class="modal-main">
         <h1>输入说明</h1>

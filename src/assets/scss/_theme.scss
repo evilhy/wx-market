@@ -600,33 +600,32 @@
     background: url('../img/icon-person.png') no-repeat center px2rem(74px);
     background-size: px2rem(56px) px2rem(50px);
   }
-  .bottom-logo {
-    position: absolute;
-    width: 100%;
-    left: 0;
-    bottom: px2rem(50px);
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    .line{
-      height: px2rem(30px);
-      width: 1px;
-      background: $color-border-default;
-      margin:0 px2rem(20px);
+}
+.bottom-logo {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: px2rem(50px);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .line{
+    height: px2rem(30px);
+    width: 1px;
+    background: $color-border-default;
+    margin:0 px2rem(20px);
+  }
+  img {
+    height: px2rem(30px);
+    &:last-child {
+      opacity: 0.9;
     }
-    img {
-      height: px2rem(30px);
-      &:last-child {
-        opacity: 0.9;
-      }
-      &.hx{
-        height: px2rem(26px);
-      }
+    &.hx{
+      height: px2rem(26px);
     }
   }
 }
-
 //
 .wage-list-page {
   padding-bottom: px2rem(98px);
