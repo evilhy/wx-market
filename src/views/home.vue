@@ -52,7 +52,7 @@ export default {
       hasNewMsg: '0',
       imgViewerFlag: false,
       imgViewIndex: 0,
-      imgList: [require('../assets/img/home-banner1.png')]
+      imgList: [require('../assets/img/home-banner2.png')]
     }
   },
   created () {
