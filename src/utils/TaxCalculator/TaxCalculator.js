@@ -12,8 +12,8 @@ const $taxBase = Symbol('$taxBase')
 export default class TaxCalculator {
 
   constructor (grossPay, socialSecurityFund) {
-    if (!_.isNumber(grossPay)) throw TypeError('应发金额类型应为Number')
-    if (!_.isNumber(socialSecurityFund)) throw TypeError('社保扣款类型应为Number')
+    if (!_.isNumber(grossPay)) throw new TypeError('应发金额类型应为Number')
+    if (!_.isNumber(socialSecurityFund)) throw new TypeError('社保扣款类型应为Number')
     this[$grossPay] = grossPay
     this[$socialSecurityFund] = socialSecurityFund
   }
@@ -25,7 +25,7 @@ export default class TaxCalculator {
   [$taxBase] = 0; // 费用扣除标准
 
   set taxBase (value) {
-    if (!_.isNumber(value)) throw TypeError('费用扣除标准类型应为Number')
+    if (!_.isNumber(value)) throw new TypeError('费用扣除标准类型应为Number')
     this[$taxBase] = value
   }
 
