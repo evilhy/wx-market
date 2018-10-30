@@ -33,7 +33,7 @@ class Elife {
     let sign = crypto.MD5(appKey + timestamp.toString()).toUpperCase()
     http.baseURL = sysConfig.elife_base_url[sysConfig.node_env]
     http.path = '/plantform710001.json'
-    http.body = {
+    http.query = {
       appKey,
       timestamp,
       sign,
@@ -46,7 +46,7 @@ class Elife {
       branch_name: branchOrgName
     }
     http.loading = loading
-    return http.post()
+    return http.get()
   }
 }
 export default new Elife()
