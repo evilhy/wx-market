@@ -32,8 +32,8 @@ export default class HttpEngine {
   [$baseURL] = "";
 
   [$headers] = {
-    Accept: "application/json; charset=utf-8",
-    "Content-Type": "application/json"
+    Accept: "application/json",
+    "Content-Type": "application/json; charset=utf-8"
   };
 
   [$timeout] = 10000;
