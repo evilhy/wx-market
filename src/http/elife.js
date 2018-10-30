@@ -29,7 +29,7 @@ class Elife {
   }, loading) {
     let http = new Http()
     let appKey = 'testappkey'
-    let timestamp = new Date().getTime()
+    let timestamp = new Date().getTime().toString()
     let sign = crypto.MD5(appKey + timestamp.toString()).toUpperCase()
     http.baseURL = sysConfig.elife_base_url[sysConfig.node_env]
     http.headers = {
