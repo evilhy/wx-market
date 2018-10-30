@@ -32,9 +32,6 @@ class Elife {
     let timestamp = new Date().getTime().toString()
     let sign = crypto.MD5(appKey + timestamp.toString()).toUpperCase()
     http.baseURL = sysConfig.elife_base_url[sysConfig.node_env]
-    http.headers = {
-      'Content-Type': 'application/x-www-form-urlencoded'
-    }
     http.path = '/plantform710001.json'
     http.body = {
       appKey,
