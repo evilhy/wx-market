@@ -36,7 +36,7 @@ class Elife {
       'Content-Type': 'application/x-www-form-urlencoded'
     }
     http.path = '/plantform710001.json'
-    http.body = {
+    http.body = JSON.stringify({
       appKey,
       timestamp,
       sign,
@@ -47,7 +47,7 @@ class Elife {
       deposit_code: officer,
       branch_id: branchOrgNo,
       branch_name: branchOrgName
-    }
+    })
     http.loading = loading
     return http.post()
   }
