@@ -27,9 +27,15 @@ class Elife {
     officer = ''
   }, loading) {
     let http = new Http()
+    let appKey = 'testappkey'
+    let timestamp = new Date().getTime()
+    let sign = md5(appKey + timestamp.toString()).toUpperCase()
     http.baseURL = sysConfig.elife_base_url[sysConfig.node_env]
     http.path = '/plantform710001.json'
     http.body = {
+      appKey: appKey,
+      timestamp: timestamp,
+      sign: sign,
       cust_name: name,
       cust_phone_uid: phone,
       cust_manager_name: managerName,
