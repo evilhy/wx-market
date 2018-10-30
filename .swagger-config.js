@@ -76,7 +76,7 @@ module.exports = {
     baseURL: 'https://demowisdom.wisales.cn:8213/easy-life',
     paths: {
       '/plantform710001.json': {
-        get: elifePlantform710001
+        post: elifePlantform710001
       }
     }
   }],
