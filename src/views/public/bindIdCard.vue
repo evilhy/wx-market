@@ -1,7 +1,7 @@
 <template>
   <div class="bind-id-card-page">
     <div class="logo-wrap">
-      <img src="../assets/img/logo.png" alt="" class="logo" />
+      <img src="../../assets/img/logo.png" alt="" class="logo" />
     </div>
     <div class="card-form">
       <input class="input id-card-input" type="text" maxlength="18" v-model="idCard" placeholder="请输入身份证绑定" />

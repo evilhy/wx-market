@@ -29,9 +29,9 @@
       </div>
     </div>
     <div class="bottom-logo">
-      <img src="../assets/img/hx-gray-logo.png" class="hx"/>
+      <img src="../../assets/img/hx-gray-logo.png" class="hx"/>
       <div class="line"></div>
-      <img src="../assets/img/fx-gray-logo.png" class="fx"/>
+      <img src="../../assets/img/fx-gray-logo.png" class="fx"/>
     </div>
     <img-viewer :img-list="imgList" :index="imgViewIndex" :flag="imgViewerFlag" @close="imgViewerFlag=false"></img-viewer>
   </div>
@@ -52,7 +52,7 @@ export default {
       hasNewMsg: '0',
       imgViewerFlag: false,
       imgViewIndex: 0,
-      imgList: [require('../assets/img/home-banner2.png')]
+      imgList: [require('../../assets/img/home-banner2.png')]
     }
   },
   created () {

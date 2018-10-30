@@ -1,7 +1,7 @@
 <template>
   <div class="send-code-page">
     <div class="logo-wrap">
-      <img src="../assets/img/logo.png" alt="" class="logo" />
+      <img src="../../assets/img/logo.png" alt="" class="logo" />
     </div>
     <div class="card-form-wrap">
       <p class="tip">{{userInfo.employeeName}}，您好，欢迎您使用放薪管家工资条，<br/>验证短信已发送至您{{userInfo.phoneStar}}手机</p>

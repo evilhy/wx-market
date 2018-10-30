@@ -14,9 +14,9 @@ export default {
   data () {
     return {
       list: [
-        {title: '信用卡申请', icon: require('../assets/img/icon-credit-apply.png'), routerName: ''},
-        {title: '团购理财', icon: require('../assets/img/icon-group-finance.png'), routerName: ''},
-        {title: '工资理财', icon: require('../assets/img/icon-salary-finance.png'), routerName: ''}
+        {title: '信用卡申请', icon: require('../../assets/img/icon-credit-apply.png'), routerName: ''},
+        {title: '团购理财', icon: require('../../assets/img/icon-group-finance.png'), routerName: ''},
+        {title: '工资理财', icon: require('../../assets/img/icon-salary-finance.png'), routerName: ''}
       ]
     }
   },

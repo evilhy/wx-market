@@ -37,9 +37,9 @@
 </template>
 
 <script>
-  import LatestTaxCalculator from '../utils/TaxCalculator/LatestTaxCalculator'
-  import PreviousTaxCalculator from '../utils/TaxCalculator/PreviousTaxCalculator'
-  import TaxState from '../utils/TaxCalculator/TaxState'
+  import LatestTaxCalculator from 'utils/TaxCalculator/LatestTaxCalculator'
+  import PreviousTaxCalculator from 'utils/TaxCalculator/PreviousTaxCalculator'
+  import TaxState from 'utils/TaxCalculator/TaxState'
   import _ from 'lodash'
   export default {
     computed: {
@@ -56,12 +56,12 @@
       },
       infoForSaveAmount () {
         let info = new Map([
-          [1, {desc: '恩，好好工作，努力加薪吧~', img: require('../assets/img/tax/level-1.png')}],
-          [2, {desc: '苍蝇也是肉，能省一点是一点吧~', img: require('../assets/img/tax/level-2.png')}],
-          [3, {desc: '不错哦，每月可以加一顿大餐了~', img: require('../assets/img/tax/level-3.png')}],
-          [4, {desc: '好激动，马尔代夫的海近在眼前~', img: require('../assets/img/tax/level-4.png')}],
-          [5, {desc: '厉害，好像可以换辆车了~', img: require('../assets/img/tax/level-5.png')}],
-          [6, {desc: '哇塞，你省出了一艘游艇~', img: require('../assets/img/tax/level-6.png')}]
+          [1, {desc: '恩，好好工作，努力加薪吧~', img: require('../../assets/img/tax/level-1.png')}],
+          [2, {desc: '苍蝇也是肉，能省一点是一点吧~', img: require('../../assets/img/tax/level-2.png')}],
+          [3, {desc: '不错哦，每月可以加一顿大餐了~', img: require('../../assets/img/tax/level-3.png')}],
+          [4, {desc: '好激动，马尔代夫的海近在眼前~', img: require('../../assets/img/tax/level-4.png')}],
+          [5, {desc: '厉害，好像可以换辆车了~', img: require('../../assets/img/tax/level-5.png')}],
+          [6, {desc: '哇塞，你省出了一艘游艇~', img: require('../../assets/img/tax/level-6.png')}]
         ])
         let level
         if (this.saveAmount >= 20000) {
