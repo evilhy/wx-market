@@ -3,10 +3,10 @@
 </template>
 
 <script>
-  import helper from '../utils/helper'
+  import helper from 'utils/helper'
   import taxCalculatorStep1 from './taxCalculatorStep1'
   import taxCalculatorStep2 from './taxCalculatorStep2'
-  import TaxState from '../utils/TaxCalculator/TaxState'
+  import TaxState from 'utils/TaxCalculator/TaxState'
   export default {
     components: {
       taxCalculatorStep1,

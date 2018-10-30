@@ -482,25 +482,24 @@
 .mint-spinner-double-bounce-bounce2 {
   background-color: #4fbbbb !important;
 }
-
+.loading-wrap {
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  margin-left: px2rem(-80px);
+  .loading-img {
+    display: block;
+    @include square(px2rem(160px));
+  }
+  .loading-text {
+    text-align: center;
+    margin-top: px2rem(20px);
+    color: #ccc;
+  }
+}
 //
 .get-id-page {
   height: 100%;
-  .loading-wrap {
-    position: absolute;
-    left: 50%;
-    top: 30%;
-    margin-left: px2rem(-80px);
-    .loading-img {
-      display: block;
-      @include square(px2rem(160px));
-    }
-    .loading-text {
-      text-align: center;
-      margin-top: px2rem(20px);
-      color: #ccc;
-    }
-  }
 }
 
 //

@@ -1,0 +1,56 @@
+@charset "utf-8";
+.elife-login-page {
+  $shadow: 8px;
+  height: 100%;
+  padding: px2rem(406px) px2rem(40px) 0;
+  background: #fef1d1 url('../img/elife/elife-activity-bg.png') no-repeat;
+  background-size: 100% auto;
+  .input-form {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    box-shadow: 0 0 $shadow 0 rgba(192, 128, 33, 0.16);
+    border-radius: $radius-xs;
+    .input-wrap{
+      display: flex;
+      align-items: center;
+      height: px2rem(120px);
+    }
+    .icon{
+      height: px2rem(28px);
+      padding: 0 px2rem(20px);
+    }
+    .line{
+      height: px2rem(28px);
+      width: 1px;
+      background: #FD923E;
+    }
+    .input{
+      @include font-dpr(28px);
+      border: none;
+      flex: 1;
+    }
+  }
+  .btn {
+    height: px2rem(88px);
+    line-height: px2rem(88px);
+    margin-top: px2rem(20px);
+    text-align: center;
+    background: #e70207;
+    box-shadow: 0 2px $shadow 0 rgba(255, 164, 30, 0.1);
+    border-radius: $radius-xs;
+    color: #E7E7E7;
+    @include font-dpr(28px);
+  }
+  .tip-wrap{
+    margin-top: px2rem(56px);
+    line-height: px2rem(32px);
+    .title{
+      margin-bottom: px2rem(10px);
+      color: #F35B14;
+    }
+    .content{
+      color: #F0A56B;
+    }
+  }
+}

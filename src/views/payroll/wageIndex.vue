@@ -3,7 +3,7 @@
     <!-- <manager-avator></manager-avator> -->
     <div class="bill-index-main">
       <div class="fx-logo">
-        <img src="../assets/img/logo.png" alt="">
+        <img src="../../assets/img/logo.png" alt="">
       </div>
       <swiper class="bill-info" :options="swiperOption">
         <wage-index-item v-for="(item, index) in bankWageList" :key="index" :wage="item" @to-detail="toDetail"></wage-index-item>

@@ -7,7 +7,12 @@ export default {
     // development: 'https://sitwx.cardpu.com/rest',
     // test: 'https://sitwx.cardpu.com/rest',
     test: 'https://sitwx.cardpu.com/rest',
-    production: 'https://fxpush.cardpu.com/rest/'
+    production: 'https://fxpush.cardpu.com/rest'
+  },
+  elife_base_url: {
+    development: 'https://demowisdom.wisales.cn:8213/easy-life',
+    test: 'https://demowisdom.wisales.cn:8213/easy-life',
+    production: 'https://easylife.wisales.cn:8211/easy-life'
   },
   month_zh: {
     '01': '1月',

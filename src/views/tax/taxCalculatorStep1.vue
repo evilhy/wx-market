@@ -1,6 +1,6 @@
 <template>
   <div class="tax-calculator-step1">
-    <img src="../assets/img/tax/banner-top.png" alt="">
+    <img src="../../assets/img/tax/banner-top.png" alt="">
     <div class="main-form">
       <div class="page-title">个税计算器</div>
       <input type="tel" placeholder="您的月收入金额" v-model.number="income">
@@ -11,9 +11,9 @@
               @click="submitFun">算一算</button>
     </div>
     <div class="bottom-logo">
-      <img src="../assets/img/hx-gray-logo.png" class="hx"/>
+      <img src="../../assets/img/hx-gray-logo.png" class="hx"/>
       <div class="line"></div>
-      <img src="../assets/img/fx-gray-logo.png" class="fx"/>
+      <img src="../../assets/img/fx-gray-logo.png" class="fx"/>
     </div>
     <div class="modal-info" v-show="visibleModal">
       <div class="modal-main">
@@ -32,7 +32,7 @@
 
 <script>
   import _ from 'lodash'
-  import TaxState from '../utils/TaxCalculator/TaxState'
+  import TaxState from 'utils/TaxCalculator/TaxState'
   export default {
     computed: {
       disabledSubmit () {

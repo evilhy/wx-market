@@ -1,13 +1,11 @@
 <template>
   <div class="get-id-page">
-    <div class="loading-wrap">
-      <img src="../assets/img/loading.gif" alt="" class="loading-img">
-      <p class="loading-text">加载中</p>
-    </div>
+    <loading></loading>
   </div>
 </template>
 
 <script>
+import loading from 'components/loading'
 import helper from 'utils/helper'
 import { getPageQueryObject } from 'utils/assist'
 export default {
@@ -52,6 +50,8 @@ export default {
       }
     }
   },
-  components: {}
+  components: {
+    loading
+  }
 }
 </script>

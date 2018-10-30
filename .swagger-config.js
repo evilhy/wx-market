@@ -13,6 +13,9 @@ var wageTrend = require('./json/roll.wageTrend.json')
 var wxCallback = require('./json/weixin.wxCallback.json')
 var managerInfo = require('./json/manager.managerInfo.json')
 var distribute = require('./json/manager.distribute.json')
+var elifeGetUserInfo = require('./json/elife.getUserInfo.json')
+var elifeJoinActivity = require('./json/elife.joinActivity.json')
+var elifePlantform710001 = require('./json/elife.plantform710001.json')
 module.exports = {
   openApi: [{
     baseURL: 'http://10.5.1.71:8080/rest',
@@ -61,6 +64,19 @@ module.exports = {
       },
       '/manager/distribute': {
         post: distribute
+      },
+      '/elife': {
+        get: elifeGetUserInfo
+      },
+      '/elife': {
+        post: elifeJoinActivity
+      }
+    }
+  },{
+    baseURL: 'https://demowisdom.wisales.cn:8213/easy-life',
+    paths: {
+      '/plantform710001.json': {
+        post: elifePlantform710001
       }
     }
   }],

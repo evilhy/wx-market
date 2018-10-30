@@ -1,7 +1,7 @@
 <template>
   <div class="choose-phone-page">
    <div class="logo-wrap">
-      <img src="../assets/img/logo.png" alt="" class="logo"/>
+      <img src="../../assets/img/logo.png" alt="" class="logo"/>
     </div>
     <p class="tip">发现您在多个企业任职，请选择任意一项进行验证</p>
     <div class="phone-list card-form">
