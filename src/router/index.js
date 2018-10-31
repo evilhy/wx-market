@@ -112,6 +112,11 @@ export default new Router({
       path: '/elife-login',
       name: 'elifeLogin',
       component: resolve => { require(['../views/elife/login.vue'], resolve) }
+    },
+    {
+      path: '/elife-process',
+      name: 'elifeProcess',
+      component: resolve => { require(['../views/elife/process.vue'], resolve) }
     }
   ]
 })

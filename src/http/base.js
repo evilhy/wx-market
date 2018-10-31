@@ -6,7 +6,9 @@ import { Indicator } from 'mint-ui'
 import _ from 'lodash'
 
 export default class HttpForApplication extends HttpEngine {
-
+  headers = {
+    'Content-Type': 'application/json; charset=utf-8'
+  }
   baseURL = sysConfig.http_base_url[sysConfig.node_env]
   mockTimeout = 1
   requestedSever = sysConfig.requested_sever

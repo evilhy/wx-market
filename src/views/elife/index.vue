@@ -28,10 +28,11 @@ export default {
         .then((res) => {
           let data = res.data
           helper.saveUserInfo({ jsessionId: data.jsessionId })
-          if (data.phone && data.name) {
+          if (data.join === 1) {
             this.postElife(data, false)
           } else {
-            this.$router.replace({ name: 'elifeLogin' })
+            let { name = '', phone = '' } = data 
+            this.$router.replace({ name: 'elifeLogin', query: { name, phone } })
           }
         })
     }

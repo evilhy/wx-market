@@ -31,8 +31,14 @@ export default {
     }
   },
   created () {
+    this.getQueryParams()
   },
   methods: {
+    getQueryParams () {
+      let { name, phone } = this.$route.query
+      this.name = name
+      this.phone = phone
+    },
     joinActivity () {
       if (!this.checkInfo()) return
       this
