@@ -1,50 +1,10 @@
 import { typeOf } from './assist'
 import { toFixed, unformat } from './money'
+import Time from './time'
 import sysConfig from './constant'
-
+const TimeInstance = new Time()
 function date (timeVal, format = 'Y-m-d H:i:s') {
-  let time = {}
-  if (typeOf(timeVal) === 'string') {
-    time.year = timeVal.substring(0, 4)
-    time.month = timeVal.substring(4, 6)
-    time.date = timeVal.substring(6, 8)
-    if (timeVal.length <= 8) {
-      time.hours = '00'
-      time.minutes = '00'
-      time.seconds = '00'
-    } else {
-      time.hours = timeVal.substring(8, 10)
-      time.minutes = timeVal.substring(10, 12)
-      time.seconds = timeVal.substring(12, 14)
-    }
-    return format.replace('Y', time.year)
-      .replace('m', time.month)
-      .replace('d', time.date)
-      .replace('H', time.hours)
-      .replace('i', time.minutes)
-      .replace('s', time.seconds)
-  } else if (typeOf(timeVal) === 'date' || typeOf(timeVal) === 'number') {
-    if (typeOf(timeVal) === 'number') {
-      timeVal = new Date(timeVal)
-    }
-    time.year = timeVal.getFullYear()
-    time.month = timeVal.getMonth() + 1
-    time.date = timeVal.getDate()
-    time.hours = timeVal.getHours()
-    time.minutes = timeVal.getMinutes()
-    time.seconds = timeVal.getSeconds()
-    Object.keys(time).forEach((key) => {
-      time[key] = time[key].toString().padStart(2, '0')
-    })
-    return format.replace('Y', time.year)
-      .replace('m', time.month)
-      .replace('d', time.date)
-      .replace('H', time.hours)
-      .replace('i', time.minutes)
-      .replace('s', time.seconds)
-  } else {
-    return timeVal
-  }
+  return TimeInstance.format(timeVal, format)
 }
 function money (number, precision = 2, thousand = ',') {
   if (typeOf(number) === 'array') {
@@ -95,6 +55,19 @@ function monthZh (month, hasUnit = false) {
   return zh ? (zh + (hasUnit ? '份' : '')) : month.toString()
 }
 
+function pastTime (pastTimeVal, nowTimeVal = new Date()) {
+  let minutesGap = TimeInstance.getTimeDiff(pastTimeVal, nowTimeVal, 'i')
+  if (minutesGap < 1) {
+    return '1分钟前'
+  } else if (minutesGap >= 1 && minutesGap < 60) {
+    return `${minutesGap}分钟前`
+  } else if (minutesGap >= 60 && minutesGap < 1440) {
+    return `${Math.floor(minutesGap / 60)}小时前`
+  } else {
+    return TimeInstance.format(pastTimeVal, 'm月d号')
+  }
+}
+
 function msgTime (dateStr = '') {
   if (!dateStr) return
   let now = new Date()
@@ -118,13 +91,14 @@ function bankSpace (bankStr = '') {
   return bankArr.join(' ')
 }
 export default {
-  date: date,
-  money: money,
-  currency: currency,
-  deteData: deteData,
-  banCard: banCard,
-  banCardLast: banCardLast,
-  monthZh: monthZh,
-  msgTime: msgTime,
-  bankSpace: bankSpace
+  date,
+  money,
+  currency,
+  deteData,
+  banCard,
+  banCardLast,
+  monthZh,
+  pastTime,
+  msgTime,
+  bankSpace
 }

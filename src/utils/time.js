@@ -1,15 +1,69 @@
 import { typeOf } from './assist'
 
-$timeRange = Symbol('$timeRange')
-$checkTimeType = Symbol('$checkTimeType')
+const $timeRange = Symbol('$timeRange')
+const $checkTimeType = Symbol('$checkTimeType')
+const $unitRange = Symbol('$unitRange')
+const $checkUnitRange = Symbol('$checkUnitRange')
+
 export default class Time {
   [$timeRange] = ['string', 'number', 'date'];
+  [$unitRange] = ['y', 'm', 'd', 'h', 'i', 's', 'ms'];
   /**
-   * 传入时间值，获得以year、month、date、hours、minutes、seconds为键的对象
+   * 传入时间值，返回指定格式的时间显示
+   * @param {String|Number|Date} timeVal
+   * @param {String} format
+   */
+  format (timeVal, format = 'Y-m-d H:i:s') {
+    if (!timeVal) return ''
+    const timeObject = this.getTimeObject(timeVal)
+    return format
+      .replace('Y', timeObject.year)
+      .replace('m', timeObject.month)
+      .replace('d', timeObject.date)
+      .replace('H', timeObject.hours)
+      .replace('i', timeObject.minutes)
+      .replace('s', timeObject.seconds)
+  }
+  /**
+   * 传入时间值，返回时间date类型
+   * @param {String|Number|Date} timeVal 
+   */
+  parse (timeVal) {
+    const timeType = this[$checkTimeType](timeVal)
+    if (timeType === 'string') {
+      const timeStr = timeVal.replace(/[^0-9]/ig, '')
+      const timeObject = this.getTimeObject(timeStr)
+      return new Date(timeObject.year, timeObject.month - 1, timeObject.date, timeObject.hours, timeObject.minutes, timeObject.seconds)
+    } else {
+      return new Date(timeVal)
+    }
+  }
+  /**
+   * 传入时间值，返回时间戳
+   * @param {String|Number|Date} timeVal 
+   */
+  getTimestamp (timeVal) {
+    const timeType = this[$checkTimeType](timeVal)
+    let timestamp = 0
+    switch (timeType) {
+      case 'string':
+        timestamp = this.parse(timeVal).getTime()
+        break
+      case 'number':
+        timestamp = timeVal
+        break
+      case 'date':
+        timestamp = timeVal.getTime()
+        break
+    }
+    return timestamp
+  }
+  /**
+   * 传入时间值，返回以year、month、date、hours、minutes、seconds为键的对象
    * @param {String|Number|Date} timeVal
    */
   getTimeObject (timeVal) {
-    const timeType = this[$checkTimeType]
+    const timeType = this[$checkTimeType](timeVal)
     let timeObject = {
       year: '',
       month: '',
@@ -42,32 +96,50 @@ export default class Time {
     return timeObject
   }
   /**
-   * 传入时间值，返回指定格式的时间显示
-   * @param {String|Number|Date} timeVal
-   * @param {String} format
+   * 传入时间值，返回对应单位的时间差
+   * @param {String|Number|Date} startTimeVal 
+   * @param {String|Number|Date} endTimeVal 
+   * @param {String} unit 
    */
-  format (timeVal, format = 'Y-m-d H:i:s') {
-    const timeObject = this.getTimeObject(timeVal)
-    return format
-      .replace('Y', timeObject.year)
-      .replace('m', timeObject.month)
-      .replace('d', timeObject.date)
-      .replace('H', timeObject.hours)
-      .replace('i', timeObject.minutes)
-      .replace('s', timeObject.seconds)
-  }
-  fromNow (timeVal, format = 'Y-m-d') {
-    const timeObject = this.getTimeObject(timeVal)
-    const nowObject = this.getTimeObject(new Date())
-    if (timeObject.year === nowObject.year) {
-      
-    } else {
-      return this.format(timeVal, format)
+  getTimeDiff (startTimeVal, endTimeVal, unit = 'ms') {
+    const unitLow = this[$checkUnitRange](unit)
+    const start = this.parse(startTimeVal < endTimeVal ? startTimeVal : endTimeVal)
+    const end = this.parse(startTimeVal < endTimeVal ? endTimeVal : startTimeVal)
+    const timeGap = this.getTimestamp(end) - this.getTimestamp(start)
+    let timeDiff = 0
+    switch (unitLow) {
+      case 'y':
+        timeDiff = end.getFullYear() - start.getFullYear()
+        break
+      case 'm':
+        timeDiff = (end.getFullYear() - start.getFullYear()) * 12 + (end.getMonth() - start.getMonth())
+        break
+      case 'd':
+        timeDiff = Math.floor(timeGap / 86400000)
+        break
+      case 'h':
+        timeDiff = Math.floor(timeGap / 3600000)
+        break
+      case 'i':
+        timeDiff = Math.floor(timeGap / 60000)
+        break
+      case 's':
+        timeDiff = Math.floor(timeGap / 1000)
+        break
+      default:
+        timeDiff = timeGap
+
     }
+    return timeDiff
+  }
+  [$checkUnitRange] (unit) {
+    if (typeOf(unit) !== 'string') throw new TypeError('指定的时间单位必须为String类型')
+    if (!this[$unitRange].includes(unit.toLowerCase())) throw new RangeError('指定的时间单位必须为y、m、d、h、i、s、ms中的一种')
+    return unit.toString()
   }
   [$checkTimeType] (timeVal) {
     const timeType = typeOf(timeVal)
-    if (this[$timeRange].includes(timeType)) return timeType
-    throw new TypeError('传入的时间类型必须为String、Number或Date')
+    if (!this[$timeRange].includes(timeType)) throw new TypeError('传入的时间类型必须为String、Number或Date类型')
+    return timeType
   }
 }
