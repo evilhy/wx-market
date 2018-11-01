@@ -104,19 +104,34 @@ export default new Router({
       component: resolve => { require(['../views/tax/taxCalculator.vue'], resolve) }
     },
     {
-      path: '/elife',
+      path: '/elife',        // 喜闻乐荐首页
       name: 'elife',
       component: resolve => { require(['../views/elife/index.vue'], resolve) }
     },
     {
-      path: '/elife-login',
+      path: '/elife-login',   // 喜闻乐荐参与页
       name: 'elifeLogin',
       component: resolve => { require(['../views/elife/login.vue'], resolve) }
     },
     {
-      path: '/elife-process',
+      path: '/elife-process',   // 喜闻乐荐流程图页
       name: 'elifeProcess',
       component: resolve => { require(['../views/elife/process.vue'], resolve) }
+    },
+    {
+      path: '/tfinance-order',
+      name: 'tfinanceOrder',
+      component: resolve => { require(['../views/tfinance/order.vue'], resolve) }
+    },
+    {
+      path: '/tfinance-confirm',
+      name: 'tfinanceConfirm',
+      component: resolve => { require(['../views/tfinance/confirm.vue'], resolve) }
+    },
+    {
+      path: '/tfinance-success',
+      name: 'tfinanceSuccess',
+      component: resolve => { require(['../views/tfinance/success.vue'], resolve) }
     }
   ]
 })
