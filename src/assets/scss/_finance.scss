@@ -1,0 +1,169 @@
+@charset "utf-8";
+
+.t-finance-order-page {
+  color: $color-text-finance;
+  .stress{
+    color: $fx-reverse-color;
+  }
+}
+.product-level-wrap {
+  min-height: px2rem(348px);
+  padding-bottom: px2rem(24px);
+  background: #fff;
+  position: relative;
+  .product-info {
+    margin: px2rem(24px);
+    height: px2rem(230px);
+    padding-top: px2rem(36px);
+    text-align: center;
+    background: #fff;
+    box-shadow: 0 0 8px 0 rgba(25, 69, 157, 0.2);
+    border-radius: px2rem($radius-xs);
+    &.complete{
+      background: #fff url('../img/tfinance/level-complete.png') no-repeat right top;
+      background-size: px2rem(108px) px2rem(82px);
+    }
+    &.uncomplete{
+      background: #fff url('../img/tfinance/level-uncomplete.png') no-repeat right top;
+      background-size: px2rem(108px) px2rem(82px);
+    }
+    .top-box{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .rate-box,.peo-box{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: px2rem(92px);
+      }
+      .rate-box{
+        .text{
+          @include font-dpr(40px);
+        }
+      }
+      .label{
+        color: #A1A3AE;
+      }
+      .text{
+        @include font-dpr(36px);
+      }
+      .line{
+        height: px2rem(88px);
+        width: 1px;
+        margin: 0 px2rem(30px);
+        background: #C0C6D4;
+      }
+      margin-bottom: px2rem(24px);
+    }
+    .bottom-box{
+      line-height: px2rem(34px);
+    }
+  }
+  .product-tags{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 px2rem(22px);
+    .product-tag{
+      min-height: px2rem(40px);
+      flex: 1;
+      justify-content: center;
+      align-items: center;
+      font-weight: 100;
+      text-align: center;
+      @include font-dpr(20px);
+      &:nth-child(2){
+        margin: 0 px2rem(16px);
+      }
+    }
+  }
+  .btn{
+    position: absolute;
+    top: px2rem(118px);
+    z-index:999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include circle(44px);
+    background: #F2F4FB;
+    color: $color-text-finance;;
+    &.prev-btn{
+      left: px2rem(54px);
+      padding-left: px2rem(4px);
+      .arrow{
+        @include v-arrow(left, 1px, px2rem(12px));
+      }
+    }
+    &.next-btn{
+      right: px2rem(54px);
+      padding-right: px2rem(4px);
+      .arrow{
+        @include v-arrow(right, 1px, px2rem(12px));
+      }
+    }
+  }
+}
+.product-notice-wrap{
+  display: flex;
+  align-items: center;
+  min-height: px2rem(60px);
+  padding: px2rem(10px) px2rem(24px);
+  background: #F5F7FA;
+  line-height: 1;
+  color: #737D99;
+  @include font-dpr(22px);
+  .img{
+    width: px2rem(30px);
+    margin-right: px2rem(10px);
+  }
+}
+.product-point-wrap{
+  height: px2rem(80px);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: #fff;
+  @include font-dpr(26px);
+  .item{
+    display: flex;
+    align-items: center;
+    line-height: 1;
+  }
+  .icon{
+    width: px2rem(22px);
+    margin-right: px2rem(12px);
+  }
+}
+.popup-page{
+  top: 0;
+  bottom: 0;
+  transform: translate3d(0, 0, 0);
+  width: 100%;
+  .mint-header{
+    background: #F2F2F2;
+    color: $color-text-finance;
+  }
+}
+.product-tag {
+  display: inline-flex;
+  padding: px2rem(4px) px2rem(10px);
+  border: 1px solid $color-text-finance;
+  border-radius: px2rem($radius-s);
+  background-color: #fff;
+  @include font-dpr(22px);
+  &.green {
+    border-color: #3ec7c3;
+    color: #2cb7b3;
+    background-color: #f0fffe;
+  }
+  &.orange {
+    border-color: #e9871c;
+    color: #e9871c;
+    background-color: #fff8f0;
+  }
+  &.red {
+    border-color: #fb3636;
+    color: #fb3636;
+    background-color: #fff0f0;
+  }
+}
