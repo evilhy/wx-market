@@ -119,7 +119,7 @@ export default new Router({
       component: resolve => { require(['../views/elife/process.vue'], resolve) }
     },
     {
-      path: '/tfinance-order',
+      path: '/tfinance-order',   
       name: 'tfinanceOrder',
       component: resolve => { require(['../views/tfinance/order.vue'], resolve) }
     },
@@ -132,6 +132,11 @@ export default new Router({
       path: '/tfinance-success',
       name: 'tfinanceSuccess',
       component: resolve => { require(['../views/tfinance/success.vue'], resolve) }
+    },
+    {
+      path: '/bank-site',
+      name: 'bankSite',
+      component: resolve => { require(['../views/public/bankSite.vue'], resolve) }
     }
   ]
 })

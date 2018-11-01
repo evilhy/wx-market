@@ -1,6 +1,7 @@
 @charset "utf-8";
 
 .t-finance-order-page {
+  color: $color-text-finance;
   .stress{
     color: $fx-reverse-color;
   }
@@ -36,8 +37,16 @@
         justify-content: space-between;
         height: px2rem(92px);
       }
+      .rate-box{
+        .text{
+          @include font-dpr(40px);
+        }
+      }
       .label{
         color: #A1A3AE;
+      }
+      .text{
+        @include font-dpr(36px);
       }
       .line{
         height: px2rem(88px);
@@ -49,7 +58,6 @@
     }
     .bottom-box{
       line-height: px2rem(34px);
-      color: #525E70;
     }
   }
   .product-tags{
@@ -78,7 +86,7 @@
     align-items: center;
     @include circle(44px);
     background: #F2F4FB;
-    color: #525E70;
+    color: $color-text-finance;;
     &.prev-btn{
       left: px2rem(54px);
       padding-left: px2rem(4px);
@@ -95,12 +103,52 @@
     }
   }
 }
+.product-notice-wrap{
+  display: flex;
+  align-items: center;
+  min-height: px2rem(60px);
+  padding: px2rem(10px) px2rem(24px);
+  background: #F5F7FA;
+  line-height: 1;
+  color: #737D99;
+  @include font-dpr(22px);
+  .img{
+    width: px2rem(30px);
+    margin-right: px2rem(10px);
+  }
+}
+.product-point-wrap{
+  height: px2rem(80px);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: #fff;
+  @include font-dpr(26px);
+  .item{
+    display: flex;
+    align-items: center;
+    line-height: 1;
+  }
+  .icon{
+    width: px2rem(22px);
+    margin-right: px2rem(12px);
+  }
+}
+.popup-page{
+  top: 0;
+  bottom: 0;
+  transform: translate3d(0, 0, 0);
+  width: 100%;
+  .mint-header{
+    background: #F2F2F2;
+    color: $color-text-finance;
+  }
+}
 .product-tag {
   display: inline-flex;
   padding: px2rem(4px) px2rem(10px);
-  border: 1px solid #525e70;
+  border: 1px solid $color-text-finance;
   border-radius: px2rem($radius-s);
-  color: #525e70;
   background-color: #fff;
   @include font-dpr(22px);
   &.green {
