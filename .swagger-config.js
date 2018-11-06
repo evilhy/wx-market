@@ -15,6 +15,13 @@ var managerInfo = require('./json/manager.managerInfo.json')
 var distribute = require('./json/manager.distribute.json')
 var elifeGetUserInfo = require('./json/elife.getUserInfo.json')
 var elifeJoinActivity = require('./json/elife.joinActivity.json')
+var tfinanceList = require('./json/tfinance.list.json')
+var tfinanceProduct = require('./json/tfinance.product.json')
+var intentionList = require('./json/tfinance.intentionList.json')
+var operateList = require('./json/tfinance.operateList.json')
+var tfinanceIntent = require('./json/tfinance.intent.json')
+var tfinanceIntentInfo = require('./json/tfinance.intentInfo.json')
+var tfinanceUserInfo = require('./json/tfinance.userInfo.json')
 var elifePlantform710001 = require('./json/elife.plantform710001.json')
 module.exports = {
   openApi: [{
@@ -70,6 +77,27 @@ module.exports = {
       },
       '/elife': {
         post: elifeJoinActivity
+      },
+      '/tfinance/list': {
+        get: tfinanceList
+      },
+      '/tfinance/product': {
+        get: tfinanceProduct
+      },
+      '/tfinance/intentionList': {
+        get: intentionList
+      },
+      '/tfinance/operateList': {
+        get: operateList
+      },
+      '/tfinance/userInfo': {
+        get: tfinanceUserInfo
+      },
+      '/tfinance/intent': {
+        post: tfinanceIntent
+      },
+      '/tfinance/intentInfo': {
+        get: tfinanceIntentInfo
       }
     }
   },{

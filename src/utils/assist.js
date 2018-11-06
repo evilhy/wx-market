@@ -100,7 +100,7 @@ export function validIdCard(id) {
   }
   return true
 }
-export function getPageQueryObject (fullPath = window.decodeURIComponent(window.location.href)) {
+/* export function getPageQueryObject (fullPath = window.decodeURIComponent(window.location.href)) {
   let queryIndex = fullPath.indexOf('?')
   if (fullPath.indexOf('?') === -1) return {}
   let hashIndex = fullPath.indexOf('#')
@@ -116,4 +116,18 @@ export function getPageQueryObject (fullPath = window.decodeURIComponent(window.
     }
   })
   return result
+} */
+export function getPageQueryObject (fullPath = window.decodeURIComponent(window.location.href)) {
+  if (typeOf(fullPath) !== 'string') return {}
+  return fullPath.split('?')
+    .filter(item => item.includes('='))
+    .map(item => item.substring(0, item.includes('#') ? item.indexOf('#') : item.length))
+    .join('&')
+    .split('&')
+    .map(item => {
+      let arr = item.split('=')
+      return {
+        [`${arr[0]}`]: arr[1]
+      }
+    })
 }

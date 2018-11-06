@@ -35,12 +35,7 @@ export default {
   },
   include (collect = [], keyName = '', val) {
     if (typeOf(collect) !== 'array' || typeOf(keyName) !== 'string') return false
-    for (let item of collect) {
-      if (item[keyName] === val) {
-        return true
-      }
-    }
-    return false
+    return collect.some(item => item[keyName] === val)
   },
   indexOf (collect = [], keyName = '', val) {
     if (typeOf(collect) !== 'array' || typeOf(keyName) !== 'string') return -1

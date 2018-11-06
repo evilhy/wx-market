@@ -15,7 +15,7 @@ import 'swiper/dist/css/swiper.css'
 import VeHistogram from 'v-charts/lib/histogram'
 // import VeLine from 'v-charts/lib/line'
 import VueClipboard from 'vue-clipboard2'
-
+import infiniteScroll from 'vue-infinite-scroll'
 Vue.config.productionTip = false
 
 Vue.use(MintUI)
@@ -23,7 +23,7 @@ Vue.use(myPlugin)
 Vue.use(VueClipboard)
 Vue.use(VueAwesomeSwiper)
 Vue.component(VeHistogram.name, VeHistogram)
-
+Vue.use(infiniteScroll)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

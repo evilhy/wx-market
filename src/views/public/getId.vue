@@ -16,7 +16,7 @@ export default {
   },
   computed: {},
   created () {
-    helper.clearUserInfo()
+    helper.clearSession()
     this.query = getPageQueryObject()
     this.getJsessionId()
   },

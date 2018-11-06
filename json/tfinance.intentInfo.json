@@ -1,0 +1,87 @@
+{
+  "custManagerId": "string",
+  "managerName": "string",
+  "managerPhone": "string",
+  "intentAmount": 0,
+  "subcribeAmount": 0,
+  "profit": 0,
+  "crtDateTime": 0,
+  "subcribeDateTime": 1541307196451,
+  "dealDateTime": 1541307996451,
+  "dealDay": 0,
+  "status": 1,
+  "entId": "string",
+  "productInfoDTO": {
+    "wechatId": "string",
+    "entId": "string",
+    "productId": "string",
+    "productName": "同事理财团第一期",
+    "productDesc": "string",
+    "promote": "string",
+    "nowDate": 1541475580228,
+    "intentStartDate": 1541475570228,
+    "intentEndDate": 1541475590228,
+    "subscribeStartDate": 1541475600228,
+    "subscribeEndDate": 1541475610228,
+    "productTerm": 90,
+    "maxLimit": 0,
+    "minIntentAmt": 20000,
+    "markList": [
+      {
+        "markLevel": 0,
+        "markRemark": "string",
+        "levelRate": 3.98,
+        "minPeople": 0,
+        "maxPeople": 0,
+        "amt": 0,
+        "sucess": 0,
+        "nowMark": 0
+      },
+      {
+        "markLevel": 1,
+        "markRemark": "string",
+        "levelRate": 4.98,
+        "minPeople": 0,
+        "maxPeople": 0,
+        "amt": 0,
+        "sucess": 0,
+        "nowMark": 0
+      },
+      {
+        "markLevel": 2,
+        "markRemark": "string",
+        "levelRate": 5.98,
+        "minPeople": 0,
+        "maxPeople": 0,
+        "amt": 0,
+        "sucess": 0,
+        "nowMark": 0
+      }
+    ],
+    "nowMark": 0,
+    "intentNum": 0,
+    "intentStatus": 0,
+    "bindStatus": 0,
+    "followStatus": 0,
+    "show": "string",
+    "subscribeEndDate1": "2018-11-05T08:53:09.297Z"
+  },
+  "list": [
+    {
+      "nickname": "string",
+      "headimgurl": ""
+    },
+    {
+      "nickname": "string",
+      "headimgurl": ""
+    },
+    {
+      "nickname": "string",
+      "headimgurl": ""
+    },
+    {
+      "nickname": "string",
+      "headimgurl": ""
+    }
+  ]
+}

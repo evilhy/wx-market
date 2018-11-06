@@ -27,7 +27,11 @@ const helper = {
   getUserInfo(infoKey = '', defaultValue = '') {
     if (infoKey) {
       let userInfo = storage.getSession('userInfo', {})
-      return userInfo[infoKey] || defaultValue
+      if (typeOf(userInfo[infoKey]) === 'undefined') {
+        return defaultValue
+      } else {
+        return userInfo[infoKey]
+      }
     } else {
       return storage.getSession('userInfo', defaultValue)
     }
@@ -81,6 +85,50 @@ const helper = {
         storage.setSession('bankWageList', bankWageList)
         return
       }
+    }
+  },
+  saveTFinanceInfo (info) {
+    if (typeOf(info) !== 'object') return false
+    let tFinanceInfo = storage.getSession('tFinanceInfo', {})
+    storage.setSession('tFinanceInfo', Object.assign(tFinanceInfo, info))
+  },
+  getTFinanceInfo(infoKey = '', defaultValue = '') {
+    if (infoKey) {
+      let tFinanceInfo = storage.getSession('tFinanceInfo', {})
+      if (typeOf(tFinanceInfo[infoKey]) === 'undefined') {
+        return defaultValue
+      } else {
+        return tFinanceInfo[infoKey]
+      }
+    } else {
+      return storage.getSession('tFinanceInfo', defaultValue)
+    }
+  },
+  saveShareInfo (info) {
+    if (typeOf(info) !== 'object') return false
+    let shareInfo = storage.getSession('shareInfo', {})
+    storage.setSession('shareInfo', Object.assign(shareInfo, info))
+  },
+  getShareInfo (infoKey = '', defaultValue = '') {
+    if (infoKey) {
+      let shareInfo = storage.getSession('shareInfo', {})
+      if (typeOf(shareInfo[infoKey]) === 'undefined') {
+        return defaultValue
+      } else {
+        return shareInfo[infoKey]
+      }
+    } else {
+      return storage.getSession('shareInfo', defaultValue)
+    }
+  },
+  clearShareInfo () {
+    storage.removeSession('shareInfo')
+  },
+  clearSession (infoKey = '') {
+    if (infoKey) {
+      storage.removeSession(infoKey)
+    } else {
+      storage.clearSession()
     }
   },
   exit() {

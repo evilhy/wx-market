@@ -28,7 +28,7 @@
     </div>
     <div class="bottom-input">
       <div class="input-wrap">
-        <input type="text" class="input" v-model="msgContent" @focus="dealInput">
+        <input type="text" class="input" v-model.trim="msgContent" @focus="dealInput">
         <button class="btn" :disabled="btnDisabled" @click="sendMsg">发送</button>
       </div>
     </div>

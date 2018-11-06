@@ -27,6 +27,7 @@ module.exports = {
     'no-array-constructor': 0,
     'no-tabs': 0,
     'no-trailing-spaces': 0,
-    'padded-blocks': 0
+    'padded-blocks': 0,
+    'prefer-promise-reject-errors': 0
   }
 }

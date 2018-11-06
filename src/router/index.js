@@ -119,22 +119,27 @@ export default new Router({
       component: resolve => { require(['../views/elife/process.vue'], resolve) }
     },
     {
-      path: '/tfinance-order',   
+      path: '/tfinance-list',   // 同事团产品列表页
+      name: 'tfinanceList',
+      component: resolve => { require(['../views/tfinance/list.vue'], resolve) }
+    },
+    {
+      path: '/tfinance-order',   // 同事团预定页
       name: 'tfinanceOrder',
       component: resolve => { require(['../views/tfinance/order.vue'], resolve) }
     },
     {
-      path: '/tfinance-confirm',
+      path: '/tfinance-confirm',  // 同事团预定确认页
       name: 'tfinanceConfirm',
       component: resolve => { require(['../views/tfinance/confirm.vue'], resolve) }
     },
     {
-      path: '/tfinance-success',
-      name: 'tfinanceSuccess',
-      component: resolve => { require(['../views/tfinance/success.vue'], resolve) }
+      path: '/tfinance-result',   // 同事团预定成功页
+      name: 'tfinanceResult',
+      component: resolve => { require(['../views/tfinance/result.vue'], resolve) }
     },
     {
-      path: '/bank-site',
+      path: '/bank-site',         // 银行网点页
       name: 'bankSite',
       component: resolve => { require(['../views/public/bankSite.vue'], resolve) }
     }

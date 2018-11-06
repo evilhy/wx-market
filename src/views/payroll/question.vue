@@ -1,6 +1,6 @@
 <template>
   <div class="question-page">
-    <textarea class="question-textarea" placeholder="请您输入您的疑问" maxlength="150" v-model="msg"></textarea>
+    <textarea class="question-textarea" placeholder="请您输入您的疑问" maxlength="150" v-model.trim="msg"></textarea>
     <button class="btn btn-green" @click="sentQuestion" :class="{'disabled': !msg }" :disabled="!msg">提交</button>
   </div>
 </template>
