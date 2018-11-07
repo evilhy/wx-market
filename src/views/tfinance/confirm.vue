@@ -33,9 +33,7 @@ import systemPopup from './components/systemPopup'
 import countDown from '../../components/countDown'
 import updatePhone from './components/updatePhone'
 import helper from 'utils/helper'
-import tShare from 'mixins/tShare'
 export default {
-  mixins: [tShare],
   data () {
     return {
       intentAmount: '',

@@ -119,6 +119,16 @@ export default new Router({
       component: resolve => { require(['../views/elife/process.vue'], resolve) }
     },
     {
+      path: '/tfinance-share',   // 同事团分享前置页
+      name: 'tfinanceShare',
+      component: resolve => { require(['../views/tfinance/share.vue'], resolve) }
+    },
+    {
+      path: '/tfinance-code',   // 同事团获取code页
+      name: 'tfinanceCode',
+      component: resolve => { require(['../views/tfinance/code.vue'], resolve) }
+    },
+    {
       path: '/tfinance-list',   // 同事团产品列表页
       name: 'tfinanceList',
       component: resolve => { require(['../views/tfinance/list.vue'], resolve) }

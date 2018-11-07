@@ -14,6 +14,11 @@ export default {
     test: 'https://demowisdom.wisales.cn:8213/easy-life',
     production: 'https://easylife.wisales.cn:8211/easy-life'
   },
+  pro_base_url: {
+    development: 'https://sitwxp.cardpu.com/fx-payroll/#/',
+    test: 'https://sitwxp.cardpu.com/fx-payroll/#/',
+    production: 'https://wxp.cardpu.com/fx-payroll/#/'
+  },
   month_zh: {
     '01': '1月',
     '02': '2月',

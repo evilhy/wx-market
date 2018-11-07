@@ -42,7 +42,7 @@
         <div class="time stress"
              v-if="result.status === 2">很遗憾，您未认购</div>
       </template>
-      <div class="more"><span>查看更多</span><span class="v-arrow"></span></div>
+      <div class="more" @click="seeMore"><span>查看更多</span><span class="v-arrow"></span></div>
     </div>
     <template v-if="markList.length">
       <div class="avator-box"
@@ -154,6 +154,9 @@ export default {
       let { markList, nowMark } = this.productInfo
       this.currentIndex = collect.indexOf(markList, 'markLevel', nowMark)
       this.markList = markList
+    },
+    seeMore () {
+      this.$emit('more')
     }
   },
   components: {

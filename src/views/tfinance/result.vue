@@ -1,18 +1,24 @@
 <template>
   <div class="t-finance-result-page t-finance-page">
-    <result-outline :term="currentTerm" :product-info="productInfo" :result="result" @end="countDownEnd"></result-outline>
+    <result-outline :term="currentTerm" :product-info="productInfo" :result="result" @end="countDownEnd" @more="openMore"></result-outline>
     <result-product :term="currentTerm" :status="result.status" :product-info="productInfo"></result-product>
     <result-client :result="result" :product-info="productInfo"></result-client>
+    <share-mark v-if="shareFlag" @close="shareFlag = false"></share-mark>
+    <buy-notice ref="buy-notice" :buy-start="productInfo.subscribeStartDate" :buy-end="productInfo.subscribeEndDate"></buy-notice>
     <div class="bottom-action">
-      <div class="btn theme-btn half">认购须知</div>
-      <div class="btn white-btn half">邀请同事</div>
+      <div class="btn theme-btn half" @click="openNotice">认购须知</div>
+      <div class="btn white-btn half" @click="toShare">邀请同事</div>
     </div>
+    <ordered-popup ref="ordered-popup"></ordered-popup>
   </div>
 </template>
 <script>
 import resultOutline from './components/resultOutline'
 import resultProduct from './components/resultProduct'
 import resultClient from './components/resultClient'
+import shareMark from './components/shareMark'
+import buyNotice from './components/buyNotice'
+import orderedPopup from './components/orderedPopup'
 import helper from 'utils/helper'
 import tShare from 'mixins/tShare'
 export default {
@@ -36,7 +42,9 @@ export default {
         intentEndDate: 0,
         subscribeStartDate: 0,
         subscribeEndDate: 0
-      }
+      },
+      shareFlag: false,
+      noticeFlag: false
     }
   },
   created () {
@@ -66,12 +74,25 @@ export default {
     },
     countDownEnd (term) {
       this.currentTerm = term
+    },
+    openNotice () {
+      this.$refs['buy-notice'].show()
+    },
+    openMore () {
+      this.$refs['ordered-popup'].show()
+    },
+    toShare () {
+      this.shareFlag = true
+      this.share()
     }
   },
   components: {
     resultOutline,
     resultProduct,
-    resultClient
+    resultClient,
+    shareMark,
+    buyNotice,
+    orderedPopup
   }
 }
 </script>

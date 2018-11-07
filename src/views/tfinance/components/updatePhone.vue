@@ -1,6 +1,6 @@
 <template>
   <div class="update-phone-wrap">
-    <div class="content">
+    <div class="content-wrap">
       <div class="title">请输入新的手机号</div>
       <input class="input" type="tel" maxlength="11" v-model="currentPhone">
       <div class="action-wrap">
@@ -8,7 +8,7 @@
         <div class="action-item sure" @click="sure">确定</div>
       </div>
     </div>
-    <div class="mark"></div>
+    <div class="mask"></div>
   </div>
 </template>
 <script>

@@ -13,5 +13,12 @@ class Wechat {
         http.loading = false
         return http.get()
     }
+  getJsapiSignature (url = window.encodeURIComponent(window.location.href.split('#')[0])) {
+    let http = new Http()
+    http.path = `/${moduleName}/getJsapiSignature`
+    http.query = { url }
+    http.loading = false
+    return http.get()
+  }
 }
 export default new Wechat()

@@ -38,9 +38,7 @@ import countDown from '../../components/countDown'
 import helper from 'utils/helper'
 import { getPageQueryObject } from 'utils/assist'
 import { MessageBox } from 'mint-ui'
-import tShare from 'mixins/tShare'
 export default {
-  mixins: [tShare],
   data () {
     return {
       query: {},
@@ -76,6 +74,7 @@ export default {
       this.orderStart = nowDate >= intentStartDate
       this.orderEnd = nowDate >= intentEndDate
       if (!this.checkFollowAndBind()) return
+      helper.saveTFinanceInfo(this.productInfo)
       if (intentStatus === 1) {
         this.$router.replace({ name: 'tfinanceResult' })
       }
@@ -104,7 +103,6 @@ export default {
     },
     order () {
       if (this.checkFollowAndBind()) {
-        helper.saveTFinanceInfo(this.productInfo)
         this.$router.push({name: 'tfinanceConfirm'})
       }
     }

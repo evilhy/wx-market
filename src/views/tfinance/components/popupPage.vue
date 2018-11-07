@@ -10,7 +10,7 @@
           </template>
     </mt-header>
     <div class="content-wrap">
-      <div class="content-title"><span class="line"></span><span class="title">{{title}}</span><span class="line"></span></div>
+      <div class="content-title" v-if="title"><span class="line"></span><span class="title">{{title}}</span><span class="line"></span></div>
       <slot></slot>
     </div>
   </mt-popup>

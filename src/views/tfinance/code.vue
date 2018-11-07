@@ -30,10 +30,10 @@ export default {
       if (!this.query.state) { // 菜单
         helper.saveShareInfo({ channel: '0' })
         this.$router.replace({name: 'tfinanceList'})
-      } else { // 分享
+      } else { // 从share进入分享
         let stateObj = JSON.parse(this.query.state)
-        let { entId = '', productId = '', channel = '2', fxId = '' } = this.stateObj
-        helper.saveShareInfo({ channel, fxId })
+        let { entId = '', productId = '', fxId = '' } = stateObj
+        helper.saveShareInfo({ channel: '2', fxId })
         this.$router.replace({name: 'tfinanceOrder', query: { entId, productId }})
       }
     }

@@ -78,7 +78,7 @@ export default {
           case 4:
           case 5:
             this.tagContent = this.status === 1 ? '未认购' : '已认购'
-            this.tagColor = this.status === 2 ? 'red' : 'green'
+            this.tagColor = this.status === 1 ? 'red' : 'green'
             break
         }
       })

@@ -1,4 +1,5 @@
 import Http from './base'
+import sysConfig from 'utils/constant'
 import helper from '../utils/helper'
 const moduleName = 'tfinance'
 class Tfinance {
@@ -80,6 +81,13 @@ class Tfinance {
     let http = new Http()
     http.path = `/${moduleName}/intentInfo`
     http.query = { productId }
+    return http.get()
+  }
+  codeUrl () {
+    let redirectUrl = `${sysConfig.pro_base_url[sysConfig.node_env]}tfinance-code`
+    let http = new Http()
+    http.path = `/${moduleName}/codeUrl`
+    http.query = { redirectUrl }
     return http.get()
   }
 }
