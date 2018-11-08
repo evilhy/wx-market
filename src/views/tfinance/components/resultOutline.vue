@@ -46,17 +46,17 @@
     </div>
     <template v-if="markList.length">
       <div class="avator-box"
-           :class="{'more-avator-box': result.list.length > 3}"
+           :class="{'more-avator-box': productInfo.intentNum > 3}"
            v-if="result.list">
         <avator :class="`avator-${index}`"
                 size="large"
-                v-for="(avator, index) in result.list.slice(0, 3)"
+                v-for="(avator, index) in result.list"
                 :key="index"
                 :src="avator.headimgurl"></avator>
         <avator class="avator-3"
                 size="large"
                 :src="moreAvator"
-                v-if="result.list.length > 3"></avator>
+                v-if="productInfo.intentNum > 3"></avator>
       </div>
       <!-- 预约期 -->
       <template v-if="term === 1">

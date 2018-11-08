@@ -59,7 +59,7 @@
       }
     ],
     "nowMark": 0,
-    "intentNum": 0,
+    "intentNum": 4,
     "intentStatus": 0,
     "bindStatus": 0,
     "followStatus": 0,
@@ -67,10 +67,6 @@
     "subscribeEndDate1": "2018-11-05T08:53:09.297Z"
   },
   "list": [
-    {
-      "nickname": "string",
-      "headimgurl": ""
-    },
     {
       "nickname": "string",
       "headimgurl": ""
