@@ -164,9 +164,24 @@
   color: #737d99;
   font-weight: 200;
   @include font-dpr(22px);
+  .mint-popup{
+    padding: px2rem(30px) px2rem(20px);
+    border-radius: px2rem($radius-s);
+    width: 90%;
+    line-height: 1.5;
+    ul,li,div,p,span{
+      word-break: break-all;
+    }
+  }
   .img {
     width: px2rem(30px);
     margin-right: px2rem(10px);
+  }
+  .text{
+    ul,li,div,p,span{
+      @extend %text-overflow;
+    }
+    @extend %text-overflow;
   }
 }
 .product-point-wrap {
@@ -601,6 +616,27 @@
   padding-bottom: px2rem(108px);
   .bottom-action{
     border-top: 1px solid #E2E5EA;
+    .ask-btn,.site-btn{
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      line-height: px2rem(34px);
+      @include font-dpr(22px);
+      .icon{
+        height: px2rem(30px);
+      }
+    }
+    .notice-btn,.share-btn{
+      width: px2rem(216px);
+    }
+    .ask-btn{
+      border-right: 1px solid $color-border-default;
+    }
+    .notice-btn{
+      background: #5DCBC8;
+    }
   }
 }
 .result-outline-wrap{

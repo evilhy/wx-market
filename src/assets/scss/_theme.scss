@@ -2124,6 +2124,7 @@
       .amt-item {
         line-height: 1.5;
         @include clearfix;
+        word-break: break-all;
       }
       .title {
         color: #999;

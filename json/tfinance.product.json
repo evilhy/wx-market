@@ -4,7 +4,7 @@
   "productId": "productId001",
   "productName": "同事理财团第一期",
   "productDesc": "这是同事理财团的描述",
-  "promote": "这是同事理财团的说明",
+  "promote": "<p>邀请<span style='color: rgb(252, 53, 53);'>1名同事</span>加息<span style='color: rgb(252, 53, 53);'>1.00%</span>，邀请<span style='color: rgb(252, 53, 53);'>2名同事</span>加息<span style='color: rgb(252, 53, 53);'>2.00%</span>11111111111111111111111111111111111111111111111143</p>",
   "nowDate": 1541307256451,
   "intentStartDate": 1541307251451,
   "intentEndDate": 1541307996451,
@@ -41,8 +41,9 @@
   ],
   "nowMark": 0,
   "intentNum": 6,
+  "intentFlag": 0,
   "intentStatus": 0,
   "bindStatus": 1,
   "followStatus": 1,
-  "show": "0"
+  "show": "1"
 }

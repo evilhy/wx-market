@@ -17,7 +17,7 @@
       </div>
       <div class="item-title">认购期</div>
       <div class="content">
-        <p><span class="bold">时间：</span><span class="bold">{{buyStart | date('Y/m/d H:i:s')}}</span>至<span class="bold">{{buyStart | date('Y/m/d H:i:s')}}。</span></p>
+        <p><span class="bold">时间：</span><span class="bold">{{buyStart | date('Y/m/d H:i:s')}}</span>至<span class="bold">{{buyEnd | date('Y/m/d H:i:s')}}。</span></p>
         <p><span class="bold">认购渠道：</span>网点柜台、网银、华夏手机银行App、华夏社区App。</p>
         <p><span class="bold">认购须知：</span>首次购买需至华夏银网网点柜台办理理财签约和风险评估后方可购买，老用户可通过以上4种渠道直接购买。</p>
       </div>

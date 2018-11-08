@@ -2,7 +2,7 @@
   <div class="t-finance-order-page t-finance-page">
     <template v-if="!orderEnd">
       <product-level :mark-list="productInfo.markList" :order-num="productInfo.intentNum" :term="productInfo.productTerm"></product-level>
-      <product-notice></product-notice>
+      <product-notice :notice="productInfo.promote"></product-notice>
       <product-point></product-point>
       <activity-rule :order-start="productInfo.intentStartDate" :order-end="productInfo.intentEndDate" :buy-start="productInfo.subscribeStartDate" :buy-end="productInfo.subscribeEndDate"></activity-rule>
       <all-ordered v-if="productInfo.show==='0'" :product-id="query.productId"></all-ordered>
@@ -16,7 +16,7 @@
             距离<count-down :now="productInfo.nowDate" :target="productInfo.intentStartDate" @end="toStart"></count-down>开始
           </template>
         </div>
-        <div class="btn theme-btn full" @click="order" v-if="orderStart">一键预约</div>
+        <div class="btn theme-btn full" :class="{'gray-btn': !productInfo.intentFlag}" @click="order" v-if="orderStart">一键预约</div>
         <div class="btn theme-btn full gray-btn" v-else>一键预约</div>
       </div>
     </template>
@@ -47,6 +47,7 @@ export default {
       productInfo: {
         markList: [],
         intentNum: 0,
+        intentFlag: 0,
         productTerm: 0,
         nowDate: 0,
         intentStartDate: 0,
@@ -105,6 +106,7 @@ export default {
       this.orderStart = true
     },
     order () {
+      if (!this.productInfo.intentFlag) return
       if (this.checkFollowAndBind()) {
         this.$router.push({name: 'tfinanceConfirm'})
       }

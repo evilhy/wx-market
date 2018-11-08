@@ -4,28 +4,28 @@
       <!-- 预约期 -->
       <template v-if="term === 1">
         <div class="time">
-          <count-down :now="productInfo.nowDate"
+          <count-down :now="currentNowDate"
                       :target="productInfo.intentEndDate"
                       :format="['天', ':', ':', '']"
-                      @end="end(2)"></count-down>后结束预约
+                      @end="end(2, productInfo.intentEndDate)"></count-down>后结束预约
         </div>
       </template>
       <!-- 过渡期 -->
       <template v-if="term === 2">
         <div class="time">
-          <count-down :now="productInfo.intentEndDate"
+          <count-down :now="currentNowDate"
                       :target="productInfo.subscribeStartDate"
                       :format="['天', ':', ':', '']"
-                      @end="end(3)"></count-down>后开启认购
+                      @end="end(3, productInfo.subscribeStartDate)"></count-down>后开启认购
         </div>
       </template>
       <!-- 认购期 -->
       <template v-if="term === 3">
         <div class="time">
-          <count-down :now="productInfo.subscribeStartDate"
+          <count-down :now="currentNowDate"
                       :target="productInfo.subscribeEndDate"
                       :format="['天', ':', ':', '']"
-                      @end="end(4)"></count-down>后结束认购
+                      @end="end(4, productInfo.subscribeEndDate)"></count-down>后结束认购
         </div>
       </template>
       <!-- 认购结束 -->
@@ -138,7 +138,8 @@ export default {
     return {
       moreAvator: require('../../../assets/img/tfinance/avator-more.png'),
       currentIndex: 0,
-      markList: []
+      markList: [],
+      currentNowDate: 0
     }
   },
   watch: {
@@ -147,13 +148,15 @@ export default {
     }
   },
   methods: {
-    end (term) {
+    end (term, now) {
+      this.currentNowDate = now
       this.$emit('end', term)
     },
     calData () {
-      let { markList, nowMark } = this.productInfo
+      let { markList, nowMark, nowDate } = this.productInfo
       this.currentIndex = collect.indexOf(markList, 'markLevel', nowMark)
       this.markList = markList
+      this.currentNowDate = nowDate
     },
     seeMore () {
       this.$emit('more')

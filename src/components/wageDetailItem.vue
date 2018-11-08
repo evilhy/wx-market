@@ -38,7 +38,7 @@
                         <p>扣除金额</p>
                     </div>
                     <ul class="amt-list">
-                        <li class="amt-item" v-for="(item, index) in deductList" :key="'sub-'+index" v-if="!item.hidden && (isShow0 === 1 || (isShow0 === 0 && item.colValue != 0))">
+                        <li class="amt-item" v-for="(item, index) in deductList" :key="'sub-'+index" v-if="!item.hidden && (isShow0 === 1 || (isShow0 === 0 && item.colValue))">
                             <div class="label">{{item.colName}}</div>
                             <div class="value">{{item.colValue | money}}</div>
                         </li>
@@ -50,7 +50,7 @@
                         <p>事项说明</p>
                     </div>
                     <ul class="amt-list">
-                        <li class="amt-item" v-for="(item, index) in remarkList" :key="'remark-'+index" v-if="!item.hidden">
+                        <li class="amt-item" v-for="(item, index) in remarkList" :key="'remark-'+index" v-if="!item.hidden && (isShow0 === 1 || (isShow0 === 0 && item.colValue))">
                             <div class="label">{{item.colName}}</div>
                             <div class="value">{{item.colValue}}</div>
                         </li>
@@ -119,7 +119,7 @@ export default {
             })
             this.shouldList = heads.filter(item => item.type === 'SHOULD_AMT')
             this.deductList = heads.filter(item => item.type === 'DEDUCT_AMT')
-            this.remarkList = heads.filter(item => item.type === 'REMARK')
+            this.remarkList = heads.filter(item => item.type === 'REMARK' || item.type === 'UNKNOWN')
         },
         changeFlag () {
             this.flag = !this.flag

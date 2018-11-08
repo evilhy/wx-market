@@ -5,6 +5,7 @@
 </template>
 <script>
 import loading from 'components/loading'
+import helper from 'utils/helper'
 export default {
   data () {
     return {
@@ -12,6 +13,8 @@ export default {
     }
   },
   created () {
+    helper.clearShareInfo()
+    helper.saveShareInfo({ channel: '0' })
     this.getProductList()
   },
   methods: {

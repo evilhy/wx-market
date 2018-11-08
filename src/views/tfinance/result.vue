@@ -6,8 +6,16 @@
     <share-mark v-if="shareFlag" @close="shareFlag = false"></share-mark>
     <buy-notice ref="buy-notice" :buy-start="productInfo.subscribeStartDate" :buy-end="productInfo.subscribeEndDate"></buy-notice>
     <div class="bottom-action">
-      <div class="btn theme-btn half" @click="openNotice">认购须知</div>
-      <div class="btn white-btn half" @click="shareFlag = true">邀请同事</div>
+      <a class="btn white-btn ask-btn" :href="`tel: ${result.managerPhone}`" v-if="result.managerPhone">
+        <img class="icon" src="../../assets/img/tfinance/icon-tel.png" alt=""/>
+        咨询
+      </a>
+      <div class="btn white-btn site-btn" @click="toBankSite">
+        <img class="icon" src="../../assets/img/tfinance/icon-site.png" alt=""/>
+        网点
+      </div>
+      <div class="btn theme-btn notice-btn" @click="openNotice">认购须知</div>
+      <div class="btn theme-btn share-btn" @click="shareFlag = true">邀请同事</div>
     </div>
     <ordered-popup ref="ordered-popup"></ordered-popup>
   </div>
@@ -19,6 +27,7 @@ import resultClient from './components/resultClient'
 import shareMark from './components/shareMark'
 import buyNotice from './components/buyNotice'
 import orderedPopup from './components/orderedPopup'
+import sysConfig from 'utils/constant'
 import helper from 'utils/helper'
 import tShare from 'mixins/tShare'
 export default {
@@ -34,7 +43,8 @@ export default {
         subcribeDateTime: 0,
         profit: 0,
         dealDateTime: 0,
-        list: []
+        list: [],
+        managerPhone: ''
       },
       productInfo: {
         nowDate: 0,
@@ -81,6 +91,9 @@ export default {
     },
     openMore () {
       this.$refs['ordered-popup'].show()
+    },
+    toBankSite () {
+      window.location.href = sysConfig.bank_site_url
     }
   },
   components: {
