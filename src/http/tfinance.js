@@ -42,11 +42,13 @@ class Tfinance {
    * @param {String} productId
    * @param {String} entId
    */
-  operateList (productId, entId, page = 1, size = 20) {
+  operateList (page = 1, operate) {
+    let entId = helper.getTFinanceInfo('entId')
+    let productId = helper.getTFinanceInfo('productId')
     let http = new Http()
     http.path = `/${moduleName}/operateList`
-    http.headers = { page, size }
-    http.query = { productId, entId }
+    http.headers = { page, size: 20 }
+    http.query = { productId, entId, operate }
     return http.get()
   }
   /**
@@ -83,6 +85,9 @@ class Tfinance {
     http.query = { productId }
     return http.get()
   }
+  /**
+   * 获取跳转到tfinance-code页面的url
+   */
   codeUrl () {
     let redirectUrl = `${sysConfig.pro_base_url[sysConfig.node_env]}tfinance-code`
     let http = new Http()

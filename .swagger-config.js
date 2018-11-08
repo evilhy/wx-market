@@ -11,6 +11,7 @@ var wageDetail = require('./json/roll.wageDetail.json')
 var wageList = require('./json/roll.wageList.json')
 var wageTrend = require('./json/roll.wageTrend.json')
 var wxCallback = require('./json/weixin.wxCallback.json')
+var getJsapiSignature = require('./json/weixin.getJsapiSignature.json')
 var managerInfo = require('./json/manager.managerInfo.json')
 var distribute = require('./json/manager.distribute.json')
 var elifeGetUserInfo = require('./json/elife.getUserInfo.json')
@@ -65,6 +66,9 @@ module.exports = {
       },
       '/weixin/wxCallback': {
         get: wxCallback
+      },
+      '/weixin/getJsapiSignature': {
+        get: getJsapiSignature
       },
       '/manager/managerInfo': {
         get: managerInfo

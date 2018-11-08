@@ -4,13 +4,13 @@
             class="popup-page">
     <mt-header :title="title" class="protocol-title">
           <template slot="left">
-            <p class="back-wrap" @click="flag = false">
+            <p class="back-wrap" @click="close">
               <span class="v-arrow"></span>
             </p>
           </template>
     </mt-header>
     <div class="content-wrap">
-      <div class="content-title" v-if="title"><span class="line"></span><span class="title">{{title}}</span><span class="line"></span></div>
+      <!-- <div class="content-title" v-if="title"><span class="line"></span><span class="title">{{title}}</span><span class="line"></span></div> -->
       <slot></slot>
     </div>
   </mt-popup>
@@ -28,6 +28,10 @@ export default {
   methods: {
     show () {
       this.flag = true
+    },
+    close () {
+      this.flag = false
+      this.$emit('close')
     }
   }
 }

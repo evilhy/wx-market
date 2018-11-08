@@ -1,13 +1,13 @@
 <template>
   <div class="result-product-wrap white-box">
     <div class="line-title">{{productInfo.productName}}<tag :content="tagContent"
-           :color="tagColor"></tag>
+           :color="tagColor" v-if="tagContent"></tag>
     </div>
     <div class="rate-wrap">
       <span class="label">预期收益率(%)</span>
       <span class="value"
             v-if="productInfo.markList && productInfo.markList.length">{{productInfo.markList[0].levelRate}}%<span class="stress"
-              v-if="addedRate > 0">+{{addedRate}}</span></span>
+              v-if="addedRate > 0">+{{addedRate}}%</span></span>
     </div>
     <div class="limit-info">
       <p class="days"><span class="label">产品期限(天)</span><span class="value">&nbsp;&nbsp;{{productInfo.productTerm}}</span></p>

@@ -100,34 +100,18 @@ export function validIdCard(id) {
   }
   return true
 }
-/* export function getPageQueryObject (fullPath = window.decodeURIComponent(window.location.href)) {
-  let queryIndex = fullPath.indexOf('?')
-  if (fullPath.indexOf('?') === -1) return {}
-  let hashIndex = fullPath.indexOf('#')
-  let str = fullPath
-    .substring(fullPath.indexOf('?') + 1, queryIndex > hashIndex ? fullPath.length : hashIndex)
-    .replace('/', '')
-  let pairArr = str.split('&')
-  let result = {}
-  pairArr.forEach(item => {
-    let indexOf = item.indexOf('=')
-    if (indexOf !== -1) {
-      result[item.substring(0, indexOf)] = item.substring(indexOf + 1)
-    }
-  })
-  return result
-} */
+
 export function getPageQueryObject (fullPath = window.decodeURIComponent(window.location.href)) {
   if (typeOf(fullPath) !== 'string') return {}
-  return fullPath.split('?')
+  let result = {}
+  fullPath.split('?')
     .filter(item => item.includes('='))
     .map(item => item.substring(0, item.includes('#') ? item.indexOf('#') : item.length))
     .join('&')
     .split('&')
-    .map(item => {
+    .forEach(item => {
       let arr = item.split('=')
-      return {
-        [`${arr[0]}`]: arr[1]
-      }
+      result[`${arr[0]}`] = arr[1]
     })
+  return result
 }

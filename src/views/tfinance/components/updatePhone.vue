@@ -4,7 +4,7 @@
       <div class="title">请输入新的手机号</div>
       <input class="input" type="tel" maxlength="11" v-model="currentPhone">
       <div class="action-wrap">
-        <div class="action-item cancel">取消</div>
+        <div class="action-item cancel" @click="cancel">取消</div>
         <div class="action-item sure" @click="sure">确定</div>
       </div>
     </div>
@@ -38,6 +38,9 @@ export default {
         return false
       }
       this.$emit('sure', this.currentPhone)
+    },
+    cancel () {
+      this.$emit('cancel')
     }
   }
 }

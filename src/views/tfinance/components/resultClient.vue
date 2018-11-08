@@ -11,12 +11,12 @@
         <span class="value">{{result.crtDateTime | date('Y/m/d H:i:s')}}</span>
       </div>
       <div class="field">
-        <span class="label">到期收益(元)</span>
+        <span class="label">预期收益(元)</span>
         <span class="value">{{result.profit | money}}</span>
       </div>
       <div class="field">
         <span class="label">预约期</span>
-        <span class="value order-term">{{productInfo.subscribeStartDate | date('Y/m/d H:i:s')}}<br />{{productInfo.subscribeEndDate | date('Y/m/d H:i:s')}}</span>
+        <span class="value order-term">{{productInfo.intentStartDate | date('Y/m/d H:i:s')}}<br />{{productInfo.intentEndDate | date('Y/m/d H:i:s')}}</span>
       </div>
     </template>
     <template v-else>
@@ -29,7 +29,7 @@
         <span class="value">{{result.subcribeDateTime | date('Y/m/d H:i:s')}}</span>
       </div>
       <div class="field">
-        <span class="label">到期收益(元)</span>
+        <span class="label">预期收益(元)</span>
         <span class="value">{{result.profit | money}}</span>
       </div>
       <div class="field">
@@ -46,8 +46,8 @@ export default {
       type: Object,
       default () {
         return {
-          subscribeStartDate: 0,
-          subscribeEndDate: 0
+          intentStartDate: 0,
+          intentEndDate: 0
         }
       }
     },

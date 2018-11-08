@@ -1,14 +1,18 @@
 import wx from 'weixin-js-sdk'
+import sysConfig from './constant'
 export default class Wxapi {
-  config ({ appId, timestamp, nonceStr, signature, jsApiList }) {
+  config ({ appId, timestamp, nonceStr, signature }) {
     return new Promise((resolve, reject) => {
       wx.config({
-        // debug: sysConfig.node_env === 'development', // 开启调试模式
+        debug: sysConfig.node_env === 'development', // 开启调试模式
         appId, // 必填，公众号的唯一标识
         timestamp, // 必填，生成签名的时间戳
         nonceStr, // 必填，生成签名的随机串
         signature, // 必填，签名，见附录1
-        jsApiList // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+        jsApiList: [
+          'onMenuShareAppMessage',
+          'onMenuShareTimeline'
+        ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
       })
       wx.ready(() => {
         resolve()

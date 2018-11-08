@@ -476,6 +476,7 @@
 // 加载中样式重置
 .mint-indicator-wrapper {
   background-color: transparent !important;
+  z-index: 9999;
 }
 
 .mint-spinner-double-bounce-bounce1,

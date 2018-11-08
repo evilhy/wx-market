@@ -31,16 +31,16 @@
       <!-- 认购结束 -->
       <template v-if="term === 4">
         <div class="time"
-             v-if="result.status === 1"><span class="deal-day">{{result.dealDay}}天</span>后到期兑付</div>
+             v-if="result.status === 2"><span class="deal-day">{{result.dealDay}}天</span>后到期兑付</div>
         <div class="time stress"
-             v-if="result.status === 2">很遗憾，您未认购</div>
+             v-if="result.status === 1">很遗憾，您未认购</div>
       </template>
       <!-- 兑付结束 -->
       <template v-if="term === 5">
         <div class="time green"
-             v-if="result.status === 1">已兑付</div>
+             v-if="result.status === 2">已兑付</div>
         <div class="time stress"
-             v-if="result.status === 2">很遗憾，您未认购</div>
+             v-if="result.status === 1">很遗憾，您未认购</div>
       </template>
       <div class="more" @click="seeMore"><span>查看更多</span><span class="v-arrow"></span></div>
     </div>

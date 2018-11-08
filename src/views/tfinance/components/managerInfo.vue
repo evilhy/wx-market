@@ -1,5 +1,5 @@
 <template>
-  <div class="manager-info-wrap">
+  <div class="manager-info-wrap" v-if="name && phone">
     <div class="info-box">
       <avator size="normal"></avator>
       <div class="name-phone">

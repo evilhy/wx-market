@@ -20,10 +20,10 @@
       </div>
       <div class="btn theme-btn" :class="[this.userInfo.hxBank === 0 ? 'long' : 'full', {'gray-btn': orderEnd}]" @click="order">确认预约</div>
       <div class="btn white-btn short system-tip" @click="tipFlag = true" v-if="this.userInfo.hxBank === 0">
-        <img class="icon" src="../../assets/img/tfinance/icon-system-tip.png" alt=""/>系统提示</div>
+        <img class="icon" src="../../assets/img/tfinance/icon-system-tip.png" alt=""/>温馨提示</div>
     </div>
     <system-popup v-if="tipFlag" @close="tipFlag = false"></system-popup>
-    <update-phone :phone="userInfo.clientPhone" @sure="updatePhone" v-if="updatePhoneFlag"></update-phone>
+    <update-phone :phone="userInfo.clientPhone" @sure="updatePhone" @cancel="updatePhoneFlag = false" v-if="updatePhoneFlag"></update-phone>
   </div>
 </template>
 <script>
@@ -76,22 +76,27 @@ export default {
       isUpdate && helper.toast('修改成功')
     },
     checkMoney () {
+      if (!this.intentAmount) {
+        helper.toast('请输入预约金额')
+        return false
+      }
       if (Number(this.intentAmount) < this.minIntentAmt) {
         this.intentAmount = this.minIntentAmt
       }
+      return true
     },
     async order () {
       if (this.orderEnd) return
-      this.checkMoney()
+      if (!this.checkMoney()) return
       let { custManagerId, clientName, idNumber, clientPhone } = this.userInfo
       await this.$Tfinance.intent({
         custManagerId,
         clientName,
         idNumber,
         clientPhone,
-        minIntentAmt: this.minIntentAmt
+        intentAmount: this.intentAmount
       })
-      this.$router.push({ name: 'tfinanceResult' })
+      this.$router.replace({ name: 'tfinanceResult' })
     }
   },
   components: {

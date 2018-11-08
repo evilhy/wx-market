@@ -2,7 +2,7 @@
   <div class="system-popup">
     <div class="content-wrap">
       <img class="img" src="../../../assets/img/tfinance/system-title.png" alt="">
-      <p class="title">系统提示</p>
+      <p class="title">温馨提示</p>
       <ul class="text">
         <li class="item">
           本产品是华夏银行的理财产品，若您是首次购买需持本人身份证及华夏银行借记卡到柜台进行理财签约方可完成购买。

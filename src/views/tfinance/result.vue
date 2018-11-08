@@ -7,7 +7,7 @@
     <buy-notice ref="buy-notice" :buy-start="productInfo.subscribeStartDate" :buy-end="productInfo.subscribeEndDate"></buy-notice>
     <div class="bottom-action">
       <div class="btn theme-btn half" @click="openNotice">认购须知</div>
-      <div class="btn white-btn half" @click="toShare">邀请同事</div>
+      <div class="btn white-btn half" @click="shareFlag = true">邀请同事</div>
     </div>
     <ordered-popup ref="ordered-popup"></ordered-popup>
   </div>
@@ -49,6 +49,7 @@ export default {
   },
   created () {
     helper.title('理财预约')
+    this.shareConfig()
     this.getResult()
   },
   methods: {
@@ -80,10 +81,6 @@ export default {
     },
     openMore () {
       this.$refs['ordered-popup'].show()
-    },
-    toShare () {
-      this.shareFlag = true
-      this.share()
     }
   },
   components: {

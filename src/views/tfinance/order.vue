@@ -6,7 +6,7 @@
       <product-point></product-point>
       <activity-rule :order-start="productInfo.intentStartDate" :order-end="productInfo.intentEndDate" :buy-start="productInfo.subscribeStartDate" :buy-end="productInfo.subscribeEndDate"></activity-rule>
       <all-ordered v-if="productInfo.show==='0'" :product-id="query.productId"></all-ordered>
-      <colleague-ordered v-if="productInfo.show==='1'" :product-id="query.productId" :ent-id="query.entId" type="part"></colleague-ordered>
+      <colleague-ordered v-if="productInfo.show==='1'" type="part"></colleague-ordered>
       <div class="bottom-action">
         <div class="fixed-time">
           <template v-if="orderStart">
@@ -38,7 +38,9 @@ import countDown from '../../components/countDown'
 import helper from 'utils/helper'
 import { getPageQueryObject } from 'utils/assist'
 import { MessageBox } from 'mint-ui'
+import tShare from 'mixins/tShare'
 export default {
+  mixins: [tShare],
   data () {
     return {
       query: {},
@@ -67,6 +69,8 @@ export default {
       let res = await this.$Tfinance.product(this.query)
       this.productInfo = res.data
       helper.saveShareInfo({fxId: this.productInfo.wechatId})
+      helper.saveTFinanceInfo(this.productInfo)
+      this.shareConfig()
       this.showDataByStatus()
     },
     showDataByStatus () {
@@ -74,7 +78,6 @@ export default {
       this.orderStart = nowDate >= intentStartDate
       this.orderEnd = nowDate >= intentEndDate
       if (!this.checkFollowAndBind()) return
-      helper.saveTFinanceInfo(this.productInfo)
       if (intentStatus === 1) {
         this.$router.replace({ name: 'tfinanceResult' })
       }

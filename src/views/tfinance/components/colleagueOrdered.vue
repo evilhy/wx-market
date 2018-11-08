@@ -1,13 +1,13 @@
 <template>
-  <div class="colleague-ordered-wrap" v-if="totalPages">
-    <div class="white-box">
-      <div class="title-wrap">
+  <div class="colleague-ordered-wrap">
+    <div class="white-box" :class="{'no-pad': totalElements <=0}" v-infinite-scroll="getList" infinite-scroll-disabled="loading" infinite-scroll-distance="20">
+      <div class="title-wrap" v-if="totalElements !== -1">
         <dot-line direction="left"></dot-line>
         <span class="title" v-if="type==='part'">您公司这些小伙伴在关注该产品</span>
-        <span class="title" v-else>您公司共有{{totalElements}}位小伙伴预约了这款产品</span>
+        <span class="title" v-else>您公司有{{totalElements}}位小伙伴预约了该产品</span>
         <dot-line direction="right"></dot-line>
       </div>
-      <div class="list" v-infinite-scroll="getList" infinite-scroll-disabled="loading" infinite-scroll-distance="10">
+      <div class="list">
         <div class="item" v-for="(item, index) in list" :key="index">
           <avator size="small" :border="false" :src="item.headimgurl"></avator>
           <p class="text"><span class="name">{{item.nickname}}</span>
@@ -17,6 +17,7 @@
       </div>
     </div>
     <p class="tip" v-if="type=== 'part' && totalElements > 20">-- 仅展示前20条 --</p>
+    <p class="tip" v-if="type=== 'all' && totalElements > 20 && totalElements === list.length">-- 已经到底了 --</p>
   </div>
 </template>
 <script>
@@ -24,11 +25,8 @@ import dotLine from './dotLine'
 import avator from './avator'
 export default {
   props: {
-    productId: String,
-    entId: String,
     type: {
-      type: String,
-      default: 'all'
+      type: String
     }
   },
   data () {
@@ -36,17 +34,17 @@ export default {
       list: [],
       currentPage: 1,
       totalPages: 0,
-      totalElements: 0,
+      totalElements: -1,
       loading: false
     }
   },
   created () {
-    this.getList()
   },
   methods: {
     async getList () {
       this.loading = true
-      let res = await this.$Tfinance.operateList(this.productId, this.entId, this.currentPage)
+      let operate = this.type === 'all' ? 1 : -1
+      let res = await this.$Tfinance.operateList(this.currentPage, operate)
       this.list = this.list.concat(res.data.responeList)
       this.totalElements = res.data.totalElements
       this.totalPages = res.data.totalPages
