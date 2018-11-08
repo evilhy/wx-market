@@ -23,7 +23,7 @@
         </div>
         <div class="product-tags">
           <tag :content="`产品期限${term}天`" color="green"></tag>
-          <tag :content="`每万元收益${mark.amt}元`" color="green"></tag>
+          <tag :content="`万元收益${mark.amt}元`" color="green"></tag>
           <tag content="仅限放薪管家用户" color="green"></tag>
         </div>
       </swiper-slide>
