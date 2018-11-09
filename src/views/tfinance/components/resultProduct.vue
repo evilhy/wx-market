@@ -60,7 +60,7 @@ export default {
     calData () {
       let { markList, nowMark } = this.productInfo
       this.currentIndex = collect.indexOf(markList, 'markLevel', nowMark)
-      this.addedRate = markList[this.currentIndex].levelRate - markList[0].levelRate
+      this.addedRate = (markList[this.currentIndex].levelRate * 1000 - markList[0].levelRate * 1000) / 1000
     },
     calStatus (term) {
       this.$nextTick(() => {

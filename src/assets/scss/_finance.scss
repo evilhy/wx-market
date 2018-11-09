@@ -14,15 +14,15 @@
     height: px2rem(90px);
     line-height: px2rem(90px);
     position: relative;
-    padding-left: px2rem(16px);
-    @include font-dpr(28px);
+    padding-left: px2rem(12px);
+    @include font-dpr(26px);
     font-weight: bold;
     &::after{
       content: '';
       position: absolute;
       left: 0;
       top: 50%;
-      height: px2rem(28px);
+      height: px2rem(26px);
       width: px2rem(4px);
       transform: translateY(-50%);
       background: $fx-main-color
@@ -746,9 +746,6 @@
   .rate-wrap{
     .value{
       @include font-dpr(40px);
-    }
-    .stress{
-      @include font-dpr(32px);
     }
   }
   .limit-info{

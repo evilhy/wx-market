@@ -30,7 +30,7 @@
       {
         "markLevel": 0,
         "markRemark": "string",
-        "levelRate": 3.98,
+        "levelRate": 3.90,
         "minPeople": 0,
         "maxPeople": 0,
         "amt": 0,
@@ -40,7 +40,7 @@
       {
         "markLevel": 1,
         "markRemark": "string",
-        "levelRate": 4.98,
+        "levelRate": 4.90,
         "minPeople": 0,
         "maxPeople": 0,
         "amt": 0,
@@ -58,7 +58,7 @@
         "nowMark": 0
       }
     ],
-    "nowMark": 0,
+    "nowMark": 1,
     "intentNum": 4,
     "intentStatus": 0,
     "bindStatus": 0,
