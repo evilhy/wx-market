@@ -68,7 +68,7 @@
              v-else>
           <!-- 达成当前档位 -->
           <template v-if="markList[currentIndex].sucess === 1">
-            当前收益<span class="stress">{{markList[currentIndex].levelRate}}%</span>，再邀请<span class="stress">{{markList[currentIndex+1].minPeople - productInfo.intentNum}}</span>位同事可额外加息<span class="stress">{{markList[currentIndex+1].levelRate - markList[currentIndex].levelRate}}%</span>
+            当前收益<span class="stress">{{markList[currentIndex].levelRate}}%</span>，再邀请<span class="stress">{{markList[currentIndex+1].minPeople - productInfo.intentNum}}</span>位同事可额外加息<span class="stress">{{(markList[currentIndex+1].levelRate * 1000 - markList[currentIndex].levelRate * 1000) / 1000}}%</span>
           </template>
           <template v-else>
             额外邀请<span class="stress">{{markList[currentIndex].minPeople - productInfo.intentNum}}</span>位同事可获得收益<span class="stress">{{markList[currentIndex].levelRate}}%</span>
@@ -86,7 +86,7 @@
           <template v-if="markList[currentIndex].sucess === 1">
             您的理财收益为<span class="stress">{{markList[currentIndex].levelRate}}%</span>
             <span v-if="currentIndex === 0">未能获得额外加息</span>
-            <span v-if="currentIndex !== 0">获得<span class="stress">{{markList[currentIndex].levelRate - markList[currentIndex - 1].levelRate}}%</span>的加息</span>
+            <span v-if="currentIndex !== 0">获得<span class="stress">{{(markList[currentIndex].levelRate * 1000 - markList[currentIndex - 1].levelRate * 1000)/1000}}%</span>的加息</span>
           </template>
           <template v-else>
             您未达到最低档所需人数，无理财收益
