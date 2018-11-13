@@ -144,3 +144,14 @@ button {
         @include font-dpr(34px);
     }
 }
+.mint-msgbox{
+  .mint-msgbox-message{
+    @include font-dpr(26px);
+    line-height: 1.8;
+  }
+  .mint-msgbox-btns{
+    .mint-msgbox-confirm{
+      color: $fx-main-color;
+    }
+  }
+}

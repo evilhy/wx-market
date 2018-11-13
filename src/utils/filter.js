@@ -58,7 +58,7 @@ function monthZh (month, hasUnit = false) {
 function pastTime (pastTimeVal, nowTimeVal = new Date()) {
   let minutesGap = TimeInstance.getTimeDiff(pastTimeVal, nowTimeVal, 'i')
   if (minutesGap < 1) {
-    return '1分钟前'
+    return '刚刚'
   } else if (minutesGap >= 1 && minutesGap < 60) {
     return `${minutesGap}分钟前`
   } else if (minutesGap >= 60 && minutesGap < 1440) {
@@ -67,7 +67,10 @@ function pastTime (pastTimeVal, nowTimeVal = new Date()) {
     return TimeInstance.format(pastTimeVal, 'm月d号')
   }
 }
-
+function nameStar (name = '') {
+  if (typeOf(name) !== 'string' || !name.length) return ''
+  return name.substring(0, 1) + '**'
+}
 function msgTime (dateStr = '') {
   if (!dateStr) return
   let now = new Date()
@@ -90,6 +93,9 @@ function bankSpace (bankStr = '') {
   }
   return bankArr.join(' ')
 }
+function phoneStar(phone = '') {
+  return phone.replace(/(\d{3})\d{4}(\d{4})/, '$1****$2')
+}
 export default {
   date,
   money,
@@ -99,6 +105,8 @@ export default {
   banCardLast,
   monthZh,
   pastTime,
+  nameStar,
   msgTime,
-  bankSpace
+  bankSpace,
+  phoneStar
 }

@@ -1,42 +1,46 @@
 import storage from './storage'
-import router from '../router/index'
 import { typeOf } from './assist'
 import sysConfig from './constant'
 import { Toast } from 'mint-ui'
+const $getSessionObj = Symbol('$getSessionObj')
+const $setSessionObj = Symbol('$setSessionObj')
+const $updateSessionObj = Symbol('$updateSessionObj')
 let timer = null
 const helper = {
   title(title) {
     title = title || '放薪管家'
     window.document.title = title
   },
-  logout(routerName = 'login') {
-    this.clearUserInfo()
-    router.push({ name: routerName })
-  },
-  isLogin(toLogin) {
-    if (!storage.getLocal('token', '')) {
-      if (toLogin) {
-        // toLogin=true时，跳转登录
-        router.push({ name: 'login' })
+  [$getSessionObj] (storageKey = '', itemKey = '', defaultValue = '') {
+    if (typeOf(storageKey) !== 'string') throw new TypeError('获取缓存对象的storageKey字段类型须为string')
+    if (!storageKey) throw new Error('请指定获取缓存对象的storageKey')
+    if (itemKey) {
+      let storageObj = storage.getSession(storageKey, {})
+      if (typeOf(storageObj[itemKey] === 'undefined')) {
+        return defaultValue
+      } else {
+        return storageObj[itemKey]
       }
-      return false
-    } else {
-      return true
+    } else { 
+      return storage.getSession(storageKey, defaultValue)
     }
   },
-  getUserInfo(infoKey = '', defaultValue = '') {
-    if (infoKey) {
-      let userInfo = storage.getSession('userInfo', {})
-      return userInfo[infoKey] || defaultValue
-    } else {
-      return storage.getSession('userInfo', defaultValue)
-    }
+  [$setSessionObj] (storageKey = '', infoObj = {}) {
+    if (typeOf(storageKey) !== 'string') throw new TypeError('存储缓存对象的storageKey字段类型必须为string类型') 
+    if (typeOf(infoObj) !== 'object') throw new TypeError('存储缓存对象的值必须为object类型')
+    storage.setSession(storageKey, infoObj)
   },
-  saveUserInfo(infoObj) {
-    // 保存或更新部分字段
-    if (typeOf(infoObj) !== 'object') return false
-    let userInfo = storage.getSession('userInfo', {})
-    storage.setSession('userInfo', Object.assign(userInfo, infoObj))
+  [$updateSessionObj] (storageKey = '', infoObj) {
+    if (typeOf(storageKey) !== 'string') throw new TypeError('更新缓存对象的storageKey字段类型必须为string类型') 
+    if (typeOf(infoObj) !== 'object') throw new TypeError('更新缓存对象的值必须为object类型')
+    let storageObj = storage.getSession(storageKey, {})
+    storage.setSession(storageKey, { ...storageObj, ...infoObj })
+  },
+  getUserInfo (infoKey = '', defaultValue = '') {
+    return this[$getSessionObj]('userInfo', infoKey, defaultValue)
+  },
+  saveUserInfo (infoObj) {
+    this[$updateSessionObj]('userInfo', infoObj)
   },
   clearUserInfo() {
     storage.removeSession('userInfo')
@@ -81,6 +85,28 @@ const helper = {
         storage.setSession('bankWageList', bankWageList)
         return
       }
+    }
+  },
+  saveTFinanceInfo (info) {
+    this[$updateSessionObj]('tFinanceInfo', info)
+  },
+  getTFinanceInfo (infoKey = '', defaultValue = '') {
+    return this[$getSessionObj]('tFinanceInfo', infoKey, defaultValue)
+  },
+  saveShareInfo (info) {
+    this[$updateSessionObj]('shareInfo', info)
+  },
+  getShareInfo (infoKey = '', defaultValue = '') {
+    return this[$getSessionObj]('shareInfo', infoKey, defaultValue)
+  },
+  clearShareInfo () {
+    storage.removeSession('shareInfo')
+  },
+  clearSession (infoKey = '') {
+    if (infoKey) {
+      storage.removeSession(infoKey)
+    } else {
+      storage.clearSession()
     }
   },
   exit() {

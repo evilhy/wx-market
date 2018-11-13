@@ -10,6 +10,18 @@
           "hidden": false
         },
         {
+          "colName": "UNKNOWN",
+          "colNum": [27],
+          "type": "UNKNOWN",
+          "hidden": false
+        },
+        {
+          "colName": "空值",
+          "colNum": [28],
+          "type": "UNKNOWN",
+          "hidden": false
+        },
+        {
           "colName": "基本工资",
           "colNum": [3],
           "type": "SHOULD_AMT",
@@ -172,7 +184,7 @@
       { "colNum": 4, "value": 0 },
       { "colNum": 5, "value": 1000 },
       { "colNum": 6, "value": 6000 },
-      { "colNum": 7, "value": 26 },
+      { "colNum": 7, "value": 1 },
       { "colNum": 8, "value": 192.31 },
       { "colNum": 9, "value": 26 },
       { "colNum": 11, "value": 0 },
@@ -187,7 +199,9 @@
       { "colNum": 22, "value": 4729.15 },
       { "colNum": 23, "value": 1229.15 },
       { "colNum": 24, "value": 36.87 },
-      { "colNum": 26, "value": 4692.28 }
+      { "colNum": 26, "value": 4692.28 },
+      { "colNum": 27, "value": 0 },
+      { "colNum": 28, "value": 1 }
     ],
     "differRealAmt": 4692.28,
     "payStatus": "0"

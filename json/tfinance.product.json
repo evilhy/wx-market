@@ -1,0 +1,49 @@
+{
+  "wechatId": "wechatId001",
+  "entId": "entId001",
+  "productId": "productId001",
+  "productName": "同事理财团第一期",
+  "productDesc": "这是同事理财团的描述",
+  "promote": "<p>邀请<span style='color: rgb(252, 53, 53);'>1名同事</span>加息<span style='color: rgb(252, 53, 53);'>1.00%</span>，邀请<span style='color: rgb(252, 53, 53);'>2名同事</span>加息<span style='color: rgb(252, 53, 53);'>2.00%</span>11111111111111111111111111111111111111111111111143</p>",
+  "nowDate": 1541307256451,
+  "intentStartDate": 1541307251451,
+  "intentEndDate": 1541307996451,
+  "subscribeStartDate": 1541434626451,
+  "subscribeEndDate": 1541607426451,
+  "productTerm": 30,
+  "maxLimit": 10,
+  "minIntentAmt": 20000,
+  "markList": [
+    {
+      "markLevel": 1,
+      "markRemark": "基础档",
+      "levelRate": "3.98",
+      "minPeople": 1,
+      "maxPeople": 2,
+      "amt": 100
+    },
+    {
+      "markLevel": 1,
+      "markRemark": "进阶档",
+      "levelRate": "4.68",
+      "minPeople": 3,
+      "maxPeople": 5,
+      "amt": 120.01
+    },
+    {
+      "markLevel": 2,
+      "markRemark": "尊享档",
+      "levelRate": "5.08",
+      "minPeople": 6,
+      "maxPeople": 10,
+      "amt": 168.48
+    }
+  ],
+  "nowMark": 0,
+  "intentNum": 6,
+  "intentFlag": 1,
+  "intentStatus": 0,
+  "bindStatus": 1,
+  "followStatus": 1,
+  "show": "1"
+}
