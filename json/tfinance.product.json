@@ -20,6 +20,7 @@
       "levelRate": "3.98",
       "minPeople": 1,
       "maxPeople": 2,
+      "nowMark": 0,
       "amt": 100
     },
     {
@@ -28,6 +29,7 @@
       "levelRate": "4.68",
       "minPeople": 3,
       "maxPeople": 5,
+      "nowMark": 0,
       "amt": 120.01
     },
     {
@@ -36,6 +38,7 @@
       "levelRate": "5.08",
       "minPeople": 6,
       "maxPeople": 10,
+      "nowMark": 1,
       "amt": 168.48
     }
   ],

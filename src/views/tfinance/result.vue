@@ -4,7 +4,7 @@
     <result-product :term="currentTerm" :status="result.status" :product-info="productInfo"></result-product>
     <result-client :result="result" :product-info="productInfo"></result-client>
     <share-mark v-if="shareFlag" @close="shareFlag = false"></share-mark>
-    <buy-notice ref="buy-notice" :buy-start="productInfo.subscribeStartDate" :buy-end="productInfo.subscribeEndDate"></buy-notice>
+    <buy-notice ref="buy-notice" :buy-start="productInfo.subscribeStartDate" :buy-end="productInfo.subscribeEndDate" :phone="result.managerPhone"></buy-notice>
     <div class="bottom-action">
       <a class="btn white-btn ask-btn" :href="`tel: ${result.managerPhone}`" v-if="result.managerPhone">
         <img class="icon" src="../../assets/img/tfinance/icon-tel.png" alt=""/>
