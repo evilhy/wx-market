@@ -16,7 +16,7 @@ const helper = {
     if (!storageKey) throw new Error('请指定获取缓存对象的storageKey')
     if (itemKey) {
       let storageObj = storage.getSession(storageKey, {})
-      if (typeOf(storageObj[itemKey] === 'undefined')) {
+      if (typeOf(storageObj[itemKey]) === 'undefined') {
         return defaultValue
       } else {
         return storageObj[itemKey]
