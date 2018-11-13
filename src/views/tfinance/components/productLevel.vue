@@ -11,7 +11,7 @@
             <div class="line"></div>
             <div class="peo-box">
               <div class="label" v-if="mark.nowMark === 1">当前档位</div>
-              <div class="label" v-else>{{levelZh[currentIndex]}}</div>
+              <div class="label" v-else>{{levelZh[index]}}</div>
               <div class="text">同事*{{mark.minPeople}}</div>
             </div>
           </div>

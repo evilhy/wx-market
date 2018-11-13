@@ -47,7 +47,8 @@
     <template v-if="markList.length">
       <div class="avator-box"
            :class="{'more-avator-box': productInfo.intentNum > 3}"
-           v-if="result.list">
+           v-if="result.list"
+           @click="seeMore">
         <avator :class="`avator-${index}`"
                 size="large"
                 v-for="(avator, index) in result.list"
