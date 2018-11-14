@@ -7,6 +7,10 @@
         <input v-model.number="intentAmount" @blur="checkMoney" class="input" type="number" :placeholder="`最小预约金额${minIntentAmt}起`" >
         <span class="unit">元</span>
       </div>
+      <div class="protocol-wrap">
+        <v-checkbox v-model="protocol" name="protocol"></v-checkbox>
+        <span class="text" @click="openProtocol">阅读并同意<span class="theme-color">《华夏银行理财同事团活动用户协议》</span></span>
+      </div>
     </div>
     <manager-info :name="userInfo.managerName" :phone="userInfo.managerPhone" :avator="userInfo.managerImg"></manager-info>
     <div class="bottom-action">
@@ -18,12 +22,13 @@
           剩余<count-down :now="userInfo.nowDate" :target="intentEndDate" @end="orderEnd = true"></count-down>结束
         </template>
       </div>
-      <div class="btn theme-btn" :class="[this.userInfo.hxBank === 0 ? 'long' : 'full', {'gray-btn': orderEnd}]" @click="order">确认预约</div>
+      <div class="btn theme-btn" :class="[this.userInfo.hxBank === 0 ? 'long' : 'full', {'gray-btn': orderEnd || !protocol}]" @click="order">确认预约</div>
       <div class="btn white-btn short system-tip" @click="tipFlag = true" v-if="this.userInfo.hxBank === 0">
         <img class="icon" src="../../assets/img/tfinance/icon-system-tip.png" alt=""/>温馨提示</div>
     </div>
     <system-popup v-if="tipFlag" @close="tipFlag = false"></system-popup>
     <update-phone :phone="userInfo.clientPhone" @sure="updatePhone" @cancel="updatePhoneFlag = false" v-if="updatePhoneFlag"></update-phone>
+    <protocol ref="protocol"></protocol>
   </div>
 </template>
 <script>
@@ -32,6 +37,8 @@ import managerInfo from './components/managerInfo'
 import systemPopup from './components/systemPopup'
 import countDown from '../../components/countDown'
 import updatePhone from './components/updatePhone'
+import protocol from './components/protocol'
+import vCheckbox from '../../components/vCheckbox'
 import helper from 'utils/helper'
 export default {
   data () {
@@ -50,6 +57,7 @@ export default {
         hxBank: -1,
         nowDate: 0
       },
+      protocol: 1,
       intentEndDate: helper.getTFinanceInfo('intentEndDate'),
       minIntentAmt: helper.getTFinanceInfo('minIntentAmt'),
       tipFlag: false,
@@ -86,10 +94,11 @@ export default {
       return true
     },
     async order () {
-      if (this.orderEnd) return
+      if (this.orderEnd || !this.protocol) return
       if (!this.checkMoney()) return
       let { custManagerId, clientName, idNumber, clientPhone } = this.userInfo
       await this.$Tfinance.intent({
+        protocol: this.protocol,
         custManagerId,
         clientName,
         idNumber,
@@ -97,6 +106,9 @@ export default {
         intentAmount: this.intentAmount
       })
       this.$router.replace({ name: 'tfinanceResult' })
+    },
+    openProtocol () {
+      this.$refs['protocol'].open()
     }
   },
   components: {
@@ -104,7 +116,9 @@ export default {
     managerInfo,
     systemPopup,
     countDown,
-    updatePhone
+    updatePhone,
+    protocol,
+    vCheckbox
   }
 }
 </script>

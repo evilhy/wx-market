@@ -1,7 +1,7 @@
 <template>
   <div class="info-field-wrap white-box">
     <div class="line-title">预约人信息确认</div>
-    <div class="field">
+    <div class="field small-field">
       <span class="label">预约人</span>
       <span class="value">{{name}}</span>
     </div>

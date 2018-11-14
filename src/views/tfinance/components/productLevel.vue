@@ -15,11 +15,11 @@
               <div class="text">同事*{{mark.minPeople}}</div>
             </div>
           </div>
-          <!-- todo -->
           <p class="bottom-box" v-if="orderNum >= markList[markList.length - 1].minPeople">
             已有<span class="stress">{{orderNum}}</span>位同事完成预约，收益已达最高档位<span class="stress">{{markList[markList.length - 1].levelRate}}%</span>
           </p>
           <p class="bottom-box" v-else>已有<span class="stress">{{orderNum}}</span>位同事完成预约，再邀请<span class="stress">{{orderNum >= markList[currentIndex].minPeople ? (markList[currentIndex + 1].minPeople - orderNum) : (markList[currentIndex].minPeople - orderNum)}}</span>位同事收益可提升至<span class="stress">{{orderNum >= markList[currentIndex].minPeople ? markList[currentIndex + 1].levelRate : markList[currentIndex].levelRate }}%</span></p>
+          <img src="../../../assets/img/tfinance/icon-hx-bank.png" alt="" class="bank">
         </div>
         <div class="product-tags">
           <tag :content="`期限${term}天`" color="green"></tag>
