@@ -9,7 +9,7 @@
       <div class="input-wrap">
         <img src="../../assets/img/elife/elife-phone.png" alt="" class="icon">
         <span class="line"></span>
-        <input v-model.trim="phone" type="text" placeholder="请输入手机号" class="input" maxlength="11">
+        <input v-model.trim="phone" type="tel" placeholder="请输入手机号" class="input" maxlength="11">
       </div>
     </div>
     <div class="btn" @click="joinActivity">参与活动</div>

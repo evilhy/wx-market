@@ -5,7 +5,7 @@
         <div class="product-info" :class="orderNum >= mark.minPeople ? 'complete': 'uncomplete'">
           <div class="top-box">
             <div class="rate-box">
-              <div class="label">预期收益率</div>
+              <div class="label">预期年化收益率</div>
               <div class="text stress">{{mark.levelRate}}%</div>
             </div>
             <div class="line"></div>
@@ -22,9 +22,9 @@
           <p class="bottom-box" v-else>已有<span class="stress">{{orderNum}}</span>位同事完成预约，再邀请<span class="stress">{{orderNum >= markList[currentIndex].minPeople ? (markList[currentIndex + 1].minPeople - orderNum) : (markList[currentIndex].minPeople - orderNum)}}</span>位同事收益可提升至<span class="stress">{{orderNum >= markList[currentIndex].minPeople ? markList[currentIndex + 1].levelRate : markList[currentIndex].levelRate }}%</span></p>
         </div>
         <div class="product-tags">
-          <tag :content="`产品期限${term}天`" color="green"></tag>
-          <tag :content="`万元收益${mark.amt}元`" color="green"></tag>
-          <tag content="仅限放薪管家用户" color="green"></tag>
+          <tag :content="`期限${term}天`" color="green"></tag>
+          <tag :content="`万元预期收益${mark.amt}元`" color="green"></tag>
+          <tag content="限放薪管家用户" color="green"></tag>
         </div>
       </swiper-slide>
     </swiper>

@@ -4,6 +4,10 @@ import sysConfig from 'utils/constant'
 import crypto from 'utils/crypto'
 const moduleName = 'elife'
 class Elife {
+  /**
+   * 根据code获取用户信息(新闻乐荐)
+   * @param {String} code 用户微信code
+   */
   getUserInfo(code) {
     let http = new Http()
     http.path = `/${moduleName}`
@@ -11,6 +15,11 @@ class Elife {
     http.loading = false
     return http.get()
   }
+  /**
+   * 参与喜闻乐荐活动
+   * @param {String} name 参与者姓名
+   * @param {*} phone 参与者手机号
+   */
   joinActivity(name, phone) {
     let jsessionId = helper.getUserInfo('jsessionId', '')
     let http = new Http()
@@ -18,6 +27,11 @@ class Elife {
     http.body = { name, phone, jsessionId }
     return http.post()
   }
+  /**
+   * 喜闻乐荐--智慧社区接口
+   * @param {*} param0
+   * @param {*} loading
+   */
   postElife({
     name = '',
     phone = '',
@@ -46,6 +60,27 @@ class Elife {
       branch_name: branchOrgName
     }
     http.loading = loading
+    return http.post()
+  }
+  /**
+   * 根据code获取用户信息(薪有所属，畅想福利)
+   * @param {String} code 用户微信code
+   */
+  xuser (code) {
+    let http = new Http()
+    http.path = `/${moduleName}/xuser`
+    http.query = { code }
+    http.loading = false
+    return http.get()
+  }
+  /**
+   * 参与薪有所属活动
+   * @param {Object} param0 
+   */
+  xjoin (idNumber = '', phone = '', code = '', codeId = '') {
+    let http = new Http()
+    http.path = `/${moduleName}/xjoin`
+    http.body = { idNumber, phone, code, codeId }
     return http.post()
   }
 }

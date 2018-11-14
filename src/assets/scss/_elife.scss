@@ -60,3 +60,108 @@
     width: 100%;
   }
 }
+.elife-xlogin-page{
+  height: 100%;
+  background: #3dd0cd;
+  @include font-dpr(26px);
+  .scroll-wrap{
+    padding: px2rem(560px) px2rem(40px) px2rem(40px);
+    background: #3dd0cd url('../img/elife/elife-xactivity-bg.png') no-repeat;
+    background-size: 100% auto;
+  }
+  .input-form{
+    margin-bottom: px2rem(40px);
+  }
+  .input-wrap{
+    position: relative;
+    width: px2rem(560px);
+    height: px2rem(80px);
+    padding: 0 px2rem(34px);
+    background: #03BDB7;
+    border: 1px solid #9BF0EC;
+    border-radius: px2rem(40px);
+    display: flex;
+    align-items: center;
+    margin-bottom: px2rem(28px);
+    &:last-child{
+      margin-bottom: 0;
+    }
+    &.disabled{
+      background: #31cfce;
+    }
+    .icon{
+      height: px2rem(32px);
+      margin-right: px2rem(20px);
+    }
+    .input{
+      background: transparent;
+      border: none;
+      color: #fff;
+      padding: px2rem(14px) 0;
+      @include placeholder () {
+        color: #96E2E0;
+      }
+      &[disabled]{
+        color: #9BF0EC;
+      }
+    }
+    &.half{
+      width: px2rem(320px);
+    }
+    .vcode-btn{
+      position: absolute;
+      left: 100%;
+      width: px2rem(226px);
+      padding: 0;
+      margin-left: px2rem(14px);
+      @include font-dpr(26px);
+      &.disabled{
+        color: #666;
+        background-image: linear-gradient(-180deg, #c5c5c2 0%, #a7a6a5 100%);
+      }
+    }
+  }
+  .btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: px2rem(80px);
+    color: #E85218;
+    background-image: linear-gradient(-180deg, #FFEC8B 0%, #FFC948 100%);
+    border-radius: px2rem(40px);
+  }
+  .join-btn{
+    @include font-dpr(30px);
+  }
+  .tip-wrap{
+    padding-top: px2rem(30px);
+    color: #02807C;
+    @include font-dpr(24px);
+    line-height: 2;
+    font-weight: 200;
+    .title-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-bottom: px2rem(10px);
+      font-weight: normal;
+      .title {
+        padding: 0 px2rem(20px);
+      }
+      .line {
+        width: px2rem(60px);
+        height: px2rem(2px);
+        background: #03BDB7;
+      }
+    }
+    .tip-item{
+      margin-left: px2rem(40px);
+      list-style-type: disc;
+    }
+  }
+}
+.elife-xresult-page{
+  .img{
+    width: 100%;
+  }
+}

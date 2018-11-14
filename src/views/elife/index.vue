@@ -1,4 +1,5 @@
 <template>
+  <!-- 喜闻乐见 -->
   <div class="elife-index-page">
     <loading></loading>
   </div>
@@ -16,7 +17,6 @@ export default {
     }
   },
   created () {
-    helper.clearUserInfo()
     this.query = getPageQueryObject()
     this.getUserInfo()
   },

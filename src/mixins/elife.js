@@ -13,6 +13,9 @@ export default {
             helper.toast(data.ret_msg)
           }
         })
+    },
+    postElifeX (data, loading = true) {
+      this.$router.replace({ name: 'elifeXResult' })
     }
   }
 }

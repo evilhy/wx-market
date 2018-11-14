@@ -16,6 +16,8 @@ var managerInfo = require('./json/manager.managerInfo.json')
 var distribute = require('./json/manager.distribute.json')
 var elifeGetUserInfo = require('./json/elife.getUserInfo.json')
 var elifeJoinActivity = require('./json/elife.joinActivity.json')
+var elifeXUser = require('./json/elife.xuser.json')
+var elifeXJoin = require('./json/elife.xjoin.json')
 var tfinanceList = require('./json/tfinance.list.json')
 var tfinanceProduct = require('./json/tfinance.product.json')
 var intentionList = require('./json/tfinance.intentionList.json')
@@ -102,6 +104,12 @@ module.exports = {
       },
       '/tfinance/intentInfo': {
         get: tfinanceIntentInfo
+      },
+      '/elife/xuser': {
+        get: elifeXUser
+      },
+      '/elife/xjoin': {
+        post: elifeXJoin
       }
     }
   },{

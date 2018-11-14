@@ -2220,6 +2220,14 @@
     height: 100%;
   }
 }
+.vcode-btn{
+  display: inline-flex;
+  padding: 5px;
+  color: $fx-main-color;
+  &.disabled{
+    color: #999;
+  }
+}
 @media screen and (width: 320px) {
   .home-page .my-income {
     padding: px2rem(44px) px2rem(20px);

@@ -104,8 +104,8 @@ export default new Router({
       component: resolve => { require(['../views/tax/taxCalculator.vue'], resolve) }
     },
     {
-      path: '/elife',        // 喜闻乐荐首页
-      name: 'elife',
+      path: '/elife-index',       // 喜闻乐荐首页
+      name: 'elifeIndex',
       component: resolve => { require(['../views/elife/index.vue'], resolve) }
     },
     {
@@ -117,6 +117,21 @@ export default new Router({
       path: '/elife-process',   // 喜闻乐荐流程图页
       name: 'elifeProcess',
       component: resolve => { require(['../views/elife/process.vue'], resolve) }
+    },
+    {
+      path: '/elife-xindex',   // 薪有所属首页
+      name: 'elifeXIndex',
+      component: resolve => { require(['../views/elife/xindex.vue'], resolve) }
+    },
+    {
+      path: '/elife-xlogin',   // 心有所属登录页
+      name: 'elifeXLogin',
+      component: resolve => { require(['../views/elife/xlogin.vue'], resolve) }
+    },
+    {
+      path: '/elife-xresult',   // 心有所属结果页
+      name: 'elifeXResult',
+      component: resolve => { require(['../views/elife/xresult.vue'], resolve) }
     },
     {
       path: '/tfinance-share',   // 同事团分享前置页

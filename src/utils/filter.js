@@ -96,6 +96,12 @@ function bankSpace (bankStr = '') {
 function phoneStar(phone = '') {
   return phone.replace(/(\d{3})\d{4}(\d{4})/, '$1****$2')
 }
+function star(str = '') {
+  if (str.length < 9) {
+    return str
+  }
+  return str.replace(/^(.{6})(?:\d+)(.{4})$/, '$1******$2')
+}
 export default {
   date,
   money,
@@ -108,5 +114,6 @@ export default {
   nameStar,
   msgTime,
   bankSpace,
-  phoneStar
+  phoneStar,
+  star
 }
