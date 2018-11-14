@@ -78,9 +78,10 @@ class Elife {
    * @param {Object} param0 
    */
   xjoin (idNumber = '', phone = '', code = '', codeId = '') {
+    let jsessionId = helper.getUserInfo('jsessionId', '')
     let http = new Http()
     http.path = `/${moduleName}/xjoin`
-    http.body = { idNumber, phone, code, codeId }
+    http.body = { idNumber, phone, code, codeId, jsessionId }
     return http.post()
   }
 }
