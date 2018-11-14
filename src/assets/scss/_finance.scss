@@ -131,6 +131,7 @@
       @include font-dpr(20px);
       &:nth-child(2) {
         margin: 0 px2rem(16px);
+        flex: 1.5;
       }
     }
   }
