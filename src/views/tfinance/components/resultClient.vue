@@ -38,7 +38,7 @@
       </div>
       <div class="field">
         <span class="label">到期兑付时间</span>
-        <span class="value order-term">{{result.dealDateTime | date('Y/m/d H:i:s')}}</span>
+        <span class="value order-term">{{result.dealDateTime | date('Y/m/d')}}</span>
       </div>
     </template>
   </div>
