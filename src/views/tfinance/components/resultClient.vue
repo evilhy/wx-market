@@ -29,6 +29,10 @@
         <span class="value">{{result.subcribeDateTime | date('Y/m/d H:i:s')}}</span>
       </div>
       <div class="field">
+        <span class="label">认购利率</span>
+        <span class="value">{{result.subcribeRate}}%</span>
+      </div>
+      <div class="field">
         <span class="label">预期收益(元)</span>
         <span class="value">{{result.profit | money}}</span>
       </div>
@@ -60,6 +64,7 @@ export default {
           crtDateTime: 0,
           subcribeAmount: 0,
           subcribeDateTime: 0,
+          subcribeRate: 0,
           profit: 0,
           dealDateTime: 0
         }

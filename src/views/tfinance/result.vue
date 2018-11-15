@@ -41,6 +41,7 @@ export default {
         crtDateTime: 0,
         subcribeAmount: 0,
         subcribeDateTime: 0,
+        subcribeRate: 0,
         profit: 0,
         dealDateTime: 0,
         list: [],
