@@ -166,3 +166,23 @@
     display: block;
   }
 }
+.rule-btn{
+  position: fixed;
+  top: 50%;
+  right: px2rem(8px);
+  width: px2rem(128px);
+  height: px2rem(110px);
+  margin-top: px2rem(-55px);
+}
+.x-rule-popup{
+  .mint-header{
+    background: white !important;
+  }
+  .content-wrap{
+    padding: 0 !important;
+    img{
+      width: 100%;
+      display: block;
+    }
+  }
+}

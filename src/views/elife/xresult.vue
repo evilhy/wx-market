@@ -6,11 +6,14 @@
 </template>
 
 <script>
+import helper from 'utils/helper'
 export default {
   data () {
     return {}
   },
-  created () {},
+  created () {
+    helper.title('薪有所属 畅享福利')
+  },
   methods: {}
 }
 </script>

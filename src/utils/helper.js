@@ -63,7 +63,7 @@ const helper = {
     })
     timer = setTimeout(() => {
       instance.close()
-    }, 1500)
+    }, duration)
   },
   saveRemainTime() {
     let phone = helper.getUserInfo('phone', '')

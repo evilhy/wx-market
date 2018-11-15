@@ -25,6 +25,8 @@
       </ul>
     </div>
     </div>
+    <img src="../../assets/img/elife/elife-xrule-btn.png" class="rule-btn" @click="openRule"/>
+    <xrule ref="xrule"></xrule>
   </div>
 </template>
 <script>
@@ -33,6 +35,7 @@ import helper from 'utils/helper'
 import filter from 'utils/filter'
 import validate from 'utils/validate'
 import vcodeBtn from 'components/vcodeBtn'
+import xrule from './xrule'
 export default {
   mixins: [elife],
   data () {
@@ -50,6 +53,7 @@ export default {
     }
   },
   created () {
+    helper.title('薪有所属 畅享福利')
     this.getQueryParams()
   },
   methods: {
@@ -85,10 +89,14 @@ export default {
         return false
       }
       return true
+    },
+    openRule () {
+      this.$refs['xrule'].show()
     }
   },
   components: {
-    vcodeBtn
+    vcodeBtn,
+    xrule
   }
 }
 </script>
