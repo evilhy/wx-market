@@ -4,8 +4,8 @@
       <div class="input-form">
       <div class="input-wrap" :class="{'disabled': idNumberDisabled}">
         <img src="../../assets/img/elife/elife-xid.png" alt="" class="icon">
-        <input v-if="idNumberDisabled" :value="star(idNumber)" type="text" disabled placeholder="请输入身份证号" class="input" maxlength="18">
-        <input v-else v-model.trim="idNumber" type="text" :disabled="idNumberDisabled" placeholder="请输入身份证号" class="input" maxlength="18">
+        <!-- <input v-if="idNumberDisabled" :value="star(idNumber)" type="text" disabled placeholder="请输入身份证号" class="input" maxlength="18"> -->
+        <input v-model.trim="idNumber" type="text" :disabled="idNumberDisabled" placeholder="请输入身份证号" class="input" maxlength="18">
       </div>
       <div class="input-wrap">
         <img src="../../assets/img/elife/elife-xphone.png" alt="" class="icon">

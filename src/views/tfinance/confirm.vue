@@ -1,6 +1,6 @@
 <template>
   <div class="t-finance-confirm-page t-finance-page">
-    <client-info :name="userInfo.clientName" :id-number="userInfo.idNumberStar" :phone="userInfo.clientPhone" @update="updatePhoneFlag = true"></client-info>
+    <client-info :name="userInfo.clientName" :id-number="userInfo.idNumber" :phone="userInfo.clientPhone" @update="updatePhoneFlag = true"></client-info>
     <div class="amt-wrap">
       <div class="line-title">预约额度填写</div>
       <div class="input-wrap">
