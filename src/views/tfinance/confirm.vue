@@ -4,7 +4,7 @@
     <div class="amt-wrap">
       <div class="line-title">预约额度填写</div>
       <div class="input-wrap">
-        <input v-model.number="intentAmount" @blur="checkMoney" class="input" type="number" :placeholder="`最小预约金额${minIntentAmt}起`" >
+        <input v-model.number="intentAmount" class="input" type="number" :placeholder="`最小预约金额${minIntentAmt}起`">
         <span class="unit">元</span>
       </div>
       <div class="protocol-wrap">
@@ -57,6 +57,7 @@ export default {
         hxBank: -1,
         nowDate: 0
       },
+      maxIntentAmount: 10000000,
       protocol: 1,
       intentEndDate: helper.getTFinanceInfo('intentEndDate'),
       minIntentAmt: helper.getTFinanceInfo('minIntentAmt'),
@@ -90,6 +91,10 @@ export default {
       }
       if (Number(this.intentAmount) < this.minIntentAmt) {
         this.intentAmount = this.minIntentAmt
+      }
+      if (Number(this.intentAmount) > this.maxIntentAmount) {
+        helper.toast('预约金额上限1000万，大额预约请联系客户经理')
+        return false
       }
       return true
     },

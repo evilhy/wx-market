@@ -61,7 +61,7 @@ export default {
     }
   },
   created () {
-    helper.title('同事理财团')
+    helper.title('理财同事团')
     this.query = getPageQueryObject()
     this.getProductInfo()
   },
