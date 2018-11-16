@@ -1,5 +1,5 @@
 <template>
-  <span class="dount-down">
+  <span class="count-down">
     <template v-if="showDay">
       <span class="days" v-show="remainTimeObject.days > 0">{{remainTimeObject.days}}</span>
       <span class="unit" v-show="remainTimeObject.days > 0">{{currentFormat[0]}}</span>
