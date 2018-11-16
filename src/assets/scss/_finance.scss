@@ -126,7 +126,6 @@
       flex: 1;
       justify-content: center;
       align-items: center;
-      font-weight: 100;
       text-align: center;
       @include font-dpr(20px);
       &:nth-child(2) {
@@ -170,7 +169,6 @@
   background: #f5f7fa;
   line-height: 1;
   color: #737d99;
-  font-weight: 200;
   @include font-dpr(22px);
   .img {
     width: px2rem(30px);
@@ -377,7 +375,6 @@
       line-height: px2rem(40px);
       background: #f7f8fa;
       border-radius: px2rem($radius-s);
-      font-weight: 200;
       .bold{
         font-weight: normal;
       }
@@ -388,12 +385,10 @@
   @include font-dpr(26px);
   .content {
     line-height: px2rem(40px);
-    font-weight: 200;
     p{
       margin-bottom: px2rem(20px);
     }
     .bold{
-      font-weight: normal;
     }
   }
   .tip {
@@ -640,7 +635,6 @@
       text-indent: px2rem(40px);
       text-align: left;
       margin: px2rem(24px) 0;
-      font-weight: 200;
       &::after{
         content: '';
         position: absolute;

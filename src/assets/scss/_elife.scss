@@ -138,13 +138,11 @@
     color: #02807C;
     @include font-dpr(24px);
     line-height: 2;
-    font-weight: 200;
     .title-wrap {
       display: flex;
       justify-content: center;
       align-items: center;
       padding-bottom: px2rem(10px);
-      font-weight: normal;
       .title {
         padding: 0 px2rem(20px);
       }
