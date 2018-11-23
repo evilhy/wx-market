@@ -26,6 +26,7 @@ var tfinanceIntent = require('./json/tfinance.intent.json')
 var tfinanceIntentInfo = require('./json/tfinance.intentInfo.json')
 var tfinanceUserInfo = require('./json/tfinance.userInfo.json')
 var elifePlantform710001 = require('./json/elife.plantform710001.json')
+var elifePlantform710002 = require('./json/elife.plantform710002.json')
 module.exports = {
   openApi: [{
     baseURL: 'http://10.5.1.71:8080/rest',
@@ -117,6 +118,9 @@ module.exports = {
     paths: {
       '/plantform710001.json': {
         post: elifePlantform710001
+      },
+      '/plantform710002.json': {
+        post: elifePlantform710002
       }
     }
   }],

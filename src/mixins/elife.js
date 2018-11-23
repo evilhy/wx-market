@@ -15,7 +15,17 @@ export default {
         })
     },
     postElifeX (data, loading = true) {
-      this.$router.replace({ name: 'elifeXResult' })
+      this
+        .$Elife
+        .postElifeX(data, loading)
+        .then((res) => {
+          let data = res.data
+          if (data.ret_code === '0000') {
+            window.location.replace(data.url)
+          } else {
+            helper.toast(data.ret_msg)
+          }
+        })
     }
   }
 }

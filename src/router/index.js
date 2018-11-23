@@ -134,6 +134,11 @@ export default new Router({
       component: resolve => { require(['../views/elife/xresult.vue'], resolve) }
     },
     {
+      path: '/elife-xend',   // 心有所属结束页
+      name: 'elifeXEnd',
+      component: resolve => { require(['../views/elife/xend.vue'], resolve) }
+    },
+    {
       path: '/tfinance-share',   // 同事团分享前置页
       name: 'tfinanceShare',
       component: resolve => { require(['../views/tfinance/share.vue'], resolve) }

@@ -23,12 +23,16 @@ export default {
   methods: {
     async getXUSer () {
       let res = await this.$Elife.xuser(this.query.code)
-      let { jsessionId, idNumber = '', phone = '', join } = res.data
+      let { jsessionId, idNumber = '', phone = '', join, end = 0 } = res.data
       helper.saveUserInfo({ jsessionId })
       if (join === 1) {
         this.postElifeX(res.data, false)
       } else {
-        this.$router.replace({ name: 'elifeXLogin', query: { idNumber, phone } })
+        if (end === 1) {
+          this.$router.replace({ name: 'elifeXEnd' })
+        } else {
+          this.$router.replace({ name: 'elifeXLogin', query: { idNumber, phone } })
+        }
       }
     }
   },

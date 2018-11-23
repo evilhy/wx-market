@@ -84,5 +84,40 @@ class Elife {
     http.body = { idNumber, phone, code, codeId, jsessionId }
     return http.post()
   }
+  /**
+   * 心有所属--智慧社区接口
+   * @param {*} param0
+   * @param {*} loading
+   */
+  postElifeX({
+    name = '',
+    phone = '',
+    managerName = '',
+    mobile = '',
+    branchOrgNo = '',
+    branchOrgName = '',
+    officer = ''
+  }, loading) {
+    let http = new Http()
+    let appKey = 'testappkey'
+    let timestamp = new Date().getTime().toString()
+    let sign = crypto.MD5(appKey + timestamp.toString()).toUpperCase()
+    http.baseURL = sysConfig.elife_base_url[sysConfig.node_env]
+    http.path = '/plantform710002.json'
+    http.body = {
+      appKey,
+      timestamp,
+      sign,
+      cust_name: name,
+      cust_phone_uid: phone,
+      cust_manager_name: managerName,
+      cust_manager_phone_uid: mobile,
+      deposit_code: officer,
+      branch_id: branchOrgNo,
+      branch_name: branchOrgName
+    }
+    http.loading = loading
+    return http.post()
+  }
 }
 export default new Elife()
