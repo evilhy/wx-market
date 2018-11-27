@@ -23,6 +23,9 @@ export default {
       isVerticalScreen: true
     }
   },
+  created() {
+    window.router = this.$router
+  },
   mounted () {
     if (sysConfig.node_env === 'production') {
       this.isWeixin = checkIsWeixin()
