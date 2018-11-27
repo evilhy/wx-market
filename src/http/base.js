@@ -4,7 +4,7 @@ import helper from 'src/utils/helper'
 import UUID from 'src/utils/uuid'
 import { Indicator } from 'mint-ui'
 import _ from 'lodash'
-
+import _this from 'src/main'
 export default class HttpForApplication extends HttpEngine {
   headers = {
     'Content-Type': 'application/json; charset=utf-8'
@@ -15,7 +15,8 @@ export default class HttpForApplication extends HttpEngine {
   beforeSendRequestHandler (config) {
     config.headers = Object.assign(config.headers, {
       jsessionId: helper.getUserInfo('jsessionId', ''),
-      reqId: UUID.createUUID()
+      reqId: UUID.createUUID(),
+      referer: _this._route.name
     })
     config.loading && Indicator.open({ spinnerType: 'double-bounce' })
   }

@@ -24,8 +24,8 @@ Vue.use(VueClipboard)
 Vue.use(VueAwesomeSwiper)
 Vue.component(VeHistogram.name, VeHistogram)
 /* eslint-disable no-new */
-new Vue({
+export default new Vue({
   el: '#app',
   router,
   render: h => h(App)
-})
+}) 
