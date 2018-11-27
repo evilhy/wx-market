@@ -16,7 +16,7 @@ export default class HttpForApplication extends HttpEngine {
     config.headers = Object.assign(config.headers, {
       jsessionId: helper.getUserInfo('jsessionId', ''),
       reqId: UUID.createUUID(),
-      referer: _this._route.name
+      routeName: _this._route.name
     })
     config.loading && Indicator.open({ spinnerType: 'double-bounce' })
   }
