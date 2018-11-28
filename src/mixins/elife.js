@@ -14,7 +14,7 @@ export default {
           }
         })
     },
-    postElifeX (data, loading = true) {
+    /* postElifeX (data, loading = true) {
       this
         .$Elife
         .postElifeX(data, loading)
@@ -26,6 +26,9 @@ export default {
             helper.toast(data.ret_msg)
           }
         })
+    } */
+    postElifeX () {
+      this.$router.replace({ name: 'elifeXResult' })
     }
   }
 }
