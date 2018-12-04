@@ -32,7 +32,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
     new BundleAnalyzerPlugin({
       analyzerMode: 'server',
-      analyzerHost: '127.0.0.1',
+      analyzerHost: '0.0.0.0',
       analyzerPort: 8889,
       reportFilename: 'report.html',
       defaultSizes: 'parsed',
