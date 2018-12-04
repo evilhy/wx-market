@@ -9,8 +9,7 @@
     "start": "npm run dev",
     "test": "node build/test.js",
     "build": "node build/build.js",
-    "lint": "eslint --ext .js,.vue src",
-    "analyz": "NODE_ENV=test npm_config_report=true npm run test"
+    "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
