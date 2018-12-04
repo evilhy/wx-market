@@ -37,6 +37,7 @@
   </div>
 </template>
 <script type="text/ecmascript-6">
+import { swiper, swiperSlide } from 'vue-awesome-swiper'
 import helper from 'utils/helper'
 import ImgViewer from 'components/imgViewer'
 export default {
@@ -85,7 +86,9 @@ export default {
     }
   },
   components: {
-    ImgViewer
+    ImgViewer,
+    swiper, 
+    swiperSlide
   }
 }
 </script>

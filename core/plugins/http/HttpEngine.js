@@ -3,7 +3,6 @@
  */
 /* eslint-disable */
 import axios from "axios";
-import _ from "lodash";
 import Utils from "./Utils";
 import DebugOk from "./DebugOk";
 import DebugFail from "./DebugFail";

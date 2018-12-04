@@ -14,6 +14,7 @@
 <script type="text/ecmascript-6">
 import storage from 'utils/storage'
 import helper from 'utils/helper'
+import { swiper } from 'vue-awesome-swiper'
 import wageDetailItem from 'components/wageDetailItem'
 export default {
   data () {
@@ -32,6 +33,7 @@ export default {
   methods: {
   },
   components: {
+    swiper,
     wageDetailItem
   }
 }

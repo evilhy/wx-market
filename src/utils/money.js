@@ -87,6 +87,7 @@ export function unformat (value) {
 /**
  * 处理数字的精度
  * toFixed(0.623, 2) => '0.62'
+ * toFixed(0.626, 2) => '0.63'
  * @export
  * @param {any} value
  * @param {number} [precision=0]     // 精度

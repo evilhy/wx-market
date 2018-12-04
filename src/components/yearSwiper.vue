@@ -14,7 +14,12 @@
 </template>
 
 <script>
+import { swiper, swiperSlide } from 'vue-awesome-swiper'
 export default {
+  components: {
+    swiper, 
+    swiperSlide
+  },
   props: {
     years: {
       type: Array,
@@ -50,8 +55,5 @@ export default {
   }
 }
 </script>
-<style lang="scss" rel="stylesheet/scss" scoped>
-
-</style>
 
 

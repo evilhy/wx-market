@@ -2,8 +2,6 @@
  * Created by duy on 2018/8/17 10:26.
  */
 
-import _ from 'lodash';
-
 const $config = Symbol('$config');
 const $headers = Symbol('$headers');
 const $data = Symbol('$data');

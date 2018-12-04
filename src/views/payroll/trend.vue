@@ -16,14 +16,19 @@
 import 'echarts/lib/component/markLine'
 import 'echarts/lib/component/markPoint'
 import 'echarts/lib/component/tooltip'
+import VeHistogram from 'v-charts/lib/histogram'
 import recentMonthWage from 'components/recentMonthWage'
+import { swiper, swiperSlide } from 'vue-awesome-swiper'
 import yearSwiper from 'components/yearSwiper'
 import filter from 'utils/filter'
 
 export default {
   components: {
     recentMonthWage,
-    yearSwiper
+    yearSwiper,
+    VeHistogram,
+    swiper, 
+    swiperSlide
   },
   data () {
     return {

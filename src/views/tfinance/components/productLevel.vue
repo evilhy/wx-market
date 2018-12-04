@@ -37,6 +37,7 @@
   </div>
 </template>
 <script>
+import { swiper, swiperSlide } from 'vue-awesome-swiper'
 import tag from './tag'
 export default {
   props: {
@@ -74,7 +75,9 @@ export default {
   methods: {
   },
   components: {
-    tag
+    tag,
+    swiper, 
+    swiperSlide
   }
 }
 </script>

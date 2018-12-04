@@ -34,8 +34,10 @@
     </swiper-slide>
 </template>
 <script>
+import { swiperSlide } from 'vue-awesome-swiper'
 import storage from 'utils/storage'
 export default {
+    components: { swiperSlide },
     props: {
         wage: {
             type: Object

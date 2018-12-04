@@ -3,7 +3,6 @@
  */
 /* eslint-disable */
 import DebugEngine from './DebugEngine';
-import _ from "lodash";
 
 const $errorMessage = Symbol('errorMessage');
 

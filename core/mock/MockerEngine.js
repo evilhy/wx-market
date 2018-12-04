@@ -1,8 +1,6 @@
 /**
  * Created by duy on 2018/7/2 15:51.
  */
-
-import _ from 'lodash';
 import Paths from 'swagger-paths';
 import MockResolveResponse from './MockResolveResponse';
 import MockRejectError from './MockRejectError';

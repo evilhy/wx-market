@@ -69,11 +69,13 @@
     </swiper-slide>
 </template>
 <script>
+import { swiperSlide } from 'vue-awesome-swiper'
 import storage from 'utils/storage'
 import collect from 'utils/collect'
 import { typeOf } from 'utils/assist'
 import helper from 'utils/helper'
 export default {
+    components: { swiperSlide },
     props: {
         wage: {
             type: Object

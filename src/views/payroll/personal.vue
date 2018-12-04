@@ -41,9 +41,14 @@
 </template>
 
 <script type="text/ecmascript-6">
+import { swiper, swiperSlide } from 'vue-awesome-swiper'
 import helper from 'utils/helper'
 
 export default {
+  components: {
+    swiper, 
+    swiperSlide
+  },
   data () {
     return {
       empList: [],

@@ -40,7 +40,6 @@
   import LatestTaxCalculator from 'utils/TaxCalculator/LatestTaxCalculator'
   import PreviousTaxCalculator from 'utils/TaxCalculator/PreviousTaxCalculator'
   import TaxState from 'utils/TaxCalculator/TaxState'
-  import _ from 'lodash'
   export default {
     computed: {
       income () {
@@ -51,6 +50,7 @@
       },
       saveAmount () {
         return this.previousData.tax >= this.latestData.tax
+        // eslint-disable-next-line
           ? _.floor((this.previousData.tax - this.latestData.tax) * 12, 2)
           : 0
       },

@@ -25,6 +25,7 @@
 </template>
 
 <script>
+import { swiper } from 'vue-awesome-swiper'
 import managerAvator from 'components/managerAvator'
 import wageIndexItem from 'components/wageIndexItem'
 import storage from 'utils/storage'
@@ -71,6 +72,7 @@ export default {
     }
   },
   components: {
+    swiper,
     managerAvator,
     wageIndexItem
   }

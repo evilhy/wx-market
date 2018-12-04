@@ -2,14 +2,14 @@ import HttpEngine from 'core/plugins/http/HttpEngine'
 import sysConfig from 'src/utils/constant'
 import helper from 'src/utils/helper'
 import UUID from 'src/utils/uuid'
+import { typeOf } from 'utils/assist'
 import { Indicator } from 'mint-ui'
-import _ from 'lodash'
 export default class HttpForApplication extends HttpEngine {
   headers = {
     'Content-Type': 'application/json; charset=utf-8'
   }
   baseURL = sysConfig.http_base_url[sysConfig.node_env]
-  mockTimeout = 1
+  mockTimeout = 2
   requestedSever = sysConfig.requested_sever
   beforeSendRequestHandler (config) {
     config.headers = Object.assign(config.headers, {
@@ -27,10 +27,10 @@ export default class HttpForApplication extends HttpEngine {
   beforeErrorResponseHandler (error) {
     error.config.loading && Indicator.close()
     let errorMsg = error.message
-    if (_.isObject(error.response)) {
-      if (_.isObject(error.response.data)) {
+    if (typeOf(error.response) === 'object') {
+      if (typeOf(error.response.data) === 'object') {
         errorMsg = error.response.data['errorMsg']
-      } else if (_.isString(error.response.data)) {
+      } else if (typeOf(error.response.data) === 'string') {
         errorMsg = error.response.data
       }
     }

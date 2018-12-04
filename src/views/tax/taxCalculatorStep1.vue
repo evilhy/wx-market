@@ -31,12 +31,12 @@
 </template>
 
 <script>
-  import _ from 'lodash'
+  import { typeOf } from 'utils/assist'
   import TaxState from 'utils/TaxCalculator/TaxState'
   export default {
     computed: {
       disabledSubmit () {
-        return !(_.isNumber(this.income) && _.isNumber(this.deduction))
+        return !(typeOf(this.income) === 'number' && typeOf(this.deduction) === 'number')
       }
     },
     data: () => ({
