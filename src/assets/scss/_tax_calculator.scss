@@ -286,22 +286,27 @@
     width: 100%;
     bottom: 0;
     height: px2rem(120px);
+    padding: 0 px2rem(20px);
     display: flex;
     align-items: center;
     justify-content: center;
     background: white;
     border-top: 1px solid $color-border-light;
   }
-  .sure-btn {
+  .sure-btn,.cancel-btn {
+    flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: px2rem(600px);
     height: px2rem(80px);
     background-color: $color-primary;
     color: white;
     @include font-dpr(32px);
     border-radius: px2rem($radius-xs);
+  }
+  .cancel-btn{
+    background: $color-text-gray;
+    margin-left: px2rem(20px);
   }
 }
 .tax-calculator-step3 {

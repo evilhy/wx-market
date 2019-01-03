@@ -38,6 +38,7 @@
     </div>
     <div class="sure-btn-wrap">
       <div class="sure-btn" @click="confirm">确认</div>
+      <div class="cancel-btn" @click="cancel">返回</div>
     </div>
     <explain-popup ref="explain-popup" :type="popupType"></explain-popup>
     <submit-popup ref="submit-popup"></submit-popup>
@@ -231,6 +232,9 @@ export default {
     confirm () {
       TaxState.commit('updateData', { type: 'specialDeduction', value: this.deductionDetailTotal })
       TaxState.commit('changeStep')
+    },
+    cancel () {
+      TaxState.commit('changeStep', 'taxCalculatorStep1')
     },
     openExplainPopup (type) {
       this.popupType = type
