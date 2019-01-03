@@ -55,7 +55,6 @@ export default {
   data () {
     let { child, parent, illness } = TaxState.state.specialDeductionDetail
     return {
-      illnessMax: 80000,
       list: [
         {
           type: 'child',
@@ -136,6 +135,7 @@ export default {
           title: '赡养老人',
           shortDesc: '60岁以上父母及祖辈',
           open: false,
+          max: 2000,
           options: [
             {
               label: '是独生子女',
@@ -153,6 +153,7 @@ export default {
           type: 'illness',
           title: '大病医疗',
           shortDesc: '每年医保目录范围内自付超过15000元不超过80000元部分',
+          max: 80000,
           options: [
             {
               value: illness.value || '',
@@ -218,15 +219,15 @@ export default {
       this.hasShowTip = true
     },
     changeOptionValue (data, index) {
-      let { type, options } = data
+      let { type, options, max } = data
       let currentDeduction = this.specialDeductionDetail[type]
-      if (currentDeduction.option !== index) return false
       if (type === 'child') {
         options[index].value = Math.floor(options[index].value / 1000) * 1000
       }
-      if (type === 'illness' && options[index].value > this.illnessMax) {
-        options[index].value = this.illnessMax
+      if ((type === 'parent' || type === 'illness') && options[index].value > max) {
+        options[index].value = max
       }
+      if (currentDeduction.option !== index) return false
       currentDeduction.value = options[index].value
     },
     confirm () {
