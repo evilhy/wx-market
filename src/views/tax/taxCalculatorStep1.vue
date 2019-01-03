@@ -50,8 +50,7 @@ export default {
   methods: {
     updateData (e, type) {
       let value = e.target.value
-      if (!value.length) return false
-      TaxState.commit('updateData', { type, value: Number.isNaN(Number(value)) ? 0 : Number(value) })
+      TaxState.commit('updateData', { type, value: (Number.isNaN(Number(value)) || !value.length) ? '' : Number(value) })
     }, 
     helpCal () {
       if (this.deductionDetailTotal !== this.specialDeduction) {
