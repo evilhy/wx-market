@@ -5,6 +5,7 @@
   </mt-popup>
 </template>
 <script>
+import normalExplain from './normal-explain'
 import childExplain from './child-explain'
 import learnExplain from './learn-explain'
 import houseLoanExplain from './houseLoan-explain'
@@ -24,6 +25,7 @@ export default {
   computed: {
     titleInfo () {
       return {
+        normal: '输入说明',
         child: '子女教育',
         learn: '继续教育',
         houseLoan: '住房贷款利息',
@@ -39,6 +41,7 @@ export default {
     }
   },
   components: {
+    normalExplain,
     childExplain,
     learnExplain,
     houseLoanExplain,

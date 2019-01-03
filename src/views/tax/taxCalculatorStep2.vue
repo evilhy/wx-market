@@ -101,7 +101,7 @@ export default {
         },
         {
           type: 'houseLoan',
-          title: '首套房贷利息',
+          title: '住房贷款利息',
           shortDesc: '本人或配偶首套房贷款利息（商业贷款），夫妻择一',
           options: [{
             value: 1000,
@@ -151,7 +151,7 @@ export default {
         },
         {
           type: 'illness',
-          title: '大病医保',
+          title: '大病医疗',
           shortDesc: '每年医保目录范围内自付超过15000元不超过80000元部分',
           options: [
             {

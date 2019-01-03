@@ -7,13 +7,15 @@
   border-radius: px2rem(6px);
   overflow: hidden;
 
-  & > img {
+  .banner {
     display: block;
     width: 100%;
     height: auto;
   }
-
-  & > .main-form {
+  .explain-popup{
+    height: px2rem(340px);
+  }
+  .main-form {
     position: relative;
     z-index: 2;
     padding: px2rem(28px) px2rem(34px) px2rem(120px);
@@ -61,77 +63,6 @@
     margin-bottom: px2rem(26px);
     @include font-dpr(28px);
     padding: 0 px2rem(30px);
-  }
-
-  & > .modal-info {
-    display: flex;
-    position: fixed;
-    z-index: 2000;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.6);
-    justify-content: center;
-    align-items: center;
-
-    .modal-main {
-      width: px2rem(533px);
-      height: px2rem(516px);
-      background-image: url('../img/tax/modal-bg.png');
-      background-repeat: no-repeat;
-      background-size: 100% 100%;
-      padding: px2rem(40px) px2rem(62px) px2rem(69px);
-      position: relative;
-
-      &:after {
-        content: '';
-        display: block;
-        width: 1px;
-        height: px2rem(70px);
-        background-color: #ffffff;
-        position: absolute;
-        bottom: px2rem(-70px);
-        left: 50%;
-      }
-    }
-
-    h1 {
-      @include font-dpr(26px);
-      color: #333333;
-      font-weight: bold;
-      text-align: center;
-      line-height: px2rem(37px);
-      margin-bottom: px2rem(26px);
-    }
-
-    p {
-      @include font-dpr(26px);
-      color: #333333;
-      line-height: px2rem(36px);
-      margin-bottom: px2rem(20px);
-
-      &.gray {
-        color: #a1a3ae;
-      }
-    }
-
-    button.close {
-      display: inline-block;
-      width: auto;
-      background-color: transparent;
-      color: #ffffff;
-      position: absolute;
-      bottom: px2rem(-110px);
-      left: 50%;
-      margin-left: px2rem(-19px);
-      padding-left: 0;
-      padding-right: 0;
-
-      i {
-        @include font-dpr(45px);
-      }
-    }
   }
 }
 
