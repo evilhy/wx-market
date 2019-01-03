@@ -1,104 +1,249 @@
 <template>
   <div class="tax-calculator-step2">
-    <div class="content-block">
-      <div class="page-title">新版（5000元起征点）</div>
-      <div class="tax-box">
-        <div class="tax-item">
-          <p>税后工资</p>
-          <p>{{ latestData.wage | money }}元</p>
+    <div class="white-box total-wrap">
+      <div class="label">专项扣除(元)</div>
+      <div class="value">{{deductionDetailTotal | money}}</div>
+      <!-- <div class="finance-btn" @click="openSubmitPopup">提交给财务</div> -->
+    </div>
+    <div class="tip">请选择符合标准的扣除专项</div>
+    <div class="deduction-list">
+      <div class="deduction-item" v-for="(item, index) in list" :key="index" :class="{'open': item.open}">
+        <div class="parent-item" @click="toggleDeduction(item)">
+          <div class="v-checkbox" :class="{'checked':specialDeductionDetail[item.type].option !== -1}"></div>
+          <div class="center-wrap">
+            <div class="title">{{item.title}}<i class="iconfont icon-shurushuoming" @click.stop="openExplainPopup(item.type)"></i></div>
+            <div class="short-desc">{{item.shortDesc}}</div>
+          </div>
+          <template v-if="item.options.length > 1">
+            <span class="value" v-if="specialDeductionDetail[item.type].option !== -1">{{specialDeductionDetail[item.type].value}}</span>
+            <span class="arrow"></span>
+          </template>
+          <template v-else>
+            <span class="value" v-if="item.options[0].type==='fixed'">{{item.options[0].value}}</span>
+            <input type="tel" class="input" placeholder="请输入" v-else v-model.number="item.options[0].value" @click.stop
+              @blur="changeOptionValue(item, 0)">
+          </template>
         </div>
-        <div class="tax-item">
-          <p>应纳个税</p>
-          <p>{{ latestData.tax | money }}元</p>
+        <div class="option-list" v-if="item.options.length > 1">
+          <div class="option-item" v-for="(optionItem, optionIndex) in item.options" :key="`option-${optionIndex}`"
+            @click="selectOption(item, optionIndex)">
+            <div class="v-checkbox" :class="{'checked':specialDeductionDetail[item.type].option === optionIndex}"></div>
+            <div class="label" :class="{'fixed':optionItem.type === 'fixed'}">{{optionItem.label}}</div>
+            <div class="value" v-if="optionItem.type === 'fixed'">{{optionItem.value}}</div>
+            <input type="tel" class="input" placeholder="请输入" v-else v-model.number="optionItem.value" @click.stop
+              @blur="changeOptionValue(item, optionIndex)">
+          </div>
         </div>
       </div>
-      <div class="page-title">旧版（3500元起征点）</div>
-      <div class="tax-box">
-        <div class="tax-item">
-          <p>税后工资</p>
-          <p>{{ previousData.wage | money }}元</p>
-        </div>
-        <div class="tax-item">
-          <p>应纳个税</p>
-          <p>{{ previousData.tax | money }}元</p>
-        </div>
-      </div>
     </div>
-    <div class="content-block">
-      <img :src="infoForSaveAmount.img" alt="" class="text-img">
-      <p class="text-1">每年能省<strong>{{ saveAmount | money }}</strong>元</p>
-      <p class="text-2">{{ infoForSaveAmount.desc }}</p>
+    <div class="sure-btn-wrap">
+      <div class="sure-btn" @click="confirm">确认</div>
     </div>
-    <div class="footer">
-      <button class="submit-btn" @click="submitFun">再算一次</button>
-      <p>温馨提示：2019年起，教育、医疗、住房和养老等支出还能税前扣除，你省的钱将更多。</p>
-    </div>
+    <explain-popup ref="explain-popup" :type="popupType"></explain-popup>
+    <submit-popup ref="submit-popup"></submit-popup>
   </div>
 </template>
 
 <script>
-  import LatestTaxCalculator from 'utils/TaxCalculator/LatestTaxCalculator'
-  import PreviousTaxCalculator from 'utils/TaxCalculator/PreviousTaxCalculator'
-  import TaxState from 'utils/TaxCalculator/TaxState'
-  export default {
-    computed: {
-      income () {
-        return TaxState.state.income
-      },
-      deduction () {
-        return TaxState.state.deduction
-      },
-      saveAmount () {
-        return this.previousData.tax >= this.latestData.tax
-        // eslint-disable-next-line
-          ? _.floor((this.previousData.tax - this.latestData.tax) * 12, 2)
-          : 0
-      },
-      infoForSaveAmount () {
-        let info = new Map([
-          [1, {desc: '恩，好好工作，努力加薪吧~', img: require('../../assets/img/tax/level-1.png')}],
-          [2, {desc: '苍蝇也是肉，能省一点是一点吧~', img: require('../../assets/img/tax/level-2.png')}],
-          [3, {desc: '不错哦，每月可以加一顿大餐了~', img: require('../../assets/img/tax/level-3.png')}],
-          [4, {desc: '好激动，马尔代夫的海近在眼前~', img: require('../../assets/img/tax/level-4.png')}],
-          [5, {desc: '厉害，好像可以换辆车了~', img: require('../../assets/img/tax/level-5.png')}],
-          [6, {desc: '哇塞，你省出了一艘游艇~', img: require('../../assets/img/tax/level-6.png')}]
-        ])
-        let level
-        if (this.saveAmount >= 20000) {
-          level = 6
-        } else if (this.saveAmount < 20000 && this.saveAmount >= 10000) {
-          level = 5
-        } else if (this.saveAmount < 10000 && this.saveAmount >= 5000) {
-          level = 4
-        } else if (this.saveAmount < 5000 && this.saveAmount >= 1000) {
-          level = 3
-        } else if (this.saveAmount < 1000 && this.saveAmount >= 1) {
-          level = 2
-        } else {
-          level = 1
+import checkBox from 'components/checkBox'
+import TaxState from 'utils/TaxCalculator/TaxState'
+import { MessageBox } from 'mint-ui'
+import explainPopup from './explain-popup'
+import submitPopup from './submit-popup'
+export default {
+  data () {
+    let { child, parent, illness } = TaxState.state.specialDeductionDetail
+    return {
+      illnessMax: 80000,
+      list: [
+        {
+          type: 'child',
+          title: '子女教育',
+          shortDesc: '包含学前教育和学历教育，夫妻择一',
+          open: true,
+          options: [
+            {
+              label: '1个',
+              value: 1000,
+              type: 'fixed'
+            },
+            {
+              label: '2个',
+              value: 2000,
+              type: 'fixed'
+            },
+            {
+              label: '3个',
+              value: 3000,
+              type: 'fixed'
+            },
+            {
+              label: '4个',
+              value: 4000,
+              type: 'fixed'
+            },
+            {
+              label: '自定义',
+              value: child.value || '',
+              type: 'auto'
+            }
+          ]
+        },
+        {
+          type: 'learn',
+          title: '继续教育',
+          shortDesc: '学历教育',
+          options: [{
+            value: 400,
+            type: 'fixed'
+          }]
+        },
+        {
+          type: 'houseLoan',
+          title: '首套房贷利息',
+          shortDesc: '本人或配偶首套房贷款利息（商业贷款），夫妻择一',
+          options: [{
+            value: 1000,
+            type: 'fixed'
+          }]
+        },
+        {
+          type: 'rent',
+          title: '住房租金',
+          shortDesc: '同城，夫妻择一；不同城，分别抵扣',
+          open: false,
+          options: [
+            {
+              label: '直辖市、省会城市',
+              value: 1200,
+              type: 'fixed'
+            },
+            {
+              label: '市辖区户籍人口超过100万',
+              value: 1000,
+              type: 'fixed'
+            },
+            {
+              label: '市辖区户籍人口不超过100万(含)',
+              value: 800,
+              type: 'fixed'
+            }
+          ]
+        },
+        {
+          type: 'parent',
+          title: '赡养老人',
+          shortDesc: '60岁以上父母及祖辈',
+          open: false,
+          options: [
+            {
+              label: '是独生子女',
+              value: 2000,
+              type: 'fixed'
+            },
+            {
+              label: '非独生子女',
+              value: parent.value || '',
+              type: 'auto'
+            }
+          ]
+        },
+        {
+          type: 'illness',
+          title: '大病医保',
+          shortDesc: '每年医保目录范围内自付超过15000元不超过80000元部分',
+          options: [
+            {
+              value: illness.value || '',
+              type: 'auto'
+            }
+          ]
         }
-        return info.get(level)
-      }
-    },
-    data: () => ({
-      latestData: {wage: 0, tax: 0},
-      previousData: {wage: 0, tax: 0}
-    }),
-    methods: {
-      submitFun () {
-        TaxState.commit('toggleStep')
-      },
-      getPageData () {
-        let latestTaxCalculator = new LatestTaxCalculator(this.income, this.deduction)
-        let previousTaxCalculator = new PreviousTaxCalculator(this.income, this.deduction)
-        this.latestData.wage = latestTaxCalculator.wagePayment()
-        this.latestData.tax = latestTaxCalculator.taxAmount()
-        this.previousData.wage = previousTaxCalculator.wagePayment()
-        this.previousData.tax = previousTaxCalculator.taxAmount()
-      }
-    },
-    created () {
-      this.getPageData()
+      ],
+      hasShowTip: false,
+      popupType: ''
     }
+  },
+  computed: {
+    deductionDetailTotal () {
+      return TaxState.getters.deductionDetailTotal
+    },
+    specialDeductionDetail () {
+      return TaxState.state.specialDeductionDetail
+    }
+  },
+  created () { },
+  methods: {
+    toggleDeduction (data) {
+      let { open = false, options, type } = data
+      !open && this.list.forEach(item => { item.open = false })
+      if (options.length > 1) {
+        data.open = !open
+      } else {
+        let option = this.specialDeductionDetail[type].option
+        if (type === 'houseLoan' && option === -1) {
+          this.showTip()
+          TaxState.commit('clearDeductionDetail', 'rent')
+        }
+        this.setDeduction(
+          type,
+          option === -1 ? 0 : -1,
+          option === -1 ? options[0].value : ''
+        )
+      }
+    },
+    selectOption (data, index) {
+      let { type, options } = data
+      let option = this.specialDeductionDetail[type].option
+      if (type === 'rent' && option !== index) {
+        this.showTip()
+        TaxState.commit('clearDeductionDetail', 'houseLoan')
+      }
+      this.setDeduction(
+        type,
+        option === index ? -1 : index,
+        option === index ? '' : options[index].value
+      )
+    },
+    setDeduction (type, index, value) {
+      TaxState.commit('setDeduction', {
+        type,
+        option: index,
+        value
+      })
+    },
+    showTip () {
+      !this.hasShowTip && MessageBox.alert('首套房贷利息和住房租金扣减只可二选一')
+      this.hasShowTip = true
+    },
+    changeOptionValue (data, index) {
+      let { type, options } = data
+      let currentDeduction = this.specialDeductionDetail[type]
+      if (currentDeduction.option !== index) return false
+      if (type === 'child') {
+        options[index].value = Math.floor(options[index].value / 1000) * 1000
+      }
+      if (type === 'illness' && options[index].value > this.illnessMax) {
+        options[index].value = this.illnessMax
+      }
+      currentDeduction.value = options[index].value
+    },
+    confirm () {
+      TaxState.commit('updateData', { type: 'specialDeduction', value: this.deductionDetailTotal })
+      TaxState.commit('changeStep')
+    },
+    openExplainPopup (type) {
+      this.popupType = type
+      this.$refs['explain-popup'].show()
+    },
+    openSubmitPopup () {
+      this.$refs['submit-popup'].show()
+    }
+  },
+  components: {
+    checkBox,
+    explainPopup,
+    submitPopup
   }
+}
 </script>

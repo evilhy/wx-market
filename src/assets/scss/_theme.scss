@@ -649,7 +649,7 @@
       top: 20%;
       height: 60%;
       width: 1px;
-      background: $color-color-light;
+      background: $color-border-light;
       z-index: 3;
     }
     .select-item {
@@ -663,7 +663,7 @@
       padding: 0 px2rem(20px);
       z-index: 3;
       background: white;
-      border-bottom: 1px solid $color-color-light;
+      border-bottom: 1px solid $color-border-light;
       &.active {
         color: $fx-main-color;
         .triangle {
@@ -693,7 +693,7 @@
         display: flex;
         align-items: center;
         height: px2rem(90px);
-        border-bottom: 1px solid $color-color-light;
+        border-bottom: 1px solid $color-border-light;
         &:last-child {
           border-bottom: 0;
         }
@@ -1274,16 +1274,18 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
-    li {
+    .row {
       height: px2rem(90px);
       width: 100%;
       border-bottom: 1px solid #d5d5d5;
       box-sizing: border-box;
       padding: 0 px2rem(25px);
       line-height: px2rem(90px);
-      span {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .value {
         color: #999;
-        float: right;
       }
       &:last-child {
         border-bottom: 0;
