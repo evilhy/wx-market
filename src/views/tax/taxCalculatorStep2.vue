@@ -53,7 +53,9 @@ import explainPopup from './explain-popup'
 import submitPopup from './submit-popup'
 export default {
   data () {
-    let { child, parent, illness } = TaxState.state.specialDeductionDetail
+    // todo
+    // let { child, parent, illness } = TaxState.state.specialDeductionDetail
+    let { child, parent } = TaxState.state.specialDeductionDetail
     return {
       list: [
         {
@@ -148,8 +150,8 @@ export default {
               type: 'auto'
             }
           ]
-        },
-        {
+        }
+        /* {
           type: 'illness',
           title: '大病医疗',
           shortDesc: '每年医保目录范围内自付超过15000元不超过80000元部分',
@@ -160,7 +162,7 @@ export default {
               type: 'auto'
             }
           ]
-        }
+        } */
       ],
       hasShowTip: false,
       popupType: ''
