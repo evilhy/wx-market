@@ -872,6 +872,7 @@
     line-height: px2rem(44px);
     text-indent: 2em;
     .blue-btn {
+      @include btn;
       box-shadow: 0 4px 12px 0 rgba(82, 189, 189, 0.5);
       @include font-dpr(28px);
       width: px2rem(250px);
@@ -1405,6 +1406,7 @@
     .btn {
       width: px2rem(210px);
       height: px2rem(70px);
+      @include btn;
       margin-top: px2rem(32px);
       border-radius: px2rem($radius-xs);
       @include font-dpr(28px);
@@ -1704,6 +1706,7 @@
     }
   }
   .btn {
+    @include btn;
     margin-top: px2rem(50px);
     &:disabled {
       opacity: 1;
@@ -1828,7 +1831,6 @@
   .action-wrap {
     padding: px2rem(30px) 0;
     display: flex;
-    display: -webkit-flex;
     justify-content: space-around;
   }
   .btn {
@@ -1984,9 +1986,7 @@
     display: flex;
     .action {
       width: 100%;
-      display: flex;
-      justify-content: center;
-      text-align: center;
+      @include btn;
       &:first-child {
         border-right: 1px solid #e9ebec;
       }
@@ -2156,9 +2156,8 @@
   }
   .btn {
     height: px2rem(62px);
-    line-height: px2rem(62px);
+    @include btn;
     border-radius: px2rem($radius-xs);
-    text-align: center;
     &.question,
     &.feedback {
       width: px2rem(134px);

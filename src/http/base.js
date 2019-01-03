@@ -9,7 +9,7 @@ export default class HttpForApplication extends HttpEngine {
     'Content-Type': 'application/json; charset=utf-8'
   }
   baseURL = sysConfig.http_base_url[sysConfig.node_env]
-  mockTimeout = 2
+  mockTimeout = 1
   requestedSever = sysConfig.requested_sever
   beforeSendRequestHandler (config) {
     config.headers = Object.assign(config.headers, {
