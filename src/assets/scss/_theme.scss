@@ -628,6 +628,9 @@
 }
 //
 .wage-list-page {
+  height: 100%;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
   padding-bottom: px2rem(98px);
   .star {
     letter-spacing: px2rem(6px);
@@ -772,6 +775,7 @@
         }
       }
       &:last-child {
+        margin-bottom: 0;
         .bill-date {
           &:after {
             display: none;
