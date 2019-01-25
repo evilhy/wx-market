@@ -436,7 +436,7 @@
       bottom: 0;
       left: 0;
       width: 100%;
-      height: px2rem(460px);
+      max-height: px2rem(460px);
       overflow: auto;
       -webkit-overflow-scrolling: touch;
       background: white;
