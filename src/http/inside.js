@@ -85,7 +85,7 @@ class Inside {
   updBankCard (data) {
     let http = new Http()
     http.path = `/${moduleName}/updBankCard`
-    http.body = { data }
+    http.body = data
     return http.post()
   }
   /**
@@ -98,7 +98,7 @@ class Inside {
   checkPhoneCode (data) { 
     let http = new Http()
     http.path = `/${moduleName}/checkPhoneCode`
-    http.body = { data }
+    http.body = data
     return http.post()
   }
   /**
@@ -111,7 +111,7 @@ class Inside {
   updPhone (data) { 
     let http = new Http()
     http.path = `/${moduleName}/updPhone`
-    http.body = { data }
+    http.body = data
     return http.post()
   }
 }
