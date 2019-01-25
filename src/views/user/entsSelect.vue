@@ -19,14 +19,16 @@ export default {
   data () {
     return {
       current: {},
-      open: false
+      open: false,
+      selectIndex: 0
     }
   },
   created () {
     this.entList.length && this.selectEnt()
   },
   methods: {
-    selectEnt (index = 0) {
+    selectEnt (index = this.selectIndex) {
+      this.selectIndex = index
       this.current = this.entList[index]
       this.$emit('select', index)
       this.open = false

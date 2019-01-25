@@ -30,6 +30,7 @@ export default {
   },
   watch: {
     bank (val) {
+      this.editing = false
       this.currentBank = deepCopy(val)
     }
   },
