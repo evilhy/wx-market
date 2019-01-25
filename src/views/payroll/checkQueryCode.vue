@@ -4,8 +4,7 @@
     <user-avatar class="user-avatar"></user-avatar>
     <div class="content-wrap">
       <div class="big-title">请输入6位数密码
-        <i class="icon-ai47 iconfont" @click.stop="toggle" v-show="visible"></i>
-        <i class="icon-ai44 iconfont" @click.stop="toggle" v-show="!visible"></i>
+        <i class="iconfont" :class="[visible ? 'icon-ai44' : 'icon-ai47']" @click.stop="toggle"></i>
       </div>
       <code-input ref="code-input" @complete="setCode" :visible="visible"></code-input>
       <div class="forget-pwd-link"><span @click="toForget">忘记密码</span></div>
@@ -20,7 +19,7 @@ export default {
   data () {
     return {
       code: '',
-      visible: true
+      visible: false
     }
   },
   created () {},
@@ -30,16 +29,21 @@ export default {
       this.checkCode()
     },
     async checkCode () {
-      await this.$Roll.checkPwd(this.code)
-      let { wageSheetId = '', hasWage = '' } = this.$route.query
-      if (wageSheetId) { // 推送
-        this.$router.replace({ name: 'wageIndex', params: { wageSheetId } })
-      } else {  // 首页
-        if (hasWage) {
-          this.$router.replace({ name: 'wageList' })
-        } else {
-          this.$router.replace({ name: 'noWage' })
+      try {
+        await this.$Roll.checkPwd(this.code)
+        let { wageSheetId = '', hasWage = '' } = this.$route.query
+        if (wageSheetId) { // 推送
+          this.$router.replace({ name: 'wageIndex', params: { wageSheetId } })
+        } else {  // 首页
+          if (hasWage) {
+            this.$router.replace({ name: 'wageList' })
+          } else {
+            this.$router.replace({ name: 'noWage' })
+          }
         }
+      } catch (e) {
+        this.code = ''
+        this.$refs['code-input'].clearCode()
       }
     },
     toggle () {

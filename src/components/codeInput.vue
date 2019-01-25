@@ -4,8 +4,8 @@
     <div class="code-wrap">
       <span v-for="(codeChar, index) in codeList" :key="index" class="code-item">
         <template v-if="codeChar">
-          <span v-show="!visible">{{codeChar}}</span>
-          <span v-show="visible" class="dot"></span>
+          <span v-show="visible">{{codeChar}}</span>
+          <span v-show="!visible" class="dot"></span>
         </template>
       </span>
     </div>

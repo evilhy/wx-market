@@ -361,6 +361,13 @@
       }
     }
   }
+  .no-data{
+    height: px2rem(600px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include font-dpr(26px);
+  }
 }
 .select-modify-way-page {
   padding: px2rem(60px);

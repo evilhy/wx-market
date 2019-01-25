@@ -4,8 +4,7 @@
     <public-logo></public-logo>
     <div class="content-wrap">
       <div class="big-title">验证查询密码
-        <i class="icon-ai47 iconfont" @click.stop="toggle" v-show="visible"></i>
-        <i class="icon-ai44 iconfont" @click.stop="toggle" v-show="!visible"></i>
+        <i class="iconfont" :class="[visible ? 'icon-ai44' : 'icon-ai47']" @click.stop="toggle"></i>
       </div>
       <div class="tip">皮皮虾，您好！工资条首次查询密码默认为您银行卡的后6位数字。</div>
       <code-input @complete="setCode" :visible="visible"></code-input>
@@ -21,7 +20,7 @@ export default {
   data () {
     return {
       code: '',
-      visible: true
+      visible: false
     }
   },
   created () {},

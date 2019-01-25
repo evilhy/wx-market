@@ -54,8 +54,9 @@ export default {
     async modifyCardNo () {
       let { currentBank, tempCardNo } = this
       try {
-        await this.$Inside.updBankCard(currentBank)
+        let res = await this.$Inside.updBankCard(currentBank)
         this.editing = false
+        this.currentBank.issuerName = res.data
         this.$emit('saveSuccess')
       } catch (e) {
         currentBank.cardNo = tempCardNo

@@ -4,8 +4,7 @@
     <public-logo></public-logo>
     <div class="content-wrap">
       <div class="big-title">设置查询密码
-        <i class="icon-ai47 iconfont" @click.stop="toggle" v-show="visible"></i>
-        <i class="icon-ai44 iconfont" @click.stop="toggle" v-show="!visible"></i>
+        <i class="iconfont" :class="[visible ? 'icon-ai44' : 'icon-ai47']" @click.stop="toggle"></i>
       </div>
       <div class="tip">为确保您工资条信息安全，请设置6位数字查询密码。</div>
       <code-input ref="code-input" @complete="setCode" :visible="visible"></code-input>
@@ -23,7 +22,7 @@ export default {
   data () {
     return {
       code: '',
-      visible: true
+      visible: false
     }
   },
   created () {},

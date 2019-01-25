@@ -2,8 +2,7 @@
   <div class="public-page modify-query-code-page">
     <div class="content-wrap">
       <div class="big-title">{{titleArr[step]}}
-        <i class="icon-ai47 iconfont" @click.stop="toggle" v-show="visible"></i>
-        <i class="icon-ai44 iconfont" @click.stop="toggle" v-show="!visible"></i>
+        <i class="iconfont" :class="[visible ? 'icon-ai44' : 'icon-ai47']" @click.stop="toggle"></i>
       </div>
       <div class="tip">{{tipArr[step]}}</div>
       <template v-if="step === 0">

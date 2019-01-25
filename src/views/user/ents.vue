@@ -10,7 +10,7 @@
       <div class="ent-groups" :class="{fold: ent.fold}">
         <div class="group-item" v-for="(group, index) in ent.items" :key="`group-${index}`" @click="enterDetail(group)">
           <div class="label">{{group.groupName}}</div>
-          <div class="value" :class="{ gray: group.inServiceStatus !== 0 }">{{group.inServiceStatusVal}}</div>
+          <div class="value" :class="{ gray: group.inServiceStatus !== '0' }">{{group.inServiceStatusVal}}</div>
           <span class="arrow"></span>
         </div>
       </div>
