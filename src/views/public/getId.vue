@@ -26,8 +26,8 @@ export default {
         .$Weixin
         .wxCallback(this.query.code)
         .then((res) => {
-          let { bindStatus, jsessionId, idNumber, ifPwd } = res.data
-          helper.saveUserInfo({ jsessionId, ifPwd, bindStatus })
+          let { bindStatus, jsessionId, idNumber, ifPwd, headimgurl } = res.data
+          helper.saveUserInfo({ jsessionId, ifPwd, bindStatus, headimgurl })
           if (bindStatus === '0') {
               this.$router.replace({ name: 'bindIdCard' })
           } else {
