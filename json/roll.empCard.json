@@ -1,0 +1,121 @@
+[
+  {
+    "shortEntName": "北京开科",
+    "entName": "北京开科唯识技术有限公司",
+    "items": [
+      {
+        "employeeId": "string",
+        "employeeName": "string",
+        "idNumberStar": "string",
+        "phoneStar": "string",
+        "position": "string",
+        "inServiceStatus": "string",
+        "employeeNo": "string",
+        "groupName": "string",
+        "entryDate": 0,
+        "bankCardList": [
+          {
+            "bankName": "string",
+            "bankCard": "string"
+          }
+        ]
+      }
+    ],
+    "cards": [
+      {
+        "cardNo": "6640102290110000",
+        "issuerName": "华夏银行",
+        "bankCardGroups": [
+          {
+            "id": "id001",
+            "groupId": "groupId001",
+            "groupName": "云服务中心",
+            "shortGroupName": "云中心"
+          }
+        ]
+      },
+      {
+        "cardNo": "6640102290110000",
+        "issuerName": "建设银行",
+        "bankCardGroups": [
+          {
+            "id": "id002",
+            "groupId": "groupId002",
+            "groupName": "云中心",
+            "shortGroupName": "云中心"
+          },
+          {
+            "id": "id003",
+            "groupId": "groupId003",
+            "groupName": "互联网金融中心",
+            "shortGroupName": "互金中心"
+          },
+          {
+            "id": "id003",
+            "groupId": "groupId003",
+            "groupName": "互联网金融中心",
+            "shortGroupName": "互金中心"
+          },
+          {
+            "id": "id003",
+            "groupId": "groupId003",
+            "groupName": "互联网金融中心",
+            "shortGroupName": "互金中心"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "shortEntName": "北京天健",
+    "entName": "北京天健远大技术有限公司",
+    "items": [
+      {
+        "employeeId": "string",
+        "employeeName": "string",
+        "idNumberStar": "string",
+        "phoneStar": "string",
+        "position": "string",
+        "inServiceStatus": "string",
+        "employeeNo": "string",
+        "groupName": "string",
+        "entryDate": 0,
+        "bankCardList": [
+          {
+            "bankName": "string",
+            "bankCard": "string"
+          }
+        ]
+      }
+    ],
+    "cards": [
+      {
+        "cardNo": "6640102290110001",
+        "issuerName": "招商银行",
+        "bankCardGroups": [
+          {
+            "id": "id001001",
+            "groupId": "groupId001001",
+            "groupName": "管理中心"
+          }
+        ]
+      },
+      {
+        "cardNo": "6640102290110000",
+        "issuerName": "建设银行",
+        "bankCardGroups": [
+          {
+            "id": "id002001",
+            "groupId": "groupId002001",
+            "groupName": "云中心2"
+          },
+          {
+            "id": "id003001",
+            "groupId": "groupId003001",
+            "groupName": "互金中心"
+          }
+        ]
+      }
+    ]
+  }
+]

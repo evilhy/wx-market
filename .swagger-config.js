@@ -27,6 +27,19 @@ var tfinanceIntentInfo = require('./json/tfinance.intentInfo.json')
 var tfinanceUserInfo = require('./json/tfinance.userInfo.json')
 var elifePlantform710001 = require('./json/elife.plantform710001.json')
 var elifePlantform710002 = require('./json/elife.plantform710002.json')
+var setPwd = require('./json/inside.setPwd.json')
+var checkCard = require('./json/roll.checkCard.json')
+var bindTel = require('./json/inside.rz.json')
+var userInfo = require('./json/roll.emp.json')
+var checkPwd = require('./json/roll.checkPwd.json')
+var empEnt = require('./json/roll.empEnt.json')
+var empCard = require('./json/roll.empCard.json')
+var empCardLog = require('./json/roll.empCardLog.json')
+var updBankCard = require('./json/inside.updBankCard.json')
+var checkPhoneCode = require('./json/inside.checkPhoneCode.json')
+var updPhone = require('./json/inside.updPhone.json')
+var entPhone = require('./json/roll.entPhone.json')
+var entUser = require('./json/roll.entUser.json')
 module.exports = {
   openApi: [{
     baseURL: 'http://10.5.1.71:8080/rest',
@@ -111,6 +124,45 @@ module.exports = {
       },
       '/elife/xjoin': {
         post: elifeXJoin
+      },
+      '/inside/setPwd': {
+        post: setPwd
+      },
+      '/roll/checkCard': {
+        get: checkCard
+      },
+      '/inside/rz': {
+        post: bindTel
+      },
+      '/roll/emp': {
+        get: userInfo
+      },
+      '/roll/checkPwd': {
+        get: checkPwd
+      },
+      '/roll/empEnt': {
+        get: empEnt
+      },
+      '/roll/empCard': {
+        get: empCard
+      },
+      '/roll/empCardLog': {
+        get: empCardLog
+      },
+      '/inside/updBankCard': {
+        post: updBankCard
+      },
+      '/inside/checkPhoneCode': {
+        post: checkPhoneCode
+      },
+      '/inside/updPhone': {
+        post: updPhone
+      },
+      '/roll/entPhone': {
+        get: entPhone
+      },
+      '/roll/entUser': {
+        get: entUser
       }
     }
   },{

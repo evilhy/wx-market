@@ -1,5 +1,7 @@
 {
     "jsessionId": "10292202",
-    "bindStatus": "1",
-    "idNumber": "001"
+    "bindStatus": "0",
+    "idNumber": "001",
+    "ifPwd": 1,
+    "headimgurl": ""
 }

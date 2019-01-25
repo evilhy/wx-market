@@ -1,0 +1,38 @@
+[
+  {
+    "crtDateTime": 1548303584369,
+    "cardNo": "6230199109202340",
+    "issuerName": "华夏银行",
+    "cardNoOld": "6230199109202341",
+    "issuerNameOld": "招商银行",
+    "groupName": "string",
+    "shortGroupName": "云中心"
+  },
+  {
+    "crtDateTime": 1548303584369,
+    "cardNo": "6230199109202340",
+    "issuerName": "华夏银行",
+    "cardNoOld": "6230199109202341",
+    "issuerNameOld": "招商银行",
+    "groupName": "string",
+    "shortGroupName": "string"
+  },
+  {
+    "crtDateTime": 1548303584369,
+    "cardNo": "6230199109202340",
+    "issuerName": "华夏银行",
+    "cardNoOld": "6230199109202341",
+    "issuerNameOld": "招商银行",
+    "groupName": "string",
+    "shortGroupName": "string"
+  },
+  {
+    "crtDateTime": 1548303584369,
+    "cardNo": "6230199109202340",
+    "issuerName": "华夏银行",
+    "cardNoOld": "6230199109202341",
+    "issuerNameOld": "招商银行",
+    "groupName": "string",
+    "shortGroupName": "string"
+  }
+]

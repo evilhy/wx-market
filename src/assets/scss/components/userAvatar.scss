@@ -1,0 +1,11 @@
+@charset "utf-8";
+.user-avatar{
+  @include circle(118px);
+  background: #E6E6E6;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  img{
+    @include circle(106px);
+  }
+}
