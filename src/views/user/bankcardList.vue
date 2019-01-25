@@ -1,8 +1,8 @@
 <template>
   <div class="bankcard-list-page">
-    <ents-select :ent-list="entList" v-if="entList.length" @select="getCurrentBanks"></ents-select>
+    <ents-select ref="ents-select" :ent-list="entList" v-if="entList.length" @select="getCurrentBanks"></ents-select>
     <div class="bank-list">
-      <bank-item :bank="item" v-for="(item, index) in banks" :key="index" @saveSuccess="getBankList"></bank-item>
+      <bank-item :bank="item" v-for="(item, index) in banks" :key="index" @saveSuccess="refresh"></bank-item>
     </div>
   </div>
 </template>
@@ -27,6 +27,10 @@ export default {
     },
     getCurrentBanks (index = 0) {
       this.banks = this.entList[index].cards
+    },
+    refresh () {
+      this.getBankList()
+      this.$refs['ents-select'].selectEnt()
     }
   },
   components: {
