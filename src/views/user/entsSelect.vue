@@ -24,7 +24,6 @@ export default {
     }
   },
   created () {
-    this.entList.length && this.selectEnt()
   },
   methods: {
     selectEnt (index = this.selectIndex) {
