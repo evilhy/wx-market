@@ -33,10 +33,14 @@ export default {
   },
   methods: {
     choosePhone (item, index) {
-      if (!item.phone) return false
       this.selectedIndex = index
       helper.saveUserInfo(item)
-      this.$router.replace({ name: 'sendCode' })
+
+      if (item.phone) {
+        this.$router.replace({ name: 'sendCode' })
+      } else {
+        this.$router.replace({ name: 'checkCardTail' })
+      }
     }
   },
   components: {
