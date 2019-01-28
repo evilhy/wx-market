@@ -55,12 +55,9 @@
     }
   }
   .btn{
-    width: 100%;
+    display: block;
     height: px2rem(70px);
-    line-height: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    line-height: px2rem(70px);
     text-align: center;
     @include font-dpr(28px);
     background: $color-primary-dark;
