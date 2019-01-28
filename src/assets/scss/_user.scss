@@ -373,24 +373,34 @@
 }
 .select-modify-way-page {
   padding: px2rem(60px);
+  @include font-dpr(26px);
+  .tip{
+    color: #666;
+    margin-bottom: px2rem(60px);
+    text-align: center;
+  }
   .select-item {
-    height: px2rem(146px);
-    padding-left: px2rem(30px);
+    height: px2rem(174px);
+    padding-left: px2rem(50px);
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     background: #ffffff;
-    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.04);
     border-radius: px2rem($radius-s);
     margin-bottom: px2rem(30px);
-    @include font-dpr(26px);
-    .tip{
-      margin-bottom: px2rem(10px);
+    border: 1px solid #E6E6E6;
+    @include font-dpr(28px);
+    p{
+      display: flex;
+      flex-direction: column;
     }
-    .stress{
-      color: $fx-main-color;
+    .phone{
+      color: $color-text-gray;
+      margin-top: px2rem(5px);
     }
+  }
+  .icon{
+    width: px2rem(72px);
+    margin-right: px2rem(30px);
   }
 }
 .check-ent-phone-page{
