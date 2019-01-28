@@ -17,6 +17,9 @@
     border-radius: px2rem(4px);
     display: flex;
     align-items: center;
+    &.focus{
+      background: white;
+    }
   }
   .code-item{
     flex: 1;
