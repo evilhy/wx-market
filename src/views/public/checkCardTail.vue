@@ -6,7 +6,7 @@
       <div class="big-title">验证查询密码
         <i class="iconfont" :class="[visible ? 'icon-ai44' : 'icon-ai47']" @click.stop="toggle"></i>
       </div>
-      <div class="tip">皮皮虾，您好！工资条首次查询密码默认为您银行卡的后6位数字。</div>
+      <div class="tip">{{employeeName}}，您好！工资条首次查询密码默认为您银行卡的后6位数字。</div>
       <code-input @complete="setCode" :visible="visible"></code-input>
       <button class="btn btn-next" :disabled="!code" @click="sure">确认</button>
     </div>
@@ -16,9 +16,11 @@
 <script>
 import publicLogo from 'components/publicLogo'
 import codeInput from 'components/codeInput'
+import helper from 'utils/helper'
 export default {
   data () {
     return {
+      employeeName: helper.getUserInfo('employeeName', ''),
       code: '',
       visible: false
     }
