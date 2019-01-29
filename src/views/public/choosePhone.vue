@@ -35,7 +35,6 @@ export default {
     choosePhone (item, index) {
       this.selectedIndex = index
       helper.saveUserInfo(item)
-
       if (item.phone) {
         this.$router.replace({ name: 'sendCode' })
       } else {

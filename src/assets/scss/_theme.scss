@@ -875,7 +875,6 @@
     line-height: px2rem(44px);
     text-indent: 2em;
     .blue-btn {
-      @include btn;
       box-shadow: 0 4px 12px 0 rgba(82, 189, 189, 0.5);
       @include font-dpr(28px);
       width: px2rem(250px);
@@ -1271,7 +1270,7 @@
     .btn {
       width: px2rem(210px);
       height: px2rem(70px);
-      @include btn;
+      line-height: px2rem(70px);
       margin-top: px2rem(32px);
       border-radius: px2rem($radius-xs);
       @include font-dpr(28px);
@@ -1571,7 +1570,6 @@
     }
   }
   .btn {
-    @include btn;
     margin-top: px2rem(50px);
     &:disabled {
       opacity: 1;
@@ -1851,7 +1849,7 @@
     display: flex;
     .action {
       width: 100%;
-      @include btn;
+      @include flex-center;
       &:first-child {
         border-right: 1px solid #e9ebec;
       }
@@ -2021,7 +2019,7 @@
   }
   .btn {
     height: px2rem(62px);
-    @include btn;
+    @include flex-center;
     border-radius: px2rem($radius-xs);
     &.question,
     &.feedback {
