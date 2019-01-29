@@ -113,7 +113,120 @@
     ]
   },
   {
-    "shortEntName": "北京开科",
+    "shortEntName": "北京开",
+    "entName": "北京开科唯识技术有限公司",
+    "items": [
+      {
+        "employeeId": "employeeId001",
+        "employeeName": "轮回韩",
+        "idNumberStar": "420117199109011240",
+        "phoneStar": "1870***9177",
+        "position": "web前端开发",
+        "inServiceStatus": 0,
+        "inServiceStatusVal": "在职",
+        "employeeNo": "001",
+        "groupName": "互金中心",
+        "entryDate": 1548224681978,
+        "bankCardList": [
+          {
+            "bankName": "华夏银行",
+            "bankCard": "662642011910002"
+          },
+          {
+            "bankName": "建设银行",
+            "bankCard": "662442011910000"
+          }
+        ]
+      },
+      {
+        "employeeId": "employeeId002",
+        "employeeName": "轮回韩2",
+        "idNumberStar": "420117199109011240",
+        "phoneStar": "1870***9177",
+        "position": "前端工程师",
+        "inServiceStatus": 1,
+        "inServiceStatusVal": "离职",
+        "employeeNo": "002",
+        "groupName": "云中心",
+        "entryDate": 1548224681978,
+        "bankCardList": [
+          {
+            "bankName": "华夏银行",
+            "bankCard": "662642011910002"
+          }
+        ]
+      },
+      {
+        "employeeId": "employeeId002",
+        "employeeName": "轮回韩2",
+        "idNumberStar": "420117199109011240",
+        "phoneStar": "1870***9177",
+        "position": "前端工程师",
+        "inServiceStatus": 2,
+        "inServiceStatusVal": "停薪留职",
+        "employeeNo": "002",
+        "groupName": "云中心",
+        "entryDate": 1548224681978,
+        "bankCardList": [
+          {
+            "bankName": "华夏银行",
+            "bankCard": "662642011910002"
+          }
+        ]
+      },
+      {
+        "employeeId": "employeeId002",
+        "employeeName": "轮回韩2",
+        "idNumberStar": "420117199109011240",
+        "phoneStar": "1870***9177",
+        "position": "前端工程师",
+        "inServiceStatus": 3,
+        "inServiceStatusVal": "兼职",
+        "employeeNo": "003",
+        "groupName": "战略中心",
+        "entryDate": 1548224681978,
+        "bankCardList": [
+          {
+            "bankName": "华夏银行",
+            "bankCard": "662642011910002"
+          }
+        ]
+      },
+      {
+        "employeeId": "employeeId002",
+        "employeeName": "轮回韩2",
+        "idNumberStar": "420117199109011240",
+        "phoneStar": "1870***9177",
+        "position": "前端工程师",
+        "inServiceStatus": 4,
+        "inServiceStatusVal": "退休",
+        "employeeNo": "004",
+        "groupName": "云中心",
+        "entryDate": 1548224681978,
+        "bankCardList": [
+          {
+            "bankName": "华夏银行",
+            "bankCard": "662642011910002"
+          }
+        ]
+      }
+    ],
+    "cards": [
+      {
+        "cardNo": "string",
+        "issuerName": "string",
+        "bankCardGroups": [
+          {
+            "id": "string",
+            "groupId": "string",
+            "groupName": "string"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "shortEntName": "北京",
     "entName": "北京开科唯识技术有限公司11111111111111111111111111",
     "items": [
       {

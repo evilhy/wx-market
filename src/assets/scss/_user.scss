@@ -75,16 +75,26 @@
     position: relative;
     height: px2rem(122px);
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    align-items: center;
     background: white;
     padding: 0 px2rem(60px) 0 px2rem(30px);
     border-top: 1px solid $color-border-default;
     .ent-short-name {
-      @include font-dpr(28px);
+      @include square(80px);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: $fx-main-color;
+      color: white;
+      @include font-dpr(26px);
+      border-radius: px2rem($radius-s);
+      margin-right: px2rem(16px);
+      padding: 0 px2rem(10px);
+      box-sizing: border-box;
     }
     .ent-name {
-      color: $color-text-gray;
+      flex: 1;
+      @include font-dpr(28px);
       @extend %text-overflow;
     }
     .iconfont {

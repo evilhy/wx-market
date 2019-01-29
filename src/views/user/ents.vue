@@ -2,8 +2,8 @@
   <div class="user-ents-page">
     <div class="ent" v-for="(ent, index) in entList" :key="index">
       <div class="ent-header" @click="toggle(ent)">
-        <p class="ent-short-name">{{ent.shortEntName}}</p>
-        <p class="ent-name">{{ent.entName}}</p>
+        <span class="ent-short-name">{{ent.shortEntName.substring(0, 2)}}<br/>{{ent.shortEntName.substring(2)}}</span>
+        <span class="ent-name">{{ent.entName}}</span>
         <i class="iconfont icon-liebiaozhankai" v-show="!ent.fold"></i>
         <i class="iconfont icon-liebiaoshouqi" v-show="ent.fold"></i>
       </div>
