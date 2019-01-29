@@ -471,11 +471,8 @@
     }
   }
   .concat-link{
-    position: fixed;
-    bottom: px2rem(50px);
-    left: 0;
-    width: 100%;
-    color: #666;
+    color: $fx-main-color;
+    @include font-dpr(26px);
     text-align: center;
   }
 }
