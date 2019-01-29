@@ -31,7 +31,7 @@ export default {
       }
     },
     toHome () {
-      helper.saveUserInfo({ bindStatus: '1' })
+      helper.saveUserInfo({ bindStatus: '1', ifPwd: 1 })
       this.$router.replace({ name: 'home' })
     }
   }
