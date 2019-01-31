@@ -1,11 +1,12 @@
 <template>
   <div class="home-page">
     <div class="banner">
-      <swiper class="swiper-container">
+      <swiper class="swiper-container" :options="swiperOptions">
         <!-- slides -->
         <swiper-slide v-for="(img, index) in imgList" :key="index">
           <img :src="img" alt="" class="img" @click="viewImg(index)">
         </swiper-slide>
+        <div class="swiper-pagination" slot="pagination"></div>
       </swiper>
     </div>
     <div class="links-wrap">
@@ -50,10 +51,17 @@ export default {
         createDate: 0,
         isRead: ''
       },
+      swiperOptions: {
+        autoplay: true,
+        loop: true,
+        pagination: {
+          el: '.swiper-pagination'
+        }
+      },
       hasNewMsg: '0',
       imgViewerFlag: false,
       imgViewIndex: 0,
-      imgList: [require('../../assets/img/home-banner3.png')]
+      imgList: [require('../../assets/img/home-banner4.png'), require('../../assets/img/home-banner3.png')]
     }
   },
   created () {
