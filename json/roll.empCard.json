@@ -25,6 +25,8 @@
       {
         "cardNo": "6640102290110000",
         "issuerName": "华夏银行",
+        "isNew": 0,
+        "cardUpdStatus": 0,
         "bankCardGroups": [
           {
             "id": "id001",
@@ -37,6 +39,8 @@
       {
         "cardNo": "6640102290110000",
         "issuerName": "建设银行",
+        "isNew": 1,
+        "cardUpdStatus": 1,
         "bankCardGroups": [
           {
             "id": "id002",

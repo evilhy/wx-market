@@ -1,1 +1,50 @@
-[]
+[
+  {
+    "crtDateTime": 1550227206000,
+    "cardNo": "4201171991091030",
+    "issuerName": "建设银行",
+    "cardNoOld": "4201171991091031",
+    "issuerNameOld": "华夏银行",
+    "shortGroupName": "开科",
+    "updStatus": 0,
+    "updStatusVal": "待审核",
+    "updDesc": "string",
+    "updDateTime": 0
+  },
+  {
+    "crtDateTime": 1550227206000,
+    "cardNo": "4201171991091030",
+    "issuerName": "建设银行",
+    "cardNoOld": "4201171991091031",
+    "issuerNameOld": "华夏银行",
+    "shortGroupName": "开科",
+    "updStatus": 1,
+    "updStatusVal": "审核成功",
+    "updDesc": "string",
+    "updDateTime": 0
+  },
+  {
+    "crtDateTime": 1550227206000,
+    "cardNo": "4201171991091030",
+    "issuerName": "建设银行",
+    "cardNoOld": "4201171991091031",
+    "issuerNameOld": "华夏银行",
+    "shortGroupName": "开科",
+    "updStatus": 2,
+    "updStatusVal": "审核拒绝",
+    "updDesc": "拒绝原因：不允许使用华夏银行以外的银行卡作为工资卡",
+    "updDateTime": 0
+  },
+  {
+    "crtDateTime": 1550227206000,
+    "cardNo": "4201171991091030",
+    "issuerName": "建设银行",
+    "cardNoOld": "4201171991091031",
+    "issuerNameOld": "华夏银行",
+    "shortGroupName": "开科",
+    "updStatus": 2,
+    "updStatusVal": "审核拒绝",
+    "updDesc": "拒绝原因：不允许使用华夏银",
+    "updDateTime": 0
+  }
+]

@@ -269,11 +269,36 @@
     background-size: 100% 100%;
     color: white;
     padding-top: px2rem(40px);
-    margin-bottom: px2rem(30px);
+    margin: 0 auto px2rem(30px);
+    &.todo{
+      background: url('../img/user/bankcard-bg-todo.png') no-repeat;
+      background-size: 100% 100%;
+    }
     .bank-name {
-      padding: 0 px2rem(30px);
+      padding: 0 px2rem(30px) 0 px2rem(105px);
       margin-bottom: px2rem(40px);
       @include font-dpr(28px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .list-btn {
+        position: relative;
+        display: flex;
+        align-items: center;
+        color: white;
+        @include font-dpr(24px);
+        .icon {
+          width: px2rem(22px);
+          margin-right: px2rem(12px);
+        }
+        .dot{
+          position: absolute;
+          left: 100%;
+          top: 0;
+          @include circle(10px);
+          background: #FB3636;
+        }
+      }
     }
     .bank-no {
       display: flex;
@@ -287,53 +312,96 @@
         background: #85d0d1;
       }
       .input {
-        width: px2rem(360px);
+        width: px2rem(450px);
         padding: 0;
         background: transparent;
         border: none;
         color: white;
         @include font-dpr(32px);
       }
+      .icon{
+        opacity: 0.8;
+      }
+    }
+    .action-wrap{
+      display: flex;
+      padding: 0 px2rem(60px);
+      justify-content: space-around;
     }
     .modify-btn {
       padding-left: px2rem(20px);
       @include font-dpr(24px);
       text-decoration: underline;
       font-weight: normal;
+      &.disabled{
+        opacity: 0.5;
+      }
     }
     .group {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
       padding: 0 px2rem(30px);
+      @extend %text-overflow;
       color: #cff1f1;
-      .group-name {
-        flex: 1;
-        @extend %text-overflow;
-      }
-      .list-btn {
-        display: flex;
-        align-items: center;
-        color: white;
-      }
-      .icon {
-        width: px2rem(22px);
-        margin-right: px2rem(12px);
-      }
     }
   }
 }
 .bankcard-history-page {
   .history-item {
-    padding: px2rem(30px) px2rem(30px) px2rem(40px);
+    padding-bottom:px2rem(30px);
     background: white;
     margin-bottom: px2rem(20px);
+    &.todo{
+      .time{
+        background: #FFF9F2;
+      }
+      .tag{
+        background: #FFA645;
+      }
+    }
+    &.success{
+      .time{
+        background: #E8F6F6;
+      }
+      .tag{
+        background: #53BDBD;
+      }
+    }
+    &.reject{
+      .time{
+        background: #FFF6F3;
+      }
+      .tag{
+        background: #F34B21;
+      }
+    }
+    .tag{
+      position: relative;
+      left: px2rem(20px);
+      display: inline-flex;
+      width: px2rem(178px);
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+      padding-right: px2rem(20px);
+      @include font-dpr(26px);
+      color: white;
+      transform: skew(30deg);
+      .text{
+        transform: skew(-30deg);
+      }
+    }
     .time {
+      position: relative;
+      height: px2rem(52px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-left: px2rem(30px);
       color: #666;
-      margin-bottom: px2rem(40px);
+      margin-bottom: px2rem(30px);
     }
     .row-list {
       position: relative;
+      margin: 0 px2rem(30px);
       &:after {
         content: '';
         position: absolute;
@@ -371,6 +439,13 @@
         transform: translate(-50%, -50%);
         background: $fx-main-color;
       }
+    }
+    .reject-reason{
+      padding: px2rem(4px) px2rem(16px);
+      margin: px2rem(30px) px2rem(30px) 0;
+      @include font-dpr(22px);
+      background: #FFF6F3;
+      color: #F34B21;
     }
   }
   .no-data{

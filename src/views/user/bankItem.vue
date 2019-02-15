@@ -1,12 +1,19 @@
 <template>
-  <div class="bank-item">
-    <div class="bank-name">{{currentBank.issuerName}}</div>
-    <div class="bank-no" v-show="!editing">{{currentBank.cardNo | bankSpace}}<span class="modify-btn" @click="startEdit(currentBank.cardNo)">修改</span></div>
-    <div class="bank-no editing" v-show="editing"><input class="input" type="tel" v-model.trim="currentBank.cardNo"><span
-        class="modify-btn" @click="cancelEditing">取消</span><span class="modify-btn" @click="modifySave">保存</span></div>
-    <div class="group">
+  <div class="bank-item" :class="{'todo' :currentBank.cardUpdStatus === 0}">
+    <div class="bank-name">{{currentBank.issuerName}}<span class="list-btn" @click="toHistory"><img src="../../assets/img/user/icon-bankcard-list.png" class="icon">更换记录<span class="dot" v-if="currentBank.isNew"></span></span></div>
+    <div class="bank-no" v-show="!editing">{{currentBank.cardNo | bankSpace}}
+      <span class="modify-btn disabled" v-if="currentBank.cardUpdStatus === 0">申请更换</span>
+      <span class="modify-btn" @click="startEdit(currentBank.cardNo)" v-else>申请更换</span>
+    </div>
+    <div class="bank-no editing" v-show="editing">
+      <input class="input" type="tel" v-model.trim="currentBank.cardNo">
+      <i class="icon iconfont icon-Close" @click="currentBank.cardNo = ''" v-if="currentBank.cardNo"></i>
+    </div>
+    <div class="action-wrap" v-show="editing">
+      <span class="modify-btn" @click="cancelEditing">取消</span><span class="modify-btn" @click="modifySave">保存</span>
+    </div>
+    <div class="group" v-show="!editing">
       <span class="group-name">所属机构：{{collect.getValueList(currentBank.bankCardGroups, 'shortGroupName').join('/')}}</span>
-      <span class="list-btn" @click="toHistory"><img src="../../assets/img/user/icon-bankcard-list.png" class="icon">修改记录</span>
     </div>
   </div>
 </template>
