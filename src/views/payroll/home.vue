@@ -61,7 +61,7 @@ export default {
       hasNewMsg: '0',
       imgViewerFlag: false,
       imgViewIndex: 0,
-      imgList: [require('../../assets/img/home-banner4.png'), require('../../assets/img/home-banner3.png')]
+      imgList: [require('../../assets/img/home-banner5.png'), require('../../assets/img/home-banner3.png')]
     }
   },
   created () {
