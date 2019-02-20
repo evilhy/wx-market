@@ -350,6 +350,7 @@
     padding-bottom:px2rem(30px);
     background: white;
     margin-bottom: px2rem(20px);
+    overflow: hidden;
     &.todo{
       .time{
         background: #FFF9F2;
