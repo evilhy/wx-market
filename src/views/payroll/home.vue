@@ -24,7 +24,7 @@
             <div class="title">发票管家</div>
           </div>
           <div class="person-info box" @click="toPage('user')">
-            <div class="title"><span class="dot" v-if="recentInfo.isNew"></span>个人信息</div>
+            <div class="title"><span class="dot" v-if="bankIsNew"></span>个人信息</div>
           </div>
         </div>
       </div>
@@ -49,9 +49,9 @@ export default {
         groupId: '',
         groupName: '',
         createDate: 0,
-        isRead: '',
-        isNew: 0
+        isRead: ''
       },
+      bankIsNew: 0, // 银行卡变更
       swiperOptions: {
         autoplay: true,
         loop: true,
@@ -73,9 +73,10 @@ export default {
   methods: {
     async getRecentInfo () {
       let res = await this.$Roll.index()
-      let { bean = {} } = res.data
+      let { bean = {}, isNew = 0 } = res.data
       if (Object.keys(bean).length) {
         this.recentInfo = bean
+        this.bankIsNew = isNew
         helper.saveUserInfo({ entId: this.recentInfo.entId })
       }
     },
