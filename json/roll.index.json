@@ -4,6 +4,7 @@
     "groupId": "001",
     "groupName": "groupName",
     "createDate": 1536737623309,
-    "isRead": "0"
+    "isRead": "0",
+    "isNew": 1
   }
 }

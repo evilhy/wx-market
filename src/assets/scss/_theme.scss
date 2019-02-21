@@ -598,6 +598,17 @@
   .person-info {
     background: url('../img/icon-person.png') no-repeat center px2rem(74px);
     background-size: px2rem(56px) px2rem(50px);
+    .title {
+      position: relative;
+      .dot {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        margin-left: 28px;
+        @include circle(10px);
+        background: #fb3636;
+      }
+    }
   }
 }
 .bottom-logo {
@@ -609,18 +620,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  .line{
+  .line {
     height: px2rem(30px);
     width: 1px;
     background: $color-border-default;
-    margin:0 px2rem(20px);
+    margin: 0 px2rem(20px);
   }
   img {
     height: px2rem(30px);
     &:last-child {
       opacity: 0.9;
     }
-    &.hx{
+    &.hx {
       height: px2rem(26px);
     }
   }
@@ -1853,7 +1864,7 @@
       &:first-child {
         border-right: 1px solid #e9ebec;
       }
-      .icon-chakanxiangqing{
+      .icon-chakanxiangqing {
         display: block;
         @include font-dpr(28px);
       }
@@ -2084,11 +2095,11 @@
     height: 100%;
   }
 }
-.vcode-btn{
+.vcode-btn {
   display: inline-flex;
   padding: 5px;
   color: $fx-main-color;
-  &.disabled{
+  &.disabled {
     color: #999;
   }
 }

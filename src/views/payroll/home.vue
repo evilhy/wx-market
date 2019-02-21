@@ -6,7 +6,7 @@
         <swiper-slide v-for="(img, index) in imgList" :key="index">
           <img :src="img" alt="" class="img" @click="viewImg(index)">
         </swiper-slide>
-        <div class="swiper-pagination" slot="pagination"></div>
+        <div class="swiper-pagination" slot="pagination" v-if="imgList.length > 1"></div>
       </swiper>
     </div>
     <div class="links-wrap">
@@ -24,7 +24,7 @@
             <div class="title">发票管家</div>
           </div>
           <div class="person-info box" @click="toPage('user')">
-            <div class="title">个人信息</div>
+            <div class="title"><span class="dot" v-if="recentInfo.isNew"></span>个人信息</div>
           </div>
         </div>
       </div>
@@ -49,7 +49,8 @@ export default {
         groupId: '',
         groupName: '',
         createDate: 0,
-        isRead: ''
+        isRead: '',
+        isNew: 0
       },
       swiperOptions: {
         autoplay: true,

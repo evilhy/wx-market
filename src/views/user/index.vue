@@ -22,7 +22,7 @@
         <span class="value"><span class="arrow"></span></span>
       </div>
       <div class="item" @click="toPage('bankcardList')">
-        <span class="label"><i class="iconfont icon-yinhangqia"></i>银行卡</span>
+        <span class="label"><i class="iconfont icon-yinhangqia"></i>银行卡<span class="dot" v-if="info.isNew"></span></span>
         <span class="value"><span class="arrow"></span></span>
       </div>
       <!-- <div class="item">
