@@ -6,11 +6,11 @@
         <swiper-slide v-for="(img, index) in imgList" :key="index">
           <img :src="img" alt="" class="img" @click="viewImg(index)">
         </swiper-slide>
-        <div class="swiper-pagination" slot="pagination"></div>
+        <div class="swiper-pagination" slot="pagination" v-if="imgList.length > 1"></div>
       </swiper>
     </div>
     <div class="links-wrap">
-      <div class="my-income" @click="enterWageList">
+      <div class="my-income" @click="enterMyIncome">
         <div class="title">我的收入</div>
         <div class="recent-one" v-if="recentInfo.createDate">最近一笔:{{recentInfo.createDate | date('Y/m/d')}}</div>
       </div>
@@ -23,16 +23,16 @@
           <div class="invoice-info box" @click="toPage('invoice')">
             <div class="title">发票管家</div>
           </div>
-          <div class="person-info box" @click="toPage('personal')">
-            <div class="title">个人信息</div>
+          <div class="person-info box" @click="toPage('user')">
+            <div class="title"><span class="dot" v-if="bankIsNew"></span>个人信息</div>
           </div>
         </div>
       </div>
     </div>
     <div class="bottom-logo">
-      <img src="../../assets/img/hx-gray-logo.png" class="hx"/>
+      <img src="../../assets/img/hx-gray-logo.png" class="hx" />
       <div class="line"></div>
-      <img src="../../assets/img/fx-gray-logo.png" class="fx"/>
+      <img src="../../assets/img/fx-gray-logo.png" class="fx" />
     </div>
     <img-viewer :img-list="imgList" :index="imgViewIndex" :flag="imgViewerFlag" @close="imgViewerFlag=false"></img-viewer>
   </div>
@@ -51,6 +51,7 @@ export default {
         createDate: 0,
         isRead: ''
       },
+      bankIsNew: 0, // 银行卡变更
       swiperOptions: {
         autoplay: true,
         loop: true,
@@ -61,7 +62,7 @@ export default {
       hasNewMsg: '0',
       imgViewerFlag: false,
       imgViewIndex: 0,
-      imgList: [require('../../assets/img/home-banner3.png')]
+      imgList: [require('../../assets/img/home-banner5.png'), require('../../assets/img/home-banner6.png'), require('../../assets/img/home-banner3.png')]
     }
   },
   created () {
@@ -70,20 +71,21 @@ export default {
   mounted () {
   },
   methods: {
-    getRecentInfo () {
-      this
-        .$Roll
-        .index()
-        .then((res) => {
-          if (Object.keys(res.data.bean).length) {
-            this.recentInfo = res.data.bean
-            helper.saveUserInfo({ entId: this.recentInfo.entId })
-          }
-        })
+    async getRecentInfo () {
+      let res = await this.$Roll.index()
+      let { bean = {}, isNew = 0 } = res.data
+      if (Object.keys(bean).length) {
+        this.recentInfo = bean
+        this.bankIsNew = isNew
+        helper.saveUserInfo({ entId: this.recentInfo.entId })
+      }
     },
-    enterWageList () {
-      let routeName = this.recentInfo.groupId ? 'wageList' : 'noWage'
-      this.$router.push({ name: routeName })
+    enterMyIncome () {
+      if (helper.getUserInfo('ifPwd', 0)) { // 有密码
+        this.$router.push({ name: 'checkQueryCode', query: { 'hasWage': this.recentInfo.groupId || '' } })
+      } else {
+        this.$router.push({ name: 'setQueryCode' })
+      }
     },
     toPage (routerName, query = {}) {
       this.$router.push({ name: routerName, query: query })
@@ -95,7 +97,7 @@ export default {
   },
   components: {
     ImgViewer,
-    swiper, 
+    swiper,
     swiperSlide
   }
 }

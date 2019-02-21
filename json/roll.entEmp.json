@@ -2,16 +2,24 @@
   "bindStatus": "0",
   "employeeList": [
     {
-      "phone": "18702759177",
-      "phoneStar": "187****9177",
+      "phone": "1870739188",
+      "phoneStar": "187***9188",
+      "employeeName": "轮回韩",
+      "sex": "0",
+      "entName": "北京开科唯识技术有限公司1111111111111111111111",
+      "idNumber": "000001"
+    },
+    {
+      "phone": "1870739181",
+      "phoneStar": "187***9181",
       "employeeName": "轮回韩",
       "sex": "0",
       "entName": "北京开科唯识技术有限公司",
       "idNumber": "000001"
     },
     {
-      "phone": "18702759177",
-      "phoneStar": "187****9177",
+      "phone": "",
+      "phoneStar": "",
       "employeeName": "轮回韩",
       "sex": "0",
       "entName": "北京开科唯识技术有限公司",

@@ -15,12 +15,18 @@
 <script>
 import { listenOrientation, checkIsWeixin } from 'utils/assist'
 import sysConfig from 'utils/constant'
+import helper from 'utils/helper'
 export default {
   name: 'app',
   data () {
     return {
       isWeixin: true,
       isVerticalScreen: true
+    }
+  },
+  watch: {
+    '$route' ({ meta }) {
+      helper.title(meta.title)
     }
   },
   created() {

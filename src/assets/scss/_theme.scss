@@ -504,7 +504,6 @@
 }
 
 //
-.feed-back-page,
 .no-wage-page {
   text-align: center;
   padding-top: px2rem(220px);
@@ -599,6 +598,17 @@
   .person-info {
     background: url('../img/icon-person.png') no-repeat center px2rem(74px);
     background-size: px2rem(56px) px2rem(50px);
+    .title {
+      position: relative;
+      .dot {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        margin-left: 28px;
+        @include circle(10px);
+        background: #fb3636;
+      }
+    }
   }
 }
 .bottom-logo {
@@ -610,18 +620,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  .line{
+  .line {
     height: px2rem(30px);
     width: 1px;
     background: $color-border-default;
-    margin:0 px2rem(20px);
+    margin: 0 px2rem(20px);
   }
   img {
     height: px2rem(30px);
     &:last-child {
       opacity: 0.9;
     }
-    &.hx{
+    &.hx {
       height: px2rem(26px);
     }
   }
@@ -876,7 +886,6 @@
     line-height: px2rem(44px);
     text-indent: 2em;
     .blue-btn {
-      @include btn;
       box-shadow: 0 4px 12px 0 rgba(82, 189, 189, 0.5);
       @include font-dpr(28px);
       width: px2rem(250px);
@@ -914,144 +923,6 @@
   &.error {
     color: $fx-reverse-color;
     border: 1px solid $fx-reverse-color;
-  }
-}
-// 绑定身份证页面
-.bind-id-card-page,
-.choose-phone-page,
-.send-code-page {
-  height: 100%;
-  .logo-wrap {
-    padding: px2rem(70px) 0 px2rem(60px);
-    text-align: center;
-  }
-  .logo {
-    width: px2rem(200px);
-    height: px2rem(200px);
-    margin: 0 auto;
-  }
-  .card-form-wrap {
-    position: relative;
-    z-index: 2;
-    background-color: $color-gray-bg;
-  }
-  .card-form {
-    padding: 0 px2rem(40px);
-    .input {
-      margin-bottom: px2rem(40px);
-    }
-    .code-wrap {
-      height: px2rem(68px);
-      background: white url('../img/input-line.png') no-repeat center center;
-      background-size: 100%;
-      border: 1px solid $color-border-default;
-      border-radius: px2rem($radius-s);
-      .code-item {
-        float: left;
-        width: 16.667%;
-        text-align: center;
-        line-height: px2rem(68px);
-      }
-    }
-    .code-input {
-      position: absolute;
-      opacity: 0;
-      line-height: 1;
-      &.hidden {
-        @include transform(translateX(-100%));
-      }
-    }
-    .get-code-btn {
-      margin-top: px2rem(60px);
-      text-align: center;
-      color: $color-text-tone;
-      &.disabled {
-        color: $color-text-gray;
-      }
-    }
-  }
-  .tip {
-    text-align: center;
-    line-height: px2rem(32px);
-    margin-bottom: px2rem(60px);
-  }
-  .phone-item {
-    background: white;
-    display: flex;
-    display: -webkit-flex;
-    justify-content: space-between;
-    &.active {
-      background: $color-text-tone;
-      color: white;
-      .phone,
-      .count {
-        color: white;
-      }
-    }
-    &.disabled {
-      color: $color-text-tip;
-      .no-phone {
-        color: red;
-      }
-    }
-    .phone {
-      color: $color-text-tone;
-    }
-    .count {
-      @include font-dpr(22px);
-      color: $color-text-gray;
-    }
-  }
-  .point {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-  }
-}
-.choose-phone-page {
-  min-height: 100%;
-  .phone-list{
-      min-height: 40%;
-  }
-  .bottom-tip {
-    display: flex;
-    justify-content: center;
-    padding: 0 px2rem(80px) px2rem(50px);
-    line-height: px2rem(33px);
-    .iconfont {
-      color: $color-text-tone;
-      @include font-dpr(60px);
-      line-height: px2rem(66px);
-      margin-right: px2rem(12px);
-    }
-  }
-}
-// 身份证已被绑定
-.card-binded-page,
-.phone-empty-page {
-  padding: px2rem(60px) px2rem(40px) 0;
-  .message-box {
-    height: px2rem(296px);
-    margin-bottom: px2rem(60px);
-    padding-top: px2rem(80px);
-    background: #fff;
-    border-radius: px2rem(10px);
-    text-align: center;
-    .normal {
-      color: #333;
-      line-height: px2rem(36px);
-    }
-    .tip-error {
-      @include font-dpr($fontsize-m);
-      margin-bottom: px2rem(18px);
-      height: px2rem(37px);
-      color: #f44336;
-      line-height: px2rem(37px);
-      i {
-        @include font-dpr(30px);
-        margin-right: px2rem(16px);
-      }
-    }
   }
 }
 
@@ -1410,7 +1281,7 @@
     .btn {
       width: px2rem(210px);
       height: px2rem(70px);
-      @include btn;
+      line-height: px2rem(70px);
       margin-top: px2rem(32px);
       border-radius: px2rem($radius-xs);
       @include font-dpr(28px);
@@ -1710,7 +1581,6 @@
     }
   }
   .btn {
-    @include btn;
     margin-top: px2rem(50px);
     &:disabled {
       opacity: 1;
@@ -1990,11 +1860,11 @@
     display: flex;
     .action {
       width: 100%;
-      @include btn;
+      @include flex-center;
       &:first-child {
         border-right: 1px solid #e9ebec;
       }
-      .icon-chakanxiangqing{
+      .icon-chakanxiangqing {
         display: block;
         @include font-dpr(28px);
       }
@@ -2160,7 +2030,7 @@
   }
   .btn {
     height: px2rem(62px);
-    @include btn;
+    @include flex-center;
     border-radius: px2rem($radius-xs);
     &.question,
     &.feedback {
@@ -2225,11 +2095,11 @@
     height: 100%;
   }
 }
-.vcode-btn{
+.vcode-btn {
   display: inline-flex;
   padding: 5px;
   color: $fx-main-color;
-  &.disabled{
+  &.disabled {
     color: #999;
   }
 }

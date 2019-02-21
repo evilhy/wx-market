@@ -9,9 +9,9 @@ export default {
     return /[^\u4e00-\u9fa5]/.test(value)
   },
   isPhone(value) {
-    return /^1[0-9]{10}/.test(value)
+    return /^1[0-9]{10}$/.test(value)
   },
-  isCode (value) { 
+  isCode (value) {
     return /[0-9]{6}/.test(value)
   }
 }

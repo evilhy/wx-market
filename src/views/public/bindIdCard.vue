@@ -1,71 +1,53 @@
 <template>
-  <div class="bind-id-card-page">
-    <div class="logo-wrap">
-      <img src="../../assets/img/logo.png" alt="" class="logo" />
-    </div>
-    <div class="card-form">
-      <input class="input id-card-input" type="text" maxlength="18" v-model.trim="idCard" placeholder="请输入身份证绑定" />
-      <button class="btn-green" :disabled="idCard.length < 6" @click="getPhone">下一步</button>
+  <!-- 身份绑定-输入身份证 -->
+  <div class="public-page page fill-id-card-page">
+    <public-logo></public-logo>
+    <div class="content-wrap">
+      <div class="big-title">身份验证</div>
+      <div class="field-wrap mt">
+        <img class="field-icon" src="../../assets/img/public/field-id-card.png" />
+        <input class="input id-card-input" type="text" maxlength="18" placeholder="请输入身份证号" v-model.trim="idCard" />
+      </div>
+      <button class="btn btn-next" :disabled="idCard.length < 6" @click="getPhone">下一步</button>
     </div>
   </div>
 </template>
 
-<script type="text/ecmascript-6">
+<script>
+import publicLogo from 'components/publicLogo'
 import storage from 'utils/storage'
 import helper from 'utils/helper'
 import collect from 'utils/collect'
-import { validIdCard } from 'utils/assist'
 export default {
   data () {
     return {
       idCard: ''
     }
   },
-  created () {
-    helper.title('身份验证')
-  },
-  mounted () {
-  },
+  created () {},
   methods: {
-    getPhone () {
-      this
-          .$Roll
-          .entEmp(this.idCard)
-          .then((res) => {
-            if (res.data.bindStatus === '1') {
-              this.$router.replace({ name: 'idCardBinded' })
-            } else {
-              let employeeList = res.data.employeeList
-              let telList = collect.getValueList(employeeList, 'phone').filter(item => item)
-              if (telList.length === 1) {
-                helper.saveUserInfo(collect.getItem(employeeList, 'phone', telList[0]))
-                this.sendCode()
-              } else if (telList.length > 1) {
-                storage.setSession('employeeList', employeeList)
-                this.$router.push({ name: 'choosePhone' })
-              } else {
-                this.$router.push({ name: 'phoneEmpty' })
-              }
-            }
-          })
-    },
-    checkValue () {
-      if (!validIdCard(this.idCard)) {
-        helper.toast('请输入正确的身份证号')
-        return false
+    async getPhone () {
+      let res = await this.$Roll.entEmp(this.idCard)
+      this.idCard = ''
+      let { bindStatus, employeeList } = res.data
+      let telList = collect.getValueList(employeeList, 'phone').filter(item => item)
+      let telLen = telList.length
+      helper.saveUserInfo({ bindStatus })
+      if (telLen === 0) {
+        let { idNumber, employeeName } = employeeList[0]
+        helper.saveUserInfo({ idNumber, employeeName })
+        this.$router.replace({ name: 'checkCardTail' })
+      } else if (telLen === 1) {
+        helper.saveUserInfo(collect.getItem(employeeList, 'phone', telList[0]))
+        this.$router.replace({ name: 'sendCode' })
       } else {
-        return true
+        storage.setSession('employeeList', employeeList)
+        this.$router.replace({ name: 'choosePhone' })
       }
-    },
-    sendCode () {
-      this
-        .$Inside
-        .sendCode()
-        .then((res) => {
-          helper.saveRemainTime()
-          this.$router.push({name: 'sendCode'})
-        })
     }
+  },
+  components: {
+    publicLogo
   }
 }
 </script>

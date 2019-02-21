@@ -26,24 +26,29 @@ export default {
         .$Weixin
         .wxCallback(this.query.code)
         .then((res) => {
-          let data = res.data
-          helper.saveUserInfo({ jsessionId: data.jsessionId })
-          if (data.bindStatus === '0') {
+          let { bindStatus, jsessionId, idNumber, ifPwd, headimgurl } = res.data
+          helper.saveUserInfo({ jsessionId, ifPwd, bindStatus, headimgurl })
+          if (bindStatus === '0') {
               this.$router.replace({ name: 'bindIdCard' })
           } else {
-            helper.saveUserInfo({ idNumber: data.idNumber })
-            this.toPage()
+            helper.saveUserInfo({ idNumber })
+            this.toPage(ifPwd)
           }
         })
     },
-    toPage () {
+    toPage (ifPwd) {
       if (!this.query.state) {
         this.$router.replace({ name: 'home' })
       } else {
         let stateObj = JSON.parse(this.query.state)
-        if (stateObj.wageSheetId && stateObj.groupId) {
-          helper.saveUserInfo({ groupId: stateObj.groupId })
-          this.$router.replace({ name: 'wageIndex', params: { wageSheetId: stateObj.wageSheetId } })
+        let { wageSheetId, groupId } = stateObj
+        if (wageSheetId && groupId) {
+          helper.saveUserInfo({ groupId })
+          if (ifPwd) { // 有密码
+            this.$router.replace({ name: 'checkQueryCode', query: { wageSheetId } })
+          } else {
+            this.$router.replace({ name: 'setQueryCode' })
+          }
           return
         }
         this.$router.replace({ name: 'home' })

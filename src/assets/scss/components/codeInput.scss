@@ -1,0 +1,40 @@
+@charset "utf-8";
+.code-input-wrap{
+  position: relative;
+  .code-input{
+    position: absolute;
+    left: 0;
+    height: px2rem(80px);
+    opacity: 0;
+    &.hidden{
+      transform: translate(-100%);
+    }
+  }
+  .code-wrap{
+    height: px2rem(80px);
+    background: #F7F7F7;
+    border: 1px solid #E6E6E6;
+    border-radius: px2rem(4px);
+    display: flex;
+    align-items: center;
+    &.focus{
+      background: white;
+    }
+  }
+  .code-item{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid #E6E6E6;
+    height: px2rem(44px);
+    @include font-dpr(30px);
+    &:last-child{
+      border:none;
+    }
+    .dot{
+      @include circle(16px);
+      background: #333;
+    }
+  }
+}

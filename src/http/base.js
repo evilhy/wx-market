@@ -27,6 +27,12 @@ export default class HttpForApplication extends HttpEngine {
   beforeErrorResponseHandler (error) {
     error.config.loading && Indicator.close()
     let errorMsg = error.message
+    if (errorMsg === 'Network Error') { 
+      errorMsg = '网络异常'
+    }
+    if (errorMsg.indexOf('timeout') >= 0) {
+      errorMsg = '请求超时'
+    }
     if (typeOf(error.response) === 'object') {
       if (typeOf(error.response.data) === 'object') {
         errorMsg = error.response.data['errorMsg']

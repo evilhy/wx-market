@@ -54,7 +54,7 @@ const helper = {
       (typeOf(tailUrl) === 'string' ? tailUrl : '')
     )
   },
-  toast(msg, position = 'bottom', duration = 3000) {
+  toast(msg, position = 'center', duration = 3000) {
     clearTimeout(timer)
     let instance = Toast({
       message: msg,

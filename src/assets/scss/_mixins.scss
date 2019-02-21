@@ -92,7 +92,7 @@
   @include square($value);
   border-radius: 50%;
 }
-@mixin btn {
+@mixin flex-center {
   display: inline-flex;
   align-items: center;
   justify-content: center;
