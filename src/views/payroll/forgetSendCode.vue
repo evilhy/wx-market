@@ -9,6 +9,7 @@
         <verifycode-btn ref="verifycode-btn" @tap="sendCode"></verifycode-btn>
       </div>
       <button class="btn btn-next" :disabled="btnDisabled" @click="checkPhoneCode">确认</button>
+      <p class="change-phone-btn stress" @click="toPage('selectModifyWay', { phone: userInfo.phone })">修改手机号</p>
     </div>
   </div>
 </template>
@@ -49,6 +50,9 @@ export default {
       } catch (e) {
         this.code = ''
       }
+    },
+    toPage (name, query = {}) {
+      this.$router.push({ name, query })
     }
   },
   components: {

@@ -149,6 +149,11 @@
   .stress{
     color: $fx-main-color;
   }
+  .change-phone-btn{
+    margin-top: px2rem(20px);
+    line-height: px2rem(80px);
+    text-align: center;
+  }
 }
 .check-code-page{
   padding-top: px2rem(40px);
