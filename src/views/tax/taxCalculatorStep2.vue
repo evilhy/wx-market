@@ -47,7 +47,7 @@
 
 <script>
 import checkBox from 'components/checkBox'
-import TaxState from 'utils/TaxCalculator/TaxState'
+import TaxState from 'utils/TaxCalculator/state'
 import { MessageBox } from 'mint-ui'
 import explainPopup from './explain-popup'
 import submitPopup from './submit-popup'

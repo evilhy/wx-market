@@ -15,10 +15,56 @@
   .explain-popup{
     height: px2rem(340px);
   }
+  .month-popup{
+    width: 100%;
+    .action-wrap{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      @include font-dpr(28px);
+      border-top: 1px solid $color-border-light;
+      .action-item{
+        height: 40px;
+        flex: 1;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        &:first-child{
+          // color: $color-text-gray;
+          border-right: 1px solid $color-border-light;
+        }
+        &:last-child{
+          color: $fx-main-color;
+        }
+      }
+    }
+    .picker-slot{
+      width: 100%;
+    }
+  }
   .main-form {
     position: relative;
     z-index: 2;
-    padding: px2rem(28px) px2rem(34px) px2rem(120px);
+    padding: px2rem(28px) px2rem(34px) px2rem(40px);
+    .month{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .month-label{
+        color: $color-text-gray;
+      }
+      .month-value{
+        position: relative;
+        padding-right: px2rem(40px);
+        &::after{
+          position: absolute;
+          top: 50%;
+          right: 0;
+          transform: translateY(-50%);
+          @include triangle(bottom, 6px, $color-text-dark);
+        }
+      }
+    }
   }
   .page-title {
     margin-bottom: px2rem(30px);
@@ -52,7 +98,7 @@
       }
     }
   }
-  input {
+  input,.month {
     border: 0;
     outline: none;
     width: 100%;

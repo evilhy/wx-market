@@ -1,7 +1,3 @@
-/**
- * Created by duy on 2018/10/12 10:54.
- */
-
 import Vue from 'vue'
 import Vuex from 'vuex'
 
@@ -9,6 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    month: 1,
     income: '',
     deduction: '',
     specialDeduction: '',
