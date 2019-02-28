@@ -61,7 +61,8 @@ export default {
   methods: {
     updateData (e, type) {
       let value = e.target.value
-      TaxState.commit('updateData', { type, value: (Number.isNaN(Number(value)) || !value.length) ? '' : Number(value) })
+      let nValue = (Number.isNaN(Number(value)) || !value.length) ? '' : Number(value)
+      TaxState.commit('updateData', { type, value: nValue > 0 ? nValue : 0 })
     },
     updateMonth ({ value }) {
       TaxState.commit('updateData', { type: 'month', value })
