@@ -21,7 +21,7 @@
           <template v-else>
             <span class="value" v-if="item.options[0].type==='fixed'">{{item.options[0].value}}</span>
             <input type="tel" class="input" placeholder="请输入" v-else v-model.number="item.options[0].value" @click.stop
-              @blur="changeOptionValue(item, 0)">
+              @blur="changeOptionValue(item, 0)" @focus="changeMargin">
           </template>
         </div>
         <div class="option-list" v-if="item.options.length > 1">
@@ -31,7 +31,7 @@
             <div class="label" :class="{'fixed':optionItem.type === 'fixed'}">{{optionItem.label}}</div>
             <div class="value" v-if="optionItem.type === 'fixed'">{{optionItem.value}}</div>
             <input type="tel" class="input" placeholder="请输入" v-else v-model.number="optionItem.value"
-              @blur="changeOptionValue(item, optionIndex)">
+              @blur="changeOptionValue(item, optionIndex)" @focus="changeMargin">
           </div>
         </div>
       </div>
@@ -230,6 +230,7 @@ export default {
       }
       if (currentDeduction.option !== index) return false
       currentDeduction.value = options[index].value
+      window.document.getElementsByTagName('html')[0].style.marginTop = `1px`
     },
     confirm () {
       TaxState.commit('updateData', { type: 'specialDeduction', value: this.deductionDetailTotal })
@@ -244,6 +245,9 @@ export default {
     },
     openSubmitPopup () {
       this.$refs['submit-popup'].show()
+    },
+    changeMargin () {
+      window.document.getElementsByTagName('html')[0].style.marginTop = `0px`
     }
   },
   components: {
