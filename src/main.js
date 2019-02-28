@@ -3,7 +3,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import myPlugin from './utils/plugin'
-import { Popup, Header, Loadmore, InfiniteScroll } from 'mint-ui'
+import { Popup, Header, Loadmore, InfiniteScroll, Picker } from 'mint-ui'
 import 'mint-ui/lib/style.css'
 
 import './assets/fonts/iconfont.css'
@@ -21,6 +21,7 @@ Vue.config.productionTip = false
 Vue.component(Popup.name, Popup)
 Vue.component(Header.name, Header)
 Vue.component(Loadmore.name, Loadmore)
+Vue.component(Picker.name, Picker)
 Vue.use(InfiniteScroll)
 Vue.use(myPlugin)
 Vue.use(VueClipboard)

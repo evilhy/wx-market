@@ -21,17 +21,17 @@
           <template v-else>
             <span class="value" v-if="item.options[0].type==='fixed'">{{item.options[0].value}}</span>
             <input type="tel" class="input" placeholder="请输入" v-else v-model.number="item.options[0].value" @click.stop
-              @blur="changeOptionValue(item, 0)">
+              @blur="changeOptionValue(item, 0)" @focus="changeMargin">
           </template>
         </div>
         <div class="option-list" v-if="item.options.length > 1">
           <div class="option-item" v-for="(optionItem, optionIndex) in item.options" :key="`option-${optionIndex}`"
-            @click="selectOption(item, optionIndex)">
+            @click="selectOption($event, item, optionIndex)">
             <div class="v-checkbox" :class="{'checked':specialDeductionDetail[item.type].option === optionIndex}"></div>
             <div class="label" :class="{'fixed':optionItem.type === 'fixed'}">{{optionItem.label}}</div>
             <div class="value" v-if="optionItem.type === 'fixed'">{{optionItem.value}}</div>
-            <input type="tel" class="input" placeholder="请输入" v-else v-model.number="optionItem.value" @click.stop
-              @blur="changeOptionValue(item, optionIndex)">
+            <input type="tel" class="input" placeholder="请输入" v-else v-model.number="optionItem.value"
+              @blur="changeOptionValue(item, optionIndex)" @focus="changeMargin">
           </div>
         </div>
       </div>
@@ -47,14 +47,12 @@
 
 <script>
 import checkBox from 'components/checkBox'
-import TaxState from 'utils/TaxCalculator/TaxState'
+import TaxState from 'utils/TaxCalculator/state'
 import { MessageBox } from 'mint-ui'
 import explainPopup from './explain-popup'
 import submitPopup from './submit-popup'
 export default {
   data () {
-    // todo
-    // let { child, parent, illness } = TaxState.state.specialDeductionDetail
     let { child, parent } = TaxState.state.specialDeductionDetail
     return {
       list: [
@@ -196,18 +194,19 @@ export default {
         )
       }
     },
-    selectOption (data, index) {
+    selectOption (e, data, index) {
       let { type, options } = data
+      let tagName = e.target.tagName
       let option = this.specialDeductionDetail[type].option
       if (type === 'rent' && option !== index) {
         this.showTip()
         TaxState.commit('clearDeductionDetail', 'houseLoan')
       }
-      this.setDeduction(
-        type,
-        option === index ? -1 : index,
-        option === index ? '' : options[index].value
-      )
+      if (option !== index || tagName === 'INPUT') {
+        this.setDeduction(type, index, options[index].value)
+      } else {
+        this.setDeduction(type, -1, '')
+      }
     },
     setDeduction (type, index, value) {
       TaxState.commit('setDeduction', {
@@ -231,6 +230,7 @@ export default {
       }
       if (currentDeduction.option !== index) return false
       currentDeduction.value = options[index].value
+      window.document.getElementsByTagName('html')[0].style.marginTop = `1px`
     },
     confirm () {
       TaxState.commit('updateData', { type: 'specialDeduction', value: this.deductionDetailTotal })
@@ -245,6 +245,9 @@ export default {
     },
     openSubmitPopup () {
       this.$refs['submit-popup'].show()
+    },
+    changeMargin () {
+      window.document.getElementsByTagName('html')[0].style.marginTop = `0px`
     }
   },
   components: {

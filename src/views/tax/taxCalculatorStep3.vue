@@ -36,8 +36,8 @@
 </template>
 
 <script>
-import TaxCalculator from 'utils/TaxCalculator/TaxCalculator'
-import TaxState from 'utils/TaxCalculator/TaxState'
+import TaxCalculator from 'utils/TaxCalculator/calculator'
+import TaxState from 'utils/TaxCalculator/state'
 export default {
   data () {
     return {
@@ -46,6 +46,9 @@ export default {
     }
   },
   computed: {
+    month () {
+      return TaxState.state.month
+    },
     income () {
       return TaxState.state.income
     },
@@ -95,12 +98,12 @@ export default {
       TaxState.commit('changeStep', 'taxCalculatorStep1')
     },
     getPageData () {
-      let latestTaxCalculator = new TaxCalculator(this.income, this.deduction, this.specialDeduction)
-      let previousTaxCalculator = new TaxCalculator(this.income, this.deduction)
-      this.latestData.wage = latestTaxCalculator.wagePayment()
-      this.latestData.tax = latestTaxCalculator.taxAmount()
-      this.previousData.wage = previousTaxCalculator.wagePayment()
-      this.previousData.tax = previousTaxCalculator.taxAmount()
+      let latestTaxCalculator = new TaxCalculator(this.income, this.deduction, this.specialDeduction, this.month)
+      let previousTaxCalculator = new TaxCalculator(this.income, this.deduction, 0, this.month)
+      this.latestData.wage = latestTaxCalculator.calAfterTaxWage()
+      this.latestData.tax = latestTaxCalculator.calCurrentTaxPay()
+      this.previousData.wage = previousTaxCalculator.calAfterTaxWage()
+      this.previousData.tax = previousTaxCalculator.calCurrentTaxPay()
     }
   }
 }
