@@ -372,6 +372,13 @@ export default new Router({
       component: resolve => {
         require(['../views/public/bankSite.vue'], resolve)
       }
+    },
+    {
+      path: '/about-us', // 关于我们
+      name: 'aboutUs',
+      component: resolve => {
+        require(['../views/public/aboutUs.vue'], resolve)
+      }
     }
   ],
   scrollBehavior (to, from, savedPosition) {
