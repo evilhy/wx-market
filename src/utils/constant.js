@@ -6,7 +6,7 @@ export default {
     development: 'http://10.5.1.71:8080/rest',
     // development: 'https://sitwx.cardpu.com/rest',
     // test: 'https://sitwx.cardpu.com/rest',
-    test: 'https://sitwx.cardpu.com/rest',
+    test: 'https://sitwx.cardpu.com',
     production: 'https://fxpush.cardpu.com/rest'
   },
   elife_base_url: {
