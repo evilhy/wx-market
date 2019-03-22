@@ -4,7 +4,8 @@
 import Paths from 'swagger-paths';
 import MockResolveResponse from './MockResolveResponse';
 import MockRejectError from './MockRejectError';
-import {openApi, unknown} from '../../.swagger-config';
+import { openApi, unknown } from '../../.swagger-config';
+import _ from 'lodash';
 
 const $url = Symbol('$url');
 const $method = Symbol('$method');

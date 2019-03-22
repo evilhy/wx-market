@@ -13,9 +13,9 @@ export default class HttpForApplication extends HttpEngine {
   requestedSever = sysConfig.requested_sever
   beforeSendRequestHandler (config) {
     config.headers = Object.assign(config.headers, {
-      jsession_id: helper.getUserInfo('jsessionId', ''),
-      req_id: UUID.createUUID(),
-      route_name: window.router.app._route.name
+      'jsession-id': helper.getUserInfo('jsessionId', ''),
+      'req-id': UUID.createUUID(),
+      'route-name': window.router.app._route.name
     })
     config.loading && Indicator.open({ spinnerType: 'double-bounce' })
   }

@@ -2,6 +2,7 @@
  * Created by duy on 2018/6/22 17:16.
  */
 /* eslint-disable */
+import _ from 'lodash';
 import Utils from './Utils';
 
 const $printMethod = Symbol('printMethod');

@@ -2,6 +2,7 @@
  * Created by duy on 2018/6/20 15:38.
  */
 /* eslint-disable */
+import _ from 'lodash';
 import axios from "axios";
 import Utils from "./Utils";
 import DebugOk from "./DebugOk";
