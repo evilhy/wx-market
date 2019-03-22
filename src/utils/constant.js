@@ -5,8 +5,8 @@ export default {
   http_base_url: {
     development: 'http://10.5.1.71:8080/rest',
     // development: 'https://sitwx.cardpu.com/rest',
-    // test: 'https://sitwx.cardpu.com/rest',
-    test: 'https://sitpayroll.cardpu.com',
+      test: 'https://sitwx.cardpu.com/',
+    //test: 'https://sitpayroll.cardpu.com',
     production: 'https://fxpush.cardpu.com/rest'
   },
   elife_base_url: {
