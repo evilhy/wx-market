@@ -7,7 +7,7 @@ class System {
   getBannerList () {
     let http = new Http()
     http.path = `/advertising/rotation`
-    http.query = {channelId: 1}
+    http.query = {channelId: 2}
     return http.get()
   }
 }
