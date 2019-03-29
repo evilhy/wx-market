@@ -2,6 +2,7 @@
  * Created by duy on 2018/7/3 15:06.
  */
 /* eslint-disable */
+import _ from 'lodash';
 import DebugEngine from './DebugEngine';
 
 const $errorMessage = Symbol('errorMessage');

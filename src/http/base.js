@@ -13,9 +13,9 @@ export default class HttpForApplication extends HttpEngine {
   requestedSever = sysConfig.requested_sever
   beforeSendRequestHandler (config) {
     config.headers = Object.assign(config.headers, {
-      jsessionId: helper.getUserInfo('jsessionId', ''),
-      reqId: UUID.createUUID(),
-      routeName: window.router.app._route.name
+      'jsession-id': helper.getUserInfo('jsessionId', ''),
+      'req-id': UUID.createUUID(),
+      'route-name': window.router.app._route.name
     })
     config.loading && Indicator.open({ spinnerType: 'double-bounce' })
   }
@@ -35,7 +35,7 @@ export default class HttpForApplication extends HttpEngine {
     }
     if (typeOf(error.response) === 'object') {
       if (typeOf(error.response.data) === 'object') {
-        errorMsg = error.response.data['errorMsg']
+        errorMsg = error.response.data['error_msg']
       } else if (typeOf(error.response.data) === 'string') {
         errorMsg = error.response.data
       }

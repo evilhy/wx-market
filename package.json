@@ -16,6 +16,7 @@
     "better-scroll": "^1.11.1",
     "compression-webpack-plugin": "^1.1.12",
     "lib-flexible": "^0.3.2",
+    "lodash": "^4.17.11",
     "mint-ui": "^2.2.8",
     "node-sass": "^4.7.2",
     "vue": "^2.5.13",

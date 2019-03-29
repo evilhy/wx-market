@@ -31,12 +31,6 @@ module.exports = {
       ? config.build.assetsPublicPath : (process.env.NODE_ENV === 'test' ? config.test.assetsPublicPath : config.dev.assetsPublicPath)
   },
   externals: {
-    lodash: {
-      commonjs: 'lodash',
-      commonjs2: 'lodash',
-      amd: 'lodash',
-      root: '_'
-    }
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
