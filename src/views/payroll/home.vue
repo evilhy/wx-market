@@ -4,7 +4,7 @@
       <swiper class="swiper-container" :options="swiperOptions">
         <!-- slides -->
         <swiper-slide v-for="(img, index) in imgList" :key="index">
-          <img :src="img" alt="" class="img" @click="viewImg(index)">
+          <img :src="img.url" alt="" class="img" @click="viewImg(index)">
         </swiper-slide>
         <div class="swiper-pagination" slot="pagination" v-if="imgList.length > 1"></div>
       </swiper>
@@ -62,15 +62,25 @@ export default {
       hasNewMsg: '0',
       imgViewerFlag: false,
       imgViewIndex: 0,
-      imgList: [require('../../assets/img/home-banner6.png'), require('../../assets/img/home-banner3.png')]
+      /* imgList: [require('../../assets/img/home-banner6.png'), require('../../assets/img/home-banner3.png')] */
+      imgList: []
     }
   },
   created () {
     this.getRecentInfo()
+    this.getBannerList()
   },
   mounted () {
   },
   methods: {
+    async getBannerList() {
+      try {
+        let res = await this.$System.getBannerList()
+        this.imgList = res.data
+      } catch (e) {
+
+      }
+    },
     async getRecentInfo () {
       let res = await this.$Roll.index()
       let { bean = {}, isNew = 0 } = res.data
