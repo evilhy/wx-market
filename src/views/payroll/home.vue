@@ -1,12 +1,12 @@
 <template>
   <div class="home-page">
     <div class="banner">
-      <swiper class="swiper-container" :options="swiperOptions">
+      <swiper v-if="imgList.length >1" class="swiper-container" :options="swiperOptions" ref="mySwiper" >
         <!-- slides -->
         <swiper-slide v-for="(img, index) in imgList" :key="index">
           <img :src="img.url" alt="" class="img" @click="viewImg(index)">
         </swiper-slide>
-        <div class="swiper-pagination" slot="pagination" v-if="imgList.length > 1"></div>
+        <div class="swiper-pagination" slot="pagination" v-if="imgList.length >1"></div>
       </swiper>
     </div>
     <div class="links-wrap">
@@ -62,7 +62,6 @@ export default {
       hasNewMsg: '0',
       imgViewerFlag: false,
       imgViewIndex: 0,
-      /* imgList: [require('../../assets/img/home-banner6.png'), require('../../assets/img/home-banner3.png')] */
       imgList: []
     }
   },
@@ -70,16 +69,10 @@ export default {
     this.getRecentInfo()
     this.getBannerList()
   },
-  mounted () {
-  },
   methods: {
     async getBannerList() {
-      try {
         let res = await this.$System.getBannerList()
         this.imgList = res.data
-      } catch (e) {
-
-      }
     },
     async getRecentInfo () {
       let res = await this.$Roll.index()
