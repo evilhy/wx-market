@@ -4,7 +4,7 @@ import Weixin from './weixin'
 import Manager from './manager'
 import Elife from './elife'
 import Tfinance from './tfinance'
-import System from './System'
+import System from './system'
 export default {
     Roll,
     Inside,
