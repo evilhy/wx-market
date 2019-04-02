@@ -375,7 +375,7 @@ export default new Router({
     },
     {
       path: '/ad-picture', // 无活动跳转广告图页面
-      name: 'bankSite',
+      name: 'adPicture',
       component: resolve => {
         require(['../views/public/adPicture.vue'], resolve)
       }
