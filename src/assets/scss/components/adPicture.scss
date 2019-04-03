@@ -5,8 +5,11 @@
   bottom: 0;
   right: 0;
   left: 0;
+  display: flex;
+  justify-content: center;
+  background: black;
   img{
-    width: 100%;
+    width: auto;
     height: 100%;
   }
 }
