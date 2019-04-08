@@ -9,7 +9,7 @@ export default class HttpForApplication extends HttpEngine {
     'Content-Type': 'application/json; charset=utf-8'
   }
   baseURL = sysConfig.http_base_url[sysConfig.node_env]
-  mockTimeout = 1
+  mockTimeout = 5
   requestedSever = sysConfig.requested_sever
   beforeSendRequestHandler (config) {
     config.headers = Object.assign(config.headers, {
@@ -21,11 +21,12 @@ export default class HttpForApplication extends HttpEngine {
   }
 
   afterResolveResponseHandler (response) {
-    response.config.loading && Indicator.close()
+    setTimeout(() => {
+      response.config.loading && Indicator.close()
+    }, 300)
   }
 
   beforeErrorResponseHandler (error) {
-    error.config.loading && Indicator.close()
     let errorMsg = error.message
     if (errorMsg === 'Network Error') { 
       errorMsg = '网络异常'
@@ -33,11 +34,15 @@ export default class HttpForApplication extends HttpEngine {
     if (errorMsg.indexOf('timeout') >= 0) {
       errorMsg = '请求超时'
     }
-    if (typeOf(error.response) === 'object') {
-      if (typeOf(error.response.data) === 'object') {
-        errorMsg = error.response.data['error_msg']
-      } else if (typeOf(error.response.data) === 'string') {
-        errorMsg = error.response.data
+    let response = error.response
+    if (typeOf(response) === 'object') {
+      setTimeout(() => {
+        response.config.loading && Indicator.close()
+      }, 300)
+      if (typeOf(response.data) === 'object') {
+        errorMsg = response.data['error_msg']
+      } else if (typeOf(response.data) === 'string') {
+        errorMsg = response.data
       }
     }
     helper.toast(errorMsg)
