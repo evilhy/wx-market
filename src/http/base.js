@@ -21,9 +21,7 @@ export default class HttpForApplication extends HttpEngine {
   }
 
   afterResolveResponseHandler (response) {
-    setTimeout(() => {
-      response.config.loading && Indicator.close()
-    }, 300)
+    response.config.loading && Indicator.close()
   }
 
   beforeErrorResponseHandler (error) {
@@ -36,9 +34,7 @@ export default class HttpForApplication extends HttpEngine {
     }
     let response = error.response
     if (typeOf(response) === 'object') {
-      setTimeout(() => {
-        response.config.loading && Indicator.close()
-      }, 300)
+      response.config.loading && Indicator.close()
       if (typeOf(response.data) === 'object') {
         errorMsg = response.data['error_msg']
       } else if (typeOf(response.data) === 'string') {

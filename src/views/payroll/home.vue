@@ -69,7 +69,8 @@ export default {
       currentImg: {
         url: ''
       },
-      imgList: []
+      imgList: [],
+      requested: false
     }
   },
   computed: {
@@ -102,8 +103,10 @@ export default {
         this.bankIsNew = isNew
         helper.saveUserInfo({ entId: this.recentInfo.entId })
       }
+      this.requested = true
     },
     enterMyIncome () {
+      if (!this.requested) return
       if (helper.getUserInfo('ifPwd', 0)) { // 有密码
         this.$router.push({ name: 'checkQueryCode', query: { 'hasWage': this.recentInfo.groupId || '' } })
       } else {
