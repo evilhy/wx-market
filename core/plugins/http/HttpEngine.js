@@ -2,6 +2,7 @@
  * Created by duy on 2018/6/20 15:38.
  */
 /* eslint-disable */
+import _ from 'lodash';
 import axios from "axios";
 import Utils from "./Utils";
 import DebugOk from "./DebugOk";
@@ -9,7 +10,7 @@ import DebugFail from "./DebugFail";
 import sysConfig from 'utils/constant'
 let MockerEngine;
 if (Utils.isDevelopmentEnv() && !sysConfig.requested_sever) {
-  // MockerEngine = require("../../mock/MockerEngine").default;
+  MockerEngine = require("../../mock/MockerEngine").default;
 }
 
 const $baseURL = Symbol("$baseURL");

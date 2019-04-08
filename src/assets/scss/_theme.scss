@@ -519,9 +519,10 @@
   height: 100%;
   position: relative;
   .banner {
-    height: px2rem(340px);
+    // height: px2rem(340px);
     margin-bottom: px2rem($space-normal);
     .img {
+      display: block;
       width: 100%;
     }
   }

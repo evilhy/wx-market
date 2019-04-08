@@ -40,9 +40,10 @@ var checkPhoneCode = require('./json/inside.checkPhoneCode.json')
 var updPhone = require('./json/inside.updPhone.json')
 var entPhone = require('./json/roll.entPhone.json')
 var entUser = require('./json/roll.entUser.json')
+var advertising = require('./json/system.advertising.rotation.json')
 module.exports = {
   openApi: [{
-    baseURL: 'http://10.5.1.71:8080/rest',
+    baseURL: 'http://10.5.1.71:8080',
     paths: {
       '/roll/entEmp': {
         get: entEmp
@@ -163,6 +164,9 @@ module.exports = {
       },
       '/roll/entUser': {
         get: entUser
+      },
+      '/advertising/rotation': {
+        get: advertising
       }
     }
   },{

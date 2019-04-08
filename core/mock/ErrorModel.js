@@ -4,9 +4,9 @@
 
 export default class ErrorModel {
 
-  errorCode = '错误码';
+  error_code = '错误码';
 
-  errorMsg = '错误信息';
+  error_msg = '错误信息';
 
   timestamp = '时间戳';
 

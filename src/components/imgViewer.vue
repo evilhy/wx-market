@@ -1,58 +1,50 @@
 <template>
-    <mt-popup v-model="flag" position="right" class="img-viewer-wrap">
-        <swiper :options="swiperOption" ref="imgSwiper">
-            <swiper-slide v-for="(img, index) in imgList" :key="index">
-                <div class="swiper-zoom-container" @click="close">
-                    <img :src="img">
-                </div>
-            </swiper-slide>
-        </swiper>
-    </mt-popup>
+  <mt-popup v-model="flag" position="right" class="img-viewer-wrap">
+    <swiper :options="swiperOption" ref="imgSwiper">
+      <swiper-slide v-for="(item, index) in [img]" :key="index">
+        <div class="swiper-zoom-container" @click="close">
+          <img :src="item.url">
+        </div>
+      </swiper-slide>
+    </swiper>
+  </mt-popup>
 </template>
 <script>
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
 export default {
-    components: { swiper, swiperSlide },
-    props: {
-        flag: {
-            type: Boolean,
-            default: false
-        },
-        imgList: {
-            type: Array
-        },
-        index: {
-            type: Number,
-            default: 0
-        }
+  components: { swiper, swiperSlide },
+  props: {
+    flag: {
+      type: Boolean,
+      default: false
     },
-    data () {
-        return {
-            swiperOption: {
-                zoom: true
-            }
-        }
-    },
-    computed: {
-        swiper () {
-            return this.$refs.imgSwiper.swiper
-        }
-    },
-    watch: {
-        flag (val) {
-            val && this.swiper.slideTo(this.index)
-            this.swiper.zoom.scale > 1 && this.swiper.zoom.out()
-        }
-    },
-    created () {
-        if (this.index) {
-            this.swiperOption.initialSlide = this.index
-        }
-    },
-    methods: {
-        close () {
-            this.$emit('close')
-        }
+    img: {
+      type: Object
     }
+  },
+  data () {
+    return {
+      swiperOption: {
+        zoom: true
+      }
+    }
+  },
+  computed: {
+    swiper () {
+      return this.$refs.imgSwiper.swiper
+    }
+  },
+  watch: {
+    flag (val) {
+      this.swiper.zoom.scale > 1 && this.swiper.zoom.out()
+    }
+  },
+  created () {
+  },
+  methods: {
+    close () {
+      this.$emit('close')
+    }
+  }
 }
 </script>
