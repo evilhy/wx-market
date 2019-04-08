@@ -43,7 +43,7 @@ var entUser = require('./json/roll.entUser.json')
 var advertising = require('./json/system.advertising.rotation.json')
 module.exports = {
   openApi: [{
-    baseURL: 'http://10.5.1.71:8080/rest',
+    baseURL: 'http://10.5.1.71:8080',
     paths: {
       '/roll/entEmp': {
         get: entEmp
