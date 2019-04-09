@@ -1,9 +1,11 @@
-import HttpEngine from 'core/plugins/http/HttpEngine'
 import sysConfig from 'src/utils/constant'
 import helper from 'src/utils/helper'
 import UUID from 'src/utils/uuid'
 import { typeOf } from 'utils/assist'
 import { Indicator } from 'mint-ui'
+
+const processEnv = process.env
+let HttpEngine = (require(`core/plugins/http/HttpEngine.${processEnv.HTTP_ENV}`)).default
 export default class HttpForApplication extends HttpEngine {
   headers = {
     'Content-Type': 'application/json; charset=utf-8'

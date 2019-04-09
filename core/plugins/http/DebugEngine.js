@@ -1,7 +1,7 @@
 /**
  * Created by duy on 2018/6/22 17:16.
  */
-/* eslint-disable */
+
 import _ from 'lodash';
 import Utils from './Utils';
 
@@ -27,22 +27,22 @@ export default class DebugEngine {
   [$status] = 0;
 
   set printMethod (value) {
-    if (!_.isString(value)) throw TypeError('DebugEngine.printMethod 类型应为 String');
+    if (!_.isString(value)) throw new TypeError('DebugEngine.printMethod 类型应为 String');
     this[$printMethod] = value;
   }
 
   set url (value) {
-    if (!_.isString(value)) throw TypeError('DebugEngine.url 类型应为 String');
+    if (!_.isString(value)) throw new TypeError('DebugEngine.url 类型应为 String');
     this[$url] = value;
   }
 
   set method (value) {
-    if (!_.isString(value)) throw TypeError('DebugEngine.method 类型应为 String');
+    if (!_.isString(value)) throw new TypeError('DebugEngine.method 类型应为 String');
     this[$method] = value.toUpperCase();
   }
 
   set headers (value) {
-    if (!_.isObject(value)) throw TypeError('DebugEngine.headers 类型应为 Object');
+    if (!_.isObject(value)) throw new TypeError('DebugEngine.headers 类型应为 Object');
     this[$headers] = value;
   }
 
@@ -55,7 +55,7 @@ export default class DebugEngine {
   }
 
   set status (value) {
-    if (!Number.isInteger(value)) throw TypeError('DebugEngine.status 类型应为整数');
+    if (!Number.isInteger(value)) throw new TypeError('DebugEngine.status 类型应为整数');
     this[$status] = value;
   }
 
