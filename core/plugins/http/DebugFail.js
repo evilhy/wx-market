@@ -1,9 +1,9 @@
 /**
  * Created by duy on 2018/7/3 15:06.
  */
-/* eslint-disable */
-import _ from 'lodash';
+
 import DebugEngine from './DebugEngine';
+import _ from "lodash";
 
 const $errorMessage = Symbol('errorMessage');
 
@@ -17,7 +17,7 @@ export default class DebugFail extends DebugEngine {
   [$errorMessage] = '';
 
   set message (value) {
-    if (!_.isString(value)) throw TypeError('DebugFail.message 类型应为 String');
+    if (!_.isString(value)) throw new TypeError('DebugFail.message 类型应为 String');
     this[$errorMessage] = value;
   }
 

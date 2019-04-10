@@ -1,16 +1,16 @@
-import HttpEngine from 'core/plugins/http/HttpEngine'
 import sysConfig from 'src/utils/constant'
 import helper from 'src/utils/helper'
 import UUID from 'src/utils/uuid'
 import { typeOf } from 'utils/assist'
 import { Indicator } from 'mint-ui'
+
+const processEnv = process.env
+let HttpEngine = (require(`core/plugins/http/HttpEngine.${processEnv.HTTP_ENV}`)).default
 export default class HttpForApplication extends HttpEngine {
-  headers = {
-    'Content-Type': 'application/json; charset=utf-8'
-  }
-  baseURL = sysConfig.http_base_url[sysConfig.node_env]
-  mockTimeout = 5
-  requestedSever = sysConfig.requested_sever
+
+  baseURL = sysConfig.http_base_url[sysConfig.node_env];
+  mockTimeout = 2;
+  requestedSever = false;
   beforeSendRequestHandler (config) {
     config.headers = Object.assign(config.headers, {
       'jsession-id': helper.getUserInfo('jsessionId', ''),
@@ -24,7 +24,7 @@ export default class HttpForApplication extends HttpEngine {
     response.config.loading && Indicator.close()
   }
 
-  beforeErrorResponseHandler (error) {
+  afterRejectResponseHandler (error) {
     let errorMsg = error.message
     if (errorMsg === 'Network Error') { 
       errorMsg = '网络异常'

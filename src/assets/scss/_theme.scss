@@ -518,12 +518,22 @@
 .home-page {
   height: 100%;
   position: relative;
-  .banner {
-    // height: px2rem(340px);
+  .banner{
+    position: relative;
+    padding-top: 53%;
+    overflow: hidden;
     margin-bottom: px2rem($space-normal);
-    .img {
-      display: block;
+    .swiper-container {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
       width: 100%;
+      overflow: hidden;
+      .img {
+        display: block;
+        width: 100%;
+      }
     }
   }
   .links-wrap {

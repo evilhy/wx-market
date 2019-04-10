@@ -1,7 +1,7 @@
 <template>
   <div class="home-page">
     <div class="banner">
-      <swiper v-if="imgList.length >1" class="swiper-container" :options="swiperOptions" ref="mySwiper">
+      <swiper v-if="imgList.length >= 1" class="swiper-container" :options="swiperOptions" ref="mySwiper">
         <!-- slides -->
         <swiper-slide v-for="(img, index) in imgList" :key="index">
           <img :src="img.url" alt="" class="img">

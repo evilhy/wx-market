@@ -1,7 +1,7 @@
 /**
  * Created by duy on 2018/7/3 15:49.
  */
-/* eslint-disable */
+
 export default class Utils {
 
   static isDevelopmentEnv () {
