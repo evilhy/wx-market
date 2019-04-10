@@ -12,7 +12,7 @@ export default class HttpForApplication extends HttpEngine {
   }
   baseURL = sysConfig.http_base_url[sysConfig.node_env]
   mockTimeout = 5
-  requestedSever = sysConfig.requested_sever
+  requestedSever = false
   beforeSendRequestHandler (config) {
     config.headers = Object.assign(config.headers, {
       'jsession-id': helper.getUserInfo('jsessionId', ''),
