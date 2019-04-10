@@ -11,8 +11,9 @@ export default class HttpForApplication extends HttpEngine {
     'Content-Type': 'application/json; charset=utf-8'
   }
   baseURL = sysConfig.http_base_url[sysConfig.node_env]
-  mockTimeout = 5
+  mockTimeout = 2
   requestedSever = false
+  mockStatusCode = 400
   beforeSendRequestHandler (config) {
     config.headers = Object.assign(config.headers, {
       'jsession-id': helper.getUserInfo('jsessionId', ''),
