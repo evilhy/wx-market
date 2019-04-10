@@ -7,13 +7,10 @@ import { Indicator } from 'mint-ui'
 const processEnv = process.env
 let HttpEngine = (require(`core/plugins/http/HttpEngine.${processEnv.HTTP_ENV}`)).default
 export default class HttpForApplication extends HttpEngine {
-  headers = {
-    'Content-Type': 'application/json; charset=utf-8'
-  }
-  baseURL = sysConfig.http_base_url[sysConfig.node_env]
-  mockTimeout = 2
-  requestedSever = false
-  mockStatusCode = 400
+
+  baseURL = sysConfig.http_base_url[sysConfig.node_env];
+  mockTimeout = 2;
+  requestedSever = false;
   beforeSendRequestHandler (config) {
     config.headers = Object.assign(config.headers, {
       'jsession-id': helper.getUserInfo('jsessionId', ''),
@@ -27,7 +24,7 @@ export default class HttpForApplication extends HttpEngine {
     response.config.loading && Indicator.close()
   }
 
-  beforeErrorResponseHandler (error) {
+  afterRejectResponseHandler (error) {
     let errorMsg = error.message
     if (errorMsg === 'Network Error') { 
       errorMsg = '网络异常'
