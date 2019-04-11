@@ -5,7 +5,7 @@ import { typeOf } from 'utils/assist'
 import { Indicator } from 'mint-ui'
 
 const processEnv = process.env
-let HttpEngine = (require(`core/plugins/http/HttpEngine.${processEnv.HTTP_ENV}`)).default
+let HttpEngine = (require(`core/plugins/http/HttpEngine.${processEnv.NODE_ENV === 'development' ? 'dev' : 'prod'}`)).default
 export default class HttpForApplication extends HttpEngine {
 
   baseURL = sysConfig.http_base_url[sysConfig.node_env];
