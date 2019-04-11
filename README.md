@@ -11,8 +11,11 @@ npm install
 # 端口号:8017
 npm run dev
 
-# 打包测试环境
-npm run test
+# 打包sit环境
+npm run sit
+
+# 打包demo环境
+npm run demo
 
 # 打包正式环境
 npm run build
