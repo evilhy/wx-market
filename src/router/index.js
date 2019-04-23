@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import manager from '../views/payroll/manager.vue'
 import getId from '../views/public/getId.vue'
+import token from '../views/public/token.vue'
 
 Vue.use(Router)
 
@@ -12,6 +13,11 @@ export default new Router({
       name: 'getId',
       component: getId,
       alias: '/'
+    },
+    {
+      path: '/token', // 公共入口页面token
+      name: 'token',
+      component: token
     },
     {
       path: '/bind-id-card', // 身份绑定--输入身份证
