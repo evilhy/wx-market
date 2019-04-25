@@ -111,7 +111,9 @@ export function getPageQueryObject (fullPath = window.decodeURIComponent(window.
     .split('&')
     .forEach(item => {
       let arr = item.split('=')
-      result[`${arr[0]}`] = arr[1]
+      if (arr[0]) {
+        result[`${arr[0]}`] = arr[1]
+      }
     })
   return result
 }

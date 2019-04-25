@@ -4,11 +4,15 @@ import Weixin from './weixin'
 import Manager from './manager'
 import Elife from './elife'
 import Tfinance from './tfinance'
+import System from './system'
+import Merchant from './merchant'
 export default {
-    Roll,
-    Inside,
-    Weixin,
-    Manager,
-    Elife,
-    Tfinance
+  Roll,
+  Inside,
+  Weixin,
+  Manager,
+  Elife,
+  Tfinance,
+  System,
+  Merchant
 }

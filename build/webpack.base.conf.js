@@ -8,6 +8,22 @@ function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
 
+function getAssetsPublicPath () {
+  let env = ''
+  switch (process.env.NODE_ENV) {
+    case 'sit':
+    case 'demo':
+      env = process.env.NODE_ENV
+      break
+    case 'production':
+      env = 'build'
+      break
+    default:
+      env = 'dev'
+  }
+  return config[env].assetsPublicPath
+}
+
 const createLintingRule = () => ({
   test: /\.(js|vue)$/,
   loader: 'eslint-loader',
@@ -27,16 +43,9 @@ module.exports = {
   output: {
     path: config.build.assetsRoot,
     filename: '[name].js',
-    publicPath: process.env.NODE_ENV === 'production'
-      ? config.build.assetsPublicPath : (process.env.NODE_ENV === 'test' ? config.test.assetsPublicPath : config.dev.assetsPublicPath)
+    publicPath: getAssetsPublicPath()
   },
   externals: {
-    lodash: {
-      commonjs: 'lodash',
-      commonjs2: 'lodash',
-      amd: 'lodash',
-      root: '_'
-    }
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
@@ -61,7 +70,7 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [resolve('src'), resolve('test'), resolve('core')]
+        include: [resolve('src'), resolve('test'), resolve('core'), resolve('node_modules/webpack-dev-server/client')]
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

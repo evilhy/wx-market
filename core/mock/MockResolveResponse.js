@@ -2,6 +2,8 @@
  * Created by duy on 2018/8/17 10:26.
  */
 
+import _ from 'lodash';
+
 const $config = Symbol('$config');
 const $headers = Symbol('$headers');
 const $data = Symbol('$data');
@@ -40,7 +42,7 @@ export default class MockResolveResponse {
   }
 
   set data (value) {
-    if (!(_.isString(value) || _.isNumber(value) || _.isObject(value) || _.isUndefined(value))) throw TypeError('data类型错误');
+    if (!(_.isString(value) || _.isBoolean(value) || _.isNumber(value) || _.isObject(value) || _.isUndefined(value))) throw new TypeError('data类型错误');
     this[$data] = value;
   }
 }

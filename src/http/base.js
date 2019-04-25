@@ -1,21 +1,20 @@
-import HttpEngine from 'core/plugins/http/HttpEngine'
 import sysConfig from 'src/utils/constant'
 import helper from 'src/utils/helper'
 import UUID from 'src/utils/uuid'
 import { typeOf } from 'utils/assist'
 import { Indicator } from 'mint-ui'
+
+let HttpEngine = (require(`core/plugins/http/HttpEngine.${process.env.NODE_ENV === 'development' ? 'dev' : 'prod'}`)).default
 export default class HttpForApplication extends HttpEngine {
-  headers = {
-    'Content-Type': 'application/json; charset=utf-8'
-  }
-  baseURL = sysConfig.http_base_url[sysConfig.node_env]
-  mockTimeout = 1
-  requestedSever = sysConfig.requested_sever
+
+  baseURL = sysConfig.http_base_url[sysConfig.node_env];
+  mockTimeout = 2;
+  requestedSever = false;
   beforeSendRequestHandler (config) {
     config.headers = Object.assign(config.headers, {
-      jsessionId: helper.getUserInfo('jsessionId', ''),
-      reqId: UUID.createUUID(),
-      routeName: window.router.app._route.name
+      'jsession-id': helper.getUserInfo('jsessionId', ''),
+      'req-id': UUID.createUUID(),
+      'route-name': window.router.app._route.name
     })
     config.loading && Indicator.open({ spinnerType: 'double-bounce' })
   }
@@ -24,8 +23,7 @@ export default class HttpForApplication extends HttpEngine {
     response.config.loading && Indicator.close()
   }
 
-  beforeErrorResponseHandler (error) {
-    error.config.loading && Indicator.close()
+  afterRejectResponseHandler (error) {
     let errorMsg = error.message
     if (errorMsg === 'Network Error') { 
       errorMsg = '网络异常'
@@ -33,11 +31,13 @@ export default class HttpForApplication extends HttpEngine {
     if (errorMsg.indexOf('timeout') >= 0) {
       errorMsg = '请求超时'
     }
-    if (typeOf(error.response) === 'object') {
-      if (typeOf(error.response.data) === 'object') {
-        errorMsg = error.response.data['errorMsg']
-      } else if (typeOf(error.response.data) === 'string') {
-        errorMsg = error.response.data
+    let response = error.response
+    if (typeOf(response) === 'object') {
+      response.config.loading && Indicator.close()
+      if (typeOf(response.data) === 'object') {
+        errorMsg = response.data['error_msg']
+      } else if (typeOf(response.data) === 'string') {
+        errorMsg = response.data
       }
     }
     helper.toast(errorMsg)

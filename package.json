@@ -7,7 +7,8 @@
   "scripts": {
     "dev": "webpack-dev-server --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
-    "test": "node build/test.js",
+    "sit": "node build/sit.js",
+    "demo": "node build/demo.js",
     "build": "node build/build.js",
     "lint": "eslint --ext .js,.vue src"
   },
@@ -16,6 +17,7 @@
     "better-scroll": "^1.11.1",
     "compression-webpack-plugin": "^1.1.12",
     "lib-flexible": "^0.3.2",
+    "lodash": "^4.17.11",
     "mint-ui": "^2.2.8",
     "node-sass": "^4.7.2",
     "vue": "^2.5.13",

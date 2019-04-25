@@ -1,12 +1,12 @@
 <template>
   <div class="home-page">
     <div class="banner">
-      <swiper class="swiper-container" :options="swiperOptions">
+      <swiper v-if="imgList.length >= 1" class="swiper-container" :options="swiperOptions" ref="mySwiper">
         <!-- slides -->
         <swiper-slide v-for="(img, index) in imgList" :key="index">
-          <img :src="img" alt="" class="img" @click="viewImg(index)">
+          <img :src="img.url" alt="" class="img">
         </swiper-slide>
-        <div class="swiper-pagination" slot="pagination" v-if="imgList.length > 1"></div>
+        <div class="swiper-pagination" slot="pagination" v-if="imgList.length >1"></div>
       </swiper>
     </div>
     <div class="links-wrap">
@@ -34,7 +34,7 @@
       <div class="line"></div>
       <img src="../../assets/img/fx-gray-logo.png" class="fx" />
     </div>
-    <img-viewer :img-list="imgList" :index="imgViewIndex" :flag="imgViewerFlag" @close="imgViewerFlag=false"></img-viewer>
+    <img-viewer :img="currentImg" :flag="imgViewerFlag" @close="imgViewerFlag=false"></img-viewer>
   </div>
 </template>
 <script type="text/ecmascript-6">
@@ -57,20 +57,44 @@ export default {
         loop: true,
         pagination: {
           el: '.swiper-pagination'
+        },
+        on: {
+          click: () => {
+            this.clickImg()
+          }
         }
       },
       hasNewMsg: '0',
       imgViewerFlag: false,
-      imgViewIndex: 0,
-      imgList: [require('../../assets/img/home-banner6.png'), require('../../assets/img/home-banner3.png')]
+      currentImg: {
+        url: ''
+      },
+      imgList: [],
+      requested: false
+    }
+  },
+  computed: {
+    swiper () {
+      return this.$refs.mySwiper.swiper
     }
   },
   created () {
     this.getRecentInfo()
-  },
-  mounted () {
+    this.getBannerList()
   },
   methods: {
+    async getBannerList () {
+      let res = await this.$System.getBannerList()
+      if (res.data.length) {
+        this.imgList = res.data
+      } else {
+        this.imgList = [{
+          url: require('../../assets/img/home-banner6.png')
+        }, {
+          url: require('../../assets/img/home-banner3.png')
+        }]
+      }
+    },
     async getRecentInfo () {
       let res = await this.$Roll.index()
       let { bean = {}, isNew = 0 } = res.data
@@ -79,8 +103,10 @@ export default {
         this.bankIsNew = isNew
         helper.saveUserInfo({ entId: this.recentInfo.entId })
       }
+      this.requested = true
     },
     enterMyIncome () {
+      if (!this.requested) return
       if (helper.getUserInfo('ifPwd', 0)) { // 有密码
         this.$router.push({ name: 'checkQueryCode', query: { 'hasWage': this.recentInfo.groupId || '' } })
       } else {
@@ -90,9 +116,13 @@ export default {
     toPage (routerName, query = {}) {
       this.$router.push({ name: routerName, query: query })
     },
-    viewImg (index) {
-      this.imgViewIndex = index
-      this.imgViewerFlag = true
+    clickImg (index) {
+      this.currentImg = this.imgList[this.swiper.realIndex]
+      if (this.currentImg.link) {
+        window.location.href = this.currentImg.link
+      } else {
+        this.imgViewerFlag = true
+      }
     }
   },
   components: {

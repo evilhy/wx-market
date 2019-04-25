@@ -11,8 +11,11 @@ npm install
 # 端口号:8017
 npm run dev
 
-# 打包测试环境
-npm run test
+# 打包sit环境
+npm run sit
+
+# 打包demo环境
+npm run demo
 
 # 打包正式环境
 npm run build
@@ -50,5 +53,9 @@ npm run build
 > 新版累计个税计算器
 ### 2019-03-06
 > 新增关于我们页面
+### 2019-04-23
+> 新增中人联入口页面
+### 2019-04-23
+> 修复ios9白屏的问题
 
 

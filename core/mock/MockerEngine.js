@@ -1,6 +1,8 @@
 /**
  * Created by duy on 2018/7/2 15:51.
  */
+
+import _ from 'lodash';
 import Paths from 'swagger-paths';
 import MockResolveResponse from './MockResolveResponse';
 import MockRejectError from './MockRejectError';
@@ -35,22 +37,22 @@ export default class MockerEngine {
   [$data];
 
   set url (value) {
-    if (!_.isString(value)) throw TypeError('MockerEngine.url 类型应为 String');
+    if (!_.isString(value)) throw new TypeError('MockerEngine.url 类型应为 String');
     this[$url] = value;
   }
 
   set method (value) {
-    if (!_.isString(value) || !_.includes(['get', 'delete', 'post', 'put', 'patch'], value.toLowerCase())) throw TypeError('MockerEngine 非法请求');
+    if (!_.isString(value) || !_.includes(['get', 'delete', 'post', 'put', 'patch'], value.toLowerCase())) throw new TypeError('MockerEngine 非法请求');
     this[$method] = value.toLowerCase();
   }
 
   set config (value) {
-    if (!_.isObject(value)) throw TypeError('MockerEngine.config 类型应为 Object');
+    if (!_.isObject(value)) throw new TypeError('MockerEngine.config 类型应为 Object');
     this[$config] = value;
   }
 
   set headers (value) {
-    if (!_.isObject(value)) throw TypeError('MockerEngine.headers 类型应为 Object');
+    if (!_.isObject(value)) throw new TypeError('MockerEngine.headers 类型应为 Object');
     this[$headers] = value;
   }
 
@@ -75,12 +77,14 @@ export default class MockerEngine {
 
   [getResponseData] () {
     let data;
+    let hasFindApi = false;
     for (let {baseURL, paths} of openApi) {
       if (this[$url].indexOf(baseURL) === 0) {
         let pathsInstance = new Paths(paths || {});
         let result = pathsInstance.match(this[$url].replace(baseURL, ''));
         if (!_.has(result.value, this[$method])) this[notFoundApi]();
-        data = result.value[this[$method]] || undefined;
+        data = !_.isNull(result.value[this[$method]]) ? result.value[this[$method]] : undefined;
+        hasFindApi = true;
         break;
       }
     }
@@ -88,13 +92,15 @@ export default class MockerEngine {
       if (this[$url] === requestURL) {
         if (!_.has(result, this[$method])) this[notFoundApi]();
         data = result[this[$method]] || undefined;
+        hasFindApi = true;
         break;
       }
     }
+    if (!hasFindApi) this[notFoundApi]();
     return data;
   }
 
   [notFoundApi] () {
-    throw Error(`Not Found Api => ${this[$url]} => [${this[$method]}]`);
+    throw new Error(`Not Found Api => ${this[$url]} => [${this[$method]}]`);
   }
 }
