@@ -88,11 +88,15 @@ export default {
       if (res.data.length) {
         this.imgList = res.data
       } else {
-        this.imgList = [{
-          url: require('../../assets/img/home-banner6.png')
-        }, {
-          url: require('../../assets/img/home-banner3.png')
-        }]
+        this.imgList = [
+          {
+            url: require('../../assets/img/home-banner9.png')
+          },
+          {
+            url: require('../../assets/img/home-banner6.png')
+          }, {
+            url: require('../../assets/img/home-banner3.png')
+          }]
       }
     },
     async getRecentInfo () {
