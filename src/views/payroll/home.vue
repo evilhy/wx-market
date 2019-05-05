@@ -90,9 +90,6 @@ export default {
       } else {
         this.imgList = [
           {
-            url: require('../../assets/img/home-banner9.png')
-          },
-          {
             url: require('../../assets/img/home-banner6.png')
           }, {
             url: require('../../assets/img/home-banner3.png')
