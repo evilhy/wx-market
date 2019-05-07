@@ -22,7 +22,7 @@
     </template>
     <!-- 预约结束 -->
     <template v-else>
-      <order-end></order-end>
+      <order-end :next-image-url="productInfo.nextImageUrl"></order-end>
     </template>
   </div>
 </template>
@@ -54,7 +54,8 @@ export default {
         intentEndDate: 0,
         subscribeStartDate: 0,
         subscribeEndDate: 0,
-        show: -1
+        show: -1,
+        nextImageUrl: ''
       },
       orderStart: false,
       orderEnd: false

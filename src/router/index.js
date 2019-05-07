@@ -380,13 +380,6 @@ export default new Router({
       }
     },
     {
-      path: '/ad-picture', // 银行网点页
-      name: 'adPicture',
-      component: resolve => {
-        require(['../views/public/adPicture.vue'], resolve)
-      }
-    },
-    {
       path: '/about-us', // 关于我们
       name: 'aboutUs',
       component: resolve => {
