@@ -72,7 +72,7 @@ export default {
       this.productInfo = res.data
       helper.saveShareInfo({fxId: this.productInfo.wechatId})
       helper.saveTFinanceInfo(this.productInfo)
-      this.shareConfig()
+      this.wxCustomShare()
       this.showDataByStatus()
     },
     showDataByStatus () {

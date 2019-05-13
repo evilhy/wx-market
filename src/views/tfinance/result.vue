@@ -60,7 +60,7 @@ export default {
   },
   created () {
     helper.title('理财预约')
-    this.shareConfig()
+    this.wxCustomShare()
     this.getResult()
   },
   methods: {
