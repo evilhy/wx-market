@@ -84,16 +84,7 @@ export default {
   },
   methods: {
     async getBannerList () {
-      let res = await this.$System.getBannerList()
-      if (res.data.length) {
-        this.imgList = res.data
-      } else {
-        this.imgList = [{
-          url: require('../../assets/img/home-banner6.png')
-        }, {
-          url: require('../../assets/img/home-banner3.png')
-        }]
-      }
+      this.imgList = await this.$System.getBannerList()
     },
     async getRecentInfo () {
       let res = await this.$Roll.index()

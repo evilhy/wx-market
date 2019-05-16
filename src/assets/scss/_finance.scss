@@ -830,14 +830,6 @@
   text-align: center;
   background-color: #fff;
   padding-top: px2rem(216px);
-  &.next-img-wrap{
-    padding-top: 0;
-    overflow-y: auto;
-    .next-img{
-      width: 100%;
-      display: block;
-    }
-  }
   .img{
     width: px2rem(284px);
     height: px2rem(216px);

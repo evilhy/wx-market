@@ -48,7 +48,8 @@
 <script>
 import checkBox from 'components/checkBox'
 import TaxState from 'utils/TaxCalculator/state'
-import { MessageBox } from 'mint-ui'
+// import { MessageBox } from 'mint-ui'
+import { Dialog } from 'vant'
 import explainPopup from './explain-popup'
 import submitPopup from './submit-popup'
 export default {
@@ -216,7 +217,11 @@ export default {
       })
     },
     showTip () {
-      !this.hasShowTip && MessageBox.alert('首套房贷利息和住房租金扣减只可二选一')
+      !this.hasShowTip && Dialog.alert({
+        title: '提示',
+        message: '首套房贷利息和住房租金扣减只可二选一'
+    })
+      // ('首套房贷利息和住房租金扣减只可二选一')
       this.hasShowTip = true
     },
     changeOptionValue (data, index) {

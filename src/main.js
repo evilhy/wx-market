@@ -1,31 +1,26 @@
 import 'babel-polyfill'
 import Vue from 'vue'
+import Vant from 'vant'
 import App from './App'
 import router from './router'
 import myPlugin from './utils/plugin'
-import { Popup, Header, Loadmore, InfiniteScroll, Picker } from 'mint-ui'
-import 'mint-ui/lib/style.css'
+import 'vant/lib/index.css'
 
 import './assets/fonts/iconfont.css'
 import './assets/scss/common.scss'
 import 'lib-flexible'
-
 // 项目的import
-// import VueAwesomeSwiper from 'vue-awesome-swiper'
-import 'swiper/dist/css/swiper.css'
 
+import 'swiper/dist/css/swiper.css'
 // import VeHistogram from 'v-charts/lib/histogram'
 // import VeLine from 'v-charts/lib/line'
 import VueClipboard from 'vue-clipboard2'
 Vue.config.productionTip = false
-Vue.component(Popup.name, Popup)
-Vue.component(Header.name, Header)
-Vue.component(Loadmore.name, Loadmore)
-Vue.component(Picker.name, Picker)
-Vue.use(InfiniteScroll)
+
+Vue.use(Vant)
 Vue.use(myPlugin)
 Vue.use(VueClipboard)
-// Vue.use(VueAwesomeSwiper)
+
 /* eslint-disable no-new */
 export default new Vue({
   el: '#app',

@@ -1,0 +1,58 @@
+// 个人信息页面
+.personal-page {
+    width: 100%;
+    @include font-dpr($fontsize-m);
+    .swiper-slide {
+      padding: px2rem(40px) px2rem(25px) px2rem(25px);
+    }
+    .item-box {
+      border: 1px solid #d5d5d5;
+      border-radius: px2rem(5px);
+      margin-bottom: px2rem(25px);
+      background: #fff;
+      .group-name {
+        font-weight: bold;
+        text-align: center;
+        line-height: px2rem(110px);
+        height: px2rem(110px);
+        display: block;
+        justify-content: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .row {
+        height: px2rem(90px);
+        width: 100%;
+        border-bottom: 1px solid #d5d5d5;
+        box-sizing: border-box;
+        padding: 0 px2rem(25px);
+        line-height: px2rem(90px);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .value {
+          color: #999;
+        }
+        &:last-child {
+          border-bottom: 0;
+        }
+      }
+    }
+    .swiper-pagination {
+      top: 0 !important;
+      height: px2rem(6px) !important;
+      display: flex;
+      align-items: center;
+      .swiper-pagination-bullet {
+        height: px2rem(6px);
+        flex: 1;
+        background: #999;
+        border-radius: 0;
+        margin: 0 !important;
+      }
+      .swiper-pagination-bullet-active {
+        background: $fx-main-color;
+      }
+    }
+  }

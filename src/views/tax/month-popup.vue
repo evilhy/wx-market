@@ -1,11 +1,11 @@
 <template>
-  <mt-popup  ref="month-popup" v-model="visible" popup-transition="popup-fade" position="bottom" class="month-popup">
-    <mt-picker value-key="label" :slots="slots" @change="onValuesChange" v-if="visible"></mt-picker>
+  <van-popup  ref="month-popup" v-model="visible" :overlay="true" position="bottom" class="month-popup">
+    <van-picker value-key="label" :columns="slots" @change="onValuesChange" v-if="visible" />       
     <div class="action-wrap">
       <span class="action-item" @click="visible = false">取消</span>
       <span class="action-item" @click="confirm">确定</span>
     </div>
-  </mt-popup>
+  </van-popup>
 </template>
 <script>
 export default {

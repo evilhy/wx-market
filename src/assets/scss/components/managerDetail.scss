@@ -1,0 +1,13 @@
+// manager-detail-page
+.manager-detail-page {
+    height: 100%;
+    position: relative;
+    padding-top: px2rem(30px);
+    .msg-box-wrap {
+      position: absolute;
+      top: px2rem(290px);
+      bottom: 0;
+      left: 0;
+      width: 100%;
+    }
+  }

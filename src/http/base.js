@@ -2,7 +2,7 @@ import sysConfig from 'src/utils/constant'
 import helper from 'src/utils/helper'
 import UUID from 'src/utils/uuid'
 import { typeOf } from 'utils/assist'
-import { Indicator } from 'mint-ui'
+import loading from 'utils/loading'
 
 let HttpEngine = (require(`core/plugins/http/HttpEngine.${process.env.NODE_ENV === 'development' ? 'dev' : 'prod'}`)).default
 export default class HttpForApplication extends HttpEngine {
@@ -16,11 +16,13 @@ export default class HttpForApplication extends HttpEngine {
       'req-id': UUID.createUUID(),
       'route-name': window.router.app._route.name
     })
-    config.loading && Indicator.open({ spinnerType: 'double-bounce' })
+    if (config.loading) {
+      this.loadingHash = loading.show({ type: 'square' }) 
+    }
   }
 
   afterResolveResponseHandler (response) {
-    response.config.loading && Indicator.close()
+    this.loadingHash && loading.hide(this.loadingHash)
   }
 
   afterRejectResponseHandler (error) {
@@ -33,13 +35,13 @@ export default class HttpForApplication extends HttpEngine {
     }
     let response = error.response
     if (typeOf(response) === 'object') {
-      response.config.loading && Indicator.close()
       if (typeOf(response.data) === 'object') {
         errorMsg = response.data['error_msg']
       } else if (typeOf(response.data) === 'string') {
         errorMsg = response.data
       }
     }
+    loading.hide()
     helper.toast(errorMsg)
   }
 }

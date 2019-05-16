@@ -1,0 +1,33 @@
+//
+.manager-contact-page {
+    .list {
+      background: white;
+    }
+    .item {
+      display: flex;
+      min-height: px2rem(88px);
+      padding: px2rem(24px) px2rem(30px);
+      @include font-dpr(26px);
+      line-height: px2rem(38px);
+      border-bottom: 1px solid $color-border-gray;
+      align-items: center;
+    }
+    .label {
+      color: $color-text-dark;
+      width: px2rem(114px);
+    }
+    a {
+      color: $color-text-gray;
+    }
+    .value {
+      flex: 1;
+      -webkit-flex: 1;
+      text-align: right;
+      color: $color-text-gray;
+      @include word-break;
+    }
+    .v-arrow {
+      margin-left: px2rem(12px);
+      @include v-arrow(right, px2rem(2px), px2rem(16px));
+    }
+  }
