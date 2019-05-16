@@ -1,16 +1,8 @@
 <template>
-  <van-popup v-model="flag"
-            position="right"
-            class="popup-page">
-    <van-nav-bar :title="title" left-arrow left-text=""  @click-left="onClickLeft"  class="protocol-title back-wrap">
-          <!-- <template slot="left">
-            <p class="back-wrap" @click="close">
-              <span class="v-arrow"></span>
-            </p>
-          </template> -->
+  <van-popup v-model="flag" position="right" class="popup-page">
+    <van-nav-bar :title="title" left-arrow left-text="" @click-left="close" class="protocol-title back-wrap">
     </van-nav-bar>
     <div class="content-wrap">
-      <!-- <div class="content-title" v-if="title"><span class="line"></span><span class="title">{{title}}</span><span class="line"></span></div> -->
       <slot></slot>
     </div>
   </van-popup>
@@ -18,7 +10,7 @@
 <script>
 export default {
   props: {
-    title: String 
+    title: String
   },
   data () {
     return {
@@ -26,14 +18,10 @@ export default {
     }
   },
   methods: {
-    show () {
+    open () {
       this.flag = true
     },
     close () {
-      this.flag = false
-      this.$emit('close')
-    },
-    onClickLeft() {
       this.flag = false
       this.$emit('close')
     }

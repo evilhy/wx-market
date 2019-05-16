@@ -91,7 +91,7 @@ export default {
       return true
     },
     openRule () {
-      this.$refs['xrule'].show()
+      this.$refs['xrule'].open()
     }
   },
   components: {

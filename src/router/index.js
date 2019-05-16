@@ -283,14 +283,14 @@ export default new Router({
     },
     {
       path: '/elife-index', // 喜闻乐荐首页
-      name: 'elifeIndex',
+      name: 'elifeIndex', // 检查
       component: resolve => {
         require(['../views/elife/index.vue'], resolve)
       }
     },
     {
       path: '/elife-login', // 喜闻乐荐参与页
-      name: 'elifeLogin',
+      name: 'elifeLogin', // 检查
       component: resolve => {
         require(['../views/elife/login.vue'], resolve)
       }
