@@ -1,8 +1,8 @@
 import 'babel-polyfill'
 import Vue from 'vue'
-import Vant from 'vant'
 import App from './App'
 import router from './router'
+import Vant from 'vant'
 import myPlugin from './utils/plugin'
 import 'vant/lib/index.css'
 

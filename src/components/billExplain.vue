@@ -12,9 +12,6 @@
 
 <script>
 export default {
-  props: {
-    show: false
-  },
   data () {
     return {
       visible: false
