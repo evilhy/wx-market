@@ -21,7 +21,7 @@ export default {
     }
   },
   methods: {
-    open () {
+    show () {
       this.visible = true
     }
   }

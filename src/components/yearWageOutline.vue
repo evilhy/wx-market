@@ -62,7 +62,7 @@ export default {
       this.$emit('toggle')
     },
     openExplainPopup () {
-      this.$refs['bill-explain'].open()
+      this.$refs['bill-explain'].show()
     }
   },
   components: {

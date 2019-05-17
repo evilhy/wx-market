@@ -194,6 +194,7 @@
   border-radius: px2rem(10px);
   line-height: 1.8;
   box-sizing: border-box;
+  overflow-y: visible;
   @include font-dpr(26px);
   .header{
     img{

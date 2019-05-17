@@ -37,7 +37,6 @@ import orderEnd from './components/orderEnd'
 import countDown from '../../components/countDown'
 import helper from 'utils/helper'
 import { getPageQueryObject } from 'utils/assist'
-// import { MessageBox } from 'mint-ui'
 import { Dialog } from 'vant'
 import tShare from 'mixins/tShare'
 export default {

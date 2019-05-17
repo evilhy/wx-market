@@ -1,10 +1,8 @@
 <template>
   <div class="t-finance-list-page">
-    <loading></loading>
   </div>
 </template>
 <script>
-import loading from 'components/loading'
 import helper from 'utils/helper'
 export default {
   data () {
@@ -26,7 +24,6 @@ export default {
     }
   },
   components: {
-    loading
   }
 }
 </script>

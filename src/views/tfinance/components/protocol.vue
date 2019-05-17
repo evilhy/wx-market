@@ -31,7 +31,7 @@ export default {
     }
   },
   methods: {
-    open () {
+    show () {
       this.$refs['protocol-detail'].show()
     }
   },

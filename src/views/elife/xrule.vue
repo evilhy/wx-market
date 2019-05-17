@@ -13,8 +13,8 @@ export default {
     return {}
   },
   methods: {
-    open () {
-      this.$refs['x-rule'].open()
+    show () {
+      this.$refs['x-rule'].show()
     }
   },
   components: {

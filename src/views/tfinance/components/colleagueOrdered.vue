@@ -3,7 +3,7 @@
     <van-list class="white-box" :class="{'no-pad': totalElements <=0}" 
     v-model="loading"
     :finished="finished"
-    finished-text="没有更多了"
+    finished-text=""
     @load="getList">
       <div class="title-wrap" v-if="totalElements !== -1">
         <dot-line direction="left"></dot-line>

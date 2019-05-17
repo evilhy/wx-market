@@ -113,7 +113,7 @@ export default {
       this.$router.replace({ name: 'tfinanceResult' })
     },
     openProtocol () {
-      this.$refs['protocol'].open()
+      this.$refs['protocol'].show()
     }
   },
   components: {
