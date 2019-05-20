@@ -1,0 +1,200 @@
+// 发票页面
+.invoice-page {
+    position: relative;
+    color: #333;
+    padding-top: px2rem(80px);
+    min-height: 100%;
+    .pop-bg {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+    .pop-hui {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 20;
+    }
+    .pop {
+      width: 100%;
+      height: 100%;
+      background: transparent;
+    }
+    .content {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-left: px2rem(-272px);
+      margin-top: px2rem(-456px);
+      z-index: 20;
+      width: px2rem(544px);
+      height: px2rem(880px);
+      padding: px2rem(20px) px2rem(25px) px2rem(102px);
+      box-sizing: border-box;
+      background: url('../img/invoice-pop-bg.png') no-repeat center top;
+      background-size: 100% auto;
+      .title {
+        height: px2rem(84px);
+        width: 100%;
+        line-height: px2rem(84px);
+        text-align: center;
+        color: #fff;
+        @include font-dpr(32px);
+      }
+    }
+    .content-ul-bg {
+      position: relative;
+      width: 100%;
+      height: px2rem(570px);
+    }
+    .content-ul {
+      @include font-dpr(20px);
+      width: 100%;
+      height: 100%;
+      line-height: px2rem(36px);
+      color: #999999;
+      padding: px2rem(16px) px2rem(40px) 0;
+      overflow-y: scroll;
+      -webkit-overflow-scrolling: touch;
+      li {
+        margin-bottom: px2rem(20px);
+      }
+      .title-2 {
+        @include font-dpr(26px);
+        line-height: px2rem(36px);
+        font-weight: bold;
+        color: #8a8a8a;
+        padding: px2rem(12px) 0;
+        border-bottom: 1px solid #dcdcdc;
+      }
+      p {
+        margin-top: px2rem(12px);
+      }
+      em {
+        font-weight: bold;
+      }
+    }
+    .content-shadow {
+      position: absolute;
+      bottom: px2rem(-5px);
+      left: 50%;
+      margin-left: px2rem(-225px);
+      width: px2rem(450px);
+      height: px2rem(70px);
+      background-image: linear-gradient(
+        -180deg,
+        rgba(255, 255, 255, 0) 0%,
+        #ffffff 74%
+      );
+    }
+    .pop-close {
+      margin-top: px2rem(80px);
+      text-align: center;
+      i {
+        padding: px2rem(20px);
+        color: #fff;
+        margin: 0 auto;
+        @include font-dpr(50px);
+        line-height: px2rem(90px);
+      }
+    }
+    .wacth-out {
+      width: px2rem(144px);
+      height: px2rem(145px);
+      position: fixed;
+      right: 0;
+      bottom: px2rem(73px);
+      &.move-in {
+        -webkit-animation: move-in 0.5s both;
+        animation: move-in 0.5s both;
+      }
+      &.move-out {
+        -webkit-animation: move-out 0.5s linear both;
+        animation: move-out 0.5s linear both;
+      }
+    }
+    .null {
+      margin-top: px2rem(40px);
+      line-height: px2rem(36px);
+      @include font-dpr(26px);
+      text-align: center;
+      color: #999999;
+    }
+    .main,
+    .main-next {
+      background: #fff;
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+      border-radius: px2rem(6px);
+      box-sizing: border-box;
+      margin: px2rem(25px) px2rem(25px) 0;
+    }
+    .main {
+      padding: px2rem(26px);
+    }
+    .main-next {
+      padding: px2rem(44px) 0;
+      @include font-dpr(22px);
+      color: #999999;
+      text-align: center;
+      line-height: px2rem(30px);
+      margin-bottom: px2rem(25px);
+      img {
+        width: px2rem(200px);
+        height: auto;
+        margin: 0 auto;
+        margin-bottom: px2rem(20px);
+      }
+    }
+    .invoice-type {
+      width: 100%;
+      height: px2rem(42px);
+      p {
+        float: left;
+        font-weight: bold;
+        @include font-dpr(30px);
+        line-height: px2rem(42px);
+      }
+    }
+    .switch {
+      line-height: px2rem(42px);
+      @include font-dpr(22px);
+      color: $fx-main-color;
+      float: right;
+      i {
+        @include font-dpr(30px);
+        vertical-align: middle;
+      }
+      span {
+        vertical-align: middle;
+      }
+    }
+    .msg {
+      li {
+        margin-top: px2rem(26px);
+        @include font-dpr(26px);
+        line-height: px2rem(38px);
+        div {
+          word-wrap: break-word;
+        }
+        span,
+        i {
+          vertical-align: middle;
+        }
+        i {
+          color: #52bdbd;
+          @include font-dpr(30px);
+          margin-left: px2rem(16px);
+        }
+      }
+    }
+    .null-msg {
+      color: #666666;
+    }
+    .item-name {
+      line-height: px2rem(30px);
+      @include font-dpr(22px);
+      color: #999999;
+      margin-bottom: px2rem(12px);
+    }
+  }

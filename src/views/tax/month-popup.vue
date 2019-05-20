@@ -1,11 +1,7 @@
 <template>
-  <mt-popup  ref="month-popup" v-model="visible" popup-transition="popup-fade" position="bottom" class="month-popup">
-    <mt-picker value-key="label" :slots="slots" @change="onValuesChange" v-if="visible"></mt-picker>
-    <div class="action-wrap">
-      <span class="action-item" @click="visible = false">取消</span>
-      <span class="action-item" @click="confirm">确定</span>
-    </div>
-  </mt-popup>
+  <van-popup ref="month-popup" v-model="visible" :overlay="true" position="bottom" class="month-popup">
+    <van-picker ref="month-picker" show-toolbar title="选择月份" :default-index="currentMonth - 1" :columns="months" @change="onValuesChange" @confirm="onConfirm" @cancel="onCancel" />
+  </van-popup>
 </template>
 <script>
 export default {
@@ -20,22 +16,21 @@ export default {
     return {
       currentMonth: 1,
       visible: false,
-      slots: [{
+      months: [{
         values: [
-          { value: 1, label: '一月' },
-          { value: 2, label: '二月' },
-          { value: 3, label: '三月' },
-          { value: 4, label: '四月' },
-          { value: 5, label: '五月' },
-          { value: 6, label: '六月' },
-          { value: 7, label: '七月' },
-          { value: 8, label: '八月' },
-          { value: 9, label: '九月' },
-          { value: 10, label: '十月' },
-          { value: 11, label: '十一月' },
-          { value: 12, label: '十二月' }
-        ],
-        defaultIndex: 0
+          { value: 1, text: '一月' },
+          { value: 2, text: '二月' },
+          { value: 3, text: '三月' },
+          { value: 4, text: '四月' },
+          { value: 5, text: '五月' },
+          { value: 6, text: '六月' },
+          { value: 7, text: '七月' },
+          { value: 8, text: '八月' },
+          { value: 9, text: '九月' },
+          { value: 10, text: '十月' },
+          { value: 11, text: '十一月' },
+          { value: 12, text: '十二月' }
+        ]
       }]
     }
   },
@@ -43,13 +38,16 @@ export default {
     show () {
       this.visible = true
       this.currentMonth = this.month
-      this.slots[0].defaultIndex = this.currentMonth - 1
     },
-    onValuesChange (picker, values) {
-      this.currentMonth = values[0].value
+    onValuesChange (picker, value, index) {
+      this.currentMonth = value[0].value
     },
-    confirm () {
-      this.$emit('sure', this.slots[0].values[this.currentMonth - 1])
+    onConfirm () {
+      this.$emit('sure', this.months[0].values[this.currentMonth - 1])
+      this.visible = false
+    },
+    onCancel (picker, value, index) {
+      this.currentMonth = this.month
       this.visible = false
     }
   }

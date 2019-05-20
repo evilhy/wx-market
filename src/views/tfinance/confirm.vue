@@ -4,7 +4,7 @@
     <div class="amt-wrap">
       <div class="line-title">预约额度填写</div>
       <div class="input-wrap">
-        <input v-model.number="intentAmount" class="input" type="number" :placeholder="`最小预约金额${minIntentAmt}起`">
+        <input v-model.number="intentAmount" v-input class="input" type="number" :placeholder="`最小预约金额${minIntentAmt}起`">
         <span class="unit">元</span>
       </div>
       <div class="protocol-wrap">
@@ -113,7 +113,7 @@ export default {
       this.$router.replace({ name: 'tfinanceResult' })
     },
     openProtocol () {
-      this.$refs['protocol'].open()
+      this.$refs['protocol'].show()
     }
   },
   components: {

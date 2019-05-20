@@ -1,13 +1,11 @@
 <template>
   <div class="home-page">
     <div class="banner">
-      <swiper v-if="imgList.length >= 1" class="swiper-container" :options="swiperOptions" ref="mySwiper">
-        <!-- slides -->
-        <swiper-slide v-for="(img, index) in imgList" :key="index">
+      <van-swipe class="swiper-container" v-if="imgList.length >= 1" :autoplay="3000" indicator-color="white">
+        <van-swipe-item v-for="(img, index) in imgList" :key="index" @click="clickImg(index)">
           <img :src="img.url" alt="" class="img">
-        </swiper-slide>
-        <div class="swiper-pagination" slot="pagination" v-if="imgList.length >1"></div>
-      </swiper>
+        </van-swipe-item>
+      </van-swipe>
     </div>
     <div class="links-wrap">
       <div class="my-income" @click="enterMyIncome">
@@ -34,13 +32,14 @@
       <div class="line"></div>
       <img src="../../assets/img/fx-gray-logo.png" class="fx" />
     </div>
-    <img-viewer :img="currentImg" :flag="imgViewerFlag" @close="imgViewerFlag=false"></img-viewer>
   </div>
 </template>
-<script type="text/ecmascript-6">
-import { swiper, swiperSlide } from 'vue-awesome-swiper'
+<script>
+import Vue from 'vue'
+import { ImagePreview } from 'vant'
 import helper from 'utils/helper'
-import ImgViewer from 'components/imgViewer'
+Vue.use(ImagePreview)
+
 export default {
   data () {
     return {
@@ -52,30 +51,9 @@ export default {
         isRead: ''
       },
       bankIsNew: 0, // 银行卡变更
-      swiperOptions: {
-        autoplay: true,
-        loop: true,
-        pagination: {
-          el: '.swiper-pagination'
-        },
-        on: {
-          click: () => {
-            this.clickImg()
-          }
-        }
-      },
       hasNewMsg: '0',
-      imgViewerFlag: false,
-      currentImg: {
-        url: ''
-      },
       imgList: [],
       requested: false
-    }
-  },
-  computed: {
-    swiper () {
-      return this.$refs.mySwiper.swiper
     }
   },
   created () {
@@ -84,16 +62,7 @@ export default {
   },
   methods: {
     async getBannerList () {
-      let res = await this.$System.getBannerList()
-      if (res.data.length) {
-        this.imgList = res.data
-      } else {
-        this.imgList = [{
-          url: require('../../assets/img/home-banner6.png')
-        }, {
-          url: require('../../assets/img/home-banner3.png')
-        }]
-      }
+      this.imgList = await this.$System.getBannerList()
     },
     async getRecentInfo () {
       let res = await this.$Roll.index()
@@ -117,18 +86,16 @@ export default {
       this.$router.push({ name: routerName, query: query })
     },
     clickImg (index) {
-      this.currentImg = this.imgList[this.swiper.realIndex]
-      if (this.currentImg.link) {
-        window.location.href = this.currentImg.link
+      let { link = '', url = '' } = this.imgList[index]
+      if (link) {
+        window.location.href = link
       } else {
-        this.imgViewerFlag = true
+        ImagePreview({
+          images: [url],
+          showIndex: false
+        })
       }
     }
-  },
-  components: {
-    ImgViewer,
-    swiper,
-    swiperSlide
   }
 }
 </script>

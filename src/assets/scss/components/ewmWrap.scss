@@ -1,0 +1,56 @@
+//
+.ewm-wrap {
+    width: px2rem(476px);
+    padding: px2rem(40px);
+    background: white;
+    color: #656e75;
+    line-height: px2rem(32px);
+    border-radius: $radius-s;
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
+    text-align: center;
+    .close {
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: 2;
+      padding: px2rem(24px);
+      @include font-dpr(32px);
+    }
+    .ewm {
+      width: px2rem(296px);
+      min-height: px2rem(240px);
+      max-height: px2rem(350px);
+      border: 1px solid $color-border-gray;
+      margin: px2rem(36px) auto;
+    }
+    .tip {
+      margin-bottom: px2rem(20px);
+    }
+  }
+  .copy-popup {
+    width: 90%;
+    padding: px2rem(30px);
+    border-radius: px2rem(10px);
+    .tip {
+      padding: px2rem(30px) 0;
+      text-align: center;
+      @include font-dpr(26px);
+    }
+    .text {
+      height: px2rem(70px);
+      line-height: px2rem(70px);
+      border: 1px solid $color-border-default;
+      border-radius: $radius-xs;
+      padding: 0 px2rem(20px);
+    }
+    .close-btn {
+      width: 100%;
+      height: px2rem(70px);
+      line-height: px2rem(70px);
+      text-align: center;
+      background: $fx-main-color;
+      color: white;
+      border-radius: $radius-xs;
+      margin-top: px2rem(30px);
+    }
+  }

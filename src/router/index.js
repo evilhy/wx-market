@@ -11,7 +11,7 @@ export default new Router({
     {
       path: '/get-id', // 公共入口页面getId
       name: 'getId',
-      component: getId,
+      component: getId, // 检查
       alias: '/'
     },
     {
@@ -21,49 +21,49 @@ export default new Router({
     },
     {
       path: '/bind-id-card', // 身份绑定--输入身份证
-      name: 'bindIdCard',
+      name: 'bindIdCard', // 检查
       component: resolve => {
         require(['../views/public/bindIdCard.vue'], resolve)
       }
     },
     {
       path: '/choose-phone', // 身份绑定--选择手机号页面
-      name: 'choosePhone',
+      name: 'choosePhone', // 检查
       component: resolve => {
         require(['../views/public/choosePhone.vue'], resolve)
       }
     },
     {
       path: '/set-query-code', // 设置6位查询密码
-      name: 'setQueryCode',
+      name: 'setQueryCode', // 检查
       component: resolve => {
         require(['../views/public/setQueryCode.vue'], resolve)
       }
     },
     {
       path: '/complete', // 绑定|设置查询密码完成页面
-      name: 'complete',
+      name: 'complete', // 检查
       component: resolve => {
         require(['../views/public/complete.vue'], resolve)
       }
     },
     {
       path: '/bind-tel', // 身份绑定--绑定手机号
-      name: 'bindTel',
+      name: 'bindTel', // 检查
       component: resolve => {
         require(['../views/public/bindTel.vue'], resolve)
       }
     },
     {
       path: '/send-code/', // 身份绑定--发送验证码
-      name: 'sendCode',
+      name: 'sendCode', // 检查
       component: resolve => {
         require(['../views/public/sendCode.vue'], resolve)
       }
     },
     {
       path: '/check-card-tail/', // 身份绑定--验证银行卡后6位
-      name: 'checkCardTail',
+      name: 'checkCardTail', // 检查
       component: resolve => {
         require(['../views/public/checkCardTail.vue'], resolve)
       }
@@ -77,7 +77,7 @@ export default new Router({
     },
     {
       path: '/home', // 首页
-      name: 'home',
+      name: 'home', // 检查
       component: resolve => {
         require(['../views/payroll/home.vue'], resolve)
       }
@@ -91,42 +91,42 @@ export default new Router({
     },
     {
       path: '/forget-send-code', // 忘记查询密码--发送验证码
-      name: 'forgetSendCode',
+      name: 'forgetSendCode', // 检查
       component: resolve => {
         require(['../views/payroll/forgetSendCode.vue'], resolve)
       }
     },
     {
       path: '/set-new-query-code', // 设置新的查询密码
-      name: 'setNewQueryCode',
+      name: 'setNewQueryCode', // 检查
       component: resolve => {
         require(['../views/payroll/setNewQueryCode.vue'], resolve)
       }
     },
     {
       path: '/wage-index/:wageSheetId', // 工资首页
-      name: 'wageIndex',
+      name: 'wageIndex', // 检查
       component: resolve => {
         require(['../views/payroll/wageIndex.vue'], resolve)
       }
     },
     {
       path: '/wage-detail', // 工资条详情页面
-      name: 'wageDetail',
+      name: 'wageDetail', // 检查
       component: resolve => {
         require(['../views/payroll/wageDetail.vue'], resolve)
       }
     },
     {
       path: '/wage-list', // 薪资列表页
-      name: 'wageList',
+      name: 'wageList', // 检查
       component: resolve => {
         require(['../views/payroll/wageList.vue'], resolve)
       }
     },
     {
       path: '/user', // 个人信息首页
-      name: 'user',
+      name: 'user', // 检查
       meta: {
         title: '个人信息'
       },
@@ -136,7 +136,7 @@ export default new Router({
     },
     {
       path: '/user-ents', // 个人信息-任职企业
-      name: 'userEnts',
+      name: 'userEnts', // 检查
       meta: {
         title: '任职企业'
       },
@@ -146,7 +146,7 @@ export default new Router({
     },
     {
       path: '/user-detail', // 个人信息详情
-      name: 'userDetail',
+      name: 'userDetail', // 检查
       meta: {
         title: '员工信息'
       },
@@ -156,7 +156,7 @@ export default new Router({
     },
     {
       path: '/modify-query-code', // 个人信息-修改查询密码
-      name: 'modifyQueryCode',
+      name: 'modifyQueryCode', // 检查
       meta: {
         title: '修改查询密码'
       },
@@ -166,7 +166,7 @@ export default new Router({
     },
     {
       path: '/bankcard-list', // 个人信息-银行卡列表
-      name: 'bankcardList',
+      name: 'bankcardList', // 检查
       meta: {
         title: '银行卡'
       },
@@ -176,7 +176,7 @@ export default new Router({
     },
     {
       path: '/bankcard-history', // 个人信息-银行卡历史记录
-      name: 'bankcardHistory',
+      name: 'bankcardHistory', // 检查
       meta: {
         title: '修改记录'
       },
@@ -186,7 +186,7 @@ export default new Router({
     },
     {
       path: '/select-modify-way', // 修改手机号-选择验证方式
-      name: 'selectModifyWay',
+      name: 'selectModifyWay', // 检查
       meta: {
         title: '修改手机号'
       },
@@ -196,7 +196,7 @@ export default new Router({
     },
     {
       path: '/check-old-phone', // 修改手机号-旧手机号验证
-      name: 'checkOldPhone',
+      name: 'checkOldPhone', // 检查
       meta: {
         title: '修改手机号'
       },
@@ -216,7 +216,7 @@ export default new Router({
     },
     {
       path: '/check-ent-phone', // 修改手机号-企业中手机号验证
-      name: 'checkEntPhone',
+      name: 'checkEntPhone', // 检查
       meta: {
         title: '修改手机号'
       },
@@ -226,7 +226,7 @@ export default new Router({
     },
     {
       path: '/confirm-modify-phone', // 修改手机号-确认绑定新手机号
-      name: 'confirmModifyPhone',
+      name: 'confirmModifyPhone', // 检查
       meta: {
         title: '绑定新手机号'
       },
@@ -243,7 +243,7 @@ export default new Router({
     },
     {
       path: '/invoice', // 发票信息页面
-      name: 'invoice',
+      name: 'invoice', // 检查
       component: resolve => {
         require(['../views/payroll/invoice.vue'], resolve)
       }
@@ -283,14 +283,14 @@ export default new Router({
     },
     {
       path: '/elife-index', // 喜闻乐荐首页
-      name: 'elifeIndex',
+      name: 'elifeIndex', // 检查
       component: resolve => {
         require(['../views/elife/index.vue'], resolve)
       }
     },
     {
       path: '/elife-login', // 喜闻乐荐参与页
-      name: 'elifeLogin',
+      name: 'elifeLogin', // 检查
       component: resolve => {
         require(['../views/elife/login.vue'], resolve)
       }
@@ -380,17 +380,17 @@ export default new Router({
       }
     },
     {
+      path: '/ad-picture', // 银行网点页
+      name: 'adPicture',
+      component: resolve => {
+        require(['../views/public/adPicture.vue'], resolve)
+      }
+    },
+    {
       path: '/about-us', // 关于我们
       name: 'aboutUs',
       component: resolve => {
         require(['../views/public/aboutUs.vue'], resolve)
-      }
-    },
-    {
-      path: '/wisale-entry', // 关于我们
-      name: 'wisaleEntry',
-      component: resolve => {
-        require(['../views/public/wisaleEntry.vue'], resolve)
       }
     }
   ],

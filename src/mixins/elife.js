@@ -1,10 +1,10 @@
 import helper from 'utils/helper'
 export default {
   methods: {
-    postElife (data, loading = true) {
+    postElife (data) {
       this
         .$Elife
-        .postElife(data, loading)
+        .postElife(data)
         .then((res) => {
           let data = res.data
           if (data.ret_code === '0000') {
@@ -14,10 +14,10 @@ export default {
           }
         })
     },
-    postElifeX (data, loading = true) {
+    postElifeX (data) {
       this
         .$Elife
-        .postElifeX(data, loading)
+        .postElifeX(data)
         .then((res) => {
           let data = res.data
           if (data.ret_code === '0000') {

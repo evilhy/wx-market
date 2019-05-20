@@ -1,0 +1,35 @@
+// trend  走势图页面
+.trend-page {
+    @include font-dpr(26px);
+    color: #333;
+    padding-bottom: px2rem(122px);
+    .choose {
+      width: 100%;
+      height: px2rem(80px);
+      text-align: center;
+      line-height: px2rem(80px);
+      background: #fff;
+      border-bottom: 1px solid #dfdfdf;
+      .active {
+        border: 0;
+        color: #fff;
+        background: #52bdbd;
+      }
+      li {
+        display: inline-block;
+        vertical-align: middle;
+        margin: 0 px2rem(12px);
+        width: px2rem(176px);
+        height: px2rem(50px);
+        border: 1px solid #52bdbd;
+        border-radius: 2px;
+        line-height: px2rem(50px);
+        color: #52bdbd;
+      }
+    }
+    .chart-wrap {
+      padding-top: px2rem(40px);
+      background: #fff;
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+    }
+  }

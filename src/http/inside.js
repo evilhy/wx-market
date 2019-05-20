@@ -9,6 +9,7 @@ class Inside {
     let http = new Http()
     http.path = `/${moduleName}/sendCode`
     http.body = { phone, busiType }
+    http.loading = false
     return http.post()
   }
   /**

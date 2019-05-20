@@ -1,0 +1,10 @@
+//   明细页面
+.no-wage-page {
+    text-align: center;
+    padding-top: px2rem(220px);
+    color: $color-text-tone;
+    .big-title {
+      padding-bottom: px2rem(30px);
+      @include font-dpr(42px);
+    }
+  }

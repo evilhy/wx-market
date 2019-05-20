@@ -12,7 +12,6 @@ class Elife {
     let http = new Http()
     http.path = `/${moduleName}`
     http.query = { code }
-    http.loading = false
     return http.get()
   }
   /**
@@ -30,7 +29,6 @@ class Elife {
   /**
    * 喜闻乐荐--智慧社区接口
    * @param {*} param0
-   * @param {*} loading
    */
   postElife({
     name = '',
@@ -40,7 +38,7 @@ class Elife {
     branchOrgNo = '',
     branchOrgName = '',
     officer = ''
-  }, loading) {
+  }) {
     let http = new Http()
     let appKey = 'testappkey'
     let timestamp = new Date().getTime().toString()
@@ -59,7 +57,6 @@ class Elife {
       branch_id: branchOrgNo,
       branch_name: branchOrgName
     }
-    http.loading = loading
     return http.post()
   }
   /**
@@ -70,7 +67,6 @@ class Elife {
     let http = new Http()
     http.path = `/${moduleName}/xuser`
     http.query = { code }
-    http.loading = false
     return http.get()
   }
   /**
@@ -87,7 +83,6 @@ class Elife {
   /**
    * 心有所属--智慧社区接口
    * @param {*} param0
-   * @param {*} loading
    */
   postElifeX({
     name = '',
@@ -97,7 +92,7 @@ class Elife {
     branchOrgNo = '',
     branchOrgName = '',
     officer = ''
-  }, loading) {
+  }) {
     let http = new Http()
     let appKey = 'testappkey'
     let timestamp = new Date().getTime().toString()
@@ -116,7 +111,6 @@ class Elife {
       branch_id: branchOrgNo,
       branch_name: branchOrgName
     }
-    http.loading = loading
     return http.post()
   }
 }

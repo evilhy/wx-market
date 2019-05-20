@@ -1,5 +1,5 @@
 <template>
-  <mt-popup v-model="visible" :closeOnClickModal="false" popup-transition="popup-fade" class="ewm-wrap">
+  <van-popup v-model="visible" :closeOnClickModal="false" :overlay="false" class="ewm-wrap">
     <div>
       <span class="close" @click="close">
         <i class="icon iconfont icon-Close"></i>
@@ -7,7 +7,7 @@
       <img :src="ewmImg" alt="" class="ewm">
       <p class="tip">长按识别二维码，添加客户经理微信</p>
     </div>
-  </mt-popup>
+  </van-popup>
 </template>
 <script>
 export default {

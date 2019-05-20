@@ -22,7 +22,7 @@
     </template>
     <!-- 预约结束 -->
     <template v-else>
-      <order-end :next-image-url="productInfo.nextImageUrl"></order-end>
+      <order-end></order-end>
     </template>
   </div>
 </template>
@@ -37,7 +37,7 @@ import orderEnd from './components/orderEnd'
 import countDown from '../../components/countDown'
 import helper from 'utils/helper'
 import { getPageQueryObject } from 'utils/assist'
-import { MessageBox } from 'mint-ui'
+import { Dialog } from 'vant'
 import tShare from 'mixins/tShare'
 export default {
   mixins: [tShare],
@@ -54,8 +54,7 @@ export default {
         intentEndDate: 0,
         subscribeStartDate: 0,
         subscribeEndDate: 0,
-        show: -1,
-        nextImageUrl: ''
+        show: -1
       },
       orderStart: false,
       orderEnd: false
@@ -72,7 +71,7 @@ export default {
       this.productInfo = res.data
       helper.saveShareInfo({fxId: this.productInfo.wechatId})
       helper.saveTFinanceInfo(this.productInfo)
-      this.wxCustomShare()
+      this.shareConfig()
       this.showDataByStatus()
     },
     showDataByStatus () {
@@ -87,16 +86,20 @@ export default {
     checkFollowAndBind () {
       let { followStatus, bindStatus } = this.productInfo
       if (followStatus === 0) {
-        MessageBox('提示', '发现您尚未关注【放薪管家】公众号，请关注后再进行预约！')
+        Dialog.alert({
+          title: '提示',
+          message: '发现您尚未关注【放薪管家】公众号，请关注后再进行预约！'
+        })
         return false
       }
       if (bindStatus === 0) {
-        MessageBox({
+        Dialog.alert({
           message: '您尚未通过放薪管家工资条认证，请先完成认证后再进行预约！',
           confirmButtonText: '去认证',
           showCancelButton: true
         }).then(action => {
           action === 'confirm' && this.$router.push({ name: 'bindIdCard' })
+        }).catch(() => {
         })
         return false
       }

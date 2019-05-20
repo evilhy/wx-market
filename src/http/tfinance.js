@@ -9,7 +9,6 @@ class Tfinance {
   list () {
     let http = new Http()
     http.path = `/${moduleName}/list`
-    http.loading = false
     return http.get()
   }
   /**
