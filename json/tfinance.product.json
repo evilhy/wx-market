@@ -47,7 +47,7 @@
   "intentNum": 6,
   "intentFlag": 1,
   "intentStatus": 0,
-  "bindStatus": 1,
+  "bindStatus": 0,
   "followStatus": 1,
   "show": "1"
 }
