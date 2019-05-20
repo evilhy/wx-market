@@ -99,6 +99,7 @@ export default {
           showCancelButton: true
         }).then(action => {
           action === 'confirm' && this.$router.push({ name: 'bindIdCard' })
+        }).catch(() => {
         })
         return false
       }
