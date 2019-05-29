@@ -28,8 +28,8 @@
       </div>
     </div>
     <div class="bottom-logo">
-      <img src="../../assets/img/hx-gray-logo.png" class="hx" />
-      <div class="line"></div>
+      <!-- <img src="../../assets/img/hx-gray-logo.png" class="hx" /> -->
+      <!-- <div class="line"></div> -->
       <img src="../../assets/img/fx-gray-logo.png" class="fx" />
     </div>
   </div>
