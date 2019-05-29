@@ -13,8 +13,8 @@
       <button class="submit-btn" :disabled="disabledSubmit" @click="submitFun">算一算</button>
     </div>
     <div class="bottom-logo">
-      <img src="../../assets/img/hx-gray-logo.png" class="hx" />
-      <div class="line"></div>
+      <!-- <img src="../../assets/img/hx-gray-logo.png" class="hx" />
+      <div class="line"></div> -->
       <img src="../../assets/img/fx-gray-logo.png" class="fx" />
     </div>
     <explain-popup ref="explain-popup" :type="popupType"></explain-popup>

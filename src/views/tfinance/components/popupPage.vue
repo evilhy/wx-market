@@ -1,19 +1,11 @@
 <template>
-  <mt-popup v-model="flag"
-            position="right"
-            class="popup-page">
-    <mt-header :title="title" class="protocol-title">
-          <template slot="left">
-            <p class="back-wrap" @click="close">
-              <span class="v-arrow"></span>
-            </p>
-          </template>
-    </mt-header>
+  <van-popup v-model="flag" position="right" class="popup-page">
+    <van-nav-bar :title="title" left-arrow left-text="" @click-left="close" class="protocol-title back-wrap">
+    </van-nav-bar>
     <div class="content-wrap">
-      <!-- <div class="content-title" v-if="title"><span class="line"></span><span class="title">{{title}}</span><span class="line"></span></div> -->
       <slot></slot>
     </div>
-  </mt-popup>
+  </van-popup>
 </template>
 <script>
 export default {

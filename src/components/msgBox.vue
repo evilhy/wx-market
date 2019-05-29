@@ -2,7 +2,7 @@
   <div class="msg-box">
     <div class="msg-list-wrap" ref="wrapper">
       <!-- 有留言 -->
-      <mt-loadmore :bottom-method="getMsgList" :auto-fill="false" ref="loadmore" v-if="msgList.length || allCount">
+      <van-list @load="getMsgList" v-model="loading" :finished="finished" :auto-fill="false"  ref="loadmore" v-if="msgList.length || allCount">
         <ul class="list">
           <li class="loading" v-if="msgList.length && allCount >= 20 && msgList.length !== allCount">加载中...</li>
           <li v-for="(msg,index) in msgList" :key="index" class="item-wrap" :class="'item-' + msg.chat_msg_id">
@@ -21,9 +21,9 @@
             </div>
           </li>
         </ul>
-      </mt-loadmore>
+      </van-list>
       <div class="no-msg" v-else>
-        有任何疑问可在此留言，我会尽快为您提供服务
+        有任何疑问可在此留言，我会尽快为您提供服务 
       </div>
     </div>
     <div class="bottom-input">
@@ -62,7 +62,9 @@ export default {
       chatSessionId: '',
       scrollWrapper: null,
       isLoading: false,
-      pageSize: 10
+      pageSize: 10,
+      loading: false,
+      finished: true
     }
   },
   computed: {
@@ -88,6 +90,7 @@ export default {
   },
   methods: {
     getMsgList (isFresh = true, isInit = false) {
+      // alert(this.msgList.length && this.allCount)
       this.Http
         .connect(true)
         .post('entUser100796.json', {
@@ -113,6 +116,21 @@ export default {
           }
         })
     },
+    onLoad() {
+              // 异步更新数据
+              setTimeout(() => {
+                for (let i = 0; i < 10; i++) {
+                  this.list.push(this.list.length + 1)
+                }
+                // 加载状态结束
+                this.loading = false
+
+                // 数据全部加载完成
+                if (this.list.length >= 40) {
+                  this.finished = true
+                }
+              }, 500)
+            },
     scrollTo (eleIndex) {
       this.$nextTick(() => {
         let scrollTop = typeOf(eleIndex) === 'number' ? document.querySelector('.item-' + this.msgList[eleIndex].chat_msg_id).offsetTop : this.scrollWrapper.scrollHeight

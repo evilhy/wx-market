@@ -1,11 +1,9 @@
 <template>
   <div class="get-id-page">
-    <loading></loading>
   </div>
 </template>
 
 <script>
-import loading from 'components/loading'
 import helper from 'utils/helper'
 import { getPageQueryObject } from 'utils/assist'
 export default {
@@ -39,7 +37,6 @@ export default {
     }
   },
   components: {
-    loading
   }
 }
 </script>

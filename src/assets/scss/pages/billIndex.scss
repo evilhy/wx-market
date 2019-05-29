@@ -1,0 +1,168 @@
+// bill-index-page
+.bill-index-page {
+    position: relative;
+    padding: px2rem(340px) px2rem(40px) 0;
+    background: url('../img/bill-index-bg.png') no-repeat;
+    background-size: 100% auto;
+    @include font-dpr(26px);
+    .manager-box {
+      width: px2rem(110px);
+      height: px2rem(146px);
+      display: flex;
+      display: -webkit-flex;
+      flex-direction: column;
+      position: absolute;
+      right: px2rem(40px);
+      top: px2rem(45px);
+      background: #fff;
+      box-shadow: 0 0 px2rem(20px) 0 rgba(0, 0, 0, 0.2);
+      border-radius: px2rem($radius-xs);
+      line-height: px2rem(40px);
+      text-align: center;
+      .pic {
+        width: 100%;
+        height: px2rem(108px);
+      }
+      .title {
+        position: relative;
+      }
+      .new-flag {
+        position: absolute;
+        right: px2rem(4px);
+        top: px2rem(2px);
+        @include circle(12px);
+        background: #f34b21;
+        border: 2px solid #ffffff;
+      }
+    }
+    .bill-index-main {
+      height: px2rem(520px);
+      background: #fff;
+      border-radius: px2rem(20px) px2rem(20px) 0 0;
+      position: relative;
+    }
+    .fx-logo {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      margin-top: px2rem(-90px);
+      margin-left: px2rem(-90px);
+      @include circle(px2rem(180px));
+      background: #fff;
+      box-shadow: 0 7px 10px 0 rgba(201, 205, 216, 0.52);
+      overflow: hidden;
+      z-index: 99;
+      img {
+        @include circle(180px);
+      }
+    }
+    .bill-item {
+      padding-top: px2rem(120px);
+      text-align: center;
+      .bill-status {
+        position: absolute;
+        right: px2rem(20px);
+        top: px2rem(20px);
+      }
+    }
+    .swiper-pagination {
+      padding-left: px2rem(px2rem(26px));
+      top: px2rem(26px);
+      height: px2rem(14px);
+      text-align: left;
+      line-height: 1;
+    }
+    .swiper-pagination-bullet {
+      @include square(px2rem(14px));
+      vertical-align: top;
+      background: #d6f3f2;
+      opacity: 1;
+    }
+    .swiper-pagination-bullet-active {
+      background: #41cdca;
+    }
+    .bank {
+      display: flex;
+      height: px2rem(34px);
+      align-items: center;
+      justify-content: center;
+    }
+    .bank-logo {
+      display: block;
+      height: px2rem(26px);
+      margin-right: px2rem(8px);
+    }
+    .amt-wrap {
+      padding: px2rem(24px) 0;
+      .amt {
+        position: relative;
+        @include font-dpr(64px);
+        line-height: 1;
+      }
+      .iconfont {
+        position: absolute;
+        top: px2rem(10px);
+        right: px2rem(90px);
+        @include font-dpr(46px);
+        color: $color-text-gray;
+      }
+    }
+    .amt-title {
+      margin-bottom: px2rem(40px);
+      color: $color-text-gray;
+    }
+    .diff-wrap {
+      width: px2rem(530px);
+      height: px2rem(72px);
+      line-height: px2rem(72px);
+      padding: 0 px2rem(24px);
+      background: #f6f6f7;
+      @include center-block;
+      display: flex;
+      display: -webkit-flex;
+      justify-content: space-between;
+      .shang {
+        color: orange;
+      }
+      .xia {
+        color: #f11a1a;
+      }
+      .iconfont {
+        @include font-dpr(24px);
+        margin-right: px2rem(4px);
+      }
+    }
+    .action-wrap {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: px2rem(80px);
+      line-height: px2rem(80px);
+      border-top: 1px solid #e9ebec;
+      display: flex;
+      .action {
+        width: 100%;
+        @include flex-center;
+        &:first-child {
+          border-right: 1px solid #e9ebec;
+        }
+        .icon-chakanxiangqing {
+          display: block;
+          @include font-dpr(28px);
+        }
+      }
+    }
+    .bottom {
+      padding: px2rem(30px) 0;
+      display: flex;
+      justify-content: space-between;
+      @include font-dpr(24px);
+      .time {
+        color: $color-text-gray;
+      }
+      .return {
+        color: #5a9fff;
+      }
+    }
+  }

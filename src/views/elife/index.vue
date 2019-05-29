@@ -1,11 +1,9 @@
 <template>
   <!-- 喜闻乐见 -->
   <div class="elife-index-page">
-    <loading></loading>
   </div>
 </template>
 <script>
-import loading from 'components/loading'
 import { getPageQueryObject } from 'utils/assist'
 import helper from '../../utils/helper'
 import elife from 'mixins/elife'
@@ -29,7 +27,7 @@ export default {
           let data = res.data
           helper.saveUserInfo({ jsessionId: data.jsessionId })
           if (data.join === 1) {
-            this.postElife(data, false)
+            this.postElife(data)
           } else {
             let { name = '', phone = '' } = data 
             this.$router.replace({ name: 'elifeLogin', query: { name, phone } })
@@ -38,7 +36,6 @@ export default {
     }
   },
   components: {
-    loading
   }
 }
 </script>

@@ -4,7 +4,8 @@
       <product-level :mark-list="productInfo.markList" :order-num="productInfo.intentNum" :term="productInfo.productTerm"></product-level>
       <product-notice :notice="productInfo.promote"></product-notice>
       <product-point></product-point>
-      <activity-rule :order-start="productInfo.intentStartDate" :order-end="productInfo.intentEndDate" :buy-start="productInfo.subscribeStartDate" :buy-end="productInfo.subscribeEndDate"></activity-rule>
+      <activity-rule :order-start="productInfo.intentStartDate" :order-end="productInfo.intentEndDate" :buy-start="productInfo.subscribeStartDate"
+        :buy-end="productInfo.subscribeEndDate"></activity-rule>
       <all-ordered v-if="productInfo.show==='0'" :product-id="query.productId"></all-ordered>
       <colleague-ordered v-if="productInfo.show==='1'" type="part"></colleague-ordered>
       <div class="bottom-action">
@@ -37,7 +38,7 @@ import orderEnd from './components/orderEnd'
 import countDown from '../../components/countDown'
 import helper from 'utils/helper'
 import { getPageQueryObject } from 'utils/assist'
-import { MessageBox } from 'mint-ui'
+import { Dialog } from 'vant'
 import tShare from 'mixins/tShare'
 export default {
   mixins: [tShare],
@@ -69,7 +70,7 @@ export default {
     async getProductInfo () {
       let res = await this.$Tfinance.product(this.query)
       this.productInfo = res.data
-      helper.saveShareInfo({fxId: this.productInfo.wechatId})
+      helper.saveShareInfo({ fxId: this.productInfo.wechatId })
       helper.saveTFinanceInfo(this.productInfo)
       this.shareConfig()
       this.showDataByStatus()
@@ -86,16 +87,20 @@ export default {
     checkFollowAndBind () {
       let { followStatus, bindStatus } = this.productInfo
       if (followStatus === 0) {
-        MessageBox('提示', '发现您尚未关注【放薪管家】公众号，请关注后再进行预约！')
+        Dialog.alert({
+          title: '提示',
+          message: '发现您尚未关注【放薪管家】公众号，请关注后再进行预约！'
+        })
         return false
       }
       if (bindStatus === 0) {
-        MessageBox({
+        Dialog.alert({
           message: '您尚未通过放薪管家工资条认证，请先完成认证后再进行预约！',
           confirmButtonText: '去认证',
           showCancelButton: true
         }).then(action => {
           action === 'confirm' && this.$router.push({ name: 'bindIdCard' })
+        }).catch(() => {
         })
         return false
       }
@@ -108,7 +113,7 @@ export default {
     order () {
       if (!this.productInfo.intentFlag) return
       if (this.checkFollowAndBind()) {
-        this.$router.push({name: 'tfinanceConfirm'})
+        this.$router.push({ name: 'tfinanceConfirm' })
       }
     }
   },

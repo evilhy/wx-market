@@ -95,9 +95,7 @@ module.exports = {
         post: distribute
       },
       '/elife': {
-        get: elifeGetUserInfo
-      },
-      '/elife': {
+        get: elifeGetUserInfo,
         post: elifeJoinActivity
       },
       '/tfinance/list': {

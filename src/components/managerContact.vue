@@ -12,7 +12,7 @@
       </div>
       <div class="item">
         <div class="label">经理微信</div>
-        <div class="value"><span v-if="managerInfo.wechatQrImgae" @click="popupVisible=true">{{managerInfo.wechatId}}</span><span class="v-arrow"></span></div>
+        <div class="value" v-if="managerInfo.wechatQrImgae" @click="popupVisible=true"><span>{{managerInfo.wechatId}}</span><span class="v-arrow"></span></div>
       </div>
       <div class="item">
         <div class="label">所属单位</div>

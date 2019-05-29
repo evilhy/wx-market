@@ -1,7 +1,8 @@
 import storage from './storage'
 import { typeOf } from './assist'
 import sysConfig from './constant'
-import { Toast } from 'mint-ui'
+import { Toast } from 'vant'
+Toast.allowMultiple()
 const $getSessionObj = Symbol('$getSessionObj')
 const $setSessionObj = Symbol('$setSessionObj')
 const $updateSessionObj = Symbol('$updateSessionObj')
@@ -56,13 +57,21 @@ const helper = {
   },
   toast(msg, position = 'center', duration = 3000) {
     clearTimeout(timer)
-    let instance = Toast({
+    const toast = Toast({
+      duration: duration,       // 持续展示 toast
+      // loadingType: 'spinner',
       message: msg,
-      position: position,
-      duration: duration
+      position: position
     })
-    timer = setTimeout(() => {
-      instance.close()
+    let second = 1
+    const timers = setInterval(() => {
+      second--
+      if (second) {
+        toast.message = msg
+      } else {
+        clearInterval(timers)
+        Toast.clear()
+      }
     }, duration)
   },
   saveRemainTime() {
@@ -98,6 +107,15 @@ const helper = {
   },
   getShareInfo (infoKey = '', defaultValue = '') {
     return this[$getSessionObj]('shareInfo', infoKey, defaultValue)
+  },
+  saveBannerList (list = []) { 
+    storage.setSession('bannerList', list)
+  },
+  getBannerList (defaultValue = []) { 
+    return storage.getSession('bannerList', defaultValue)
+  },
+  clearBannerList () {
+    storage.removeSession('bannerList')
   },
   clearShareInfo () {
     storage.removeSession('shareInfo')

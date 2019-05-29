@@ -1,11 +1,9 @@
 <template>
   <!-- 薪有所属 -->
   <div class="elife-xindex-page">
-    <loading></loading>
   </div>
 </template>
 <script>
-import loading from 'components/loading'
 import { getPageQueryObject } from 'utils/assist'
 import helper from '../../utils/helper'
 import elife from 'mixins/elife'
@@ -26,7 +24,7 @@ export default {
       let { jsessionId, idNumber = '', phone = '', join, end = 0 } = res.data
       helper.saveUserInfo({ jsessionId })
       if (join === 1) {
-        this.postElifeX(res.data, false)
+        this.postElifeX(res.data)
       } else {
         if (end === 1) {
           this.$router.replace({ name: 'elifeXEnd' })
@@ -37,7 +35,6 @@ export default {
     }
   },
   components: {
-    loading
   }
 }
 </script>

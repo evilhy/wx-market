@@ -1,0 +1,100 @@
+//   华夏管家页面
+.manager-page {
+    height: 100%;
+    .no-manager {
+      height: 100%;
+      background: white;
+      color: $color-text-tip;
+      @include font-dpr(26px);
+      text-align: center;
+      padding-top: px2rem(270px);
+      .img {
+        display: inline-block;
+        margin-bottom: px2rem(34px);
+        &-status-one {
+          width: px2rem(180px);
+          height: px2rem(162px);
+        }
+        &-status-two {
+          width: px2rem(218px);
+          height: px2rem(164px);
+        }
+      }
+      .tip {
+        line-height: px2rem(38px);
+      }
+      .btn {
+        width: px2rem(210px);
+        height: px2rem(70px);
+        line-height: px2rem(70px);
+        margin-top: px2rem(32px);
+        border-radius: px2rem($radius-xs);
+        @include font-dpr(28px);
+        &-green {
+          background: $fx-main-color;
+          color: white;
+        }
+        &-gray {
+          background: $btn-bg-gray;
+          color: #9da6a6;
+        }
+      }
+    }
+    .has-manager {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      color: $color-text-dark;
+      .outline-info-wrap {
+        height: px2rem(274px);
+        text-align: center;
+        padding-top: px2rem(50px);
+        background: url('../img/fx-manager-bg.png') no-repeat center center;
+        background-size: 100% 100%;
+      }
+      .manager-img {
+        @include circle(px2rem(112px));
+        @include center-block;
+        border: px2rem(4px) solid white;
+        margin-bottom: px2rem(14px);
+        overflow: hidden;
+        img {
+          @include square(px2rem(104px));
+        }
+      }
+      .manager-name {
+        line-height: px2rem(40px);
+        color: white;
+        @include font-dpr($fontsize-m);
+      }
+    }
+    .tab-list {
+      background: white;
+      height: px2rem(88px);
+      display: flex;
+      display: -webkit-flex;
+      justify-content: space-around;
+      margin-bottom: px2rem($space-normal);
+    }
+    .tab-item {
+      height: px2rem(88px);
+      line-height: px2rem(88px);
+      width: px2rem(150px);
+      position: relative;
+      text-align: center;
+      &.active {
+        color: $fx-main-color;
+        border-bottom: px2rem(4px) solid $fx-main-color;
+      }
+      &.has-news:after {
+        content: '';
+        position: absolute;
+        right: px2rem(18px);
+        top: px2rem(24px);
+        @include circle(px2rem(14px));
+        background: #fb3636;
+        box-sizing: border-box;
+        border: px2rem(2px) solid white;
+      }
+    }
+  }
