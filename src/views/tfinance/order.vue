@@ -4,7 +4,8 @@
       <product-level :mark-list="productInfo.markList" :order-num="productInfo.intentNum" :term="productInfo.productTerm"></product-level>
       <product-notice :notice="productInfo.promote"></product-notice>
       <product-point></product-point>
-      <activity-rule :order-start="productInfo.intentStartDate" :order-end="productInfo.intentEndDate" :buy-start="productInfo.subscribeStartDate" :buy-end="productInfo.subscribeEndDate"></activity-rule>
+      <activity-rule :order-start="productInfo.intentStartDate" :order-end="productInfo.intentEndDate" :buy-start="productInfo.subscribeStartDate"
+        :buy-end="productInfo.subscribeEndDate"></activity-rule>
       <all-ordered v-if="productInfo.show==='0'" :product-id="query.productId"></all-ordered>
       <colleague-ordered v-if="productInfo.show==='1'" type="part"></colleague-ordered>
       <div class="bottom-action">
@@ -69,7 +70,7 @@ export default {
     async getProductInfo () {
       let res = await this.$Tfinance.product(this.query)
       this.productInfo = res.data
-      helper.saveShareInfo({fxId: this.productInfo.wechatId})
+      helper.saveShareInfo({ fxId: this.productInfo.wechatId })
       helper.saveTFinanceInfo(this.productInfo)
       this.shareConfig()
       this.showDataByStatus()
@@ -112,7 +113,7 @@ export default {
     order () {
       if (!this.productInfo.intentFlag) return
       if (this.checkFollowAndBind()) {
-        this.$router.push({name: 'tfinanceConfirm'})
+        this.$router.push({ name: 'tfinanceConfirm' })
       }
     }
   },
