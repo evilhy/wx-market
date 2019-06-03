@@ -392,6 +392,13 @@ export default new Router({
       component: resolve => {
         require(['../views/public/aboutUs.vue'], resolve)
       }
+    },
+    {
+      path: '/wisale', // 唯销入口页面
+      name: 'wisale',
+      component: resolve => {
+        require(['../views/wisale/enter.vue'], resolve)
+      }
     }
   ],
   scrollBehavior (to, from, savedPosition) {
