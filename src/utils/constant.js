@@ -21,6 +21,12 @@ export default {
   },
   bank_site_url: 'https://m.hxb.com.cn/pwxweb/NearbyQry.do?key=067dba74076478ab0786966a52980d7d9c67fefd3b5d255b4752a435f59fd9b40953d781b3b59c67cf9eeec21480fd326e003c6144c08d52945f131709ea4f31061ceb12201dff4b6492438d395bdb6e89ddfa2d9b4f64c6448d33775b8f2d2f00d5e102798312b5',
   about_us_url: 'https://mp.weixin.qq.com/s/X4mJZ1a55OkersW9yE0U0A',
+  wisale_square_url: {
+    development: 'https://sitwxp.cardpu.com/wisale-h5/#/',
+    sit: 'https://sitwxp.cardpu.com/wisale-h5/#/',
+    demo: 'https://sitwxp.cardpu.com/wisale-h5/#/',
+    production: 'https://wxp.cardpu.com/wisale-h5/#/'
+  },
   month_zh: {
     '01': '1月',
     '02': '2月',
