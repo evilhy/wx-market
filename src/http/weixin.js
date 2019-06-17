@@ -9,7 +9,7 @@ class Wechat {
   wxCallback (code) {
       let http = new Http()
       http.path = `/${moduleName}/wxCallback`
-      http.query = { code }
+      http.query = { code, appPartner: 'FXGJ' }
       return http.get()
   }
   /**

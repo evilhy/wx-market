@@ -11,10 +11,12 @@ export default class HttpForApplication extends HttpEngine {
   mockTimeout = 2;
   requestedSever = false;
   beforeSendRequestHandler (config) {
+    let { jsessionId, apppartner } = helper.getUserInfo('', {})
     config.headers = Object.assign(config.headers, {
-      'jsession-id': helper.getUserInfo('jsessionId', ''),
+      'jsession-id': jsessionId,
       'req-id': UUID.createUUID(),
-      'route-name': window.router.app._route.name
+      'route-name': window.router.app._route.name,
+      'apppartner': apppartner
     })
     if (config.loading) {
       this.loadingHash = loading.show({ type: 'square' }) 

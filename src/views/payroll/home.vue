@@ -14,7 +14,7 @@
       </div>
       <div class="link-right">
         <div class="hx-manager" @click="toPage('manager')">
-          <div class="title">华夏管家</div>
+          <div class="title">客户经理</div>
           <span class="news-flag" v-if="hasNewMsg === '1'">新消息</span>
         </div>
         <div class="invoice-person">

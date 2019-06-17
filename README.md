@@ -65,5 +65,7 @@ npm run build
 > 更换vant UI框架
 ### 2019-06-03
 > 新增唯销入口页面
+### 2019-06-17
+> 新增apppartner字段
 
 
