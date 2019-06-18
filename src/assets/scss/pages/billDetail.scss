@@ -188,8 +188,10 @@
     }
     .bottom-group {
       @include font-dpr(20px);
+      width: px2rem(550px);
+      margin: 0 auto;
       padding-bottom: px2rem(10px);
-      line-height: 1;
+      line-height: 1.2;
       color: #c7fff5;
       text-align: center;
     }
