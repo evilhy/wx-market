@@ -762,6 +762,9 @@
     height: px2rem(38px);
     line-height: px2rem(38px);
     margin-bottom: px2rem(30px);
+    .title{
+      flex: 1;
+    }
     .product-tag{
       height: 20px;
       line-height: 20px;
