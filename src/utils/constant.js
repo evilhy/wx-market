@@ -1,6 +1,4 @@
 export default {
-  node_env: process.env.NODE_ENV,
-  debug: process.env.NODE_ENV !== 'production',
   http_base_url: {
     development: 'http://10.5.1.71:8080',
     sit: 'https://sitwx.cardpu.com',

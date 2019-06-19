@@ -1,10 +1,9 @@
 import wx from 'weixin-js-sdk'
-import sysConfig from './constant'
 export default class Wxapi {
   config ({ appId, timestamp, nonceStr, signature }) {
     return new Promise((resolve, reject) => {
       wx.config({
-        debug: sysConfig.node_env === 'development', // 开启调试模式
+        debug: process.env.NODE_ENV === 'development', // 开启调试模式
         appId, // 必填，公众号的唯一标识
         timestamp, // 必填，生成签名的时间戳
         nonceStr, // 必填，生成签名的随机串

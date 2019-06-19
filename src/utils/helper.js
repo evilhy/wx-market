@@ -49,7 +49,7 @@ const helper = {
   getImgUrl(tailUrl = '', urlKey) {
     urlKey = Object.keys(sysConfig.img_base_url).includes(urlKey)
       ? urlKey
-      : sysConfig.node_env
+      : process.env.NODE_ENV
     return (
       sysConfig.img_base_url[urlKey] +
       (typeOf(tailUrl) === 'string' ? tailUrl : '')

@@ -14,7 +14,6 @@
 
 <script>
 import { listenOrientation, checkIsWeixin } from 'utils/assist'
-import sysConfig from 'utils/constant'
 import helper from 'utils/helper'
 export default {
   name: 'app',
@@ -33,7 +32,7 @@ export default {
     window.router = this.$router
   },
   mounted () {
-    if (sysConfig.node_env === 'production') {
+    if (process.env.NODE_ENV === 'production') {
       this.isWeixin = checkIsWeixin()
     }
     listenOrientation(() => {

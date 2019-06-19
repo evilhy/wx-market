@@ -7,7 +7,7 @@ import loading from 'utils/loading'
 let HttpEngine = (require(`core/plugins/http/HttpEngine.${process.env.NODE_ENV === 'development' ? 'dev' : 'prod'}`)).default
 export default class HttpForApplication extends HttpEngine {
 
-  baseURL = sysConfig.http_base_url[sysConfig.node_env];
+  baseURL = sysConfig.http_base_url[process.env.NODE_ENV];
   mockTimeout = 2;
   requestedSever = false;
   beforeSendRequestHandler (config) {
