@@ -10,6 +10,7 @@ export default class HttpForApplication extends HttpEngine {
   baseURL = sysConfig.http_base_url[process.env.NODE_ENV];
   mockTimeout = 2;
   requestedSever = false;
+
   beforeSendRequestHandler (config) {
     let { jsessionId, apppartner } = helper.getUserInfo('', {})
     config.headers = Object.assign(config.headers, {
@@ -19,7 +20,8 @@ export default class HttpForApplication extends HttpEngine {
       'apppartner': apppartner
     })
     if (config.loading) {
-      this.loadingHash = loading.show({ type: 'square' }) 
+      let loadingType = typeOf(config.loading) === 'boolean' ? 'square' : config.loading
+      this.loadingHash = loading.show({ type: loadingType }) 
     }
   }
 

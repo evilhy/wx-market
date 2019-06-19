@@ -1,3 +1,5 @@
+import { typeOf } from './assist'
+
 const loadingRootClass = 'v-loading'
 const loadingTypes = ['normal', 'bounce', 'loader', 'square']
 const loadingDom = {
@@ -38,7 +40,11 @@ const loadingDom = {
 }
 
 export default {
-  show ({ type = loadingTypes[0], parent = document.body } = {}) {
+  show (params = {}) {
+    if (typeOf(params) !== 'object') { 
+      throw new TypeError('loading的参数类型应为Object')
+    }
+    let { type = loadingTypes[0], parent = document.body } = params
     
     if (!loadingTypes.includes(type)) throw new RangeError(`loading的type必须为${loadingTypes.join('、')}中的一种！`)
     if (parent.nodeType !== 1) throw new TypeError('loading的parent类型必须为NODE节点类型！')

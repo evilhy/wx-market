@@ -1,26 +1,21 @@
 <template>
   <div id="app">
-    <div class="no-weixin-wrap" v-if="!isWeixin">
-      <img src="./assets/img/icon-warning-blue.png" alt="" class="icon-warning">
-      <p class="tip">请使用微信客户端打开</p>
-    </div>
-    <div class="hp-wrap" v-if="!isVerticalScreen">
-      <img src="./assets/img/phone.png" alt="" class="phone">
-      <p class="tip">为了您更好的体验，请使用竖屏操作~</p>
-    </div>
-    <router-view v-if="isWeixin && isVerticalScreen"/>
+    <weixin-env-tip v-if="requireWeixin"></weixin-env-tip>
+    <vertical-screen-tip></vertical-screen-tip>
+    <router-view/>
   </div>
 </template>
 
 <script>
-import { listenOrientation, checkIsWeixin } from 'utils/assist'
+import weixinEnvTip from 'components/weixinEnvTip'
+import verticalScreenTip from 'components/verticalScreenTip'
 import helper from 'utils/helper'
+
 export default {
   name: 'app',
   data () {
     return {
-      isWeixin: true,
-      isVerticalScreen: true
+      requireWeixin: process.env.NODE_ENV !== 'development'
     }
   },
   watch: {
@@ -31,15 +26,9 @@ export default {
   created() {
     window.router = this.$router
   },
-  mounted () {
-    if (process.env.NODE_ENV === 'production') {
-      this.isWeixin = checkIsWeixin()
-    }
-    listenOrientation(() => {
-      this.isVerticalScreen = true
-    }, () => {
-      this.isVerticalScreen = false
-    })
+  components: {
+    weixinEnvTip,
+    verticalScreenTip
   }
 }
 </script>
