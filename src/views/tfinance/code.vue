@@ -21,7 +21,8 @@ export default {
   methods: {
     async getJsessionId () {
       let res = await this.$Weixin.wxCallback(this.query.code)
-      helper.saveUserInfo({ jsessionId: res.data.jsessionId })
+      let { jsessionId, apppartner } = res.data
+      helper.saveUserInfo({ jsessionId, apppartner })
       this.toPage()
     },
     toPage () {

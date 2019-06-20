@@ -2,7 +2,7 @@ import sysConfig from '../utils/constant'
 export default {
   data() {
     return {
-      currentImgSkinUrl: sysConfig.img_skin_url[sysConfig.node_env]
+      currentImgSkinUrl: sysConfig.img_skin_url[process.env.NODE_ENV]
     }
   },
   methods: {

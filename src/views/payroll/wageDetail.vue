@@ -6,7 +6,7 @@
       <div class="swiper-pagination" slot="pagination"></div>
     </swiper>
     <div class="bottom-group">
-      该资金由{{wageDetailList[0].groupName}}发放
+      该资金由{{wageDetailList[0].grantName || wageDetailList[0].groupName}}发放
     </div>
   </div>
 </template>

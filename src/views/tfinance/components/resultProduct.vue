@@ -1,6 +1,6 @@
 <template>
   <div class="result-product-wrap white-box">
-    <div class="line-title">{{productInfo.productName}}<tag :content="tagContent"
+    <div class="line-title"><span class="title">{{productInfo.productName}}</span><tag :content="tagContent"
            :color="tagColor" v-if="tagContent"></tag>
     </div>
     <div class="rate-wrap">

@@ -97,8 +97,8 @@ export default class HttpEngine {
    * @memberof HttpEngine
    */
   set loading (value) { 
-    if (!_.isBoolean(value)) throw new TypeError('loading类型应为Boolean');
-    this[$loading] = value
+    if (!(_.isBoolean(value) || _.isString(value))) throw new TypeError('loading类型支持Boolean、String');
+    this[$loading] = value;
   }
   /**
    * @param value {Number}

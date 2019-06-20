@@ -88,7 +88,7 @@ class Tfinance {
    * 获取跳转到tfinance-code页面的url
    */
   codeUrl () {
-    let redirectUrl = `${sysConfig.pro_base_url[sysConfig.node_env]}tfinance-code`
+    let redirectUrl = `${sysConfig.pro_base_url[process.env.NODE_ENV]}tfinance-code`
     let http = new Http()
     http.path = `/${moduleName}/codeUrl`
     http.query = { redirectUrl }
