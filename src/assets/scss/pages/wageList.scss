@@ -82,6 +82,8 @@
       .group-list {
         padding-top: px2rem(20px);
         display: block;
+        max-height: px2rem(700px);
+        overflow-y: auto;
         .icon-yilizhi {
           position: absolute;
           z-index: 50;
