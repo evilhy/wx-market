@@ -46,7 +46,7 @@ class Tfinance {
     let productId = helper.getTFinanceInfo('productId')
     let http = new Http()
     http.path = `/${moduleName}/operateList`
-    http.headers = { page, size: 20 }
+    http.headers = { 'page-num': page, limit: 20 }
     http.query = { productId, entId, operate }
     return http.get()
   }

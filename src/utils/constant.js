@@ -1,9 +1,9 @@
 export default {
   http_base_url: {
     development: 'http://10.5.1.71:8080',
-    sit: 'https://sitwx.cardpu.com',
-    demo: 'https://sitwx.cardpu.com',
-    production: 'https://fxpush.cardpu.com'
+    sit: 'https://sitgateway.cardpu.com/payroll',
+    demo: 'https://sitgateway.cardpu.com/payroll',
+    production: 'https://gateway.cardpu.com/payroll'
   },
   elife_base_url: {
     development: 'https://demowisdom.wisales.cn:8213/easy-life',
