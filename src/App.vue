@@ -15,7 +15,8 @@ export default {
   name: 'app',
   data () {
     return {
-      requireWeixin: process.env.NODE_ENV !== 'development'
+      requireWeixin: false
+      // requireWeixin: process.env.NODE_ENV !== 'development'
     }
   },
   watch: {
