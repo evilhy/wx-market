@@ -39,6 +39,9 @@ export default {
     },
     onDelete() {
       this.code = this.code.slice(0, this.code.length - 1)
+    },
+    clearCode () {
+      this.code = ''
     }
   }
 }
