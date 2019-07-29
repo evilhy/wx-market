@@ -1,57 +1,44 @@
 <template>
   <div class="code-input-wrap">
-    <input ref="code-input" class="input code-input" :class="{ 'hidden': !flag }" type="tel" :maxlength="len" v-model.trim="code" @focus="flag=false" @blur="flag=true" />
-    <div class="code-wrap" :class="{'focus': !flag}">
-      <span v-for="(codeChar, index) in codeList" :key="index" class="code-item">
-        <template v-if="codeChar">
-          <span v-show="visible">{{codeChar}}</span>
-          <span v-show="!visible" class="dot"></span>
-        </template>
-      </span>
-    </div>
+    <!-- 密码输入框 -->
+    <van-password-input
+      :value="code"
+      @focus="flag = true"
+    />
+
+    <!-- 数字键盘 -->
+    <van-number-keyboard
+      :value="code"
+      :show="flag"
+      @blur="show = false"
+      @input="onInput"
+      @delete="onDelete"
+    />
   </div>
 </template>
 
 <script>
 export default {
-  props: {
-    visible: {
-      type: Boolean,
-      default: false
-    },
-    len: {
-      type: Number,
-      default: 6
-    }
-  },
   data () {
     return {
-      flag: true,
+      flag: false,
       code: ''
-    }
-  },
-  computed: {
-    codeList () {
-      let codeArr = this.code.split('')
-      while (codeArr.length < this.len) {
-        codeArr.push('')
-      }
-      return codeArr
-    }
-  },
-  watch: {
-    code (val) {
-      if (val.length === this.len) {
-        this.$emit('complete', val)
-      }
     }
   },
   created () {},
   mounted () {
+    this.flag = true
   },
   methods: {
-    clearCode () {
-      this.code = ''
+    onInput(key) {
+      this.code = (this.code + key).slice(0, 6)
+      if (this.code.length === 6) {
+        this.flag = false
+        this.$emit('complete', this.code)
+      }
+    },
+    onDelete() {
+      this.code = this.code.slice(0, this.code.length - 1)
     }
   }
 }
