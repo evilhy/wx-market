@@ -64,7 +64,7 @@ export default {
     let className = `${loadingRootClass}-${id}`
     if (!this._checkExist(className)) return
 
-    document.body.removeChild(document.querySelector(`.${className}`))
+    this._parent.removeChild(document.querySelector(`.${className}`))
     this._setOptions({ id: '' })
   },
 
