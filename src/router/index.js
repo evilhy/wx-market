@@ -399,6 +399,36 @@ export default new Router({
       component: resolve => {
         require(['../views/wisale/enter.vue'], resolve)
       }
+    },
+    {
+      path: '/welfare-index', // 福利货柜(活动详情)
+      name: 'welfareIndex',
+      meta: {
+        title: '活动详情'
+      },
+      component: resolve => {
+        require(['../views/welfare/index.vue'], resolve)
+      }
+    },
+    {
+      path: '/welfare-goods-list', // 福利货柜(礼品选择列表)
+      name: 'welfareGoodsList',
+      meta: {
+        title: '员工福利'
+      },
+      component: resolve => {
+        require(['../views/welfare/goodsList.vue'], resolve)
+      }
+    },
+    {
+      path: '/welfare-exchange', // 福利货柜(兑换记录)
+      name: 'welfareExchange',
+      meta: {
+        title: '兑换记录'
+      },
+      component: resolve => {
+        require(['../views/welfare/exchange.vue'], resolve)
+      }
     }
   ],
   scrollBehavior (to, from, savedPosition) {

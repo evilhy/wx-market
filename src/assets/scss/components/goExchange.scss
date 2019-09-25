@@ -1,0 +1,38 @@
+@charset "utf-8";
+.go-exchange{
+  padding: px2rem(30px);
+  display: flex;
+  img{
+    width: px2rem(138px);
+    height:px2rem(138px);
+  }
+  .information{
+    flex: 1;
+    padding-left: px2rem(30px);
+    .goods{
+      @include font-dpr(30px);
+      color: #333333;
+    }
+    .count{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      @include font-dpr(26px);
+      color: #808080;
+      margin-top: px2rem(12px);
+      .arrow {
+        @include v-arrow(right, 2px, px2rem(12px));
+      }
+    }
+    .exchange-count{
+      @include font-dpr(26px);
+      color: #808080;
+      margin-top: px2rem(22px);
+    }
+    .order{
+      @include font-dpr(26px);
+      color: #333333;
+      margin-top: px2rem(20px);
+    }
+  }
+}

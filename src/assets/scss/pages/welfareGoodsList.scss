@@ -1,0 +1,44 @@
+// 福利货柜(礼品选择列表)
+.goodsList{
+  .item-wrap{
+    display: flex;
+    flex-wrap: wrap;
+    .item{
+      width: px2rem(320px);
+      height: px2rem(425px);
+      border-radius: px2rem(4px);
+      overflow: hidden;
+      background: #fff;
+      text-align: center;
+      padding: px2rem(20px);
+      border-bottom: 1px solid #EBEBEB;
+
+      &:nth-of-type(odd){
+        border-right: 1px solid #EBEBEB;
+      }
+      img{
+        width: px2rem(280px);
+        height: px2rem(280px);
+      }
+      .goods-name{
+        @include font-dpr(28px);
+        color: #333333;
+        margin-top: px2rem(14px);
+      }
+      .exchange{
+        @include font-dpr(24px);
+        color: #DE4444;
+        margin-top: px2rem(14px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        img{
+          width: px2rem(26px);
+          height: px2rem(26px);
+        }
+      }
+    };
+
+  }
+}
+

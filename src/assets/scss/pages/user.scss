@@ -13,6 +13,24 @@
       @include font-dpr(30px);
       margin-left: px2rem(26px);
     }
+    .authentication{
+      width: px2rem(137px);
+      height: px2rem(34px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: px2rem(17px);
+      @include font-dpr(22px);
+      margin-left: px2rem(15px);
+    }
+    .yes{
+      border: 1px solid #84CACA;
+      color: #53BDBD;
+    }
+    .no{
+      border: 1px solid #F8896D;
+      color: #F34B21;
+    }
   }
   .list {
     background: white;

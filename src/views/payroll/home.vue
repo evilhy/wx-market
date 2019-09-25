@@ -13,11 +13,13 @@
         <div class="recent-one" v-if="recentInfo.createDate">最近一笔:{{recentInfo.createDate | date('Y/m/d')}}</div>
       </div>
       <div class="link-right">
-        <div class="hx-manager" @click="toPage('manager')">
-          <div class="title">客户经理</div>
-          <span class="news-flag" v-if="hasNewMsg === '1'">新消息</span>
-        </div>
         <div class="invoice-person">
+          <div class="manager-info box bot-line" @click="toPage('manager')">
+            <div class="title">客户经理</div>
+          </div>
+          <div class="welfare-info box bot-line" @click="toPage('user')">
+            <div class="title">员工福利</div>
+          </div>
           <div class="invoice-info box" @click="toPage('invoice')">
             <div class="title">发票管家</div>
           </div>
@@ -28,8 +30,8 @@
       </div>
     </div>
     <div class="bottom-logo">
-      <!-- <img src="../../assets/img/hx-gray-logo.png" class="hx" /> -->
-      <!-- <div class="line"></div> -->
+       <img src="../../assets/img/hx-gray-logo.png" class="hx" />
+       <div class="line"></div>
       <img src="../../assets/img/fx-gray-logo.png" class="fx" />
     </div>
   </div>
@@ -51,7 +53,6 @@ export default {
         isRead: ''
       },
       bankIsNew: 0, // 银行卡变更
-      hasNewMsg: '0',
       imgList: [],
       requested: false
     }
