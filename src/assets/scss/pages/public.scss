@@ -37,11 +37,11 @@
   .field-wrap{
     display: flex;
     align-items: center;
-    border-bottom: 1px solid $color-border-default;
+    border-bottom: 1px solid $border-color;
     .field-icon{
       height: px2rem(26px);
       padding-right: px2rem(19px);
-      border-right: 1px solid $color-border-default;
+      border-right: 1px solid $border-color;
     }
     .field-icon-phone{
       padding-right: px2rem(24px);
@@ -60,11 +60,11 @@
     line-height: px2rem(70px);
     text-align: center;
     @include font-dpr(28px);
-    background: $color-primary-dark;
+    background: $primary-color;
     color: white;
     border-radius: px2rem($radius-xs);
     &[disabled]{
-      background: $color-border-default;
+      background: $border-color;
       color: #a5a5a5;
     }
   }
@@ -91,7 +91,7 @@
   .iconfont{
     display: inline-block;
     @include font-dpr(100px);
-    color: $fx-main-color;
+    color: $theme-color;
     margin: 0 auto px2rem(20px);
   }
   .result-title{
@@ -103,8 +103,8 @@
   }
   .btn{
     margin-top: px2rem(80px);
-    color: $fx-main-color;
-    border: 1px solid $fx-main-color;
+    color: $theme-color;
+    border: 1px solid $theme-color;
     background: white;
   }
 }
@@ -127,13 +127,13 @@
       @extend %text-overflow;
     }
     .phone{
-      color: $fx-main-color;
+      color: $theme-color;
     }
     .no-phone{
-      color: $color-text-gray;
+      color: $text-color-gray;
     }
     &.active{
-      background: $fx-main-color;
+      background: $theme-color;
       color: white;
       .phone{
         color: white;
@@ -141,13 +141,13 @@
     }
     &.disabled{
       background: #F2F2F2;
-      color: $color-text-gray;
+      color: $text-color-gray;
     }
   }
 }
 .send-code-page{
   .stress{
-    color: $fx-main-color;
+    color: $theme-color;
   }
   .change-phone-btn{
     margin-top: px2rem(20px);
@@ -169,7 +169,7 @@
   .forget-pwd-link{
     display: flex;
     justify-content: flex-end;
-    color: $fx-main-color;
+    color: $theme-color;
     text-align: right;
     line-height: 4;
   }

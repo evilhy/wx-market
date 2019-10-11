@@ -16,11 +16,11 @@ export default class Time {
   format (timeVal, format = 'Y-m-d H:i:s') {
     if (!timeVal) return ''
     const timeObject = this.getTimeObject(timeVal)
-    return format
-      .replace('Y', timeObject.year)
+    return format.toLocaleLowerCase()
+      .replace('y', timeObject.year)
       .replace('m', timeObject.month)
       .replace('d', timeObject.date)
-      .replace('H', timeObject.hours)
+      .replace('h', timeObject.hours)
       .replace('i', timeObject.minutes)
       .replace('s', timeObject.seconds)
   }

@@ -48,8 +48,8 @@ export default {
       try {
         let operate = this.type === 'all' ? 1 : -1
         let res = await this.$Tfinance.operateList(this.currentPage, operate)
-        let { responeList = [], totalElements = -1, totalPages = 0 } = res.data
-        this.list = this.list.concat(responeList)
+        let { content = [], totalElements = -1, totalPages = 0 } = res.data
+        this.list = this.list.concat(content)
         this.totalElements = totalElements
         this.totalPages = totalPages
         this.loading = false

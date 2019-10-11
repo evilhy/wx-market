@@ -24,7 +24,7 @@
         top: 20%;
         height: 60%;
         width: 1px;
-        background: $color-border-light;
+        background: $border-color;
         z-index: 3;
       }
       .select-item {
@@ -38,12 +38,12 @@
         padding: 0 px2rem(20px);
         z-index: 3;
         background: white;
-        border-bottom: 1px solid $color-border-light;
+        border-bottom: 1px solid $border-color;
         &.active {
-          color: $fx-main-color;
+          color: $theme-color;
           .triangle {
             transform: rotate(180deg);
-            border-top-color: $fx-main-color;
+            border-top-color: $theme-color;
           }
         }
         .name-item {
@@ -68,7 +68,7 @@
           display: flex;
           align-items: center;
           height: px2rem(90px);
-          border-bottom: 1px solid $color-border-light;
+          border-bottom: 1px solid $border-color;
           &:last-child {
             border-bottom: 0;
           }
@@ -194,7 +194,7 @@
       height: px2rem(141px);
       width: px2rem(8px);
       border-radius: 4px 0 0 4px;
-      background: $fx-main-color;
+      background: $theme-color;
     }
     .bill-left {
       float: left;
@@ -281,11 +281,11 @@
     border-radius: 2px;
     @include font-dpr(20px);
     &.success {
-      color: $fx-main-color;
-      border: 1px solid $fx-main-color;
+      color: $theme-color;
+      border: 1px solid $theme-color;
     }
     &.error {
-      color: $fx-reverse-color;
-      border: 1px solid $fx-reverse-color;
+      color: $theme-reverse-color;
+      border: 1px solid $theme-reverse-color;
     }
   }

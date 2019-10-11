@@ -1,9 +1,21 @@
 export default {
   http_base_url: {
-    development: 'http://10.5.1.71:8080',
+    development: 'https://sitgateway.cardpu.com/payroll',
     sit: 'https://sitgateway.cardpu.com/payroll',
     demo: 'https://sitgateway.cardpu.com/payroll',
     production: 'https://gateway.cardpu.com/payroll'
+  },
+  wisales_base_url: {
+    development: 'https://sitgateway.cardpu.com/payroll/wisales',
+    sit: 'https://sitgateway.cardpu.com/payroll/wisales',
+    demo: 'https://sitgateway.cardpu.com/payroll/wisales',
+    production: 'https://gateway.cardpu.com/payroll/wisales'
+  },
+  wisales_img_url: {
+    development: 'https://sitgateway.cardpu.com/payroll/wisales/h5/unAuth/img',
+    sit: 'https://sitgateway.cardpu.com/payroll/wisales/h5/unAuth/img',
+    demo: 'https://sitgateway.cardpu.com/payroll/wisales/h5/unAuth/img',
+    production: 'https://gateway.cardpu.com/payroll/wisales/h5/unAuth/img'
   },
   elife_base_url: {
     development: 'https://demowisdom.wisales.cn:8213/easy-life',
@@ -53,5 +65,13 @@ export default {
     '16': '12月',
     '17': '6月',
     '18': '12月'
-  }
+  },
+  listFinishedText: '--- 我是底线 ---',
+  phoneCharge: '01001001', // 话费
+  phoneData: '01001002', // 流量
+  carWashTicket: '01002003', // 洗车券
+  videoMember: '01002004', // 视频会员
+  viewingTicket: '01002005', // 观影券
+  starbucks: '01002006', // 星巴克
+  oilCard: '01002007' // 油卡
 }

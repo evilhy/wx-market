@@ -1,0 +1,123 @@
+@charset "utf-8";
+.goods-detail-page,.order-detail-page {
+  .phone-charge-detail {
+    .input-wrap {
+      background: white;
+      display: flex;
+      align-items: center;
+      padding: px2rem(30px);
+    }
+    .icon-phone {
+      height: px2rem(30px);
+    }
+    .input {
+      @include font-dpr(40px);
+      border: none;
+    }
+    .btn {
+      width: px2rem(580px);
+      height: px2rem(88px);
+      margin: px2rem(50px) auto;
+      display: block;
+      border: none;
+      background-image: linear-gradient(90deg, #f66363 0%, #db4040 100%);
+      border-radius: px2rem(4px);
+      @include font-dpr(28px);
+      color: white;
+      line-height: 1;
+      &[disabled] {
+        background-image: none;
+        background-color: #ccc;
+        opacity: 1;
+      }
+    }
+  }
+  .goods-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: px2rem(22px) px2rem(30px);
+    background: white;
+    border-bottom: 1px solid $border-color;
+    .goods-name {
+      flex: 1;
+      @include font-dpr(32px);
+    }
+    .exchange {
+      color: $welfare-theme-color;
+      display: flex;
+      align-items: center;
+      flex-wrap: nowrap;
+      .hot {
+        @include square(26px);
+        margin-right: px2rem(10px);
+      }
+    }
+  }
+  .detail-img-wrap {
+    width: 100%;
+    padding: px2rem(30px);
+    background: white;
+    img {
+      width: 100%;
+    }
+  }
+  .common-goods-detail {
+    padding-bottom: px2rem(98px);
+    .img {
+      width: 100%;
+      height: px2rem(640px);
+      display: block;
+    }
+    .detail-img-wrap {
+      padding: px2rem(24px) px2rem(30px);
+      .detail-img-title {
+        @include font-dpr(28px);
+        display: flex;
+        align-items: center;
+        height: px2rem(40px);
+        margin-bottom: px2rem(20px);
+        &::before {
+          content: '';
+          width: 4px;
+          height: px2rem(28px);
+          background-image: linear-gradient(-180deg, #fa8245 0%, #f34b21 100%);
+          margin-right: px2rem(12px);
+        }
+      }
+    }
+  }
+}
+.fixed-btn-wrap{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: px2rem(98px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 px2rem(30px);
+  background: white;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.15);
+  @include font-dpr(28px);
+  .stress{
+    color: $welfare-theme-color;
+  }
+}
+
+.exchange-btn {
+  width: px2rem(276px);
+  height: px2rem(74px);
+  background-image: linear-gradient(90deg, #f66363 0%, #db4040 100%);
+  border-radius: px2rem(4px);
+  @include font-dpr(28px);
+  color: white;
+  border: none;
+  line-height: 1;
+  &[disabled] {
+    background-image: none;
+    background-color: #ccc;
+    opacity: 1;
+  }
+}

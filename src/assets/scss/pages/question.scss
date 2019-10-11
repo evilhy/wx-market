@@ -17,7 +17,7 @@
       border-radius: 6px;
       resize: none;
       @include placeholder {
-        color: $color-text-gray;
+        color: $text-color-gray;
       }
     }
     .btn {

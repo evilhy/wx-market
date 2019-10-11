@@ -401,33 +401,103 @@ export default new Router({
       }
     },
     {
-      path: '/welfare-index', // 福利货柜(活动详情)
-      name: 'welfareIndex',
+      path: '/welfare-list', // 福利货柜（券列表）
+      name: 'welfareList',
       meta: {
-        title: '活动详情'
+        title: '员工福利'
       },
       component: resolve => {
-        require(['../views/welfare/index.vue'], resolve)
+        require(['../views/welfare/welfareList.vue'], resolve)
       }
     },
     {
-      path: '/welfare-goods-list', // 福利货柜(礼品选择列表)
-      name: 'welfareGoodsList',
+      path: '/welfare-detail/:activityId', // 福利货柜（券详情）
+      name: 'welfareDetail',
       meta: {
         title: '员工福利'
+      },
+      component: resolve => {
+        require(['../views/welfare/welfareDetail.vue'], resolve)
+      }
+    },
+    {
+      path: '/welfare-goods-list/:activityId', // 福利货柜(礼品列表)
+      name: 'welfareGoodsList',
+      meta: {
+        title: '礼品列表'
       },
       component: resolve => {
         require(['../views/welfare/goodsList.vue'], resolve)
       }
     },
     {
-      path: '/welfare-exchange', // 福利货柜(兑换记录)
-      name: 'welfareExchange',
+      path: '/welfare-goods-detail/:activityId', // 福利货柜(礼品详情)
+      name: 'welfareGoodsDetail',
+      meta: {
+        title: '礼品详情'
+      },
+      component: resolve => {
+        require(['../views/welfare/goodsDetail.vue'], resolve)
+      }
+    },
+    {
+      path: '/welfare-order-list/:activityId', // 福利货柜(订单记录)
+      name: 'welfareOrderList',
       meta: {
         title: '兑换记录'
       },
       component: resolve => {
-        require(['../views/welfare/exchange.vue'], resolve)
+        require(['../views/welfare/orderList.vue'], resolve)
+      }
+    },
+    {
+      path: '/welfare-order-detail/:transOrderId', // 福利货柜(订单详情)
+      name: 'welfareOrderDetail',
+      meta: {
+        title: '订单详情'
+      },
+      component: resolve => {
+        require(['../views/welfare/orderDetail.vue'], resolve)
+      }
+    },
+    {
+      path: '/welfare-fictitious-detail/:id', // 福利货柜(物流详情)
+      name: 'welfareLogisticsDetail',
+      meta: {
+        title: '物流详情'
+      },
+      component: resolve => {
+        require(['../views/welfare/logisticsDetail.vue'], resolve)
+      }
+    },
+    {
+      path: '/welfare-order-confirm/:activityId', // 福利货柜(确认实物订单)
+      name: 'welfareOrderConfirm',
+      meta: {
+        title: '订单详情'
+      },
+      component: resolve => {
+        require(['../views/welfare/orderConfirm.vue'], resolve)
+      }
+    },
+    {
+      path: '/address-List', // 收货地址
+      name: 'addressList',
+      meta: {
+        title: '收货地址'
+      },
+      component: resolve => {
+        require(['../views/user/addressList.vue'], resolve)
+      }
+    },
+    {
+      path: '/addNewAddress',
+      name: 'addNewAddress',
+      meta: {
+        title: '新增收货地址'
+      },
+      component: resolve => {
+        require(['../views/user/addNewAddress.vue'], resolve)
       }
     }
   ],

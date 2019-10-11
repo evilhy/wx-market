@@ -2,16 +2,21 @@
 .go-exchange{
   padding: px2rem(30px);
   display: flex;
+  overflow: hidden;
+  background: white;
   img{
-    width: px2rem(138px);
-    height:px2rem(138px);
+    @include square(138px);
+    margin-right: px2rem(28px);
   }
   .information{
     flex: 1;
-    padding-left: px2rem(30px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     .goods{
+      width: px2rem(420px);
       @include font-dpr(30px);
-      color: #333333;
+      @extend %text-overflow;
     }
     .count{
       display: flex;
@@ -19,20 +24,17 @@
       align-items: center;
       @include font-dpr(26px);
       color: #808080;
-      margin-top: px2rem(12px);
       .arrow {
         @include v-arrow(right, 2px, px2rem(12px));
+        color: #B3B3B3;
       }
     }
-    .exchange-count{
+    .hot{
       @include font-dpr(26px);
       color: #808080;
-      margin-top: px2rem(22px);
     }
-    .order{
+    .order-id{
       @include font-dpr(26px);
-      color: #333333;
-      margin-top: px2rem(20px);
     }
   }
 }

@@ -1,8 +1,11 @@
 // 福利货柜(礼品选择列表)
-.exchange{
+.exchange-page{
   .item{
     background: #fff;
     margin-top: px2rem(20px);
+    &:first-child{
+      margin-top: 0;
+    }
     .title{
       height: px2rem(80px);
       display: flex;
@@ -15,7 +18,7 @@
         color: #808080;
       }
       .title-r{
-        color: #DE4444;
+        color: $welfare-theme-color;
         display: flex;
         align-items: center;
         span{

@@ -1,0 +1,47 @@
+<template>
+  <div class="welfare-list-page page">
+    <no-data text="暂无福利活动" type="welfare" v-if="request && !list.length"></no-data>
+    <van-list v-else v-model="loading" :finished="finished" :finished-text="finishedText" @load="getList">
+      <welfare-item v-for="(item, index) in list" :key="index" :item="item"></welfare-item>
+    </van-list>
+  </div>
+</template>
+
+<script>
+import welfareItem from './components/welfareItem'
+import noData from 'components/noData'
+import sysConfig from 'utils/constant'
+
+export default {
+  data () {
+    return {
+      list: [],
+      page: 1,
+      loading: false,
+      finished: false,
+      request: false,
+      finishedText: sysConfig.listFinishedText
+    }
+  },
+  created () { },
+  methods: {
+    async getList () {
+      try {
+        this.loading = true
+        let res = await this.$WelfareActivity.activityList(this.page)
+        let { content = [], last = false } = res.data
+        this.list = this.list.concat(content)
+        this.finished = last
+        this.page++
+        this.request = true
+      } finally {
+        this.loading = false
+      }
+    }
+  },
+  components: {
+    welfareItem,
+    noData
+  }
+}
+</script>

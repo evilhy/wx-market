@@ -17,7 +17,7 @@
           <div class="manager-info box bot-line" @click="toPage('manager')">
             <div class="title">客户经理</div>
           </div>
-          <div class="welfare-info box bot-line" @click="toPage('user')">
+          <div class="welfare-info box bot-line" @click="toPage('welfareList')">
             <div class="title">员工福利</div>
           </div>
           <div class="invoice-info box" @click="toPage('invoice')">

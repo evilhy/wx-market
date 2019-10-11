@@ -1,44 +1,50 @@
 <template>
-  <div class="goodsList">
-    <div class="item-wrap">
-      <div class="item">
-        <img src="https://img.yzcdn.cn/vant/cat.jpeg" alt="">
-        <div class="goods-name">美的电热水壶</div>
-          <div class="exchange">
-            <img src="../../assets/img/welfare/icon-colleague.png" alt="">
-            12位同事曾兑换
-          </div>
-      </div>
-      <div class="item">
-        <img src="https://img.yzcdn.cn/vant/cat.jpeg" alt="">
-        <div class="goods-name">美的电热水壶</div>
-        <div class="exchange">
-          <img src="../../assets/img/welfare/icon-colleague.png" alt="">
-          12位同事曾兑换
-        </div>
-      </div>
-      <div class="item">
-        <img src="https://img.yzcdn.cn/vant/cat.jpeg" alt="">
-        <div class="goods-name">美的电热水壶</div>
-        <div class="exchange">
-          <img src="../../assets/img/welfare/icon-colleague.png" alt="">
-          12位同事曾兑换
-        </div>
-      </div>
-      <div class="item">
-        <img src="https://img.yzcdn.cn/vant/cat.jpeg" alt="">
-        <div class="goods-name">美的电热水壶</div>
-        <div class="exchange">
-          <img src="../../assets/img/welfare/icon-colleague.png" alt="">
-          12位同事曾兑换
-        </div>
-      </div>
-    </div>
+  <div class="goods-list-page page">
+    <no-data text="暂无商品" type="welfare" v-if="request && !list.length"></no-data>
+    <van-list v-else v-model="loading" :finished="finished" :finished-text="finishedText" @load="getList">
+      <goods-item v-for="(item, index) in list" :key="index" :item="item"></goods-item>
+    </van-list>
   </div>
 </template>
 
 <script>
-  export default {
-    name: 'index'
+import goodsItem from './components/goodsItem'
+import noData from 'components/noData'
+import sysConfig from 'utils/constant'
+
+export default {
+  data () {
+    return {
+      activityId: this.$route.params.activityId,
+      list: [],
+      page: 1,
+      loading: false,
+      finished: false,
+      request: false,
+      finishedText: sysConfig.listFinishedText
+    }
+  },
+  created () {
+    this.getList()
+  },
+  methods: {
+    async getList () {
+      try {
+        this.loading = true
+        let res = await this.$WelfareGoods.goodsList(this.activityId, this.page)
+        let { content = [], last = false } = res.data
+        this.list = this.list.concat(content)
+        this.finished = last
+        this.page++
+        this.request = true
+      } finally {
+        this.loading = false
+      }
+    }
+  },
+  components: {
+    goodsItem,
+    noData
   }
+}
 </script>

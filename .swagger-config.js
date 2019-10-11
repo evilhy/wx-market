@@ -42,12 +42,81 @@ var entPhone = require('./json/roll.entPhone.json')
 var entUser = require('./json/roll.entUser.json')
 var advertising = require('./json/system.advertising.rotation.json')
 var merchantToken = require('./json/merchant.callback.json')
+var wActivityList = require('./json/welfare.activityList.json')
+var wActivityDetail = require('./json/welfare.activityDetail.json')
+var wGoodsList = require('./json/welfare.goodsList.json')
+var wGoodsDetail = require('./json/welfare.goodsDetail.json')
+var welfareExchange = require('./json/welfare.exchange.json')
+var welfareOrderList = require('./json/welfare.orderList.json')
+const addressList = require('./json/welfare.addressList.json')
+const baseQuery = require('./json/area.baseQuery.json')
+const province = require('./json/area.province.json')
+const city = require('./json/area.city.json')
+const county = require('./json/area.county.json')
+const townQuery = require('./json/area.townQuery.json')
+const addressDetail = require('./json/addressDetail.json')
+const welfareOrderDetail = require('./json/welfare.orderDetail.json')
+const welfareOrderTrack = require('./json/welfare.orderTrack.json')
 module.exports = {
   openApi: [{
-    baseURL: 'http://10.5.1.71:8080',
+    baseURL: 'https://sitgateway.cardpu.com/payroll',
     paths: {
-      '/roll/entEmp': {
-        get: entEmp
+      '/wisales/welfareActivity/listByPayRoll': {
+        get: wActivityList
+      },
+      '/wisales/welfareActivity/detailByPayRoll': {
+        get: wActivityDetail
+      },
+      '/wisales/welfareGoods/list': {
+        get: wGoodsList
+      },
+      '/wisales/welfareGoods/detail': {
+        get: wGoodsDetail
+      },
+      '/wisales/welfareCustOrder/welfareExchange': {
+        post: welfareExchange
+      },
+      '/wisales/welfareCustOrder/welfareExchangePhone': {
+        post: welfareExchange
+      },
+      '/wisales/welfareCustOrder/welfareExchangeGoods': {
+        post: welfareExchange
+      },
+      '/wisales/welfareCust/custOrderList': {
+        get: welfareOrderList
+      },
+      '/wisales/welfareCust/address/get': {
+        get: addressList
+      },
+      '/wisales/welfareCust/area/baseQuery': {
+        get: baseQuery
+      },
+      '/wisales/welfareCust/area/province': {
+        get: province
+      },
+      '/wisales/welfareCust/area/city': {
+        get: city
+      },
+      '/wisales/welfareCust/area/county': {
+        get: county
+      },
+      '/wisales/welfareCust/area/townQuery': {
+        get: townQuery
+      },
+      '/wisales/welfareCust/address/delete': {
+        post: null
+      },
+      '/wisales/welfareCust/address/save': {
+        post: null
+      },
+      '/wisales/welfareCust/address/getById': {
+        get: addressDetail
+      },
+      '/wisales/welfareCust/custOrderDetail': {
+        get: welfareOrderDetail
+      },
+      '/wisales/welfareCust/orderTrack': {
+        get: welfareOrderTrack
       },
       '/inside/sendCode': {
         post: sendCode
@@ -181,6 +250,6 @@ module.exports = {
         post: elifePlantform710002
       }
     }
-  }],
+    }],
   unknown: {}
 }

@@ -16,7 +16,7 @@
       height: px2rem(42px);
       line-height: px2rem(42px);
       text-align: center;
-      color: $fx-main-color;
+      color: $theme-color;
       border-radius: px2rem(42px) 0 0 px2rem(42px);
       @include font-dpr(18px);
       @include linear-gradient(-180deg, #f4fafa 0%, #e6f4f4 100%);
@@ -28,7 +28,7 @@
       @include circle(102px);
       overflow: hidden;
       margin-right: px2rem(30px);
-      background: $color-border-default;
+      background: $border-color;
       .pic {
         @include square(100%);
       }

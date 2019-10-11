@@ -27,7 +27,7 @@
         <span class="label"><i class="iconfont icon-yinhangqia"></i>银行卡<span class="dot" v-if="info.isNew"></span></span>
         <span class="value">2张<span class="arrow"></span></span>
       </div>
-       <div class="item">
+       <div class="item" @click="toPage('addressList')">
         <span class="label"><i class="iconfont icon-dizhiguanli"></i>地址管理</span>
         <span class="value"><span class="arrow"></span></span>
       </div>
@@ -38,6 +38,7 @@
 <script>
 import userAvatar from 'components/userAvatar'
 import helper from 'utils/helper'
+import storage from 'utils/storage'
 export default {
   data () {
     return {
@@ -46,6 +47,7 @@ export default {
   },
   created () {
     this.getUserInfo()
+    storage.removeSession('orderInfo')
   },
   methods: {
     async getUserInfo () {

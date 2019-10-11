@@ -1,10 +1,15 @@
-// 福利货柜(礼品选择列表)
-.welfare-index{
+
+.welfare-detail-page{
   height: 100%;
   overflow: hidden;
   position: relative;
-  background: url('../img/welfare/activity-bg.png') no-repeat left top;
+  background: url('../img/welfare/activity-detail-bg-line.png') repeat-y;
   background-size: 100% auto;
+  .goods-bg{
+    height: px2rem(520px);
+    background: url('../img/welfare/activity-detail-bg.png') no-repeat;
+    background-size: 100% auto;
+  }
     .goods-desc{
       width: 100%;
       position: absolute;
@@ -17,11 +22,8 @@
       width: 100%;
       height: 200px;
       position: absolute;
-      top: px2rem(460px);
+      top: px2rem(474px);
       padding: 0 px2rem(28px);
-      .img1{
-        margin-top: 10px;
-      }
       .img2{
         float: right;
       }
@@ -29,6 +31,7 @@
         padding: 0 px2rem(12px);
         @include font-dpr(30px);
         color: #9E0B0B;
+        word-break: break-all;
       }
       .btn{
         margin: px2rem(100px) auto px2rem(40px);
@@ -45,7 +48,7 @@
           background-image: linear-gradient(-180deg, #FEE3BD 0%, #F6AD74 100%);
           color: #AB5B1A;
         }
-        &.active-no{
+        &.disabled{
           background-image: linear-gradient(-180deg, #F9DFDE 0%, #D5BFBA 100%);
           color: #966262;
         }
@@ -56,7 +59,6 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 100%;
         .arrow {
           @include v-arrow(right, 1px, px2rem(12px));
         }
@@ -76,6 +78,7 @@
     justify-content: center;
     .company{
       color: #fff;
+      padding: 0 2px;
     }
   }
 }

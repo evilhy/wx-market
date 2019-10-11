@@ -1,0 +1,37 @@
+[
+  {
+    "code": "01",
+    "name": "武汉市",
+    "type": "city"
+  },
+  {
+    "code": "02",
+    "name": "北京市",
+    "type": "city"
+  },
+  {
+    "code": "03",
+    "name": "重庆市",
+    "type": "city"
+  },
+  {
+    "code": "04",
+    "name": "成都市",
+    "type": "city"
+  },
+  {
+    "code": "05",
+    "name": "钓鱼岛",
+    "type": "city"
+  },
+  {
+    "code": "06",
+    "name": "常德市",
+    "type": "city"
+  },
+  {
+    "code": "07",
+    "name": "长沙市",
+    "type": "city"
+  }
+]

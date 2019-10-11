@@ -1,0 +1,182 @@
+@charset "utf-8";
+.order-detail-page{
+  .real-goods{
+    .img-status{
+      width: 100%;
+      display: block;
+    }
+    .receive-address{
+      position: relative;
+      background: white;
+      padding: px2rem(24px) px2rem(30px) px2rem(24px) px2rem(76px);
+      border-bottom: 1px solid $border-color;
+      .location{
+        position: absolute;
+        left: px2rem(30px);
+        top: px2rem(24px);
+      }
+      .name{
+        @include font-dpr(30px);
+        line-height: 1;
+        margin-bottom: px2rem(10px);
+      }
+      .detail{
+        @include font-dpr(26px);
+        color: #808080;
+      }
+    }
+    .logistics-wrap{
+      border-bottom: 1px solid $border-color;
+      padding: px2rem(30px);
+      background: white;
+      text-align: center;
+      .van-button{
+        height: 36px;
+        width: px2rem(200px);
+        @include font-dpr(26px);
+      }
+    }
+    .row{
+      padding: px2rem(24px) px2rem(30px);
+      display: flex;
+      align-items: center;
+      background: white;
+      border-top: 1px solid $border-color;
+      @include font-dpr(30px);
+      .value{
+        flex: 1;
+        color: #808080;
+      }
+      .iconfont{
+        display: inline-block;
+        padding: 3px 5px;
+      }
+    }
+    .fixed-bottom-wrap{
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: white;
+      height: px2rem(98px);
+      line-height: px2rem(98px);
+      @include font-dpr(28px);
+      box-shadow: 0 -2px 3px 0 rgba(0,0,0,0.05);
+      text-align: center;
+      a{
+        color: $welfare-theme-color;
+      }
+    }
+  }
+  .desc-wrap{
+    padding: px2rem(24px) px2rem(30px) px2rem(10px);
+    background: white;
+    margin-bottom: px2rem(20px);
+    .row{
+      margin-bottom: px2rem(14px);
+      display: flex;
+      justify-content: space-between;
+      @include font-dpr(28px);
+    }
+    .label{
+      width: 70px;
+      color: #808080;
+    }
+    .value{
+      flex: 1;
+      text-align: right;
+      &.success{
+        color: $theme-color;
+      }
+      &.waiting{
+        color: $warning-color;
+      }
+      &.fail{
+        color: $theme-reverse-color;
+      }
+    }
+  }
+  .card-wrap{
+    padding: px2rem(20px) px2rem(20px) 0;
+  }
+  .card{
+    width: px2rem(600px);
+    height: px2rem(198px);
+    background: url('../img/welfare/virtual-order-bg.png') no-repeat;
+    background-size: 100% 100%;
+    color: white;
+    .status{
+      @include font-dpr(38px);
+      line-height: px2rem(198px);
+      text-align: center;
+    }
+    .row{
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: px2rem(524px);
+      height: px2rem(98px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      margin: 0 auto;
+      &:last-child{
+        border: none;
+      }
+      .copy-btn{
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        width: px2rem(92px);
+        height: px2rem(42px);
+        line-height: px2rem(42px);
+        text-align: center;
+        border-radius: px2rem(42px);
+        border: 1px solid #FF9786;
+        background: rgba(255,255,255,0.10);
+      }
+      .label{
+        opacity: 0.7;
+        @include font-dpr(26px);
+        margin-bottom: 2px;
+      }
+      .value{
+        @include font-dpr(30px);
+      }
+    }
+    .starbucks-text{
+      height: px2rem(106px);
+      padding-left: px2rem(30px);
+      display: flex;
+      align-items: center;
+      @include font-dpr(30px);
+      .star{
+        opacity: 0.5;
+      }
+    }
+    .starbucks-btn{
+      height: px2rem(52px);
+      padding: 0 px2rem(20px);
+      background-image: linear-gradient(90deg, #FFB842 0%, #FF9F00 98%);
+      border-radius: px2rem(4px);
+      margin-left: px2rem(30px);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      &::after{
+        content: '';
+        @include v-arrow(right, 2px, px2rem(10px));
+        margin-left: 2px;
+      }
+    }
+  }
+  .date{
+    height: px2rem(50px);
+    background: #FFE8C7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #E9871C;
+  }
+}

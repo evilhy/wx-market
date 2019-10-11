@@ -33,14 +33,14 @@
     }
     .my-income {
       width: px2rem(270px);
-      border-right: 1px solid $color-border-gray;
+      border-right: 1px solid $border-color;
       padding: px2rem(44px) px2rem(30px);
       line-height: px2rem(32px);
       background: url('../img/icon-my-income.png') no-repeat center px2rem(80px);
       background-size: px2rem(200px) auto;
     }
     .recent-one {
-      color: $color-text-gray;
+      color: $text-color-gray;
       @include font-dpr(22px);
       margin-top: px2rem(12px);
     }
@@ -49,7 +49,7 @@
       height: px2rem(156px);
       line-height: px2rem(156px);
       padding-left: px2rem(44px);
-      border-bottom: 1px solid $color-border-gray;
+      border-bottom: 1px solid $border-color;
       background: url('../img/icon-hx-manager.png') no-repeat px2rem(206px)
         px2rem(34px);
       background-size: px2rem(126px) auto;
@@ -57,7 +57,7 @@
         background: url('../img/icon-hx-manager-gray.png') no-repeat px2rem(206px)
           px2rem(34px);
         background-size: px2rem(126px) auto;
-        color: $color-text-gray;
+        color: $text-color-gray;
         .icon-await {
           position: absolute;
           right: px2rem(20px);
@@ -86,22 +86,22 @@
       padding-top: px2rem(30px);
     }
     .bot-line{
-      border-bottom: 1px solid $color-border-gray;
+      border-bottom: 1px solid $border-color;
     }
     .invoice-info {
       background: url('../img/icon-invoice.png') no-repeat center px2rem(70px);
       background-size: px2rem(70px) px2rem(70px);
-      border-right: 1px solid $color-border-gray;
+      border-right: 1px solid $border-color;
     }
     .welfare-info {
       background: url('../img/icon-welfare.png') no-repeat center px2rem(70px);
       background-size: px2rem(70px) px2rem(70px);
-      border-right: 1px solid $color-border-gray;
+      border-right: 1px solid $border-color;
     }
     .manager-info {
       background: url('../img/icon-manager.png') no-repeat center px2rem(70px);
       background-size: px2rem(70px) px2rem(70px);
-      border-right: 1px solid $color-border-gray;
+      border-right: 1px solid $border-color;
     }
     .person-info {
       background: url('../img/icon-person.png') no-repeat center px2rem(70px);
@@ -131,7 +131,7 @@
     .line {
       height: px2rem(30px);
       width: 1px;
-      background: $color-border-default;
+      background: $border-color;
       margin: 0 px2rem(20px);
     }
     img {

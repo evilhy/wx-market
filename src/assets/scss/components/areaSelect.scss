@@ -1,0 +1,53 @@
+@charset "utf-8";
+.area-select{
+  .area-select-tab{
+    height: 40px;
+    display: flex;
+    align-items: center;
+    @include font-dpr(26px);
+    background: white;
+    .tab-item{
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 25%;
+      height: 100%;
+      @extend %text-overflow;
+      padding: 0 4px;
+      &.active{
+        &::after{
+          content: '';
+          position: absolute;
+          bottom: 0;
+          width: 50px;
+          left: 50%;
+          transform: translateX(-50%);
+          height: 3px;
+          border-radius: 4px;
+          background-image: linear-gradient(90deg, #f94c4c, #d61323);
+        }
+      }
+    }
+  }
+  .area-select-main{
+    height: 350px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    .van-cell{
+      display: flex;
+      align-items: center;
+      &.active{
+        color: $welfare-theme-color;
+      }
+      .van-cell__value{
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        .icon-select{
+          width: 16px;
+        }
+      }
+    }
+  }
+}
