@@ -9,7 +9,7 @@ import Merchant from './merchant'
 import WelfareActivity from './welfareActivity'
 import WelfareGoods from './welfareGoods'
 import WelfareCustOrder from './welfareCustOrder'
-import WelfareCust from './WelfareCust'
+import WelfareCust from './welfareCust'
 export default {
   Roll,
   Inside,
