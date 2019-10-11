@@ -10,6 +10,9 @@ body {
     @include font-dpr($fontsize-default);
     background-color: $bg-color;
 }
+.page{
+  min-height: 100%;
+}
 
 div,
 h1,

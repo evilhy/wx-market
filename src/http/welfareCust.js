@@ -46,7 +46,7 @@ class WelfareCust {
     let http = new Http()
     http.baseURL = sysConfig.wisales_base_url[process.env.NODE_ENV]
     http.path = `/${moduleName}/address/get`
-    http.headers = { 'page-num': page, limit: 20 }
+    http.headers = { 'page-num': page, limit: 100 }
     return http.get()
   }
   /**

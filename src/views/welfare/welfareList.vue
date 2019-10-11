@@ -23,20 +23,18 @@ export default {
       finishedText: sysConfig.listFinishedText
     }
   },
-  created () { },
+  created () {
+  },
   methods: {
     async getList () {
-      try {
-        this.loading = true
-        let res = await this.$WelfareActivity.activityList(this.page)
-        let { content = [], last = false } = res.data
-        this.list = this.list.concat(content)
-        this.finished = last
-        this.page++
-        this.request = true
-      } finally {
-        this.loading = false
-      }
+      this.loading = true
+      let res = await this.$WelfareActivity.activityList(this.page)
+      let { content = [], last = false } = res.data
+      this.list = this.list.concat(content)
+      this.finished = last
+      this.page++
+      this.request = true
+      this.loading = false
     }
   },
   components: {

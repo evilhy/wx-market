@@ -25,21 +25,17 @@ export default {
     }
   },
   created () {
-    this.getList()
   },
   methods: {
     async getList () {
-      try {
-        this.loading = true
-        let res = await this.$WelfareGoods.goodsList(this.activityId, this.page)
-        let { content = [], last = false } = res.data
-        this.list = this.list.concat(content)
-        this.finished = last
-        this.page++
-        this.request = true
-      } finally {
-        this.loading = false
-      }
+      this.loading = true
+      let res = await this.$WelfareGoods.goodsList(this.activityId, this.page)
+      let { content = [], last = false } = res.data
+      this.list = this.list.concat(content)
+      this.finished = last
+      this.page++
+      this.request = true
+      this.loading = false
     }
   },
   components: {
