@@ -1,15 +1,27 @@
-import Http from 'src/http/index'
 import CryptoJs from './crypto'
 import vConsole from './console'
 import Filter from './filter'
 import dealFixedInput from 'mixins/dealFixedInput'
+import upperFirst from 'lodash/upperFirst'
+import camelCase from 'lodash/camelCase'
+
+const requireHttp = require.context('../http', false, /[^./base].*\.js$/)
 
 const install = function (Vue, opts) {
   Vue.prototype.Console = vConsole
 
-  Object.entries(Http).forEach(([key, value]) => {
-    Vue.prototype[`$${key}`] = value
+  requireHttp.keys().forEach((fileName, index) => {
+    const name = upperFirst(
+      camelCase(
+        fileName
+          .split('/')
+          .pop()
+          .replace(/\.\w+$/, '')
+      )
+    )
+    Vue.prototype[`$${name}`] = requireHttp(fileName).default || requireHttp(fileName)
   })
+
   Object.entries(CryptoJs).forEach(([key, value]) => {
     Vue.prototype[`$${key}`] = value
   })
