@@ -34,7 +34,7 @@
         word-break: break-all;
       }
       .btn{
-        margin: px2rem(100px) auto px2rem(40px);
+        margin: px2rem(80px) auto px2rem(20px);
         width: px2rem(560px);
         height: px2rem(90px);
         display: flex;
@@ -54,6 +54,7 @@
         }
       }
       .record{
+        padding: px2rem(10px);
         @include font-dpr(26px);
         color: #F7B883;
         display: flex;
