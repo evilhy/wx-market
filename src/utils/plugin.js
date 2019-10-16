@@ -10,7 +10,7 @@ const requireHttp = require.context('../http', false, /[^./base].*\.js$/)
 const install = function (Vue, opts) {
   Vue.prototype.Console = vConsole
 
-  requireHttp.keys().forEach((fileName, index) => {
+  requireHttp.keys().forEach(fileName => {
     const name = upperFirst(
       camelCase(
         fileName
