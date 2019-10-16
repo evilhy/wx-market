@@ -1,6 +1,6 @@
 <template>
   <div class="order-detail-page">
-    <component :is="componentType" :order-info="orderInfo"></component>
+    <component :is="componentType" :order-info="orderInfo" :status-info="statusInfo"></component>
     <div class="detail-img-wrap" v-if="orderInfo.detailImgIdSet && orderInfo.detailImgIdSet.length && componentType !== 'realGoodsOrderDetail'">
       <img v-for="(id, index) in orderInfo.detailImgIdSet" :key="index" v-lazy="`${imgBaseUrl}/${id}`">
     </div>
@@ -14,7 +14,9 @@ import virtualOrderDetail from './components/virtualOrderDetail'
 import realGoodsOrderDetail from './components/realGoodsOrderDetail'
 import returnListBtn from './components/returnListBtn'
 import sysConfig from 'utils/constant'
+import orderStatus from './orderStatus'
 export default {
+  mixins: [orderStatus],
   data () {
     return {
       transOrderId: this.$route.params.transOrderId,

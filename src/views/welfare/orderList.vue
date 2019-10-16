@@ -2,19 +2,13 @@
   <div class="exchange-page">
     <no-data text="空空如也，没有兑换记录哦！" type="exchange" v-if="request && !list.length"></no-data>
     <van-list v-else v-model="loading" :finished="finished" :finished-text="finishedText" @load="getList">
-      <div class="item" v-for="(item, index) in list" :key="index">
-        <div class="title">
-          <div class="title-l">{{ item.transTime | date('y/m/d h:i:s')}}</div>
-          <div class="title-r">{{item.orderDealStatusDesc}}</div>
-        </div>
-        <go-exchange :item="item" type="order"></go-exchange>
-      </div>
+      <order-item v-for="(item, index) in list" :key="index" :order-info="item"></order-item>
     </van-list>
   </div>
 </template>
 
 <script>
-import goExchange from 'components/goExchange'
+import orderItem from './components/orderItem'
 import noData from 'components/noData'
 import sysConfig from 'utils/constant'
 
@@ -44,9 +38,6 @@ export default {
       this.loading = false
     }
   },
-  components: { goExchange, noData }
+  components: { orderItem, noData }
 }
 </script>
-
-<style scoped>
-</style>
