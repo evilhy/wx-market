@@ -19,7 +19,8 @@
       "itemCatId": "001",
       "productId": "14249",
       "goodsNum": 1,
-      "orderDealStatus": "PREPAYMENT"
+      "orderDealStatus": "PREPAYMENT",
+      "titleImgIdSet": [""]
     },
     {
       "transOrderId": "201909260000023",
@@ -34,7 +35,8 @@
       "itemCatId": "002",
       "productId": "14249",
       "goodsNum": 1,
-      "orderDealStatus": "MERFAIL"
+      "orderDealStatus": "MERFAIL",
+      "titleImgIdSet": [""]
     },
     {
       "transOrderId": "201909260000023",
@@ -49,7 +51,8 @@
       "itemCatId": "003",
       "productId": "14249",
       "goodsNum": 1,
-      "orderDealStatus": "MERALREADY"
+      "orderDealStatus": "MERALREADY",
+      "titleImgIdSet": [""]
     },
     {
       "transOrderId": "201909260000023",

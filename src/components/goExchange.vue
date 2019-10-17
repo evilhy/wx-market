@@ -1,6 +1,6 @@
 <template>
   <div class="go-exchange" @click="toPage">
-    <img v-if="item.titleImgIdSet" :src="`${imgBaseUrl}/${item.titleImgIdSet[0]}`" alt="">
+    <van-image v-if="item.titleImgIdSet" lazy-load :src="`${imgBaseUrl}/${item.titleImgIdSet[0]}`" />
     <div class="information">
       <div class="goods">{{item.goodsName}}</div>
       <div class="count"><span>数量*1</span><span class="arrow"></span></div>

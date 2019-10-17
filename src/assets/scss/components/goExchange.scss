@@ -4,7 +4,7 @@
   display: flex;
   overflow: hidden;
   background: white;
-  img{
+  .van-image{
     @include square(138px);
     margin-right: px2rem(28px);
   }
