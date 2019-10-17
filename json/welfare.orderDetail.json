@@ -33,7 +33,7 @@
   "payFlag": "SUCCESS",
   "merOrderFlag": "FAIL",
   "orderStage": "MERORDERSTAGE",
-  "orderDealStatus": "MERFAIL",
+  "orderDealStatus": "MERCOMPLETE",
   "refundOrderFlag": "NO",
   "addressId": "2019092500011",
   "receiveName": "张三",

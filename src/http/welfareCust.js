@@ -134,7 +134,6 @@ class WelfareCust {
     http.baseURL = sysConfig.wisales_base_url[process.env.NODE_ENV]
     http.path = `/${moduleName}/orderTrack`
     http.query = { transOrderId }
-    http.loading = false
     return http.get()
   }
 }

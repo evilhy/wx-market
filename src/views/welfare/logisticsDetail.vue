@@ -3,10 +3,10 @@
     <empty v-if="!trackInfo.shipmentName && requested" text="暂无物流信息" type="exchange"></empty>
     <template v-else>
       <div class="goods-info">
-        <img class="goods-img" v-lazy="`${imgBaseUrl}/${orderInfo.titleImgIdSet[0]}`">
+        <van-image class="goods-img" v-if="orderInfo.titleImgIdSet" lazy-load :src="`${imgBaseUrl}/${orderInfo.titleImgIdSet[0]}`" />
         <div class="goods-text">
           <p class="title">{{orderInfo.goodsName}}</p>
-          <p class="company"><span class="gray">{{trackInfo.shipmentName}}：</span><span class="stress">{{trackInfo.shipmentOrder}}</span></p>
+          <p class="company"><span class="gray">{{trackInfo.shipmentName}}</span><span class="stress">：{{trackInfo.shipmentOrder}}</span></p>
         </div>
       </div>
       <div class="track-info">

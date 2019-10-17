@@ -461,7 +461,7 @@ export default new Router({
       }
     },
     {
-      path: '/welfare-fictitious-detail/:id', // 福利货柜(物流详情)
+      path: '/welfare-logistics-detail/:id', // 福利货柜(物流详情)
       name: 'welfareLogisticsDetail',
       meta: {
         title: '物流详情'
