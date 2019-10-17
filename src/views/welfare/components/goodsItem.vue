@@ -1,6 +1,6 @@
 <template>
   <div class="item" @click="toDetail">
-    <img class="goods-img" v-lazy="`${imgBaseUrl}/${item.coverUrl}`" alt="">
+    <van-image class="goods-img" lazy-load :src="`${imgBaseUrl}/${item.coverUrl}`" />
     <div class="goods-name">{{item.goodsName}}</div>
     <div class="exchange">
       <img class="hot" src="../../../assets/img/welfare/icon-colleague.png" alt="">{{item.exchangeCnt}}位同事曾兑换
