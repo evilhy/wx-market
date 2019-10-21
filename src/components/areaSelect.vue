@@ -1,5 +1,5 @@
 <template>
-  <van-actionsheet class="area-select" v-model="show" title="配送至">
+  <van-action-sheet class="area-select" v-model="show" title="配送至">
     <div class="area-select-tab">
       <div class="tab-item" v-for="(item, index) in tabList" :key="index" :class="{ active: step === item.step }"
         v-show="step === item.step || currentArea[item.type]" @click="changeTab(item)">
@@ -32,7 +32,7 @@
         </van-cell>
       </template>
     </div>
-  </van-actionsheet>
+  </van-action-sheet>
 </template>
 
 <script>
@@ -99,7 +99,7 @@ export default {
         return
       }
       try {
-        loading.show({ type: 'bounce', parent: document.querySelector('.van-actionsheet__content') })
+        loading.show({ type: 'bounce', parent: document.querySelector('.van-action-sheet__content') })
         let parentCode = this.step === 0 ? '' : this.currentArea[`${this.typeList[this.step - 1]}Code`]
         if (this.step !== 3) {
           let res = await this.$WelfareCust.baseQuery(type.toUpperCase(), parentCode)
