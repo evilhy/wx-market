@@ -1,5 +1,5 @@
 <template>
-  <van-popup ref="month-popup" v-model="visible" :overlay="true" position="bottom" class="month-popup">
+  <van-popup ref="month-popup" v-model="visible" :overlay="true" position="bottom" class="month-popup" :safe-area-inset-bottom="true">
     <van-picker ref="month-picker" show-toolbar title="选择月份" :default-index="currentMonth - 1" :columns="months" @change="onValuesChange" @confirm="onConfirm" @cancel="onCancel" />
   </van-popup>
 </template>
