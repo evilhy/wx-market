@@ -491,13 +491,33 @@ export default new Router({
       }
     },
     {
-      path: '/addNewAddress',
+      path: '/add-new-address',
       name: 'addNewAddress',
       meta: {
         title: '新增收货地址'
       },
       component: resolve => {
         require(['../views/user/addNewAddress.vue'], resolve)
+      }
+    },
+    {
+      path: '/hr-index', // 汇融银行-跳转
+      name: 'hrIndex',
+      meta: {
+        title: '汇融银行'
+      },
+      component: resolve => {
+        require(['../views/hr/index.vue'], resolve)
+      }
+    },
+    {
+      path: '/hr-ebank', // 汇融银行-电子银行
+      name: 'hrEbank',
+      meta: {
+        title: '电子银行'
+      },
+      component: resolve => {
+        require(['../views/hr/ebank.vue'], resolve)
       }
     }
   ],
