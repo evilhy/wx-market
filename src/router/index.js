@@ -11,17 +11,26 @@ export default new Router({
     {
       path: '/get-id', // 公共入口页面getId
       name: 'getId',
+      meta: {
+        title: '放薪管家'
+      },
       component: getId, // 检查
       alias: '/'
     },
     {
       path: '/token', // 公共入口页面token
       name: 'token',
+      meta: {
+        title: '放薪管家'
+      },
       component: token
     },
     {
       path: '/bind-id-card', // 身份绑定--输入身份证
       name: 'bindIdCard', // 检查
+      meta: {
+        title: '放薪管家'
+      },
       component: resolve => {
         require(['../views/public/bindIdCard.vue'], resolve)
       }
@@ -29,6 +38,9 @@ export default new Router({
     {
       path: '/choose-phone', // 身份绑定--选择手机号页面
       name: 'choosePhone', // 检查
+      meta: {
+        title: '放薪管家'
+      },
       component: resolve => {
         require(['../views/public/choosePhone.vue'], resolve)
       }
@@ -36,6 +48,9 @@ export default new Router({
     {
       path: '/set-query-code', // 设置6位查询密码
       name: 'setQueryCode', // 检查
+      meta: {
+        title: '放薪管家'
+      },
       component: resolve => {
         require(['../views/public/setQueryCode.vue'], resolve)
       }
@@ -43,6 +58,9 @@ export default new Router({
     {
       path: '/complete', // 绑定|设置查询密码完成页面
       name: 'complete', // 检查
+      meta: {
+        title: '放薪管家'
+      },
       component: resolve => {
         require(['../views/public/complete.vue'], resolve)
       }
@@ -50,6 +68,9 @@ export default new Router({
     {
       path: '/bind-tel', // 身份绑定--绑定手机号
       name: 'bindTel', // 检查
+      meta: {
+        title: '放薪管家'
+      },
       component: resolve => {
         require(['../views/public/bindTel.vue'], resolve)
       }
@@ -57,6 +78,9 @@ export default new Router({
     {
       path: '/send-code/', // 身份绑定--发送验证码
       name: 'sendCode', // 检查
+      meta: {
+        title: '放薪管家'
+      },
       component: resolve => {
         require(['../views/public/sendCode.vue'], resolve)
       }
@@ -64,6 +88,9 @@ export default new Router({
     {
       path: '/check-card-tail/', // 身份绑定--验证银行卡后6位
       name: 'checkCardTail', // 检查
+      meta: {
+        title: '放薪管家'
+      },
       component: resolve => {
         require(['../views/public/checkCardTail.vue'], resolve)
       }
@@ -71,6 +98,9 @@ export default new Router({
     {
       path: '/concat-ent-manager/', // 联系企业管理员
       name: 'concatEntManager',
+      meta: {
+        title: '放薪管家'
+      },
       component: resolve => {
         require(['../views/user/concatEntManager.vue'], resolve)
       }
@@ -78,6 +108,9 @@ export default new Router({
     {
       path: '/home', // 首页
       name: 'home', // 检查
+      meta: {
+        title: '放薪管家'
+      },
       component: resolve => {
         require(['../views/payroll/home.vue'], resolve)
       }
@@ -85,6 +118,9 @@ export default new Router({
     {
       path: '/check-query-code', // 密码验证
       name: 'checkQueryCode',
+      meta: {
+        title: '放薪管家'
+      },
       component: resolve => {
         require(['../views/payroll/checkQueryCode.vue'], resolve)
       }
@@ -92,6 +128,9 @@ export default new Router({
     {
       path: '/forget-send-code', // 忘记查询密码--发送验证码
       name: 'forgetSendCode', // 检查
+      meta: {
+        title: '放薪管家'
+      },
       component: resolve => {
         require(['../views/payroll/forgetSendCode.vue'], resolve)
       }
@@ -99,6 +138,9 @@ export default new Router({
     {
       path: '/set-new-query-code', // 设置新的查询密码
       name: 'setNewQueryCode', // 检查
+      meta: {
+        title: '放薪管家'
+      },
       component: resolve => {
         require(['../views/payroll/setNewQueryCode.vue'], resolve)
       }
@@ -106,6 +148,9 @@ export default new Router({
     {
       path: '/wage-index/:wageSheetId', // 工资首页
       name: 'wageIndex', // 检查
+      meta: {
+        title: '放薪管家'
+      },
       component: resolve => {
         require(['../views/payroll/wageIndex.vue'], resolve)
       }
@@ -113,6 +158,9 @@ export default new Router({
     {
       path: '/wage-detail', // 工资条详情页面
       name: 'wageDetail', // 检查
+      meta: {
+        title: '放薪管家'
+      },
       component: resolve => {
         require(['../views/payroll/wageDetail.vue'], resolve)
       }
@@ -120,6 +168,9 @@ export default new Router({
     {
       path: '/wage-list', // 薪资列表页
       name: 'wageList', // 检查
+      meta: {
+        title: '放薪管家'
+      },
       component: resolve => {
         require(['../views/payroll/wageList.vue'], resolve)
       }
@@ -503,9 +554,6 @@ export default new Router({
     {
       path: '/hr-index', // 汇融银行-跳转
       name: 'hrIndex',
-      meta: {
-        title: '汇融银行'
-      },
       component: resolve => {
         require(['../views/hr/index.vue'], resolve)
       }
