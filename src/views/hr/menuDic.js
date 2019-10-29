@@ -2,7 +2,7 @@ export default {
   loadApply: 'http://yewu.sjzhrb.com/weixin/#/loan', // 贷款申请
   qrReceive: 'https://mp.weixin.qq.com/s/UNrh8uy9qhFpZJcOeTB3YQ', // 二维码收款
   metal: 'https://mp.weixin.qq.com/s/dD4uUW6OW7_it7TSVFZC_g', // 贵金属业务
-  salary: 'https://mp.weixin.qq.com/s/Qun_VsVpdvq0JdW49JHBqg', // 薪资代发
+  salary: 'https://mp.weixin.qq.com/s/Qun_VsVpdvq0JdW49JHBqg', // 存储业务
   colorfulActivity: 'https://mp.weixin.qq.com/mp/homepage?__biz=MzA5MjgzMjUwMQ==&hid=1&sn=aa64143b89646a4aeb88eda1500f13bc&scene=18', // 多彩生活
   integralMall: 'https://mp.weixin.qq.com/mp/homepage?__biz=MzA5MjgzMjUwMQ==&hid=1&sn=aa64143b89646a4aeb88eda1500f13bc&scene=18', // 积分商城
   lifePayment: 'https://ipay.hebnx.com:10001/prePay/main.do', // 生活缴费
