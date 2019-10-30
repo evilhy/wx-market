@@ -3,7 +3,7 @@
     <no-data v-if="list.length < 1 && requested" text="暂无收货地址" type="exchange" />
     <template>
       <van-address-list :class="addressClasses" v-model="chosenAddressId" :list="list"
-        @add="$router.push('addNewAddress')" @edit="onEdit" @select="onSelect">
+        @add="$router.push({ name: 'addNewAddress' })" @edit="onEdit" @select="onSelect">
       </van-address-list>
     </template>
   </div>
