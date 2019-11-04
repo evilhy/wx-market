@@ -20,14 +20,18 @@ export default {
   },
   methods: {
     getJsessionId () {
+      let { code, id } = this.query
+      if (id) {
+        helper.saveUserInfo({ apppartner: id })
+      }
       this
         .$Weixin
-        .wxCallback(this.query.code)
+        .wxCallback(code, id)
         .then((res) => {
           let { bindStatus, jsessionId, idNumber, ifPwd, headimgurl, apppartner } = res.data
           helper.saveUserInfo({ jsessionId, ifPwd, bindStatus, headimgurl, apppartner })
           if (bindStatus === '0') {
-              this.$router.replace({ name: 'bindIdCard' })
+            this.$router.replace({ name: 'bindIdCard' })
           } else {
             helper.saveUserInfo({ idNumber })
             this.toPage(ifPwd)

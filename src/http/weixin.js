@@ -6,10 +6,10 @@ class Wechat {
    * @description 根据code获取jessionId、idNumber和bindStatus
    * @param {String} code 微信code
    */
-  wxCallback (code) {
+  wxCallback (code, appPartner) {
       let http = new Http()
       http.path = `/${moduleName}/wxCallback`
-      http.query = { code, appPartner: 'FXGJ' }
+      http.query = { code, appPartner }
       return http.get()
   }
   /**
