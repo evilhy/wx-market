@@ -69,10 +69,6 @@ export default {
         default:
           return [
             {
-              className: 'hx',
-              src: require('../../assets/img/hx-gray-logo.png')
-            },
-            {
               className: 'fx',
               src: require('../../assets/img/fx-gray-logo.png')
             }
