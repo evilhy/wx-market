@@ -14,7 +14,7 @@
           </div>
         </template>
       </van-cell>
-      <van-field v-model.trim="info.address" maxlength="11" placeholder="请输入详细地址" type="textarea" />
+      <van-field v-model.trim="info.address" maxlength="50" placeholder="请输入详细地址" type="textarea" />
       <van-cell title="设为默认地址">
         <van-switch v-model="isDefault" size="22px" active-color="#0ba10b" />
       </van-cell>

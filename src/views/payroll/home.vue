@@ -30,9 +30,9 @@
       </div>
     </div>
     <div class="bottom-logo">
-       <img src="../../assets/img/hx-gray-logo.png" class="hx" />
-       <div class="line"></div>
-      <img src="../../assets/img/fx-gray-logo.png" class="fx" />
+      <span class="img-wrap" v-for="(item, index) in logoList" :key="index">
+        <img :src="item.src" :class="item.className" />
+      </span>
     </div>
   </div>
 </template>
@@ -55,6 +55,30 @@ export default {
       bankIsNew: 0, // 银行卡变更
       imgList: [],
       requested: false
+    }
+  },
+  computed: {
+    logoList () {
+      let apppartner = helper.getUserInfo('apppartner')
+      switch (apppartner) {
+        case 'SJZHRB':
+          return [{
+            className: 'hr',
+            src: require('../../assets/img/hr-gray-logo.png')
+          }]
+        default:
+          return [
+            {
+              className: 'hx',
+              src: require('../../assets/img/hx-gray-logo.png')
+            },
+            {
+              className: 'fx',
+              src: require('../../assets/img/fx-gray-logo.png')
+            }
+          ]
+      }
+
     }
   },
   created () {

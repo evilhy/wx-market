@@ -1,146 +1,156 @@
 //   首页
 .home-page {
-    height: 100%;
+  height: 100%;
+  position: relative;
+  .banner {
     position: relative;
-    .banner{
-      position: relative;
-      padding-top: 53%;
+    padding-top: 53%;
+    overflow: hidden;
+    margin-bottom: px2rem($space-normal);
+    .swiper-container {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 100%;
       overflow: hidden;
-      margin-bottom: px2rem($space-normal);
-      .swiper-container {
-        position: absolute;
-        left: 0;
-        top: 0;
-        height: 100%;
+      .img {
+        display: block;
         width: 100%;
-        overflow: hidden;
-        .img {
-          display: block;
-          width: 100%;
-        }
       }
     }
-    .links-wrap {
-      height: px2rem(314px);
-      background: white;
-      display: flex;
-      -webkit-display: flex;
-      @include font-dpr(28px);
-    }
-    .link-right {
-      flex: 1;
-      -webkit-flex: 1;
-    }
-    .my-income {
-      width: px2rem(270px);
-      border-right: 1px solid $border-color;
-      padding: px2rem(44px) px2rem(30px);
-      line-height: px2rem(32px);
-      background: url('../img/icon-my-income.png') no-repeat center px2rem(80px);
-      background-size: px2rem(200px) auto;
-    }
-    .recent-one {
-      color: $text-color-gray;
-      @include font-dpr(22px);
-      margin-top: px2rem(12px);
-    }
-    .hx-manager {
-      position: relative;
-      height: px2rem(156px);
-      line-height: px2rem(156px);
-      padding-left: px2rem(44px);
-      border-bottom: 1px solid $border-color;
-      background: url('../img/icon-hx-manager.png') no-repeat px2rem(206px)
+  }
+  .links-wrap {
+    height: px2rem(314px);
+    background: white;
+    display: flex;
+    -webkit-display: flex;
+    @include font-dpr(28px);
+  }
+  .link-right {
+    flex: 1;
+    -webkit-flex: 1;
+  }
+  .my-income {
+    width: px2rem(270px);
+    border-right: 1px solid $border-color;
+    padding: px2rem(44px) px2rem(30px);
+    line-height: px2rem(32px);
+    background: url('../img/icon-my-income.png') no-repeat center px2rem(80px);
+    background-size: px2rem(200px) auto;
+  }
+  .recent-one {
+    color: $text-color-gray;
+    @include font-dpr(22px);
+    margin-top: px2rem(12px);
+  }
+  .hx-manager {
+    position: relative;
+    height: px2rem(156px);
+    line-height: px2rem(156px);
+    padding-left: px2rem(44px);
+    border-bottom: 1px solid $border-color;
+    background: url('../img/icon-hx-manager.png') no-repeat px2rem(206px)
+      px2rem(34px);
+    background-size: px2rem(126px) auto;
+    &.hx-manager-gray {
+      background: url('../img/icon-hx-manager-gray.png') no-repeat px2rem(206px)
         px2rem(34px);
       background-size: px2rem(126px) auto;
-      &.hx-manager-gray {
-        background: url('../img/icon-hx-manager-gray.png') no-repeat px2rem(206px)
-          px2rem(34px);
-        background-size: px2rem(126px) auto;
-        color: $text-color-gray;
-        .icon-await {
-          position: absolute;
-          right: px2rem(20px);
-          top: 0;
-          width: px2rem(50px);
-        }
-      }
-    }
-    .news-flag {
-      position: absolute;
-      top: px2rem(22px);
-      right: px2rem(24px);
-      height: px2rem(26px);
-      line-height: px2rem(26px);
-      padding: 0 px2rem(8px);
-      @include linear-gradient(0deg, #ff8484, #ff5f21);
-      border-radius: px2rem(20px);
-      color: white;
-      @include font-dpr(18px);
-    }
-    .box {
-      float: left;
-      width: 50%;
-      height: px2rem(156px);
-      text-align: center;
-      padding-top: px2rem(30px);
-    }
-    .bot-line{
-      border-bottom: 1px solid $border-color;
-    }
-    .invoice-info {
-      background: url('../img/icon-invoice.png') no-repeat center px2rem(70px);
-      background-size: px2rem(70px) px2rem(70px);
-      border-right: 1px solid $border-color;
-    }
-    .welfare-info {
-      background: url('../img/icon-welfare.png') no-repeat center px2rem(70px);
-      background-size: px2rem(70px) px2rem(70px);
-      border-right: 1px solid $border-color;
-    }
-    .manager-info {
-      background: url('../img/icon-manager.png') no-repeat center px2rem(70px);
-      background-size: px2rem(70px) px2rem(70px);
-      border-right: 1px solid $border-color;
-    }
-    .person-info {
-      background: url('../img/icon-person.png') no-repeat center px2rem(70px);
-      background-size: px2rem(70px) px2rem(70px);
-      .title {
-        position: relative;
-        .dot {
-          position: absolute;
-          left: 50%;
-          top: 0;
-          margin-left: 28px;
-          @include circle(10px);
-          background: #fb3636;
-        }
+      color: $text-color-gray;
+      .icon-await {
+        position: absolute;
+        right: px2rem(20px);
+        top: 0;
+        width: px2rem(50px);
       }
     }
   }
-  .bottom-logo {
+  .news-flag {
     position: absolute;
-    width: 100%;
-    left: 0;
-    bottom: px2rem(50px);
+    top: px2rem(22px);
+    right: px2rem(24px);
+    height: px2rem(26px);
+    line-height: px2rem(26px);
+    padding: 0 px2rem(8px);
+    @include linear-gradient(0deg, #ff8484, #ff5f21);
+    border-radius: px2rem(20px);
+    color: white;
+    @include font-dpr(18px);
+  }
+  .box {
+    float: left;
+    width: 50%;
+    height: px2rem(156px);
     text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    .line {
+    padding-top: px2rem(30px);
+  }
+  .bot-line {
+    border-bottom: 1px solid $border-color;
+  }
+  .invoice-info {
+    background: url('../img/icon-invoice.png') no-repeat center px2rem(70px);
+    background-size: px2rem(70px) px2rem(70px);
+    border-right: 1px solid $border-color;
+  }
+  .welfare-info {
+    background: url('../img/icon-welfare.png') no-repeat center px2rem(70px);
+    background-size: px2rem(70px) px2rem(70px);
+    border-right: 1px solid $border-color;
+  }
+  .manager-info {
+    background: url('../img/icon-manager.png') no-repeat center px2rem(70px);
+    background-size: px2rem(70px) px2rem(70px);
+    border-right: 1px solid $border-color;
+  }
+  .person-info {
+    background: url('../img/icon-person.png') no-repeat center px2rem(70px);
+    background-size: px2rem(70px) px2rem(70px);
+    .title {
+      position: relative;
+      .dot {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        margin-left: 28px;
+        @include circle(10px);
+        background: #fb3636;
+      }
+    }
+  }
+}
+.bottom-logo {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: px2rem(50px);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .img-wrap {
+    &::after {
+      content: '';
+      display: inline-block;
       height: px2rem(30px);
       width: 1px;
-      background: $border-color;
+      background: #dad7d7;
       margin: 0 px2rem(20px);
     }
-    img {
-      height: px2rem(30px);
-      &:last-child {
-        opacity: 0.9;
-      }
-      &.hx {
-        height: px2rem(26px);
+    &:last-child{
+      opacity: 0.9;
+      &::after{
+        display: none;
       }
     }
   }
+  img {
+    height: px2rem(30px);
+    &.fx {
+      opacity: 0.9;
+    }
+    &.hx {
+      height: px2rem(26px);
+    }
+  }
+}
