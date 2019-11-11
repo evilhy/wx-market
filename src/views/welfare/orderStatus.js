@@ -41,6 +41,7 @@ export default {
           }
         case 'PAYFAIL':
         case 'MERFAIL':
+        case 'ORDERFAIL':
           return {
             status: 'fail',
             desc: '充值失败'
@@ -61,6 +62,7 @@ export default {
           }
         case 'PAYFAIL':
         case 'MERFAIL':
+        case 'ORDERFAIL':
           return {
             status: 'fail',
             desc: '失败'
@@ -81,6 +83,7 @@ export default {
           }
         case 'PAYFAIL':
         case 'MERFAIL':
+        case 'ORDERFAIL':
           return {
             status: 'fail',
             desc: '下单失败'
