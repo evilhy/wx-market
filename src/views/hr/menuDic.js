@@ -4,10 +4,10 @@ export default {
   metal: 'https://mp.weixin.qq.com/s/dD4uUW6OW7_it7TSVFZC_g', // 贵金属业务
   salary: 'https://mp.weixin.qq.com/s/Qun_VsVpdvq0JdW49JHBqg', // 存储业务
   colorfulActivity: 'https://mp.weixin.qq.com/mp/homepage?__biz=MzA5MjgzMjUwMQ==&hid=1&sn=aa64143b89646a4aeb88eda1500f13bc&scene=18', // 多彩生活
-  integralMall: 'https://mp.weixin.qq.com/mp/homepage?__biz=MzA5MjgzMjUwMQ==&hid=1&sn=aa64143b89646a4aeb88eda1500f13bc&scene=18', // 积分商城
+  integralMall: 'https://bby.realshare.cn/ckjfsjzhr/weixin/index/page', // 积分商城
   lifePayment: 'https://ipay.hebnx.com:10001/prePay/main.do', // 生活缴费
   wechatBank: 'https://mp.weixin.qq.com/s/BeIa4clF-VHRazV3wI8XdQ', // 微信银行
-  mobileBankDownload: 'https://mp.weixin.qq.com/s/BeIa4clF-VHRazV3wI8XdQ', // 手机银行下载
+  mobileBankDownload: 'https://wxbank.nongxinyin.com/weixinServer/htmlShow/120001101/download/bankDownloadBoth.html', // 手机银行下载
   eBuyDownload: 'http://www.yrweixin.com/hrbank/app.html', // 农信e购下载
   bankQuery: 'https://mp.weixin.qq.com/s/X1CsRksPwwrLCs5n7AMPMw', // 网点下载
   custService: 'https://mp.weixin.qq.com/s/oMNdtdIa5V8xPEKd4i26RA', // 在线客服
