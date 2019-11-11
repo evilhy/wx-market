@@ -1,0 +1,55 @@
+@charset "utf-8";
+.hr-ebank-page {
+  .list {
+    width: px2rem(580px);
+    margin: px2rem(30px) auto;
+    background: white;
+    border-radius: px2rem($radius-s);
+    overflow: hidden;
+    .outline {
+      position: relative;
+      height: px2rem(260px);
+      display: flex;
+      align-items: flex-end;
+      padding: 10px px2rem(30px);
+      background: url('../../views/hr/img/0.jpeg');
+      background-size: 100% 100%;
+      color: white;
+      @include font-dpr(34px);
+      .text {
+        position: relative;
+        z-index: 2;
+      }
+      &:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 100%;
+        top: 0;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.3);
+        z-index: 1;
+      }
+    }
+    .item {
+      height: px2rem(120px);
+      padding: 0 px2rem(30px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid $border-color;
+      &:last-child {
+        border-bottom: none;
+      }
+      .text {
+        @include font-dpr(32px);
+        flex: 1;
+        @extend %text-overflow;
+        min-width: 0;
+      }
+      .img {
+        @include square(90px);
+      }
+    }
+  }
+}

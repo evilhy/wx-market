@@ -399,6 +399,23 @@ export default new Router({
       component: resolve => {
         require(['../views/wisale/enter.vue'], resolve)
       }
+    },
+    {
+      path: '/hr-index', // 汇融银行-跳转
+      name: 'hrIndex',
+      component: resolve => {
+        require(['../views/hr/index.vue'], resolve)
+      }
+    },
+    {
+      path: '/hr-ebank', // 汇融银行-电子银行
+      name: 'hrEbank',
+      meta: {
+        title: '电子银行'
+      },
+      component: resolve => {
+        require(['../views/hr/ebank.vue'], resolve)
+      }
     }
   ],
   scrollBehavior (to, from, savedPosition) {
