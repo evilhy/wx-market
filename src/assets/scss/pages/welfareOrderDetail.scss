@@ -101,7 +101,7 @@
   }
   .card{
     width: px2rem(600px);
-    height: px2rem(198px);
+    min-height: px2rem(198px);
     background: url('../img/welfare/virtual-order-bg.png') no-repeat;
     background-size: 100% 100%;
     color: white;
@@ -116,7 +116,8 @@
       flex-direction: column;
       justify-content: center;
       width: px2rem(524px);
-      height: px2rem(98px);
+      min-height: px2rem(98px);
+      padding: px2rem(14px) 0;
       border-bottom: 1px solid rgba(255, 255, 255, 0.2);
       margin: 0 auto;
       &:last-child{
@@ -142,6 +143,8 @@
       }
       .value{
         @include font-dpr(30px);
+        padding-right: px2rem(100px);
+        word-break: break-all;
       }
     }
     .starbucks-text{
