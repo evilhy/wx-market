@@ -11,9 +11,9 @@
         <img class="hot" src="../../../assets/img/welfare/icon-colleague.png" alt="">{{goodsInfo.exchangeCnt}}位同事曾兑换
       </div>
     </div>
-    <div class="detail-img-wrap" v-if="goodsInfo.detailImgIdSet && goodsInfo.detailImgIdSet.length">
+    <div class="detail-img-wrap" v-if="goodsInfo.descImgIdSet && goodsInfo.descImgIdSet.length">
       <div class="detail-img-title">礼品介绍</div>
-      <img v-for="(id, index) in goodsInfo.detailImgIdSet" :key="index" v-lazy="`${imgBaseUrl}/${id}`">
+      <img v-for="(id, index) in goodsInfo.descImgIdSet" :key="index" v-lazy="`${imgBaseUrl}/${id}`">
     </div>
     <div class="fixed-btn-wrap">
       <div>福利资格：<span class="stress">礼品任选*{{goodsInfo.unExchangeCnt}}</span></div>
@@ -34,7 +34,7 @@ export default {
       default () {
         return {
           titleImgIdSet: [],
-          detailImgIdSet: []
+          descImgIdSet: []
         }
       }
     }

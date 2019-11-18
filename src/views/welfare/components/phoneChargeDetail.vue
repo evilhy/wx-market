@@ -11,8 +11,8 @@
       <input class="input" v-input type="tel" v-model.trim="phone" maxlength="11" placeholder="请输入手机号">
     </div>
     <exchange-btn :goods-info="goodsInfo" :disabled="btnDisabled" @submit="showConfirm"></exchange-btn>
-    <div class="detail-img-wrap" v-if="goodsInfo.detailImgIdSet && goodsInfo.detailImgIdSet.length">
-      <img v-for="(id, index) in goodsInfo.detailImgIdSet" :key="index" v-lazy="`${imgBaseUrl}/${id}`">
+    <div class="detail-img-wrap" v-if="goodsInfo.descImgIdSet && goodsInfo.descImgIdSet.length">
+      <img v-for="(id, index) in goodsInfo.descImgIdSet" :key="index" v-lazy="`${imgBaseUrl}/${id}`">
     </div>
   </div>
 </template>
@@ -28,7 +28,7 @@ export default {
       type: Object,
       default () {
         return {
-          detailImgIdSet: []
+          descImgIdSet: []
         }
       }
     }

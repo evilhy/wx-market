@@ -21,7 +21,6 @@ export default {
       type: Object,
       default () {
         return {
-          detailImgIdSet: [],
           now: 0,
           startDateTime: 0
         }
