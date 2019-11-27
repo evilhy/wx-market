@@ -1,42 +1,25 @@
 @charset "utf-8";
-$color-primary:                     #36b3b3 !default;
-$color-primary-dark:                #2BBEBE !default;
-$color-secondary:                   #ccc !default;
-$color-normal:                      #ff9800 !default;
 
-/** ------------- 文字颜色 --------------- **/
-$fx-main-color: #52BDBD !default; // 主色
-$fx-reverse-color: #FB5E5E !default;
-$color-text-default: #333333 !default; // 默认文字颜色
-$color-text-gray: #999999 !default;
-$color-text-tone: #36b3b3 !default;
-$color-text-tip: #707579 !default;
-$color-text-dark: #41424a !default;
-$color-black-finance: #525E70 !default;
-$color-text-finance: #3EC7C3 !default;
-/** ------------- border颜色 --------------- **/
-$color-border-default: #dedede !default; //浅灰
-$color-border-gray: #EDF2FF !default;
-$color-border-gray2: #D5D8DA !default;
-$color-border-light: #E6E9ED !default;
+$theme-color: #52BDBD !default;
+$primary-color: #36b3b3 !default;
+$warning-color: #FFA323 !default;
+$theme-reverse-color: #FB5E5E !default;
+$text-color: #333 !default;
+$text-color-gray: #999 !default;
+$text-color-tip: #707579 !default;
+$text-color-dark: #41424a !default;
+$welfare-theme-color: #DE4444 !default;
+
 $border-color: #eee !default;
-/** ------------- 文字大小 --------------- **/
-$fontsize-default: 24px !default; //默认大小
-$fontsize-l: 32px !default; //
-$fontsize-m: 28px !default; //超小号
-$fontsize-s: 20px !default; //超小号
-/** ------------- 表单 --------------- **/
+$bg-color: #f5f5f5 !default;//
 
-/** ------------- 圆角 --------------- **/
+$fontsize-default: 24px !default;
+$fontsize-l: 32px !default;
+$fontsize-m: 28px !default;
+$fontsize-s: 20px !default;
+
 $radius-s: 6px;
 $radius-l: 15px;
 $radius-xs: 4px;
 
-
-/** ------------ 页面背景色 ----------------- **/
-$color-gray-bg: #f5f5f5 !default;//页面背景灰色
-
 $space-normal: 24px !default;
-
-
-$btn-bg-gray: #ededed;

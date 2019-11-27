@@ -1,0 +1,60 @@
+.logistics-detail-page {
+  padding: px2rem(20px);
+  .no-tip{
+    padding-top: 150px;
+    background: none;
+  }
+  .goods-info{
+    background: white;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    padding: px2rem(30px);
+    .goods-img{
+      @include square(100px);
+      border: 1px solid $border-color;
+      margin-right: px2rem(28px);
+      border-radius: 4px;
+    }
+    .goods-text{
+      flex: 1;
+    }
+    .title{
+      @include font-dpr(28px);
+      margin-bottom: px2rem(14px);
+      word-break: break-all;
+    }
+    .company{
+      .gray{
+        color: $text-color-gray;
+      }
+      .stress{
+        color: $welfare-theme-color;
+      }
+    }
+  }
+  .track-info{
+    background: white;
+    border-radius: 4px;
+    margin-top: px2rem(20px);
+    .address{
+      display: flex;
+      align-items: center;
+      color: $text-color-gray;
+      padding: 15px;
+      .van-icon{
+        margin-right: px2rem(20px);
+      }
+    }
+    .detail{
+      word-break: break-all;
+    }
+    .desc{
+      @include font-dpr(26px);
+    }
+    .time{
+      @include font-dpr(24px);
+      margin-top: 5px;
+    }
+  }
+}

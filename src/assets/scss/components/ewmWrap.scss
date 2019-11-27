@@ -20,7 +20,7 @@
       width: px2rem(296px);
       min-height: px2rem(240px);
       max-height: px2rem(350px);
-      border: 1px solid $color-border-gray;
+      border: 1px solid $border-color;
       margin: px2rem(36px) auto;
     }
     .tip {
@@ -39,7 +39,7 @@
     .text {
       height: px2rem(70px);
       line-height: px2rem(70px);
-      border: 1px solid $color-border-default;
+      border: 1px solid $border-color;
       border-radius: $radius-xs;
       padding: 0 px2rem(20px);
     }
@@ -48,7 +48,7 @@
       height: px2rem(70px);
       line-height: px2rem(70px);
       text-align: center;
-      background: $fx-main-color;
+      background: $theme-color;
       color: white;
       border-radius: $radius-xs;
       margin-top: px2rem(30px);

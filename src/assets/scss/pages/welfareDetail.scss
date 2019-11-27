@@ -1,0 +1,85 @@
+
+.welfare-detail-page{
+  min-height: 100%;
+  position: relative;
+  background: url('../img/welfare/activity-detail-bg-line.png') repeat-y;
+  background-size: 100% auto;
+  padding-bottom: px2rem(70px);
+  .goods-bg{
+    height: px2rem(520px);
+    background: url('../img/welfare/activity-detail-bg.png') no-repeat;
+    background-size: 100% auto;
+  }
+    .goods-desc{
+      width: 100%;
+      position: absolute;
+      top: px2rem(232px);
+      text-align: center;
+      @include font-dpr(28px);
+      color: #DF402F;
+    }
+    .main{
+      width: 100%;
+      position: relative;
+      top: px2rem(-40px);
+      padding: 0 px2rem(28px);
+      .img2{
+        float: right;
+      }
+      .wish{
+        padding: 0 px2rem(12px);
+        @include font-dpr(30px);
+        color: #9E0B0B;
+        word-break: break-all;
+      }
+      .btn{
+        margin: px2rem(80px) auto px2rem(20px);
+        width: px2rem(560px);
+        height: px2rem(90px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: px2rem(4px);
+        @include font-dpr(32px);
+        box-shadow: 0 2px 7px 0 #D32929, inset 0 3px 1px 0 rgba(255,255,255,0.56);
+        &.active{
+          background-image: linear-gradient(-180deg, #FEE3BD 0%, #F6AD74 100%);
+          color: #AB5B1A;
+        }
+        &.disabled{
+          background-image: linear-gradient(-180deg, #F9DFDE 0%, #D5BFBA 100%);
+          color: #966262;
+        }
+      }
+      .record{
+        padding: px2rem(10px);
+        @include font-dpr(26px);
+        color: #F7B883;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .arrow {
+          @include v-arrow(right, 1px, px2rem(12px));
+        }
+      }
+    }
+  .footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: px2rem(70px);
+    background: #CD2D2D;
+    @include font-dpr(24px);
+    color: #FFB5B5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .company{
+      color: #fff;
+      padding: 0 2px;
+    }
+  }
+}
+

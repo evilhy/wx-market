@@ -6,9 +6,12 @@ body,
 }
 
 body {
-    color: $color-text-default;
+    color: $text-color;
     @include font-dpr($fontsize-default);
-    background-color: $color-gray-bg;
+    background-color: $bg-color;
+}
+.page{
+  min-height: 100%;
 }
 
 div,
@@ -28,7 +31,7 @@ button {
 
 a {
     text-decoration: none;
-    color: $color-text-tone;
+    color: $primary-color;
 }
 
 input[type="text"],
@@ -41,7 +44,7 @@ textarea {
     -webkit-appearance: none !important;
     margin: 0;
     @include placeholder () {
-        color: $color-text-gray;
+        color: $text-color-gray;
     }
 }
 
@@ -76,7 +79,7 @@ button {
     height: px2rem(70px);
     line-height: px2rem(42px);
     border-radius: px2rem($radius-s);
-    border: 1px solid $color-border-default;
+    border: 1px solid $border-color;
 }
 
 .clearfix {

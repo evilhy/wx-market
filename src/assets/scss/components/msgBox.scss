@@ -63,7 +63,7 @@
         .con {
           order: 1;
           margin-right: px2rem(18px);
-          background: $fx-main-color;
+          background: $theme-color;
           color: white;
         }
         .pic {
@@ -71,7 +71,7 @@
         }
         .triangle {
           left: 100%;
-          @include triangle(right, px2rem(8px), $fx-main-color);
+          @include triangle(right, px2rem(8px), $theme-color);
         }
       }
       .manager {
@@ -79,7 +79,7 @@
         .con {
           order: 2;
           margin-left: px2rem(18px);
-          border: 1px solid $color-border-gray;
+          border: 1px solid $border-color;
           box-shadow: 0 px2rem(2px) 1px 0 rgba(0, 0, 0, 0.04);
           background: white;
         }
@@ -117,7 +117,7 @@
       height: px2rem(98px);
       padding: 0 px2rem(30px);
       background: white;
-      border: 1px solid $color-border-gray;
+      border: 1px solid $border-color;
       .input-wrap {
         height: 100%;
         display: flex;
@@ -130,14 +130,14 @@
         height: px2rem(60px);
         padding: px2rem(10px) px2rem(20px);
         line-height: px2rem(40px);
-        border: 1px solid $color-border-gray;
+        border: 1px solid $border-color;
       }
       .btn {
         width: px2rem(100px);
         height: px2rem(60px);
         line-height: px2rem(60px);
         @include linear-gradient(-180deg, #f7f7f7 0%, #ebebeb 100%);
-        background: $fx-main-color;
+        background: $theme-color;
         color: white;
         border-radius: 0 px2rem($radius-xs) px2rem($radius-xs) 0;
         @include font-dpr(28px);

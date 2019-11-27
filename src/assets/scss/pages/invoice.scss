@@ -159,7 +159,7 @@
     .switch {
       line-height: px2rem(42px);
       @include font-dpr(22px);
-      color: $fx-main-color;
+      color: $theme-color;
       float: right;
       i {
         @include font-dpr(30px);

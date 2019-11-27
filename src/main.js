@@ -2,7 +2,7 @@ import 'babel-polyfill'
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import Vant from 'vant'
+import Vant, { Lazyload, Image } from 'vant'
 import myPlugin from './utils/plugin'
 import 'vant/lib/index.css'
 
@@ -18,6 +18,11 @@ import VueClipboard from 'vue-clipboard2'
 Vue.config.productionTip = false
 
 Vue.use(Vant)
+Vue.use(Lazyload, {
+  preLoad: 1.3,
+  attempt: 1
+})
+Vue.use(Image)
 Vue.use(myPlugin)
 Vue.use(VueClipboard)
 

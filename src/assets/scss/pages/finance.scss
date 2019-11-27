@@ -1,7 +1,7 @@
 @charset "utf-8";
-
+$text-finance-color: #525E70;
 .t-finance-page{
-  color: $color-black-finance;
+  color: $text-finance-color;
   padding-bottom: px2rem(158px);
   .white-box{
     background: #fff;
@@ -25,7 +25,7 @@
       height: px2rem(26px);
       width: px2rem(4px);
       transform: translateY(-50%);
-      background: $fx-main-color
+      background: $theme-color
     }
   }
   .field{
@@ -41,7 +41,7 @@
       text-align: right;
     }
     .theme-color{
-      color: $fx-main-color;
+      color: $theme-color;
       padding: px2rem(20px);
       padding-right: 0;
     }
@@ -52,7 +52,7 @@
   }
 }
 .t-finance-order-page {
-  color: $color-black-finance;
+  color: $text-finance-color;
 }
 .product-level-wrap {
   min-height: px2rem(348px);
@@ -143,7 +143,7 @@
     align-items: center;
     @include circle(44px);
     background: #f2f4fb;
-    color: $color-black-finance;
+    color: $text-finance-color;
     &.prev-btn {
       left: px2rem(54px);
       padding-left: px2rem(4px);
@@ -246,7 +246,7 @@
       height: px2rem(60px);
       display: flex;
       align-items: center;
-      color: $fx-main-color;
+      color: $theme-color;
     }
     .detail-icon {
       width: px2rem(60px);
@@ -272,7 +272,7 @@
       color: #A1A3AE;
     }
     .black{
-      color: $color-black-finance;
+      color: $text-finance-color;
     }
   }
   table{
@@ -343,7 +343,7 @@
       line-height: 1;
       .triangle {
         margin-left: px2rem(8px);
-        @include triangle(right, px2rem(8px), $color-black-finance);
+        @include triangle(right, px2rem(8px), $text-finance-color);
       }
     }
   }
@@ -501,7 +501,7 @@
       @include font-dpr(24px);
       border: 1px solid #D4D4D4;
       border-radius: px2rem(50px);
-      color: $color-black-finance;
+      color: $text-finance-color;
     }
     .tip{
       position: relative;
@@ -543,7 +543,7 @@
       margin-right: 5px;
     }
     .theme-color{
-      color: $fx-main-color;
+      color: $theme-color;
     }
   }
 }
@@ -583,7 +583,7 @@
       text-align: center;
       &:last-child{
         border-left: 1px solid #dedede;
-        color: $fx-main-color;
+        color: $theme-color;
       }
     }
   }
@@ -645,7 +645,7 @@
       line-height: 1;
       width: px2rem(194px);
       height: px2rem(66px);
-      border: 1px solid $color-black-finance;
+      border: 1px solid $text-finance-color;
       border-radius: $radius-s;
     }
   }
@@ -670,7 +670,7 @@
       width: px2rem(216px);
     }
     .ask-btn{
-      border-right: 1px solid $color-border-default;
+      border-right: 1px solid $border-color;
     }
     .notice-btn{
       background: #5DCBC8;
@@ -746,7 +746,7 @@
       margin-right: px2rem(4px);
     }
     .green{
-      color: $fx-main-color;
+      color: $theme-color;
     }
   }
 }
@@ -800,7 +800,7 @@
   }
   .colleague-ordered-wrap{
     min-height: 100%;
-    background-color: $color-gray-bg;
+    background-color: $bg-color;
   }
   .tip{
     padding: px2rem(20px) 0;
@@ -851,12 +851,12 @@
   text-align: center;
   @include font-dpr(28px);
   &.theme-btn{
-    background: $fx-main-color;
+    background: $theme-color;
     color: #fff;
   }
   &.white-btn{
     background: #fff;
-    color: $color-black-finance;
+    color: $text-finance-color;
   }
   &.gray-btn{
     background: #C6C7CA;
@@ -892,13 +892,13 @@
 .product-tag {
   display: inline-flex;
   padding: px2rem(4px) px2rem(10px);
-  border: 1px solid $color-black-finance;
+  border: 1px solid $text-finance-color;
   border-radius: px2rem($radius-s);
   background-color: #fff;
   @include font-dpr(22px);
   &.green {
     border-color: #8FD5D3;
-    color: $fx-main-color;
+    color: $theme-color;
     background-color: #f0fffe;
   }
   &.orange {
@@ -921,7 +921,7 @@
   }
   .dot{
     @include circle(6px);
-    background: $fx-main-color;
+    background: $theme-color;
   }
   &.left{
     .line{
@@ -973,8 +973,8 @@
         display: none;
     }
     .input:checked + .v-checkbox{
-        background-color: $fx-main-color;
-        border-color: $fx-main-color;
+        background-color: $theme-color;
+        border-color: $theme-color;
         &:after{
             border-color: #fff;
             transform: rotate(45deg) scale(1);

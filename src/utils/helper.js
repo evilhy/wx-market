@@ -8,8 +8,7 @@ const $setSessionObj = Symbol('$setSessionObj')
 const $updateSessionObj = Symbol('$updateSessionObj')
 let timer = null
 const helper = {
-  title(title) {
-    title = title || '放薪管家'
+  title(title = '') {
     window.document.title = title
   },
   [$getSessionObj] (storageKey = '', itemKey = '', defaultValue = '') {

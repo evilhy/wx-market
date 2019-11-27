@@ -8,6 +8,7 @@ let HttpEngine = (require(`core/plugins/http/HttpEngine.${process.env.NODE_ENV =
 export default class HttpForApplication extends HttpEngine {
 
   baseURL = sysConfig.http_base_url[process.env.NODE_ENV];
+  timeout = 30
   mockTimeout = 2;
   requestedSever = false;
 

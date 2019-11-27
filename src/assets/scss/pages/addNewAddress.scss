@@ -1,0 +1,22 @@
+@charset "utf-8";
+.add-new-address {
+  .van-field__label{
+    max-width: 70px;
+  }
+  .area-desc{
+    @include font-dpr(24px);
+    color: $text-color-gray;
+  }
+  .van-switch--on{
+    background-color: $welfare-theme-color !important;
+  }
+  .van-button {
+    width: px2rem(580px);
+    height: px2rem(88px);
+    margin: px2rem(40px) auto;
+    display: block;
+    &.save{
+      background-image: linear-gradient(90deg, #F66363 0%, #DB4040 100%);
+    }
+  }
+}

@@ -1,0 +1,58 @@
+// 福利货柜(礼品选择列表)
+.goods-list-page {
+  .van-list {
+    display: flex;
+    flex-wrap: wrap;
+    background: white;
+  }
+  .item {
+    width: px2rem(320px);
+    height: px2rem(425px);
+    border-radius: px2rem(4px);
+    overflow: hidden;
+    padding: px2rem(20px);
+    border-bottom: 1px solid #ebebeb;
+
+    &:nth-of-type(odd) {
+      border-right: 1px solid #ebebeb;
+    }
+    .goods-img {
+      @include square(280px);
+      display: block;
+    }
+    .goods-name {
+      @include font-dpr(28px);
+      color: #333333;
+      margin-top: px2rem(14px);
+      @extend %text-overflow;
+    }
+    .exchange {
+      color: $welfare-theme-color;
+      margin-top: px2rem(14px);
+      display: flex;
+      align-items: center;
+      .hot {
+        @include square(26px);
+        margin-right: px2rem(10px);
+      }
+    }
+  }
+  .van-list__loading,.van-list__finished-text{
+    width: 100%;
+    background: $bg-color;
+  }
+}
+.return-list-btn {
+  position: fixed;
+  right: 0;
+  bottom: px2rem(200px);
+  width: px2rem(160px);
+  height: px2rem(60px);
+  line-height: px2rem(60px);
+  border-radius: px2rem(30px) 0 0 px2rem(30px);
+  background: white;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.15);
+  text-align: center;
+  @include font-dpr(26px);
+  color: $text-color-gray;
+}

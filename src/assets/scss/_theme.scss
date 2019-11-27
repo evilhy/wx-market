@@ -45,7 +45,7 @@
   border-radius: px2rem($radius-s);
   color: #fff;
   @include font-dpr(30px);
-  background-color: $color-primary;
+  background-color: $primary-color;
   height: px2rem(70px);
   line-height: px2rem(70px);
   box-shadow: 0 px2rem(36px) px2rem(50px) px2rem(-28px) rgba(54, 179, 179, 1);
@@ -56,8 +56,8 @@
 
 .btn-green-reverse {
   text-align: center;
-  border: 1px solid $fx-main-color;
-  color: $fx-main-color;
+  border: 1px solid $theme-color;
+  color: $theme-color;
   background: white;
   border-radius: px2rem($radius-s);
 }
@@ -115,7 +115,7 @@
       width: 100%;
       padding: 0 px2rem(20px);
       box-sizing: border-box;
-      border: 1px solid $color-text-gray;
+      border: 1px solid $text-color-gray;
       border-radius: px2rem(4px);
       line-height: px2rem(80px);
       p {
@@ -215,7 +215,7 @@
     &:first-child {
       float: left;
       span {
-        color: $fx-main-color;
+        color: $theme-color;
       }
       .iconfont {
         right: px2rem(-66px);
@@ -225,7 +225,7 @@
       float: right;
       text-align: end;
       span {
-        color: $fx-reverse-color;
+        color: $theme-reverse-color;
       }
       .iconfont {
         left: px2rem(-66px);
@@ -238,10 +238,10 @@
   @include font-dpr(22px);
   line-height: px2rem(28px);
   margin-top: px2rem(30px);
-  color: $color-text-gray;
+  color: $text-color-gray;
   text-align: center;
   span {
-    color: $color-text-default;
+    color: $text-color;
   }
 }
 
@@ -281,7 +281,7 @@
       top: px2rem(1px);
       max-width: 93% !important;
       min-width: px2rem(26px) !important;
-      border-top: px2rem(14px) solid $fx-main-color;
+      border-top: px2rem(14px) solid $theme-color;
       border-right: px2rem(14px) solid transparent;
     }
     &:last-child {
@@ -290,7 +290,7 @@
       top: 0;
       max-width: 94% !important;
       min-width: px2rem(36px) !important;
-      border-bottom: px2rem(14px) solid $fx-reverse-color;
+      border-bottom: px2rem(14px) solid $theme-reverse-color;
       border-left: px2rem(14px) solid transparent;
     }
   }
@@ -340,7 +340,7 @@
   }
   .swiper-slide-active {
     .span-bg {
-      color: $color-text-default;
+      color: $text-color;
       @include font-dpr(32px);
       height: px2rem(54px);
       line-height: px2rem(54px);
@@ -390,7 +390,7 @@
 
 // 背景蒙层
 .v-modal {
-  background: $color-text-default;
+  background: $text-color;
   opacity: 0.6;
   -webkit-animation: move2 1s linear both;
   animation: move2 1s linear both;
@@ -402,7 +402,7 @@
   width: 100%;
   @include font-dpr($fontsize-m);
   text-align: center;
-  color: $color-text-default;
+  color: $text-color;
   margin-bottom: px2rem(60px);
 }
 
@@ -414,7 +414,7 @@
   line-height: px2rem(70px);
   color: #fff;
   @include font-dpr(30px);
-  background-color: $color-primary;
+  background-color: $primary-color;
   border-radius: px2rem($radius-s);
   box-shadow: 0 px2rem(36px) px2rem(50px) px2rem(-28px) rgba(54, 179, 179, 1);
 }
@@ -426,7 +426,7 @@
   padding: 0 px2rem(80px) px2rem(70px);
   line-height: px2rem(33px);
   .iconfont {
-    color: $color-text-tone;
+    color: $primary-color;
     @include font-dpr(60px);
     line-height: px2rem(66px);
     margin-right: px2rem(12px);
@@ -442,7 +442,7 @@
 }
 
 .blue-ratio {
-  color: $fx-main-color;
+  color: $theme-color;
 }
 
 .pagination-bullet {

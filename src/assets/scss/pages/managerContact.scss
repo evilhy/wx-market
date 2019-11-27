@@ -9,21 +9,21 @@
       padding: px2rem(24px) px2rem(30px);
       @include font-dpr(26px);
       line-height: px2rem(38px);
-      border-bottom: 1px solid $color-border-gray;
+      border-bottom: 1px solid $border-color;
       align-items: center;
     }
     .label {
-      color: $color-text-dark;
+      color: $text-color-dark;
       width: px2rem(114px);
     }
     a {
-      color: $color-text-gray;
+      color: $text-color-gray;
     }
     .value {
       flex: 1;
       -webkit-flex: 1;
       text-align: right;
-      color: $color-text-gray;
+      color: $text-color-gray;
       @include word-break;
     }
     .v-arrow {

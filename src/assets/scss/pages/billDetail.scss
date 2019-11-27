@@ -154,7 +154,7 @@
       }
       &.sure {
         width: px2rem(355px);
-        background: $fx-main-color;
+        background: $theme-color;
         color: white;
       }
       &.sured {
@@ -214,7 +214,7 @@
   .vcode-btn {
     display: inline-flex;
     padding: 5px;
-    color: $fx-main-color;
+    color: $theme-color;
     &.disabled {
       color: #999;
     }

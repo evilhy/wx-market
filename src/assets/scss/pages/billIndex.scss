@@ -104,12 +104,12 @@
         top: px2rem(10px);
         right: px2rem(90px);
         @include font-dpr(46px);
-        color: $color-text-gray;
+        color: $text-color-gray;
       }
     }
     .amt-title {
       margin-bottom: px2rem(40px);
-      color: $color-text-gray;
+      color: $text-color-gray;
     }
     .diff-wrap {
       width: px2rem(530px);
@@ -159,7 +159,7 @@
       justify-content: space-between;
       @include font-dpr(24px);
       .time {
-        color: $color-text-gray;
+        color: $text-color-gray;
       }
       .return {
         color: #5a9fff;

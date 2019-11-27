@@ -1,0 +1,61 @@
+{
+  "pageNum": 1,
+  "pageSize": 10,
+  "totalElements": 0,
+  "totalPages": 0,
+  "last": false,
+  "first": true,
+  "content": [
+    {
+      "goodsId": "goodsId001",
+      "goodsNo": "goodsNo001",
+      "coverUrl": "",
+      "goodsName": "商品名称",
+      "itemCatId": "01001001",
+      "itemCatDesc": "商品类目描述",
+      "orgId": "orgId001",
+      "orgName": "orgName",
+      "entPurchasePrice": 20.09,
+      "purchasePrice": 20,
+      "marketPrice": 22,
+      "stockCnt": 0,
+      "exchangeCnt": 2,
+      "activateStatus": 0,
+      "pickFlag": true
+    },
+    {
+      "goodsId": "goodsId002",
+      "goodsNo": "goodsNo002",
+      "coverUrl": "",
+      "goodsName": "商品名称商品名称商品名称商品名称商品名称商品名称商品名称",
+      "itemCatId": "01001002",
+      "itemCatDesc": "商品类目描述",
+      "orgId": "orgId002",
+      "orgName": "orgName",
+      "entPurchasePrice": 20.09,
+      "purchasePrice": 20,
+      "marketPrice": 22,
+      "stockCnt": 2,
+      "exchangeCnt": 2,
+      "activateStatus": 1,
+      "pickFlag": true
+    },
+    {
+      "goodsId": "goodsId003",
+      "goodsNo": "goodsNo003",
+      "coverUrl": "",
+      "goodsName": "商品名称商品名称商品名称商品名称商品名称商品名称商品名称",
+      "itemCatId": "01002003",
+      "itemCatDesc": "商品类目描述",
+      "orgId": "orgId003",
+      "orgName": "orgName",
+      "entPurchasePrice": 20.09,
+      "purchasePrice": 20,
+      "marketPrice": 22,
+      "stockCnt": 3,
+      "exchangeCnt": 0,
+      "activateStatus": 1,
+      "pickFlag": true
+    }
+  ]
+}

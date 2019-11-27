@@ -22,7 +22,7 @@
       align-items: center;
       justify-content: space-between;
       @include font-dpr(28px);
-      border-top: 1px solid $color-border-light;
+      border-top: 1px solid $border-color;
       .action-item{
         height: 40px;
         flex: 1;
@@ -30,11 +30,11 @@
         align-items: center;
         justify-content: center;
         &:first-child{
-          // color: $color-text-gray;
-          border-right: 1px solid $color-border-light;
+          // color: $text-color-gray;
+          border-right: 1px solid $border-color;
         }
         &:last-child{
-          color: $fx-main-color;
+          color: $theme-color;
         }
       }
     }
@@ -51,7 +51,7 @@
       align-items: center;
       justify-content: space-between;
       .month-label{
-        // color: $color-text-gray;
+        // color: $text-color-gray;
       }
       .month-value{
         position: relative;
@@ -61,7 +61,7 @@
           top: 50%;
           right: 0;
           transform: translateY(-50%);
-          @include triangle(bottom, 6px, $color-text-dark);
+          @include triangle(bottom, 6px, $text-color-dark);
         }
       }
     }
@@ -73,7 +73,7 @@
       align-items: center;
       line-height: 1;
       @include font-dpr(24px);
-      color: $color-text-gray;
+      color: $text-color-gray;
       .iconfont {
         margin-right: px2rem(12px);
         @include font-dpr(24px);
@@ -91,7 +91,7 @@
       padding: 0 px2rem(30px);
       display: flex;
       align-items: center;
-      color: $color-primary;
+      color: $primary-color;
       @include font-dpr(28px);
       .arrow{
         @include v-arrow(right, 1px, px2rem(10px));
@@ -121,12 +121,12 @@
   }
   .total-wrap {
     .label {
-      color: $color-text-gray;
+      color: $text-color-gray;
       @include font-dpr(26px);
       margin-bottom: px2rem(12px);
     }
     .value {
-      color: $color-primary;
+      color: $primary-color;
       @include font-dpr(38px);
     }
     .finance-btn {
@@ -138,9 +138,9 @@
       width: px2rem(150px);
       line-height: px2rem(60px);
       text-align: center;
-      border: 1px solid $color-primary;
+      border: 1px solid $primary-color;
       border-radius: px2rem($radius-xs);
-      color: $color-primary;
+      color: $primary-color;
       @include font-dpr(26px);
     }
   }
@@ -149,11 +149,11 @@
     align-items: center;
     height: px2rem(72px);
     padding-left: px2rem(30px);
-    color: $color-text-gray;
+    color: $text-color-gray;
     @include font-dpr(26px);
   }
   .deduction-item {
-    border-bottom: 1px solid $color-border-light;
+    border-bottom: 1px solid $border-color;
     &.open{
       .arrow{
         transform: rotate(135deg);
@@ -176,13 +176,13 @@
       align-items: center;
       justify-content: center;
       &.checked{
-        border-color: $fx-main-color;
+        border-color: $theme-color;
         &:after {
           content: '';
           width: 8px;
           height: 8px;
           border-radius: 8px;
-          background: $fx-main-color;
+          background: $theme-color;
         }
       }
     }
@@ -211,7 +211,7 @@
     }
     .short-desc {
       width: px2rem(300px);
-      color: $color-text-gray;
+      color: $text-color-gray;
     }
     .iconfont {
       color: #d6d6d6;
@@ -219,7 +219,7 @@
       padding: px2rem(4px) px2rem(12px);
     }
     .arrow {
-      color: $color-text-gray;
+      color: $text-color-gray;
       transition: all 0.2s;
       @include v-arrow(right, 1px, 8px);
     }
@@ -238,7 +238,7 @@
     align-items: center;
     height: px2rem(88px);
     padding: 0 px2rem(30px);
-    border-bottom: 1px solid $color-border-light;
+    border-bottom: 1px solid $border-color;
     &:last-child {
       border-bottom: none;
     }
@@ -267,7 +267,7 @@
     align-items: center;
     justify-content: center;
     background: white;
-    border-top: 1px solid $color-border-light;
+    border-top: 1px solid $border-color;
     z-index:2;
   }
   .sure-btn,.cancel-btn {
@@ -276,13 +276,13 @@
     align-items: center;
     justify-content: center;
     height: px2rem(80px);
-    background-color: $color-primary;
+    background-color: $primary-color;
     color: white;
     @include font-dpr(32px);
     border-radius: px2rem($radius-xs);
   }
   .cancel-btn{
-    background: $color-text-gray;
+    background: $text-color-gray;
     margin-left: px2rem(20px);
   }
 }
@@ -459,10 +459,10 @@ div[class^='tax-calculator-step'] .page-title {
       }
     }
     p{
-      color: $color-text-tip;
+      color: $text-color-tip;
     }
     .stress{
-      color: $fx-main-color;
+      color: $theme-color;
     }
   }
 }

@@ -4,7 +4,7 @@
     .no-manager {
       height: 100%;
       background: white;
-      color: $color-text-tip;
+      color: $text-color-tip;
       @include font-dpr(26px);
       text-align: center;
       padding-top: px2rem(270px);
@@ -31,11 +31,11 @@
         border-radius: px2rem($radius-xs);
         @include font-dpr(28px);
         &-green {
-          background: $fx-main-color;
+          background: $theme-color;
           color: white;
         }
         &-gray {
-          background: $btn-bg-gray;
+          background: #ededed;
           color: #9da6a6;
         }
       }
@@ -44,7 +44,7 @@
       height: 100%;
       display: flex;
       flex-direction: column;
-      color: $color-text-dark;
+      color: $text-color-dark;
       .outline-info-wrap {
         height: px2rem(274px);
         text-align: center;
@@ -83,8 +83,8 @@
       position: relative;
       text-align: center;
       &.active {
-        color: $fx-main-color;
-        border-bottom: px2rem(4px) solid $fx-main-color;
+        color: $theme-color;
+        border-bottom: px2rem(4px) solid $theme-color;
       }
       &.has-news:after {
         content: '';
