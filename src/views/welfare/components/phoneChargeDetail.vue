@@ -11,8 +11,9 @@
       <input class="input" v-input type="tel" v-model.trim="phone" maxlength="11" placeholder="请输入手机号">
     </div>
     <exchange-btn :goods-info="goodsInfo" :disabled="btnDisabled" @submit="showConfirm"></exchange-btn>
-    <div class="detail-img-wrap" v-if="goodsInfo.descImgIdSet && goodsInfo.descImgIdSet.length">
+    <div class="detail-img-wrap">
       <img v-for="(id, index) in goodsInfo.descImgIdSet" :key="index" v-lazy="`${imgBaseUrl}/${id}`">
+      <img src="../../../assets/img/welfare/virtual-goods-tip.png" alt="">
     </div>
   </div>
 </template>
