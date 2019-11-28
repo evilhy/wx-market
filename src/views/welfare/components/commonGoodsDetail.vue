@@ -11,10 +11,10 @@
         <img class="hot" src="../../../assets/img/welfare/icon-colleague.png" alt="">{{goodsInfo.exchangeCnt}}位同事曾兑换
       </div>
     </div>
-    <div class="detail-img-wrap" v-if="(goodsInfo.descImgIdSet && goodsInfo.descImgIdSet.length) || !virtual">
+    <div class="detail-img-wrap">
       <div class="detail-img-title">礼品介绍</div>
       <img v-for="(id, index) in goodsInfo.descImgIdSet" :key="index" v-lazy="`${imgBaseUrl}/${id}`">
-      <img v-if="!virtual" src="../../../assets/img/welfare/real-goods-tip.png" alt="">
+      <img :src="tipImg" alt="">
     </div>
     <div class="fixed-btn-wrap">
       <div>福利资格：<span class="stress">礼品任选*{{goodsInfo.unExchangeCnt}}</span></div>
@@ -51,6 +51,10 @@ export default {
       let { carWashTicket, videoMember, viewingTicket, starbucks, oilCard } = sysConfig
       let itemCatId = this.goodsInfo.itemCatId
       return itemCatId === carWashTicket || itemCatId === videoMember || itemCatId === viewingTicket || itemCatId === starbucks || itemCatId === oilCard
+    },
+    tipImg () {
+      let imgName = this.virtual ? 'virtual-goods-tip' : 'real-goods-tip'
+      return require(`../../../assets/img/welfare/${imgName}.png`)
     }
   },
   created () { },
