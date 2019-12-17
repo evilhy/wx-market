@@ -326,6 +326,13 @@ export default new Router({
       }
     },
     {
+      path: '/tax-instructions', // 个税说明
+      name: 'taxInstructions',
+      component: resolve => {
+        require(['../views/tax/taxInstructions.vue'], resolve)
+      }
+    },
+    {
       path: '/tax-calculator', // 个税计算器
       name: 'taxCalculator',
       component: resolve => {

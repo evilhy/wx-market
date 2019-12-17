@@ -8,6 +8,7 @@
     <div class="bottom-group">
       该资金由{{wageDetailList[0].grantName || wageDetailList[0].groupName}}发放
     </div>
+    <div class="personal-tax" @click="toPage">个稅怎么算?</div>
   </div>
 </template>
 
@@ -31,6 +32,9 @@ export default {
     helper.title(this.wageDetailList[0].wageName)
   },
   methods: {
+    toPage() {
+      this.$router.push({name: 'taxInstructions'})
+    }
   },
   components: {
     swiper,
