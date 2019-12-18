@@ -196,15 +196,17 @@
       text-align: center;
     }
     .personal-tax{
-      width: px2rem(197px);
+      width: px2rem(180px);
       height: px2rem(55px);
-      line-height: px2rem(55px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       opacity: 0.77;
       background: #000000;
       border-radius: px2rem(27.5px) 0 0  px2rem(27.5px);
-      @include font-dpr(22px);
+      @include font-dpr(28px);
       color: #FFFFFF;
-      text-align: center;
+
       position: fixed;
       right: 0;
       top:px2rem(215px);
