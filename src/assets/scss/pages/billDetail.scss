@@ -195,6 +195,23 @@
       color: #c7fff5;
       text-align: center;
     }
+    .personal-tax{
+      width: px2rem(180px);
+      height: px2rem(55px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.77;
+      background: #000000;
+      border-radius: px2rem(27.5px) 0 0  px2rem(27.5px);
+      @include font-dpr(28px);
+      color: #FFFFFF;
+
+      position: fixed;
+      right: 0;
+      top:px2rem(215px);
+      z-index: 10000000000;
+    }
   }
   .img-viewer-wrap {
     background: black;
@@ -224,4 +241,3 @@
       padding: px2rem(44px) px2rem(20px);
     }
   }
-  
