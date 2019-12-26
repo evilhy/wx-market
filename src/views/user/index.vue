@@ -21,11 +21,11 @@
       </div>
       <div class="item" @click="toPage('userEnts')">
         <span class="label"><i class="iconfont icon-renzhiqiye"></i>任职企业</span>
-        <span class="value">2家<span class="arrow"></span></span>
+        <span class="value"><span class="arrow"></span></span>
       </div>
       <div class="item" @click="toPage('bankcardList')">
         <span class="label"><i class="iconfont icon-yinhangqia"></i>银行卡<span class="dot" v-if="info.isNew"></span></span>
-        <span class="value">2张<span class="arrow"></span></span>
+        <span class="value"><span class="arrow"></span></span>
       </div>
        <div class="item" @click="toPage('addressList')">
         <span class="label"><i class="iconfont icon-dizhiguanli"></i>地址管理</span>
