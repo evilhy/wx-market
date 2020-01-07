@@ -41,12 +41,17 @@
     width: 100%;
     display: block;
     height: px2rem(80px);
-    background-color: #f8f8f8;
+    background-color: white;
+    border: 1px solid $border-color;
     border-radius: px2rem(4px);
     margin-bottom: px2rem(26px);
     @include font-dpr(28px);
     padding: 0 px2rem(30px);
     @extend %text-overflow;
+  }
+  input[disabled]{
+    border: 1px solid $border-color;
+    background: #f8f8f8;
   }
   .tax-explain-link {
     text-align: center;
@@ -292,9 +297,15 @@
     margin-top: px2rem(32px);
     .arrow {
       position: relative;
-      top: -1px;
       margin-left: 5px;
-      @include v-arrow(bottom, 1px, 6px);
+      &.bottom{
+        top: -1px;
+        @include v-arrow(bottom, 1px, 6px);
+      }
+      &.top{
+        top: 1px;
+        @include v-arrow(top, 1px, 6px);
+      }
     }
   }
   .result-explain{

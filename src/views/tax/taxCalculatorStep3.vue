@@ -19,7 +19,7 @@
         </div>
       </div>
       <button class="submit-btn" @click="submitFun">重新试算</button>
-      <p class="bar" @click="openFlag = !openFlag">展开试算过程<span class="arrow"></span></p>
+      <p class="bar" @click="openFlag = !openFlag">展开试算过程<span class="arrow" :class="[openFlag ? 'top' : 'bottom']"></span></p>
     </div>
     <div class="result-explain" :style="{ height: `${explainHeight}px;`}">
       <div class="result-detail" :class="{open: openFlag}">

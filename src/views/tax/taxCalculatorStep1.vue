@@ -49,6 +49,7 @@ export default {
       let value = e.target.value
       let nValue = (Number.isNaN(Number(value)) || !value.length) ? '' : Math.floor(value)
       TaxState.commit('updateData', { type, value: nValue > 0 ? nValue : 0 })
+      window.scroll(0, 0)
     },
     helpCal () {
       if (this.deductionDetailTotal !== this.specialDeduction) {
