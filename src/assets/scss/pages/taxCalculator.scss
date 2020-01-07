@@ -449,7 +449,6 @@ div[class^='tax-calculator-step'] .page-title {
 }
 .explain-popup {
   width: px2rem(540px);
-  height: px2rem(786px);
   border-radius: $radius-xs;
   display: flex;
   flex-direction: column;
@@ -486,6 +485,7 @@ div[class^='tax-calculator-step'] .page-title {
     overflow: auto;
     -webkit-overflow-scrolling: touch;
     line-height: 1.5;
+    @include font-dpr(26px);
     .title {
       margin: px2rem(26px) 0 px2rem(10px);
       &:first-child {
@@ -494,6 +494,7 @@ div[class^='tax-calculator-step'] .page-title {
     }
     p {
       color: $text-color-tip;
+      text-indent: 2em;
     }
     .stress {
       color: $theme-color;

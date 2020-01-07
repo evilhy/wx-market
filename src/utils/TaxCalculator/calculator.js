@@ -137,6 +137,7 @@ class Calculator {
       totalBaseTax: this[$baseTax] * this[$currentMonth], // 累计免税收入额
       totalSocialSecurityFund: this[$socialSecurityFund] * this[$currentMonth], // 累计专项扣除
       totalSpecialDeFund: this[$specialDeFund] * this[$currentMonth], // 累计专项附加扣除
+      totalTaxIncome: this.calTotalTaxIncome(this[$currentMonth]), // 应纳税所得额
       taxRate: this[$taxRate], // 本月税率
       quickDeduction: this[$quickDeduction], // 速算扣除数
       totalLastTaxPay: this[$totalLastTaxPay] // 累计已纳税额

@@ -26,8 +26,11 @@
         <div class="title">个税公式</div>
         <div>当月个税 = 应纳税所得额 x 个税税率 - 速算扣除数 - 累计已缴税额</div>
         <div class="title">计算详情</div>
-        <div class="label">应纳税所得额(元)</div>
-        <div class="tax-amt value">{{currentMonthData.totalWage}}-{{currentMonthData.totalBaseTax}}-{{currentMonthData.totalSocialSecurityFund}}-{{currentMonthData.totalSpecialDeFund}}</div>
+        <div class="row">
+          <span class="label">应纳税所得额(元)</span>
+          <span class="value">{{currentMonthData.totalTaxIncome}}</span>
+        </div>
+        <div class="tax-amt value">{{currentMonthData.totalTaxIncome}}={{currentMonthData.totalWage}}-{{currentMonthData.totalBaseTax}}-{{currentMonthData.totalSocialSecurityFund}}-{{currentMonthData.totalSpecialDeFund}}</div>
         <div class="tax-amt-explain">本年累计收入-累计减除费用-累计专项扣除-累计专项附加扣除</div>
         <div class="row">
           <span class="label">个税税率</span>

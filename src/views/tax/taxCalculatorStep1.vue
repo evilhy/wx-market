@@ -41,7 +41,7 @@ export default {
       return TaxState.getters.deductionDetailTotal
     },
     disabledSubmit () {
-      return !(typeOf(this.income) === 'number' && typeOf(this.deduction) === 'number' && typeOf(this.specialDeduction) === 'number')
+      return typeOf(this.income) !== 'number'
     }
   },
   methods: {
@@ -58,6 +58,12 @@ export default {
       TaxState.commit('changeStep', 'taxCalculatorStep2')
     },
     submitFun () {
+      if (typeOf(this.deduction) !== 'number') {
+        TaxState.commit('updateData', { type: 'deduction', value: 0 })
+      }
+      if (typeOf(this.specialDeduction) !== 'number') {
+        TaxState.commit('updateData', { type: 'specialDeduction', value: 0 })
+      }
       TaxState.commit('changeStep', 'taxCalculatorStep3')
     },
     toPage (name) {

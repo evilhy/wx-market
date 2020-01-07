@@ -18,8 +18,8 @@
       </div>
     </div>
     <div class="bottom">
-      <div class="return" @click="toPage('home')">首页</div>
       <div class="return" @click="toPage('wageList')">我的收入</div>
+      <div class="return" @click="toPage('taxCalculator')">个税计算器</div>
     </div>
   </div>
 </template>

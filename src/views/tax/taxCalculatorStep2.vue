@@ -11,7 +11,7 @@
         <div class="parent-item" @click="toggleDeduction(item)">
           <div class="v-checkbox" :class="{'checked':specialDeductionDetail[item.type].option !== -1}"></div>
           <div class="center-wrap">
-            <div class="title">{{item.title}}<i class="iconfont icon-shurushuoming"
+            <div class="title">{{item.title}}<i class="iconfont icon-wenhao"
                 @click.stop="openExplainPopup(item.type)"></i></div>
             <div class="short-desc">{{item.shortDesc}}</div>
           </div>
