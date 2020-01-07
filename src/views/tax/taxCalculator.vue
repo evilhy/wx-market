@@ -1,5 +1,12 @@
 <template>
-  <component v-bind:is="currentStep"></component>
+  <div class="tax-calculator-page">
+    <component v-bind:is="currentStep"></component>
+    <div class="bottom-logo" v-if="currentStep !== 'taxCalculatorStep2'">
+      <!-- <img src="../../assets/img/hx-gray-logo.png" class="hx" />
+      <div class="line"></div> -->
+      <img src="../../assets/img/fx-gray-logo.png" class="fx" />
+    </div>
+  </div>
 </template>
 
 <script>
@@ -20,7 +27,7 @@ export default {
     }
   },
   created () {
-    helper.title('2019最新个税计算器')
+    helper.title('个税计算器')
   }
 }
 </script>

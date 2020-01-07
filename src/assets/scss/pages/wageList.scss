@@ -140,12 +140,13 @@
     .bill-list {
       padding: 0 px2rem(30px) px2rem(30px);
       li {
+        display: flex;
+        align-items: flex-start;
         margin-bottom: px2rem(24px);
         height: px2rem(140px);
         &:active {
           .bill-main {
             transform: scale(0.9);
-            -webkit-transform: scale(0.9);
           }
         }
         &:last-child {
@@ -159,7 +160,6 @@
       }
     }
     .bill-date {
-      float: left;
       position: relative;
       @include font-dpr(22px);
       line-height: px2rem(30px);
@@ -179,8 +179,8 @@
       }
     }
     .bill-main {
-      float: right;
-      padding: px2rem(30px);
+      display: flex;
+      padding: px2rem(30px) px2rem(10px) px2rem(30px) px2rem(30px);
       width: px2rem(516px);
       height: px2rem(148px);
       position: relative;
@@ -197,12 +197,13 @@
       background: $theme-color;
     }
     .bill-left {
-      float: left;
+      width: 56%;
     }
     .bill-type {
       height: px2rem(34px);
       line-height: px2rem(34px);
       @include font-dpr(24px);
+      @extend %text-overflow;
       i,
       span {
         display: inline-block;
@@ -220,9 +221,11 @@
       line-height: px2rem(30px);
       color: #999999;
       @extend %text-overflow;
+      margin-left: 2px;
     }
     .bill-right {
-      float: right;
+      flex: 1;
+      justify-content: center;
       width: px2rem(170px);
       height: 100%;
       display: flex;

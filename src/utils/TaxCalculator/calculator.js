@@ -7,6 +7,9 @@ const $socialSecurityFund = Symbol('$socialSecurityFund')
 const $specialDeFund = Symbol('$specialDeFund')
 const $currentMonth = Symbol('$currentMonth')
 const $lastMonth = Symbol('$lastMonth')
+const $taxRate = Symbol('$taxRate')
+const $quickDeduction = Symbol('$quickDeduction')
+const $totalLastTaxPay = Symbol('$totalLastTaxPay')
 const $monthRange = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
 class Calculator {
@@ -22,6 +25,12 @@ class Calculator {
   [$currentMonth] = 1; // 当前月份
 
   [$lastMonth] = 0; // 上一月份
+  
+  [$taxRate] = 0; // 当月税率
+
+  [$quickDeduction] = 0; // 速算扣除数
+
+  [$totalLastTaxPay] = 0; // 累计已纳个税
 
   constructor(wage = 0, socialSecurityFund = 0, specialDeFund = 0, currentMonth = 1) { // wage
     if (typeOf(wage) !== 'number') throw new TypeError('应发金额类型应为Number')
@@ -51,33 +60,45 @@ class Calculator {
     return deFund * month
   }
   /**
-   * 计算累计应纳税额
+   * 计算累计应纳税额信息
    *
    * @param {number} [month=1] 月份
    * @returns
    * @memberof Calculator
    */
-  calTotalTaxPay (month = 1) {
-    if (month === 0) return 0
+  calTotalTaxInfo (month = 1) {
+    let result = { // 适应界面需求
+      rate: 0,
+      quickDeduction: 0,
+      totalTaxPay: 0
+    }
+    if (month === 0) return result
 
     const totalTaxIncome = this.calTotalTaxIncome(month)
     if (totalTaxIncome <= 36000) {
-      return totalTaxIncome * 0.03
+      result.rate = 0.03
+      result.quickDeduction = 0
     } else if (totalTaxIncome > 36000 && totalTaxIncome <= 144000) {
-      return totalTaxIncome * 0.1 - 2520
+      result.rate = 0.1
+      result.quickDeduction = 2520
     } else if (totalTaxIncome > 144000 && totalTaxIncome <= 300000) {
-      return totalTaxIncome * 0.2 - 16920
+      result.rate = 0.2
+      result.quickDeduction = 16920
     } else if (totalTaxIncome > 300000 && totalTaxIncome <= 420000) {
-      return totalTaxIncome * 0.25 - 31920
+      result.rate = 0.25
+      result.quickDeduction = 31920
     } else if (totalTaxIncome > 420000 && totalTaxIncome <= 660000) {
-      return totalTaxIncome * 0.3 - 52920
+      result.rate = 0.3
+      result.quickDeduction = 52920
     } else if (totalTaxIncome > 660000 && totalTaxIncome <= 960000) {
-      return totalTaxIncome * 0.35 - 85920
-    } else if (totalTaxIncome > 960000) {
-      return totalTaxIncome * 0.45 - 181920
-    } else { 
-      return 0
+      result.rate = 0.35
+      result.quickDeduction = 85920
+    } else {
+      result.rate = 0.45
+      result.quickDeduction = 181920
     }
+    result.totalTaxPay = totalTaxIncome * result.rate - result.quickDeduction
+    return result
   }
   /**
    * 计算本月应纳税额
@@ -85,9 +106,13 @@ class Calculator {
    * @memberof Calculator
    */
   calCurrentTaxPay () {
-    let totalTaxPay = this.calTotalTaxPay(this[$currentMonth]) // 累计应纳税额
-    let totalLastTaxPay = this.calTotalTaxPay(this[$lastMonth]) // 累计已纳税额
-    return totalTaxPay - totalLastTaxPay
+    let currentTotalInfo = this.calTotalTaxInfo(this[$currentMonth])
+    let lastTotalTaxPay = this.calTotalTaxInfo(this[$lastMonth]).totalTaxPay
+    this[$taxRate] = currentTotalInfo.rate
+    this[$quickDeduction] = currentTotalInfo.quickDeduction
+    this[$totalLastTaxPay] = lastTotalTaxPay
+
+    return currentTotalInfo.totalTaxPay - lastTotalTaxPay
   }
   /**
    * 计算本月税后工资
@@ -96,6 +121,26 @@ class Calculator {
    */
   calAfterTaxWage () {
     return this[$wage] - this[$socialSecurityFund] - this.calCurrentTaxPay()
+  }
+  /**
+   * 计算页面展示数据
+   *
+   * @memberof Calculator
+   */
+  calShowData () { 
+    let shouldTaxPay = this.calCurrentTaxPay()
+    let afterTaxWage = this.calAfterTaxWage()
+    return {
+      shouldTaxPay,  // 本月个税
+      afterTaxWage,  // 本月税后工资
+      totalWage: this[$wage] * this[$currentMonth], // 累计工资
+      totalBaseTax: this[$baseTax] * this[$currentMonth], // 累计免税收入额
+      totalSocialSecurityFund: this[$socialSecurityFund] * this[$currentMonth], // 累计专项扣除
+      totalSpecialDeFund: this[$specialDeFund] * this[$currentMonth], // 累计专项附加扣除
+      taxRate: this[$taxRate], // 本月税率
+      quickDeduction: this[$quickDeduction], // 速算扣除数
+      totalLastTaxPay: this[$totalLastTaxPay] // 累计已纳税额
+    }
   }
 }
 
