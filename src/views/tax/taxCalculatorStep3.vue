@@ -1,36 +1,56 @@
 <template>
   <div class="tax-calculator-step3">
-    <div class="content-block">
-      <div class="page-title">附加专项扣除后</div>
-      <div class="tax-box">
-        <div class="tax-item">
-          <p>税后工资</p>
-          <p>{{ latestData.wage | money }}元</p>
+    <div class="main-form">
+      <div class="page-title">试算结果</div>
+      <div class="result-wrap">
+        <div class="result-item">
+          <p class="value">{{currentMonthData.shouldTaxPay | money}}</p>
+          <p class="label">当月个税(元)</p>
         </div>
-        <div class="tax-item">
-          <p>应纳个税</p>
-          <p>{{ latestData.tax | money }}元</p>
-        </div>
-      </div>
-      <div class="page-title">附加专项扣除前</div>
-      <div class="tax-box">
-        <div class="tax-item">
-          <p>税后工资</p>
-          <p>{{ previousData.wage | money }}元</p>
-        </div>
-        <div class="tax-item">
-          <p>应纳个税</p>
-          <p>{{ previousData.tax | money }}元</p>
+        <div class="result-item">
+          <p class="value">{{currentMonthData.afterTaxWage | money}}</p>
+          <p class="label">税后工资(元)</p>
         </div>
       </div>
+      <div class="month-row">
+        <div class="month-col" :class="{active: currentMonth === item}" span="5.5" v-for="(item, index) in monthRange" :key="index" @click="currentMonth = item">
+          <div class="month">{{item}}月</div>
+          <div class="tax">税率{{allMonthTaxData[item - 1].taxRate * 100}}%</div>
+        </div>
+      </div>
+      <button class="submit-btn" @click="submitFun">重新试算</button>
+      <p class="bar" @click="openFlag = !openFlag">展开试算过程<span class="arrow" :class="[openFlag ? 'top' : 'bottom']"></span></p>
     </div>
-    <div class="content-block">
-      <img :src="infoForSaveAmount.img" alt="" class="text-img">
-      <p class="text-1">每年能省<strong>{{ saveAmount | money }}</strong>元</p>
-      <p class="text-2">{{ infoForSaveAmount.desc }}</p>
-    </div>
-    <div class="footer">
-      <button class="submit-btn" @click="submitFun">再算一次</button>
+    <div class="result-explain" :style="{ height: `${explainHeight}px;`}">
+      <div class="result-detail" :class="{open: openFlag}">
+        <div class="title">个税公式</div>
+        <div>当月个税 = 应纳税所得额 x 个税税率 - 速算扣除数 - 累计已缴税额</div>
+        <div class="title">计算详情</div>
+        <div class="row">
+          <span class="label">应纳税所得额(元)</span>
+          <span class="value">{{currentMonthData.totalTaxIncome}}</span>
+        </div>
+        <div class="tax-amt value">{{currentMonthData.totalTaxIncome}}={{currentMonthData.totalWage}}-{{currentMonthData.totalBaseTax}}-{{currentMonthData.totalSocialSecurityFund}}-{{currentMonthData.totalSpecialDeFund}}</div>
+        <div class="tax-amt-explain">本年累计收入-累计减除费用-累计专项扣除-累计专项附加扣除</div>
+        <div class="row">
+          <span class="label">个税税率</span>
+          <span class="value">x {{currentMonthData.taxRate * 100}}%</span>
+        </div>
+        <div class="row">
+          <span class="label">速算扣除数(元)</span>
+          <span class="value">- {{currentMonthData.quickDeduction | money}}</span>
+        </div>
+        <div class="row">
+          <span class="label">累计已缴税额(元)</span>
+          <span class="value">- {{currentMonthData.totalLastTaxPay | money}}</span>
+        </div>
+        <div class="row">
+          <span class="label active-color">个税(元)</span>
+          <span class="value active-color">{{currentMonthData.shouldTaxPay | money}}</span>
+        </div>
+        <div class="tip">当应纳税所得额超过一定额度时，则税率向上提高一级，详细可参考下表。</div>
+      </div>
+      <img v-if="openFlag" class="tax-rate-excel" src="../../assets/img/tax/tax-rate.png" alt="">
     </div>
   </div>
 </template>
@@ -41,14 +61,13 @@ import TaxState from 'utils/TaxCalculator/state'
 export default {
   data () {
     return {
-      latestData: { wage: 0, tax: 0 },
-      previousData: { wage: 0, tax: 0 }
+      currentMonth: 1,
+      monthRange: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      allMonthTaxData: [],
+      openFlag: false
     }
   },
   computed: {
-    month () {
-      return TaxState.state.month
-    },
     income () {
       return TaxState.state.income
     },
@@ -58,36 +77,14 @@ export default {
     specialDeduction () {
       return TaxState.state.specialDeduction
     },
-    saveAmount () {
-      return this.previousData.tax >= this.latestData.tax
-        // eslint-disable-next-line
-        ? _.floor((this.previousData.tax - this.latestData.tax) * 12, 2)
-        : 0
-    },
-    infoForSaveAmount () {
-      let info = new Map([
-        [1, { desc: '恩，好好工作，努力加薪吧~', img: require('../../assets/img/tax/level-1.png') }],
-        [2, { desc: '苍蝇也是肉，能省一点是一点吧~', img: require('../../assets/img/tax/level-2.png') }],
-        [3, { desc: '不错哦，每月可以加一顿大餐了~', img: require('../../assets/img/tax/level-3.png') }],
-        [4, { desc: '好激动，马尔代夫的海近在眼前~', img: require('../../assets/img/tax/level-4.png') }],
-        [5, { desc: '厉害，好像可以换辆车了~', img: require('../../assets/img/tax/level-5.png') }],
-        [6, { desc: '哇塞，你省出了一艘游艇~', img: require('../../assets/img/tax/level-6.png') }]
-      ])
-      let level
-      if (this.saveAmount >= 20000) {
-        level = 6
-      } else if (this.saveAmount < 20000 && this.saveAmount >= 10000) {
-        level = 5
-      } else if (this.saveAmount < 10000 && this.saveAmount >= 5000) {
-        level = 4
-      } else if (this.saveAmount < 5000 && this.saveAmount >= 1000) {
-        level = 3
-      } else if (this.saveAmount < 1000 && this.saveAmount >= 1) {
-        level = 2
-      } else {
-        level = 1
+    explainHeight () {
+      if (this.openFlag) {
+        return document.querySelector('.result-explain').offsetHeight
       }
-      return info.get(level)
+      return 0
+    },
+    currentMonthData () {
+      return this.allMonthTaxData[this.currentMonth - 1]
     }
   },
   created () {
@@ -98,12 +95,14 @@ export default {
       TaxState.commit('changeStep', 'taxCalculatorStep1')
     },
     getPageData () {
-      let latestTaxCalculator = new TaxCalculator(this.income, this.deduction, this.specialDeduction, this.month)
-      let previousTaxCalculator = new TaxCalculator(this.income, this.deduction, 0, this.month)
-      this.latestData.wage = latestTaxCalculator.calAfterTaxWage()
-      this.latestData.tax = latestTaxCalculator.calCurrentTaxPay()
-      this.previousData.wage = previousTaxCalculator.calAfterTaxWage()
-      this.previousData.tax = previousTaxCalculator.calCurrentTaxPay()
+      this.monthRange.forEach((item) => {
+        let taxCalculator = new TaxCalculator(this.income, this.deduction, this.specialDeduction, item)
+        let data = taxCalculator.calShowData()
+        this.allMonthTaxData.push(data)
+      })
+    },
+    click (item) {
+      this.currentMonth = item
     }
   }
 }

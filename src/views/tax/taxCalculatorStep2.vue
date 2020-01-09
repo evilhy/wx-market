@@ -11,11 +11,13 @@
         <div class="parent-item" @click="toggleDeduction(item)">
           <div class="v-checkbox" :class="{'checked':specialDeductionDetail[item.type].option !== -1}"></div>
           <div class="center-wrap">
-            <div class="title">{{item.title}}<i class="iconfont icon-shurushuoming" @click.stop="openExplainPopup(item.type)"></i></div>
+            <div class="title">{{item.title}}<i class="iconfont icon-wenhao"
+                @click.stop="openExplainPopup(item.type)"></i></div>
             <div class="short-desc">{{item.shortDesc}}</div>
           </div>
           <template v-if="item.options.length > 1">
-            <span class="value" v-if="specialDeductionDetail[item.type].option !== -1">{{specialDeductionDetail[item.type].value}}</span>
+            <span class="value"
+              v-if="specialDeductionDetail[item.type].option !== -1">{{specialDeductionDetail[item.type].value}}</span>
             <span class="arrow"></span>
           </template>
           <template v-else>
@@ -114,13 +116,13 @@ export default {
           open: false,
           options: [
             {
-              label: '直辖市、省会城市',
-              value: 1200,
+              label: '直辖市、省会(首府)城市',
+              value: 1500,
               type: 'fixed'
             },
             {
               label: '市辖区户籍人口超过100万',
-              value: 1000,
+              value: 1100,
               type: 'fixed'
             },
             {
@@ -149,18 +151,6 @@ export default {
             }
           ]
         }
-        /* {
-          type: 'illness',
-          title: '大病医疗',
-          shortDesc: '每年医保目录范围内自付超过15000元不超过80000元部分',
-          max: 80000,
-          options: [
-            {
-              value: illness.value || '',
-              type: 'auto'
-            }
-          ]
-        } */
       ],
       hasShowTip: false,
       popupType: ''
@@ -219,8 +209,7 @@ export default {
       !this.hasShowTip && Dialog.alert({
         title: '提示',
         message: '首套房贷利息和住房租金扣减只可二选一'
-    })
-      // ('首套房贷利息和住房租金扣减只可二选一')
+      })
       this.hasShowTip = true
     },
     changeOptionValue (data, index) {
@@ -229,8 +218,8 @@ export default {
       if (type === 'child') {
         options[index].value = Math.floor(options[index].value / 1000) * 1000
       }
-      if ((type === 'parent' || type === 'illness') && options[index].value > max) {
-        options[index].value = max
+      if ((type === 'parent') && options[index].value > max / 2) {
+        options[index].value = max / 2
       }
       if (currentDeduction.option !== index) return false
       currentDeduction.value = options[index].value

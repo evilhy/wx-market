@@ -6,7 +6,7 @@
             <div class="bill-left">
                 <div class="bill-type">
                     <i class="iconfont" :class="typeIcon[wage.spTypeIcon]"></i>
-                    <span>{{wage.fundType}}</span>
+                    <span>{{wage.fundType}}</span><span v-if="wage.fundDateDesc">({{wage.fundDateDesc}})</span>
                 </div>
                 <p class="bill-name">{{wage.spName}}</p>
             </div>
