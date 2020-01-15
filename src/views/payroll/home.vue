@@ -40,6 +40,7 @@
 import Vue from 'vue'
 import { ImagePreview } from 'vant'
 import helper from 'utils/helper'
+import validate from 'utils/validate'
 Vue.use(ImagePreview)
 
 export default {
@@ -109,7 +110,9 @@ export default {
     clickImg (index) {
       let { link = '', url = '' } = this.imgList[index]
       if (link) {
-        window.location.href = link
+        if (validate.isUrl(link)) {
+          window.location.href = link
+        }
       } else {
         ImagePreview({
           images: [url],
