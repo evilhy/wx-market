@@ -94,13 +94,6 @@ export function checkIsWeixin () {
   return !!useragent.match(/micromessenger/i)
 }
 
-export function validIdCard(id) {
-  if (typeOf(id) !== 'string' || !/(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/.test(id)) {
-    return false
-  }
-  return true
-}
-
 export function getPageQueryObject (fullPath = window.decodeURIComponent(window.location.href)) {
   if (typeOf(fullPath) !== 'string') return {}
   let result = {}

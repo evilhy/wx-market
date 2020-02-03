@@ -37,6 +37,12 @@ export default {
     demo: 'https://sitwxp.cardpu.com/wisale-h5/#/',
     production: 'https://wxp.cardpu.com/wisale-h5/#/'
   },
+  zhsq_sh_url: {
+    development: 'https://demowisdom.wisales.cn/zhsq-sh/#/',
+    sit: 'https://demowisdom.wisales.cn/zhsq-sh/#/',
+    demo: 'https://demowisdom.wisales.cn/zhsq-sh/#/',
+    production: 'https://easylife.wisales.cn/zhsq-sh/#/'
+  },
   month_zh: {
     '01': '1月',
     '02': '2月',

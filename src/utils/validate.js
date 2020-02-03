@@ -13,5 +13,11 @@ export default {
   },
   isCode (value) {
     return /[0-9]{6}/.test(value)
+  },
+  isUrl (value) {
+    return /^((http|https):\/\/(\w+:{0,1}\w*@)?(\S+)|)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?$/.test(value)
+  },
+  isNumber (value) {
+    return /^\d+(\.\d+)?$/.test(value)
   }
 }

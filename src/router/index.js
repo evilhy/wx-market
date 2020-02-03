@@ -574,9 +574,16 @@ export default new Router({
       component: resolve => {
         require(['../views/hr/ebank.vue'], resolve)
       }
+    },
+    {
+      path: '/2019-ncov', // 新型冠状病毒
+      name: '2019Ncov',
+      component: resolve => {
+        require(['../views/public/2019Ncov.vue'], resolve)
+      }
     }
   ],
-  scrollBehavior (to, from, savedPosition) {
+  scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
       return savedPosition
     } else {
