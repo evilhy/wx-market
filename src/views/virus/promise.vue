@@ -7,7 +7,7 @@
     </div>
     <div ref="barrage"></div>
     <van-button class="btn promise-btn" round color="linear-gradient(to bottom, #eae629, #fed04d)"
-      :disabled="hasPromised" @click="sheetFlag = true">我要承诺</van-button>
+      :disabled="hasPromised" @click="sheetFlag = true">{{ hasPromised ? '我已承诺' : '我要承诺' }}</van-button>
     <van-action-sheet class="promise-form" v-model="sheetFlag" title="填写您要承诺的内容">
       <div class="content">
         <van-field v-model.trim="nickname" label="昵  称" v-input clearable placeholder="限5字以内" />
