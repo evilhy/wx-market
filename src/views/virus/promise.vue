@@ -10,8 +10,8 @@
       @click="sheetFlag = true">我要承诺</van-button>
     <van-action-sheet class="promise-form" v-model="sheetFlag" title="填写您要承诺的内容">
       <div class="content">
-        <van-field v-model="nickname" label="昵  称" v-input clearable placeholder="限5字以内" />
-        <van-field v-model="phone" label="手机号" v-input maxlength="11" clearable placeholder="请输入" />
+        <van-field v-model.trim="nickname" label="昵  称" v-input clearable placeholder="限5字以内" />
+        <van-field v-model.trim="phone" label="手机号" v-input maxlength="11" clearable placeholder="请输入" />
         <van-field label="我承诺" class="no-border" value="(请选择承诺语)" readonly />
         <div class="promise-select">
           <div class="promise-item" :class="{'active': msgTemplateId === item.msgTemplateId}"
@@ -39,7 +39,7 @@ export default {
     return {
       barrage: null,
       page: 1,
-      totalElements: '',
+      totalElements: 0,
       timer: null,
       sheetFlag: false,
       nickname: '',
@@ -97,6 +97,12 @@ export default {
       }
       return '???'
     },
+    total () {
+      if (this.totalElements) {
+        return filter.money(this.totalElements, 0)
+      }
+      return ''
+    },
     hasPromised () {
       return !!this.userInfo.rankNo
     }
@@ -123,7 +129,7 @@ export default {
         if (this.userInfo.openid) {
           this.updateRankNo(rankNo)
         }
-        this.totalElements = filter.money(totalElements, 0)
+        this.totalElements = totalElements
         this.barrage.addData(this.transData(content))
         this.barrage.play()
       }
@@ -173,9 +179,11 @@ export default {
         let res = await this.$Virus.addPromise({ nickname, phone, msgTemplateId, headimgurl, openid })
         if (res.data) {
           this.updateRankNo(res.data)
+          this.totalElements++
         }
         this.sheetFlag = false
         this.barrage.insertData({ nickname: nickname.substring(0, 1) + '****', headimgurl, msg: collect.getItem(this.promiseList, 'msgTemplateId', msgTemplateId).text || '' })
+        helper.toast('发布成功')
       } catch (e) {
         this.loading = false
       }

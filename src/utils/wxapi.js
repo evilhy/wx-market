@@ -114,7 +114,7 @@ export default class Wxapi {
     return new Promise((resolve, reject) => {
       wx.miniProgram.getEnv(({ miniprogram = false }) => {
         resolve(miniprogram)
-      })      
+      })
     })
   }
   /**
