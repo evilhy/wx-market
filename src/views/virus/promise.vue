@@ -86,7 +86,7 @@ export default {
         }
       ],
       userInfo: helper.getVirusUserInfo({}),
-      promiseUrl: `${sysConfig.pro_base_url[process.env.NODE_ENV]}virus-auth`,
+      shareUrl: `${sysConfig.pro_base_url[process.env.NODE_ENV]}virus-auth`,
       shareImgUrl: `${sysConfig.pro_base_url[process.env.NODE_ENV].slice(0, -2)}static/img/virus-share-img.png`,
       loading: false
     }
@@ -114,12 +114,16 @@ export default {
     this.nickname = this.userInfo.nickname || ''
     this.getBarrageList()
     if (checkIsWeixin()) {
-      this.wxCustomShare({
-        link: this.promiseUrl,
-        title: '武汉加油！',
-        desc: '为武汉加油，战胜疫情，从我做起！',
-        imgUrl: this.shareImgUrl
-      })
+      if (!this.userInfo.openid) {
+        window.location.replace(this.shareUrl)
+      } else {
+        this.wxCustomShare({
+          link: this.shareUrl,
+          title: '武汉加油！',
+          desc: '为武汉加油，战胜疫情，从我做起！',
+          imgUrl: this.shareImgUrl
+        })
+      }
     }
   },
   mounted () {
