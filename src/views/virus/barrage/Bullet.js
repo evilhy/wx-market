@@ -3,7 +3,7 @@ const $minStep = Symbol('$minStep')
 const $finished = Symbol('$finished')
 const $width = Symbol('$width')
 const $parentWidth = Symbol('$parentWidth')
-const defaultImg = require('../../../assets/img/tfinance/avator-default.png')
+const defaultImg = require('../../../assets/img/virus/virus-share-img.png')
 
 class Bullet {
 
