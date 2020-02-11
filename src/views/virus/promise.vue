@@ -103,7 +103,7 @@ export default {
       if (this.totalElements) {
         return filter.money(this.totalElements, 0)
       }
-      return ''
+      return 0
     },
     hasPromised () {
       return !!this.userInfo.rankNo
