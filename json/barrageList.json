@@ -1,7 +1,7 @@
 {
   "pageNum": 1,
   "pageSize": 10,
-  "totalElements": 12090,
+  "totalElements": 0,
   "totalPages": 0,
   "last": true,
   "first": true,
@@ -35,5 +35,5 @@
       "msgTemplateId": "004"
     }
   ],
-  "rankNo": 1208
+  "rankNo": 0
 }

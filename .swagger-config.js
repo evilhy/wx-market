@@ -243,7 +243,10 @@ module.exports = {
       },
       '/virus': {
         get: barrageList,
-        post: 102
+        post: {
+          rankNo: 102,
+          total: 103
+        }
       },
       '/virus/userInfo': {
         get: wUserInfo

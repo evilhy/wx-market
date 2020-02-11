@@ -185,9 +185,10 @@ export default {
       try {
         this.loading = true
         let res = await this.$Virus.addPromise({ nickname, phone, msgTemplateId, headimgurl, openid })
+        let { rankNo, total } = res.data
         if (res.data) {
-          this.updateRankNo(res.data)
-          this.totalElements++
+          this.updateRankNo(rankNo)
+          this.totalElements = total
         }
         this.sheetFlag = false
         this.barrage.insertData({ nickname: nickname.substring(0, 1) + '****', headimgurl, msg: collect.getItem(this.promiseList, 'msgTemplateId', msgTemplateId).text || '' })
