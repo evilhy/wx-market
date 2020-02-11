@@ -1,5 +1,5 @@
 import storage from 'utils/storage'
-import Tracker from './tracker'
+import Tracker from './Tracker'
 
 const $timer = Symbol('$timer')
 const $storageName = Symbol('$storageName')
