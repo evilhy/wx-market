@@ -7,7 +7,7 @@ const defaultImg = require('../../../assets/img/tfinance/avator-default.png')
 
 class Bullet {
 
-  [$speed] = 40; // 每秒移动的速度,单位px
+  [$speed] = 50; // 每秒移动的速度,单位px
 
   [$minStep] = 0.2; // 每条弹幕之间最少的间隔(以轨道宽度为基准)
 

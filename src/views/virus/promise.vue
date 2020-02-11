@@ -6,8 +6,8 @@
       <p>我是第<span class="stress">{{rankNo}}</span>位承诺人</p>
     </div>
     <div ref="barrage"></div>
-    <van-button class="btn promise-btn" round color="linear-gradient(to bottom, #eae629, #fed04d)" :disabled="hasPromised"
-      @click="sheetFlag = true">我要承诺</van-button>
+    <van-button class="btn promise-btn" round color="linear-gradient(to bottom, #eae629, #fed04d)"
+      :disabled="hasPromised" @click="sheetFlag = true">我要承诺</van-button>
     <van-action-sheet class="promise-form" v-model="sheetFlag" title="填写您要承诺的内容">
       <div class="content">
         <van-field v-model.trim="nickname" label="昵  称" v-input clearable placeholder="限5字以内" />
@@ -15,10 +15,12 @@
         <van-field label="我承诺" class="no-border" value="(请选择承诺语)" readonly />
         <div class="promise-select">
           <div class="promise-item" :class="{'active': msgTemplateId === item.msgTemplateId}"
-            v-for="(item, index) in promiseList" :key="index" @click="msgTemplateId = item.msgTemplateId">{{item.text}}</div>
+            v-for="(item, index) in promiseList" :key="index" @click="msgTemplateId = item.msgTemplateId">{{item.text}}
+          </div>
         </div>
       </div>
-      <van-button class="btn submit-btn" :loading="loading" loading-text="发布中" round color="linear-gradient(to bottom, #eae629, #fed04d)" @click="submit">发布
+      <van-button class="btn submit-btn" :loading="loading" loading-text="发布中" round
+        color="linear-gradient(to bottom, #eae629, #fed04d)" @click="submit">发布
       </van-button>
     </van-action-sheet>
   </div>
@@ -29,7 +31,7 @@ import Barrage from './barrage/Barrage'
 import collect from 'utils/collect'
 import filter from 'utils/filter'
 import helper from 'utils/helper'
-import { isEmojiCharacter } from 'utils/assist'
+import { isEmojiCharacter, checkIsWeixin } from 'utils/assist'
 import validate from 'utils/validate'
 import wxShare from 'mixins/wxShare'
 import sysConfig from 'utils/constant'
@@ -108,15 +110,17 @@ export default {
     }
   },
   created () {
+    helper.title('武汉加油')
     this.nickname = this.userInfo.nickname || ''
     this.getBarrageList()
-    this.wxCustomShare({
-      link: this.promiseUrl, 
-      title: '武汉加油！', 
-      desc: '为武汉加油，战胜疫情，从我做起！', 
-      imgUrl: this.shareImgUrl
-    })
-    helper.title('武汉加油')
+    if (checkIsWeixin()) {
+      this.wxCustomShare({
+        link: this.promiseUrl,
+        title: '武汉加油！',
+        desc: '为武汉加油，战胜疫情，从我做起！',
+        imgUrl: this.shareImgUrl
+      })
+    }
   },
   mounted () {
     this.barrage = new Barrage({ container: this.$refs.barrage, trackerCount: 4, autoPlay: false })
