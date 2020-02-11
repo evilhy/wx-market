@@ -581,6 +581,27 @@ export default new Router({
       component: resolve => {
         require(['../views/public/2019Ncov.vue'], resolve)
       }
+    },
+    {
+      path: '/virus-auth', // 用户抗病毒授权页
+      name: 'virusAuth',
+      component: resolve => {
+        require(['../views/virus/auth.vue'], resolve)
+      }
+    },
+    {
+      path: '/virus-code', // 用户抗病毒获取用户信息页
+      name: 'virusCode',
+      component: resolve => {
+        require(['../views/virus/code.vue'], resolve)
+      }
+    },
+    {
+      path: '/virus-promise', // 用户抗病毒承诺页
+      name: 'virusPromise',
+      component: resolve => {
+        require(['../views/virus/promise.vue'], resolve)
+      }
     }
   ],
   scrollBehavior(to, from, savedPosition) {

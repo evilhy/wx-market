@@ -57,6 +57,8 @@ const townQuery = require('./json/area.townQuery.json')
 const addressDetail = require('./json/addressDetail.json')
 const welfareOrderDetail = require('./json/welfare.orderDetail.json')
 const welfareOrderTrack = require('./json/welfare.orderTrack.json')
+const barrageList = require('./json/barrageList.json')
+const wUserInfo = require('./json/wUserInfo.json')
 module.exports = {
   openApi: [{
     baseURL: 'https://sitgateway.cardpu.com/payroll',
@@ -238,6 +240,13 @@ module.exports = {
       },
       '/merchant/callback': {
         get: merchantToken
+      },
+      '/virus': {
+        get: barrageList,
+        post: 102
+      },
+      '/virus/userInfo': {
+        get: wUserInfo
       }
     }
   },{
