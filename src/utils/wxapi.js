@@ -132,7 +132,6 @@ export default class Wxapi {
         let wxUrl = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${appId}&redirect_uri=${encodeRedirectUrl}&response_type=code&scope=${type}&state=#wechat_redirect`
         window.location.replace(wxUrl)
         resolve()
-
       } else {
         reject('非微信渠道')
       }
