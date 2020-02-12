@@ -110,3 +110,12 @@ export function getPageQueryObject (fullPath = window.decodeURIComponent(window.
     })
   return result
 }
+
+export function isAndroid () {
+  let u = navigator.userAgent.toLowerCase()
+  return /android/.test(u) || /linux/.test(u)
+}
+
+export function isIOS () {
+  return /ios|iphone|ipad|ipod/.test(navigator.userAgent.toLowerCase())
+}

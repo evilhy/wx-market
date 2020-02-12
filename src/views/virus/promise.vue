@@ -5,10 +5,12 @@
       <p>累计<span class="stress">{{totalElements}}</span>人承诺</p>
       <p>我是第<span class="stress">{{rankNo}}</span>位承诺人</p>
     </div>
-    <video class="video" controls controlslist="nodownload noremoteplayback nofullscreen" autoplay x5-playsinline playsinline webkit-playsinline>
-      <source src="http://mpvideo.qpic.cn/0bf2imaagaaaa4ajgkccibpfaq6danbqaaya.f10002.mp4?dis_k=860b65c15df27b1570e2804c635ddeb9&dis_t=1581482658" type="video/mp4">
-      抱歉，您的浏览器不支持嵌入式视频。
-    </video>
+    <div class="video-wrap" :class="{ hidden: sheetFlag === true }">
+      <video class="video" controls controlslist="nodownload noremoteplayback nofullscreen" webkit-playsinline playsinline x5-playsinline>
+        <source src="http://mpvideo.qpic.cn/0bf2imaagaaaa4ajgkccibpfaq6danbqaaya.f10002.mp4?dis_k=16e71abdf2fafc8047a8d7e610324795&dis_t=1581505420" type="video/mp4">
+        抱歉，您的浏览器不支持嵌入式视频。
+      </video>
+    </div>
     <div ref="barrage"></div>
     <van-button class="btn promise-btn" round color="linear-gradient(to bottom, #eae629, #fed04d)"
       :disabled="hasPromised" @click="sheetFlag = true">{{ hasPromised ? '我已承诺' : '我要承诺' }}</van-button>
@@ -35,7 +37,7 @@ import Barrage from './barrage/Barrage'
 import collect from 'utils/collect'
 import filter from 'utils/filter'
 import helper from 'utils/helper'
-import { isEmojiCharacter, checkIsWeixin } from 'utils/assist'
+import { isEmojiCharacter, checkIsWeixin, isIOS } from 'utils/assist'
 import validate from 'utils/validate'
 import wxShare from 'mixins/wxShare'
 import sysConfig from 'utils/constant'
@@ -131,7 +133,7 @@ export default {
     }
   },
   mounted () {
-    this.barrage = new Barrage({ container: this.$refs.barrage, autoPlay: false })
+    this.barrage = new Barrage({ container: this.$refs.barrage, trackerCount: isIOS() ? 2 : 3, autoPlay: false })
   },
   methods: {
     async getBarrageList () {
