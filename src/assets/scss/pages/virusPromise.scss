@@ -13,7 +13,7 @@
   }
   .total-outline {
     position: absolute;
-    top: 42vw;
+    top: 35vw;
     left: 50%;
     transform: translateX(-50%);
     width: px2rem(400px);
@@ -32,9 +32,20 @@
       color: #a5160c;
     }
   }
+  .video{
+    position: absolute;
+    top: 57vw;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 62.5vw;
+    height: 35vw;
+    z-index: 10;
+    background: url('../img/virus/video-bg.jpeg') no-repeat;
+    background-size: 100% 100%;
+  }
   .barrage-container{
-    top: px2rem(420px);
-    bottom: px2rem(150px);
+    top: 95vw;
+    bottom: 20vw;
     z-index: 2;
   }
   .btn {
@@ -47,7 +58,7 @@
   }
   .promise-btn {
     position: absolute;
-    bottom: px2rem(40px);
+    bottom: px2rem(30px);
     left: 25%;
   }
   .promise-form {

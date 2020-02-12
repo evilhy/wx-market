@@ -1,10 +1,14 @@
 <template>
   <div class="virus-promise-page">
-    <img class="bg" src="../../assets/img/virus/bg.png" alt="">
+    <img class="bg" src="../../assets/img/virus/bg.jpg" alt="">
     <div class="total-outline">
       <p>累计<span class="stress">{{totalElements}}</span>人承诺</p>
       <p>我是第<span class="stress">{{rankNo}}</span>位承诺人</p>
     </div>
+    <video class="video" controls controlslist="nodownload noremoteplayback nofullscreen" autoplay x5-playsinline playsinline webkit-playsinline>
+      <source src="http://mpvideo.qpic.cn/0bf2imaagaaaa4ajgkccibpfaq6danbqaaya.f10002.mp4?dis_k=860b65c15df27b1570e2804c635ddeb9&dis_t=1581482658" type="video/mp4">
+      抱歉，您的浏览器不支持嵌入式视频。
+    </video>
     <div ref="barrage"></div>
     <van-button class="btn promise-btn" round color="linear-gradient(to bottom, #eae629, #fed04d)"
       :disabled="hasPromised" @click="sheetFlag = true">{{ hasPromised ? '我已承诺' : '我要承诺' }}</van-button>
@@ -127,7 +131,7 @@ export default {
     }
   },
   mounted () {
-    this.barrage = new Barrage({ container: this.$refs.barrage, trackerCount: 4, autoPlay: false })
+    this.barrage = new Barrage({ container: this.$refs.barrage, autoPlay: false })
   },
   methods: {
     async getBarrageList () {
