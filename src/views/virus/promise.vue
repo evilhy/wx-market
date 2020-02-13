@@ -196,9 +196,16 @@ export default {
         helper.toast('昵称不能超过5个字符！')
         return
       }
-      if (!validate.isPhone(phone)) {
-        helper.toast('请输入正确的手机号！')
-        return
+      if (checkIsWeixin()) {
+        if (!validate.isPhone(phone)) {
+          helper.toast('请输入正确的手机号！')
+          return
+        }
+      } else {
+        if (phone && !validate.isPhone(phone)) {
+          helper.toast('请输入正确的手机号！')
+          return
+        }
       }
       if (!msgTemplateId) {
         helper.toast('请选择承诺语！')
