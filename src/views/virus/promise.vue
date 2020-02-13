@@ -6,8 +6,9 @@
       <p>我是第<span class="stress">{{rankNo}}</span>位承诺人</p>
     </div>
     <div class="video-wrap" :class="{ hidden: sheetFlag === true }">
-      <video class="video" controls controlslist="nodownload noremoteplayback nofullscreen" webkit-playsinline playsinline x5-playsinline>
-        <source src="http://mpvideo.qpic.cn/0bf2imaagaaaa4ajgkccibpfaq6danbqaaya.f10002.mp4?dis_k=16e71abdf2fafc8047a8d7e610324795&dis_t=1581505420" type="video/mp4">
+      <video class="video" controls controlslist="nodownload noremoteplayback nofullscreen" webkit-playsinline
+        playsinline x5-playsinline>
+        <source :src="videoSrc" type="video/mp4">
         抱歉，您的浏览器不支持嵌入式视频。
       </video>
     </div>
@@ -37,7 +38,7 @@ import Barrage from './barrage/Barrage'
 import collect from 'utils/collect'
 import filter from 'utils/filter'
 import helper from 'utils/helper'
-import { isEmojiCharacter, checkIsWeixin, isIOS } from 'utils/assist'
+import { isEmojiCharacter, checkIsWeixin } from 'utils/assist'
 import validate from 'utils/validate'
 import wxShare from 'mixins/wxShare'
 import sysConfig from 'utils/constant'
@@ -94,6 +95,7 @@ export default {
       userInfo: helper.getVirusUserInfo({}),
       shareUrl: `${sysConfig.pro_base_url[process.env.NODE_ENV]}virus-auth`,
       shareImgUrl: `${sysConfig.pro_base_url[process.env.NODE_ENV].slice(0, -2)}static/img/virus-share-img.png`,
+      videoSrc: `${sysConfig.pro_base_url[process.env.NODE_ENV].slice(0, -2)}static/img/virus.mp4`,
       loading: false
     }
   },
@@ -118,7 +120,6 @@ export default {
   created () {
     helper.title('武汉加油')
     this.nickname = this.userInfo.nickname || ''
-    this.getBarrageList()
     if (checkIsWeixin()) {
       if (!this.userInfo.openid) {
         window.location.replace(this.shareUrl)
@@ -133,9 +134,24 @@ export default {
     }
   },
   mounted () {
-    this.barrage = new Barrage({ container: this.$refs.barrage, trackerCount: isIOS() ? 2 : 3, autoPlay: false })
+    this.barrage = new Barrage({ container: this.$refs.barrage, trackerCount: this.calTrackerCount(), autoPlay: false })
+    this.getBarrageList()
   },
   methods: {
+    calTrackerCount () {
+      let clientW = document.documentElement.clientWidth
+      let clientH = document.documentElement.clientHeight
+      let rate = clientH / clientW
+      if (rate >= 2) {
+        return 5
+      } else if (rate >= 1.76 && rate < 2) {
+        return 4
+      } else if (rate >= 1.57 && rate < 1.875) {
+        return 3
+      } else {
+        return 2
+      }
+    },
     async getBarrageList () {
       let res = await this.$Virus.getBarrageList(this.page)
       let { last = false, content = [], totalElements = 0, rankNo = 0 } = res.data
