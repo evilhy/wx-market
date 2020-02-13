@@ -42,6 +42,7 @@ class Barrage {
    * @memberof Barrage
    */
   play () {
+    if (!Array.isArray(this[$data]) || !this[$data].length) return
     this[$timer] = setInterval(() => {
       for (let i = 0, len = this[$trackers].length; i < len; i++) {
         let tracker = this[$trackers][i]
@@ -112,7 +113,7 @@ class Barrage {
    * @memberof Barrage
    */
   addData(data) {
-    if (!Array.isArray(data)) return
+    if (!Array.isArray(data) || !data.length) return
     this[$data].push(...data)
     let storeData = storage.getSession(this[$storageName], [])
     storeData.push(...data)
