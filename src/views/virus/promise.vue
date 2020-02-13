@@ -197,12 +197,12 @@ export default {
         return
       }
       if (checkIsWeixin()) {
-        if (!validate.isPhone(phone)) {
+        if (phone && !validate.isPhone(phone)) {
           helper.toast('请输入正确的手机号！')
           return
         }
       } else {
-        if (phone && !validate.isPhone(phone)) {
+        if (!validate.isPhone(phone)) {
           helper.toast('请输入正确的手机号！')
           return
         }
