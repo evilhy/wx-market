@@ -221,7 +221,9 @@ export default {
         }
         this.sheetFlag = false
         this.barrage.insertData({ nickname: nickname.substring(0, 1) + '****', headimgurl, msg: collect.getItem(this.promiseList, 'msgTemplateId', msgTemplateId).text || '' })
-        this.barrage.play()
+        if (this.totalElements === 1) {
+          this.barrage.play()
+        }
         helper.toast('发布成功')
       } catch (e) {
         this.loading = false
