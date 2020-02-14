@@ -127,12 +127,14 @@ export default {
   },
   mounted () {
     if (checkIsWeixin()) {
-      this.wxCustomShare({
-        link: this.shareUrl,
-        title: '武汉加油！',
-        desc: '为武汉加油，战胜疫情，从我做起！',
-        imgUrl: this.shareImgUrl
-      })
+      setTimeout(() => {
+        this.wxCustomShare({
+          link: this.shareUrl,
+          title: '武汉加油！',
+          desc: '为武汉加油，战胜疫情，从我做起！',
+          imgUrl: this.shareImgUrl
+        })
+      }, 1000)
     }
     this.barrage = new Barrage({ container: this.$refs.barrage, trackerCount: this.calTrackerCount(), autoPlay: false })
     this.getBarrageList()
