@@ -129,7 +129,7 @@ export default class Wxapi {
     return new Promise((resolve, reject) => {
       if (this.checkIsWeixin()) {
         let encodeRedirectUrl = window.encodeURIComponent(redirectUrl)
-        let wxUrl = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${appId}&redirect_uri=${encodeRedirectUrl}&response_type=code&scope=${type}&state=#wechat_redirect`
+        let wxUrl = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${appId}&redirect_uri=${encodeRedirectUrl}&response_type=code&scope=${type}&state=STATE&connect_redirect=1#wechat_redirect`
         window.location.replace(wxUrl)
         resolve()
       } else {
