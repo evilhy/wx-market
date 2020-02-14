@@ -3,44 +3,17 @@ import { typeOf } from './assist'
 import sysConfig from './constant'
 import { Toast } from 'vant'
 Toast.allowMultiple()
-const $getSessionObj = Symbol('$getSessionObj')
-const $setSessionObj = Symbol('$setSessionObj')
-const $updateSessionObj = Symbol('$updateSessionObj')
+
 let timer = null
 const helper = {
   title(title = '') {
     window.document.title = title
   },
-  [$getSessionObj] (storageKey = '', itemKey = '', defaultValue = '') {
-    if (typeOf(storageKey) !== 'string') throw new TypeError('获取缓存对象的storageKey字段类型须为string')
-    if (!storageKey) throw new Error('请指定获取缓存对象的storageKey')
-    if (itemKey) {
-      let storageObj = storage.getSession(storageKey, {})
-      if (typeOf(storageObj[itemKey]) === 'undefined') {
-        return defaultValue
-      } else {
-        return storageObj[itemKey]
-      }
-    } else { 
-      return storage.getSession(storageKey, defaultValue)
-    }
-  },
-  [$setSessionObj] (storageKey = '', infoObj = {}) {
-    if (typeOf(storageKey) !== 'string') throw new TypeError('存储缓存对象的storageKey字段类型必须为string类型') 
-    if (typeOf(infoObj) !== 'object') throw new TypeError('存储缓存对象的值必须为object类型')
-    storage.setSession(storageKey, infoObj)
-  },
-  [$updateSessionObj] (storageKey = '', infoObj) {
-    if (typeOf(storageKey) !== 'string') throw new TypeError('更新缓存对象的storageKey字段类型必须为string类型') 
-    if (typeOf(infoObj) !== 'object') throw new TypeError('更新缓存对象的值必须为object类型')
-    let storageObj = storage.getSession(storageKey, {})
-    storage.setSession(storageKey, { ...storageObj, ...infoObj })
-  },
   getUserInfo (infoKey = '', defaultValue = '') {
-    return this[$getSessionObj]('userInfo', infoKey, defaultValue)
+    return storage.getSessionObj('userInfo', infoKey, defaultValue)
   },
   saveUserInfo (infoObj) {
-    this[$updateSessionObj]('userInfo', infoObj)
+    storage.updateSessionObj('userInfo', infoObj)
   },
   clearUserInfo() {
     storage.removeSession('userInfo')
@@ -96,16 +69,16 @@ const helper = {
     }
   },
   saveTFinanceInfo (info) {
-    this[$updateSessionObj]('tFinanceInfo', info)
+    storage.updateSessionObj('tFinanceInfo', info)
   },
   getTFinanceInfo (infoKey = '', defaultValue = '') {
-    return this[$getSessionObj]('tFinanceInfo', infoKey, defaultValue)
+    return storage.getSessionObj('tFinanceInfo', infoKey, defaultValue)
   },
   saveShareInfo (info) {
-    this[$updateSessionObj]('shareInfo', info)
+    storage.updateSessionObj('shareInfo', info)
   },
   getShareInfo (infoKey = '', defaultValue = '') {
-    return this[$getSessionObj]('shareInfo', infoKey, defaultValue)
+    return storage.getSessionObj('shareInfo', infoKey, defaultValue)
   },
   saveBannerList (list = []) { 
     storage.setSession('bannerList', list)
@@ -125,6 +98,12 @@ const helper = {
     } else {
       storage.clearSession()
     }
+  },
+  saveVirusUserInfo (infoObj) {
+    storage.updateLocalObj('virusUserInfo', infoObj)
+  },
+  getVirusUserInfo (infoKey, defaultValue) {
+    return storage.getLocalObj('virusUserInfo', infoKey, defaultValue)
   },
   exit() {
     if (window.WeixinJSBridge) {

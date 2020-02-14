@@ -43,6 +43,12 @@ export default {
     demo: 'https://demowisdom.wisales.cn/zhsq-sh/#/',
     production: 'https://easylife.wisales.cn/zhsq-sh/#/'
   },
+  app_id: {
+    development: 'wxb3a9cf98e372fa36',
+    sit: 'wxb3a9cf98e372fa36',
+    demo: 'wxb3a9cf98e372fa36',
+    production: 'wxff94cf398a1cb6c4'
+  },
   month_zh: {
     '01': '1月',
     '02': '2月',

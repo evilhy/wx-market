@@ -110,11 +110,31 @@ export default class Wxapi {
       wx.updateTimelineShareData({ ...defaultOpts, ...options })
     })
   }
-  isMiniProgram () { 
+  isMiniProgram () {
     return new Promise((resolve, reject) => {
       wx.miniProgram.getEnv(({ miniprogram = false }) => {
         resolve(miniprogram)
-      })      
+      })
+    })
+  }
+  /**
+   * 调用静默授权和非静默授权
+   * appid appid
+   * redirect_uri 跳转地址
+   * response_type： snsapi_userinfo为非静默授权；snsapi_base为静默授权，只返回openid
+   * @param {Object} { appid, redirect_uri, response_type = 'snsapi_userinfo' }
+   * @memberof Wxapi
+   */
+  getAuth ({ appId, redirectUrl, type = 'snsapi_userinfo' }) {
+    return new Promise((resolve, reject) => {
+      if (this.checkIsWeixin()) {
+        let encodeRedirectUrl = window.encodeURIComponent(redirectUrl)
+        let wxUrl = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${appId}&redirect_uri=${encodeRedirectUrl}&response_type=code&scope=${type}&state=#wechat_redirect`
+        window.location.replace(wxUrl)
+        resolve()
+      } else {
+        reject('非微信渠道')
+      }
     })
   }
 }
