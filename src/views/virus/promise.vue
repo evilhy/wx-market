@@ -94,7 +94,7 @@ export default {
       ],
       userInfo: helper.getVirusUserInfo({}),
       shareUrl: `${sysConfig.pro_base_url[process.env.NODE_ENV]}virus-auth`,
-      shareImgUrl: `${sysConfig.pro_base_url[process.env.NODE_ENV].slice(0, -2)}static/img/share.png`,
+      shareImgUrl: `${sysConfig.pro_base_url[process.env.NODE_ENV].slice(0, -2)}static/img/share.jpg`,
       videoSrc: `${sysConfig.pro_base_url[process.env.NODE_ENV].slice(0, -2)}static/img/virus.mp4`,
       loading: false
     }
