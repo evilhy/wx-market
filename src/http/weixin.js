@@ -20,6 +20,7 @@ class Wechat {
     let http = new Http()
     http.path = `/${moduleName}/getJsapiSignature`
     http.query = { url }
+    http.loading = false
     return http.get()
   }
 }
