@@ -1,5 +1,6 @@
 <template>
   <div class="virus-promise-page">
+    <img :src="shareImgUrl">
     <img class="bg" src="../../assets/img/virus/bg.jpg" alt="">
     <div class="total-outline">
       <p>累计<span class="stress">{{totalElements}}</span>人承诺</p>
