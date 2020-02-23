@@ -31,6 +31,7 @@ export default class HttpForApplication extends HttpEngine {
   }
 
   afterRejectResponseHandler (error) {
+    this.loadingHash && loading.hide(this.loadingHash)
     let errorMsg = error.message
     if (errorMsg === 'Network Error') { 
       errorMsg = '网络异常'
@@ -46,7 +47,6 @@ export default class HttpForApplication extends HttpEngine {
         errorMsg = response.data
       }
     }
-    loading.hide()
     helper.toast(errorMsg)
   }
 }
