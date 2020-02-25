@@ -102,6 +102,17 @@
     background: url('../img/icon-manager.png') no-repeat center px2rem(70px);
     background-size: px2rem(70px) px2rem(70px);
     border-right: 1px solid $border-color;
+    .title {
+      position: relative;
+      .dot {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        margin-left: 28px;
+        @include circle(10px);
+        background: #fb3636;
+      }
+    }
   }
   .person-info {
     background: url('../img/icon-person.png') no-repeat center px2rem(70px);
@@ -152,5 +163,106 @@
     &.hx {
       height: px2rem(26px);
     }
+  }
+}
+.home-manager-dialog{
+  .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .main {
+    width: px2rem(600px);
+    height: px2rem(780px);
+    border-radius: px2rem(8px);
+    background-color: #fff;
+    padding: px2rem(30px);
+    .name{
+      font-size: px2rem(30px);
+      line-height: px2rem(50px);
+    }
+    .desc{
+      font-size: px2rem(22px);
+      margin-top: px2rem(30px);
+      line-height: px2rem(36px);
+      margin-bottom: px2rem(50px);
+    }
+    .single{
+      height: px2rem(90px);
+      line-height: px2rem(90px);
+      transform:skew(-6deg);
+      border-radius: px2rem(6px);
+      margin-top: px2rem(25px);
+      color: #fff;
+      padding-left: px2rem(30px);
+      .single-l{
+        font-size: px2rem(24px);
+      }
+      .single-c{
+        margin: 0 px2rem(12px);
+      }
+      .single-r{
+        font-size: px2rem(20px);
+        opacity: 0.7;
+      }
+      &.bg1{
+        background-image: linear-gradient( 77deg, rgba(233,190,116,0.99608) 0%, rgb(207,130,93) 100%);
+      }
+      &.bg2{
+        background-image: linear-gradient( 77deg, rgba(234,144,117,0.99608) 0%, rgb(248,110,120) 100%);
+      }
+      &.bg3{
+        background-image: linear-gradient( 77deg, rgba(145,109,229,0.99608) 0%, rgb(94,78,220) 100%);
+      }
+    }
+    .manager-box{
+      margin-top: px2rem(60px);
+      position: relative;
+      .name{
+        font-size: px2rem(30px);
+        color: $theme-color;
+        font-weight: bolder;
+        span{
+          font-size: px2rem(22px);
+        }
+        .line{
+          margin: 0 px2rem(5px) 0 px2rem(15px);
+        }
+      }
+      .branch{
+        margin: px2rem(20px) 0 px2rem(15px) 0;
+        font-size: px2rem(20px);
+        color: #808080;
+      }
+      .info{
+        font-size: px2rem(20px);
+        span{
+          margin: 0 px2rem(30px) 0 px2rem(10px);
+          color: #808080;
+        }
+      }
+      .phone-box{
+        width: px2rem(80px);
+        height: px2rem(80px);
+        border-radius: 50%;
+        background: $theme-color;
+        position: absolute;
+        right: 0;
+        top:px2rem(50px);
+        color: #fff;
+        font-size: px2rem(36px);
+        line-height: px2rem(10px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        span{
+          font-size: px2rem(20px);
+        }
+      }
+    }
+
   }
 }

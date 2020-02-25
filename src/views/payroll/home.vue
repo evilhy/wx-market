@@ -15,7 +15,7 @@
       <div class="link-right">
         <div class="invoice-person">
           <div class="manager-info box bot-line" @click="toPage('manager')">
-            <div class="title">客户经理</div>
+            <div class="title"><span class="dot" v-if="bankIsNew"></span>客户经理</div>
           </div>
           <div class="welfare-info box bot-line" @click="toPage('welfareList')">
             <div class="title">员工福利</div>
@@ -34,6 +34,7 @@
         <img :src="item.src" :class="item.className" />
       </span>
     </div>
+    <home-manager-dialog></home-manager-dialog>
   </div>
 </template>
 <script>
@@ -41,9 +42,13 @@ import Vue from 'vue'
 import { ImagePreview } from 'vant'
 import helper from 'utils/helper'
 import validate from 'utils/validate'
+import homeManagerDialog from './homeManagerDialog'
 Vue.use(ImagePreview)
 
 export default {
+  components: {
+    homeManagerDialog
+  },
   data () {
     return {
       recentInfo: {
@@ -55,7 +60,8 @@ export default {
       },
       bankIsNew: 0, // 银行卡变更
       imgList: [],
-      requested: false
+      requested: false,
+      managerInfo: {}
     }
   },
   computed: {
@@ -81,8 +87,12 @@ export default {
   created () {
     this.getRecentInfo()
     this.getBannerList()
+    this.getManagerInfo()
   },
   methods: {
+    async getManagerInfo () {
+      this.managerInfo = await this.$ManagerInfo.openingTips()
+    },
     async getBannerList () {
       this.imgList = await this.$System.getBannerList()
     },
