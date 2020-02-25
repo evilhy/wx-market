@@ -15,7 +15,7 @@
       <div class="link-right">
         <div class="invoice-person">
           <div class="manager-info box bot-line" @click="toPage('manager')">
-            <div class="title"><span class="dot" v-if="managerInfo.hasManager === 1"></span>客户经理</div>
+            <div class="title"><span class="dot" v-if="managerInfo.hasManager === 1 && !isReadManager"></span>客户经理</div>
           </div>
           <div class="welfare-info box bot-line" @click="toPage('welfareList')">
             <div class="title">员工福利</div>
@@ -34,7 +34,7 @@
         <img :src="item.src" :class="item.className"/>
       </span>
     </div>
-    <home-manager-dialog></home-manager-dialog>
+    <home-manager-dialog ref="home-manager-dialog" @getIsReadManager="getIsReadManager" :managerInfo="managerInfo"></home-manager-dialog>
   </div>
 </template>
 <script>
@@ -61,7 +61,7 @@
         bankIsNew: 0, // 银行卡变更
         imgList: [],
         requested: false,
-        isReadManager: helper.getIsReadManager(),
+        isReadManager: false,
         managerInfo: {
           ownBank: 0, // 0他行卡，1是本行卡
           hasManager: 0, // 0没有客户经理，1有客户经理
@@ -94,12 +94,15 @@
       }
     },
     created () {
-      console.log(this.isReadManager)
       this.getRecentInfo()
       this.getBannerList()
       this.getManagerInfo()
+      this.getIsReadManager()
     },
     methods: {
+      getIsReadManager () {
+        this.isReadManager = helper.getIsReadManager()
+      },
       async getManagerInfo () {
         let res = await this.$Manager.openingTips()
         this.managerInfo = res.data
@@ -126,6 +129,11 @@
         }
       },
       toPage (routerName, query = {}) {
+        let {hasManager} = this.managerInfo
+        if (routerName === 'manager' && hasManager === 1 && !this.isReadManager) {
+          this.$refs['home-manager-dialog'].open()
+          return false
+        }
         this.$router.push({name: routerName, query: query})
       },
       clickImg (index) {

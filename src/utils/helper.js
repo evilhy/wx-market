@@ -106,7 +106,7 @@ const helper = {
     return storage.getLocalObj('virusUserInfo', infoKey, defaultValue)
   },
   getIsReadManager () {
-    storage.getLocal('isReadManager')
+   return storage.getLocal('isReadManager')
   },
   setIsReadManager (value) {
     storage.setLocal('isReadManager', value)
