@@ -1,7 +1,7 @@
 import storage from './storage'
-import { typeOf } from './assist'
+import {typeOf} from './assist'
 import sysConfig from './constant'
-import { Toast } from 'vant'
+import {Toast} from 'vant'
 Toast.allowMultiple()
 
 let timer = null
@@ -80,10 +80,10 @@ const helper = {
   getShareInfo (infoKey = '', defaultValue = '') {
     return storage.getSessionObj('shareInfo', infoKey, defaultValue)
   },
-  saveBannerList (list = []) { 
+  saveBannerList (list = []) {
     storage.setSession('bannerList', list)
   },
-  getBannerList (defaultValue = []) { 
+  getBannerList (defaultValue = []) {
     return storage.getSession('bannerList', defaultValue)
   },
   clearBannerList () {
@@ -104,6 +104,12 @@ const helper = {
   },
   getVirusUserInfo (infoKey, defaultValue) {
     return storage.getLocalObj('virusUserInfo', infoKey, defaultValue)
+  },
+  getIsReadManager () {
+    storage.getLocal('isReadManager')
+  },
+  setIsReadManager (value) {
+    storage.setLocal('isReadManager', value)
   },
   exit() {
     if (window.WeixinJSBridge) {

@@ -15,7 +15,7 @@
       <div class="link-right">
         <div class="invoice-person">
           <div class="manager-info box bot-line" @click="toPage('manager')">
-            <div class="title"><span class="dot" v-if="bankIsNew"></span>客户经理</div>
+            <div class="title"><span class="dot" v-if="managerInfo.hasManager === 1"></span>客户经理</div>
           </div>
           <div class="welfare-info box bot-line" @click="toPage('welfareList')">
             <div class="title">员工福利</div>
@@ -31,105 +31,116 @@
     </div>
     <div class="bottom-logo">
       <span class="img-wrap" v-for="(item, index) in logoList" :key="index">
-        <img :src="item.src" :class="item.className" />
+        <img :src="item.src" :class="item.className"/>
       </span>
     </div>
     <home-manager-dialog></home-manager-dialog>
   </div>
 </template>
 <script>
-import Vue from 'vue'
-import { ImagePreview } from 'vant'
-import helper from 'utils/helper'
-import validate from 'utils/validate'
-import homeManagerDialog from './homeManagerDialog'
-Vue.use(ImagePreview)
+  import Vue from 'vue'
+  import {ImagePreview} from 'vant'
+  import helper from 'utils/helper'
+  import validate from 'utils/validate'
+  import homeManagerDialog from './homeManagerDialog'
+  Vue.use(ImagePreview)
 
-export default {
-  components: {
-    homeManagerDialog
-  },
-  data () {
-    return {
-      recentInfo: {
-        entId: '',
-        groupId: '',
-        groupName: '',
-        createDate: 0,
-        isRead: ''
-      },
-      bankIsNew: 0, // 银行卡变更
-      imgList: [],
-      requested: false,
-      managerInfo: {}
-    }
-  },
-  computed: {
-    logoList () {
-      let apppartner = helper.getUserInfo('apppartner')
-      switch (apppartner) {
-        case 'SJZHRB':
-          return [{
-            className: 'hr',
-            src: require('../../assets/img/hr-gray-logo.png')
-          }]
-        default:
-          return [
-            {
-              className: 'fx',
-              src: require('../../assets/img/fx-gray-logo.png')
-            }
-          ]
-      }
-
-    }
-  },
-  created () {
-    this.getRecentInfo()
-    this.getBannerList()
-    this.getManagerInfo()
-  },
-  methods: {
-    async getManagerInfo () {
-      this.managerInfo = await this.$ManagerInfo.openingTips()
+  export default {
+    components: {
+      homeManagerDialog
     },
-    async getBannerList () {
-      this.imgList = await this.$System.getBannerList()
-    },
-    async getRecentInfo () {
-      let res = await this.$Roll.index()
-      let { bean = {}, isNew = 0 } = res.data
-      if (Object.keys(bean).length) {
-        this.recentInfo = bean
-        this.bankIsNew = isNew
-        helper.saveUserInfo({ entId: this.recentInfo.entId })
-      }
-      this.requested = true
-    },
-    enterMyIncome () {
-      if (!this.requested) return
-      if (helper.getUserInfo('ifPwd', 0)) { // 有密码
-        this.$router.push({ name: 'checkQueryCode', query: { 'hasWage': this.recentInfo.groupId || '' } })
-      } else {
-        this.$router.push({ name: 'setQueryCode' })
-      }
-    },
-    toPage (routerName, query = {}) {
-      this.$router.push({ name: routerName, query: query })
-    },
-    clickImg (index) {
-      let { link = '', url = '' } = this.imgList[index]
-      if (link) {
-        if (validate.isUrl(link)) {
-          window.location.href = link
+    data () {
+      return {
+        recentInfo: {
+          entId: '',
+          groupId: '',
+          groupName: '',
+          createDate: 0,
+          isRead: ''
+        },
+        bankIsNew: 0, // 银行卡变更
+        imgList: [],
+        requested: false,
+        isReadManager: helper.getIsReadManager(),
+        managerInfo: {
+          ownBank: 0, // 0他行卡，1是本行卡
+          hasManager: 0, // 0没有客户经理，1有客户经理
+          empName: '',
+          managerName: '',
+          branchName: '',
+          officer: '',
+          managerPhone: ''
         }
-      } else {
-        ImagePreview({
-          images: [url],
-          showIndex: false
-        })
+      }
+    },
+    computed: {
+      logoList () {
+        let apppartner = helper.getUserInfo('apppartner')
+        switch (apppartner) {
+          case 'SJZHRB':
+            return [{
+              className: 'hr',
+              src: require('../../assets/img/hr-gray-logo.png')
+            }]
+          default:
+            return [
+              {
+                className: 'fx',
+                src: require('../../assets/img/fx-gray-logo.png')
+              }
+            ]
+        }
+
+      }
+    },
+    created () {
+      console.log(this.isReadManager)
+      this.getRecentInfo()
+      this.getBannerList()
+      this.getManagerInfo()
+    },
+    methods: {
+      async getManagerInfo () {
+        let res = await this.$Manager.openingTips()
+        this.managerInfo = res.data
+      },
+      async getBannerList () {
+        this.imgList = await this.$System.getBannerList()
+      },
+      async getRecentInfo () {
+        let res = await this.$Roll.index()
+        let {bean = {}, isNew = 0} = res.data
+        if (Object.keys(bean).length) {
+          this.recentInfo = bean
+          this.bankIsNew = isNew
+          helper.saveUserInfo({entId: this.recentInfo.entId})
+        }
+        this.requested = true
+      },
+      enterMyIncome () {
+        if (!this.requested) return
+        if (helper.getUserInfo('ifPwd', 0)) { // 有密码
+          this.$router.push({name: 'checkQueryCode', query: {'hasWage': this.recentInfo.groupId || ''}})
+        } else {
+          this.$router.push({name: 'setQueryCode'})
+        }
+      },
+      toPage (routerName, query = {}) {
+        this.$router.push({name: routerName, query: query})
+      },
+      clickImg (index) {
+        let {link = '', url = ''} = this.imgList[index]
+        if (link) {
+          if (validate.isUrl(link)) {
+            window.location.href = link
+          }
+        } else {
+          ImagePreview({
+            images: [url],
+            showIndex: false
+          })
+        }
       }
     }
   }
-}
 </script>

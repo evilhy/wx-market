@@ -44,7 +44,7 @@
 export default {
   data () {
     return {
-      show: true
+      show: false
     }
   },
   created () {
@@ -53,6 +53,9 @@ export default {
   mounted () {
   },
   methods: {
+    openDialog () {
+      this.show = true
+    }
   }
 }
 </script>
