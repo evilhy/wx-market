@@ -28,8 +28,8 @@
               手机号<span>{{managerInfo.managerPhone}}</span>
             </div>
             <div class="phone-box">
-              <a :href="`tel:${managerInfo.mobile}`">
-                <van-icon name="phone"/>
+              <a :href="`tel:${managerInfo.managerPhone}`">
+                <van-icon name="phone" color="#fff"/>
               </a><br>
               <span>拨号</span>
             </div>
