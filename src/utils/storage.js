@@ -2,10 +2,8 @@ import { typeOf } from './assist'
 
 export default {
   getLocal (key, defaultValue = '') {
-    console.log(key)
     if (typeOf(key) !== 'string' || key === '' || typeOf(localStorage.getItem(key)) === 'null') return defaultValue
     try {
-      console.log(JSON.parse(localStorage.getItem(key)))
       return JSON.parse(localStorage.getItem(key))
     } catch (e) {
       return defaultValue
