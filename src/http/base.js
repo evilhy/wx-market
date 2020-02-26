@@ -22,7 +22,7 @@ export default class HttpForApplication extends HttpEngine {
     })
     if (config.loading) {
       let loadingType = typeOf(config.loading) === 'boolean' ? 'square' : config.loading
-      this.loadingHash = loading.show({ type: loadingType }) 
+      this.loadingHash = loading.show({ type: loadingType })
     }
   }
 
@@ -31,8 +31,9 @@ export default class HttpForApplication extends HttpEngine {
   }
 
   afterRejectResponseHandler (error) {
+    this.loadingHash && loading.hide(this.loadingHash)
     let errorMsg = error.message
-    if (errorMsg === 'Network Error') { 
+    if (errorMsg === 'Network Error') {
       errorMsg = '网络异常'
     }
     if (errorMsg.indexOf('timeout') >= 0) {
@@ -46,7 +47,6 @@ export default class HttpForApplication extends HttpEngine {
         errorMsg = response.data
       }
     }
-    loading.hide()
     helper.toast(errorMsg)
   }
 }

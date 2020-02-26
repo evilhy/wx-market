@@ -19,5 +19,13 @@ class Manager {
         http.body = { groupId: helper.getUserInfo('groupId', '') }
         return http.post()
     }
+  /**
+   * @description 查询客户经理信息及当前用户是本行他行卡
+   */
+  openingTips () {
+    let http = new Http()
+    http.path = `/${moduleName}/openingTips`
+    return http.get()
+  }
 }
 export default new Manager()

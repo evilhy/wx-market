@@ -59,6 +59,7 @@ const welfareOrderDetail = require('./json/welfare.orderDetail.json')
 const welfareOrderTrack = require('./json/welfare.orderTrack.json')
 const barrageList = require('./json/barrageList.json')
 const wUserInfo = require('./json/wUserInfo.json')
+const openingTips = require('./json/manager.openingTips.json')
 module.exports = {
   openApi: [{
     baseURL: 'https://sitgateway.cardpu.com/payroll',
@@ -250,7 +251,11 @@ module.exports = {
       },
       '/virus/userInfo': {
         get: wUserInfo
+      },
+      '/manager/openingTips': {
+        get: openingTips
       }
+
     }
   },{
     baseURL: 'https://demowisdom.wisales.cn:8213/easy-life',
