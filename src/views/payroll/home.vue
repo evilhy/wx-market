@@ -15,7 +15,7 @@
       <div class="link-right">
         <div class="invoice-person">
           <div class="manager-info box bot-line" @click="toPage('manager')">
-            <div class="title"><span class="dot" v-if="managerInfo.hasManager === 1 && !isReadManager"></span>客户经理</div>
+            <div class="title"><span class="dot" v-if="managerInfo.hasManager === 1 && !isReadManager">1</span>客户经理</div>
           </div>
           <div class="welfare-info box bot-line" @click="toPage('welfareList')">
             <div class="title">员工福利</div>

@@ -107,10 +107,14 @@
       .dot {
         position: absolute;
         left: 50%;
-        top: 0;
+        top: px2rem(-10px);
         margin-left: 28px;
-        @include circle(10px);
+        @include circle(30px);
         background: #fb3636;
+        color: #fff;
+        font-size: px2rem(20px);
+        text-align: center;
+        line-height: px2rem(30px);
       }
     }
   }
