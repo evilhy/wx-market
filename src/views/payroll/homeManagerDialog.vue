@@ -1,8 +1,8 @@
 <template>
   <div class="home-manager-dialog">
-    <van-overlay :show="show" @click="close">
+    <van-overlay :show="show">
       <div class="wrap">
-        <div class="main" >
+        <div class="main">
           <div class="name">尊敬的{{managerInfo.empName.substring(0,1)}}先生/女士</div>
           <div class="desc">{{introduce[managerInfo.ownBank].desc}}</div>
           <div class="single" :class="[introduce[managerInfo.ownBank].ownBank===1?'bg2':'bg1']">
@@ -34,6 +34,11 @@
               <span>拨号</span>
             </div>
           </div>
+          <button class="btn" @click="close">关闭</button>
+          <div class="checkbox-wrap">
+            <van-checkbox v-model="checked" checked-color="#52BDBD" shape="square" icon-size="14px">不再提醒</van-checkbox>
+          </div>
+
         </div>
       </div>
     </van-overlay>
@@ -48,6 +53,7 @@
     },
     data () {
       return {
+        checked: false,
         show: false,
         introduce: [
           {
@@ -81,8 +87,13 @@
         this.show = true
       },
       close () {
-        helper.setIsReadManager(true)
-        this.$emit('getIsReadManager')
+        if (this.checked) {
+          helper.saveIsReadManager(true)
+          this.$emit('getIsReadManager')
+        } else {
+          helper.saveIsReadManagerCurrent(true)
+          this.$emit('getIsReadManagerCurrent')
+        }
         this.show = false
       }
     }

@@ -108,8 +108,14 @@ const helper = {
   getIsReadManager () {
    return storage.getLocal('isReadManager')
   },
-  setIsReadManager (value) {
+  saveIsReadManager (value) {
     storage.setLocal('isReadManager', value)
+  },
+  getIsReadManagerCurrent () {
+    return storage.getSession('isReadManagerCurrent')
+  },
+  saveIsReadManagerCurrent (value) {
+    storage.setSession('isReadManagerCurrent', value)
   },
   exit() {
     if (window.WeixinJSBridge) {
