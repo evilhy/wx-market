@@ -124,6 +124,9 @@ module.exports = {
       '/inside/sendCode': {
         post: sendCode
       },
+      '/roll/entEmp': {
+        get: entEmp
+      },
       '/inside/bindWX': {
         post: bindWX
       },

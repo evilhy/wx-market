@@ -2,14 +2,14 @@
     position: relative;
     height: 100%;
     text-align: center;
-    padding-bottom: px2rem(98px);
+    padding-bottom: 98px;
     .msg-list-wrap {
       position: absolute;
       left: 0;
-      top: px2rem(10px);
+      top: 10px;
       width: 100%;
-      bottom: px2rem(98px);
-      padding: 0 px2rem(30px) px2rem(20px);
+      bottom: 98px;
+      padding: 0 30px 20px;
       overflow-y: auto;
       -webkit-overflow-scrolling: touch;
       .loading {
@@ -17,14 +17,14 @@
       }
       .time {
         display: inline-block;
-        height: px2rem(32px);
-        line-height: px2rem(32px);
-        @include font-dpr(20px);
+        height: 32px;
+        line-height: 32px;
+        font-size: 20px;
         background: #ebedef;
-        border-radius: px2rem(36px);
+        border-radius: 36px;
         color: #afbbc4;
-        padding: 0 px2rem(20px);
-        margin: px2rem(20px) 0;
+        padding: 0 20px;
+        margin: 20px 0;
       }
       .item {
         display: flex;
@@ -32,17 +32,17 @@
         text-align: left;
         .triangle {
           position: absolute;
-          top: px2rem(26px);
+          top: 26px;
         }
       }
       .pic {
-        @include square(px2rem(66px));
+        @include square(66px);
         text-align: center;
-        line-height: px2rem(66px);
+        line-height: 66px;
         color: white;
         background: #52bdbd;
         img {
-          @include square(px2rem(66px));
+          @include square(66px);
         }
         &.manager {
           background: #d6d6d6;
@@ -52,17 +52,17 @@
         flex: 1;
         -webkit-flex: 1;
         position: relative;
-        padding: px2rem(14px) px2rem(22px);
-        @include font-dpr(26px);
-        line-height: px2rem(38px);
-        border-radius: px2rem($radius-xs);
+        padding: 14px 22px;
+        font-size: 26px;
+        line-height: 38px;
+        border-radius: $radius-xs;
         word-break: break-all;
       }
       .self {
-        padding-left: px2rem(66px);
+        padding-left: 66px;
         .con {
           order: 1;
-          margin-right: px2rem(18px);
+          margin-right: 18px;
           background: $theme-color;
           color: white;
         }
@@ -71,34 +71,34 @@
         }
         .triangle {
           left: 100%;
-          @include triangle(right, px2rem(8px), $theme-color);
+          @include triangle(right, 8px, $theme-color);
         }
       }
       .manager {
-        padding-right: px2rem(66px);
+        padding-right: 66px;
         .con {
           order: 2;
-          margin-left: px2rem(18px);
+          margin-left: 18px;
           border: 1px solid $border-color;
-          box-shadow: 0 px2rem(2px) 1px 0 rgba(0, 0, 0, 0.04);
+          box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.04);
           background: white;
         }
         .pic {
           order: 1;
         }
         .triangle {
-          left: px2rem(-8px);
-          @include square(px2rem(12px));
+          left: -8px;
+          @include square(12px);
           background: white;
           border: 1px solid #e5e6e7;
-          box-shadow: 0 px2rem(2px) 1px 0 rgba(0, 0, 0, 0.01);
+          box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.01);
           @include transform(rotate(45deg));
           &:after {
             content: '';
             position: absolute;
-            top: -1px;
-            left: -1px;
-            @include triangle(bottom, px2rem(16px), white);
+            top: -2px;
+            left: -2px;
+            @include triangle(bottom, 16px, white);
             // @include transform(rotate(90deg));
           }
         }
@@ -106,7 +106,7 @@
       .no-msg {
         padding-top: 40%;
         color: #afbbc4;
-        @include font-dpr(28px);
+        font-size: 28px;
       }
     }
     .bottom-input {
@@ -114,8 +114,8 @@
       bottom: 0;
       left: 0;
       width: 100%;
-      height: px2rem(98px);
-      padding: 0 px2rem(30px);
+      height: 98px;
+      padding: 0 30px;
       background: white;
       border: 1px solid $border-color;
       .input-wrap {
@@ -127,20 +127,20 @@
       .input {
         flex: 1;
         -webkit-flex: 1;
-        height: px2rem(60px);
-        padding: px2rem(10px) px2rem(20px);
-        line-height: px2rem(40px);
+        height: 60px;
+        padding: 10px 20px;
+        line-height: 40px;
         border: 1px solid $border-color;
       }
       .btn {
-        width: px2rem(100px);
-        height: px2rem(60px);
-        line-height: px2rem(60px);
+        width: 100px;
+        height: 60px;
+        line-height: 60px;
         @include linear-gradient(-180deg, #f7f7f7 0%, #ebebeb 100%);
         background: $theme-color;
         color: white;
-        border-radius: 0 px2rem($radius-xs) px2rem($radius-xs) 0;
-        @include font-dpr(28px);
+        border-radius: 0 $radius-xs $radius-xs 0;
+        font-size: 28px;
       }
     }
   }

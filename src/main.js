@@ -8,7 +8,6 @@ import 'vant/lib/index.css'
 
 import './assets/fonts/iconfont.css'
 import './assets/scss/common.scss'
-import 'lib-flexible'
 // 项目的import
 
 import 'swiper/dist/css/swiper.css'

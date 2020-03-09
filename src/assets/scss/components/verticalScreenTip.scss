@@ -12,10 +12,10 @@
   align-items: center;
   z-index: 2999;
   background: white;
-  padding-bottom: px2rem(30px);
+  padding-bottom: 30px;
   .phone {
-    width: px2rem(200px);
-    margin-bottom: px2rem(60px);
+    width: 200px;
+    margin-bottom: 60px;
     -webkit-animation: phoneAction 1.5s ease infinite;
     animation: phoneAction 1.5s ease infinite;
   }
@@ -36,7 +36,7 @@
     }
   }
   .tip {
-    font-size: px2rem(28px);
+    font-size: 28px;
     color: $text-color;
   }
 }

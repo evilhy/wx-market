@@ -3,106 +3,106 @@
   min-height: 100%;
   background: white;
   .logo-wrap{
-    height: px2rem(174px);
+    height: 174px;
     display: flex;
     align-items: center;
     justify-content: center;
     background: #fafafa;
     img{
-      width: px2rem(248px);
-      height: px2rem(80px);
+      width: 248px;
+      height: 80px;
     }
   }
   .content-wrap{
-    padding: px2rem(40px);
+    padding: 40px;
   }
   .big-title{
     display: flex;
     align-items: center;
-    @include font-dpr(36px);
+    font-size: 36px;
     color: #4c4c4c;
     .iconfont{
-      @include font-dpr(48px);
-      margin-left: 5px;
+      font-size: 48px;
+      margin-left: 10px;
     }
   }
   .tip{
-    margin-top: px2rem(16px);
-    margin-bottom: px2rem(50px);
+    margin-top: 16px;
+    margin-bottom: 50px;
     color: #666;
   }
   .mt{
-    margin-top: px2rem(40px);
+    margin-top: 40px;
   }
   .field-wrap{
     display: flex;
     align-items: center;
     border-bottom: 1px solid $border-color;
     .field-icon{
-      height: px2rem(26px);
-      padding-right: px2rem(19px);
+      height: 26px;
+      padding-right: 19px;
       border-right: 1px solid $border-color;
     }
     .field-icon-phone{
-      padding-right: px2rem(24px);
+      padding-right: 24px;
     }
     .input{
       border: none;
       @include placeholder{
-        @include font-dpr(26px);
+        font-size: 26px;
         color: #B3B3B3;
       }
     }
   }
   .btn{
     display: block;
-    height: px2rem(70px);
-    line-height: px2rem(70px);
+    height: 70px;
+    line-height: 70px;
     text-align: center;
-    @include font-dpr(28px);
+    font-size: 28px;
     background: $primary-color;
     color: white;
-    border-radius: px2rem($radius-xs);
+    border-radius: $radius-xs;
     &[disabled]{
       background: $border-color;
       color: #a5a5a5;
     }
   }
   .btn-next{
-    margin-top: px2rem(76px);
+    margin-top: 76px;
   }
   .vcode-btn{
-    width: px2rem(220px);
-    @include font-dpr(26px);
+    width: 220px;
+    font-size: 26px;
   }
   .bottom-tip{
     position: absolute;
     left: 0;
     width: 100%;
-    bottom: px2rem(70px);
+    bottom: 70px;
     text-align: center;
     color: #666;
-    @include font-dpr(26px);
+    font-size: 26px;
   }
 }
 .complete-page{
-  padding: px2rem(220px) px2rem(60px) 0;
+  padding: 220px 60px 0;
   text-align: center;
   .iconfont{
     display: inline-block;
-    @include font-dpr(100px);
+    font-size: 100px;
     color: $theme-color;
-    margin: 0 auto px2rem(20px);
+    margin: 0 auto 20px;
   }
   .result-title{
-    @include font-dpr(28px);
-    margin-bottom: px2rem(18px);
+    font-size: 28px;
+    margin-bottom: 18px;
   }
   .result-tip{
     color: #666;
   }
   .btn{
-    margin-top: px2rem(80px);
+    margin-top: 80px;
     color: $theme-color;
     border: 1px solid $theme-color;
     background: white;
@@ -111,14 +111,14 @@
 
 .choose-phone-page,.choose-ent-action{
   .phone-item{
-    height: px2rem(70px);
+    height: 70px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     background: #FAFAFA;
-    border-radius: px2rem($radius-xs);
-    margin-bottom: px2rem(20px);
-    padding: 0 px2rem(16px);
+    border-radius: $radius-xs;
+    margin-bottom: 20px;
+    padding: 0 16px;
     &:last-child{
       margin-bottom: 0;
     }
@@ -150,20 +150,20 @@
     color: $theme-color;
   }
   .change-phone-btn{
-    margin-top: px2rem(20px);
-    line-height: px2rem(80px);
+    margin-top: 20px;
+    line-height: 80px;
     text-align: center;
   }
 }
 .check-code-page{
-  padding-top: px2rem(40px);
+  padding-top: 40px;
   text-align: center;
   .big-title{
-    margin-bottom: px2rem(40px);
+    margin-bottom: 40px;
     justify-content: center;
-    @include font-dpr(26px);
+    font-size: 26px;
     .iconfont{
-      @include font-dpr(40px);
+      font-size: 40px;
     }
   }
   .forget-pwd-link{

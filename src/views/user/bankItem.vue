@@ -1,6 +1,6 @@
 <template>
   <div class="bank-item" :class="{'todo' :currentBank.cardUpdStatus === 0}">
-    <div class="bank-name">{{currentBank.issuerName}}<span class="list-btn" @click="toHistory"><img src="../../assets/img/user/icon-bankcard-list.png" class="icon">更换记录<span class="dot" v-if="currentBank.isNew"></span></span></div>
+    <div class="bank-name">{{currentBank.issuerName}}<span class="list-btn" @click="toHistory"><img src="../../assets/img/user/icon-bankcard-list.png" class="icon">更换记录<span class="van-dot" v-if="currentBank.isNew"></span></span></div>
     <div class="bank-no" v-show="!editing">{{currentBank.cardNo | bankSpace}}
       <span class="modify-btn disabled" v-if="currentBank.cardUpdStatus === 0">申请更换</span>
       <span class="modify-btn" @click="startEdit(currentBank.cardNo)" v-else>申请更换</span>

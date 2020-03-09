@@ -5,18 +5,18 @@
     background-size: 100% 100%;
     .detail-wrap {
       position: relative;
-      margin-top: px2rem(60px);
-      margin-bottom: px2rem(24px);
-      width: px2rem(550px);
-      height: px2rem(820px);
-      padding: px2rem(30px) px2rem(20px) px2rem(20px);
+      margin-top: 60px;
+      margin-bottom: 24px;
+      width: 550px;
+      height: 820px;
+      padding:30px 20px 20px;
       background: white;
-      box-shadow: 0 0 px2rem(26px) 0 rgba(27, 117, 107, 0.3);
-      border-radius: px2rem(20px);
+      box-shadow: 0 0 26px 0 rgba(27, 117, 107, 0.3);
+      border-radius: 20px;
       @include center-block;
     }
     .bank-wrap {
-      height: px2rem(34px);
+      height: 34px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -26,8 +26,8 @@
         flex: 1;
       }
       .bank-img {
-        margin-right: px2rem(8px);
-        height: px2rem(30px);
+        margin-right: 8px;
+        height:30px;
         display: block;
       }
       .bank-no {
@@ -35,37 +35,37 @@
       }
     }
     .total-wrap {
-      margin-top: px2rem(40px);
-      margin-bottom: px2rem(14px);
+      margin-top: 40px;
+      margin-bottom: 14px;
       display: flex;
       flex-direction: column;
       align-items: center;
       .total-amt {
         position: relative;
-        @include font-dpr(64px);
-        line-height: px2rem(48px);
-        margin-bottom: px2rem(20px);
+        font-size: 64px;
+        line-height: 48px;
+        margin-bottom: 20px;
       }
       .iconfont {
         position: absolute;
-        right: px2rem(-76px);
+        right: -76px;
         top: 0;
-        @include font-dpr(48px);
+        font-size: 48px;
         color: #999;
       }
       .total-title {
         color: #999;
-        @include font-dpr(22px);
+        font-size: 22px;
       }
     }
     .main-wrap {
-      height: px2rem(500px);
+      height: 500px;
       overflow-y: auto;
       -webkit-overflow-scrolling: touch;
     }
     .amt-box {
       .title {
-        height: px2rem(33px);
+        height: 33px;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -73,16 +73,16 @@
         &:after {
           content: '';
           display: block;
-          width: px2rem(179px);
+          width: 179px;
           height: 1px;
           background: #999;
         }
       }
       .amt-list {
-        padding: px2rem(10px) 0;
+        padding: 10px 0;
       }
       .amt-item {
-        margin-top: px2rem(20px);
+        margin-top: 20px;
         &:first-child {
           margin-top: 0;
         }
@@ -121,39 +121,39 @@
         }
         .label {
           float: left;
-          margin-right: px2rem(8px);
+          margin-right: 8px;
         }
         .label,
         .value {
-          @include font-dpr(22px);
+          font-size: 22px;
           color: #333;
         }
       }
     }
     .action-wrap {
       position: absolute;
-      width: px2rem(510px);
-      left: px2rem(20px);
-      bottom: px2rem(22px);
+      width: 510px;
+      left: 20px;
+      bottom: 22px;
       display: flex;
       justify-content: space-between;
       .iconfont {
-        @include font-dpr(26px);
-        margin-right: px2rem(8px);
+        font-size: 26px;
+        margin-right: 8px;
       }
     }
     .btn {
-      height: px2rem(62px);
+      height: 62px;
       @include flex-center;
-      border-radius: px2rem($radius-xs);
+      border-radius: $radius-xs;
       &.question,
       &.feedback {
-        width: px2rem(134px);
+        width: 134px;
         background: #e9e9e9;
         color: #999;
       }
       &.sure {
-        width: px2rem(355px);
+        width: 355px;
         background: $theme-color;
         color: white;
       }
@@ -164,52 +164,52 @@
       }
     }
     .swiper-pagination {
-      top: px2rem(26px);
-      bottom: px2rem(932px) !important;
-      height: px2rem(4px) !important;
+      top: 26px;
+      bottom: 932px !important;
+      height: 4px !important;
       display: flex;
       justify-content: center;
     }
     .swiper-pagination-bullet {
-      width: px2rem(75px);
-      height: px2rem(4px);
+      width: 75px;
+      height: 4px;
       background: rgba(255, 255, 255, 0.7) !important;
       margin: 0 !important;
       &:first-child {
-        border-radius: px2rem(4px) 0 0 px2rem(4px);
+        border-radius: 4px 0 0 4px;
       }
       &:last-child {
-        border-radius: 0 px2rem(4px) px2rem(4px) 0;
+        border-radius: 0 4px 4px 0;
       }
       &.swiper-pagination-bullet-active {
-        border-radius: px2rem(4px);
+        border-radius: 4px;
         background: rgba(255, 255, 255, 0.8) !important;
       }
     }
     .bottom-group {
-      @include font-dpr(20px);
-      width: px2rem(550px);
+      font-size: 20px;
+      width: 550px;
       margin: 0 auto;
-      padding-bottom: px2rem(10px);
+      padding-bottom: 10px;
       line-height: 1.2;
       color: #c7fff5;
       text-align: center;
     }
     .personal-tax{
-      width: px2rem(180px);
-      height: px2rem(55px);
+      width:180px;
+      height: 55px;
       display: flex;
       align-items: center;
       justify-content: center;
       opacity: 0.77;
       background: #000000;
-      border-radius: px2rem(27.5px) 0 0  px2rem(27.5px);
-      @include font-dpr(28px);
+      border-radius: 27.5px 0 0  27.5px;
+      font-size: 28px;
       color: #FFFFFF;
 
       position: fixed;
       right: 0;
-      top:px2rem(215px);
+      top: 215px;
       z-index: 10000000000;
     }
   }
@@ -230,7 +230,7 @@
   }
   .vcode-btn {
     display: inline-flex;
-    padding: 5px;
+    padding: 10px;
     color: $theme-color;
     &.disabled {
       color: #999;
@@ -238,6 +238,6 @@
   }
   @media screen and (width: 320px) {
     .home-page .my-income {
-      padding: px2rem(44px) px2rem(20px);
+      padding: 44px 20px;
     }
   }

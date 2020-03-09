@@ -5,24 +5,24 @@
       background: white;
       display: flex;
       align-items: center;
-      padding: px2rem(30px);
+      padding: 30px;
     }
     .icon-phone {
-      height: px2rem(30px);
+      height: 30px;
     }
     .input {
-      @include font-dpr(40px);
+      font-size: 40px;
       border: none;
     }
     .btn {
-      width: px2rem(580px);
-      height: px2rem(88px);
-      margin: px2rem(50px) auto;
+      width: 580px;
+      height: 88px;
+      margin: 50px auto;
       display: block;
       border: none;
       background-image: linear-gradient(90deg, #f66363 0%, #db4040 100%);
-      border-radius: px2rem(4px);
-      @include font-dpr(28px);
+      border-radius: 4px;
+      font-size: 28px;
       color: white;
       line-height: 1;
       &[disabled] {
@@ -36,12 +36,12 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: px2rem(22px) px2rem(30px);
+    padding: 22px 30px;
     background: white;
     border-bottom: 1px solid $border-color;
     .goods-name {
       flex: 1;
-      @include font-dpr(32px);
+      font-size: 32px;
     }
     .exchange {
       color: $welfare-theme-color;
@@ -49,40 +49,40 @@
       align-items: center;
       flex-wrap: nowrap;
       .hot {
-        @include square(26px);
-        margin-right: px2rem(10px);
+        @include square(52px);
+        margin-right: 10px;
       }
     }
   }
   .detail-img-wrap {
     width: 100%;
-    padding: px2rem(30px);
+    padding: 30px;
     background: white;
     img {
       width: 100%;
     }
   }
   .common-goods-detail {
-    padding-bottom: px2rem(98px);
+    padding-bottom: 98px;
     .img {
       width: 100%;
-      height: px2rem(640px);
+      height: 640px;
       display: block;
     }
     .detail-img-wrap {
-      padding: px2rem(24px) px2rem(30px);
+      padding: 24px 30px;
       .detail-img-title {
-        @include font-dpr(28px);
+        font-size: 28px;
         display: flex;
         align-items: center;
-        height: px2rem(40px);
-        margin-bottom: px2rem(20px);
+        height: 40px;
+        margin-bottom: 20px;
         &::before {
           content: '';
-          width: 4px;
-          height: px2rem(28px);
+          width: 8px;
+          height: 28px;
           background-image: linear-gradient(-180deg, #fa8245 0%, #f34b21 100%);
-          margin-right: px2rem(12px);
+          margin-right: 12px;
         }
       }
     }
@@ -93,25 +93,25 @@
   left: 0;
   bottom: 0;
   width: 100%;
-  height: px2rem(98px);
+  height: 98px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 px2rem(30px);
+  padding: 0 30px;
   background: white;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.15);
-  @include font-dpr(28px);
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.15);
+  font-size: 28px;
   .stress{
     color: $welfare-theme-color;
   }
 }
 
 .exchange-btn {
-  width: px2rem(276px);
-  height: px2rem(74px);
+  width: 276px;
+  height: 74px;
   background-image: linear-gradient(90deg, #f66363 0%, #db4040 100%);
-  border-radius: px2rem(4px);
-  @include font-dpr(28px);
+  border-radius: 4px;
+  font-size: 28px;
   color: white;
   border: none;
   line-height: 1;

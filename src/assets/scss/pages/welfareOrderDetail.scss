@@ -8,49 +8,49 @@
     .receive-address{
       position: relative;
       background: white;
-      padding: px2rem(24px) px2rem(30px) px2rem(24px) px2rem(76px);
+      padding: 24px 30px 24px 76px;
       border-bottom: 1px solid $border-color;
       .location{
         position: absolute;
-        left: px2rem(30px);
-        top: px2rem(24px);
+        left: 30px;
+        top: 24px;
       }
       .name{
-        @include font-dpr(30px);
+        font-size: 30px;
         line-height: 1;
-        margin-bottom: px2rem(10px);
+        margin-bottom: 10px;
       }
       .detail{
         word-break: break-all;
-        @include font-dpr(26px);
+        font-size: 26px;
         color: #808080;
       }
     }
     .logistics-wrap{
       border-bottom: 1px solid $border-color;
-      padding: px2rem(30px);
+      padding: 30px;
       background: white;
       text-align: center;
       .van-button{
         height: 36px;
-        width: px2rem(200px);
-        @include font-dpr(26px);
+        width: 200px;
+        font-size: 13px;
       }
     }
     .row{
-      padding: px2rem(24px) px2rem(30px);
+      padding: 24px 30px;
       display: flex;
       align-items: center;
       background: white;
       border-top: 1px solid $border-color;
-      @include font-dpr(30px);
+      font-size: 30px;
       .value{
         flex: 1;
         color: #808080;
       }
       .iconfont{
         display: inline-block;
-        padding: 3px 5px;
+        padding: 6px 10px;
       }
     }
     .fixed-bottom-wrap{
@@ -59,10 +59,10 @@
       left: 0;
       width: 100%;
       background: white;
-      height: px2rem(98px);
-      line-height: px2rem(98px);
-      @include font-dpr(28px);
-      box-shadow: 0 -2px 3px 0 rgba(0,0,0,0.05);
+      height: 98px;
+      line-height: 98px;
+      font-size: 28px;
+      box-shadow: 0 -4px 6px 0 rgba(0,0,0,0.05);
       text-align: center;
       a{
         color: $welfare-theme-color;
@@ -70,17 +70,17 @@
     }
   }
   .desc-wrap{
-    padding: px2rem(24px) px2rem(30px) px2rem(10px);
+    padding: 24px 30px 10px;
     background: white;
-    margin-bottom: px2rem(20px);
+    margin-bottom: 20px;
     .row{
-      margin-bottom: px2rem(14px);
+      margin-bottom: 14px;
       display: flex;
       justify-content: space-between;
-      @include font-dpr(28px);
+      font-size: 28px;
     }
     .label{
-      width: 70px;
+      width: 140px;
       color: #808080;
     }
     .value{
@@ -99,17 +99,17 @@
     }
   }
   .card-wrap{
-    padding: px2rem(20px) px2rem(20px) 0;
+    padding: 20px 20px 0;
   }
   .card{
-    width: px2rem(600px);
-    min-height: px2rem(198px);
+    width: 600px;
+    min-height: 198px;
     background: url('../img/welfare/virtual-order-bg.png') no-repeat;
     background-size: 100% 100%;
     color: white;
     .status{
-      @include font-dpr(38px);
-      line-height: px2rem(198px);
+      font-display: 38px;
+      line-height: 198px;
       text-align: center;
     }
     .row{
@@ -117,9 +117,9 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      width: px2rem(524px);
-      min-height: px2rem(98px);
-      padding: px2rem(14px) 0;
+      width: 524px;
+      min-height: 98px;
+      padding: 14px 0;
       border-bottom: 1px solid rgba(255, 255, 255, 0.2);
       margin: 0 auto;
       &:last-child{
@@ -130,54 +130,54 @@
         top: 50%;
         right: 0;
         transform: translateY(-50%);
-        width: px2rem(92px);
-        height: px2rem(42px);
-        line-height: px2rem(42px);
+        width: 92px;
+        height: 42px;
+        line-height: 42px;
         text-align: center;
-        border-radius: px2rem(42px);
+        border-radius: 42px;
         border: 1px solid #FF9786;
         background: rgba(255,255,255,0.10);
       }
       .label{
         opacity: 0.7;
-        @include font-dpr(26px);
-        margin-bottom: 2px;
+        font-display: 26px;
+        margin-bottom: 4px;
       }
       .value{
-        @include font-dpr(30px);
-        padding-right: px2rem(100px);
+        font-display: 30px;
+        padding-right: 100px;
         word-break: break-all;
       }
     }
     .starbucks-text{
-      height: px2rem(106px);
-      padding-left: px2rem(30px);
+      height: 106px;
+      padding-left: 30px;
       display: flex;
       align-items: center;
-      @include font-dpr(30px);
+      font-size: 30px;
       .star{
         opacity: 0.5;
       }
     }
     .starbucks-btn{
-      height: px2rem(52px);
-      padding: 0 px2rem(20px);
+      height: 52px;
+      padding: 0 20px;
       background-image: linear-gradient(90deg, #FFB842 0%, #FF9F00 98%);
-      border-radius: px2rem(4px);
-      margin-left: px2rem(30px);
+      border-radius: 4px;
+      margin-left: 30px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       color: white;
       &::after{
         content: '';
-        @include v-arrow(right, 2px, px2rem(10px));
-        margin-left: 2px;
+        @include v-arrow(right, 4px, 10px);
+        margin-left: 4px;
       }
     }
   }
   .date{
-    height: px2rem(50px);
+    height: 50px;
     background: #FFE8C7;
     display: flex;
     align-items: center;

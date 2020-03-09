@@ -2,39 +2,39 @@
 $text-finance-color: #525E70;
 .t-finance-page{
   color: $text-finance-color;
-  padding-bottom: px2rem(158px);
+  padding-bottom: 158px;
   .white-box{
     background: #fff;
-    padding: 0 px2rem(30px);
+    padding: 0 30px;
   }
   .stress {
     color: #fb3636;
   }
   .line-title{
-    height: px2rem(90px);
-    line-height: px2rem(90px);
+    height: 90px;
+    line-height: 90px;
     position: relative;
-    padding-left: px2rem(12px);
-    @include font-dpr(26px);
+    padding-left: 12px;
+    font-size: 26px;
     font-weight: bold;
     &::after{
       content: '';
       position: absolute;
       left: 0;
       top: 50%;
-      height: px2rem(26px);
-      width: px2rem(4px);
+      height: 26px;
+      width: 4px;
       transform: translateY(-50%);
       background: $theme-color
     }
   }
   .field{
-    min-height: px2rem(88px);
+    min-height: 88px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     border-bottom: 1px solid #E9E9E9;
-    @include font-dpr(26px);
+    font-size: 26px;
     .value{
       color: #A1A3AE;
       flex: 1;
@@ -42,7 +42,7 @@ $text-finance-color: #525E70;
     }
     .theme-color{
       color: $theme-color;
-      padding: px2rem(20px);
+      padding: 20px;
       padding-right: 0;
     }
     &:last-child{
@@ -55,27 +55,27 @@ $text-finance-color: #525E70;
   color: $text-finance-color;
 }
 .product-level-wrap {
-  min-height: px2rem(348px);
-  padding-bottom: px2rem(24px);
+  min-height: 348px;
+  padding-bottom: 24px;
   background: #fff;
   position: relative;
   .product-info {
-    margin: px2rem(30px);
-    height: px2rem(230px);
-    padding-top: px2rem(36px);
+    margin: 30px;
+    height: 230px;
+    padding-top: 36px;
     text-align: center;
     background: #fff;
     box-shadow: 0 0 8px 0 rgba(25, 69, 157, 0.2);
-    border-radius: px2rem($radius-xs);
+    border-radius: $radius-xs;
     &.complete {
       background: #fff url('../img/tfinance/level-complete.png') no-repeat right
         top;
-      background-size: px2rem(108px) px2rem(82px);
+      background-size: 108px 82px;
     }
     &.uncomplete {
       background: #fff url('../img/tfinance/level-uncomplete.png') no-repeat
         right top;
-      background-size: px2rem(108px) px2rem(82px);
+      background-size: 108px 82px;
     }
     .top-box {
       display: flex;
@@ -86,57 +86,57 @@ $text-finance-color: #525E70;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        height: px2rem(92px);
+        height: 92px;
       }
       .rate-box {
         .text {
-          @include font-dpr(40px);
+          font-size: 40px;
         }
       }
       .label {
         color: #a1a3ae;
       }
       .text {
-        @include font-dpr(36px);
+        font-size: 36px;
       }
       .line {
-        height: px2rem(88px);
+        height: 88px;
         width: 1px;
-        margin: 0 px2rem(30px);
+        margin: 0 30px;
         background: #c0c6d4;
       }
-      margin-bottom: px2rem(24px);
+      margin-bottom: 24px;
     }
     .bottom-box {
-      line-height: px2rem(34px);
+      line-height: 34px;
     }
     .bank{
       position: absolute;
-      left: px2rem(40px);
-      top: px2rem(40px);
-      width: px2rem(104px);
+      left: 40px;
+      top: 40px;
+      width: 104px;
     }
   }
   .product-tags {
     display: flex;
     justify-content: space-between;
-    padding: 0 px2rem(30px);
+    padding: 0 30px;
     .product-tag {
-      min-height: px2rem(40px);
+      min-height: 40px;
       flex: 1;
       justify-content: center;
       align-items: center;
       text-align: center;
-      @include font-dpr(20px);
+      font-size: 20px;
       &:nth-child(2) {
-        margin: 0 px2rem(16px);
+        margin: 0 16px;
         flex: 1.5;
       }
     }
   }
   .btn {
     position: absolute;
-    top: px2rem(118px);
+    top: 118px;
     z-index: 999;
     display: flex;
     justify-content: center;
@@ -145,17 +145,17 @@ $text-finance-color: #525E70;
     background: #f2f4fb;
     color: $text-finance-color;
     &.prev-btn {
-      left: px2rem(54px);
-      padding-left: px2rem(4px);
+      left: 54px;
+      padding-left: 4px;
       .arrow {
-        @include v-arrow(left, 1px, px2rem(12px));
+        @include v-arrow(left, 1px, 12px);
       }
     }
     &.next-btn {
-      right: px2rem(54px);
-      padding-right: px2rem(4px);
+      right: 54px;
+      padding-right: 4px;
       .arrow {
-        @include v-arrow(right, 1px, px2rem(12px));
+        @include v-arrow(right, 1px, 12px);
       }
     }
   }
@@ -163,25 +163,25 @@ $text-finance-color: #525E70;
 .product-notice-wrap {
   display: flex;
   align-items: top;
-  height: px2rem(60px);
+  height: 60px;
   overflow: hidden;
-  padding: 0 px2rem(24px);
+  padding: 0 24px;
   background: #f5f7fa;
   line-height: 1;
   color: #737d99;
-  @include font-dpr(22px);
+  font-size: 22px;
   .img {
-    width: px2rem(30px);
-    height: px2rem(22px);
-    margin-top: px2rem(19px);
-    margin-right: px2rem(10px);
+    width: 30px;
+    height: 22px;
+    margin-top: 19px;
+    margin-right: 10px;
   }
   .text{
     ul,li,div,p,span{
       @extend %text-overflow;
     }
     ul,li,p, div{
-      line-height: px2rem(60px);
+      line-height: 60px;
     }
     @extend %text-overflow;
   }
@@ -191,83 +191,83 @@ $text-finance-color: #525E70;
 }
 .product-notice-popup{
   width: 90%;
-  border-radius: px2rem(10px);
+  border-radius: 10px;
   line-height: 1.8;
   box-sizing: border-box;
   overflow-y: visible;
-  @include font-dpr(26px);
+  font-size: 26px;
   .header{
     img{
       width: 100%;
     }
   }
   .content{
-    padding: px2rem(20px) px2rem(40px) px2rem(20px);
-    height: px2rem(480px);
+    padding: 20px 40px 20px;
+    height: 480px;
     overflow: auto;
   }
   ul,li,div,p,span{
     word-break: break-all;
   }
   ul,li,div,p{
-    margin-bottom: px2rem(10px);
+    margin-bottom: 10px;
   }
   .close{
       position: absolute;
-      top: px2rem(740px);
+      top: 740px;
       left: 50%;
-      margin-left: px2rem(-34px);
+      margin-left: -34px;
       @include square(66px);
       @include full-bg-img('../../assets/img/tfinance/popup-close.png');
   }
 }
 .product-point-wrap {
   .point-outline {
-    height: px2rem(80px);
+    height: 80px;
     display: flex;
     justify-content: space-around;
     align-items: center;
     background: #fff;
   }
-  @include font-dpr(26px);
+  font-size: 26px;
   .item {
     display: flex;
     align-items: center;
     line-height: 1;
   }
   .icon {
-    width: px2rem(22px);
-    margin-right: px2rem(12px);
+    width: 22px;
+    margin-right: 12px;
   }
   .detail-item {
-    @include font-dpr(26px);
-    margin-bottom: px2rem(24px);
+    font-size: 26px;
+    margin-bottom: 24px;
     .title-wrap {
-      height: px2rem(60px);
+      height: 60px;
       display: flex;
       align-items: center;
       color: $theme-color;
     }
     .detail-icon {
-      width: px2rem(60px);
-      height: px2rem(60px);
-      margin-right: px2rem(10px);
+      width: 60px;
+      height: 60px;
+      margin-right: 10px;
     }
     .content {
-      padding-left: px2rem(70px);
+      padding-left: 70px;
     }
   }
 }
 .all-ordered-wrap{
   // padding-bottom: px2rem(30px) !important;
   .white-box{
-    padding-bottom: px2rem(20px);
+    padding-bottom: 20px;
   }
   .top{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: px2rem(90px);
+    height: 90px;
     .num{
       color: #A1A3AE;
     }
@@ -277,13 +277,13 @@ $text-finance-color: #525E70;
   }
   table{
     width: 100%;
-    @include font-dpr(22px);
+    font-size: 22px;
     th,tr{
       display: table-row;
       text-align: center;
     }
     td{
-      padding: px2rem(12px) px2rem(4px);
+      padding: 12px 4px;
     }
     th{
       border-top: 1px solid #A1A3AE;
@@ -295,7 +295,7 @@ $text-finance-color: #525E70;
   }
   .tip{
     text-align: center;
-    padding-top: px2rem(10px);
+    padding-top: 10px;
   }
 }
 .popup-page {
@@ -307,65 +307,65 @@ $text-finance-color: #525E70;
     width: 100%;
     bottom: 0;
     top: 40px;
-    padding: px2rem(30px);
+    padding: 30px;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
     .content-title {
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 14px;
-      padding-bottom: px2rem(30px);
+      font-size: 28px;
+      padding-bottom: 30px;
       .title {
-        padding: 0 px2rem(10px);
+        padding: 0 10px;
       }
       .line {
-        width: px2rem(30px);
-        height: px2rem(4px);
+        width: 30px;
+        height: 4px;
         background: #dadde6;
       }
     }
   }
 }
 .activity-rule-wrap {
-  margin: px2rem(20px) 0;
+  margin: 20px 0;
   .rule-title {
-    height: px2rem(80px);
+    height: 80px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    @include font-dpr(26px);
+    font-size: 26px;
     .more {
       display: inline-flex;
       align-items: center;
-      @include font-dpr(24px);
+      font-size: 24px;
       color: #a1a3ae;
       line-height: 1;
       .triangle {
-        margin-left: px2rem(8px);
-        @include triangle(right, px2rem(8px), $text-finance-color);
+        margin-left: 8px;
+        @include triangle(right, 8px, $text-finance-color);
       }
     }
   }
   .rule-detail {
-    @include font-dpr(26px);
+    font-size: 26px;
     .tip {
       color: #9eafc8;
-      line-height: px2rem(38px);
+      line-height: 38px;
     }
     .item-title {
-      height: px2rem(76px);
-      line-height: px2rem(76px);
-      padding-left: px2rem(44px);
+      height: 76px;
+      line-height: 76px;
+      padding-left: 44px;
       background: url('../img//tfinance/icon-rule-title.png') no-repeat left
         center;
-      background-size: px2rem(34px) auto;
+      background-size: 34px auto;
     }
     .content {
-      padding: px2rem(20px) px2rem(30px);
-      line-height: px2rem(40px);
+      padding: 20px 30px;
+      line-height: 40px;
       background: #f7f8fa;
-      border-radius: px2rem($radius-s);
+      border-radius: $radius-s;
       .bold{
         font-weight: normal;
       }
@@ -373,18 +373,18 @@ $text-finance-color: #525E70;
   }
 }
 .buy-notice {
-  @include font-dpr(26px);
+  font-size: 26px;
   .content {
-    line-height: px2rem(40px);
+    line-height: 40px;
     p{
-      margin-bottom: px2rem(20px);
+      margin-bottom: 20px;
     }
     .bold{
     }
   }
   .tip {
     color: #9eafc8;
-    line-height: px2rem(38px);
+    line-height: 38px;
   }
 }
 .avator-wrap{
@@ -400,58 +400,58 @@ $text-finance-color: #525E70;
       @include circle(80px);
     }
     &.border{
-      border: px2rem(10px) solid #fff;
+      border: 10px solid #fff;
     }
   }
 }
 .colleague-ordered-wrap{
   .white-box:not(.no-pad){
-    padding-top: px2rem(24px) !important;
-    padding-bottom: px2rem(24px) !important;
+    padding-top: 24px !important;
+    padding-bottom: 24px !important;
   }
   .title-wrap{
     display: flex;
     align-items: center;
     justify-content: center;
-    height: px2rem(60px);
+    height: 60px;
     .title{
-      margin: 0 px2rem(12px);
-      @include font-dpr(26px);
+      margin: 0 12px;
+      font-size: 26px;
     }
   }
   .item{
     display: flex;
     align-items: center;
-    padding: px2rem(10px) 0;
+    padding: 10px 0;
     line-height: 1;
-    @include font-dpr(26px);
+    font-size: 26px;
     .avator-wrap{
-      margin-right: px2rem(30px);
+      margin-right: 30px;
     }
     .text{
       flex: 1;
-      padding-right: px2rem(20px);
+      padding-right: 20px;
       @extend %text-overflow;
     }
     .name{
-      margin-right: px2rem(10px);
+      margin-right: 10px;
     }
     .relative-time{
       color: #A1A3AE;
     }
   }
   .tip{
-    padding-top: px2rem(20px);
+    padding-top: 20px;
     text-align: center;
-    @include font-dpr(24px);
+    font-size: 24px;
     color: #9EAFC8;
   }
 }
 .t-finance-confirm-page{
-  @include font-dpr(26px);
+  font-size: 26px;
   .amt-wrap{
-    padding: 0 px2rem(30px);
-    margin-top: px2rem(20px);
+    padding: 0 30px;
+    margin-top: 20px;
     background: #fff;
     border-bottom: 1px solid #E9E9E9;
     .input-wrap{
@@ -459,64 +459,64 @@ $text-finance-color: #525E70;
       align-items: center;
       border: 1px solid #D4D4D4;
       background: #fff;
-      margin-bottom: px2rem(32px);
-      border-radius: px2rem($radius-xs);
+      margin-bottom: 32px;
+      border-radius: $radius-xs;
       .input{
         flex: 1;
         border: none;
-        @include font-dpr(26px);
+        font-size: 26px;
       }
       .unit{
-        width: px2rem(80px);
-        height: px2rem(80px);
-        line-height: px2rem(80px);
+        width: 80px;
+        height: 80px;
+        line-height: 80px;
         text-align: center;
         border-left: 1px solid #D4D4D4;
       }
     }
   }
   .manager-info-wrap{
-    padding: px2rem(30px) px2rem(30px) px2rem(50px);
+    padding: 30px 30px 50px;
     background: #fff;
     .info-box{
       display: flex;
       align-items: center;
     }
     .name-phone{
-      padding-left: px2rem(24px);
+      padding-left: 24px;
       display: flex;
       flex: 1;
       flex-direction: column;
       justify-content: space-between;
     }
     .phone{
-      @include font-dpr(24px);
+      font-size: 24px;
     }
     .call{
-      width: px2rem(178px);
-      height: px2rem(50px);
+      width: 178px;
+      height: 50px;
       display: flex;
       align-items: center;
       justify-content: center;
-      @include font-dpr(24px);
+      font-size: 24px;
       border: 1px solid #D4D4D4;
-      border-radius: px2rem(50px);
+      border-radius: 50px;
       color: $text-finance-color;
     }
     .tip{
       position: relative;
-      top: px2rem(20px);
-      padding: px2rem(20px) px2rem(24px);
+      top:20px;
+      padding: 20px 24px;
       background: #F6F6F6;
-      border-radius: px2rem($radius-xs);
-      @include font-dpr(22px);
-      line-height: px2rem(30px);
+      border-radius: $radius-xs;
+      font-size: 22px;
+      line-height: 30px;
       &::after{
         content: '';
         position: absolute;
         bottom: 100%;
-        left: px2rem(23px);
-        @include triangle(top, px2rem(12px), #F6F6F6);
+        left: 23px;
+        @include triangle(top, 12px, #F6F6F6);
       }
     }
   }
@@ -525,20 +525,20 @@ $text-finance-color: #525E70;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    line-height: px2rem(34px);
-    @include font-dpr(22px);
+    line-height: 34px;
+    font-size: 22px;
     .icon{
-      width: px2rem(32px);
+      width: 32px;
     }
   }
   .small-field{
-    min-height: px2rem(60px);
+    min-height: 60px;
     align-items: start;
   }
   .protocol-wrap{
     display: flex;
-    height: px2rem(60px);
-    @include font-dpr(22px);
+    height: 60px;
+    font-size: 22px;
     .v-checkbox-wrap{
       margin-right: 5px;
     }
@@ -561,12 +561,12 @@ $text-finance-color: #525E70;
     transform: translate3d(-50%, -50%, 0);
     background-color: #fff;
     width: 85%;
-    border-radius: 3px;
+    border-radius: 6px;
     z-index: 2;
     text-align: center;
-    @include font-dpr(28px);
+    font-size: 28px;
     .title{
-      line-height: px2rem(100px);
+      line-height: 100px;
     }
     .input{
       width: 90%;
@@ -574,12 +574,12 @@ $text-finance-color: #525E70;
     .action-wrap{
       display: flex;
       border-top: 1px solid #dedede;
-      margin-top: px2rem(40px);
+      margin-top: 40px;
     }
     .action-item{
       flex: 1;
-      height: px2rem(80px);
-      line-height: px2rem(80px);
+      height: 80px;
+      line-height: 80px;
       text-align: center;
       &:last-child{
         border-left: 1px solid #dedede;
@@ -601,39 +601,39 @@ $text-finance-color: #525E70;
   background: rgba(0,0,0,0.7);
   .content-wrap{
     position: absolute;
-    width: px2rem(548px);
-    padding: px2rem(50px) px2rem(40px);
-    left: px2rem(46px);
+    width: 548px;
+    padding: 50px 40px;
+    left: 46px;
     top: 50%;
     transform: translateY(-50%);
     border-radius: $radius-xs;
     background: #fff;
     text-align: center;
-    @include font-dpr(26px);
+    font-size: 26px;
     .img{
-      width: px2rem(130px);
+      width: 130px;
     }
     .title{
-      margin:px2rem(20px) 0;
+      margin:20px 0;
       text-align: center;
-      @include font-dpr(28px);
+      font-size: 28px;
     }
     .text{
-      margin-bottom: px2rem(30px);
+      margin-bottom: 30px;
     }
     .item{
       position: relative;
-      text-indent: px2rem(40px);
+      text-indent: 40px;
       text-align: left;
-      margin: px2rem(24px) 0;
+      margin: 24px 0;
       &::after{
         content: '';
         position: absolute;
-        left: px2rem(15px);
-        top: 7px;
-        width: 5px;
-        height: 5px;
-        border-radius: 5px;
+        left: 15px;
+        top: 14px;
+        width: 10px;
+        height: 10px;
+        border-radius: 10px;
         background: #525E70;
       }
 
@@ -643,15 +643,15 @@ $text-finance-color: #525E70;
       align-items: center;
       justify-content: center;
       line-height: 1;
-      width: px2rem(194px);
-      height: px2rem(66px);
+      width: 194px;
+      height: 66px;
       border: 1px solid $text-finance-color;
       border-radius: $radius-s;
     }
   }
 }
 .t-finance-result-page{
-  padding-bottom: px2rem(108px);
+  padding-bottom: 108px;
   .bottom-action{
     border-top: 1px solid #E2E5EA;
     .ask-btn,.site-btn{
@@ -660,14 +660,14 @@ $text-finance-color: #525E70;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      line-height: px2rem(34px);
-      @include font-dpr(22px);
+      line-height: 34px;
+      font-size: 22px;
       .icon{
-        height: px2rem(30px);
+        height: 30px;
       }
     }
     .notice-btn,.share-btn{
-      width: px2rem(216px);
+      width: 216px;
     }
     .ask-btn{
       border-right: 1px solid $border-color;
@@ -678,14 +678,14 @@ $text-finance-color: #525E70;
   }
 }
 .result-outline-wrap{
-  padding: px2rem(28px) px2rem(30px) px2rem(40px);
+  padding: 28px 30px 40px;
   background: #fff;
-  margin-bottom: px2rem(20px);
+  margin-bottom: 20px;
   .top{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: px2rem(34px);
+    height: 34px;
   }
   .more{
     display: flex;
@@ -696,28 +696,28 @@ $text-finance-color: #525E70;
     }
   }
   .avator-box{
-    padding: px2rem(40px) px2rem(40px);
+    padding: 40px 40px;
     display: flex;
     align-items: center;
     justify-content: space-around;
     &.more-avator-box{
       justify-content: center;
-      padding-left: px2rem(140px);
+      padding-left: 140px;
       .avator-wrap{
         position: relative;
         &.avator-1{
-          left: px2rem(-40px);
+          left: -40px;
         }
         &.avator-2{
-          left: px2rem(-80px);
+          left: -80px;
         }
         &.avator-3{
-          left: px2rem(-120px);
+          left: -120px;
         }
       }
       .img{
         @include circle(80px);
-        border: px2rem(10px) solid white;
+        border: 10px solid white;
       }
     }
   }
@@ -728,22 +728,22 @@ $text-finance-color: #525E70;
     .days,.hours,.minutes,.seconds{
       display: inline-flex;
       align-items: center;
-      padding: 0 px2rem(6px);
-      height: px2rem(38px);
+      padding: 0 6px;
+      height: 38px;
       background: #F9F2DA;
       border: 1px solid #F5D6B3;
-      border-radius: px2rem(2px);
+      border-radius: 2px;
       color: #E9871C;
     }
     .deal-day{
       display: inline-flex;
       align-items: center;
-      padding: 0 px2rem(6px);
-      height: px2rem(38px);
+      padding: 0 6px;
+      height: 38px;
       background: #EDF0F5;
       border: 1px solid #CECFD6;
-      border-radius: px2rem(2px);
-      margin-right: px2rem(4px);
+      border-radius: 2px;
+      margin-right: 4px;
     }
     .green{
       color: $theme-color;
@@ -751,24 +751,24 @@ $text-finance-color: #525E70;
   }
 }
 .result-product-wrap{
-  padding-top:px2rem(30px) !important;
-  padding-bottom:px2rem(30px) !important;
-  margin-bottom: px2rem(20px);
+  padding-top:30px !important;
+  padding-bottom:30px !important;
+  margin-bottom: 20px;
   @include clearfix;
   .line-title{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: px2rem(38px);
-    line-height: px2rem(38px);
-    margin-bottom: px2rem(30px);
+    height: 38px;
+    line-height: 38px;
+    margin-bottom: 30px;
     .title{
       flex: 1;
     }
     .product-tag{
-      height: 20px;
-      line-height: 20px;
-      padding: 0 px2rem(12px);
+      height: 40px;
+      line-height: 40px;
+      padding: 0 12px;
     }
 
   }
@@ -781,16 +781,16 @@ $text-finance-color: #525E70;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: px2rem(80px);
+    height: 80px;
     line-height: 1;
   }
   .rate-wrap{
     .value{
-      @include font-dpr(40px);
+      font-size: 40px;
     }
   }
   .limit-info{
-    padding-left: px2rem(30px);
+    padding-left: 30px;
     border-left: 1px solid #E9E9E9;
   }
 }
@@ -803,16 +803,16 @@ $text-finance-color: #525E70;
     background-color: $bg-color;
   }
   .tip{
-    padding: px2rem(20px) 0;
+    padding: 20px 0;
   }
 }
 .share-mark{
   z-index:99;
   .img{
-    width: px2rem(436px);
-    height: px2rem(374px);
+    width: 436px;
+    height: 374px;
     position: absolute;
-    right: px2rem(80px);
+    right: 80px;
   }
 }
 .order-end-wrap{
@@ -823,18 +823,18 @@ $text-finance-color: #525E70;
   bottom: 0;
   text-align: center;
   background-color: #fff;
-  padding-top: px2rem(216px);
+  padding-top: 216px;
   .img{
-    width: px2rem(284px);
-    height: px2rem(216px);
-    margin-bottom: px2rem(28px);
+    width: 284px;
+    height: 216px;
+    margin-bottom: 28px;
   }
   .tip-l{
-    @include font-dpr(28px);
-    margin-bottom: px2rem(12px);
+    font-size: 28px;
+    margin-bottom: 12px;
   }
   .tip-s{
-    @include font-dpr(24px);
+    font-size: 24px;
     color: #A1A3AE;
   }
 }
@@ -846,10 +846,10 @@ $text-finance-color: #525E70;
   display: flex;
 }
 .btn{
-  height: px2rem(88px);
-  line-height: px2rem(88px);
+  height: 88px;
+  line-height: 88px;
   text-align: center;
-  @include font-dpr(28px);
+  font-size: 28px;
   &.theme-btn{
     background: $theme-color;
     color: #fff;
@@ -878,10 +878,10 @@ $text-finance-color: #525E70;
 .fixed-time{
   position: fixed;
   left: 0;
-  bottom: px2rem(88px);
+  bottom: 88px;
   width: 100%;
-  height: px2rem(50px);
-  line-height: px2rem(50px);
+  height: 50px;
+  line-height: 50px;
   text-align: center;
   border-top: 1px solid #EAE2C6;
   background: #F9F2DA;
@@ -891,11 +891,11 @@ $text-finance-color: #525E70;
 }
 .product-tag {
   display: inline-flex;
-  padding: px2rem(4px) px2rem(10px);
+  padding: 4px 10px;
   border: 1px solid $text-finance-color;
-  border-radius: px2rem($radius-s);
+  border-radius: $radius-s;
   background-color: #fff;
-  @include font-dpr(22px);
+  font-size: 22px;
   &.green {
     border-color: #8FD5D3;
     color: $theme-color;
@@ -916,23 +916,23 @@ $text-finance-color: #525E70;
   display: inline-flex;
   align-items: center;
   .line{
-    width: px2rem(60px);
-    height: px2rem(2px);
+    width: 60px;
+    height: 2px;
   }
   .dot{
-    @include circle(6px);
+    @include circle(12px);
     background: $theme-color;
   }
   &.left{
     .line{
       background-image: linear-gradient(-90deg, rgba(93,203,200,0.36) 0%, transparent 100%);
-      margin-right: 2px;
+      margin-right: 4px;
     }
   }
   &.right{
     .line{
       background-image: linear-gradient(90deg, rgba(93,203,200,0.36) 0%, transparent 100%);
-      margin-left: 2px;
+      margin-left: 4px;
     }
   }
 }
@@ -941,7 +941,7 @@ $text-finance-color: #525E70;
   height: 100%;
   width: 100%;
   .protocol-item {
-    padding: px2rem(10px) 0;
+    padding: 10px 0;
   }
 }
 
@@ -952,19 +952,19 @@ $text-finance-color: #525E70;
         border-radius: 100%;
         border: 1px solid #ccc;
         position: relative;
-        width: 14px;
-        height: 14px;
+        width: 28px;
+        height: 28px;
         vertical-align: middle;
         &:after{
             border: 2px solid transparent;
             border-left: 0;
             border-top: 0;
             content: "";
-            top: 1px;
-            left: 4px;
+            top: 2px;
+            left: 8px;
             position: absolute;
-            width: 4px;
-            height: 8px;
+            width: 8px;
+            height: 16px;
             transform: rotate(45deg) scale(0);
             transition: transform .2s;
         }

@@ -1,25 +1,25 @@
 <template>
-  <div class="logistics-detail-page">
+  <div class="van-logistics-detail-page">
     <empty v-if="!trackInfo.shipmentName && requested" text="暂无物流信息" type="exchange"></empty>
     <template v-else>
-      <div class="goods-info">
-        <van-image class="goods-img" v-if="orderInfo.titleImgIdSet" lazy-load :src="`${imgBaseUrl}/${orderInfo.titleImgIdSet[0]}`" />
-        <div class="goods-text">
-          <p class="title">{{orderInfo.goodsName}}</p>
-          <p class="company"><span class="gray">{{trackInfo.shipmentName}}</span><span class="stress">：{{trackInfo.shipmentOrder}}</span></p>
+      <div class="van-goods-info">
+        <van-image class="van-goods-img" v-if="orderInfo.titleImgIdSet" lazy-load :src="`${imgBaseUrl}/${orderInfo.titleImgIdSet[0]}`" />
+        <div class="van-goods-text">
+          <p class="van-title">{{orderInfo.goodsName}}</p>
+          <p class="van-company"><span class="gray">{{trackInfo.shipmentName}}</span><span class="stress">：{{trackInfo.shipmentOrder}}</span></p>
         </div>
       </div>
-      <div class="track-info">
-        <div class="address">
+      <div class="van-track-info">
+        <div class="van-address">
           <van-icon name="location-o" class="location" size="15px" />
-          <p class="detail">
+          <p class="van-detail">
             {{orderInfo.province}}{{orderInfo.city}}{{orderInfo.county}}{{orderInfo.town}}{{orderInfo.address}}
           </p>
         </div>
-        <van-steps class="track-list" direction="vertical" :active="0" :active-color="trackInfo.status === 'signed' ? '#DE4444' : '#2a88ed'" :active-icon="trackInfo.status === 'signed' ? 'checked' : 'location'">
+        <van-steps class="van-track-list" direction="vertical" :active="0" :active-color="trackInfo.status === 'signed' ? '#DE4444' : '#2a88ed'" :active-icon="trackInfo.status === 'signed' ? 'checked' : 'location'">
           <van-step v-for="(item, index) in trackInfo.contents" :key="index">
-            <p class="desc">{{item.description}}</p>
-            <p class="time">{{item.time}}</p>
+            <p class="van-desc">{{item.description}}</p>
+            <p class="van-time">{{item.time}}</p>
           </van-step>
         </van-steps>
       </div>

@@ -1,13 +1,13 @@
 // trend  走势图页面
 .trend-page {
-    @include font-dpr(26px);
+    font-size: 26px;
     color: #333;
-    padding-bottom: px2rem(122px);
+    padding-bottom: 122px;
     .choose {
       width: 100%;
-      height: px2rem(80px);
+      height: 80px;
       text-align: center;
-      line-height: px2rem(80px);
+      line-height: 80px;
       background: #fff;
       border-bottom: 1px solid #dfdfdf;
       .active {
@@ -18,18 +18,18 @@
       li {
         display: inline-block;
         vertical-align: middle;
-        margin: 0 px2rem(12px);
-        width: px2rem(176px);
-        height: px2rem(50px);
+        margin: 0 12px;
+        width: 176px;
+        height: 50px;
         border: 1px solid #52bdbd;
-        border-radius: 2px;
-        line-height: px2rem(50px);
+        border-radius: 4px;
+        line-height: 50px;
         color: #52bdbd;
       }
     }
     .chart-wrap {
-      padding-top: px2rem(40px);
+      padding-top: 40px;
       background: #fff;
-      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.08);
     }
   }
