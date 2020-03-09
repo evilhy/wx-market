@@ -179,7 +179,7 @@
 
   .main {
     width: px2rem(600px);
-    height: px2rem(780px);
+    height: auto;
     border-radius: px2rem(8px);
     background-color: #fff;
     padding: px2rem(30px);
@@ -266,6 +266,22 @@
         }
       }
     }
-
+    .btn{
+      display: block;
+      height: px2rem(70px);
+      line-height: px2rem(70px);
+      text-align: center;
+      @include font-dpr(28px);
+      background: $primary-color;
+      color: white;
+      border-radius: px2rem($radius-xs);
+      margin-top: px2rem(40px);
+    }
+    .checkbox-wrap{
+      margin-top: px2rem(20px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
 }

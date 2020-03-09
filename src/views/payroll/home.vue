@@ -15,7 +15,8 @@
       <div class="link-right">
         <div class="invoice-person">
           <div class="manager-info box bot-line" @click="toPage('manager')">
-            <div class="title"><span class="dot" v-if="managerInfo.hasManager === 1 && !isReadManager">1</span>客户经理</div>
+            <div class="title"><span class="dot" v-if="managerInfo.hasManager === 1 && !isReadManager">1</span>客户经理
+            </div>
           </div>
           <div class="welfare-info box bot-line" @click="toPage('welfareList')">
             <div class="title">员工福利</div>
@@ -34,7 +35,10 @@
         <img :src="item.src" :class="item.className"/>
       </span>
     </div>
-    <home-manager-dialog ref="home-manager-dialog" @getIsReadManager="getIsReadManager" :managerInfo="managerInfo"></home-manager-dialog>
+    <van-button type="warning" @click="clear">清缓存</van-button>
+    <home-manager-dialog ref="home-manager-dialog" @getIsReadManager="getIsReadManager"
+                         @getIsReadManagerCurrent="getIsReadManagerCurrent"
+                         :manager-info="managerInfo"></home-manager-dialog>
   </div>
 </template>
 <script>
@@ -62,6 +66,7 @@
         imgList: [],
         requested: false,
         isReadManager: false,
+        isReadManagerCurrent: false,
         managerInfo: {
           ownBank: 0, // 0他行卡，1是本行卡
           hasManager: 0, // 0没有客户经理，1有客户经理
@@ -98,10 +103,18 @@
       this.getBannerList()
       this.getManagerInfo()
       this.getIsReadManager()
+      this.getIsReadManagerCurrent()
     },
     methods: {
+      clear () {
+        console.log(11)
+        localStorage.clear()
+      },
       getIsReadManager () {
         this.isReadManager = helper.getIsReadManager()
+      },
+      getIsReadManagerCurrent () {
+        this.isReadManagerCurrent = helper.getIsReadManagerCurrent()
       },
       async getManagerInfo () {
         let res = await this.$Manager.openingTips()
@@ -130,7 +143,7 @@
       },
       toPage (routerName, query = {}) {
         let {hasManager} = this.managerInfo
-        if (routerName === 'manager' && hasManager === 1 && !this.isReadManager) {
+        if (routerName === 'manager' && hasManager === 1 && !this.isReadManager && !this.isReadManagerCurrent) {
           this.$refs['home-manager-dialog'].open()
           return false
         }
