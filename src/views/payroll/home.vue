@@ -35,7 +35,7 @@
         <img :src="item.src" :class="item.className"/>
       </span>
     </div>
-    <van-button type="warning" @click="clear">清缓存</van-button>
+    <!--<van-button type="warning" @click="clear">清缓存</van-button>-->
     <home-manager-dialog ref="home-manager-dialog" @getIsReadManager="getIsReadManager"
                          @getIsReadManagerCurrent="getIsReadManagerCurrent"
                          :manager-info="managerInfo"></home-manager-dialog>
