@@ -3,6 +3,7 @@
     <van-nav-bar :title="title" left-arrow left-text="" @click-left="close" class="protocol-title back-wrap">
     </van-nav-bar>
     <div class="content-wrap">
+      <div class="van-space"></div>
       <slot></slot>
     </div>
   </van-popup>

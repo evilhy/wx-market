@@ -259,7 +259,6 @@ $text-finance-color: #525E70;
   }
 }
 .all-ordered-wrap{
-  // padding-bottom: px2rem(30px) !important;
   .white-box{
     padding-bottom: 20px;
   }
@@ -306,10 +305,13 @@ $text-finance-color: #525E70;
     left: 0;
     width: 100%;
     bottom: 0;
-    top: 40px;
-    padding: 30px;
+    top: 0;
+    padding: 0 30px 30px;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
+    .van-space{
+      height: 56px;
+    }
     .content-title {
       display: flex;
       justify-content: center;

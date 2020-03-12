@@ -3,17 +3,17 @@
     height: 100%;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
-    padding-bottom: px2rem(98px);
+    padding-bottom: 98px;
     .star {
-      letter-spacing: px2rem(6px);
-      padding-left: px2rem(6px);
+      letter-spacing: 6px;
+      padding-left: 6px;
     }
     .wage-list-select {
       position: fixed;
       left: 0;
       top: 0;
       width: 100%;
-      height: px2rem(80px);
+      height: 80px;
       background: white;
       z-index: 3;
       display: flex;
@@ -138,7 +138,7 @@
       z-index: -1；;
     }
     .bill-list {
-      padding: 0 30px 30px;
+      padding: 0 30px;
       li {
         display: flex;
         align-items: flex-start;

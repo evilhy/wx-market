@@ -25,7 +25,7 @@ export default new Router({
       component: token
     },
     {
-      path: '/bind-id-card', // 身份绑定--输入身份证  1
+      path: '/bind-id-card', // 身份绑定--输入身份证
       name: 'bindIdCard', 
       meta: {
         title: '放薪管家'
@@ -35,7 +35,7 @@ export default new Router({
       }
     },
     {
-      path: '/choose-phone', // 身份绑定--选择手机号页面 1
+      path: '/choose-phone', // 身份绑定--选择手机号页面
       name: 'choosePhone',
       meta: {
         title: '放薪管家'
@@ -45,7 +45,7 @@ export default new Router({
       }
     },
     {
-      path: '/set-query-code', // 设置6位查询密码 1
+      path: '/set-query-code', // 设置6位查询密码
       name: 'setQueryCode',
       meta: {
         title: '放薪管家'
@@ -55,7 +55,7 @@ export default new Router({
       }
     },
     {
-      path: '/complete', // 绑定|设置查询密码完成页面 1
+      path: '/complete', // 绑定|设置查询密码完成页面
       name: 'complete',
       meta: {
         title: '放薪管家'
@@ -65,7 +65,7 @@ export default new Router({
       }
     },
     {
-      path: '/bind-tel', // 身份绑定--绑定手机号 1
+      path: '/bind-tel', // 身份绑定--绑定手机号
       name: 'bindTel',
       meta: {
         title: '放薪管家'
@@ -75,7 +75,7 @@ export default new Router({
       }
     },
     {
-      path: '/send-code', // 身份绑定--发送验证码 1
+      path: '/send-code', // 身份绑定--发送验证码
       name: 'sendCode',
       meta: {
         title: '放薪管家'
@@ -85,7 +85,7 @@ export default new Router({
       }
     },
     {
-      path: '/check-card-tail', // 身份绑定--验证银行卡后6位 1
+      path: '/check-card-tail', // 身份绑定--验证银行卡后6位
       name: 'checkCardTail',
       meta: {
         title: '放薪管家'
@@ -95,7 +95,7 @@ export default new Router({
       }
     },
     {
-      path: '/concat-ent-manager', // 联系企业管理员 1
+      path: '/concat-ent-manager', // 联系企业管理员
       name: 'concatEntManager',
       meta: {
         title: '放薪管家'
@@ -105,7 +105,7 @@ export default new Router({
       }
     },
     {
-      path: '/home', // 首页 1
+      path: '/home', // 首页
       name: 'home',
       meta: {
         title: '放薪管家'
@@ -175,7 +175,7 @@ export default new Router({
       }
     },
     {
-      path: '/user', // 个人信息首页 1
+      path: '/user', // 个人信息首页
       name: 'user', 
       meta: {
         title: '个人信息'
@@ -185,7 +185,7 @@ export default new Router({
       }
     },
     {
-      path: '/user-ents', // 个人信息-任职企业 1
+      path: '/user-ents', // 个人信息-任职企业
       name: 'userEnts', 
       meta: {
         title: '任职企业'
@@ -195,7 +195,7 @@ export default new Router({
       }
     },
     {
-      path: '/user-detail', // 个人信息详情 1
+      path: '/user-detail', // 个人信息详情
       name: 'userDetail', 
       meta: {
         title: '员工信息'
@@ -215,7 +215,7 @@ export default new Router({
       }
     },
     {
-      path: '/bankcard-list', // 个人信息-银行卡列表 1
+      path: '/bankcard-list', // 个人信息-银行卡列表
       name: 'bankcardList', 
       meta: {
         title: '银行卡'
@@ -225,7 +225,7 @@ export default new Router({
       }
     },
     {
-      path: '/bankcard-history', // 个人信息-银行卡历史记录 1
+      path: '/bankcard-history', // 个人信息-银行卡历史记录
       name: 'bankcardHistory', 
       meta: {
         title: '修改记录'
@@ -235,7 +235,7 @@ export default new Router({
       }
     },
     {
-      path: '/select-modify-way', // 修改手机号-选择验证方式 1
+      path: '/select-modify-way', // 修改手机号-选择验证方式
       name: 'selectModifyWay', 
       meta: {
         title: '修改手机号'
@@ -245,7 +245,7 @@ export default new Router({
       }
     },
     {
-      path: '/check-old-phone', // 修改手机号-旧手机号验证 1
+      path: '/check-old-phone', // 修改手机号-旧手机号验证
       name: 'checkOldPhone', 
       meta: {
         title: '修改手机号'
@@ -255,7 +255,7 @@ export default new Router({
       }
     },
     {
-      path: '/bind-new-phone', // 修改手机号-绑定新手机号 1
+      path: '/bind-new-phone', // 修改手机号-绑定新手机号
       name: 'bindNewPhone',
       meta: {
         title: '绑定新手机号'
@@ -265,7 +265,7 @@ export default new Router({
       }
     },
     {
-      path: '/check-ent-phone', // 修改手机号-企业中手机号验证 1
+      path: '/check-ent-phone', // 修改手机号-企业中手机号验证
       name: 'checkEntPhone', 
       meta: {
         title: '修改手机号'
@@ -275,7 +275,7 @@ export default new Router({
       }
     },
     {
-      path: '/confirm-modify-phone', // 修改手机号-确认绑定新手机号 1
+      path: '/confirm-modify-phone', // 修改手机号-确认绑定新手机号
       name: 'confirmModifyPhone', 
       meta: {
         title: '绑定新手机号'
@@ -292,7 +292,7 @@ export default new Router({
       }
     },
     {
-      path: '/invoice', // 发票信息页面 1
+      path: '/invoice', // 发票信息页面
       name: 'invoice', 
       component: resolve => {
         require(['../views/payroll/invoice.vue'], resolve)
@@ -313,7 +313,7 @@ export default new Router({
       }
     },
     {
-      path: '/manager', // 华夏管家页面 1
+      path: '/manager', // 华夏管家页面
       name: 'manager',
       component: resolve => {
         require(['../views/payroll/manager.vue'], resolve)
@@ -460,7 +460,7 @@ export default new Router({
       }
     },
     {
-      path: '/welfare-list', // 福利货柜（券列表） 1
+      path: '/welfare-list', // 福利货柜（券列表）
       name: 'welfareList',
       meta: {
         title: '员工福利'
@@ -480,7 +480,7 @@ export default new Router({
       }
     },
     {
-      path: '/welfare-goods-list/:activityId', // 福利货柜(礼品列表) 1
+      path: '/welfare-goods-list/:activityId', // 福利货柜(礼品列表)
       name: 'welfareGoodsList',
       meta: {
         title: '礼品列表'
@@ -490,7 +490,7 @@ export default new Router({
       }
     },
     {
-      path: '/welfare-goods-detail/:activityId', // 福利货柜(礼品详情) 1
+      path: '/welfare-goods-detail/:activityId', // 福利货柜(礼品详情)
       name: 'welfareGoodsDetail',
       meta: {
         title: '礼品详情'
@@ -500,7 +500,7 @@ export default new Router({
       }
     },
     {
-      path: '/welfare-order-list/:activityId', // 福利货柜(订单记录) 1
+      path: '/welfare-order-list/:activityId', // 福利货柜(订单记录)
       name: 'welfareOrderList',
       meta: {
         title: '兑换记录'
@@ -510,7 +510,7 @@ export default new Router({
       }
     },
     {
-      path: '/welfare-order-detail/:transOrderId', // 福利货柜(订单详情) 1
+      path: '/welfare-order-detail/:transOrderId', // 福利货柜(订单详情)
       name: 'welfareOrderDetail',
       meta: {
         title: '订单详情'
@@ -520,7 +520,7 @@ export default new Router({
       }
     },
     {
-      path: '/welfare-logistics-detail/:id', // 福利货柜(物流详情) 1
+      path: '/welfare-logistics-detail/:id', // 福利货柜(物流详情)
       name: 'welfareLogisticsDetail',
       meta: {
         title: '物流详情'
@@ -530,7 +530,7 @@ export default new Router({
       }
     },
     {
-      path: '/welfare-order-confirm/:activityId', // 福利货柜(确认实物订单) 1
+      path: '/welfare-order-confirm/:activityId', // 福利货柜(确认实物订单)
       name: 'welfareOrderConfirm',
       meta: {
         title: '订单详情'
@@ -540,7 +540,7 @@ export default new Router({
       }
     },
     {
-      path: '/address-List', // 收货地址 1
+      path: '/address-List', // 收货地址
       name: 'addressList',
       meta: {
         title: '收货地址'
@@ -550,7 +550,7 @@ export default new Router({
       }
     },
     {
-      path: '/add-new-address', // 1
+      path: '/add-new-address', //
       name: 'addNewAddress',
       meta: {
         title: '新增收货地址'

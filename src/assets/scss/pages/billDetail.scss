@@ -8,7 +8,7 @@
       margin-top: 60px;
       margin-bottom: 24px;
       width: 550px;
-      height: 820px;
+      height: calc(100vh - 150px);
       padding:30px 20px 20px;
       background: white;
       box-shadow: 0 0 26px 0 rgba(27, 117, 107, 0.3);
@@ -59,7 +59,7 @@
       }
     }
     .main-wrap {
-      height: 500px;
+      height: calc(100% - 280px);
       overflow-y: auto;
       -webkit-overflow-scrolling: touch;
     }
