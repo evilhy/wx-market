@@ -150,7 +150,9 @@ export default {
       this.selectSure()
     },
     selectSure () {
-      this.show = false
+      setTimeout(() => {
+        this.show = false
+      }, 1000)
       this.$emit('select', this.currentArea)
     },
     clearData () {
