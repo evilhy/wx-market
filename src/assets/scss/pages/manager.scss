@@ -5,31 +5,31 @@
       height: 100%;
       background: white;
       color: $text-color-tip;
-      @include font-dpr(26px);
+      font-size: 26px;
       text-align: center;
-      padding-top: px2rem(270px);
+      padding-top: 270px;
       .img {
         display: inline-block;
-        margin-bottom: px2rem(34px);
+        margin-bottom: 34px;
         &-status-one {
-          width: px2rem(180px);
-          height: px2rem(162px);
+          width: 180px;
+          height: 162px;
         }
         &-status-two {
-          width: px2rem(218px);
-          height: px2rem(164px);
+          width: 218px;
+          height: 164px;
         }
       }
       .tip {
-        line-height: px2rem(38px);
+        line-height: 38px;
       }
       .btn {
-        width: px2rem(210px);
-        height: px2rem(70px);
-        line-height: px2rem(70px);
-        margin-top: px2rem(32px);
-        border-radius: px2rem($radius-xs);
-        @include font-dpr(28px);
+        width: 210px;
+        height: 70px;
+        line-height: 70px;
+        margin-top: 32px;
+        border-radius: $radius-xs;
+        font-size: 28px;
         &-green {
           background: $theme-color;
           color: white;
@@ -46,55 +46,55 @@
       flex-direction: column;
       color: $text-color-dark;
       .outline-info-wrap {
-        height: px2rem(274px);
+        height: 274px;
         text-align: center;
-        padding-top: px2rem(50px);
+        padding-top: 50px;
         background: url('../img/fx-manager-bg.png') no-repeat center center;
         background-size: 100% 100%;
       }
       .manager-img {
-        @include circle(px2rem(112px));
+        @include circle(112px);
         @include center-block;
-        border: px2rem(4px) solid white;
-        margin-bottom: px2rem(14px);
+        border: 4px solid white;
+        margin-bottom: 14px;
         overflow: hidden;
         img {
-          @include square(px2rem(104px));
+          @include square(104px);
         }
       }
       .manager-name {
-        line-height: px2rem(40px);
+        line-height: 40px;
         color: white;
-        @include font-dpr($fontsize-m);
+        font-size: $fontsize-m;
       }
     }
     .tab-list {
       background: white;
-      height: px2rem(88px);
+      height: 88px;
       display: flex;
       display: -webkit-flex;
       justify-content: space-around;
-      margin-bottom: px2rem($space-normal);
+      margin-bottom: $space-normal;
     }
     .tab-item {
-      height: px2rem(88px);
-      line-height: px2rem(88px);
-      width: px2rem(150px);
+      height: 88px;
+      line-height: 88px;
+      width: 150px;
       position: relative;
       text-align: center;
       &.active {
         color: $theme-color;
-        border-bottom: px2rem(4px) solid $theme-color;
+        border-bottom: 4px solid $theme-color;
       }
       &.has-news:after {
         content: '';
         position: absolute;
-        right: px2rem(18px);
-        top: px2rem(24px);
-        @include circle(px2rem(14px));
+        right: 18px;
+        top: 24px;
+        @include circle(14px);
         background: #fb3636;
         box-sizing: border-box;
-        border: px2rem(2px) solid white;
+        border: 2px solid white;
       }
     }
   }

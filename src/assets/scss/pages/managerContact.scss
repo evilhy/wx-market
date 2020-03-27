@@ -5,16 +5,16 @@
     }
     .item {
       display: flex;
-      min-height: px2rem(88px);
-      padding: px2rem(24px) px2rem(30px);
-      @include font-dpr(26px);
-      line-height: px2rem(38px);
+      min-height: 88px;
+      padding: 24px 30px;
+      font-size: 26px;
+      line-height: 38px;
       border-bottom: 1px solid $border-color;
       align-items: center;
     }
     .label {
       color: $text-color-dark;
-      width: px2rem(114px);
+      width: 114px;
     }
     a {
       color: $text-color-gray;
@@ -27,7 +27,7 @@
       @include word-break;
     }
     .v-arrow {
-      margin-left: px2rem(12px);
-      @include v-arrow(right, px2rem(2px), px2rem(16px));
+      margin-left: 12px;
+      @include v-arrow(right, 2px, 16px);
     }
   }

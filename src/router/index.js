@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import manager from '../views/payroll/manager.vue'
 import getId from '../views/public/getId.vue'
 import token from '../views/public/token.vue'
 
@@ -14,7 +13,7 @@ export default new Router({
       meta: {
         title: '放薪管家'
       },
-      component: getId, // 检查
+      component: getId,
       alias: '/'
     },
     {
@@ -27,7 +26,7 @@ export default new Router({
     },
     {
       path: '/bind-id-card', // 身份绑定--输入身份证
-      name: 'bindIdCard', // 检查
+      name: 'bindIdCard', 
       meta: {
         title: '放薪管家'
       },
@@ -37,7 +36,7 @@ export default new Router({
     },
     {
       path: '/choose-phone', // 身份绑定--选择手机号页面
-      name: 'choosePhone', // 检查
+      name: 'choosePhone',
       meta: {
         title: '放薪管家'
       },
@@ -47,7 +46,7 @@ export default new Router({
     },
     {
       path: '/set-query-code', // 设置6位查询密码
-      name: 'setQueryCode', // 检查
+      name: 'setQueryCode',
       meta: {
         title: '放薪管家'
       },
@@ -57,7 +56,7 @@ export default new Router({
     },
     {
       path: '/complete', // 绑定|设置查询密码完成页面
-      name: 'complete', // 检查
+      name: 'complete',
       meta: {
         title: '放薪管家'
       },
@@ -67,7 +66,7 @@ export default new Router({
     },
     {
       path: '/bind-tel', // 身份绑定--绑定手机号
-      name: 'bindTel', // 检查
+      name: 'bindTel',
       meta: {
         title: '放薪管家'
       },
@@ -76,8 +75,8 @@ export default new Router({
       }
     },
     {
-      path: '/send-code/', // 身份绑定--发送验证码
-      name: 'sendCode', // 检查
+      path: '/send-code', // 身份绑定--发送验证码
+      name: 'sendCode',
       meta: {
         title: '放薪管家'
       },
@@ -86,8 +85,8 @@ export default new Router({
       }
     },
     {
-      path: '/check-card-tail/', // 身份绑定--验证银行卡后6位
-      name: 'checkCardTail', // 检查
+      path: '/check-card-tail', // 身份绑定--验证银行卡后6位
+      name: 'checkCardTail',
       meta: {
         title: '放薪管家'
       },
@@ -96,7 +95,7 @@ export default new Router({
       }
     },
     {
-      path: '/concat-ent-manager/', // 联系企业管理员
+      path: '/concat-ent-manager', // 联系企业管理员
       name: 'concatEntManager',
       meta: {
         title: '放薪管家'
@@ -107,7 +106,7 @@ export default new Router({
     },
     {
       path: '/home', // 首页
-      name: 'home', // 检查
+      name: 'home',
       meta: {
         title: '放薪管家'
       },
@@ -127,7 +126,7 @@ export default new Router({
     },
     {
       path: '/forget-send-code', // 忘记查询密码--发送验证码
-      name: 'forgetSendCode', // 检查
+      name: 'forgetSendCode',
       meta: {
         title: '放薪管家'
       },
@@ -137,7 +136,7 @@ export default new Router({
     },
     {
       path: '/set-new-query-code', // 设置新的查询密码
-      name: 'setNewQueryCode', // 检查
+      name: 'setNewQueryCode',
       meta: {
         title: '放薪管家'
       },
@@ -147,7 +146,7 @@ export default new Router({
     },
     {
       path: '/wage-index/:wageSheetId', // 工资首页
-      name: 'wageIndex', // 检查
+      name: 'wageIndex', 
       meta: {
         title: '放薪管家'
       },
@@ -157,7 +156,7 @@ export default new Router({
     },
     {
       path: '/wage-detail', // 工资条详情页面
-      name: 'wageDetail', // 检查
+      name: 'wageDetail', 
       meta: {
         title: '放薪管家'
       },
@@ -167,7 +166,7 @@ export default new Router({
     },
     {
       path: '/wage-list', // 薪资列表页
-      name: 'wageList', // 检查
+      name: 'wageList', 
       meta: {
         title: '放薪管家'
       },
@@ -177,7 +176,7 @@ export default new Router({
     },
     {
       path: '/user', // 个人信息首页
-      name: 'user', // 检查
+      name: 'user', 
       meta: {
         title: '个人信息'
       },
@@ -187,7 +186,7 @@ export default new Router({
     },
     {
       path: '/user-ents', // 个人信息-任职企业
-      name: 'userEnts', // 检查
+      name: 'userEnts', 
       meta: {
         title: '任职企业'
       },
@@ -197,7 +196,7 @@ export default new Router({
     },
     {
       path: '/user-detail', // 个人信息详情
-      name: 'userDetail', // 检查
+      name: 'userDetail', 
       meta: {
         title: '员工信息'
       },
@@ -207,7 +206,7 @@ export default new Router({
     },
     {
       path: '/modify-query-code', // 个人信息-修改查询密码
-      name: 'modifyQueryCode', // 检查
+      name: 'modifyQueryCode', 
       meta: {
         title: '修改查询密码'
       },
@@ -217,7 +216,7 @@ export default new Router({
     },
     {
       path: '/bankcard-list', // 个人信息-银行卡列表
-      name: 'bankcardList', // 检查
+      name: 'bankcardList', 
       meta: {
         title: '银行卡'
       },
@@ -227,7 +226,7 @@ export default new Router({
     },
     {
       path: '/bankcard-history', // 个人信息-银行卡历史记录
-      name: 'bankcardHistory', // 检查
+      name: 'bankcardHistory', 
       meta: {
         title: '修改记录'
       },
@@ -237,7 +236,7 @@ export default new Router({
     },
     {
       path: '/select-modify-way', // 修改手机号-选择验证方式
-      name: 'selectModifyWay', // 检查
+      name: 'selectModifyWay', 
       meta: {
         title: '修改手机号'
       },
@@ -247,7 +246,7 @@ export default new Router({
     },
     {
       path: '/check-old-phone', // 修改手机号-旧手机号验证
-      name: 'checkOldPhone', // 检查
+      name: 'checkOldPhone', 
       meta: {
         title: '修改手机号'
       },
@@ -267,7 +266,7 @@ export default new Router({
     },
     {
       path: '/check-ent-phone', // 修改手机号-企业中手机号验证
-      name: 'checkEntPhone', // 检查
+      name: 'checkEntPhone', 
       meta: {
         title: '修改手机号'
       },
@@ -277,7 +276,7 @@ export default new Router({
     },
     {
       path: '/confirm-modify-phone', // 修改手机号-确认绑定新手机号
-      name: 'confirmModifyPhone', // 检查
+      name: 'confirmModifyPhone', 
       meta: {
         title: '绑定新手机号'
       },
@@ -294,7 +293,7 @@ export default new Router({
     },
     {
       path: '/invoice', // 发票信息页面
-      name: 'invoice', // 检查
+      name: 'invoice', 
       component: resolve => {
         require(['../views/payroll/invoice.vue'], resolve)
       }
@@ -315,8 +314,10 @@ export default new Router({
     },
     {
       path: '/manager', // 华夏管家页面
-      component: manager,
-      name: 'manager'
+      name: 'manager',
+      component: resolve => {
+        require(['../views/payroll/manager.vue'], resolve)
+      }
     },
     {
       path: '/manager-detail',
@@ -341,14 +342,14 @@ export default new Router({
     },
     {
       path: '/elife-index', // 喜闻乐荐首页
-      name: 'elifeIndex', // 检查
+      name: 'elifeIndex', 
       component: resolve => {
         require(['../views/elife/index.vue'], resolve)
       }
     },
     {
       path: '/elife-login', // 喜闻乐荐参与页
-      name: 'elifeLogin', // 检查
+      name: 'elifeLogin', 
       component: resolve => {
         require(['../views/elife/login.vue'], resolve)
       }
@@ -469,7 +470,7 @@ export default new Router({
       }
     },
     {
-      path: '/welfare-detail/:activityId', // 福利货柜（券详情）
+      path: '/welfare-detail/:activityId', // 福利货柜（券详情）1
       name: 'welfareDetail',
       meta: {
         title: '员工福利'
@@ -549,7 +550,7 @@ export default new Router({
       }
     },
     {
-      path: '/add-new-address',
+      path: '/add-new-address', //
       name: 'addNewAddress',
       meta: {
         title: '新增收货地址'

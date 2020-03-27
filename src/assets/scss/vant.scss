@@ -1,12 +1,20 @@
 @charset "utf-8";
-.van-nav-bar .van-icon{
+.van-nav-bar .van-icon {
   color: $text-color;
 }
-.van-password-input{
+.van-password-input {
   margin: 0;
 }
-.van-picker{
-  button{
+.van-picker {
+  button {
     width: auto;
+  }
+}
+.van-toast {
+  .van-toast__text {
+    padding: 1vw 1.6vw;
+    font-size: 3.75vw;
+    line-height: 4.5vw;
+    word-break: break-all;
   }
 }

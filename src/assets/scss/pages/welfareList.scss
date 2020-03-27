@@ -1,36 +1,36 @@
 @charset "utf-8";
 .welfare-list-page{
-  padding: px2rem(20px) px2rem(30px);
+  padding: 20px 30px;
   .welfare-item{
     position: relative;
     border: 1px solid $border-color;
-    border-radius: 2px;
+    border-radius: 4px;
     background: white;
     &:not(:first-child){
-      margin-top: px2rem(20px);
+      margin-top: 20px;
     }
     .top{
       display: flex;
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
-      padding: 0 px2rem(20px);
+      padding: 0 20px;
       display: flex;
-      height: px2rem(80px);
+      height: 80px;
       .name{
         flex: 1;
-        @include font-dpr(28px);
+        font-size: 28px;
         @extend %text-overflow;
       }
       .right{
-        margin-left: 5px;
+        margin-left: 10px;
         display: flex;
       }
       .finished{
         position: absolute;
         top: 0;
-        right: px2rem(20px);
-        height: px2rem(80px);
+        right: 20px;
+        height: 80px;
       }
       .status{
         &.green{
@@ -41,24 +41,24 @@
         }
       }
       .num{
-        margin-left: 5px;
+        margin-left: 10px;
         &::before{
           content: '|';
           color: #D2D2D2;
-          margin-right: 5px;
+          margin-right: 10px;
         }
       }
     }
     .img{
       width: 100%;
-      height: px2rem(230px);
+      height: 230px;
       display: block;
     }
     .time{
-      height: px2rem(100px);
+      height: 100px;
       display: flex;
       align-items: center;
-      padding-left: px2rem(20px);
+      padding-left: 20px;
       color: #808080;
     }
   }

@@ -1,10 +1,10 @@
 @charset "utf-8";
 .area-select{
-  .area-select-tab{
+  .van-area-select-tab{
     height: 40px;
     display: flex;
     align-items: center;
-    @include font-dpr(26px);
+    font-size: 15px;
     background: white;
     .tab-item{
       position: relative;

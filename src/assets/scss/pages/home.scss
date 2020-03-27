@@ -6,7 +6,7 @@
     position: relative;
     padding-top: 53%;
     overflow: hidden;
-    margin-bottom: px2rem($space-normal);
+    margin-bottom: $space-normal;
     .swiper-container {
       position: absolute;
       left: 0;
@@ -21,113 +21,110 @@
     }
   }
   .links-wrap {
-    height: px2rem(314px);
+    height: 314px;
     background: white;
     display: flex;
     -webkit-display: flex;
-    @include font-dpr(28px);
+    font-size: 28px;
   }
   .link-right {
     flex: 1;
     -webkit-flex: 1;
   }
   .my-income {
-    width: px2rem(270px);
+    width: 270px;
     border-right: 1px solid $border-color;
-    padding: px2rem(44px) px2rem(30px);
-    line-height: px2rem(32px);
-    background: url('../img/icon-my-income.png') no-repeat center px2rem(80px);
-    background-size: px2rem(200px) auto;
+    padding: 44px 30px;
+    line-height: 32px;
+    background: url('../img/icon-my-income.png') no-repeat center 80px;
+    background-size: 200px auto;
   }
   .recent-one {
     color: $text-color-gray;
-    @include font-dpr(22px);
-    margin-top: px2rem(12px);
+    font-size: 22px;
+    margin-top: 12px;
   }
   .hx-manager {
     position: relative;
-    height: px2rem(156px);
-    line-height: px2rem(156px);
-    padding-left: px2rem(44px);
+    height: 156px;
+    line-height: 156px;
+    padding-left: 44px;
     border-bottom: 1px solid $border-color;
-    background: url('../img/icon-hx-manager.png') no-repeat px2rem(206px)
-      px2rem(34px);
-    background-size: px2rem(126px) auto;
+    background: url('../img/icon-hx-manager.png') no-repeat 206px 34px;
+    background-size: 126px auto;
     &.hx-manager-gray {
-      background: url('../img/icon-hx-manager-gray.png') no-repeat px2rem(206px)
-        px2rem(34px);
-      background-size: px2rem(126px) auto;
+      background: url('../img/icon-hx-manager-gray.png') no-repeat 206px 34px;
+      background-size: 126px auto;
       color: $text-color-gray;
       .icon-await {
         position: absolute;
-        right: px2rem(20px);
+        right: 20px;
         top: 0;
-        width: px2rem(50px);
+        width: 50px;
       }
     }
   }
   .news-flag {
     position: absolute;
-    top: px2rem(22px);
-    right: px2rem(24px);
-    height: px2rem(26px);
-    line-height: px2rem(26px);
-    padding: 0 px2rem(8px);
+    top: 22px;
+    right: 24px;
+    height: 26px;
+    line-height: 26px;
+    padding: 0 8px;
     @include linear-gradient(0deg, #ff8484, #ff5f21);
-    border-radius: px2rem(20px);
+    border-radius: 20px;
     color: white;
-    @include font-dpr(18px);
+    font-size: 18px;
   }
   .box {
     float: left;
     width: 50%;
-    height: px2rem(156px);
+    height: 156px;
     text-align: center;
-    padding-top: px2rem(30px);
+    padding-top: 30px;
   }
   .bot-line {
     border-bottom: 1px solid $border-color;
   }
   .invoice-info {
-    background: url('../img/icon-invoice.png') no-repeat center px2rem(70px);
-    background-size: px2rem(70px) px2rem(70px);
+    background: url('../img/icon-invoice.png') no-repeat center 70px;
+    background-size: 70px 70px;
     border-right: 1px solid $border-color;
   }
   .welfare-info {
-    background: url('../img/icon-welfare.png') no-repeat center px2rem(70px);
-    background-size: px2rem(70px) px2rem(70px);
+    background: url('../img/icon-welfare.png') no-repeat center 70px;
+    background-size: 70px 70px;
     border-right: 1px solid $border-color;
   }
   .manager-info {
-    background: url('../img/icon-manager.png') no-repeat center px2rem(70px);
-    background-size: px2rem(70px) px2rem(70px);
+    background: url('../img/icon-manager.png') no-repeat center 70px;
+    background-size: 70px 70px;
     border-right: 1px solid $border-color;
     .title {
       position: relative;
       .dot {
         position: absolute;
         left: 50%;
-        top: px2rem(-10px);
-        margin-left: 28px;
+        top: -10px;
+        margin-left: 56px;
         @include circle(30px);
         background: #fb3636;
         color: #fff;
-        font-size: px2rem(20px);
+        font-size: 20px;
         text-align: center;
-        line-height: px2rem(30px);
+        line-height: 30px;
       }
     }
   }
   .person-info {
-    background: url('../img/icon-person.png') no-repeat center px2rem(70px);
-    background-size: px2rem(70px) px2rem(70px);
+    background: url('../img/icon-person.png') no-repeat center 70px;
+    background-size: 70px 70px;
     .title {
       position: relative;
       .dot {
         position: absolute;
-        left: 50%;
+        right: 30px;
         top: 0;
-        margin-left: 28px;
         @include circle(10px);
         background: #fb3636;
       }
@@ -138,7 +135,7 @@
   position: absolute;
   width: 100%;
   left: 0;
-  bottom: px2rem(50px);
+  bottom: 50px;
   text-align: center;
   display: flex;
   align-items: center;
@@ -147,10 +144,10 @@
     &::after {
       content: '';
       display: inline-block;
-      height: px2rem(30px);
+      height: 30px;
       width: 1px;
       background: #dad7d7;
-      margin: 0 px2rem(20px);
+      margin: 0 20px;
     }
     &:last-child{
       opacity: 0.9;
@@ -160,12 +157,12 @@
     }
   }
   img {
-    height: px2rem(30px);
+    height: 30px;
     &.fx {
       opacity: 0.9;
     }
     &.hx {
-      height: px2rem(26px);
+      height: 26px;
     }
   }
 }
@@ -178,37 +175,39 @@
   }
 
   .main {
-    width: px2rem(600px);
-    height: auto;
-    border-radius: px2rem(8px);
+    width: 600px;
+    height: 780px;
+    border-radius: 8px;
     background-color: #fff;
-    padding: px2rem(30px);
+    padding: 30px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     .name{
-      font-size: px2rem(30px);
-      line-height: px2rem(50px);
+      font-size: 30px;
+      line-height: 50px;
     }
     .desc{
-      font-size: px2rem(22px);
-      margin-top: px2rem(30px);
-      line-height: px2rem(36px);
-      margin-bottom: px2rem(50px);
+      font-size: 22px;
+      margin-top: 30px;
+      line-height: 36px;
+      margin-bottom: 50px;
     }
     .single{
-      height: px2rem(90px);
-      line-height: px2rem(90px);
+      height: 90px;
+      line-height: 90px;
       transform:skew(-6deg);
-      border-radius: px2rem(6px);
-      margin-top: px2rem(25px);
+      border-radius: 6px;
+      margin-top: 25px;
       color: #fff;
-      padding-left: px2rem(30px);
+      padding-left: 30px;
       .single-l{
-        font-size: px2rem(24px);
+        font-size: 24px;
       }
       .single-c{
-        margin: 0 px2rem(12px);
+        margin: 0 12px;
       }
       .single-r{
-        font-size: px2rem(20px);
+        font-size: 20px;
         opacity: 0.7;
       }
       &.bg1{
@@ -222,63 +221,63 @@
       }
     }
     .manager-box{
-      margin-top: px2rem(60px);
+      margin-top: 60px;
       position: relative;
       .name{
-        font-size: px2rem(28px);
+        font-size: 28px;
         color: $theme-color;
         span{
-          font-size: px2rem(22px);
+          font-size: 22px;
         }
         .line{
-          margin: 0 px2rem(5px) 0 px2rem(15px);
+          margin: 0 5px 0 15px;
         }
       }
       .branch{
-        margin: px2rem(20px) 0 px2rem(15px) 0;
-        font-size: px2rem(20px);
+        margin: 20px 0 15px 0;
+        font-size: 20px;
         color: #808080;
       }
       .info{
-        font-size: px2rem(20px);
+        font-size: 20px;
         span{
-          margin: 0 px2rem(30px) 0 px2rem(10px);
+          margin: 0 30px 0 10px;
           color: #808080;
         }
       }
       .phone-box{
-        width: px2rem(80px);
-        height: px2rem(80px);
+        width: 80px;
+        height: 80px;
         border-radius: 50%;
         background: $theme-color;
         position: absolute;
         right: 0;
-        top:px2rem(50px);
+        top: 50px;
         color: #fff;
-        font-size: px2rem(36px);
-        line-height: px2rem(10px);
+        font-size: 36px;
+        line-height: 10px;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         span{
-          font-size: px2rem(20px);
+          font-size: 20px;
         }
       }
     }
     .btn{
       display: block;
-      height: px2rem(70px);
-      line-height: px2rem(70px);
+      height: 70px;
+      line-height: 70px;
       text-align: center;
-      @include font-dpr(28px);
+      font-size: 28px;
       background: $primary-color;
       color: white;
-      border-radius: px2rem($radius-xs);
-      margin-top: px2rem(40px);
+      border-radius: $radius-xs;
+      margin-top: 40px;
     }
     .checkbox-wrap{
-      margin-top: px2rem(20px);
+      margin-top: 20px;
       display: flex;
       align-items: center;
       justify-content: center;

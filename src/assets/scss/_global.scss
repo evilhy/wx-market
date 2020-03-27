@@ -2,15 +2,15 @@
 html,
 body,
 #app {
-    height: 100%;
+  height: 100%;
 }
 
 body {
-    color: $text-color;
-    @include font-dpr($fontsize-default);
-    background-color: $bg-color;
+  color: $text-color;
+  font-size: $fontsize-default;
+  background-color: $bg-color;
 }
-.page{
+.page {
   min-height: 100%;
 }
 
@@ -26,62 +26,62 @@ ul,
 li,
 input,
 button {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 a {
-    text-decoration: none;
-    color: $primary-color;
+  text-decoration: none;
+  color: $primary-color;
 }
 
-input[type="text"],
-input[type="password"],
-input[type="tel"],
-input[type="number"],
-input[type="button"],
+input[type='text'],
+input[type='password'],
+input[type='tel'],
+input[type='number'],
+input[type='button'],
 textarea {
-    width: 100%;
-    -webkit-appearance: none !important;
-    margin: 0;
-    @include placeholder () {
-        color: $text-color-gray;
-    }
+  width: 100%;
+  -webkit-appearance: none !important;
+  margin: 0;
+  @include placeholder() {
+    color: $text-color-gray;
+  }
 }
 
 button {
-    width: 100%;
-    border: none;
+  width: 100%;
+  border: none;
 }
 
 .fl {
-    float: left;
+  float: left;
 }
 
 .fr {
-    float: right;
+  float: right;
 }
 
 .al {
-    text-align: left;
+  text-align: left;
 }
 
 .ac {
-    text-align: center;
+  text-align: center;
 }
 
 .ar {
-    text-align: right;
+  text-align: right;
 }
 
 .input {
-    @include font-dpr($fontsize-default);
-    padding: px2rem(14px) px2rem(20px);
-    height: px2rem(70px);
-    line-height: px2rem(42px);
-    border-radius: px2rem($radius-s);
-    border: 1px solid $border-color;
+  font-size: $fontsize-default;
+  padding: 14px 20px;
+  height: 70px;
+  line-height: 42px;
+  border-radius: $radius-s;
+  border: 1px solid $border-color;
 }
 
 .clearfix {
-    @include clearfix;
+  @include clearfix;
 }

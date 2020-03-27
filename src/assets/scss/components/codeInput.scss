@@ -4,17 +4,17 @@
   .code-input{
     position: absolute;
     left: 0;
-    height: px2rem(80px);
+    height: 80px;
     opacity: 0;
     &.hidden{
       transform: translate(-100%);
     }
   }
   .code-wrap{
-    height: px2rem(80px);
+    height: 80px;
     background: #F7F7F7;
     border: 1px solid #E6E6E6;
-    border-radius: px2rem(4px);
+    border-radius: 4px;
     display: flex;
     align-items: center;
     &.focus{
@@ -27,8 +27,8 @@
     align-items: center;
     justify-content: center;
     border-right: 1px solid #E6E6E6;
-    height: px2rem(44px);
-    @include font-dpr(30px);
+    height: 44px;
+    font-size: 30px;
     &:last-child{
       border:none;
     }

@@ -34,10 +34,10 @@
       }
       .content {
         padding: 0 8px;
-        @include font-dpr(26px);
+        font-size: 26px;
         color: white;
         .nick-name {
-          @include font-dpr(24px);
+          font-size: 24px;
           opacity: 0.8;
         }
       }
