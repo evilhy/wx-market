@@ -76,29 +76,41 @@
     color: white;
     font-size: 18px;
   }
+  .invoice-person {
+    display: flex;
+    flex-wrap: wrap;
+  }
   .box {
-    float: left;
     width: 50%;
     height: 156px;
-    text-align: center;
-    padding-top: 30px;
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    img {
+      width: 70px;
+    }
   }
   .bot-line {
     border-bottom: 1px solid $border-color;
   }
   .invoice-info {
-    background: url('../img/icon-invoice.png') no-repeat center 70px;
-    background-size: 70px 70px;
     border-right: 1px solid $border-color;
   }
   .welfare-info {
-    background: url('../img/icon-welfare.png') no-repeat center 70px;
-    background-size: 70px 70px;
     border-right: 1px solid $border-color;
+    &.zx {
+      flex-direction: row;
+      width: 100%;
+      border-right: none;
+      img {
+        width: 90px;
+        margin-left: 40px;
+      }
+    }
   }
   .manager-info {
-    background: url('../img/icon-manager.png') no-repeat center 70px;
-    background-size: 70px 70px;
     border-right: 1px solid $border-color;
     .title {
       position: relative;
@@ -111,19 +123,18 @@
         background: #fb3636;
         color: #fff;
         font-size: 20px;
-        text-align: center;
-        line-height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
     }
   }
   .person-info {
-    background: url('../img/icon-person.png') no-repeat center 70px;
-    background-size: 70px 70px;
     .title {
       position: relative;
       .dot {
         position: absolute;
-        right: 30px;
+        right: -10px;
         top: 0;
         @include circle(10px);
         background: #fb3636;
@@ -141,19 +152,9 @@
   align-items: center;
   justify-content: center;
   .img-wrap {
-    &::after {
-      content: '';
-      display: inline-block;
-      height: 30px;
-      width: 1px;
-      background: #dad7d7;
-      margin: 0 20px;
-    }
-    &:last-child{
-      opacity: 0.9;
-      &::after{
-        display: none;
-      }
+    margin-right: 20px;
+    &:last-child {
+      margin-right: 0;
     }
   }
   img {
@@ -164,9 +165,12 @@
     &.hx {
       height: 26px;
     }
+    &.zx {
+      height: 34px;
+    }
   }
 }
-.home-manager-dialog{
+.home-manager-dialog {
   .wrap {
     display: flex;
     align-items: center;
@@ -182,70 +186,82 @@
     padding: 30px;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
-    .name{
+    .name {
       font-size: 30px;
       line-height: 50px;
     }
-    .desc{
+    .desc {
       font-size: 22px;
       margin-top: 30px;
       line-height: 36px;
       margin-bottom: 50px;
     }
-    .single{
+    .single {
       height: 90px;
       line-height: 90px;
-      transform:skew(-6deg);
+      transform: skew(-6deg);
       border-radius: 6px;
       margin-top: 25px;
       color: #fff;
       padding-left: 30px;
-      .single-l{
+      .single-l {
         font-size: 24px;
       }
-      .single-c{
+      .single-c {
         margin: 0 12px;
       }
-      .single-r{
+      .single-r {
         font-size: 20px;
         opacity: 0.7;
       }
-      &.bg1{
-        background-image: linear-gradient( 77deg, rgba(233,190,116,0.99608) 0%, rgb(207,130,93) 100%);
+      &.bg1 {
+        background-image: linear-gradient(
+          77deg,
+          rgba(233, 190, 116, 0.99608) 0%,
+          rgb(207, 130, 93) 100%
+        );
       }
-      &.bg2{
-        background-image: linear-gradient( 77deg, rgba(234,144,117,0.99608) 0%, rgb(248,110,120) 100%);
+      &.bg2 {
+        background-image: linear-gradient(
+          77deg,
+          rgba(234, 144, 117, 0.99608) 0%,
+          rgb(248, 110, 120) 100%
+        );
       }
-      &.bg3{
-        background-image: linear-gradient( 77deg, rgba(145,109,229,0.99608) 0%, rgb(94,78,220) 100%);
+      &.bg3 {
+        background-image: linear-gradient(
+          77deg,
+          rgba(145, 109, 229, 0.99608) 0%,
+          rgb(94, 78, 220) 100%
+        );
       }
     }
-    .manager-box{
+    .manager-box {
       margin-top: 60px;
       position: relative;
-      .name{
+      .name {
         font-size: 28px;
         color: $theme-color;
-        span{
+        span {
           font-size: 22px;
         }
-        .line{
+        .line {
           margin: 0 5px 0 15px;
         }
       }
-      .branch{
+      .branch {
         margin: 20px 0 15px 0;
         font-size: 20px;
         color: #808080;
       }
-      .info{
+      .info {
         font-size: 20px;
-        span{
+        span {
           margin: 0 30px 0 10px;
           color: #808080;
         }
       }
-      .phone-box{
+      .phone-box {
         width: 80px;
         height: 80px;
         border-radius: 50%;
@@ -260,12 +276,12 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        span{
+        span {
           font-size: 20px;
         }
       }
     }
-    .btn{
+    .btn {
       display: block;
       height: 70px;
       line-height: 70px;
@@ -276,7 +292,7 @@
       border-radius: $radius-xs;
       margin-top: 40px;
     }
-    .checkbox-wrap{
+    .checkbox-wrap {
       margin-top: 20px;
       display: flex;
       align-items: center;
