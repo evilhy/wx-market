@@ -1,7 +1,7 @@
 import sysConfig from 'src/utils/constant'
 import helper from 'src/utils/helper'
-import UUID from 'src/utils/uuid'
-import { typeOf } from 'utils/assist'
+import encrypt from 'src/utils/encrypt'
+import { typeOf, deepCopy } from 'utils/assist'
 import loading from 'utils/loading'
 
 let HttpEngine = (require(`core/plugins/http/HttpEngine.${process.env.NODE_ENV === 'development' ? 'dev' : 'prod'}`)).default
@@ -14,12 +14,25 @@ export default class HttpForApplication extends HttpEngine {
 
   beforeSendRequestHandler (config) {
     let { jsessionId, apppartner } = helper.getUserInfo('', {})
+    let data
+    if (config.method === 'post') {
+      data = deepCopy(config.data)
+    } else { 
+      data = ''
+    }
+    let { encodeKey, timestamp, reqId, sha256Sign, encryptBizData } = encrypt.httpEncrypt(data, config.method)
     config.headers = Object.assign(config.headers, {
       'jsession-id': jsessionId,
-      'req-id': UUID.createUUID(),
+      'req-id': reqId,
       'route-name': window.router.app._route.name,
-      'apppartner': apppartner
+      'apppartner': apppartner,
+      'encode-key': encodeKey,
+      'timestamp': timestamp,
+      'sha256-sign': sha256Sign
     })
+    if (config.method === 'post') {
+      config.data = { encryptBizData }
+    }
     if (config.loading) {
       let loadingType = typeOf(config.loading) === 'boolean' ? 'square' : config.loading
       this.loadingHash = loading.show({ type: loadingType })
