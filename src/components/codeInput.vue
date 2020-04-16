@@ -3,6 +3,7 @@
     <!-- 密码输入框 -->
     <van-password-input
       :value="code"
+      :mask="!visible"
       @focus="flag = true"
     />
 
@@ -19,6 +20,12 @@
 
 <script>
 export default {
+  props: {
+    visible: {
+      type: Boolean,
+      default: false
+    }
+  },
   data () {
     return {
       flag: false,

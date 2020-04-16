@@ -84,8 +84,8 @@
 }
 
 @mixin square($value) {
-  width: px2rem($value);
-  height: px2rem($value);
+  width: $value;
+  height: $value;
 }
 
 @mixin circle($value) {

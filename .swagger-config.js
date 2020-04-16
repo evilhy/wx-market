@@ -1,6 +1,5 @@
 var entEmp = require('./json/roll.entEmp.json')
 var sendCode = require('./json/inside.sendCode.json')
-var bindWX = require('./json/inside.bindWX.json')
 var empInfo = require('./json/roll.empInfo.json')
 var groupList = require('./json/roll.groupList.json')
 var index = require('./json/roll.index.json')
@@ -124,8 +123,11 @@ module.exports = {
       '/inside/sendCode': {
         post: sendCode
       },
+      '/roll/entEmp': {
+        get: entEmp
+      },
       '/inside/bindWX': {
-        post: bindWX
+        post: {}
       },
       '/inside/read': {
         post: read

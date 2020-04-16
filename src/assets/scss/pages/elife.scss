@@ -1,8 +1,8 @@
 @charset "utf-8";
 .elife-login-page {
-  $shadow: 8px;
-  height: 100%;
-  padding: px2rem(406px) px2rem(40px) 0;
+  $shadow: 16px;
+  min-height: 100%;
+  padding: 406px 40px 20px;
   background: #fef1d1 url('../img/elife/elife-activity-bg.png') no-repeat;
   background-size: 100% auto;
   .input-form {
@@ -14,39 +14,39 @@
     .input-wrap{
       display: flex;
       align-items: center;
-      height: px2rem(120px);
+      height: 120px;
     }
     .icon{
-      height: px2rem(28px);
-      padding: 0 px2rem(20px);
+      height: 28px;
+      padding: 0 20px;
     }
     .line{
-      height: px2rem(28px);
+      height: 28px;
       width: 1px;
       background: #FD923E;
     }
     .input{
-      @include font-dpr(28px);
+      font-size: 28px;
       border: none;
       flex: 1;
     }
   }
   .btn {
-    height: px2rem(88px);
-    line-height: px2rem(88px);
-    margin-top: px2rem(20px);
+    height: 88px;
+    line-height: 88px;
+    margin-top: 20px;
     text-align: center;
     background: #e70207;
-    box-shadow: 0 2px $shadow 0 rgba(255, 164, 30, 0.1);
+    box-shadow: 0 4px $shadow 0 rgba(255, 164, 30, 0.1);
     border-radius: $radius-xs;
     color: #E7E7E7;
-    @include font-dpr(28px);
+    font-size: 28px;
   }
   .tip-wrap{
-    margin-top: px2rem(56px);
-    line-height: px2rem(32px);
+    margin-top: 56px;
+    line-height: 32px;
     .title{
-      margin-bottom: px2rem(10px);
+      margin-bottom: 10px;
       color: #F35B14;
     }
     .content{
@@ -63,26 +63,26 @@
 .elife-xlogin-page{
   height: 100%;
   background: #3dd0cd;
-  @include font-dpr(26px);
+  font-size: 26px;
   .scroll-wrap{
-    padding: px2rem(560px) px2rem(40px) px2rem(40px);
+    padding: 560px 40px 40px;
     background: #3dd0cd url('../img/elife/elife-xactivity-bg.png') no-repeat;
     background-size: 100% auto;
   }
   .input-form{
-    margin-bottom: px2rem(40px);
+    margin-bottom: 40px;
   }
   .input-wrap{
     position: relative;
-    width: px2rem(560px);
-    height: px2rem(80px);
-    padding: 0 px2rem(34px);
+    width: 560px;
+    height: 80px;
+    padding: 0 34px;
     background: #03BDB7;
     border: 1px solid #9BF0EC;
-    border-radius: px2rem(40px);
+    border-radius: 40px;
     display: flex;
     align-items: center;
-    margin-bottom: px2rem(28px);
+    margin-bottom: 28px;
     &:last-child{
       margin-bottom: 0;
     }
@@ -90,14 +90,14 @@
       background: #31cfce;
     }
     .icon{
-      height: px2rem(32px);
-      margin-right: px2rem(20px);
+      height: 32px;
+      margin-right: 20px;
     }
     .input{
       background: transparent;
       border: none;
       color: #fff;
-      padding: px2rem(14px) 0;
+      padding: 14px 0;
       @include placeholder () {
         color: #96E2E0;
       }
@@ -106,15 +106,15 @@
       }
     }
     &.half{
-      width: px2rem(320px);
+      width: 320px;
     }
     .vcode-btn{
       position: absolute;
       left: 100%;
-      width: px2rem(226px);
+      width: 226px;
       padding: 0;
-      margin-left: px2rem(14px);
-      @include font-dpr(26px);
+      margin-left: 14px;
+      font-size: 26px;
       &.disabled{
         color: #666;
         background-image: linear-gradient(-180deg, #c5c5c2 0%, #a7a6a5 100%);
@@ -125,35 +125,35 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: px2rem(80px);
+    height: 80px;
     color: #E85218;
     background-image: linear-gradient(-180deg, #FFEC8B 0%, #FFC948 100%);
-    border-radius: px2rem(40px);
+    border-radius: 40px;
   }
   .join-btn{
-    @include font-dpr(30px);
+    font-size: 30px;
   }
   .tip-wrap{
-    padding-top: px2rem(30px);
+    padding-top: 30px;
     color: #02807C;
-    @include font-dpr(24px);
+    font-size: 24px;
     line-height: 2;
     .title-wrap {
       display: flex;
       justify-content: center;
       align-items: center;
-      padding-bottom: px2rem(10px);
+      padding-bottom: 10px;
       .title {
-        padding: 0 px2rem(20px);
+        padding: 0 20px;
       }
       .line {
-        width: px2rem(60px);
-        height: px2rem(2px);
+        width: 60px;
+        height: 2px;
         background: #03BDB7;
       }
     }
     .tip-item{
-      margin-left: px2rem(40px);
+      margin-left: 40px;
       list-style-type: disc;
     }
   }
@@ -167,10 +167,10 @@
 .rule-btn{
   position: fixed;
   top: 50%;
-  right: px2rem(8px);
-  width: px2rem(128px);
-  height: px2rem(110px);
-  margin-top: px2rem(-55px);
+  right: 8px;
+  width: 128px;
+  height: 110px;
+  margin-top: -55px;
 }
 .x-rule-popup{
   .content-wrap{

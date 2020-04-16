@@ -9,15 +9,15 @@
   align-items: center;
   justify-content: center;
   z-index: 99;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.9);
   &.v-loading-normal{
     background: rgba(255, 255, 255, 0);
   }
   // normal
   .loading-normal {
-    width: 50px;
-    height: 50px;
-    border-radius: 4px;
+    width: 100px;
+    height: 100px;
+    border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -84,7 +84,7 @@
       transform: rotate(360deg);
     }
     .loading-line::before {
-      width: 2px;
+      width: 4px;
       height: 25%;
       content: '';
       display: block;
@@ -95,14 +95,14 @@
   }
   // square
   .loading-square {
-    width: 48px;
-    height: 48px;
+    width: 96px;
+    height: 96px;
     animation: loading-dot-circle 5.6s linear infinite;
     .loading-dot {
       position: absolute;
       margin: auto;
-      width: 12px;
-      height: 12px;
+      width: 24px;
+      height: 24px;
       border-radius: 50%;
       background: $theme;
       animation-duration: 1.4s;
@@ -140,8 +140,8 @@
   // bounce
   .loading-bounce {
     position: relative;
-    width: 32px;
-    height: 32px;
+    width: 64px;
+    height: 64px;
     &::before,
     &::after {
       content: '';
@@ -181,7 +181,7 @@
   }
   .loading-loader {
     position: relative;
-    font-size: 11px;
+    font-size: 22px;
     -webkit-animation-delay: -0.16s;
     animation-delay: -0.16s;
   }
@@ -230,14 +230,14 @@
   }
   45%,
   50% {
-    left: 16.8px;
-    width: 14.4px;
-    height: 14.4px;
+    left: 33.6px;
+    width: 28.8px;
+    height: 28.8px;
   }
   90% {
     left: 0;
-    height: 12px;
-    width: 12px;
+    height: 24px;
+    width: 24px;
   }
 }
 @keyframes loading-dot-b {
@@ -246,14 +246,14 @@
   }
   45%,
   50% {
-    top: 16.8px;
-    height: 14.4px;
-    width: 14.4px;
+    top: 33.6px;
+    height: 28.8px;
+    width: 28.8px;
   }
   90% {
     top: 0;
-    height: 12px;
-    width: 12px;
+    height: 24px;
+    width: 24px;
   }
 }
 @keyframes loading-dot-c {
@@ -262,14 +262,14 @@
   }
   45%,
   50% {
-    right: 16.8px;
-    width: 14.4px;
-    height: 14.4px;
+    right: 33.6px;
+    width: 28.8px;
+    height: 28.8px;
   }
   90% {
     right: 0;
-    height: 12px;
-    width: 12px;
+    height: 24px;
+    width: 24px;
   }
 }
 @keyframes loading-dot-d {
@@ -278,14 +278,14 @@
   }
   45%,
   50% {
-    bottom: 16.8px;
-    height: 14.4px;
-    width: 14.4px;
+    bottom: 33.6px;
+    height: 28.8px;
+    width: 28.8px;
   }
   90% {
     bottom: 0;
-    height: 12px;
-    width: 12px;
+    height: 24px;
+    width: 24px;
   }
 }
 @-webkit-keyframes loading-bounce {

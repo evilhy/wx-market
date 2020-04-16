@@ -10,13 +10,13 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding-bottom: px2rem(30px);
+  padding-bottom: 30px;
   background: white;
   .icon-warning{
-      width: px2rem(150px);
-      margin-bottom: px2rem(40px);
+      width: 150px;
+      margin-bottom: 40px;
   }
   .tip{
-      @include font-dpr(34px);
+      font-size: 34px;
   }
 }

@@ -14,18 +14,21 @@
       </div>
       <div class="link-right">
         <div class="invoice-person">
-          <div class="manager-info box bot-line" @click="toPage('manager')">
-            <div class="title"><span class="dot" v-if="managerInfo.hasManager === 1 && !isReadManager && !isReadManagerCurrent">1</span>客户经理
-            </div>
+          <div v-if="apppartner !== 'NEWUP'" class="manager-info box bot-line" @click="toPage('manager')">
+            <div class="title"><span class="dot" v-if="managerInfo.hasManager === 1 && !isReadManager && !isReadManagerCurrent">1</span>客户经理</div>
+            <img src="../../assets/img/icon-manager.png" alt="">
           </div>
-          <div class="welfare-info box bot-line" @click="toPage('welfareList')">
+          <div class="welfare-info box bot-line" :class="{'zx': apppartner === 'NEWUP'}" @click="toPage('welfareList')">
             <div class="title">员工福利</div>
+            <img src="../../assets/img/icon-welfare.png" alt="">
           </div>
           <div class="invoice-info box" @click="toPage('invoice')">
             <div class="title">发票管家</div>
+            <img src="../../assets/img/icon-invoice.png" alt="">
           </div>
           <div class="person-info box" @click="toPage('user')">
             <div class="title"><span class="dot" v-if="bankIsNew"></span>个人信息</div>
+            <img src="../../assets/img/icon-person.png" alt="">
           </div>
         </div>
       </div>
@@ -74,18 +77,29 @@
           branchName: '',
           officer: '',
           managerPhone: ''
-        }
+        },
+        apppartner: helper.getUserInfo('apppartner')
       }
     },
     computed: {
       logoList () {
-        let apppartner = helper.getUserInfo('apppartner')
-        switch (apppartner) {
+        switch (this.apppartner) {
           case 'SJZHRB':
             return [{
               className: 'hr',
               src: require('../../assets/img/hr-gray-logo.png')
             }]
+          case 'NEWUP':
+            return [
+              {
+                className: 'fx',
+                src: require('../../assets/img/fx-gray-logo.png')
+              },
+              {
+                className: 'zx',
+                src: require('../../assets/img/zx-gray-logo.png')
+              }
+            ]
           default:
             return [
               {

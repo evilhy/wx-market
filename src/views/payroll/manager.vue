@@ -6,7 +6,7 @@
       <manager-contact :manager-info="managerInfo"></manager-contact>
     </div>
     <!-- 无客户经理 -->
-    <no-manager></no-manager>
+    <no-manager v-else></no-manager>
   </div>
 </template>
 <script>

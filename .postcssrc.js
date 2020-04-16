@@ -4,6 +4,11 @@ module.exports = {
   "plugins": {
     // to edit target browsers: use "browserslist" field in package.json
     "postcss-import": {},
-    "autoprefixer": {}
+    "autoprefixer": {},
+    'postcss-px-to-viewport': {
+      viewportWidth: 640,
+      selectorBlackList: ['.van-'],
+      mediaQuery: true
+    }
   }
 }

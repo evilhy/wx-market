@@ -26,8 +26,8 @@ export default {
         .$Merchant
         .callback(this.query.accessToken)
         .then((res) => {
-          let { bindStatus, jsessionId, idNumber, ifPwd, headimgurl } = res.data
-          helper.saveUserInfo({ jsessionId, ifPwd, bindStatus, headimgurl, idNumber })
+          let { bindStatus, jsessionId, idNumber, ifPwd, headimgurl, apppartner } = res.data
+          helper.saveUserInfo({ jsessionId, ifPwd, bindStatus, headimgurl, idNumber, apppartner })
           this.$router.replace({ name: 'home' })
         })
     }

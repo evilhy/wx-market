@@ -10,7 +10,7 @@
       <div class="record" @click="toPage('welfareOrderList', { activityId })">兑换记录<span class="arrow"></span></div>
     </div>
     <div class="footer">
-      本福利由<div class="company">{{entShowInfo}}</div>提供
+      本福利由<div class="company">{{info.entShowInfo}}</div>提供
     </div>
   </div>
 </template>
@@ -47,11 +47,6 @@
           className: 'active',
           text: '兑换礼品'
         }
-      },
-      entShowInfo() {
-        let max = Math.floor((document.documentElement.clientWidth - 30) / parseFloat(document.body.style.fontSize) - 9)
-        let entShowInfo = this.info.entShowInfo
-        return entShowInfo.length > max ? `${entShowInfo.substring(0, max)}...` : entShowInfo
       }
     },
     created () {

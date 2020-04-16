@@ -1,37 +1,37 @@
 @charset "utf-8";
 .tax-calculator-page {
-  padding: px2rem(20px);
+  padding: 20px;
   .main-form {
     position: relative;
     z-index: 2;
-    padding: px2rem(28px) px2rem(34px) px2rem(40px);
-    @include font-dpr(26px);
+    padding: 28px 34px 40px;
+    font-size: 26px;
     background-color: white;
-    border-radius: px2rem(4px);
+    border-radius: 4px;
   }
   .bottom-logo {
     position: static;
-    margin-top: px2rem(40px);
+    margin-top: 40px;
   }
 }
 .tax-calculator-step1 {
   position: relative;
   box-shadow: 0 0 18px 0 rgba(0, 0, 0, 0.08);
-  border-radius: px2rem(6px);
+  border-radius: 6px;
   .input-label {
     position: relative;
-    margin: px2rem(20px) 0;
+    margin: 20px 0;
     .helper-btn {
       position: absolute;
-      right: px2rem(10px);
+      right: 10px;
       top: 0;
       height: 100%;
-      padding-left: px2rem(30px);
+      padding-left: 30px;
       display: flex;
       align-items: center;
       color: $primary-color;
       .arrow {
-        @include v-arrow(right, 1px, px2rem(10px));
+        @include v-arrow(right, 1px, 10px);
       }
     }
   }
@@ -40,13 +40,13 @@
     outline: none;
     width: 100%;
     display: block;
-    height: px2rem(80px);
+    height: 80px;
     background-color: white;
     border: 1px solid $border-color;
-    border-radius: px2rem(4px);
-    margin-bottom: px2rem(26px);
-    @include font-dpr(28px);
-    padding: 0 px2rem(30px);
+    border-radius: 4px;
+    margin-bottom: 26px;
+    font-size: 28px;
+    padding: 0 30px;
     @extend %text-overflow;
   }
   input[disabled]{
@@ -57,49 +57,49 @@
     text-align: center;
     line-height: 1.5;
     color: $theme-color;
-    margin-top: px2rem(30px);
+    margin-top: 30px;
   }
 }
 
 .tax-calculator-step2 {
-  padding-bottom: px2rem(120px);
+  padding-bottom: 120px;
   .white-box {
     position: relative;
-    padding: px2rem(26px) px2rem(30px);
+    padding: 26px 30px;
     background: white;
   }
   .total-wrap {
     .label {
       color: $text-color-gray;
-      @include font-dpr(26px);
-      margin-bottom: px2rem(12px);
+      font-size: 26px;
+      margin-bottom: 12px;
     }
     .value {
       color: $primary-color;
-      @include font-dpr(38px);
+      font-size: 38px;
     }
     .finance-btn {
       position: absolute;
-      right: px2rem(30px);
+      right: 30px;
       top: 50%;
-      margin-top: px2rem(-30px);
-      height: px2rem(60px);
-      width: px2rem(150px);
-      line-height: px2rem(60px);
+      margin-top: -30px;
+      height: 60px;
+      width: 150px;
+      line-height: 60px;
       text-align: center;
       border: 1px solid $primary-color;
-      border-radius: px2rem($radius-xs);
+      border-radius: $radius-xs;
       color: $primary-color;
-      @include font-dpr(26px);
+      font-size: 26px;
     }
   }
   .tip {
     display: flex;
     align-items: center;
-    height: px2rem(72px);
-    padding-left: px2rem(30px);
+    height: 72px;
+    padding-left: 30px;
     color: $text-color-gray;
-    @include font-dpr(26px);
+    font-size: 26px;
   }
   .deduction-item {
     border-bottom: 1px solid $border-color;
@@ -115,12 +115,12 @@
       border-bottom: none;
     }
     .v-checkbox {
-      border-radius: 16px;
+      border-radius: 32px;
       border: 1px solid #ccc;
       position: relative;
-      width: 16px;
-      height: 16px;
-      margin-right: px2rem(24px);
+      width: 32px;
+      height: 32px;
+      margin-right: 24px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -128,9 +128,9 @@
         border-color: $theme-color;
         &:after {
           content: '';
-          width: 8px;
-          height: 8px;
-          border-radius: 8px;
+          width: 16px;
+          height: 16px;
+          border-radius: 16px;
           background: $theme-color;
         }
       }
@@ -141,13 +141,13 @@
       text-align: right;
       border: none;
       background: none;
-      @include font-dpr(28px);
+      font-size: 28px;
     }
   }
   .parent-item {
     display: flex;
     align-items: center;
-    padding: px2rem(26px) px2rem(30px);
+    padding: 26px 30px;
     background: white;
     .center-wrap {
       flex: 1;
@@ -155,26 +155,26 @@
     .title {
       display: flex;
       align-items: center;
-      margin-bottom: px2rem(4px);
-      @include font-dpr(30px);
+      margin-bottom: 4px;
+      font-size: 30px;
     }
     .short-desc {
-      width: px2rem(300px);
+      width: 300px;
       color: $text-color-gray;
     }
     .iconfont {
       color: #d6d6d6;
-      @include font-dpr(24px);
-      padding: px2rem(4px) px2rem(12px);
+      font-size: 24px;
+      padding: 4px 12px;
     }
     .arrow {
       color: $text-color-gray;
       transition: all 0.2s;
-      @include v-arrow(right, 1px, 8px);
+      @include v-arrow(right, 2px, 16px);
     }
     .value {
-      margin-right: px2rem(20px);
-      @include font-dpr(28px);
+      margin-right: 20px;
+      font-size: 28px;
     }
   }
   .option-list {
@@ -185,19 +185,19 @@
   .option-item {
     display: flex;
     align-items: center;
-    height: px2rem(88px);
-    padding: 0 px2rem(30px);
+    height: 88px;
+    padding: 0 30px;
     border-bottom: 1px solid $border-color;
     &:last-child {
       border-bottom: none;
     }
-    @include font-dpr(28px);
+    font-size: 28px;
     .label {
       color: #808080;
-      width: px2rem(300px);
-      @include font-dpr(26px);
+      width: 300px;
+      font-size: 26px;
       &.fixed {
-        width: px2rem(380px);
+        width: 380px;
       }
     }
     .value {
@@ -210,8 +210,8 @@
     left: 0;
     width: 100%;
     bottom: 0;
-    height: px2rem(120px);
-    padding: 0 px2rem(20px);
+    height: 120px;
+    padding: 0 20px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -225,37 +225,37 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: px2rem(80px);
+    height: 80px;
     background-color: $primary-color;
     color: white;
-    @include font-dpr(32px);
-    border-radius: px2rem($radius-xs);
+    font-size: 32px;
+    border-radius: $radius-xs;
   }
   .cancel-btn {
     background: $text-color-gray;
-    margin-left: px2rem(20px);
+    margin-left: 20px;
   }
 }
 .tax-calculator-step3 {
   .result-wrap {
-    margin: px2rem(38px) 0;
+    margin: 38px 0;
     display: flex;
     align-items: center;
   }
   .result-item {
     flex: 1;
-    padding-left: px2rem(20px);
+    padding-left: 20px;
     &:last-child {
-      padding-left: px2rem(40px);
+      padding-left: 40px;
       border-left: 1px solid $border-color;
     }
     .value {
-      @include font-dpr(38px);
+      font-size: 38px;
       line-height: 1.5;
     }
     .label {
-      margin-top: px2rem(10px);
-      @include font-dpr(24px);
+      margin-top: 10px;
+      font-size: 24px;
       color: $text-color-gray;
     }
   }
@@ -263,13 +263,13 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    margin-bottom: px2rem(20px);
+    margin-bottom: 20px;
     .month-col {
       width: 22%;
-      padding: 5px 0;
+      padding: 10px 0;
       border: 1px solid $border-color;
       text-align: center;
-      margin-bottom: px2rem(24px);
+      margin-bottom: 24px;
       &.active {
         color: $theme-color;
         border-color: $theme-color;
@@ -279,12 +279,12 @@
       }
       .month {
         font-family: PingFangSC-Semibold;
-        @include font-dpr(28px);
+        font-size: 28px;
         color: #666;
-        margin-bottom: 2px;
+        margin-bottom: 4px;
       }
       .tax {
-        @include font-dpr(22px);
+        font-size: 22px;
         color: #b3b3b3;
       }
     }
@@ -294,61 +294,61 @@
     align-items: center;
     justify-content: center;
     color: #666;
-    margin-top: px2rem(32px);
+    margin-top: 32px;
     .arrow {
       position: relative;
-      margin-left: 5px;
+      margin-left: 10px;
       &.bottom{
-        top: -1px;
-        @include v-arrow(bottom, 1px, 6px);
+        top: -2px;
+        @include v-arrow(bottom, 2px, 12px);
       }
       &.top{
-        top: 1px;
-        @include v-arrow(top, 1px, 6px);
+        top: 2px;
+        @include v-arrow(top, 2px, 12px);
       }
     }
   }
   .result-explain{
-    margin: 0 px2rem(20px);
+    margin: 0 20px;
   }
   .result-detail {
     height: 0;
     margin: 0 auto;
-    padding: 0 px2rem(28px);
+    padding: 0 28px;
     background-image: linear-gradient(
       -180deg,
       #f8f8f8 2%,
       #ffffff 5%,
       #ffffff 100%
     );
-    border-radius: 0px 0px 6px 6px;
-    @include font-dpr(26px);
+    border-radius: 0px 0px 12px 12px;
+    font-size: 26px;
     line-height: 1.5;
     overflow: hidden;
     transition: all 0.3s;
     &.open{
       height: auto;
-      padding-top: px2rem(20px);
+      padding-top: 20px;
     }
   }
   .title{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: px2rem(26px) 0;
-    @include font-dpr(26px);
+    padding: 26px 0;
+    font-size: 26px;
     color: $text-color-gray;
     &::before,&::after{
       content: '';
       flex: 1;
-      height: 1px;
+      height: 2px;
       background: #E9EBEC;
     }
     &::before{
-      margin-right: 10px;
+      margin-right: 20px;
     }
     &::after{
-      margin-left: 10px;
+      margin-left: 20px;
     }
   }
   .label{
@@ -358,24 +358,24 @@
     font-family: PingFangSC-Medium;
   }
   .tax-amt{
-    margin: px2rem(10px) 0;
-    @include font-dpr(28px);
+    margin: 10px 0;
+    font-size: 28px;
   }
   .tax-amt-explain{
     position: relative;
-    padding: px2rem(16px);
+    padding: 16px;
     background: #fef5eb;
     border: 1px solid rgba(248,158,43,0.50);
     color: #F89E2B;
-    margin-top: px2rem(20px);
-    margin-bottom: px2rem(28px);
+    margin-top: 20px;
+    margin-bottom: 28px;
     &::after{
       position: absolute;
-      top: -6px;
+      top: -12px;
       left: 50%;
       content: '';
-      width: 10px;
-      height: 10px;
+      width: 20px;
+      height: 20px;
       background: #fef5eb;
       border-left: 1px solid rgba(248,158,43,0.50);
       border-top: 1px solid rgba(248,158,43,0.50);
@@ -387,14 +387,14 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: px2rem(20px);
+    margin-bottom: 20px;
     line-height: 1;
   }
   .active-color{
     color: $theme-color !important;
   }
   .tip{
-    padding: px2rem(30px) 0;
+    padding: 30px 0;
     border-top: 1px solid $border-color;
   }
   .tax-rate-excel{
@@ -407,11 +407,11 @@
 div[class^='tax-calculator-step'] button.submit-btn {
   width: 100%;
   display: block;
-  height: px2rem(80px);
-  border-radius: px2rem(4px);
+  height: 80px;
+  border-radius: 4px;
   background-color: $theme-color;
   color: #ffffff;
-  @include font-dpr(28px);
+  font-size: 28px;
   border: 0;
   outline: none;
 
@@ -429,26 +429,26 @@ div[class^='tax-calculator-step'] .page-title {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  @include font-dpr(30px);
+  font-size: 30px;
   color: #333333;
-  padding-left: px2rem(22px);
-  line-height: px2rem(38px);
+  padding-left: 22px;
+  line-height: 38px;
   position: relative;
 
   &:before {
     content: '';
     display: inline-block;
-    width: px2rem(4px);
-    height: px2rem(26px);
+    width: 4px;
+    height: 26px;
     background-color: #5dcbc8;
-    border-radius: px2rem(8px);
+    border-radius: 8px;
     position: absolute;
     left: 0;
-    top: px2rem(6px);
+    top: 6px;
   }
 }
 .explain-popup {
-  width: px2rem(540px);
+  width: 540px;
   border-radius: $radius-xs;
   display: flex;
   flex-direction: column;
@@ -459,7 +459,7 @@ div[class^='tax-calculator-step'] .page-title {
     bottom: 0;
     left: 0;
     width: 100%;
-    height: px2rem(30px);
+    height: 30px;
     background-image: linear-gradient(
       rgba(255, 255, 255, 0),
       rgba(255, 255, 255, 1)
@@ -469,25 +469,25 @@ div[class^='tax-calculator-step'] .page-title {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-left: px2rem(30px);
-    height: px2rem(90px);
+    padding-left: 30px;
+    height: 90px;
     .title {
-      @include font-dpr(30px);
+      font-size: 30px;
     }
     .close {
-      width: px2rem(36px);
-      padding: px2rem(20px) px2rem(30px);
+      width: 36px;
+      padding: 20px 30px;
     }
   }
   .content {
     flex: 1;
-    padding: 0 px2rem(30px) px2rem(30px);
+    padding: 0 30px 30px;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
     line-height: 1.5;
-    @include font-dpr(26px);
+    font-size: 26px;
     .title {
-      margin: px2rem(26px) 0 px2rem(10px);
+      margin: 26px 0 10px;
       &:first-child {
         margin-top: 0;
       }
