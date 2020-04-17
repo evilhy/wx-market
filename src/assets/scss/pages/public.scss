@@ -174,3 +174,14 @@
     line-height: 4;
   }
 }
+.fill-id-card-page{
+  .field-wrap{
+    padding: 24px 0;
+  }
+  .id-card-span{
+    padding: 0 10px;
+  }
+  .placeholder{
+    color: $text-color-gray;
+  }
+}
