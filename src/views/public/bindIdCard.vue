@@ -6,8 +6,10 @@
       <div class="big-title">身份验证</div>
       <div class="field-wrap mt">
         <img class="field-icon" src="../../assets/img/public/field-id-card.png" />
-        <input class="input id-card-input" v-input type="text" maxlength="18" placeholder="请输入身份证号"
-          v-model.trim="idCard" />
+        <input class="input id-card-input" readonly v-input type="text" maxlength="18" placeholder="请输入身份证号"
+          v-model="idCardInput" @click="show = true"/>
+        <van-number-keyboard :show="show" close-button-text="完成" extra-key="X" @blur="show = false" @input="onInput"
+          @delete="onDelete" />
       </div>
       <button class="btn btn-next" :disabled="idCard.length < 6" @click="getPhone">下一步</button>
     </div>
@@ -22,14 +24,25 @@ import collect from 'utils/collect'
 export default {
   data () {
     return {
-      idCard: ''
+      idCard: [],
+      show: false
+    }
+  },
+  computed: {
+    idCardInput () {
+      return this.idCard.join('')
     }
   },
   created () { },
   methods: {
+    onInput (value) {
+      this.idCard.push(value)
+    },
+    onDelete () {
+      this.idCard.pop()
+    },
     async getPhone () {
-      let res = await this.$Roll.entEmp(this.idCard)
-      this.idCard = ''
+      let res = await this.$Roll.entEmp(this.idCardInput)
       let { bindStatus, employeeList } = res.data
       let telList = collect.getValueList(employeeList, 'phone').filter(item => item)
       let telLen = telList.length
