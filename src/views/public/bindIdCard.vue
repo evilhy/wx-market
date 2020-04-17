@@ -6,8 +6,6 @@
       <div class="big-title">身份验证</div>
       <div class="field-wrap mt">
         <img class="field-icon" src="../../assets/img/public/field-id-card.png" />
-        <!-- {{idCard.toString()}} -->
-        <!-- <span class="input"></span> -->
         <input class="input id-card-input" readonly v-input type="text" maxlength="18" placeholder="请输入身份证号"
           v-model="idCardInput" @click="show = true"/>
         <van-number-keyboard :show="show" close-button-text="完成" extra-key="X" @blur="show = false" @input="onInput"
