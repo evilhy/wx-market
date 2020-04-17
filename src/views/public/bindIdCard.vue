@@ -4,11 +4,10 @@
     <public-logo></public-logo>
     <div class="content-wrap">
       <div class="big-title">身份验证</div>
-      <div class="field-wrap mt">
+      <div class="field-wrap mt" @click="show = true">
         <img class="field-icon" src="../../assets/img/public/field-id-card.png" />
-        <input class="input id-card-input" readonly v-input type="text" maxlength="18" placeholder="请输入身份证号"
-          v-model="idCardInput" @click="show = true"/>
-        <van-number-keyboard :show="show" close-button-text="完成" extra-key="X" @blur="show = false" @input="onInput"
+        <span class="id-card-span" :class="{placeholder: !idCard.length}">{{idCardShow}}</span>
+        <van-number-keyboard :show="show" extra-key="X" @blur="show = false" @input="onInput"
           @delete="onDelete" />
       </div>
       <button class="btn btn-next" :disabled="idCard.length < 6" @click="getPhone">下一步</button>
@@ -31,6 +30,9 @@ export default {
   computed: {
     idCardInput () {
       return this.idCard.join('')
+    },
+    idCardShow () {
+      return this.idCard.length ? this.idCardInput : '请输入身份证号'
     }
   },
   created () { },
