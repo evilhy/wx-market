@@ -38,6 +38,7 @@ export default {
   created () { },
   methods: {
     onInput (value) {
+      if (this.idCard.length >= 18) return
       this.idCard.push(value)
     },
     onDelete () {
