@@ -6,7 +6,7 @@
       <div class="big-title">身份验证</div>
       <div class="field-wrap mt">
         <img class="field-icon" src="../../assets/img/public/field-id-card.png" />
-        <input class="input id-card-input" v-input type="number" maxlength="18" placeholder="请输入身份证号"
+        <input class="input id-card-input" v-input type="text" maxlength="18" placeholder="请输入身份证号"
           v-model.trim="idCard" />
       </div>
       <button class="btn btn-next" :disabled="idCard.length < 6" @click="getPhone">下一步</button>
