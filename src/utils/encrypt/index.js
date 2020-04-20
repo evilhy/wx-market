@@ -14,13 +14,13 @@ const $iv = Symbol('$iv')
 
 class Encrypt {
   // 公钥
-  [$publicKey] = 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCNotSn72NFXy92LCc09MjZOAlhngjbUGrDcj8y8pTUMy1tM9NvTjWTMc9OU+bN9pnBzS7sFPJ+aSDaC81p6LeetHwovSkZGdxXMogFow3PPvnc+oc/19oeqsrMrB/bDxjF4sWVNgn+RhXjuOmBLn43WS10ZZ7zEV9DwT8WiyZVqQIDAQAB';
+  [$publicKey] = process.env.PUBLIC_KEY;
   // 私钥
   [$privateKey] = '';
   // 签名算法
   [$signMethod] = 'sha256';
   // signSalt混淆
-  [$signSalt] = 'zxyh7572';
+  [$signSalt] = process.env.SIGN_SALT;
   // 向量
   [$iv] = CryptoJS.enc.Utf8.parse('1234567812345678');
   /**
