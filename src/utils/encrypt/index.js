@@ -11,6 +11,7 @@ const $privateKey = Symbol('$privateKey')
 const $signMethod = Symbol('$signMethod')
 const $signSalt = Symbol('$signSalt')
 const $iv = Symbol('$iv')
+const $padLen = Symbol('$padLen')
 
 class Encrypt {
   // 公钥
@@ -23,6 +24,8 @@ class Encrypt {
   [$signSalt] = process.env.SIGN_SALT;
   // 向量
   [$iv] = CryptoJS.enc.Utf8.parse('1234567812345678');
+  // 补全位数
+  [$padLen] = 16;
   /**
    * 1、Rsa 公钥  、Rsa 私钥
    * 2、随机生成16位字符串  aesKey
@@ -67,11 +70,11 @@ class Encrypt {
   /**
    * 获取随机字符串
    *
-   * @param {number} [len=16] 字符串长度
+   * @param {number} [len=this[$padLen]] 字符串长度
    * @returns
    * @memberof Encrypt
    */
-  getRandomStr (len = 16) {
+  getRandomStr (len = this[$padLen]) {
     let randomStr = ''
     const base = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
     const maxLen = base.length
@@ -136,10 +139,10 @@ class Encrypt {
    */
   AESEncrypt (word, aesKey) {
     if (typeOf(word) !== 'string') throw new TypeError('需要加密的数据应为String类型')
-    if (typeOf(aesKey) !== 'string') throw new TypeError('aesKey应为String类型')
+    if (typeOf(aesKey) !== 'string' || aesKey.length !== this[$padLen]) throw new TypeError(`aesKey应为String类型且长度为${this[$padLen]}`)
     let aesKeyParse = CryptoJS.enc.Utf8.parse(aesKey)
     let parseLen = CryptoJS.enc.Utf8.parse(word).sigBytes
-    let padLen = 16 - parseLen % 16
+    let padLen = this[$padLen] - parseLen % this[$padLen]
     word = word.padEnd(word.length + padLen)
     let encrypt = CryptoJS.AES.encrypt(word, aesKeyParse, { iv: this[$iv], mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.NoPadding })
     return encrypt.toString()
@@ -189,10 +192,10 @@ class Encrypt {
    * 将str用空格补全为len的整数倍
    *
    * @param {String} str
-   * @param {number} [len=16]
+   * @param {number} [len=this[$padLen]]
    * @memberof Encrypt
    */
-  padSpace (str, len = 16) {
+  padSpace (str, len = this[$padLen]) {
     if (typeOf(str) !== 'string') throw new TypeError('需要补全的数据应为String类型')
     if (typeOf(len) !== 'number') throw new TypeError('需要补全的长度应为Number类型')
     let padLen = len - str.length % len
