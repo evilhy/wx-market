@@ -8,7 +8,7 @@ export default {
 
   },
   created () {
-    window.location.replace(sysConfig.bank_site_url)
+    window.location.replace(sysConfig.bankSiteUrl)
   }
 }
 </script>

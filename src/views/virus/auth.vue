@@ -12,9 +12,9 @@ const wxapi = new Wxapi()
 export default {
   data () {
     return {
-      promiseUrl: `${sysConfig.pro_base_url[process.env.NODE_ENV]}virus-promise`,
-      codeUrl: `${sysConfig.pro_base_url[process.env.NODE_ENV]}virus-code`,
-      appId: sysConfig.app_id[process.env.NODE_ENV],
+      promiseUrl: `${sysConfig.proBaseUrl[process.env.NODE_ENV]}virus-promise`,
+      codeUrl: `${sysConfig.proBaseUrl[process.env.NODE_ENV]}virus-code`,
+      appId: sysConfig.appId[process.env.NODE_ENV],
       loadingHash: null
     }
   },

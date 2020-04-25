@@ -43,7 +43,7 @@ class Elife {
     let appKey = 'testappkey'
     let timestamp = new Date().getTime().toString()
     let sign = crypto.MD5(appKey + timestamp.toString()).toUpperCase()
-    http.baseURL = sysConfig.elife_base_url[process.env.NODE_ENV]
+    http.baseURL = sysConfig.elifeBaseUrl[process.env.NODE_ENV]
     http.path = '/plantform710001.json'
     http.body = {
       appKey,
@@ -97,7 +97,7 @@ class Elife {
     let appKey = 'testappkey'
     let timestamp = new Date().getTime().toString()
     let sign = crypto.MD5(appKey + timestamp.toString()).toUpperCase()
-    http.baseURL = sysConfig.elife_base_url[process.env.NODE_ENV]
+    http.baseURL = sysConfig.elifeBaseUrl[process.env.NODE_ENV]
     http.path = '/plantform710002.json'
     http.body = {
       appKey,

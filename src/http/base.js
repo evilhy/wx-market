@@ -7,7 +7,7 @@ import loading from 'utils/loading'
 let HttpEngine = (require(`core/plugins/http/HttpEngine.${process.env.NODE_ENV === 'development' ? 'dev' : 'prod'}`)).default
 export default class HttpForApplication extends HttpEngine {
 
-  baseURL = sysConfig.http_base_url[process.env.NODE_ENV];
+  baseURL = sysConfig.httpBaseUrl[process.env.NODE_ENV];
   timeout = 30
   mockTimeout = 2;
   requestedSever = false;
@@ -20,7 +20,7 @@ export default class HttpForApplication extends HttpEngine {
     } else { 
       data = ''
     }
-    let { encodeKey, timestamp, reqId, sha256Sign, encryptBizData } = encrypt.httpEncrypt(data, config.method)
+    let { encodeKey, timestamp, reqId, sha256Sign, encryptBizData } = encrypt.httpEncrypt(data, config.method, config.baseURL)
     config.headers = Object.assign(config.headers, {
       'jsession-id': jsessionId,
       'req-id': reqId,

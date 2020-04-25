@@ -47,7 +47,7 @@ export default {
         contents: []
       },
       requested: false,
-      imgBaseUrl: sysConfig.wisales_img_url[process.env.NODE_ENV]
+      imgBaseUrl: sysConfig.wisalesImgUrl[process.env.NODE_ENV]
     }
   },
   created () {

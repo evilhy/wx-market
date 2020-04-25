@@ -8,7 +8,7 @@ export default {
 
   },
   created () {
-    window.location.replace(sysConfig.zhsq_sh_url[process.env.NODE_ENV])
+    window.location.replace(sysConfig.zhsqShUrl[process.env.NODE_ENV])
   }
 }
 </script>

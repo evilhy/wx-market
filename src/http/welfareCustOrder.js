@@ -14,7 +14,7 @@ class WelfareCustOrder {
    */
   welfareExchange (activityId, goodsId) {
     let http = new Http()
-    http.baseURL = sysConfig.wisales_base_url[process.env.NODE_ENV]
+    http.baseURL = sysConfig.wisalesBaseUrl[process.env.NODE_ENV]
     http.path = `/${moduleName}/welfareExchange`
     http.body = { activityId, goodsId }
     return http.post()
@@ -30,7 +30,7 @@ class WelfareCustOrder {
    */
   welfareExchangePhone (activityId, goodsId, rechargePhone) {
     let http = new Http()
-    http.baseURL = sysConfig.wisales_base_url[process.env.NODE_ENV]
+    http.baseURL = sysConfig.wisalesBaseUrl[process.env.NODE_ENV]
     http.path = `/${moduleName}/welfareExchangePhone`
     http.body = { activityId, goodsId, rechargePhone }
     return http.post()
@@ -46,7 +46,7 @@ class WelfareCustOrder {
    */
   welfareExchangeGoods (activityId, goodsId, addressId) {
     let http = new Http()
-    http.baseURL = sysConfig.wisales_base_url[process.env.NODE_ENV]
+    http.baseURL = sysConfig.wisalesBaseUrl[process.env.NODE_ENV]
     http.path = `/${moduleName}/welfareExchangeGoods`
     http.body = { activityId, goodsId, addressId }
     return http.post()

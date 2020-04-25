@@ -29,7 +29,7 @@ export default {
   },
   data () {
     return {
-      imgBaseUrl: sysConfig.wisales_img_url[process.env.NODE_ENV]
+      imgBaseUrl: sysConfig.wisalesImgUrl[process.env.NODE_ENV]
     }
   },
   methods: {

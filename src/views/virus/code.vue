@@ -11,7 +11,7 @@ export default {
   data () {
     return {
       query: {},
-      promiseUrl: `${sysConfig.pro_base_url[process.env.NODE_ENV]}virus-promise`
+      promiseUrl: `${sysConfig.proBaseUrl[process.env.NODE_ENV]}virus-promise`
     }
   },
   created () {

@@ -13,7 +13,7 @@ class WelfareActivity {
    */
   activityList (page) {
     let http = new Http()
-    http.baseURL = sysConfig.wisales_base_url[process.env.NODE_ENV]
+    http.baseURL = sysConfig.wisalesBaseUrl[process.env.NODE_ENV]
     http.path = `/${moduleName}/listByPayRoll`
     http.headers = { 'page-num': page, limit: 20 }
     http.loading = false
@@ -28,7 +28,7 @@ class WelfareActivity {
    */
   activityDetail (activityId) { 
     let http = new Http()
-    http.baseURL = sysConfig.wisales_base_url[process.env.NODE_ENV]
+    http.baseURL = sysConfig.wisalesBaseUrl[process.env.NODE_ENV]
     http.path = `/${moduleName}/detailByPayRoll`
     http.query = { activityId }
     return http.get()

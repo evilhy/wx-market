@@ -51,7 +51,7 @@ function banCardLast (card) {
 
 function monthZh (month, hasUnit = false) {
   if (typeOf(month) !== 'string' && typeOf(month) !== 'number') return ''
-  let zh = sysConfig.month_zh[month.toString()]
+  let zh = sysConfig.monthZh[month.toString()]
   return zh ? (zh + (hasUnit ? '份' : '')) : month.toString()
 }
 

@@ -8,7 +8,7 @@ export default {
 
   },
   created () {
-    window.location.replace(sysConfig.about_us_url)
+    window.location.replace(sysConfig.aboutUsUrl)
   }
 }
 </script>

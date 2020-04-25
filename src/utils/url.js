@@ -78,6 +78,9 @@ class Url {
     }
     return val.trim()
   }
+  isUrl (url) {
+    return /(^[a-z][a-z\d\+\-\.]*:)?\/\//i.test(url)
+  }
 }
 
 export default new Url()

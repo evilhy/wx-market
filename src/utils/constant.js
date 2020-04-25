@@ -1,55 +1,91 @@
 export default {
-  http_base_url: {
+  httpBaseUrl: { // 工资条api地址
     development: 'https://sitgateway.cardpu.com/payroll',
     sit: 'https://sitgateway.cardpu.com/payroll',
     demo: 'https://sitgateway.cardpu.com/payroll',
     production: 'https://gateway.cardpu.com/payroll'
   },
-  wisales_base_url: {
+  wisalesBaseUrl: { // 唯销api地址
     development: 'https://sitgateway.cardpu.com/payroll/wisales',
     sit: 'https://sitgateway.cardpu.com/payroll/wisales',
     demo: 'https://sitgateway.cardpu.com/payroll/wisales',
     production: 'https://gateway.cardpu.com/payroll/wisales'
   },
-  wisales_img_url: {
-    development: 'https://sitgateway.cardpu.com/payroll/wisales/h5/unAuth/img',
-    sit: 'https://sitgateway.cardpu.com/payroll/wisales/h5/unAuth/img',
-    demo: 'https://sitgateway.cardpu.com/payroll/wisales/h5/unAuth/img',
-    production: 'https://gateway.cardpu.com/payroll/wisales/h5/unAuth/img'
-  },
-  elife_base_url: {
+  elifeBaseUrl: { // 智慧社区api地址
     development: 'https://demowisdom.wisales.cn:8213/easy-life',
     sit: 'https://demowisdom.wisales.cn:8213/easy-life',
     demo: 'https://demowisdom.wisales.cn:8213/easy-life',
     production: 'https://easylife.wisales.cn:8211/easy-life'
   },
-  pro_base_url: {
+  httpBaseUrlPublicKey: { // 工资条公钥
+    development: 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCNotSn72NFXy92LCc09MjZOAlhngjbUGrDcj8y8pTUMy1tM9NvTjWTMc9OU+bN9pnBzS7sFPJ+aSDaC81p6LeetHwovSkZGdxXMogFow3PPvnc+oc/19oeqsrMrB/bDxjF4sWVNgn+RhXjuOmBLn43WS10ZZ7zEV9DwT8WiyZVqQIDAQAB',
+    sit: 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCNotSn72NFXy92LCc09MjZOAlhngjbUGrDcj8y8pTUMy1tM9NvTjWTMc9OU+bN9pnBzS7sFPJ+aSDaC81p6LeetHwovSkZGdxXMogFow3PPvnc+oc/19oeqsrMrB/bDxjF4sWVNgn+RhXjuOmBLn43WS10ZZ7zEV9DwT8WiyZVqQIDAQAB',
+    demo: 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCNotSn72NFXy92LCc09MjZOAlhngjbUGrDcj8y8pTUMy1tM9NvTjWTMc9OU+bN9pnBzS7sFPJ+aSDaC81p6LeetHwovSkZGdxXMogFow3PPvnc+oc/19oeqsrMrB/bDxjF4sWVNgn+RhXjuOmBLn43WS10ZZ7zEV9DwT8WiyZVqQIDAQAB',
+    production: 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDJAFvcRejgnbQd89Ypuyw02nyODvtZkCjY2cTQec/Qux1xkRpAXo7owzL2fDao8o3gDWDYuTG1jEKZV7enPaxFQxiMXHIEgqkwsbhvNIWSG+QJ3om8v2+hWshWum4U7rma7LxmSoDk0zbqYP4Lb7qnR4+tSyJl4F+phZAqUbGOuQIDAQAB'
+  },
+  wisalesBaseUrlPublicKey: { // 唯销公钥
+    development: 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCNotSn72NFXy92LCc09MjZOAlhngjbUGrDcj8y8pTUMy1tM9NvTjWTMc9OU+bN9pnBzS7sFPJ+aSDaC81p6LeetHwovSkZGdxXMogFow3PPvnc+oc/19oeqsrMrB/bDxjF4sWVNgn+RhXjuOmBLn43WS10ZZ7zEV9DwT8WiyZVqQIDAQAB',
+    sit: 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCNotSn72NFXy92LCc09MjZOAlhngjbUGrDcj8y8pTUMy1tM9NvTjWTMc9OU+bN9pnBzS7sFPJ+aSDaC81p6LeetHwovSkZGdxXMogFow3PPvnc+oc/19oeqsrMrB/bDxjF4sWVNgn+RhXjuOmBLn43WS10ZZ7zEV9DwT8WiyZVqQIDAQAB',
+    demo: 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCNotSn72NFXy92LCc09MjZOAlhngjbUGrDcj8y8pTUMy1tM9NvTjWTMc9OU+bN9pnBzS7sFPJ+aSDaC81p6LeetHwovSkZGdxXMogFow3PPvnc+oc/19oeqsrMrB/bDxjF4sWVNgn+RhXjuOmBLn43WS10ZZ7zEV9DwT8WiyZVqQIDAQAB',
+    production: 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDJAFvcRejgnbQd89Ypuyw02nyODvtZkCjY2cTQec/Qux1xkRpAXo7owzL2fDao8o3gDWDYuTG1jEKZV7enPaxFQxiMXHIEgqkwsbhvNIWSG+QJ3om8v2+hWshWum4U7rma7LxmSoDk0zbqYP4Lb7qnR4+tSyJl4F+phZAqUbGOuQIDAQAB'
+  },
+  elifeBaseUrlPublicKey: { // 智慧社区公钥
+    development: 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCNotSn72NFXy92LCc09MjZOAlhngjbUGrDcj8y8pTUMy1tM9NvTjWTMc9OU+bN9pnBzS7sFPJ+aSDaC81p6LeetHwovSkZGdxXMogFow3PPvnc+oc/19oeqsrMrB/bDxjF4sWVNgn+RhXjuOmBLn43WS10ZZ7zEV9DwT8WiyZVqQIDAQAB',
+    sit: 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCNotSn72NFXy92LCc09MjZOAlhngjbUGrDcj8y8pTUMy1tM9NvTjWTMc9OU+bN9pnBzS7sFPJ+aSDaC81p6LeetHwovSkZGdxXMogFow3PPvnc+oc/19oeqsrMrB/bDxjF4sWVNgn+RhXjuOmBLn43WS10ZZ7zEV9DwT8WiyZVqQIDAQAB',
+    demo: 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCNotSn72NFXy92LCc09MjZOAlhngjbUGrDcj8y8pTUMy1tM9NvTjWTMc9OU+bN9pnBzS7sFPJ+aSDaC81p6LeetHwovSkZGdxXMogFow3PPvnc+oc/19oeqsrMrB/bDxjF4sWVNgn+RhXjuOmBLn43WS10ZZ7zEV9DwT8WiyZVqQIDAQAB',
+    production: 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDJAFvcRejgnbQd89Ypuyw02nyODvtZkCjY2cTQec/Qux1xkRpAXo7owzL2fDao8o3gDWDYuTG1jEKZV7enPaxFQxiMXHIEgqkwsbhvNIWSG+QJ3om8v2+hWshWum4U7rma7LxmSoDk0zbqYP4Lb7qnR4+tSyJl4F+phZAqUbGOuQIDAQAB'
+  },
+  httpBaseUrlSignSalt: { // 工资条签名salt
+    development: 'zxyh7572',
+    sit: 'zxyh7572',
+    demo: 'zxyh7572',
+    production: 'PayK0420'
+  },
+  wisalesBaseUrlSignSalt: { // 唯销签名salt
+    development: 'zxyh7572',
+    sit: 'zxyh7572',
+    demo: 'zxyh7572',
+    production: 'PayK0420'
+  },
+  elifeBaseUrlSignSalt: { // 智慧社区签名salt
+    development: 'zxyh7572',
+    sit: 'zxyh7572',
+    demo: 'zxyh7572',
+    production: 'PayK0420'
+  },
+  wisalesImgUrl: {
+    development: 'https://sitgateway.cardpu.com/payroll/wisales/h5/unAuth/img',
+    sit: 'https://sitgateway.cardpu.com/payroll/wisales/h5/unAuth/img',
+    demo: 'https://sitgateway.cardpu.com/payroll/wisales/h5/unAuth/img',
+    production: 'https://gateway.cardpu.com/payroll/wisales/h5/unAuth/img'
+  },
+  proBaseUrl: {
     development: 'https://sitwxp.cardpu.com/fx-payroll/#/',
     sit: 'https://sitwxp.cardpu.com/fx-payroll/#/',
     demo: 'https://sitwxp.cardpu.com/fx-payroll/#/',
     production: 'https://wxp.cardpu.com/fx-payroll/#/'
   },
-  bank_site_url: 'https://m.hxb.com.cn/pwxweb/NearbyQry.do?key=067dba74076478ab0786966a52980d7d9c67fefd3b5d255b4752a435f59fd9b40953d781b3b59c67cf9eeec21480fd326e003c6144c08d52945f131709ea4f31061ceb12201dff4b6492438d395bdb6e89ddfa2d9b4f64c6448d33775b8f2d2f00d5e102798312b5',
-  about_us_url: 'https://mp.weixin.qq.com/s/X4mJZ1a55OkersW9yE0U0A',
-  wisale_square_url: {
+  bankSiteUrl: 'https://m.hxb.com.cn/pwxweb/NearbyQry.do?key=067dba74076478ab0786966a52980d7d9c67fefd3b5d255b4752a435f59fd9b40953d781b3b59c67cf9eeec21480fd326e003c6144c08d52945f131709ea4f31061ceb12201dff4b6492438d395bdb6e89ddfa2d9b4f64c6448d33775b8f2d2f00d5e102798312b5',
+  aboutUsUrl: 'https://mp.weixin.qq.com/s/X4mJZ1a55OkersW9yE0U0A',
+  wisaleSquareUrl: {
     development: 'https://sitwxp.cardpu.com/wisale-h5/#/',
     sit: 'https://sitwxp.cardpu.com/wisale-h5/#/',
     demo: 'https://sitwxp.cardpu.com/wisale-h5/#/',
     production: 'https://wxp.cardpu.com/wisale-h5/#/'
   },
-  zhsq_sh_url: {
+  zhsqShUrl: {
     development: 'https://demowisdom.wisales.cn/zhsq-sh/#/',
     sit: 'https://demowisdom.wisales.cn/zhsq-sh/#/',
     demo: 'https://demowisdom.wisales.cn/zhsq-sh/#/',
     production: 'https://easylife.wisales.cn/zhsq-sh/#/'
   },
-  app_id: {
+  appId: {
     development: 'wxb3a9cf98e372fa36',
     sit: 'wxb3a9cf98e372fa36',
     demo: 'wxb3a9cf98e372fa36',
     production: 'wxff94cf398a1cb6c4'
   },
-  month_zh: {
+  monthZh: {
     '01': '1月',
     '02': '2月',
     '03': '3月',
