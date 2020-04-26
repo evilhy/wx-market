@@ -14,6 +14,21 @@ export default class HttpForApplication extends HttpEngine {
 
   beforeSendRequestHandler (config) {
     let { jsessionId, apppartner } = helper.getUserInfo('', {})
+    config.headers = Object.assign(config.headers, {
+      'jsession-id': jsessionId,
+      'route-name': window.router.app._route.name,
+      'apppartner': apppartner
+    })
+    // 加密签名处理
+    this.dealEncrypt(config)
+
+    if (config.loading) {
+      let loadingType = typeOf(config.loading) === 'boolean' ? 'square' : config.loading
+      this.loadingHash = loading.show({ type: loadingType })
+    }
+  }
+
+  dealEncrypt (config) {
     let data
     if (config.method === 'post') {
       data = deepCopy(config.data)
@@ -22,20 +37,13 @@ export default class HttpForApplication extends HttpEngine {
     }
     let { encodeKey, timestamp, reqId, sha256Sign, encryptBizData } = encrypt.httpEncrypt(data, config.method, config.baseURL)
     config.headers = Object.assign(config.headers, {
-      'jsession-id': jsessionId,
       'req-id': reqId,
-      'route-name': window.router.app._route.name,
-      'apppartner': apppartner,
       'encode-key': encodeKey,
       'timestamp': timestamp,
       'sha256-sign': sha256Sign
     })
     if (config.method === 'post') {
       config.data = { encryptBizData }
-    }
-    if (config.loading) {
-      let loadingType = typeOf(config.loading) === 'boolean' ? 'square' : config.loading
-      this.loadingHash = loading.show({ type: loadingType })
     }
   }
 

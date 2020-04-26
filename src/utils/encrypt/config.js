@@ -9,7 +9,7 @@ class EncryptConfig {
    * 根据模块获取不同的配置数据
    *
    * @param {String} requestUrl http请求url
-   * @param {String} key 配置key
+   * @param {String} key 公钥还是签名盐值
    * @returns
    * @memberof EncryptConfig
    */
@@ -24,13 +24,13 @@ class EncryptConfig {
         if (baseUrl && url.isUrl(baseUrl) && requestUrl.includes(baseUrl)) {
           let resultKey = sysKey + key
           if (sysConfig[resultKey] && typeOf(sysConfig[resultKey]) === 'object') {
-            return sysConfig[resultKey][env] || false
+            return sysConfig[resultKey][env] || ''
           }
-          return false
+          return ''
         }
       }
     }
-    return false
+    return ''
   }
   /**
    * 获取公钥

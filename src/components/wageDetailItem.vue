@@ -28,7 +28,8 @@
                     <ul class="amt-list">
                         <li class="amt-item" v-for="(item, index) in shouldList" :key="'real-'+index" v-if="!item.hidden && (isShow0 === 1 || (isShow0 === 0 && item.colValue != 0))">
                             <div class="label">{{item.colName}}</div>
-                            <div class="value">{{item.colValue | money}}</div>
+                            <div class="value" v-if="flag">{{item.colValue | money}}</div>
+                            <div class="value" v-if="!flag">****</div>
                         </li>
                     </ul>
                 </div>
@@ -40,7 +41,8 @@
                     <ul class="amt-list">
                         <li class="amt-item" v-for="(item, index) in deductList" :key="'sub-'+index" v-if="!item.hidden && (isShow0 === 1 || (isShow0 === 0 && item.colValue))">
                             <div class="label">{{item.colName}}</div>
-                            <div class="value">{{item.colValue | money}}</div>
+                            <div class="value" v-if="flag">{{item.colValue | money}}</div>
+                            <div class="value" v-if="!flag">****</div>
                         </li>
                     </ul>
                 </div>
