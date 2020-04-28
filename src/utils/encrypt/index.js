@@ -102,9 +102,9 @@ class Encrypt {
     switch (type) {
       case 'object':
       case 'number':
+      case 'array':
         return JSON.stringify(data)
       case 'string':
-      case 'array':
         return data
       default:
         return ''
