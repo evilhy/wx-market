@@ -27,13 +27,13 @@ export default {
     development: 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCNotSn72NFXy92LCc09MjZOAlhngjbUGrDcj8y8pTUMy1tM9NvTjWTMc9OU+bN9pnBzS7sFPJ+aSDaC81p6LeetHwovSkZGdxXMogFow3PPvnc+oc/19oeqsrMrB/bDxjF4sWVNgn+RhXjuOmBLn43WS10ZZ7zEV9DwT8WiyZVqQIDAQAB',
     sit: 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCNotSn72NFXy92LCc09MjZOAlhngjbUGrDcj8y8pTUMy1tM9NvTjWTMc9OU+bN9pnBzS7sFPJ+aSDaC81p6LeetHwovSkZGdxXMogFow3PPvnc+oc/19oeqsrMrB/bDxjF4sWVNgn+RhXjuOmBLn43WS10ZZ7zEV9DwT8WiyZVqQIDAQAB',
     demo: 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCNotSn72NFXy92LCc09MjZOAlhngjbUGrDcj8y8pTUMy1tM9NvTjWTMc9OU+bN9pnBzS7sFPJ+aSDaC81p6LeetHwovSkZGdxXMogFow3PPvnc+oc/19oeqsrMrB/bDxjF4sWVNgn+RhXjuOmBLn43WS10ZZ7zEV9DwT8WiyZVqQIDAQAB',
-    production: 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDJAFvcRejgnbQd89Ypuyw02nyODvtZkCjY2cTQec/Qux1xkRpAXo7owzL2fDao8o3gDWDYuTG1jEKZV7enPaxFQxiMXHIEgqkwsbhvNIWSG+QJ3om8v2+hWshWum4U7rma7LxmSoDk0zbqYP4Lb7qnR4+tSyJl4F+phZAqUbGOuQIDAQAB'
+    production: 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC1txs7wUIutchjG4AKA3WPAVP64HfZHAs2yYCdTpKheYk065f0nChk6FqnyznBc/2FUVOM5CGltpKQZvwFLuxwII3cEtr0T5O4GLMe4v7z7jjwn2hngi5oaKqrkfic7jowwblg264NZ6l4YL2naNq+5tAopOLfDmJ+jFeMzZ7IxwIDAQAB'
   },
   elifeBaseUrlPublicKey: { // 智慧社区公钥
     development: 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCNotSn72NFXy92LCc09MjZOAlhngjbUGrDcj8y8pTUMy1tM9NvTjWTMc9OU+bN9pnBzS7sFPJ+aSDaC81p6LeetHwovSkZGdxXMogFow3PPvnc+oc/19oeqsrMrB/bDxjF4sWVNgn+RhXjuOmBLn43WS10ZZ7zEV9DwT8WiyZVqQIDAQAB',
     sit: 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCNotSn72NFXy92LCc09MjZOAlhngjbUGrDcj8y8pTUMy1tM9NvTjWTMc9OU+bN9pnBzS7sFPJ+aSDaC81p6LeetHwovSkZGdxXMogFow3PPvnc+oc/19oeqsrMrB/bDxjF4sWVNgn+RhXjuOmBLn43WS10ZZ7zEV9DwT8WiyZVqQIDAQAB',
     demo: 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCNotSn72NFXy92LCc09MjZOAlhngjbUGrDcj8y8pTUMy1tM9NvTjWTMc9OU+bN9pnBzS7sFPJ+aSDaC81p6LeetHwovSkZGdxXMogFow3PPvnc+oc/19oeqsrMrB/bDxjF4sWVNgn+RhXjuOmBLn43WS10ZZ7zEV9DwT8WiyZVqQIDAQAB',
-    production: 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDJAFvcRejgnbQd89Ypuyw02nyODvtZkCjY2cTQec/Qux1xkRpAXo7owzL2fDao8o3gDWDYuTG1jEKZV7enPaxFQxiMXHIEgqkwsbhvNIWSG+QJ3om8v2+hWshWum4U7rma7LxmSoDk0zbqYP4Lb7qnR4+tSyJl4F+phZAqUbGOuQIDAQAB'
+    production: ''
   },
   httpBaseUrlSignSalt: { // 工资条签名salt
     development: 'zxyh7572',
@@ -45,13 +45,13 @@ export default {
     development: 'zxyh7572',
     sit: 'zxyh7572',
     demo: 'zxyh7572',
-    production: 'PayK0420'
+    production: 'wISa0501'
   },
   elifeBaseUrlSignSalt: { // 智慧社区签名salt
     development: 'zxyh7572',
     sit: 'zxyh7572',
     demo: 'zxyh7572',
-    production: 'PayK0420'
+    production: ''
   },
   wisalesImgUrl: {
     development: 'https://sitgateway.cardpu.com/payroll/wisales/h5/unAuth/img',

@@ -104,6 +104,7 @@ class Encrypt {
       case 'number':
         return JSON.stringify(data)
       case 'string':
+      case 'array':
         return data
       default:
         return ''
