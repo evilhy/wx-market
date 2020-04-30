@@ -94,7 +94,7 @@ export default {
       this.$refs['ordered-popup'].show()
     },
     toBankSite () {
-      window.location.href = sysConfig.bank_site_url
+      window.location.href = sysConfig.bankSiteUrl
     }
   },
   components: {

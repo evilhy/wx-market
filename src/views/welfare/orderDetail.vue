@@ -23,7 +23,7 @@ export default {
       orderInfo: {
         detailImgIdSet: []
       },
-      imgBaseUrl: sysConfig.wisales_img_url[process.env.NODE_ENV]
+      imgBaseUrl: sysConfig.wisalesImgUrl[process.env.NODE_ENV]
     }
   },
   computed: {

@@ -93,9 +93,9 @@ export default {
         }
       ],
       userInfo: helper.getVirusUserInfo({}),
-      shareUrl: `${sysConfig.pro_base_url[process.env.NODE_ENV]}virus-auth`,
-      shareImgUrl: `${sysConfig.pro_base_url[process.env.NODE_ENV].slice(0, -2)}static/img/virus-share-img.png`,
-      videoSrc: `${sysConfig.pro_base_url[process.env.NODE_ENV].slice(0, -2)}static/img/virus.mp4`,
+      shareUrl: `${sysConfig.proBaseUrl[process.env.NODE_ENV]}virus-auth`,
+      shareImgUrl: `${sysConfig.proBaseUrl[process.env.NODE_ENV].slice(0, -2)}static/img/virus-share-img.png`,
+      videoSrc: `${sysConfig.proBaseUrl[process.env.NODE_ENV].slice(0, -2)}static/img/virus.mp4`,
       loading: false
     }
   },

@@ -7,35 +7,44 @@ import loading from 'utils/loading'
 let HttpEngine = (require(`core/plugins/http/HttpEngine.${process.env.NODE_ENV === 'development' ? 'dev' : 'prod'}`)).default
 export default class HttpForApplication extends HttpEngine {
 
-  baseURL = sysConfig.http_base_url[process.env.NODE_ENV];
+  baseURL = sysConfig.httpBaseUrl[process.env.NODE_ENV];
   timeout = 30
   mockTimeout = 2;
   requestedSever = false;
 
   beforeSendRequestHandler (config) {
     let { jsessionId, apppartner } = helper.getUserInfo('', {})
+    config.headers = Object.assign(config.headers, {
+      'jsession-id': jsessionId,
+      'route-name': window.router.app._route.name,
+      'apppartner': apppartner
+    })
+    // 加密签名处理
+    this.dealEncrypt(config)
+
+    if (config.loading) {
+      let loadingType = typeOf(config.loading) === 'boolean' ? 'square' : config.loading
+      this.loadingHash = loading.show({ type: loadingType })
+    }
+  }
+
+  dealEncrypt (config) {
     let data
     if (config.method === 'post') {
       data = deepCopy(config.data)
     } else { 
       data = ''
     }
-    let { encodeKey, timestamp, reqId, sha256Sign, encryptBizData } = encrypt.httpEncrypt(data, config.method)
+    let { encodeKey, timestamp, reqId, sha256Sign, encryptBizData } = encrypt.httpEncrypt(data, config.method, config.baseURL)
     config.headers = Object.assign(config.headers, {
-      'jsession-id': jsessionId,
+      'plat-id': 'fx-payroll',
       'req-id': reqId,
-      'route-name': window.router.app._route.name,
-      'apppartner': apppartner,
       'encode-key': encodeKey,
       'timestamp': timestamp,
       'sha256-sign': sha256Sign
     })
     if (config.method === 'post') {
       config.data = { encryptBizData }
-    }
-    if (config.loading) {
-      let loadingType = typeOf(config.loading) === 'boolean' ? 'square' : config.loading
-      this.loadingHash = loading.show({ type: loadingType })
     }
   }
 

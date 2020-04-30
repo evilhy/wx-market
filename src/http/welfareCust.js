@@ -14,7 +14,7 @@ class WelfareCust {
    */
   orderList (activityId, page) {
     let http = new Http()
-    http.baseURL = sysConfig.wisales_base_url[process.env.NODE_ENV]
+    http.baseURL = sysConfig.wisalesBaseUrl[process.env.NODE_ENV]
     http.path = `/${moduleName}/custOrderList`
     http.headers = { 'page-num': page, limit: 20 }
     http.query = { activityId }
@@ -30,7 +30,7 @@ class WelfareCust {
    */
   orderDetail (transOrderId) {
     let http = new Http()
-    http.baseURL = sysConfig.wisales_base_url[process.env.NODE_ENV]
+    http.baseURL = sysConfig.wisalesBaseUrl[process.env.NODE_ENV]
     http.path = `/${moduleName}/custOrderDetail`
     http.query = { transOrderId }
     return http.get()
@@ -44,7 +44,7 @@ class WelfareCust {
    */
   addressList (page) {
     let http = new Http()
-    http.baseURL = sysConfig.wisales_base_url[process.env.NODE_ENV]
+    http.baseURL = sysConfig.wisalesBaseUrl[process.env.NODE_ENV]
     http.path = `/${moduleName}/address/get`
     http.headers = { 'page-num': page, limit: 100 }
     return http.get()
@@ -58,7 +58,7 @@ class WelfareCust {
    */
   addressDetail (addressId) {
     let http = new Http()
-    http.baseURL = sysConfig.wisales_base_url[process.env.NODE_ENV]
+    http.baseURL = sysConfig.wisalesBaseUrl[process.env.NODE_ENV]
     http.path = `/${moduleName}/address/getById`
     http.query = { addressId }
     return http.get()
@@ -72,7 +72,7 @@ class WelfareCust {
    */
   addressSave (info) { 
     let http = new Http()
-    http.baseURL = sysConfig.wisales_base_url[process.env.NODE_ENV]
+    http.baseURL = sysConfig.wisalesBaseUrl[process.env.NODE_ENV]
     http.path = `/${moduleName}/address/save`
     http.body = info
     return http.post()
@@ -86,7 +86,7 @@ class WelfareCust {
    */
   addressDelete (addressId) {
     let http = new Http()
-    http.baseURL = sysConfig.wisales_base_url[process.env.NODE_ENV]
+    http.baseURL = sysConfig.wisalesBaseUrl[process.env.NODE_ENV]
     http.path = `/${moduleName}/address/delete`
     http.body = { addressId }
     return http.post()
@@ -101,7 +101,7 @@ class WelfareCust {
    */
   baseQuery (areaType, code) {
     let http = new Http()
-    http.baseURL = sysConfig.wisales_base_url[process.env.NODE_ENV]
+    http.baseURL = sysConfig.wisalesBaseUrl[process.env.NODE_ENV]
     http.path = `/${moduleName}/area/baseQuery`
     http.query = { areaType, code }
     http.loading = false
@@ -116,7 +116,7 @@ class WelfareCust {
    */
   townQuery (code) {
     let http = new Http()
-    http.baseURL = sysConfig.wisales_base_url[process.env.NODE_ENV]
+    http.baseURL = sysConfig.wisalesBaseUrl[process.env.NODE_ENV]
     http.path = `/${moduleName}/area/townQuery`
     http.query = { code }
     http.loading = false
@@ -131,7 +131,7 @@ class WelfareCust {
    */
   orderTrack (transOrderId) {
     let http = new Http()
-    http.baseURL = sysConfig.wisales_base_url[process.env.NODE_ENV]
+    http.baseURL = sysConfig.wisalesBaseUrl[process.env.NODE_ENV]
     http.path = `/${moduleName}/orderTrack`
     http.query = { transOrderId }
     return http.get()
