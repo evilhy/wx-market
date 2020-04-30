@@ -37,6 +37,7 @@ export default class HttpForApplication extends HttpEngine {
     }
     let { encodeKey, timestamp, reqId, sha256Sign, encryptBizData } = encrypt.httpEncrypt(data, config.method, config.baseURL)
     config.headers = Object.assign(config.headers, {
+      'plat-id': 'fx-payroll',
       'req-id': reqId,
       'encode-key': encodeKey,
       'timestamp': timestamp,
