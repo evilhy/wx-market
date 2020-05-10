@@ -106,6 +106,12 @@
           "hidden": false
         },
         {
+          "colName": "字符串0",
+          "colNum": [29],
+          "type": "DEDUCT_AMT",
+          "hidden": false
+        },
+        {
           "colName": "失业保险",
           "colNum": [19],
           "type": "DEDUCT_AMT",
@@ -161,6 +167,24 @@
           "type": "REMARK",
           "hidden": false
         },
+        {
+          "colName": "字符串空",
+          "colNum": [30],
+          "type": "REMARK",
+          "hidden": false
+        },
+        {
+          "colName": "金额0",
+          "colNum": [31],
+          "type": "REMARK",
+          "hidden": false
+        },
+        {
+          "colName": "字符串0",
+          "colNum": [32],
+          "type": "REMARK",
+          "hidden": false
+        },
         { "colName": "姓名", "colNum": [2], "type": "NAME", "hidden": false }
       ],
       "doubleRow": false
@@ -201,7 +225,11 @@
       { "colNum": 24, "value": 36.87 },
       { "colNum": 26, "value": 4692.28 },
       { "colNum": 27, "value": 0 },
-      { "colNum": 28, "value": 1 }
+      { "colNum": 28, "value": 1 },
+      { "colNum": 29, "value": "0.00" },
+      { "colNum": 30, "value": "" },
+      { "colNum": 31, "value": 0 },
+      { "colNum": 32, "value": "0.00" }
     ],
     "differRealAmt": 4692.28,
     "payStatus": "0"
