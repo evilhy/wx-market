@@ -17,8 +17,8 @@ class Roll {
   entEmp(idNumber) {
     let http = new Http()
     http.path = `/${moduleName}/entEmp`
-    http.query = { idNumber }
-    return http.get()
+    http.body = { idNumber }
+    return http.post()
   }
   /**
    * @description 查询员工信息
