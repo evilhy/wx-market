@@ -8,9 +8,9 @@ class Wechat {
    */
   wxCallback (code, appPartner) {
       let http = new Http()
-      http.path = `/${moduleName}/wxCallback`
-      http.query = { code, appPartner }
-      return http.get()
+      http.path = `/wechat/wxCallback`
+      http.body = { code, appPartner }
+      return http.post()
   }
   /**
    * 获取微信分享需要的config数据
