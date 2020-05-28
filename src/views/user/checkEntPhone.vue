@@ -34,7 +34,8 @@ export default {
       currentEnt: {
         phone: '',
         entName: '',
-        entId: ''
+        entId: '',
+        groupId: ''
       },
       bindedPhone: this.$route.query.phone
     }
@@ -53,13 +54,13 @@ export default {
       this.currentEnt = item
     },
     async sendCode () {
-      let phone = this.currentEnt.phone
+      let { phone, groupId } = this.currentEnt
       if (phone === this.bindedPhone) {
         helper.toast('当前手机号与已绑定手机号相同')
         return false
       }
       this.$refs['verifycode-btn'].start()
-      await this.$Inside.sendCode(phone)
+      await this.$Inside.sendCode(phone, '2', groupId)
     },
     openAction () {
       this.$refs['ent-action'].openAction()

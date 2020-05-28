@@ -6,7 +6,8 @@
     "sex": "女",
     "idNumber": "420117199109011230",
     "entName": "北京开科唯识技术有限公司",
-    "entId": "entId001"
+    "entId": "entId001",
+    "groupId": "groupId001"
   },
   {
     "phone": "18702750189",
@@ -15,7 +16,8 @@
     "sex": "女",
     "idNumber": "420117199109011230",
     "entName": "北京开科唯识技术有限公司1",
-    "entId": "entId002"
+    "entId": "entId002",
+    "groupId": "groupId002"
   },
   {
     "phone": "18702750180",
@@ -24,7 +26,8 @@
     "sex": "女",
     "idNumber": "420117199109011230",
     "entName": "北京开科唯识技术有限公司2",
-    "entId": "entId003"
+    "entId": "entId003",
+    "groupId": "groupId003"
   },
   {
     "phone": "",
@@ -33,7 +36,8 @@
     "sex": "女",
     "idNumber": "420117199109011230",
     "entName": "北京开科唯识技术有限公司3",
-    "entId": "entId004"
+    "entId": "entId004",
+    "groupId": "groupId004"
   },
   {
     "phone": "18702750100",
@@ -42,6 +46,7 @@
     "sex": "女",
     "idNumber": "420117199109011230",
     "entName": "北京开科唯识技术有限公司4",
-    "entId": "entId005"
+    "entId": "entId005",
+    "groupId": "groupId005"
   }
 ]

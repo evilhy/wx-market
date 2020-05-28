@@ -42,7 +42,7 @@ export default {
   methods: {
     async sendCode () {
       if (this.verifyBtnDisabled) return false
-      await this.$Inside.sendCode(this.phone)
+      await this.$Inside.sendCode(this.phone, '1')
     },
     async modifyPhone () {
       let { code, phone } = this

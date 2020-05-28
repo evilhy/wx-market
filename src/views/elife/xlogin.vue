@@ -72,7 +72,7 @@ export default {
     },
     async sendCode () {
       helper.toast('验证码已发送，请注意查收')
-      let res = await this.$Inside.sendCode(this.phone)
+      let res = await this.$Inside.sendCode(this.phone, '0')
       this.codeInfo = res.data
     },
     checkInfo () {
