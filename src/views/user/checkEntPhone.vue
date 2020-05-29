@@ -67,9 +67,9 @@ export default {
     },
     async checkPhoneCode () {
       let code = this.code
-      let phone = this.currentEnt.phone
+      let { phone, groupId } = this.currentEnt
       try {
-        await this.$Inside.checkPhoneCode({ code, phone })
+        await this.$Inside.checkPhoneCode({ code, phone, busiType: '2', groupId })
         this.$router.replace({ name: 'confirmModifyPhone', query: { oldPhone: this.bindedPhone, newPhone: phone } })
       } catch (e) {
         this.code = ''
