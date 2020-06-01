@@ -2,60 +2,26 @@
   "bindStatus": "0",
   "employeeList": [
     {
-      "phone": "187222222222",
-      "phoneStar": "",
-      "employeeName": "轮回韩",
+      "phone": "acg9qmtYZqdlru3+xq22Nw==",
+      "phoneStar": "187****9177",
+      "employeeName": "xm/swHaHCspaBbkHg9iOPg==",
       "sex": "0",
-      "entName": "北京开科唯识技术有限公司",
-      "idNumber": "000001"
+      "entName": "RosLl8k4bVee6+rv9Tj/9RiGyKB2dLcP2m1Pk2ZKOhbMPnasuVG9xg==",
+      "idNumber": "KIntfoCG+Cg=",
+      "entId": "L8YjHkTTcf1QW5QwM9jl8A==",
+      "passwd": "dfgklj213rk4l3o40ifgfdlmg24kmdfg",
+      "salt": "qwejoifgjkldfkgo"
     },
     {
-      "phone": "122200000000",
+      "phone": "rMvm1CcnA1Tt25JNTxt7IQ==",
       "phoneStar": "",
-      "employeeName": "轮回韩",
+      "employeeName": "xm/swHaHCspaBbkHg9iOPg==",
       "sex": "0",
-      "entName": "北京开科唯识技术有限公司",
-      "idNumber": "000001"
-    },
-    {
-      "phone": "122200000000",
-      "phoneStar": "",
-      "employeeName": "轮回韩",
-      "sex": "0",
-      "entName": "北京开科唯识技术有限公司",
-      "idNumber": "000001"
-    },
-    {
-      "phone": "122200000000",
-      "phoneStar": "",
-      "employeeName": "轮回韩",
-      "sex": "0",
-      "entName": "北京开科唯识技术有限公司",
-      "idNumber": "000001"
-    },
-    {
-      "phone": "122200000000",
-      "phoneStar": "",
-      "employeeName": "轮回韩",
-      "sex": "0",
-      "entName": "北京开科唯识技术有限公司",
-      "idNumber": "000001"
-    },
-    {
-      "phone": "122200000000",
-      "phoneStar": "",
-      "employeeName": "轮回韩",
-      "sex": "0",
-      "entName": "北京开科唯识技术有限公司",
-      "idNumber": "000001"
-    },
-    {
-      "phone": "122200000000",
-      "phoneStar": "",
-      "employeeName": "轮回韩",
-      "sex": "0",
-      "entName": "北京开科唯识技术有限公司",
-      "idNumber": "000001"
+      "entName": "RosLl8k4bVee6+rv9Tj/9RiGyKB2dLcP2m1Pk2ZKOhZre2AZUNWVxMCanlvXP+a+MebYEHYby1g=",
+      "idNumber": "KIntfoCG+Cg=",
+      "entId": "L8YjHkTTcf1QW5QwM9jl8A==",
+      "passwd": "dfgklj213rk4l3o40ifgfdlmg24kmdfg",
+      "salt": "qwejoifgjkldfkgo"
     }
   ]
 }

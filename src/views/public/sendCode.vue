@@ -42,7 +42,7 @@ export default {
   },
   methods: {
     async sendCode () {
-      await this.$Inside.sendCode()
+      await this.$Inside.sendCode(this.userInfo.phone, '0')
     },
     async bindWX () {
       await this.$Inside.bindWX(this.code)

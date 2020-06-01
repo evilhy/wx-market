@@ -54,22 +54,22 @@ export default {
       this.currentEnt = item
     },
     async sendCode () {
-      let { phone, groupId } = this.currentEnt
+      let { phone } = this.currentEnt
       if (phone === this.bindedPhone) {
         helper.toast('当前手机号与已绑定手机号相同')
         return false
       }
       this.$refs['verifycode-btn'].start()
-      await this.$Inside.sendCode(phone, '0', groupId)
+      await this.$Inside.sendCode(phone, '0')
     },
     openAction () {
       this.$refs['ent-action'].openAction()
     },
     async checkPhoneCode () {
       let code = this.code
-      let { phone, groupId } = this.currentEnt
+      let { phone } = this.currentEnt
       try {
-        await this.$Inside.checkPhoneCode({ code, phone, busiType: '0', groupId })
+        await this.$Inside.checkPhoneCode({ code, phone, busiType: '0' })
         this.$router.replace({ name: 'confirmModifyPhone', query: { oldPhone: this.bindedPhone, newPhone: phone } })
       } catch (e) {
         this.code = ''

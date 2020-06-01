@@ -5,7 +5,7 @@
       <div class="phone-item" :class="{ active:  currentEnt.entId === item.entId, disabled: !item.phone }" v-for="(item, index) in list"
         :key="index" @click="chooseEnt(item)" >
         <span class="group">{{item.entName}}</span>
-        <span class="phone" v-if="item.phone">{{item.phone}}</span>
+        <span class="phone" v-if="item.phoneStar">{{item.phoneStar}}</span>
         <span class="no-phone" v-else>无手机号</span>
       </div>
     </div>
@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import Jasypt from 'utils/jasypt/index'
+import decryptInfo from 'utils/decryptInfo'
 export default {
   data () {
     return {
@@ -28,18 +28,8 @@ export default {
   methods: {
     async getEntList () {
       let res = await this.$Roll.entPhone()
-      this.list = this.decryptList(res.data)
+      this.list = decryptInfo(res.data, 'phone', 'idNumber')
       this.initCurrentEnt()
-    },
-    decryptList (list = []) {
-      if (list instanceof Array) {
-        return list.map((item) => {
-          let { phone, idNumber, salt, passwd } = item
-          let jasypt = new Jasypt(passwd, salt)
-          return Object.assign(item, { phone: jasypt.decrypt(phone), idNumber: jasypt.decrypt(idNumber) })
-        })
-      }
-      return list
     },
     openAction () {
       this.open = true
