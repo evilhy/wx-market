@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import Jasypt from 'utils/jasypt/index'
 export default {
   data () {
     return {
@@ -27,8 +28,18 @@ export default {
   methods: {
     async getEntList () {
       let res = await this.$Roll.entPhone()
-      this.list = res.data
+      this.list = this.decryptList(res.data)
       this.initCurrentEnt()
+    },
+    decryptList (list = []) {
+      if (list instanceof Array) {
+        return list.map((item) => {
+          let { phone, idNumber, salt, passwd } = item
+          let jasypt = new Jasypt(passwd, salt)
+          return Object.assign(item, { phone: jasypt.decrypt(phone), idNumber: jasypt.decrypt(idNumber) })
+        })
+      }
+      return list
     },
     openAction () {
       this.open = true

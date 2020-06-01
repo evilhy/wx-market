@@ -1,5 +1,5 @@
 import Jasyptor from './jasyptor'
-import { isEmpty, typeOf } from 'utils/assist'
+import { isEmpty } from 'utils/assist'
 
 export default class Jasypt {
 
@@ -7,7 +7,7 @@ export default class Jasypt {
 
   constructor(password, salt) {
     if (isEmpty(password)) throw new TypeError('Password cannot be set empty')
-    if (isEmpty(salt)) throw new TypeError('Password cannot be set empty')
+    if (isEmpty(salt)) throw new TypeError('salt cannot be set empty')
 
     this.jasyptor.setPassword(password)
     let buf = Buffer.allocUnsafe(8)
@@ -19,9 +19,6 @@ export default class Jasypt {
    * @param {String} originalString 
    */
   encrypt (originalString) {
-    if (typeOf(originalString) !== 'string') {
-      throw new TypeError('要加密的数据必须为String类型')
-    }
     return this.jasyptor.encrypt(originalString)
   }
   /**
@@ -29,9 +26,6 @@ export default class Jasypt {
    * @param {String} encryptMsg 
    */
   decrypt (encryptMsg) {
-    if (typeOf(encryptMsg) !== 'string') {
-      throw new TypeError('要解密的数据必须为String类型')
-    }
     return this.jasyptor.decrypt(encryptMsg)
   }
 }

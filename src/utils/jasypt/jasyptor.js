@@ -30,16 +30,16 @@ export default class Jasyptor {
   }
 
   setIterations (iterations) {
-    if (isEmpty(iterations)) throw new TypeError('Password cannot be set empty')
+    if (isEmpty(iterations)) throw new TypeError('iterations cannot be set empty')
     this[$iterations] = iterations
   }
   /**
    * 加密
    * @param {String} message 需要加密的文本
    */
-  encrypt(message) {
+  encrypt (message) {
     if (isEmpty(message)) {
-      return null
+      return message
     }
     return this[$encryptor].encrypt(
       message,
@@ -55,7 +55,7 @@ export default class Jasyptor {
    */
   decrypt(encryptedMessage) {
     if (isEmpty(encryptedMessage)) {
-      return null
+      return encryptedMessage
     }
     return this[$encryptor].decrypt(
       encryptedMessage,

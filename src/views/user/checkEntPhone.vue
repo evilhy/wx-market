@@ -60,7 +60,7 @@ export default {
         return false
       }
       this.$refs['verifycode-btn'].start()
-      await this.$Inside.sendCode(phone, '2', groupId)
+      await this.$Inside.sendCode(phone, '0', groupId)
     },
     openAction () {
       this.$refs['ent-action'].openAction()
@@ -69,7 +69,7 @@ export default {
       let code = this.code
       let { phone, groupId } = this.currentEnt
       try {
-        await this.$Inside.checkPhoneCode({ code, phone, busiType: '2', groupId })
+        await this.$Inside.checkPhoneCode({ code, phone, busiType: '0', groupId })
         this.$router.replace({ name: 'confirmModifyPhone', query: { oldPhone: this.bindedPhone, newPhone: phone } })
       } catch (e) {
         this.code = ''
