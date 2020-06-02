@@ -124,7 +124,7 @@ module.exports = {
         post: sendCode
       },
       '/roll/entEmp': {
-        get: entEmp
+        post: entEmp
       },
       '/inside/bindWX': {
         post: {}
@@ -156,8 +156,8 @@ module.exports = {
       '/roll/wageTrend': {
         get: wageTrend
       },
-      '/weixin/wxCallback': {
-        get: wxCallback
+      '/wechat/wxCallback': {
+        post: wxCallback
       },
       '/weixin/getJsapiSignature': {
         get: getJsapiSignature

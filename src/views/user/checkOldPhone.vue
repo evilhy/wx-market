@@ -49,7 +49,7 @@ export default {
     async checkPhoneCode () {
       let { phone, code } = this
       try {
-        await this.$Inside.checkPhoneCode({ code, phone })
+        await this.$Inside.checkPhoneCode({ code, phone, busiType: '1', groupId: '' })
         this.$router.replace({ name: 'bindNewPhone' })
       } catch (e) {
         this.code = ''

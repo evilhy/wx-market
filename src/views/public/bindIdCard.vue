@@ -20,6 +20,7 @@ import publicLogo from 'components/publicLogo'
 import storage from 'utils/storage'
 import helper from 'utils/helper'
 import collect from 'utils/collect'
+import decryptInfo from 'utils/decryptInfo'
 export default {
   data () {
     return {
@@ -35,7 +36,8 @@ export default {
       return this.idCard.length ? this.idCardInput : '请输入身份证号'
     }
   },
-  created () { },
+  created () { 
+  },
   methods: {
     onInput (value) {
       if (this.idCard.length >= 18) return
@@ -47,6 +49,7 @@ export default {
     async getPhone () {
       let res = await this.$Roll.entEmp(this.idCardInput)
       let { bindStatus, employeeList } = res.data
+      employeeList = decryptInfo(employeeList, 'phone', 'employeeName', 'entName', 'idNumber', 'entId')
       let telList = collect.getValueList(employeeList, 'phone').filter(item => item)
       let telLen = telList.length
       helper.saveUserInfo({ bindStatus })

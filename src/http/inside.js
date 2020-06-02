@@ -5,10 +5,10 @@ class Inside {
   /**
    * @description 发送验证码
    */
-  sendCode(phone = helper.getUserInfo('phone', ''), busiType = '0') {
+  sendCode(phone = helper.getUserInfo('phone', ''), busiType = '1', groupId = '') {
     let http = new Http()
     http.path = `/${moduleName}/sendCode`
-    http.body = { phone, busiType }
+    http.body = { phone, busiType, groupId }
     http.loading = false
     return http.post()
   }

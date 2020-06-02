@@ -42,7 +42,16 @@ export function deepCopy(data) {
   }
   return o
 }
-
+export function isEmpty () {
+  for (let obj of arguments) {
+    if (obj === null || obj === undefined) {
+      return true
+    } else if (typeOf(obj) === 'string' && obj.trim() === '') {
+      return true
+    }
+  }
+  return false
+}
 export function isEmojiCharacter(substring) {
   for (let i = 0; i < substring.length; i++) {
     let hs = substring.charCodeAt(i)

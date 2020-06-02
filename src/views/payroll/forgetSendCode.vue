@@ -45,7 +45,7 @@ export default {
     async checkPhoneCode () {
       let { userInfo, code } = this
       try {
-        await this.$Inside.checkPhoneCode({ code, phone: userInfo.phone })
+        await this.$Inside.checkPhoneCode({ code, phone: userInfo.phone, busiType: '1', groupId: '' })
         this.$router.replace({ name: 'setNewQueryCode' })
       } catch (e) {
         this.code = ''

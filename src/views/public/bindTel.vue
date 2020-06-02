@@ -47,7 +47,7 @@ export default {
   methods: {
     async sendCode () {
       if (this.verifyBtnDisabled) return false
-      await this.$Inside.sendCode(this.phone)
+      await this.$Inside.sendCode(this.phone, '0')
     },
     async bindTel () {
       let { code, phone, pwd } = this
