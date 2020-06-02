@@ -2,6 +2,8 @@
   {
     "shortEntName": "北京开科",
     "entName": "北京开科唯识技术有限公司",
+    "salt": "cXdlam9pZmdqa2xkZmtnbw==",
+    "passwd": "ZGZna2xqMjEzcms0bDNvNDBpZmdmZGxtZzI0a21kZmc=",
     "items": [
       {
         "employeeId": "string",
@@ -23,7 +25,7 @@
     ],
     "cards": [
       {
-        "cardNo": "6640102290110000",
+        "cardNo": "8YtUzZYFwCx+Ujuu2iImPCPLBbOSbOeD",
         "issuerName": "华夏银行",
         "isNew": 0,
         "cardUpdStatus": 0,
@@ -37,7 +39,7 @@
         ]
       },
       {
-        "cardNo": "6640102290110000",
+        "cardNo": "8YtUzZYFwCx+Ujuu2iImPCPLBbOSbOeD",
         "issuerName": "建设银行",
         "isNew": 1,
         "cardUpdStatus": 1,
@@ -105,7 +107,7 @@
         ]
       },
       {
-        "cardNo": "6640102290110000",
+        "cardNo": "8YtUzZYFwCx+Ujuu2iImPCPLBbOSbOeD",
         "issuerName": "建设银行",
         "bankCardGroups": [
           {

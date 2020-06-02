@@ -8,8 +8,8 @@
     "entName": "北京开科唯识技术有限公司",
     "entId": "entId001",
     "groupId": "groupId001",
-    "passwd": "dfgklj213rk4l3o40ifgfdlmg24kmdfg",
-    "salt": "qwejoifgjkldfkgo"
+    "salt": "cXdlam9pZmdqa2xkZmtnbw==",
+    "passwd": "ZGZna2xqMjEzcms0bDNvNDBpZmdmZGxtZzI0a21kZmc="
   },
   {
     "phone": "6y2KZQv03VRO1/iOvsTqXA==",
@@ -20,8 +20,8 @@
     "entName": "北京开科唯识技术有限公司1",
     "entId": "entId002",
     "groupId": "groupId002",
-    "passwd": "dfgklj213rk4l3o40ifgfdlmg24kmdfg",
-    "salt": "qwejoifgjkldfkgo"
+    "salt": "cXdlam9pZmdqa2xkZmtnbw==",
+    "passwd": "ZGZna2xqMjEzcms0bDNvNDBpZmdmZGxtZzI0a21kZmc="
   },
   {
     "phone": "JSoq6xw6/DF/lC25qlkvlA==",
@@ -32,8 +32,8 @@
     "entName": "北京开科唯识技术有限公司2",
     "entId": "entId003",
     "groupId": "groupId003",
-    "passwd": "dfgklj213rk4l3o40ifgfdlmg24kmdfg",
-    "salt": "qwejoifgjkldfkgo"
+    "salt": "cXdlam9pZmdqa2xkZmtnbw==",
+    "passwd": "ZGZna2xqMjEzcms0bDNvNDBpZmdmZGxtZzI0a21kZmc="
   },
   {
     "phone": "",
@@ -44,7 +44,7 @@
     "entName": "北京开科唯识技术有限公司3",
     "entId": "entId004",
     "groupId": "groupId004",
-    "passwd": "dfgklj213rk4l3o40ifgfdlmg24kmdfg",
-    "salt": "qwejoifgjkldfkgo"
+    "salt": "cXdlam9pZmdqa2xkZmtnbw==",
+    "passwd": "ZGZna2xqMjEzcms0bDNvNDBpZmdmZGxtZzI0a21kZmc="
   }
 ]

@@ -10,6 +10,7 @@
 <script>
 import entsSelect from './entsSelect'
 import bankItem from './bankItem'
+import decryptInfo from 'utils/decryptInfo'
 export default {
   data () {
     return {
@@ -29,7 +30,11 @@ export default {
       })
     },
     getCurrentBanks (index = 0) {
-      this.banks = this.entList[index].cards
+      let { cards, passwd, salt } = this.entList[index]
+      let banks = cards.map((item) => {
+        return Object.assign({}, item, { passwd, salt })
+      })
+      this.banks = decryptInfo(banks, 'cardNo')
     }
   },
   components: {
