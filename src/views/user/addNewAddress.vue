@@ -29,6 +29,7 @@
 import areaSelect from 'components/areaSelect'
 import validate from 'utils/validate'
 import helper from 'utils/helper'
+import decryptInfo from 'utils/decryptInfo'
 export default {
   data () {
     return {
@@ -68,7 +69,7 @@ export default {
   methods: {
     async getAddressDetail () {
       let res = await this.$WelfareCust.addressDetail(this.info.addressId)
-      let data = res.data
+      let data = decryptInfo(res.data, 'custName', 'phoneNo', 'receiveName', 'receivePhone', 'province', 'provinceCode', 'city', 'cityCode', 'county', 'countyCode', 'town', 'townCode', 'address', 'idNumber')
       Object.keys(this.info).forEach((key) => {
         this.info[key] = data[key]
       })
