@@ -145,7 +145,11 @@
       async checkFreePassword () {
         let res = await this.$Roll.checkFreePassword()
         if (res.data) {
-          this.$router.push({name: 'wageList'})
+          if (this.recentInfo.groupId || '') {
+            this.$router.push({ name: 'wageList' })
+          } else {
+            this.$router.push({ name: 'noWage' })
+          }
         } else {
           this.$router.push({name: 'checkQueryCode', query: {'hasWage': this.recentInfo.groupId || ''}})
         }
