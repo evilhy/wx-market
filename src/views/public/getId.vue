@@ -55,7 +55,6 @@ export default {
         if (wageSheetId && groupId) {
           helper.saveUserInfo({ groupId })
           if (ifPwd) { // 有密码
-           // this.$router.replace({ name: 'checkQueryCode', query: { wageSheetId } })
             this.checkFreePassword(wageSheetId)
           } else {
             this.$router.replace({ name: 'setQueryCode' })

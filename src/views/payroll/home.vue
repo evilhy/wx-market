@@ -158,7 +158,6 @@
         if (!this.requested) return
         if (helper.getUserInfo('ifPwd', 0)) { // 有密码
           this.checkFreePassword()
-          // this.$router.push({name: 'checkQueryCode', query: {'hasWage': this.recentInfo.groupId || ''}})
         } else {
           this.$router.push({name: 'setQueryCode'})
         }
