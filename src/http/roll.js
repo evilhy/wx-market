@@ -178,7 +178,7 @@ class Roll {
   checkFreePassword () {
     let http = new Http()
     http.path = `/${moduleName}/checkFreePassword`
-    return http.post()
+    return http.get()
   }
 }
 export default new Roll()
