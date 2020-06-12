@@ -86,7 +86,7 @@ class Roll {
     let idNumber = helper.getUserInfo('idNumber', '')
     let http = new Http()
     http.path = `/${moduleName}/checkCard`
-    http.query = { idNumber, cardNo }
+    http.body = { idNumber, cardNo }
     return http.post()
   }
   /**
@@ -109,7 +109,7 @@ class Roll {
   checkPwd (pwd) {
     let http = new Http()
     http.path = `/${moduleName}/checkPwd`
-    http.query = { pwd }
+    http.body = { pwd }
     return http.post()
   }
   /**
