@@ -59,6 +59,7 @@ const welfareOrderTrack = require('./json/welfare.orderTrack.json')
 const barrageList = require('./json/barrageList.json')
 const wUserInfo = require('./json/wUserInfo.json')
 const openingTips = require('./json/manager.openingTips.json')
+const checkFreePassword = require('./json/roll.checkFreePassword.json')
 module.exports = {
   openApi: [{
     baseURL: 'https://sitgateway.cardpu.com/payroll',
@@ -203,7 +204,7 @@ module.exports = {
         post: setPwd
       },
       '/roll/checkCard': {
-        get: checkCard
+        post: checkCard
       },
       '/inside/rz': {
         post: bindTel
@@ -212,7 +213,7 @@ module.exports = {
         get: userInfo
       },
       '/roll/checkPwd': {
-        get: checkPwd
+        post: checkPwd
       },
       '/roll/empEnt': {
         get: empEnt
@@ -256,6 +257,9 @@ module.exports = {
       },
       '/manager/openingTips': {
         get: openingTips
+      },
+      '/roll/checkFreePassword': {
+        get: checkFreePassword
       }
 
     }

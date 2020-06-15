@@ -19,6 +19,14 @@ export default {
     this.getJsessionId()
   },
   methods: {
+    async checkFreePassword (wageSheetId) {
+      let res = await this.$Roll.checkFreePassword()
+      if (res.data) {
+        this.$router.replace({ name: 'wageIndex', params: { wageSheetId } })
+      } else {
+        this.$router.replace({ name: 'checkQueryCode', query: { wageSheetId } })
+      }
+    },
     getJsessionId () {
       let { code, id } = this.query
       if (id) {
@@ -47,7 +55,7 @@ export default {
         if (wageSheetId && groupId) {
           helper.saveUserInfo({ groupId })
           if (ifPwd) { // 有密码
-            this.$router.replace({ name: 'checkQueryCode', query: { wageSheetId } })
+            this.checkFreePassword(wageSheetId)
           } else {
             this.$router.replace({ name: 'setQueryCode' })
           }

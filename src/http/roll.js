@@ -86,15 +86,15 @@ class Roll {
     let idNumber = helper.getUserInfo('idNumber', '')
     let http = new Http()
     http.path = `/${moduleName}/checkCard`
-    http.query = { idNumber, cardNo }
-    return http.get()
+    http.body = { idNumber, cardNo }
+    return http.post()
   }
   /**
    * 获取员工信息
    *
    * @memberof Roll
    */
-  emp () { 
+  emp () {
     let http = new Http()
     http.path = `/${moduleName}/emp`
     return http.get()
@@ -109,8 +109,8 @@ class Roll {
   checkPwd (pwd) {
     let http = new Http()
     http.path = `/${moduleName}/checkPwd`
-    http.query = { pwd }
-    return http.get()
+    http.body = { pwd }
+    return http.post()
   }
   /**
    * 获取员工所在企业列表
@@ -128,7 +128,7 @@ class Roll {
    * @returns
    * @memberof Roll
    */
-  empCard () { 
+  empCard () {
     let http = new Http()
     http.path = `/${moduleName}/empCard`
     return http.get()
@@ -140,7 +140,7 @@ class Roll {
    * @returns
    * @memberof Roll
    */
-  empCardLog (ids = []) { 
+  empCardLog (ids = []) {
     let http = new Http()
     http.path = `/${moduleName}/empCardLog`
     http.query = { ids: ids.join('|') }
@@ -152,7 +152,7 @@ class Roll {
    * @returns
    * @memberof Roll
    */
-  entPhone () { 
+  entPhone () {
     let http = new Http()
     http.path = `/${moduleName}/entPhone`
     return http.get()
@@ -167,6 +167,17 @@ class Roll {
     let http = new Http()
     http.path = `/${moduleName}/entUser`
     http.query = { entId }
+    return http.get()
+  }
+  /**
+   * 是否5分钟之内看过工资
+   *
+   * @returns
+   * @memberof Roll
+   */
+  checkFreePassword () {
+    let http = new Http()
+    http.path = `/${moduleName}/checkFreePassword`
     return http.get()
   }
 }
