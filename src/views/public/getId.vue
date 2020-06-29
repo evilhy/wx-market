@@ -6,6 +6,7 @@
 <script>
 import helper from 'utils/helper'
 import { getPageQueryObject } from 'utils/assist'
+import decryptInfo from 'utils/decryptInfo'
 export default {
   data () {
     return {
@@ -36,7 +37,9 @@ export default {
         .$Weixin
         .wxCallback(code, id)
         .then((res) => {
-          let { bindStatus, jsessionId, idNumber, ifPwd, headimgurl, apppartner } = res.data
+          let data = decryptInfo(res.data, 'bindStatus')
+          let { bindStatus, jsessionId, idNumber, ifPwd, headimgurl, apppartner } = data
+          
           helper.saveUserInfo({ jsessionId, ifPwd, bindStatus, headimgurl, apppartner })
           if (bindStatus === '0') {
             this.$router.replace({ name: 'bindIdCard' })
