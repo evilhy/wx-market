@@ -6,6 +6,7 @@
 <script>
 import helper from 'utils/helper'
 import { getPageQueryObject } from 'utils/assist'
+import decryptInfo from 'utils/decryptInfo'
 export default {
   data () {
     return {
@@ -21,7 +22,8 @@ export default {
   methods: {
     async getJsessionId () {
       let res = await this.$Weixin.wxCallback(this.query.code)
-      let { jsessionId, apppartner } = res.data
+      let data = decryptInfo(res.data, 'bindStatus')
+      let { jsessionId, apppartner } = data
       helper.saveUserInfo({ jsessionId, apppartner })
       this.toPage()
     },
