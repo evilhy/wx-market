@@ -41,7 +41,6 @@
     <home-manager-dialog ref="home-manager-dialog" @getIsReadManager="getIsReadManager"
                          @getIsReadManagerCurrent="getIsReadManagerCurrent"
                          :manager-info="managerInfo"></home-manager-dialog>
-    <van-button type="warning" @click="aa">警告按钮</van-button>
   </div>
 </template>
 <script>
@@ -50,7 +49,6 @@
   import helper from 'utils/helper'
   import validate from 'utils/validate'
   import homeManagerDialog from './homeManagerDialog'
-  import storage from 'utils/storage'
   Vue.use(ImagePreview)
 
   export default {
@@ -121,10 +119,6 @@
       this.getIsReadManagerCurrent()
     },
     methods: {
-      aa() {
-        storage.removeSession('isReadManager')
-        storage.removeSession('isReadManagerCurrent')
-      },
       getIsReadManager () {
         this.isReadManager = helper.getIsReadManager()
       },
