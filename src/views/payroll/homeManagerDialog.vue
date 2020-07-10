@@ -1,6 +1,6 @@
 <template>
   <div class="home-manager-dialog">
-    <van-overlay :show="show">
+    <van-overlay :show="show" z-index="10">
       <div class="wrap">
         <div class="main">
           <div class="name">尊敬的{{managerInfo.empName.substring(0,1)}}先生/女士</div>
