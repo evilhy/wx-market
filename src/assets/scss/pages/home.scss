@@ -180,21 +180,21 @@
 
   .main {
     width: 600px;
-    height: 780px;
+    height: auto;
     border-radius: 8px;
     background-color: #fff;
-    padding: 30px;
-    overflow-y: scroll;
+    padding: 20px 30px 15px 30px;
+   /* overflow-y: scroll;*/
   /*  -webkit-overflow-scrolling: touch;*/
     .name {
       font-size: 30px;
-      line-height: 50px;
+      line-height: 40px;
     }
     .desc {
       font-size: 22px;
-      margin-top: 30px;
+      margin-top: 20px;
       line-height: 36px;
-      margin-bottom: 50px;
+      margin-bottom: 20px;
     }
     .single {
       height: 90px;
@@ -237,7 +237,7 @@
       }
     }
     .manager-box {
-      margin-top: 60px;
+      margin-top: 25px;
       position: relative;
       .name {
         font-size: 28px;
@@ -250,7 +250,7 @@
         }
       }
       .branch {
-        margin: 20px 0 15px 0;
+        margin: 10px 0 15px 0;
         font-size: 20px;
         color: #808080;
       }
@@ -290,13 +290,16 @@
       background: $primary-color;
       color: white;
       border-radius: $radius-xs;
-      margin-top: 40px;
+      margin-top: 20px;
     }
     .checkbox-wrap {
-      margin-top: 20px;
+      margin-top: 15px;
       display: flex;
       align-items: center;
       justify-content: center;
+      .van-checkbox{
+        height: 36px;
+      }
     }
   }
 }
