@@ -169,12 +169,13 @@
         }
       },
       toPage (routerName, query = {}) {
-        let {hasManager} = this.managerInfo
+        this.$refs['home-manager-dialog'].open()
+        /* let {hasManager} = this.managerInfo
         if (routerName === 'manager' && hasManager === 1 && !this.isReadManager && !this.isReadManagerCurrent) {
           this.$refs['home-manager-dialog'].open()
           return false
         }
-        this.$router.push({name: routerName, query: query})
+        this.$router.push({name: routerName, query: query}) */
       },
       clickImg (index) {
         let {link = '', url = ''} = this.imgList[index]
