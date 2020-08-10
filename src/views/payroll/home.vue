@@ -41,6 +41,7 @@
     <home-manager-dialog ref="home-manager-dialog" @getIsReadManager="getIsReadManager"
                          @getIsReadManagerCurrent="getIsReadManagerCurrent"
                          :manager-info="managerInfo"></home-manager-dialog>
+    <van-button type="primary" @click="clear">清缓存测试</van-button>
   </div>
 </template>
 <script>
@@ -119,6 +120,9 @@
       this.getIsReadManagerCurrent()
     },
     methods: {
+      clear() {
+        localStorage.clear()
+      },
       getIsReadManager () {
         this.isReadManager = helper.getIsReadManager()
       },
