@@ -1,6 +1,6 @@
 <template>
   <div class="home-manager-dialog">
-    <van-overlay :show="show">
+    <van-popup v-model="show" closeable @close="close(false)">
       <div class="wrap">
         <div class="main">
           <div class="name">尊敬的{{managerInfo.empName.substring(0,1)}}先生/女士</div>
@@ -34,14 +34,10 @@
               <span>拨号</span>
             </div>
           </div>
-          <button class="btn" @click="close">关闭</button>
-          <div class="checkbox-wrap">
-            <van-checkbox v-model="checked" checked-color="#52BDBD" shape="square" icon-size="14px">不再提醒</van-checkbox>
-          </div>
-
         </div>
+        <div class="btn" @click="close(true)">不再提醒</div>
       </div>
-    </van-overlay>
+    </van-popup>
   </div>
 </template>
 
@@ -86,15 +82,15 @@
       open () {
         this.show = true
       },
-      close () {
-        if (this.checked) {
+      close (notNotice) {
+        if (notNotice) {
           helper.saveIsReadManager(true)
           this.$emit('getIsReadManager')
+          this.show = false
         } else {
           helper.saveIsReadManagerCurrent(true)
           this.$emit('getIsReadManagerCurrent')
         }
-        this.show = false
       }
     }
   }

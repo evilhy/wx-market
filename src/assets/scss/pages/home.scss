@@ -176,14 +176,16 @@
     align-items: center;
     justify-content: center;
     height: 100%;
+    flex-direction: column;
   }
 
   .main {
+    flex: 1;
     width: 600px;
     height: auto;
     border-radius: 8px;
     background-color: #fff;
-    padding: 20px 30px 15px 30px;
+    padding: 20px 30px 10px 30px;
    /* overflow-y: scroll;*/
   /*  -webkit-overflow-scrolling: touch;*/
     .name {
@@ -281,25 +283,17 @@
         }
       }
     }
-    .btn {
-      display: block;
-      height: 70px;
-      line-height: 70px;
-      text-align: center;
-      font-size: 28px;
-      background: $primary-color;
-      color: white;
-      border-radius: $radius-xs;
-      margin-top: 30px;
-    }
-    .checkbox-wrap {
-      margin-top: 15px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      .van-checkbox{
-        height: 36px;
-      }
-    }
+  }
+  .btn {
+    display: block;
+    height: 70px;
+    line-height: 70px;
+    text-align: center;
+    font-size: 28px;
+    background: $primary-color;
+    color: white;
+    border-radius: $radius-xs;
+    margin-top: 30px;
+    width: 100%;
   }
 }
