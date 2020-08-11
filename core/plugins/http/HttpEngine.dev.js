@@ -80,8 +80,8 @@ export default class HttpEngine {
    * */
   set query (value) {
     if (typeOf(value) !== 'object') throw new TypeError('query类型应为Object');
-    for (let [key, value] of Object.entries(value)) {
-      this[$query][key] = value === '' ? undefined : value
+    for (let [key, val] of Object.entries(value)) {
+      this[$query][key] = val === '' ? undefined : val
     }
   }
 
@@ -94,10 +94,10 @@ export default class HttpEngine {
   }
 
   /**
-   * @param value {String|Number|Object}
+   * @param value {String|Number|Object|Array}
    * */
   set body (value) {
-    if (typeOf(value) !== 'string' && typeOf(value) !== 'number' && typeOf(value) !== 'object') throw new TypeError('body类型支持String、Number、Object');
+    if (typeOf(value) !== 'string' && typeOf(value) !== 'array' && typeOf(value) !== 'number' && typeOf(value) !== 'object') throw new TypeError('body类型支持String、Number、Object、Array');
     this[$body] = value;
   }
   /**
@@ -107,7 +107,7 @@ export default class HttpEngine {
    */
   set loading (value) { 
     if (typeOf(value) !== 'boolean' && typeOf(value) !== 'string' && typeOf(value) !== 'object') throw new TypeError('loading类型应为Boolean、String、Object');
-    if (typeOf(value) !== 'string' && !this[$loadingTypes].includes(value)) {
+    if (typeOf(value) === 'string' && !this[$loadingTypes].includes(value)) {
       throw new TypeError(`loading类型为String时，应传入${this[$loadingTypes].join('、')}中的一种`);
     }
     this[$loading] = value;

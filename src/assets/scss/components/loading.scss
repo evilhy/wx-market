@@ -11,7 +11,7 @@
   z-index: 99;
   background: rgba(255, 255, 255, 0.7);
   &.v-loading-normal{
-    background: rgba(255, 255, 255, 0);
+    background: rgba(255, 255, 255, 0) !important;
   }
   // normal
   .loading-normal {

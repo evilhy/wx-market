@@ -42,7 +42,7 @@ export default class MockResolveResponse {
   }
 
   set data (value) {
-    if ((typeOf(value) !== 'string' && typeOf(value) !== 'boolean' && typeOf(value) !== 'number' && typeOf(value) !== 'object' && typeOf(value) !== 'undefined')) throw new TypeError('data类型错误');
+    if ((typeOf(value) !== 'string' && typeOf(value) !== 'boolean' && typeOf(value) !== 'number' && typeOf(value) !== 'object' && typeOf(value) !== 'array' && typeOf(value) !== 'undefined')) throw new TypeError('data类型错误');
     this[$data] = value;
   }
 }

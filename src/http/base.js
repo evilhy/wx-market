@@ -23,8 +23,13 @@ export default class HttpForApplication extends HttpEngine {
     this.dealEncrypt(config)
 
     if (config.loading) {
-      let loadingType = typeOf(config.loading) === 'boolean' ? 'square' : config.loading
-      this.loadingHash = loading.show({ type: loadingType })
+      let loadingConfig = {}
+      if (typeOf(config.loading) === 'object') {
+        loadingConfig = config.loading
+      } else {
+        loadingConfig = { type: typeOf(config.loading) === 'boolean' ? 'bounce' : config.loading }
+      }
+      this.loadingHash = loading.show(loadingConfig)
     }
   }
 
