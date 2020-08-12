@@ -17,6 +17,16 @@ export default new Router({
       alias: '/'
     },
     {
+      path: '/test',
+      name: 'test',
+      meta: {
+        title: '放薪管家'
+      },
+      component: resolve => {
+        require(['../views/public/test.vue'], resolve)
+      }
+    },
+    {
       path: '/token', // 公共入口页面token
       name: 'token',
       meta: {
