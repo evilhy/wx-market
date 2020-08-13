@@ -7,7 +7,7 @@ module.exports = {
     "autoprefixer": {},
     'postcss-px-to-viewport': {
       viewportWidth: 640,
-      selectorBlackList: ['.van-'],
+      selectorBlackList: [],
       mediaQuery: true
     }
   }

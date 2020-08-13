@@ -1,12 +1,12 @@
 <template>
   <!-- 设置新的6位查询密码 -->
   <div class="public-page set-code-page">
-    <div class="content-wrap">
+    <div class="content-wrap" :class="{'show': keyboardFlag}">
       <div class="big-title">设置新的查询密码
         <i class="iconfont" :class="[visible ? 'icon-ai44' : 'icon-ai47']" @click.stop="toggle"></i>
       </div>
       <div class="tip">请设置6位数字查询密码。</div>
-      <code-input ref="code-input" @complete="setCode" :visible="visible"></code-input>
+      <code-input ref="code-input" @toggle="keyboardToggle" @complete="setCode" :visible="visible"></code-input>
       <button class="btn btn-next" :disabled="!code" @click="sure">确认</button>
     </div>
   </div>
@@ -20,7 +20,8 @@ export default {
   data () {
     return {
       code: '',
-      visible: false
+      visible: false,
+      keyboardFlag: false
     }
   },
   created () {},
@@ -45,6 +46,9 @@ export default {
     },
     toggle () {
       this.visible = !this.visible
+    },
+    keyboardToggle (val) {
+      this.keyboardFlag = val
     }
   },
   components: {

@@ -26,10 +26,12 @@ export default {
 }
 </script>
 <style lang="scss">
+  // 根据设计稿变动
   .hand-lock-container{
     position: relative;
-    width: 100%;
+    margin: 0 auto;
+    width: 92%;
     height: 0;
-    padding-bottom: 100%;
+    padding-bottom: 92%;
   }
 </style>

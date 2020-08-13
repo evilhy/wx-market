@@ -12,7 +12,7 @@
   </div>
 </template>
 
-<script type="text/ecmascript-6">
+<script>
 import storage from 'utils/storage'
 import helper from 'utils/helper'
 import { swiper } from 'vue-awesome-swiper'

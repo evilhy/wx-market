@@ -1,6 +1,8 @@
 import { typeOf } from 'utils/assist'
 import Canvas from './canvas'
 
+const $defaultOptions = Symbol('$defaultOptions')
+const $defaultCanvasStyle = Symbol('$defaultCanvasStyle')
 const $rows = Symbol('$rows')
 const $circles = Symbol('$circles')
 const $container = Symbol('$container')
@@ -12,39 +14,52 @@ const $records = Symbol('$records')
 const $touchFlag = Symbol('$touchFlag')
 const getPointInCanvas = Symbol('getPointInCanvas')
 const init = Symbol('init')
+const setRadiusByBaseWidth = Symbol('setRadiusByBaseWidth')
 const reset = Symbol('reset')
 const bindEvnet = Symbol('bindEvnet')
 const getDistance = Symbol('getDistance')
 const afterDraw = Symbol('afterDraw')
-
-const defaultOptions = {
-  render: true, // 是否自动渲染
-  minPoints: 4, // 最小密码点数
-  color: '#52BDBD', // 实心圆和空心圆的颜色
-  errorColor: 'red', // 错误时实心圆和空心圆的颜色
-  outerRadius: 60, // 外心圆半径
-  innerRadius: 15 // 内心圆半径
-}
-const defaultCanvasStyle = {
-  position: 'absolute',
-  left: '50%',
-  top: '50%',
-  transform: 'translate(-50%, -50%) scale(0.5)'
-}
-
+/**
+ * 手势密码
+ * 传入container容器和配置项options
+ * 手势不足时，调用afterDrawNotEnough方法,方法接收绘制的手势位置信息
+ * 手势完成时，调用afterDrawFinished方法,方法接收绘制的手势位置信息
+ * baseWidth、innerRadius、outerRadius等值，基于设计稿做改动
+ * @export
+ * @class Recorder
+ */
 export default class Recorder {
+  [$defaultOptions] = {
+    render: true, // 是否自动渲染
+    minPoints: 4, // 最小密码点数
+    color: '#363c4d', // 圆的颜色
+    activeInnerColor: '#00cccc', // 按下时内心圆的颜色
+    activeOuterColor: '#cdf5f5', // 按下时内心圆的颜色
+    errorColor: 'red', // 错误时实心圆和空心圆的颜色
+    outerRadius: 80, // 外心圆半径(设计稿)
+    innerRadius: 30, // 内心圆半径(设计稿)
+    baseWidth: 640 // 屏幕宽度基准值
+  };
   // 圆的行数
   [$rows] = 3;
   // 圆的位置信息
   [$circles] = [];
+  // 默认canvas样式
+  [$defaultCanvasStyle] = {
+    position: 'absolute',
+    left: '50%',
+    top: '50%',
+    transform: 'translate(-50%, -50%) scale(0.5)'
+  }
 
   constructor(container, options = {}) {
-    if (!container || container.nodeType !== 1) throw new Error('请指定NODE节点类型的container容器')
+    if (!container || container.nodeType !== 1) { throw new Error('请指定NODE节点类型的container容器') }
     if (typeOf(options) !== 'object') {
       throw new TypeError('options的类型必须为Object')
     }
     this[$container] = container
-    this[$options] = { ...defaultOptions, ...options }
+    this[$options] = { ...this[$defaultOptions], ...options }
+    this[setRadiusByBaseWidth]()
     if (this[$options].render) {
       this.render()
     }
@@ -64,17 +79,17 @@ export default class Recorder {
 
     let baseCanvas = document.createElement('canvas')
     baseCanvas.width = baseCanvas.height = 2 * Math.min(width, height)
-    Object.assign(baseCanvas.style, defaultCanvasStyle)
+    Object.assign(baseCanvas.style, this[$defaultCanvasStyle])
     let tempCanvas = baseCanvas.cloneNode(true)
     let recordCanvas = baseCanvas.cloneNode(true)
 
-    container.appendChild(tempCanvas)
     container.appendChild(recordCanvas)
+    container.appendChild(tempCanvas)
     container.appendChild(baseCanvas)
 
     this[$baseCanvas] = baseCanvas
-    this[$tempCanvas] = tempCanvas
     this[$recordCanvas] = recordCanvas
+    this[$tempCanvas] = tempCanvas
 
     this[init]()
   }
@@ -92,37 +107,46 @@ export default class Recorder {
    *
    * @memberof Recorder
    */
-  [reset] () {
+  [reset]() {
     let baseCanvas = this[$baseCanvas]
     let baseCtx = baseCanvas.getContext('2d')
     let width = baseCanvas.width
-    let { color, outerRadius } = this[$options]
+    let { color, outerRadius, innerRadius } = this[$options]
     Canvas.clearCanvas(baseCanvas)
     Canvas.clearCanvas(this[$recordCanvas])
     Canvas.clearCanvas(this[$tempCanvas])
-
-    let space = Math.floor((width - this[$rows] * 2 * outerRadius) / (this[$rows] + 1))
+    let space = Math.floor(
+      (width - this[$rows] * 2 * outerRadius) / (this[$rows] + 1)
+    )
     let circles = []
     for (let i = 1; i <= this[$rows]; i++) {
       for (let j = 1; j <= this[$rows]; j++) {
         let x = i * space + (2 * i - 1) * outerRadius
         let y = j * space + (2 * j - 1) * outerRadius
-        Canvas.drawHollowCircle(baseCtx, color, x, y, outerRadius)
+        Canvas.drawSolidCircle(baseCtx, color, x, y, innerRadius)
         circles.push({ x, y, pos: [i, j] })
       }
     }
     this[$circles] = circles
+  }
+  [setRadiusByBaseWidth] () {
+    console.log(this[$container].getBoundingClientRect())
+    let clientWidth = document.documentElement.clientWidth
+    let { outerRadius, innerRadius, baseWidth } = this[$options]
+    this[$options].outerRadius = (clientWidth / baseWidth) * outerRadius
+    this[$options].innerRadius = (clientWidth / baseWidth) * innerRadius
   }
   /**
    * 绑定事件
    *
    * @memberof Recorder
    */
-  [bindEvnet] () {
+  [bindEvnet]() {
     let records = this[$records]
     let baseCanvas = this[$baseCanvas]
     let tempCanvas = this[$tempCanvas]
-    let { outerRadius, innerRadius, color } = this[$options]
+    let { outerRadius, innerRadius, activeInnerColor, activeOuterColor } = this[$options]
+    let baseCtx = baseCanvas.getContext('2d')
     let recordCtx = this[$recordCanvas].getContext('2d')
     let tempCtx = tempCanvas.getContext('2d')
     baseCanvas.addEventListener('touchstart', e => {
@@ -130,7 +154,11 @@ export default class Recorder {
       records = []
       let { clientX, clientY } = e.targetTouches[0]
       let circles = this[$circles]
-      let touchPoint = this[getPointInCanvas](this[$baseCanvas], clientX, clientY)
+      let touchPoint = this[getPointInCanvas](
+        this[$baseCanvas],
+        clientX,
+        clientY
+      )
       for (let i = 0; i < circles.length; i++) {
         let circle = circles[i]
         // 触摸点落在某个圆中
@@ -138,7 +166,14 @@ export default class Recorder {
           this[$touchFlag] = true
           Canvas.drawSolidCircle(
             recordCtx,
-            color,
+            activeOuterColor,
+            circle.x,
+            circle.y,
+            outerRadius
+          )
+          Canvas.drawSolidCircle(
+            baseCtx,
+            activeInnerColor,
             circle.x,
             circle.y,
             innerRadius
@@ -153,7 +188,11 @@ export default class Recorder {
     baseCanvas.addEventListener('touchmove', e => {
       if (!this[$touchFlag]) return false
       let { clientX, clientY } = e.targetTouches[0]
-      let touchPoint = this[getPointInCanvas](this[$baseCanvas], clientX, clientY)
+      let touchPoint = this[getPointInCanvas](
+        this[$baseCanvas],
+        clientX,
+        clientY
+      )
       let lastPoint = records[records.length - 1]
       let circles = this[$circles]
       for (let i = 0; i < circles.length; i++) {
@@ -163,7 +202,14 @@ export default class Recorder {
           this[$touchFlag] = true
           Canvas.drawSolidCircle(
             recordCtx,
-            color,
+            activeOuterColor,
+            circle.x,
+            circle.y,
+            outerRadius
+          )
+          Canvas.drawSolidCircle(
+            baseCtx,
+            activeInnerColor,
             circle.x,
             circle.y,
             innerRadius
@@ -171,7 +217,7 @@ export default class Recorder {
           if (records.length) {
             Canvas.drawLine(
               recordCtx,
-              color,
+              activeInnerColor,
               lastPoint.x,
               lastPoint.y,
               circle.x,
@@ -186,7 +232,7 @@ export default class Recorder {
       Canvas.clearCanvas(this[$tempCanvas])
       Canvas.drawLine(
         tempCtx,
-        color,
+        activeInnerColor,
         lastPoint.x,
         lastPoint.y,
         touchPoint.x,
@@ -238,11 +284,13 @@ export default class Recorder {
    * @param {*} res
    * @memberof Recorder
    */
-  [afterDraw] (records) {
+  [afterDraw](records) {
     if (records.length < this[$options].minPoints) {
-      typeOf(this.afterDrawNotEnough) === 'function' && this.afterDrawNotEnough(records)
+      typeOf(this.afterDrawNotEnough) === 'function' &&
+        this.afterDrawNotEnough(records)
     } else {
-      typeOf(this.afterDrawFinished) === 'function' && this.afterDrawFinished(records)
+      typeOf(this.afterDrawFinished) === 'function' &&
+        this.afterDrawFinished(records)
     }
   }
   /**
@@ -250,15 +298,11 @@ export default class Recorder {
    *
    * @memberof Recorder
    */
-  afterDrawNotEnough () {
-
-  }
+  afterDrawNotEnough() {}
   /**
    * 绘制完成时回调函数
    *
    * @memberof Recorder
    */
-  afterDrawFinished () {
-
-  }
+  afterDrawFinished() {}
 }

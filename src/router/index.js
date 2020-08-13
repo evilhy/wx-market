@@ -225,7 +225,7 @@ export default new Router({
       }
     },
     {
-      path: '/bankcard-list', // 个人信息-银行卡列表
+      path: '/bankcard-list', // 个人信息-银行卡列表 
       name: 'bankcardList', 
       meta: {
         title: '银行卡'
@@ -480,7 +480,7 @@ export default new Router({
       }
     },
     {
-      path: '/welfare-detail/:activityId', // 福利货柜（券详情）1
+      path: '/welfare-detail/:activityId',
       name: 'welfareDetail',
       meta: {
         title: '员工福利'
@@ -540,7 +540,7 @@ export default new Router({
       }
     },
     {
-      path: '/welfare-order-confirm/:activityId', // 福利货柜(确认实物订单)
+      path: '/welfare-order-confirm/:activityId', // 福利货柜(确认实物订单) 
       name: 'welfareOrderConfirm',
       meta: {
         title: '订单详情'
@@ -560,7 +560,7 @@ export default new Router({
       }
     },
     {
-      path: '/add-new-address', //
+      path: '/add-new-address',
       name: 'addNewAddress',
       meta: {
         title: '新增收货地址'

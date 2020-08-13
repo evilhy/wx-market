@@ -3,7 +3,7 @@
     <template v-if="list.length">
       <bank-history-item v-for="(item, index) in list" :key="index" :item="item"></bank-history-item>
     </template>
-    <template v-else>
+    <template v-if="requested && !list.length">
       <div class="no-data">暂无历史记录</div>
     </template>
   </div>
@@ -16,7 +16,8 @@ export default {
   data () {
     return {
       list: [],
-      ids: storage.getSession('ids', [])
+      ids: storage.getSession('ids', []),
+      requested: false
     }
   },
   created () {
@@ -24,8 +25,12 @@ export default {
   },
   methods: {
     async getHistory () {
-      let res = await this.$Roll.empCardLog(this.ids)
-      this.list = res.data
+      try {
+        let res = await this.$Roll.empCardLog(this.ids)
+        this.list = res.data
+      } finally {
+        this.requested = true
+      }
     }
   },
   components: {

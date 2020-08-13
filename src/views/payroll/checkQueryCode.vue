@@ -2,11 +2,11 @@
   <!-- 设置6位查询密码 -->
   <div class="public-page check-code-page">
     <user-avatar class="user-avatar"></user-avatar>
-    <div class="content-wrap">
+    <div class="content-wrap" :class="{'show': keyboardFlag}">
       <div class="big-title">请输入6位数密码
         <i class="iconfont" :class="[visible ? 'icon-ai44' : 'icon-ai47']" @click.stop="toggle"></i>
       </div>
-      <code-input ref="code-input" @complete="setCode" :visible="visible"></code-input>
+      <code-input @toggle="keyboardToggle" ref="code-input" @complete="setCode" :visible="visible"></code-input>
       <div class="forget-pwd-link"><span @click="toForget">忘记密码</span></div>
     </div>
   </div>
@@ -19,7 +19,8 @@ export default {
   data () {
     return {
       code: '',
-      visible: false
+      visible: false,
+      keyboardFlag: false
     }
   },
   created () {},
@@ -51,6 +52,9 @@ export default {
     },
     toForget () {
       this.$router.push({ name: 'forgetSendCode' })
+    },
+    keyboardToggle (val) {
+      this.keyboardFlag = val
     }
   },
   components: {

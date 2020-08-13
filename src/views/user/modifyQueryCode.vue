@@ -1,20 +1,20 @@
 <template>
   <div class="public-page modify-query-code-page">
-    <div class="content-wrap">
+    <div class="content-wrap" :class="{'show': keyboardFlag}">
       <div class="big-title">{{titleArr[step]}}
         <i class="iconfont" :class="[visible ? 'icon-ai44' : 'icon-ai47']" @click.stop="toggle"></i>
       </div>
       <div class="tip">{{tipArr[step]}}</div>
       <template v-if="step === 0">
-        <code-input ref="code-input" @complete="setCode" :visible="visible"></code-input>
+        <code-input ref="code-input" @toggle="keyboardToggle" @complete="setCode" :visible="visible"></code-input>
         <button class="btn btn-next" :disabled="!code" @click="checkPwd">下一步</button>
       </template>
       <template v-if="step === 1">
-        <code-input ref="new-code-input" @complete="setNewCode" :visible="visible"></code-input>
+        <code-input ref="new-code-input" @toggle="keyboardToggle" @complete="setNewCode" :visible="visible"></code-input>
         <button class="btn btn-next" :disabled="!newCode" @click="checkCode">下一步</button>
       </template>
       <template v-if="step === 2">
-        <code-input ref="renew-code-input" @complete="setReNewCode" :visible="visible"></code-input>
+        <code-input ref="renew-code-input" @toggle="keyboardToggle" @complete="setReNewCode" :visible="visible"></code-input>
         <button class="btn btn-next" :disabled="!reNewCode" @click="setPwd">确定修改</button>
       </template>
     </div>
@@ -34,7 +34,8 @@ export default {
       reNewCode: '',
       visible: false,
       titleArr: ['修改查询密码', '设置新查询密码', '再次输入新查询密码'],
-      tipArr: ['请输入原查询密码。', '请设置6位数纯数字密码。', '请设置6位数纯数字密码。']
+      tipArr: ['请输入原查询密码。', '请设置6位数纯数字密码。', '请设置6位数纯数字密码。'],
+      keyboardFlag: false
     }
   },
   created () { },
@@ -86,6 +87,9 @@ export default {
     },
     toggle () {
       this.visible = !this.visible
+    },
+    keyboardToggle (val) {
+      this.keyboardFlag = val
     }
   },
   components: {

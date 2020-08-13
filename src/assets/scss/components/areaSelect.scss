@@ -1,10 +1,10 @@
 @charset "utf-8";
 .area-select{
-  .van-area-select-tab{
-    height: 40px;
+  .area-select-tab{
+    height: 80px;
     display: flex;
     align-items: center;
-    font-size: 15px;
+    font-size: 30px;
     background: white;
     .tab-item{
       position: relative;
@@ -14,17 +14,17 @@
       width: 25%;
       height: 100%;
       @extend %text-overflow;
-      padding: 0 4px;
+      padding: 0 8px;
       &.active{
         &::after{
           content: '';
           position: absolute;
           bottom: 0;
-          width: 50px;
+          width: 100px;
           left: 50%;
           transform: translateX(-50%);
-          height: 3px;
-          border-radius: 4px;
+          height: 6px;
+          border-radius: 8px;
           background-image: linear-gradient(90deg, #f94c4c, #d61323);
         }
       }
@@ -45,7 +45,7 @@
         align-items: center;
         justify-content: flex-end;
         .icon-select{
-          width: 16px;
+          width: 32px;
         }
       }
     }

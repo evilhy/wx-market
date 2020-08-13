@@ -9,9 +9,10 @@
 
     <!-- 数字键盘 -->
     <van-number-keyboard
+      safe-area-inset-bottom
       :value="code"
       :show="flag"
-      @blur="show = false"
+      @blur="flag = false"
       @input="onInput"
       @delete="onDelete"
     />
@@ -30,6 +31,11 @@ export default {
     return {
       flag: false,
       code: ''
+    }
+  },
+  watch: {
+    flag (val) {
+      this.$emit('toggle', val)
     }
   },
   created () {},

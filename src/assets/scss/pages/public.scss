@@ -3,7 +3,7 @@
   min-height: 100%;
   background: white;
   .logo-wrap{
-    height: 174px;
+    height: 160px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -15,6 +15,9 @@
   }
   .content-wrap{
     padding: 40px;
+    &.show{
+      padding-bottom: 390px;
+    }
   }
   .big-title{
     display: flex;
@@ -28,7 +31,7 @@
   }
   .tip{
     margin-top: 16px;
-    margin-bottom: 50px;
+    margin-bottom: 46px;
     color: #666;
   }
   .mt{
@@ -69,7 +72,7 @@
     }
   }
   .btn-next{
-    margin-top: 76px;
+    margin-top: 70px;
   }
   .vcode-btn{
     width: 220px;
@@ -124,6 +127,7 @@
     }
     .group{
       flex: 1;
+      margin-right: 8px;
       @extend %text-overflow;
     }
     .phone{
@@ -175,11 +179,16 @@
   }
 }
 .fill-id-card-page{
+  .content-wrap{
+  }
   .field-wrap{
     padding: 24px 0;
   }
   .id-card-span{
     padding: 0 10px;
+    min-height: 40px;
+    display: inline-flex;
+    align-items: center;
   }
   .placeholder{
     color: $text-color-gray;
