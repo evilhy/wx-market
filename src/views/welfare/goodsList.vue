@@ -1,6 +1,6 @@
 <template>
   <div class="goods-list-page page">
-    <no-data text="暂无商品" type="welfare" v-if="request && !list.length"></no-data>
+    <no-data text="暂无商品" name="goods" v-if="request && list.length < 1"></no-data>
     <van-list v-else v-model="loading" :finished="finished" :finished-text="finishedText" @load="getList">
       <goods-item v-for="(item, index) in list" :key="index" :item="item"></goods-item>
     </van-list>
@@ -9,7 +9,7 @@
 
 <script>
 import goodsItem from './components/goodsItem'
-import noData from 'components/noData'
+import noData from 'components/noData/index'
 import sysConfig from 'utils/constant'
 
 export default {

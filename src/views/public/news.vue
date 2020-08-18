@@ -1,5 +1,5 @@
 <template>
-  <div class="wallet-wrap">
+  <div class="">
 
   </div>
 </template>

@@ -1,4 +1,79 @@
 @charset "utf-8";
-.wallet-wrap{
+.wallet-wrap {
   height: 180px;
+  border-radius: 40px;
+  padding: 0 25px;
+  margin-top: 10px;
+  .wallet-content {
+    height: 100%;
+    padding-top: 10px;
+  }
+  .header {
+    height: 60px;
+    padding-left: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+    font-family: PingFangSC-Semibold;
+    font-size: 28px;
+    .van-icon{
+      opacity: 0.8;
+      padding: 10px 24px;
+    }
+  }
+  .main {
+    display: flex;
+    align-items: center;
+    .col{
+      width: 50%;
+    }
+    .money{
+      flex: 2;
+      padding-left: 30px;
+      display: flex;
+      flex-direction: column;
+      .label{
+        opacity: 1;
+      }
+    }
+    .bank-card{
+      display: flex;
+      padding-right: 30px;
+    }
+    .bank,.card{
+      flex: 1;
+    }
+    .item{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .value {
+      position: relative;
+      color: #ffe0c2;
+      font-family: DINAlternate-Bold;
+      font-size: 48px;
+    }
+    .label{
+      color: white;
+      font-size: 20px;
+      display: inline-flex;
+      align-items: center;
+      opacity: 0.8;
+      .text{
+        opacity: 0.8;
+      }
+    }
+    .iconfont{
+      padding: 0 10px;
+      font-size: 32px;
+      line-height: 1;
+    }
+    .dot{
+      left: 100%;
+      top: 0;
+      transform: translateX(-100%);
+    }
+  }
 }

@@ -1,7 +1,6 @@
 <template>
-  <!-- 身份绑定-选择多家机构 -->
-  <div class="page select-organ-page">
-    
+  <div class="page set-handlock-page">
+    设置手势密码
   </div>
 </template>
 

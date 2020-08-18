@@ -151,7 +151,7 @@
             this.$router.push({ name: 'noWage' })
           }
         } else {
-          this.$router.push({name: 'checkQueryCode', query: {'hasWage': this.recentInfo.groupId || ''}})
+          this.$router.push({name: 'loginByPwd', query: {'hasWage': this.recentInfo.groupId || ''}})
         }
       },
       enterMyIncome () {

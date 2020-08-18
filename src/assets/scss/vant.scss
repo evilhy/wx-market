@@ -22,11 +22,23 @@
 .van-dropdown-menu{
   .van-dropdown-menu__bar{
     height: 90px;
+    box-shadow: none;
   }
   .van-dropdown-menu__title{
     padding: 0 16px;
-    font-size: 28px;
+    font-size: 26px;
     line-height: 40px;
+  }
+  .van-dropdown-menu__title::after{
+    right: -10px;
+    margin-top: -10px;
+    border: 6px solid;
+    border-color: transparent transparent #bbb #bbb;
+    opacity: 1;
+  }
+  .van-dropdown-menu__title--active::after{
+    border-color: transparent transparent currentColor currentColor;
+    margin-top: -2px;
   }
 }
 // 单元格
@@ -34,6 +46,7 @@
   font-size: 26px;
   line-height: 48px;
   padding: 20px 30px;
+  align-items: center;
   .van-cell__label{
     margin-top: 8px;
     font-size: 24px;
@@ -108,7 +121,14 @@
     height: 100px;
   }
 }
-
+// 
+.van-popup{
+  .van-popup__close-icon--top-right{
+    font-size: 42px;
+    top: 28px;
+    right: 28px;
+  }
+}
 // 按钮
 .van-button{
   font-size: 32px;
@@ -207,9 +227,6 @@
 }
 
 // 步骤
-.van-steps{
-
-}
 .van-steps--vertical{
   padding: 0 0 0 64px;
   .van-step--vertical{
@@ -229,4 +246,68 @@
     width: 10px;
     height: 10px;
   }
+}
+
+// 日历
+.van-calendar{
+  .van-calendar__month-title, .van-calendar__header-title, .van-calendar__header-subtitle{
+    height: 84px;
+    line-height: 84px;
+  }
+  .van-calendar__month-title{
+    font-size: 28px;
+  }
+  .van-calendar__header{
+    box-shadow: 0 4px 20px rgba(125, 126, 128, 0.16);
+  }
+  .van-calendar__header-title{
+    font-size: 30px;
+  }
+  .van-calendar__header-subtitle{
+    font-size: 28px;
+  }
+  .van-calendar__weekday{
+    font-size: 24px;
+    line-height: 58px;
+  }
+  .van-calendar__day{
+    height: 120px;
+    font-size: 30px;
+  }
+  .van-calendar__selected-day{
+    width: 100px;
+    height: 100px;
+    border-radius: 8px;
+  }
+  .van-calendar__month-mark{
+    font-size: 300px;
+  }
+  .van-calendar__day--start{
+    border-radius: 8px 0 0 8px;
+  }
+  .van-calendar__day--end{
+    border-radius: 0 8px 8px 0;
+  }
+  .van-calendar__bottom-info{
+    bottom: 16px;
+    font-size: 20px;
+  }
+}
+
+// van-switch
+.van-switch{
+  font-size: 34px !important;
+  &.van-switch--on{
+    background-color: $theme-color;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .van-switch{
+    font-size: 38px !important;
+  }
+}
+
+[class*=van-hairline]::after{
+  border-color: #e0e1e2;
 }

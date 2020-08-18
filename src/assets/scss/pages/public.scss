@@ -3,14 +3,14 @@
   min-height: 100%;
   background: white;
   .logo-wrap{
-    height: 160px;
+    height: 140px;
     display: flex;
     align-items: center;
     justify-content: center;
     background: #fafafa;
     img{
-      width: 248px;
-      height: 80px;
+      width: 223px;
+      height: 72px;
     }
   }
   .content-wrap{
@@ -72,7 +72,7 @@
     }
   }
   .btn-next{
-    margin-top: 70px;
+    margin-top: 60px;
   }
   .vcode-btn{
     width: 220px;
@@ -179,8 +179,6 @@
   }
 }
 .fill-id-card-page{
-  .content-wrap{
-  }
   .field-wrap{
     padding: 24px 0;
   }
@@ -192,5 +190,12 @@
   }
   .placeholder{
     color: $text-color-gray;
+  }
+}
+.set-code-page,.modify-query-code-page{
+  .small-tip{
+    text-align: center;
+    color: $text-color-gray;
+    padding-top: 20px;
   }
 }

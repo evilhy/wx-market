@@ -52,6 +52,7 @@ export default {
     },
     onDelete() {
       this.code = this.code.slice(0, this.code.length - 1)
+      this.$emit('delete', this.code)
     },
     clearCode () {
       this.code = ''

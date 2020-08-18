@@ -12,6 +12,9 @@ body {
 }
 .page {
   min-height: 100%;
+  &.white {
+    background-color: white;
+  }
 }
 
 div,
@@ -84,4 +87,41 @@ button {
 
 .clearfix {
   @include clearfix;
+}
+
+.dot {
+  position: absolute;
+  @include circle(12px);
+  &.white {
+    background-color: white;
+  }
+  &.red {
+    background-color: #F4415F;
+  }
+}
+.tag-1 {
+  height: 32px;
+  padding: 0 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  font-family: PingFangSC-Semibold;
+  font-size: 18px;
+  color: white;
+  border-radius: 15px 15px 15px 0px;
+  background-color: $theme-color;
+}
+
+.fixed-bottom-btn {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 90px;
+}
+.primary-btn {
+  border: none;
+  background-color: $theme-color;
+  color: white;
 }

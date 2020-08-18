@@ -25,7 +25,7 @@ export default {
       if (res.data) {
         this.$router.replace({ name: 'wageIndex', params: { wageSheetId } })
       } else {
-        this.$router.replace({ name: 'checkQueryCode', query: { wageSheetId } })
+        this.$router.replace({ name: 'loginByPwd', query: { wageSheetId } })
       }
     },
     getJsessionId () {

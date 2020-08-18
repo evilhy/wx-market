@@ -7,14 +7,17 @@
       <div class="tip">{{tipArr[step]}}</div>
       <template v-if="step === 0">
         <code-input ref="code-input" @toggle="keyboardToggle" @complete="setCode" :visible="visible"></code-input>
+        <div class="small-tip">{{queryCodeTip}}</div>
         <button class="btn btn-next" :disabled="!code" @click="checkPwd">下一步</button>
       </template>
       <template v-if="step === 1">
         <code-input ref="new-code-input" @toggle="keyboardToggle" @complete="setNewCode" :visible="visible"></code-input>
+        <div class="small-tip">{{queryCodeTip}}</div>
         <button class="btn btn-next" :disabled="!newCode" @click="checkCode">下一步</button>
       </template>
       <template v-if="step === 2">
         <code-input ref="renew-code-input" @toggle="keyboardToggle" @complete="setReNewCode" :visible="visible"></code-input>
+        <div class="small-tip">{{queryCodeTip}}</div>
         <button class="btn btn-next" :disabled="!reNewCode" @click="setPwd">确定修改</button>
       </template>
     </div>
@@ -25,6 +28,7 @@
 import codeInput from 'components/codeInput'
 import helper from 'utils/helper'
 import validate from 'utils/validate'
+import sysConfig from 'utils/constant'
 export default {
   data () {
     return {
@@ -35,7 +39,8 @@ export default {
       visible: false,
       titleArr: ['修改查询密码', '设置新查询密码', '再次输入新查询密码'],
       tipArr: ['请输入原查询密码。', '请设置6位数纯数字密码。', '请设置6位数纯数字密码。'],
-      keyboardFlag: false
+      keyboardFlag: false,
+      queryCodeTip: sysConfig.queryCodeTip
     }
   },
   created () { },
@@ -72,7 +77,7 @@ export default {
       if (!this.checkReNewCode()) return false
       await this.$Inside.setPwd(this.newCode)
       helper.toast('查询密码修改成功')
-      this.$router.replace({ name: 'user' })
+      this.$router.replace({ name: 'pwdManage' })
     },
     checkReNewCode () {
       if (this.reNewCode !== this.newCode) {

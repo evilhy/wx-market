@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="black">
     <weixin-env-tip v-if="requireWeixin"></weixin-env-tip>
     <vertical-screen-tip></vertical-screen-tip>
     <router-view />

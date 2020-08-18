@@ -2,78 +2,52 @@
 .user-page {
   font-size: 26px;
   .top {
+    height: 200px;
     padding: 48px 30px;
     display: flex;
     align-items: center;
     background: white;
+    background-image: linear-gradient(-5deg, #ffffff 26%, #e5e7ed 100%);
     .user-avatar {
-      @include circle(110px);
+      @include circle(100px);
+    }
+    .user-info {
+      padding-left: 30px;
+      display: flex;
+      flex-direction: column;
     }
     .user-name {
-      font-size: 30px;
-      margin-left: 26px;
+      font-family: PingFangSC-Semibold;
+      font-size: 36px;
+      margin-bottom: 20px;
+      line-height: 1;
     }
-    .authentication{
-      width: 137px;
+    .realname {
+      width: 104px;
       height: 34px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 17px;
-      font-size: 22px;
-      margin-left: 15px;
-    }
-    .yes{
-      border: 1px solid #84CACA;
-      color: #53BDBD;
-    }
-    .no{
-      border: 1px solid #F8896D;
-      color: #F34B21;
     }
   }
   .list {
     background: white;
-    padding-left: 76px;
+    padding: 0 40px 20px;
   }
   .item {
     position: relative;
-    height: 90px;
+    height: 92px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-right: 30px;
-    border-bottom: 1px solid $border-color;
-    &:last-child {
-      border: none;
+    .label {
+      display: flex;
+      align-items: center;
+      font-family: PingFangSC-Semibold;
+      font-size: 28px;
     }
-    .iconfont {
-      position: absolute;
-      left: -48px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 24px;
-    }
-    .icon-shenfenzheng {
-      color: #77d7d7;
-    }
-    .icon-shoujihao {
-      color: #95cdf8;
-    }
-    .icon-chaxunmima {
-      color: #9eafc8;
-    }
-    .icon-renzhiqiye {
-      color: #fec383;
-    }
-    .icon-yinhangqia {
-      color: #77d7d7;
-    }
-    .icon-dizhiguanli {
-      color: #95cdf8;
-    }
-    .label{
-      position: relative;
+    img {
+      width: 40px;
+      height: 40px;
+      display: block;
+      margin-right: 30px;
     }
     .value {
       display: flex;
@@ -85,17 +59,9 @@
       margin-left: 14px;
     }
     .dot {
-      position: absolute;
-      left: 100%;
-      top: 0;
-      @include circle(10px);
-      background: #fb3636;
+      left: 160px;
+      top: 20px;
     }
-  }
-}
-.modify-query-code-page {
-  .tip {
-    color: $theme-color;
   }
 }
 .user-ents-page {
@@ -297,7 +263,7 @@
     background: url('../img/user/bankcard-bg.png') no-repeat;
     background-size: 100% 100%;
     color: white;
-    padding-top:40px;
+    padding-top: 40px;
     margin: 0 auto 30px;
     &.todo {
       background: url('../img/user/bankcard-bg-todo.png') no-repeat;
@@ -333,7 +299,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom:40px;
+      margin-bottom: 40px;
       font-size: 32px;
       font-weight: bold;
       padding: 0 30px;

@@ -1,6 +1,6 @@
 <template>
   <div class="address-list-page" :class="{'my-address-list': noSelect}">
-    <no-data v-if="list.length < 1 && requested" text="暂无收货地址" type="exchange" />
+    <no-data v-if="list.length < 1 && requested" text="暂无收货地址" name="address" />
     <template>
       <van-address-list :class="addressClasses" v-model="chosenAddressId" :list="list"
         @add="$router.push({ name: 'addNewAddress' })" @edit="onEdit" @select="onSelect">
@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import noData from 'components/noData'
+import noData from 'components/noData/index'
 import storage from 'utils/storage'
 export default {
   data () {

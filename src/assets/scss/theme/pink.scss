@@ -1,0 +1,64 @@
+@charset "utf-8";
+
+#app.pink{
+  $theme-name: pink !default;
+  $theme-active-color: #F4415F !default;
+  $theme-bg-color: #F4415F !default;
+  .wallet-wrap{
+    background-image: linear-gradient(-180deg, #FFFFFF 0%, #FFCBD6 99%);
+    .wallet-content{
+      background: url('../img/theme/#{$theme-name}/wallet-bg.png') no-repeat;
+      background-size: 100% 100%;
+    }
+  }
+  // 首页
+  .home-page{
+    .link-wrap{
+      .income{
+        background: url('../img/theme/#{$theme-name}/icon-home-income.png') no-repeat;
+        background-size: 100% 100%;
+      }
+      .manager{
+        background: url('../img/theme/#{$theme-name}/icon-home-manager.png') no-repeat;
+        background-size: 100% 100%;
+      }
+      .metal{
+        background: url('../img/theme/#{$theme-name}/icon-home-metal.png') no-repeat;
+        background-size: 100% 100%;
+      }
+      .user{
+        background: url('../img/theme/#{$theme-name}/icon-home-user.png') no-repeat;
+        background-size: 100% 100%;
+      }
+    }
+    .van-info{
+      background-color: $theme-active-color;
+    }
+  }
+  // 标签
+  .tag-1{
+    background: $theme-bg-color;
+    color: white;
+  }
+  // 日历控件
+  .van-calendar__day--end, .van-calendar__day--multiple-middle, .van-calendar__day--multiple-selected, .van-calendar__day--start, .van-calendar__day--start-end{
+    background-color: $theme-active-color;
+  }
+  .van-calendar__day--middle{
+    color: $theme-active-color;
+  }
+  .van-calendar__confirm{
+    background-color: $theme-bg-color;
+    border: 1px solid $theme-bg-color;
+  }
+  // 下拉菜单
+  .van-dropdown-menu__title--active {
+    color: $theme-active-color;
+  }
+  .van-dropdown-item__option--active {
+    color: $theme-active-color;
+  }
+  .van-dropdown-item__icon {
+    color: $theme-active-color;
+  }
+}

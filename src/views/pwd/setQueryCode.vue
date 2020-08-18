@@ -1,13 +1,13 @@
 <template>
   <!-- 设置6位查询密码 -->
   <div class="public-page set-code-page">
-    <public-logo></public-logo>
     <div class="content-wrap" :class="{'show': keyboardFlag}">
       <div class="big-title">设置查询密码
         <i class="iconfont" :class="[visible ? 'icon-ai44' : 'icon-ai47']" @click.stop="toggle"></i>
       </div>
       <div class="tip">为确保您工资条信息安全，请设置6位数字查询密码。</div>
       <code-input ref="code-input" @toggle="keyboardToggle" @complete="setCode" :visible="visible"></code-input>
+      <div class="small-tip">{{queryCodeTip}}</div>
       <button class="btn btn-next" :disabled="!code" @click="sure">确认</button>
     </div>
   </div>
@@ -18,12 +18,14 @@ import publicLogo from 'components/publicLogo'
 import codeInput from 'components/codeInput'
 import validate from 'utils/validate'
 import helper from 'utils/helper'
+import sysConfig from 'utils/constant'
 export default {
   data () {
     return {
       code: '',
       visible: false,
-      keyboardFlag: false
+      keyboardFlag: false,
+      queryCodeTip: sysConfig.queryCodeTip
     }
   },
   created () {},

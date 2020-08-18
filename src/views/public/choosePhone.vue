@@ -1,6 +1,5 @@
 <template>
   <div class="public-page choose-phone-page">
-    <public-logo></public-logo>
     <div class="content-wrap">
       <div class="big-title">身份绑定</div>
       <div class="tip">发现您在多个企业任职，请选择任意一项进行验证。</div>

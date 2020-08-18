@@ -28,7 +28,6 @@
 </template>
 
 <script>
-import noData from 'components/noData'
 import storage from 'utils/storage'
 import sysConfig from 'utils/constant'
 export default {
@@ -62,7 +61,6 @@ export default {
     }
   },
   components: {
-    noData
   }
 }
 </script>

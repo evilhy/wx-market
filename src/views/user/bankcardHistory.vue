@@ -3,15 +3,14 @@
     <template v-if="list.length">
       <bank-history-item v-for="(item, index) in list" :key="index" :item="item"></bank-history-item>
     </template>
-    <template v-if="requested && !list.length">
-      <div class="no-data">暂无历史记录</div>
-    </template>
+    <no-data v-if="list.length < 1 && requested" text="暂无记录"/>
   </div>
 </template>
 
 <script>
 import storage from 'utils/storage'
 import bankHistoryItem from './bankcardHistoryItem'
+import noData from 'components/noData/index'
 export default {
   data () {
     return {
@@ -34,7 +33,8 @@ export default {
     }
   },
   components: {
-    bankHistoryItem
+    bankHistoryItem,
+    noData
   }
 }
 </script>
