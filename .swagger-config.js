@@ -62,10 +62,14 @@ const openingTips = require('./json/manager.openingTips.json')
 const checkFreePassword = require('./json/roll.checkFreePassword.json')
 const crateNumericKeypad = require('./json/password.crateNumericKeypad.json')
 const queryHandPassword = require('./json/password.queryHandPassword.json')
+const balance = require('./json/wallet.balance.json')
 module.exports = {
   openApi: [{
     baseURL: 'https://sitgateway.cardpu.com/payroll',
     paths: {
+      '/wallet/empCardAdnBalance': {
+        post: balance
+      },
       '/password/queryHandPassword': {
         get: queryHandPassword
       },
