@@ -117,6 +117,9 @@ const helper = {
   saveIsReadManagerCurrent (value) {
     storage.setSession('isReadManagerCurrent', value)
   },
+  getPasswordStr (password = []) {
+    return password.join(',')
+  },
   exit() {
     if (window.WeixinJSBridge) {
       window.WeixinJSBridge.invoke('closeWindow')

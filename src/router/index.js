@@ -245,13 +245,23 @@ export default new Router({
       }
     },
     {
-      path: '/modify-handlock', // 个人信息-修改手势密码
-      name: 'modifyHandLock',
+      path: '/check-handlock', // 个人信息-校验手势密码
+      name: 'checkHandLock',
       meta: {
         title: '修改手势密码'
       },
       component: resolve => {
-        require(['../views/pwd/modifyHandlock.vue'], resolve)
+        require(['../views/pwd/checkHandLock.vue'], resolve)
+      }
+    },
+    {
+      path: '/set-new-handlock', // 个人信息-设置新手势密码
+      name: 'setNewHandLock',
+      meta: {
+        title: '修改手势密码'
+      },
+      component: resolve => {
+        require(['../views/pwd/setNewHandLock.vue'], resolve)
       }
     },
     {

@@ -29,7 +29,7 @@
       padding-left: 30px;
       display: flex;
       align-items: center;
-      color: $primary-color;
+      color: $theme-color;
       .arrow {
         @include v-arrow(right, 1px, 10px);
       }
@@ -75,7 +75,7 @@
       margin-bottom: 12px;
     }
     .value {
-      color: $primary-color;
+      color: $theme-color;
       font-size: 38px;
     }
     .finance-btn {
@@ -87,9 +87,9 @@
       width: 150px;
       line-height: 60px;
       text-align: center;
-      border: 1px solid $primary-color;
+      border: 1px solid $theme-color;
       border-radius: $radius-xs;
-      color: $primary-color;
+      color: $theme-color;
       font-size: 26px;
     }
   }
@@ -226,7 +226,7 @@
     align-items: center;
     justify-content: center;
     height: 80px;
-    background-color: $primary-color;
+    background-color: $theme-color;
     color: white;
     font-size: 32px;
     border-radius: $radius-xs;

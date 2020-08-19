@@ -60,10 +60,27 @@ const barrageList = require('./json/barrageList.json')
 const wUserInfo = require('./json/wUserInfo.json')
 const openingTips = require('./json/manager.openingTips.json')
 const checkFreePassword = require('./json/roll.checkFreePassword.json')
+const crateNumericKeypad = require('./json/password.crateNumericKeypad.json')
+const queryHandPassword = require('./json/password.queryHandPassword.json')
 module.exports = {
   openApi: [{
     baseURL: 'https://sitgateway.cardpu.com/payroll',
     paths: {
+      '/password/queryHandPassword': {
+        get: queryHandPassword
+      },
+      '/password/checkPassword': {
+        post: null
+      },
+      '/password/savePassword': {
+        post: null
+      },
+      '/password/closeHandPassword': {
+        get: null
+      },
+      '/password/crateNumericKeypad': {
+        get: crateNumericKeypad
+      },
       '/wisales/welfareActivity/listByPayRoll': {
         get: wActivityList
       },

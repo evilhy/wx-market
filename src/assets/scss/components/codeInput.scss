@@ -1,6 +1,7 @@
 @charset "utf-8";
 .code-input-wrap{
   position: relative;
+  padding: 0 20px;
   .code-input{
     position: absolute;
     left: 0;
@@ -9,6 +10,9 @@
     &.hidden{
       transform: translate(-100%);
     }
+  }
+  .van-password-input__item{
+    border-bottom: 4px solid $text-color;
   }
   .code-wrap{
     height: 80px;

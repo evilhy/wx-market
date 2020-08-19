@@ -11,7 +11,7 @@
       </div>
       <div class="item">更多个性化主题<br />敬请期待</div>
     </van-radio-group>
-    <van-button class="fixed-bottom-btn primary-btn">保存设置</van-button>
+    <van-button class="fixed-bottom-btn theme-btn">保存设置</van-button>
   </div>
 </template>
 

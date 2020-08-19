@@ -130,7 +130,6 @@ export default class Recorder {
     this[$circles] = circles
   }
   [setRadiusByBaseWidth] () {
-    console.log(this[$container].getBoundingClientRect())
     let clientWidth = document.documentElement.clientWidth
     let { outerRadius, innerRadius, baseWidth } = this[$options]
     this[$options].outerRadius = (clientWidth / baseWidth) * outerRadius
