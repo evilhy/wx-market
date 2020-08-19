@@ -1,5 +1,5 @@
 <template>
-  <div class="bill-detail-page">
+  <div class="bill-detail-page" :style="billDetailPageStyle">
     <swiper class="swiper-container" :options="swiperOption" ref="mySwiper">
       <!-- slides -->
       <wage-detail-item v-for="(item, index) in wageDetailList" :key="index" :wage="item"></wage-detail-item>
@@ -26,6 +26,18 @@ export default {
           el: '.swiper-pagination'
         }
       }
+    }
+  },
+  computed: {
+    billDetailPageStyle() {
+      let style = {}
+      if (this.wageDetailList[0].skinUrl) {
+        style = {
+          'background': `url(${this.wageDetailList[0].skinUrl}) no-repeat center top`,
+          'background-size': '100% 100%'
+        }
+      }
+      return style
     }
   },
   created () {
