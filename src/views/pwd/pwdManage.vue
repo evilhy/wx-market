@@ -8,7 +8,7 @@
     </van-cell>
     <div class="title">修改密码</div>
     <van-cell v-show="checked" title="修改手势密码" is-link :to="{ name: 'modifyHandLock' }"/>
-    <van-cell title="修改查询密码" is-link :to="{ name: 'modifyQueryCode' }"/>
+    <van-cell title="修改查询密码" is-link :to="{ name: 'checkQueryCode', params: { name: 'setNewQueryCode' }, query: { backPage: 'pwdManage' } }"/>
     <div class="tip">{{queryCodeTip}}，{{handLockTip}}。</div>
   </div>
 </template>

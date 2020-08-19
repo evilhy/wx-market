@@ -1,15 +1,26 @@
 <template>
-  <div class="page set-handlock-page">
-    设置手势密码
+  <div class="">
+    <hand-lock @notEnough="notEnough" @finished="finished"></hand-lock>
   </div>
 </template>
 
 <script>
+import handLock from 'components/handLock'
 export default {
   data () {
     return {}
   },
   created () {},
-  methods: {}
+  methods: {
+    notEnough (res) {
+      console.log('不足:', res)
+    },
+    finished (res) {
+      console.log('完成:', res)
+    }
+  },
+  components: {
+    handLock
+  }
 }
 </script>

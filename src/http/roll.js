@@ -87,6 +87,7 @@ class Roll {
     let http = new Http()
     http.path = `/${moduleName}/checkCard`
     http.body = { idNumber, cardNo }
+    http.mockStatusCode = 201
     return http.post()
   }
   /**

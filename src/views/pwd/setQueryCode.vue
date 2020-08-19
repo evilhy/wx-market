@@ -1,63 +1,29 @@
 <template>
-  <!-- 设置6位查询密码 -->
+  <!-- 设置新的6位查询密码 -->
   <div class="public-page set-code-page">
-    <div class="content-wrap" :class="{'show': keyboardFlag}">
-      <div class="big-title">设置查询密码
-        <i class="iconfont" :class="[visible ? 'icon-ai44' : 'icon-ai47']" @click.stop="toggle"></i>
-      </div>
-      <div class="tip">为确保您工资条信息安全，请设置6位数字查询密码。</div>
-      <code-input ref="code-input" @toggle="keyboardToggle" @complete="setCode" :visible="visible"></code-input>
-      <div class="small-tip">{{queryCodeTip}}</div>
-      <button class="btn btn-next" :disabled="!code" @click="sure">确认</button>
-    </div>
+    <set-query-code :titleArr="titleArr" :tipArr="tipArr" @sure="setPwd"></set-query-code>
   </div>
 </template>
-
 <script>
-import publicLogo from 'components/publicLogo'
-import codeInput from 'components/codeInput'
-import validate from 'utils/validate'
+import setQueryCode from './setQueryCodeCmp'
 import helper from 'utils/helper'
-import sysConfig from 'utils/constant'
 export default {
   data () {
     return {
-      code: '',
-      visible: false,
-      keyboardFlag: false,
-      queryCodeTip: sysConfig.queryCodeTip
+      titleArr: ['设置查询密码', '再次输入查询密码'],
+      tipArr: ['为确保您工资条信息安全，请设置6位数字查询密码。', '请设置6位数字查询密码。']
     }
   },
-  created () {},
+  created () { },
   methods: {
-    setCode (val) {
-      this.code = val
-    },
-    async sure () {
-      if (!this.checkCode()) return false
-      await this.$Inside.setPwd(this.code)
+    async setPwd (code) {
+      await this.$Inside.setPwd(code)
       helper.saveUserInfo({ ifPwd: 1 })
       this.$router.replace({ name: 'complete' })
-    },
-    checkCode () {
-      if (!validate.isCode(this.code)) {
-        helper.toast('查询密码必须为6位的数字')
-        this.code = ''
-        this.$refs['code-input'].clearCode()
-        return false
-      }
-      return true
-    },
-    toggle () {
-      this.visible = !this.visible
-    },
-    keyboardToggle (val) {
-      this.keyboardFlag = val
     }
   },
   components: {
-    publicLogo,
-    codeInput
+    setQueryCode
   }
 }
 </script>

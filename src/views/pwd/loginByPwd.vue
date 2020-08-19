@@ -6,7 +6,7 @@
       <div class="big-title">请输入6位数密码
         <i class="iconfont" :class="[visible ? 'icon-ai44' : 'icon-ai47']" @click.stop="toggle"></i>
       </div>
-      <code-input @toggle="keyboardToggle" ref="code-input" @complete="setCode" :visible="visible"></code-input>
+      <code-input @toggle="keyboardToggle" ref="code-input" @complete="setCode" @delete="deleteCode" :visible="visible"></code-input>
       <div class="forget-pwd-link"><span @click="toForget">忘记密码</span></div>
     </div>
   </div>
@@ -28,6 +28,9 @@ export default {
     setCode (val) {
       this.code = val
       this.checkCode()
+    },
+    deleteCode (val) {
+      this.code = val
     },
     async checkCode () {
       try {

@@ -113,6 +113,19 @@ button {
   background-color: $theme-color;
 }
 
+.notice-count {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  font-size: 20px;
+  height: 28px;
+  padding: 0 4px;
+  border-radius: 15px;
+  color: white;
+}
+
 .fixed-bottom-btn {
   position: fixed;
   left: 0;

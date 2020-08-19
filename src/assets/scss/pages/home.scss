@@ -83,9 +83,13 @@
     }
   }
   .notice-bar {
+    position: relative;
     margin: 10px 30px 0;
-    background: none;
     padding: 0;
+    .van-notice-bar{
+      background: none;
+      padding: 0;
+    }
     img {
       display: block;
       width: 104px;
@@ -102,18 +106,9 @@
       font-size: 24px;
     }
   }
-  .van-info {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    top: 384px;
-    left: 118px;
-    right: auto;
-    min-width: 30px;
-    font-size: 20px;
-    height: 28px;
-    padding: 0 4px;
-    border-radius: 50%;
+  .notice-count {
+    top: 6px;
+    left: 104px;
   }
   .link-wrap {
     height: 228px;

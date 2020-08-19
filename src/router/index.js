@@ -17,16 +17,6 @@ export default new Router({
       alias: '/'
     },
     {
-      path: '/test',
-      name: 'test',
-      meta: {
-        title: '放薪管家'
-      },
-      component: resolve => {
-        require(['../views/public/test.vue'], resolve)
-      }
-    },
-    {
       path: '/token', // 公共入口页面token
       name: 'token',
       meta: {
@@ -125,10 +115,10 @@ export default new Router({
       }
     },
     {
-      path: '/check-query-code', // 验证查询密码
+      path: '/check-query-code/:name', // 验证查询密码
       name: 'checkQueryCode',
       meta: {
-        title: '放薪管家'
+        title: '验证查询密码'
       },
       component: resolve => {
         require(['../views/pwd/checkQueryCode.vue'], resolve)
@@ -242,16 +232,6 @@ export default new Router({
       },
       component: resolve => {
         require(['../views/user/detail.vue'], resolve)
-      }
-    },
-    {
-      path: '/modify-query-code', // 个人信息-修改查询密码
-      name: 'modifyQueryCode', 
-      meta: {
-        title: '修改查询密码'
-      },
-      component: resolve => {
-        require(['../views/pwd/modifyQueryCode.vue'], resolve)
       }
     },
     {
@@ -627,13 +607,13 @@ export default new Router({
       }
     },
     {
-      path: '/news',
-      name: 'news',
+      path: '/notice',
+      name: 'notice',
       meta: {
         title: '消息通知'
       },
       component: resolve => {
-        require(['../views/public/news.vue'], resolve)
+        require(['../views/notice/index.vue'], resolve)
       }
     },
     {

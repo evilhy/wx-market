@@ -19,8 +19,8 @@ export default {
   methods: {
     async setPwd (code) {
       await this.$Inside.setPwd(code)
-      helper.toast('查询密码设置成功')
-      this.$router.replace({ name: 'home' })
+      helper.toast('查询密码修改成功')
+      this.$router.replace({ name: this.$route.query.backPage })
     }
   },
   components: {

@@ -46,7 +46,7 @@ export default {
       let { userInfo, code } = this
       try {
         await this.$Inside.checkPhoneCode({ code, phone: userInfo.phone, busiType: '1', groupId: '' })
-        this.$router.replace({ name: 'setNewQueryCode' })
+        this.$router.replace({ name: 'setNewQueryCode', query: { backPage: 'home' } })
       } catch (e) {
         this.code = ''
       }

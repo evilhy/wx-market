@@ -1,23 +1,25 @@
 <template>
   <!-- 设置6位查询密码 -->
-  <div class="public-page check-code-page">
-    <user-avatar class="user-avatar"></user-avatar>
+  <div class="public-page set-code-page">
     <div class="content-wrap" :class="{'show': keyboardFlag}">
-      <div class="big-title">请输入6位数密码
+      <div class="big-title">验证查询密码
         <i class="iconfont" :class="[visible ? 'icon-ai44' : 'icon-ai47']" @click.stop="toggle"></i>
       </div>
-      <code-input @toggle="keyboardToggle" ref="code-input" @complete="setCode" :visible="visible"></code-input>
-      <div class="forget-pwd-link"><span @click="toForget">忘记密码</span></div>
+      <div class="tip">输入原查询密码</div>
+      <code-input @toggle="keyboardToggle" @complete="setCode" @delete="setCode" :visible="visible"></code-input>
+      <button class="btn btn-next" :disabled="code.length !== 6" @click="sure">下一步</button>
     </div>
   </div>
 </template>
 
 <script>
-import userAvatar from 'components/userAvatar'
+import publicLogo from 'components/publicLogo'
 import codeInput from 'components/codeInput'
+import helper from 'utils/helper'
 export default {
   data () {
     return {
+      employeeName: helper.getUserInfo('employeeName', ''),
       code: '',
       visible: false,
       keyboardFlag: false
@@ -27,21 +29,12 @@ export default {
   methods: {
     setCode (val) {
       this.code = val
-      this.checkCode()
     },
-    async checkCode () {
+    async sure () {
       try {
         await this.$Roll.checkPwd(this.code)
-        let { wageSheetId = '', hasWage = '' } = this.$route.query
-        if (wageSheetId) { // 推送
-          this.$router.replace({ name: 'wageIndex', params: { wageSheetId } })
-        } else {  // 首页
-          if (hasWage) {
-            this.$router.replace({ name: 'wageList' })
-          } else {
-            this.$router.replace({ name: 'noWage' })
-          }
-        }
+        let { query = {}, params = {} } = this.$route
+        this.$router.replace({ name: params.name, query })
       } catch (e) {
         this.code = ''
         this.$refs['code-input'].clearCode()
@@ -50,15 +43,12 @@ export default {
     toggle () {
       this.visible = !this.visible
     },
-    toForget () {
-      this.$router.push({ name: 'forgetSendCode' })
-    },
     keyboardToggle (val) {
       this.keyboardFlag = val
     }
   },
   components: {
-    userAvatar,
+    publicLogo,
     codeInput
   }
 }

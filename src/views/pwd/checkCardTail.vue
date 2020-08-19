@@ -6,8 +6,8 @@
         <i class="iconfont" :class="[visible ? 'icon-ai44' : 'icon-ai47']" @click.stop="toggle"></i>
       </div>
       <div class="tip">{{employeeName}}，您好！工资条首次查询密码默认为您银行卡的后6位数字。</div>
-      <code-input @toggle="keyboardToggle" @complete="setCode" :visible="visible"></code-input>
-      <button class="btn btn-next" :disabled="!code" @click="sure">确认</button>
+      <code-input ref="code-input" @toggle="keyboardToggle" @complete="setCode" @delete="setCode" :visible="visible"></code-input>
+      <button class="btn btn-next" :disabled="code.length !== 6" @click="sure">确认</button>
     </div>
   </div>
 </template>
@@ -31,8 +31,13 @@ export default {
       this.code = val
     },
     async sure () {
-      await this.$Roll.checkCard(this.code)
-      this.$router.replace({ name: 'bindTel', query: { cardTail: this.code } })
+      try {
+        await this.$Roll.checkCard(this.code)
+        this.$router.replace({ name: 'bindTel', query: { cardTail: this.code } })
+      } catch (e) {
+        this.code = ''
+        this.$refs['code-input'].clearCode()
+      }
     },
     toggle () {
       this.visible = !this.visible

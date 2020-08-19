@@ -34,7 +34,9 @@ time, mark, audio, video {
   font-size: 100%;
   -webkit-tap-highlight-color: rgba(0,0,0,0)
 }
-
+div, h1, h2, h3, h4, h5, h6, p,dl, dt, dd, ol, ul, li, a, label, span{
+  box-sizing: border-box;
+}
 ol, ul {
   list-style: none;
 }
