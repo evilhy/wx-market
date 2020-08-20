@@ -169,16 +169,5 @@ class Roll {
     http.query = { entId }
     return http.get()
   }
-  /**
-   * 是否5分钟之内看过工资
-   *
-   * @returns
-   * @memberof Roll
-   */
-  checkFreePassword () {
-    let http = new Http()
-    http.path = `/${moduleName}/checkFreePassword`
-    return http.get()
-  }
 }
 export default new Roll()

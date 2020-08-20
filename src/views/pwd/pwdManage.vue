@@ -52,6 +52,8 @@ export default {
       await this.$Password.closeHandPassword()
       this.checked = 0
       helper.saveUserInfo({ handPassword: 0 })
+      // 清除近期登录过的密码
+      helper.clearFreePassword('1')
     }
   }
 }

@@ -26,7 +26,7 @@ export default {
   created () { },
   methods: {
     notEnough (res) {
-      helper.toast('请设置至少4个连接点')
+      helper.toast(sysConfig.handLockUnEnoughTip)
     },
     setFirstPassword (res) {
       this.firstPassword = helper.getPasswordStr(res)
@@ -45,6 +45,8 @@ export default {
       try {
         await this.$Password.savePassword(this.firstPassword, this.password, '1')
         helper.saveUserInfo({ handPassword: 1 })
+        // 清除近期登录过的密码
+        helper.clearFreePassword('1')
         helper.toast('设置成功')
         this.$router.replace({ name: 'pwdManage' })
       } catch (e) {

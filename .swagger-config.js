@@ -59,7 +59,6 @@ const welfareOrderTrack = require('./json/welfare.orderTrack.json')
 const barrageList = require('./json/barrageList.json')
 const wUserInfo = require('./json/wUserInfo.json')
 const openingTips = require('./json/manager.openingTips.json')
-const checkFreePassword = require('./json/roll.checkFreePassword.json')
 const crateNumericKeypad = require('./json/password.crateNumericKeypad.json')
 const queryHandPassword = require('./json/password.queryHandPassword.json')
 const balance = require('./json/wallet.balance.json')
@@ -69,6 +68,9 @@ module.exports = {
   openApi: [{
     baseURL: 'https://sitgateway.cardpu.com/payroll',
     paths: {
+      '/inside/theme': {
+        post: null
+      },
       '/wisales/countWelfareEmpTicket': {
         post: cardCount
       },
@@ -286,11 +288,7 @@ module.exports = {
       },
       '/manager/openingTips': {
         get: openingTips
-      },
-      '/roll/checkFreePassword': {
-        get: checkFreePassword
       }
-
     }
   },{
     baseURL: 'https://demowisdom.wisales.cn:8213/easy-life',

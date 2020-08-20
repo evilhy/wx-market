@@ -30,7 +30,7 @@
       <wallet @to-page="toPage"></wallet>
       <!-- 主要信息入口 -->
       <div class="link-wrap">
-        <div class="item" @click="enterIncome">
+        <div class="item" @click="enterPayroll">
           <span class="img-wrap income"></span>
           <span class="label">我的收入</span>
         </div>
@@ -154,6 +154,7 @@ export default {
   data () {
     return {
       entList: [],
+      hasWage: false,
       currentEntId: '',
       imgList: [],
       managerInfo: {},
@@ -176,7 +177,9 @@ export default {
   methods: {
     async getEntList () {
       let res = await this.$Inside.empEntList()
-      this.entList = this.transEntList(res.data)
+      let { entList = [], newPay = false } = res.data
+      this.entList = this.transEntList(entList)
+      this.hasWage = newPay
       if (this.entList.length) {
         this.currentEntId = this.entList[0].value
       }
@@ -197,15 +200,19 @@ export default {
       let res = await this.$Manager.openingTips()
       this.managerInfo = res.data
     },
-    enterIncome () {
-      if (helper.getUserInfo('ifPwd', 0)) { // 有密码
-        if (helper.checkFreeLogin()) { // 近期输入过密码
-          this.eyeFlag = true
-        } else {
-          this.$router.push({ name: 'loginByPwd' })
+    enterPayroll () {
+      if (this.hasWage) { // 有工资
+        if (helper.getUserInfo('ifPwd', 0)) { // 有密码
+          if (helper.checkFreeLogin()) { // 近期输入过密码
+            this.$router.push({ name: 'wageList' })
+          } else {
+            this.$router.push({ name: 'loginByPwd', query: { nextPage: 'wageList' } })
+          }
+        } else { // 设置查询密码
+          this.$router.push({ name: 'setQueryCode' })
         }
-      } else {
-        this.$router.push({ name: 'setQueryCode' })
+      } else { // 无工资
+        this.$router.push({ name: 'noWage' })
       }
     },
     toPage (routerName, query = {}) {

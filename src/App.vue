@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="black">
+  <div id="app" :class="theme">
     <weixin-env-tip v-if="requireWeixin"></weixin-env-tip>
     <vertical-screen-tip></vertical-screen-tip>
     <router-view />
@@ -15,6 +15,7 @@ export default {
   name: 'app',
   data () {
     return {
+      theme: helper.getUserInfo('theme'),
       requireWeixin: process.env.NODE_ENV !== 'development'
     }
   },

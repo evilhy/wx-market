@@ -159,16 +159,14 @@
     text-align: center;
   }
 }
-.check-code-page{
+.login-by-pwd-page{
   padding-top: 40px;
   text-align: center;
-  .big-title{
-    margin-bottom: 40px;
-    justify-content: center;
-    font-size: 26px;
-    .iconfont{
-      font-size: 40px;
-    }
+}
+.querycode-page{
+  .tip{
+    margin-top: 0;
+    margin-bottom: 30px;
   }
   .forget-pwd-link{
     display: flex;
@@ -176,8 +174,27 @@
     color: $theme-color;
     text-align: right;
     line-height: 4;
+    padding: 0 20px;
   }
 }
+.handlock-page{
+  padding-bottom: 60px;
+  .tip{
+    margin-top: 40px;
+    margin-bottom: 0;
+  }
+  .hand-lock-container{
+    top:-30px;
+  }
+  .link{
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 50px;
+    line-height: 50px;
+  }
+}
+
 .fill-id-card-page{
   .field-wrap{
     padding: 24px 0;

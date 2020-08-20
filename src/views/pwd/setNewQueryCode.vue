@@ -19,6 +19,8 @@ export default {
     async savePassword (code, reCode) {
       try {
         await this.$Password.savePassword(code, reCode, '0')
+        // 清除近期登录过的密码
+        helper.clearFreePassword('0')
         helper.toast('修改成功')
         this.$router.replace({ name: this.$route.query.backPage })
       } catch (e) {

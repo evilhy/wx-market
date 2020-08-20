@@ -29,7 +29,7 @@ const helper = {
       (typeOf(tailUrl) === 'string' ? tailUrl : '')
     )
   },
-  toast(msg, position = 'center', duration = 3000) {
+  toast(msg, position = 'top', duration = 3000) {
     clearTimeout(timer)
     const toast = Toast({
       duration: duration,       // 持续展示 toast
@@ -140,7 +140,7 @@ const helper = {
   checkFreeLogin () { // 免密
     let freePassword = this.getFreePassword()
     let now = new Date().getTime()
-    return !!(freePassword && TimeInstance.add(freePassword.time, 5, 'i') > now)
+    return !!(freePassword && TimeInstance.add(freePassword.time, 2, 'i') > now)
   },
   saveBalanceStatus (flag) {
     storage.setSession('balanceStatus', flag)
@@ -150,6 +150,12 @@ const helper = {
   },
   checkShowBalance () { // 是否展示银行卡余额
     return this.getBalanceStatus() && this.checkFreeLogin()
+  },
+  setTheme (themeId) {
+    let app = document.querySelector('#app')
+    if (app) {
+      app.className = themeId
+    }
   },
   exit() {
     if (window.WeixinJSBridge) {

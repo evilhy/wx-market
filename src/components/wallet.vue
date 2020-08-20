@@ -71,7 +71,7 @@ export default {
           if (helper.checkFreeLogin()) { // 近期输入过密码
             this.eyeFlag = true
           } else {
-            this.$router.push({ name: 'loginByPwd' })
+            this.$router.push({ name: 'loginByPwd', query: { nextPage: 'home' } })
           }
         } else {
           this.$router.push({ name: 'setQueryCode' })

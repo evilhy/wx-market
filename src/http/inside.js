@@ -126,5 +126,18 @@ class Inside {
     http.path = `/${moduleName}/empEntList`
     return http.post()
   }
+  /**
+   * 设置用户主题
+   *
+   * @param {*} themeId
+   * @returns
+   * @memberof Inside
+   */
+  theme (themeId) { 
+    let http = new Http()
+    http.path = `/${moduleName}/theme`
+    http.body = { themeId }
+    return http.post()
+  }
 }
 export default new Inside()
