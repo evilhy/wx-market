@@ -79,6 +79,12 @@ export default {
     demo: 'https://demowisdom.wisales.cn/zhsq-sh/#/',
     production: 'https://easylife.wisales.cn/zhsq-sh/#/'
   },
+  nobleMetalUrl: {
+    development: 'https://sitwxp.cardpu.com/wisale-h5-gjs/#/',
+    sit: 'https://sitwxp.cardpu.com/wisale-h5-gjs/#/',
+    demo: 'https://sitwxp.cardpu.com/wisale-h5-gjs/#/',
+    production: 'https://wxp.cardpu.com/wisale-h5-gjs/#/'
+  },
   appId: {
     development: 'wxb3a9cf98e372fa36',
     sit: 'wxb3a9cf98e372fa36',

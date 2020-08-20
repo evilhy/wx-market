@@ -108,10 +108,10 @@
       @extend %text-overflow;
       font-size: 24px;
     }
-  }
-  .notice-count {
-    top: 6px;
-    left: 104px;
+    .notice-count {
+      top: 6px;
+      left: 104px;
+    }
   }
   .link-wrap {
     height: 228px;
@@ -136,6 +136,10 @@
           height: 100%;
           display: block;
           border-radius: 20px;
+        }
+        .notice-count {
+          top: 0;
+          left: 76px;
         }
       }
     }

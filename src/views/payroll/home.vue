@@ -14,7 +14,7 @@
       </van-swipe-item>
     </van-swipe>
     <!-- 通知栏 没有通知的时候margin-left变小-->
-    <div class="notice-bar" v-if="false">
+    <div class="notice-bar">
       <div class="notice-count">9</div>
       <van-notice-bar :left-icon="require('../../assets/img/icon-home-notice.png')" :scrollable="false" color="#363C4D">
         <van-swipe vertical :autoplay="5000" :show-indicators="false">
@@ -35,14 +35,14 @@
           <span class="label">我的收入</span>
         </div>
         <div class="item">
-          <span class="img-wrap metal"><span class="tag-1">新品上市</span></span>
+          <span class="img-wrap metal" @click="toGjs"><span class="tag-1">新品上市</span></span>
           <span class="label">贵金属投资</span>
         </div>
         <div class="item">
-          <span class="img-wrap manager"></span>
-          <span class="label">经理微店</span>
+          <span class="img-wrap manager" @click="toPage('manager')"><div class="notice-count" v-if="managerInfo.hasManager === 1 && !isReadManager && !isReadManagerCurrent">1</div></span>
+          <span class="label">客户经理</span>
         </div>
-        <div class="item">
+        <div class="item" @click="toPage('user')">
           <span class="img-wrap user"></span>
           <span class="label">个人信息</span>
         </div>
@@ -130,14 +130,19 @@
     </template>
     <!-- 底部logo -->
     <div class="bottom-logo"><img src="../../assets/img/fx-gray-logo.png" alt=""></div>
+    <!-- // 后期去掉 -->
+    <home-manager-dialog ref="home-manager-dialog" @getIsReadManager="isReadManager = true"
+      @getIsReadManagerCurrent="isReadManagerCurrent = true" :manager-info="managerInfo"></home-manager-dialog>
   </div>
 </template>
 
 <script>
 import Vue from 'vue'
 import wallet from 'components/wallet'
+import homeManagerDialog from './homeManagerDialog'
 import { ImagePreview } from 'vant'
 import helper from 'utils/helper'
+import sysConfig from 'utils/constant'
 import validate from 'utils/validate'
 Vue.use(ImagePreview)
 export default {
@@ -146,6 +151,7 @@ export default {
       entList: [],
       currentEntId: '',
       imgList: [],
+      managerInfo: {},
       isReadManager: helper.getIsReadManager(),
       isReadManagerCurrent: helper.getIsReadManagerCurrent()
     }
@@ -193,6 +199,9 @@ export default {
       }
       this.$router.push({ name: routerName, query: query })
     },
+    toGjs () {
+      window.location.href = sysConfig.nobleMetalUrl[process.env.NODE_ENV]
+    },
     clickImg (index) {
       let { link = '', url = '' } = this.imgList[index]
       if (link) {
@@ -208,7 +217,8 @@ export default {
     }
   },
   components: {
-    wallet
+    wallet,
+    homeManagerDialog
   }
 }
 </script>

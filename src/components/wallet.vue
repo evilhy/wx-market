@@ -2,7 +2,7 @@
   <div class="wallet-wrap">
     <div class="wallet-content">
       <div class="header">放薪钱包
-        <van-icon v-if="type === 'outer'" name="arrow" color="white" @click.native="toPage('welfareList')"/>
+        <van-icon v-if="type === 'outer'" name="arrow" color="white" @click.native="toPage('wallet')"/>
       </div>
       <div class="main">
         <div class="col money">
@@ -19,7 +19,7 @@
             <span class="value">{{bankCount}}<span class="label">张</span></span>
             <span class="label">银行卡</span>
           </div>
-          <div class="item card">
+          <div class="item card" @click="toPage('welfareList')">
             <span class="value">{{cardCount}}<span class="label">张</span></span>
             <span class="label">福利卡券</span>
           </div>
