@@ -30,16 +30,19 @@
       <wallet @to-page="toPage"></wallet>
       <!-- 主要信息入口 -->
       <div class="link-wrap">
-        <div class="item">
+        <div class="item" @click="enterIncome">
           <span class="img-wrap income"></span>
           <span class="label">我的收入</span>
         </div>
         <div class="item">
-          <span class="img-wrap metal" @click="toGjs"><span class="tag-1">新品上市</span></span>
+          <span class="img-wrap metal" @click="toOuterPage('nobleMetalUrl')"><span class="tag-1">新品上市</span></span>
           <span class="label">贵金属投资</span>
         </div>
         <div class="item">
-          <span class="img-wrap manager" @click="toPage('manager')"><div class="notice-count" v-if="managerInfo.hasManager === 1 && !isReadManager && !isReadManagerCurrent">1</div></span>
+          <span class="img-wrap manager" @click="toPage('manager')">
+            <div class="notice-count" v-if="managerInfo.hasManager === 1 && !isReadManager && !isReadManagerCurrent">1
+            </div>
+          </span>
           <span class="label">客户经理</span>
         </div>
         <div class="item" @click="toPage('user')">
@@ -57,7 +60,7 @@
               alt=""></span>
           <span class="label">能量满满</span>
         </div>
-        <div class="item">
+        <div class="item" @click="toOuterPage('zQUrl')">
           <span class="img-wrap"><img src="../../assets/img/icon-home-invest.png" alt=""></span>
           <span class="label">证券投资</span>
         </div>
@@ -65,7 +68,7 @@
           <span class="img-wrap"><img src="../../assets/img/icon-home-news.png" alt=""></span>
           <span class="label">最新资讯</span>
         </div>
-        <div class="item">
+        <div class="item" @click="toBankSite">
           <span class="img-wrap"><img src="../../assets/img/icon-home-site.png" alt=""></span>
           <span class="label">网点查询</span>
         </div>
@@ -144,6 +147,8 @@ import { ImagePreview } from 'vant'
 import helper from 'utils/helper'
 import sysConfig from 'utils/constant'
 import validate from 'utils/validate'
+import Wxapi from 'utils/wxapi'
+const wxapi = new Wxapi()
 Vue.use(ImagePreview)
 export default {
   data () {
@@ -153,7 +158,8 @@ export default {
       imgList: [],
       managerInfo: {},
       isReadManager: helper.getIsReadManager(),
-      isReadManagerCurrent: helper.getIsReadManagerCurrent()
+      isReadManagerCurrent: helper.getIsReadManagerCurrent(),
+      appId: sysConfig.appId[process.env.NODE_ENV]
     }
   },
   created () {
@@ -191,6 +197,17 @@ export default {
       let res = await this.$Manager.openingTips()
       this.managerInfo = res.data
     },
+    enterIncome () {
+      if (helper.getUserInfo('ifPwd', 0)) { // 有密码
+        if (helper.checkFreeLogin()) { // 近期输入过密码
+          this.eyeFlag = true
+        } else {
+          this.$router.push({ name: 'loginByPwd' })
+        }
+      } else {
+        this.$router.push({ name: 'setQueryCode' })
+      }
+    },
     toPage (routerName, query = {}) {
       let { hasManager } = this.managerInfo
       if (routerName === 'manager' && hasManager === 1 && !this.isReadManager && !this.isReadManagerCurrent) {
@@ -199,8 +216,15 @@ export default {
       }
       this.$router.push({ name: routerName, query: query })
     },
-    toGjs () {
-      window.location.href = sysConfig.nobleMetalUrl[process.env.NODE_ENV]
+    toOuterPage (type) {
+      let url = sysConfig[type][process.env.NODE_ENV]
+      if (type === 'zQUrl') {
+        url = wxapi.getWxUrl(this.appId, url)
+      }
+      window.location.href = url
+    },
+    toBankSite () {
+      window.location.href = sysConfig.bankSiteUrl
     },
     clickImg (index) {
       let { link = '', url = '' } = this.imgList[index]

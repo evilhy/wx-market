@@ -2,7 +2,7 @@
   <div class="wallet-wrap">
     <div class="wallet-content">
       <div class="header">放薪钱包
-        <van-icon v-if="type === 'outer'" name="arrow" color="white" @click.native="toPage('wallet')"/>
+        <van-icon v-if="type === 'outer'" name="arrow" color="white" @click.native="toPage('wallet')" />
       </div>
       <div class="main">
         <div class="col money">
@@ -67,10 +67,14 @@ export default {
         this.eyeFlag = false
         helper.saveBalanceStatus(false)
       } else {
-        if (helper.checkFreeLogin()) { // 近期输入过密码
-          this.eyeFlag = true
+        if (helper.getUserInfo('ifPwd', 0)) { // 有密码
+          if (helper.checkFreeLogin()) { // 近期输入过密码
+            this.eyeFlag = true
+          } else {
+            this.$router.push({ name: 'loginByPwd' })
+          }
         } else {
-          this.$router.push({ name: 'loginByPwd' })
+          this.$router.push({ name: 'setQueryCode' })
         }
       }
     },

@@ -85,6 +85,12 @@ export default {
     demo: 'https://sitwxp.cardpu.com/wisale-h5-gjs/#/',
     production: 'https://wxp.cardpu.com/wisale-h5-gjs/#/'
   },
+  zQUrl: {
+    development: 'https://sitwxp.cardpu.com/security-account/#/auth',
+    sit: 'https://sitwxp.cardpu.com/security-account/#/auth',
+    demo: 'https://sitwxp.cardpu.com/security-account/#/auth',
+    production: 'https://wxp.cardpu.com/security-account/#/auth'
+  },
   appId: {
     development: 'wxb3a9cf98e372fa36',
     sit: 'wxb3a9cf98e372fa36',
