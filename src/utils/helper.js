@@ -140,7 +140,7 @@ const helper = {
   checkFreeLogin () { // 免密
     let freePassword = this.getFreePassword()
     let now = new Date().getTime()
-    return !!(freePassword && TimeInstance.add(freePassword.time, 2, 'i') > now)
+    return !!(freePassword && TimeInstance.add(freePassword.time, 5, 'i') > now)
   },
   saveBalanceStatus (flag) {
     storage.setSession('balanceStatus', flag)
