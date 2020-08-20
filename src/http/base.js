@@ -13,11 +13,12 @@ export default class HttpForApplication extends HttpEngine {
   requestedSever = false;
 
   beforeSendRequestHandler (config) {
-    let { jsessionId, apppartner } = helper.getUserInfo('', {})
+    let { jsessionId, apppartner, entId } = helper.getUserInfo('', {})
     config.headers = Object.assign(config.headers, {
       'jsession-id': jsessionId,
       'route-name': window.router.app._route.name,
-      'apppartner': apppartner
+      'apppartner': apppartner,
+      'ent-id': entId
     })
     // 加密签名处理
     this.dealEncrypt(config)

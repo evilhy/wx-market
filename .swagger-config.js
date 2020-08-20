@@ -63,10 +63,18 @@ const checkFreePassword = require('./json/roll.checkFreePassword.json')
 const crateNumericKeypad = require('./json/password.crateNumericKeypad.json')
 const queryHandPassword = require('./json/password.queryHandPassword.json')
 const balance = require('./json/wallet.balance.json')
+const empEntList = require('./json/inside.empEntList.json')
+const cardCount = require('./json/wisales.cardCount.json')
 module.exports = {
   openApi: [{
     baseURL: 'https://sitgateway.cardpu.com/payroll',
     paths: {
+      '/wisales/countWelfareEmpTicket': {
+        post: cardCount
+      },
+      '/inside/empEntList': {
+        post: empEntList
+      },
       '/wallet/empCardAdnBalance': {
         post: balance
       },

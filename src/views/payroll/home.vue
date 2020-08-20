@@ -1,20 +1,20 @@
 <template>
-  <div class="page home-page white">
+  <div class="page home-page white" :class="{ent: entList.length > 1}">
     <!-- 企业切换栏 -->
-    <div class="business-toggle">
+    <div class="business-toggle" v-if="entList.length > 1">
       <div class="logo"><img src="../../assets/img/icon-home-business.png" alt=""></div>
       <van-dropdown-menu>
-        <van-dropdown-item v-model="value" :options="option" />
+        <van-dropdown-item v-model="currentEntId" :options="entList" />
       </van-dropdown-menu>
     </div>
     <!-- 轮播图 -->
     <van-swipe class="banner" :autoplay="5000">
-      <van-swipe-item v-for="(image, index) in images" :key="index">
-        <img v-lazy="image" />
+      <van-swipe-item v-for="(img, index) in imgList" :key="index" @click="clickImg(index)">
+        <img v-lazy="img.url">
       </van-swipe-item>
     </van-swipe>
     <!-- 通知栏 没有通知的时候margin-left变小-->
-    <div class="notice-bar">
+    <div class="notice-bar" v-if="false">
       <div class="notice-count">9</div>
       <van-notice-bar :left-icon="require('../../assets/img/icon-home-notice.png')" :scrollable="false" color="#363C4D">
         <van-swipe vertical :autoplay="5000" :show-indicators="false">
@@ -27,13 +27,12 @@
     <!-- 普通版菜单入口 -->
     <template>
       <!-- 钱包 -->
-      <wallet></wallet>
+      <wallet @to-page="toPage"></wallet>
       <!-- 主要信息入口 -->
       <div class="link-wrap">
         <div class="item">
           <span class="img-wrap income"></span>
           <span class="label">我的收入</span>
-          <span class="dot red"></span>
         </div>
         <div class="item">
           <span class="img-wrap metal"><span class="tag-1">新品上市</span></span>
@@ -135,24 +134,78 @@
 </template>
 
 <script>
+import Vue from 'vue'
 import wallet from 'components/wallet'
+import { ImagePreview } from 'vant'
+import helper from 'utils/helper'
+import validate from 'utils/validate'
+Vue.use(ImagePreview)
 export default {
   data () {
     return {
-      value: 0,
-      option: [
-        { text: '北京开科技有限公司', value: 0 },
-        { text: '北京天健原来科技股二分有限公司武汉分公司北京天健原来科技股二分有限公司武汉分公司', value: 1 },
-        { text: '111111111111111111111111111111111111111111111111111111111111111111', value: 2 }
-      ],
-      images: [
-        require('../../assets/img/home-banner1.png'),
-        require('../../assets/img/home-banner3.png'),
-        require('../../assets/img/home-banner4.png')
-      ]
+      entList: [],
+      currentEntId: '',
+      imgList: [],
+      isReadManager: helper.getIsReadManager(),
+      isReadManagerCurrent: helper.getIsReadManagerCurrent()
+    }
+  },
+  created () {
+    this.getEntList()
+    this.getBannerList()
+    // 微店上线之后需要去掉
+    this.getManagerInfo()
+  },
+  watch: {
+    currentEntId (val) {
+      helper.saveUserInfo({ entId: val })
     }
   },
   methods: {
+    async getEntList () {
+      let res = await this.$Inside.empEntList()
+      this.entList = this.transEntList(res.data)
+      if (this.entList.length) {
+        this.currentEntId = this.entList[0].value
+      }
+    },
+    transEntList (list = []) {
+      return list.map(item => {
+        let { entId, entName } = item
+        return {
+          value: entId,
+          text: entName
+        }
+      })
+    },
+    async getBannerList () {
+      this.imgList = await this.$System.getBannerList()
+    },
+    async getManagerInfo () {
+      let res = await this.$Manager.openingTips()
+      this.managerInfo = res.data
+    },
+    toPage (routerName, query = {}) {
+      let { hasManager } = this.managerInfo
+      if (routerName === 'manager' && hasManager === 1 && !this.isReadManager && !this.isReadManagerCurrent) {
+        this.$refs['home-manager-dialog'].open()
+        return false
+      }
+      this.$router.push({ name: routerName, query: query })
+    },
+    clickImg (index) {
+      let { link = '', url = '' } = this.imgList[index]
+      if (link) {
+        if (validate.isUrl(link)) {
+          window.location.href = link
+        }
+      } else {
+        ImagePreview({
+          images: [url],
+          showIndex: false
+        })
+      }
+    }
   },
   components: {
     wallet

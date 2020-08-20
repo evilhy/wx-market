@@ -1,9 +1,11 @@
 import storage from './storage'
 import {typeOf} from './assist'
 import sysConfig from './constant'
+import Time from './time'
 import {Toast} from 'vant'
 Toast.allowMultiple()
 
+const TimeInstance = new Time()
 let timer = null
 const helper = {
   title(title = '') {
@@ -119,6 +121,35 @@ const helper = {
   },
   getPasswordStr (password = []) {
     return password.join(',')
+  },
+  saveFreePassword (type) { // 保存输入登录密码的时间和类型
+    storage.setSession('freePassword', {
+      type,
+      time: new Date().getTime()
+    })
+  },
+  getFreePassword () {
+    return storage.getSession('freePassword')
+  },
+  clearFreePassword (type) {
+    let freePassword = this.getFreePassword()
+    if (freePassword && freePassword.type === type) {
+      storage.removeSession('freePassword')
+    }
+  },
+  checkFreeLogin () { // 免密
+    let freePassword = this.getFreePassword()
+    let now = new Date().getTime()
+    return !!(freePassword && TimeInstance.add(freePassword.time, 5, 'i') > now)
+  },
+  saveBalanceStatus (flag) {
+    storage.setSession('balanceStatus', flag)
+  },
+  getBalanceStatus () {
+    return storage.getSession('balanceStatus', false)
+  },
+  checkShowBalance () { // 是否展示银行卡余额
+    return this.getBalanceStatus() && this.checkFreeLogin()
   },
   exit() {
     if (window.WeixinJSBridge) {

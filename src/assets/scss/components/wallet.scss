@@ -17,7 +17,7 @@
     color: white;
     font-family: PingFangSC-Semibold;
     font-size: 28px;
-    .van-icon{
+    .van-icon {
       opacity: 0.8;
       padding: 10px 24px;
     }
@@ -25,26 +25,27 @@
   .main {
     display: flex;
     align-items: center;
-    .col{
+    .col {
       width: 50%;
     }
-    .money{
+    .money {
       flex: 2;
       padding-left: 30px;
       display: flex;
       flex-direction: column;
-      .label{
+      .label {
         opacity: 1;
       }
     }
-    .bank-card{
+    .bank-card {
       display: flex;
       padding-right: 30px;
     }
-    .bank,.card{
+    .bank,
+    .card {
       flex: 1;
     }
-    .item{
+    .item {
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -55,25 +56,32 @@
       font-family: DINAlternate-Bold;
       font-size: 48px;
     }
-    .label{
+    .label {
       color: white;
       font-size: 20px;
       display: inline-flex;
       align-items: center;
       opacity: 0.8;
-      .text{
+      padding: 0 2px;
+      .text {
         opacity: 0.8;
       }
     }
-    .iconfont{
+    .iconfont {
       padding: 0 10px;
       font-size: 32px;
       line-height: 1;
+      position: relative;
+      top: 2px;
     }
-    .dot{
+    .dot {
       left: 100%;
       top: 0;
       transform: translateX(-100%);
+    }
+    .star {
+      position: relative;
+      top: 10px;
     }
   }
 }

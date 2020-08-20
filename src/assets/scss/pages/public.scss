@@ -16,7 +16,7 @@
   .content-wrap{
     padding: 40px;
     &.show{
-      padding-bottom: 390px;
+      padding-bottom: 440px;
     }
   }
   .big-title{
@@ -197,5 +197,12 @@
     text-align: center;
     color: $text-color-gray;
     padding-top: 20px;
+  }
+}
+.fill-id-card-page{
+  .content-wrap{
+    &.show{
+      padding-bottom: 390px;
+    }
   }
 }

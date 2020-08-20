@@ -42,11 +42,15 @@ export default {
     },
     value (val) {
       this.currentValue = val
+    },
+    show (val) {
+      this.toggleWrapClass(val)
     }
   },
   async mounted () {
     await this.crateNumericKeypad()
     this.open()
+    this.toggleWrapClass()
   },
   methods: {
     async crateNumericKeypad () {
@@ -68,6 +72,12 @@ export default {
     },
     open () {
       this.show = true
+    },
+    toggleWrapClass (val = true) {
+      let wrap = document.querySelector('.content-wrap')
+      if (wrap) {
+        wrap.className = val ? 'content-wrap show' : 'content-wrap'
+      }
     }
   },
   components: {

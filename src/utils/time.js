@@ -4,19 +4,30 @@ const $timeRange = Symbol('$timeRange')
 const $checkTimeType = Symbol('$checkTimeType')
 const $unitRange = Symbol('$unitRange')
 const $checkUnitRange = Symbol('$checkUnitRange')
+const $timeRefer = Symbol('$timeRefer')
+const $addSubstract = Symbol('$addSubstract')
 
 export default class Time {
   [$timeRange] = ['string', 'number', 'date'];
   [$unitRange] = ['y', 'm', 'd', 'h', 'i', 's', 'ms'];
+  [$timeRefer] = {
+    'y': 'year',
+    'm': 'month',
+    'd': 'date',
+    'h': 'hours',
+    'i': 'minutes',
+    's': 'seconds'
+  }
   /**
    * 传入时间值，返回指定格式的时间显示
    * @param {String|Number|Date} timeVal
    * @param {String} format
    */
-  format (timeVal, format = 'Y-m-d H:i:s') {
+  format (timeVal, format = 'y-m-d h:i:s') {
     if (!timeVal) return ''
     const timeObject = this.getTimeObject(timeVal)
-    return format.toLocaleLowerCase()
+    const lowFormat = format.toLowerCase()
+    return lowFormat
       .replace('y', timeObject.year)
       .replace('m', timeObject.month)
       .replace('d', timeObject.date)
@@ -26,7 +37,7 @@ export default class Time {
   }
   /**
    * 传入时间值，返回时间date类型
-   * @param {String|Number|Date} timeVal 
+   * @param {String|Number|Date} timeVal
    */
   parse (timeVal) {
     const timeType = this[$checkTimeType](timeVal)
@@ -40,7 +51,7 @@ export default class Time {
   }
   /**
    * 传入时间值，返回时间戳
-   * @param {String|Number|Date} timeVal 
+   * @param {String|Number|Date} timeVal
    */
   getTimestamp (timeVal) {
     const timeType = this[$checkTimeType](timeVal)
@@ -97,9 +108,9 @@ export default class Time {
   }
   /**
    * 传入时间值，返回对应单位的时间差
-   * @param {String|Number|Date} startTimeVal 
-   * @param {String|Number|Date} endTimeVal 
-   * @param {String} unit 
+   * @param {String|Number|Date} startTimeVal
+   * @param {String|Number|Date} endTimeVal
+   * @param {String} unit
    */
   getTimeDiff (startTimeVal, endTimeVal, unit = 'ms') {
     const unitLow = this[$checkUnitRange](unit)
@@ -131,6 +142,81 @@ export default class Time {
 
     }
     return timeDiff
+  }
+  /**
+   * 传入时间差的天、时、分、秒的对象
+   *
+   * @param {String|Number|Date} startTimeVal
+   * @param {String|Number|Date} endTimeVal
+   * @returns
+   * @memberof Time
+   */
+  getTimeDiffObj (startTimeVal, endTimeVal) {
+    const timeGap = this.getTimeDiff(startTimeVal, endTimeVal, 's')
+    return {
+      days: Math.floor(timeGap / 86400).toString(),
+      hours: this.padStart(Math.floor((timeGap % 86400) / 3600)),
+      minutes: this.padStart(Math.floor((timeGap % 3600) / 60)),
+      seconds: this.padStart(timeGap % 60)
+    }
+  }
+  padStart (num) {
+    return num.toString().padStart(2, '0')
+  }
+  /**
+   * 过去的时间，用于消息的时间显示
+   *
+   * @param {*} pastTimeVal
+   * @param {*} [nowTimeVal=new Date()]
+   * @returns
+   * @memberof Time
+   */
+  timeAgo (pastTimeVal, nowTimeVal = new Date()) {
+    let minutesGap = this.getTimeDiff(pastTimeVal, nowTimeVal, 'i')
+    if (minutesGap < 1) {
+      return '刚刚'
+    } else if (minutesGap >= 1 && minutesGap < 60) {
+      return `${minutesGap}分钟前`
+    } else if (minutesGap >= 60 && minutesGap < 1440) {
+      return `${Math.floor(minutesGap / 60)}小时前`
+    } else {
+      return this.format(pastTimeVal, 'm月d号')
+    }
+  }
+  /**
+   * 增加时间(增加年、月、日、时、分、秒)
+   *
+   * @param {Number|String|Date} [timeValue=new Date()] 时间基数
+   * @param {number} [value=0] 增加的值
+   * @param {string} [unit='s'] 增加的单位，默认秒
+   * @returns
+   * @memberof Time
+   */
+  add (timeValue = new Date(), value = 0, unit = 's') {
+    if (typeOf(value) !== 'number') throw new TypeError('增加的时间必须为Number类型')
+    let changeValue = Math.abs(value)
+    return this[$addSubstract](timeValue, changeValue, unit)
+  }
+  /**
+   * 减少时间(增加年、月、日、时、分、秒)
+   *
+   * @param {Number|String|Date} [timeValue=new Date()] 时间基数
+   * @param {number} [value=0] 增加的值
+   * @param {string} [unit='s'] 增加的单位，默认秒
+   * @returns
+   * @memberof Time
+   */
+  reduce (timeValue = new Date(), value = 0, unit = 's') {
+    if (typeOf(value) !== 'number') throw new TypeError('减少的时间必须为Number类型')
+    let changeValue = -Math.abs(value)
+    return this[$addSubstract](timeValue, changeValue, unit)
+  }
+  [$addSubstract] (timeValue = new Date(), changeValue = 0, unit = 's') {
+    const timeObject = this.getTimeObject(timeValue)
+    const unitLow = this[$checkUnitRange](unit)
+    const key = this[$timeRefer][unitLow]
+    timeObject[key] = Number(timeObject[key]) + changeValue
+    return new Date(timeObject.year, timeObject.month - 1, timeObject.date, timeObject.hours, timeObject.minutes, timeObject.seconds)
   }
   [$checkUnitRange] (unit) {
     if (typeOf(unit) !== 'string') throw new TypeError('指定的时间单位必须为String类型')

@@ -115,5 +115,16 @@ class Inside {
     http.body = data
     return http.post()
   }
+  /**
+   * 首页企业列表数
+   *
+   * @returns
+   * @memberof Inside
+   */
+  empEntList () {
+    let http = new Http()
+    http.path = `/${moduleName}/empEntList`
+    return http.post()
+  }
 }
 export default new Inside()

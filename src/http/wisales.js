@@ -1,19 +1,19 @@
 import Http from './base'
-const moduleName = 'wallet'
+const moduleName = 'wisales'
 
-class Wallet {
+class Wisales {
   /**
    * 查询钱包余额和银行卡张数
    *
    * @returns
    * @memberof Wallet
    */
-  getBalance () {
+  getCardCount () {
     let http = new Http()
-    http.path = `/${moduleName}/empCardAdnBalance`
+    http.path = `/${moduleName}/countWelfareEmpTicket`
     http.loading = false
     return http.post()
   }
 }
 
-export default new Wallet()
+export default new Wisales()
