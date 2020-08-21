@@ -1,122 +1,36 @@
 <template>
   <div class="page notice-index-page">
-    <!-- <van-tabs v-model="currentTab" sticky>
+    <van-tabs v-model="currentTab" sticky>
       <van-tab v-for="(item, index) in tabList" :key="index" :name="item.value">
         <template #title>{{item.label}}<span class="notice-count">{{item.count}}</span></template>
         <no-data text="暂无消息" name="news" v-if="data[currentTab].request && data[currentTab].list.length < 1"></no-data>
         <van-pull-refresh v-else v-model="refreshing" @refresh="onRefresh">
           <van-list v-model="data[currentTab].loading" :finished="data[currentTab].finished"
             :finished-text="finishedText" @load="getList">
-            <p class="text" v-for="(item, index) in data[currentTab].list" :key="index" :item="item">{{item.goodsNo}}
-            </p>
+            <wage-item v-for="(item, index) in data[currentTab].list" :key="index" :item="item" @delete="beforeClose"></wage-item>
           </van-list>
         </van-pull-refresh>
       </van-tab>
-    </van-tabs> -->
+    </van-tabs>
     <!-- 资金动态 不能直接进 要看是否输入密码-->
-    <div class="notice-item">
-      <van-swipe-cell :before-close="beforeClose">
-        <div class="header">
-          <div class="type"><img src="../../assets/img/icon-notice-003.png" alt=""><span class="dot red"></span></div>
-          <span class="time">2020-09-10 10:02:20</span>
-        </div>
-        <div class="content">
-          <div class="row">
-            <span class="label">收款账户：</span>
-            <span class="value">华夏银行</span>
-          </div>
-          <div class="row">
-            <span class="label">方案名称：</span>
-            <span class="value">开科唯开科唯一识别4月份工资一识别4月份工资</span>
-          </div>
-          <div class="row">
-            <span class="label">资金月份：</span>
-            <span class="value">4月</span>
-          </div>
-          <div class="row">
-            <span class="label">资金类型：</span>
-            <span class="value">工资</span>
-          </div>
-          <div class="row">
-            <span class="label">实发金额：</span>
-            <span class="value">8993.00</span>
-          </div>
-        </div>
-        <div class="footer">查看资金详情
-          <van-icon name="arrow" />
-        </div>
-        <template #right>
-          <van-button square type="danger" text="删除" />
-        </template>
-      </van-swipe-cell>
-    </div>
     <!-- 审核动态 -->
-    <div class="notice-item">
-      <div class="header">
-        <div class="type"><img src="../../assets/img/icon-notice-002.png" alt=""><span class="dot red"></span></div>
-        <span class="time">2020-09-10 10:02:20</span>
-      </div>
-      <div class="content">
-        <div class="row">
-          <span class="label">原银行卡</span>
-          <span class="value">华夏银行</span>
-        </div>
-        <div class="row">
-          <span class="label">新银行卡</span>
-          <span class="value">开科唯开科唯一识别4月份工资一识别4月份工资</span>
-        </div>
-        <div class="row">
-          <span class="label">审批人</span>
-          <span class="value">4月</span>
-        </div>
-        <div class="row">
-          <span class="label">审批结果</span>
-          <span class="value">工资</span>
-        </div>
-      </div>
-      <div class="footer">申请换卡详情
-        <van-icon name="arrow" />
-      </div>
-    </div>
     <!-- 最新资讯 -->
-    <div class="notice-item">
-      <div class="header">
-        <div class="type"><img src="../../assets/img/icon-notice-004.png" alt=""><span class="dot red"></span></div>
-        <span class="time">2020-09-10 10:02:20</span>
-      </div>
-      <div class="content">
-        <div class="title">牛市来袭，您的资金该如何分配？</div>
-        <div class="detail van-multi-ellipsis--l2">
-          最近股市表现强劲，下手早的已经赚得盆满钵满您还在为理财的0点几的收益左右为难吗？是稳稳的幸福还在为理财的0点几的收益左右为难吗？是稳稳的幸福还在为理财的0点几的收益左右为难吗？是稳稳的幸福</div>
-      </div>
-      <div class="footer">查看资讯详情
-        <van-icon name="arrow" />
-      </div>
-    </div>
     <!-- 活动通知 -->
-    <div class="notice-item">
-      <div class="header">
-        <div class="type"><img src="../../assets/img/icon-notice-001.png" alt=""><span class="dot red"></span></div>
-        <span class="time">2020-09-10 10:02:20</span>
-      </div>
-      <div class="content">
-        <div class="title">您有3位同事报名了能量满满邀约有礼活动</div>
-        <div class="detail van-multi-ellipsis--l2">要不要一起来试试？</div>
-      </div>
-      <div class="footer">查看活动详情
-        <van-icon name="arrow" />
-      </div>
-    </div>
     <div class="oper-wrap">
-      <div class="oper-item"><img src="../../assets/img/oper-hasred.png" alt="">全部标记为已读</div>
-      <div class="oper-item red"><img src="../../assets/img/oper-delete.png" alt="">清空全部消息</div>
+      <div class="oper-item"><img src="../../assets/img/oper-hasred.png" alt="" @click="readAll">全部标记为已读</div>
+      <div class="oper-item red"><img src="../../assets/img/oper-delete.png" alt="" @click="beforeDeleteAll">清空全部消息
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import sysConfig from 'utils/constant'
+import wageItem from './noticeWageItem'
+import reviewItem from './noticeReviewItem'
+import newsItem from './noticeNewsItem'
+import activityItem from './noticeActivityItem'
 import noData from 'components/noData/index'
+import sysConfig from 'utils/constant'
 import { Dialog } from 'vant'
 export default {
   data () {
@@ -178,6 +92,14 @@ export default {
       finishedText: sysConfig.listFinishedText
     }
   },
+  computed: {
+    noMsg () {
+      let data = this.data
+      return Object.keys(data).every((key) => {
+        return data[key].request && !data[key].list.length
+      })
+    }
+  },
   created () { },
   methods: {
     async getList () {
@@ -220,12 +142,39 @@ export default {
     async deleteNotice () {
       console.log('删除消息')
     },
+    readAll () {
+      if (this.noMsg) return false
+    },
     beforeDeleteAll () {
-      
+      if (this.noMsg) return false
+      Dialog.confirm({
+        title: '系统提醒',
+        message: '确定要清空全部消息吗',
+        confirmButtonText: '确定清空',
+        cancelButtonText: '我再想想'
+      }).then(() => {
+        this.deleteAllNotice()
+      }).catch(() => { })
+    },
+    deleteAllNotice () {
+      console.log('全部清除')
+      Object.keys(this.data).forEach((key) => {
+        this.$set(this.data, key, {
+          list: [],
+          page: 1,
+          loading: false,
+          finished: true,
+          request: true
+        })
+      })
     }
   },
   components: {
-    noData
+    noData,
+    wageItem,
+    reviewItem,
+    newsItem,
+    activityItem
   }
 }
 </script>

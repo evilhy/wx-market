@@ -1,33 +1,16 @@
 <template>
   <div class="page home-page white" :class="{ent: entList.length > 1}">
     <!-- 企业切换栏 -->
-    <div class="business-toggle" v-if="entList.length > 1">
-      <div class="logo"><img src="../../assets/img/icon-home-business.png" alt=""></div>
-      <van-dropdown-menu>
-        <van-dropdown-item v-model="currentEntId" :options="entList" />
-      </van-dropdown-menu>
-    </div>
+    <home-ent-list v-if="entList.length > 1" v-model="currentEntId" :ent-list="entList" @change="getDataByEnt">
+    </home-ent-list>
     <!-- 轮播图 -->
-    <van-swipe class="banner" :autoplay="5000">
-      <van-swipe-item v-for="(img, index) in imgList" :key="index" @click="clickImg(index)">
-        <img v-lazy="img.url">
-      </van-swipe-item>
-    </van-swipe>
+    <home-banner></home-banner>
     <!-- 通知栏 没有通知的时候margin-left变小-->
-    <div class="notice-bar">
-      <div class="notice-count">9</div>
-      <van-notice-bar :left-icon="require('../../assets/img/icon-home-notice.png')" :scrollable="false" color="#363C4D">
-        <van-swipe vertical :autoplay="5000" :show-indicators="false">
-          <van-swipe-item>1内内容内容容内容内容内容内容内容内容内容内容内容内容内容1</van-swipe-item>
-          <van-swipe-item>2内内容内容容内容内容内容内容内容内容内容内容内容内容内容12</van-swipe-item>
-          <van-swipe-item>111111111111111111111111111111111111111111111111111111111111111111</van-swipe-item>
-        </van-swipe>
-      </van-notice-bar>
-    </div>
+    <home-notice></home-notice>
     <!-- 普通版菜单入口 -->
-    <template>
+    <template v-if="apppartner === 'FXGJ'">
       <!-- 钱包 -->
-      <wallet @to-page="toPage"></wallet>
+      <wallet ref="wallet" @to-page="toPage"></wallet>
       <!-- 主要信息入口 -->
       <div class="link-wrap">
         <div class="item" @click="enterPayroll">
@@ -74,65 +57,12 @@
         </div>
       </div>
       <!-- 游戏专区 -->
-      <div class="title">休闲一刻</div>
-      <div class="link-wrap game-link-wrap">
-        <div class="item">
-          <div class="img-wrap"><span class="tag-1">最受欢迎</span><img src="../../assets/img/game/game1.png" alt=""></div>
-          <span class="label">欢乐竞技台球</span>
-        </div>
-        <div class="item">
-          <div class="img-wrap"><img src="../../assets/img/game/game2.png" alt=""></div>
-          <span class="label">街机欢乐捕鱼</span>
-        </div>
-        <div class="item">
-          <div class="img-wrap"><img src="../../assets/img/game/game3.png" alt=""></div>
-          <span class="label">三国大作战</span>
-        </div>
-        <div class="item">
-          <div class="img-wrap"><img src="../../assets/img/game/game4.png" alt=""></div>
-          <span class="label">糖果萌消消</span>
-        </div>
-      </div>
+      <home-game-link></home-game-link>
     </template>
     <!-- 振兴银行菜单入口 -->
-    <template v-if="false">
-      <div class="link-wrap zx-link-wrap">
-        <div class="item">
-          <span class="img-wrap"><img src="../../assets/img/zx/zx-icon-income.png" alt=""></span>
-          <span class="label">我的收入</span>
-        </div>
-        <div class="item">
-          <span class="img-wrap"><img src="../../assets/img/zx/zx-icon-bank.png" alt=""></span>
-          <span class="label">银行卡</span>
-        </div>
-        <div class="item">
-          <span class="img-wrap"><img src="../../assets/img/zx/zx-icon-welfare.png" alt=""></span>
-          <span class="label">员工福利</span>
-        </div>
-        <div class="item">
-          <span class="img-wrap"><img src="../../assets/img/zx/zx-icon-user.png" alt=""></span>
-          <span class="label">个人信息</span>
-        </div>
-        <div class="item">
-          <span class="img-wrap"><img src="../../assets/img/zx/zx-icon-password.png" alt=""></span>
-          <span class="label">密码安全</span>
-        </div>
-        <div class="item">
-          <span class="img-wrap"><img src="../../assets/img/zx/zx-icon-address.png" alt=""></span>
-          <span class="label">地址管理</span>
-        </div>
-        <div class="item">
-          <span class="img-wrap"><img src="../../assets/img/zx/zx-icon-news.png" alt=""></span>
-          <span class="label">最新资讯</span>
-        </div>
-        <div class="item">
-          <span class="img-wrap"><img src="../../assets/img/zx/zx-icon-invoice.png" alt=""></span>
-          <span class="label">开票报销</span>
-        </div>
-      </div>
-    </template>
+    <home-zx-menu ref="zx-menu" v-if="apppartner === 'NEWUP'" @enter-payroll="enterPayroll"></home-zx-menu>
     <!-- 底部logo -->
-    <div class="bottom-logo"><img src="../../assets/img/fx-gray-logo.png" alt=""></div>
+    <div class="bottom-logo"><img :class="logo.className" :src="logo.src" alt=""></div>
     <!-- // 后期去掉 -->
     <home-manager-dialog ref="home-manager-dialog" @getIsReadManager="isReadManager = true"
       @getIsReadManagerCurrent="isReadManagerCurrent = true" :manager-info="managerInfo"></home-manager-dialog>
@@ -140,48 +70,55 @@
 </template>
 
 <script>
-import Vue from 'vue'
+import homeEntList from './homeEntList'
 import wallet from 'components/wallet'
+import homeBanner from './homeBanner'
+import homeNotice from './homeNotice'
+import homeGameLink from './homeGameLink'
+import homeZxMenu from './homeZxMenu'
 import homeManagerDialog from './homeManagerDialog'
-import { ImagePreview } from 'vant'
 import helper from 'utils/helper'
 import sysConfig from 'utils/constant'
-import validate from 'utils/validate'
 import Wxapi from 'utils/wxapi'
 const wxapi = new Wxapi()
-Vue.use(ImagePreview)
 export default {
   data () {
     return {
       entList: [],
-      hasWage: false,
       currentEntId: '',
-      imgList: [],
       managerInfo: {},
       isReadManager: helper.getIsReadManager(),
       isReadManagerCurrent: helper.getIsReadManagerCurrent(),
-      appId: sysConfig.appId[process.env.NODE_ENV]
+      appId: sysConfig.appId[process.env.NODE_ENV],
+      apppartner: helper.getUserInfo('apppartner')
     }
   },
-  created () {
+  computed: {
+    logo () {
+      switch (this.apppartner) {
+        case 'SJZHRB':
+          return {
+            className: 'hr',
+            src: require('../../assets/img/hr-gray-logo.png')
+          }
+        default:
+          return {
+            className: 'fx',
+            src: require('../../assets/img/fx-gray-logo.png')
+          }
+      }
+    }
+  },
+  mounted () {
     this.getEntList()
-    this.getBannerList()
-    // 微店上线之后需要去掉
-    this.getManagerInfo()
-  },
-  watch: {
-    currentEntId (val) {
-      helper.saveUserInfo({ entId: val })
-    }
   },
   methods: {
     async getEntList () {
       let res = await this.$Inside.empEntList()
-      let { entList = [], newPay = false } = res.data
-      this.entList = this.transEntList(entList)
-      this.hasWage = newPay
+      this.entList = this.transEntList(res.data)
       if (this.entList.length) {
         this.currentEntId = this.entList[0].value
+        this.getDataByEnt()
       }
     },
     transEntList (list = []) {
@@ -193,26 +130,30 @@ export default {
         }
       })
     },
-    async getBannerList () {
-      this.imgList = await this.$System.getBannerList()
+    getDataByEnt () {
+      console.log(this.currentEntId)
+      helper.saveUserInfo({ entId: this.currentEntId })
+      if (this.apppartner === 'FXGJ') {
+        // 消息是否与企业相关 待确定todo
+        // 获取企业下的钱包数据
+        this.$refs['wallet'].getWalletData()
+        // 微店上线之后需要去掉
+        this.getManagerInfo()
+      }
     },
     async getManagerInfo () {
       let res = await this.$Manager.openingTips()
       this.managerInfo = res.data
     },
     enterPayroll () {
-      if (this.hasWage) { // 有工资
-        if (helper.getUserInfo('ifPwd', 0)) { // 有密码
-          if (helper.checkFreeLogin()) { // 近期输入过密码
-            this.$router.push({ name: 'wageList' })
-          } else {
-            this.$router.push({ name: 'loginByPwd', query: { nextPage: 'wageList' } })
-          }
-        } else { // 设置查询密码
-          this.$router.push({ name: 'setQueryCode' })
+      if (helper.getUserInfo('ifPwd', 0)) { // 有密码
+        if (helper.checkFreeLogin()) { // 近期输入过密码
+          this.$router.push({ name: 'wageList' })
+        } else {
+          this.$router.push({ name: 'loginByPwd', query: { nextPage: 'wageList' } })
         }
-      } else { // 无工资
-        this.$router.push({ name: 'noWage' })
+      } else { // 设置查询密码
+        this.$router.push({ name: 'setQueryCode' })
       }
     },
     toPage (routerName, query = {}) {
@@ -232,23 +173,15 @@ export default {
     },
     toBankSite () {
       window.location.href = sysConfig.bankSiteUrl
-    },
-    clickImg (index) {
-      let { link = '', url = '' } = this.imgList[index]
-      if (link) {
-        if (validate.isUrl(link)) {
-          window.location.href = link
-        }
-      } else {
-        ImagePreview({
-          images: [url],
-          showIndex: false
-        })
-      }
     }
   },
   components: {
+    homeEntList,
     wallet,
+    homeBanner,
+    homeNotice,
+    homeGameLink,
+    homeZxMenu,
     homeManagerDialog
   }
 }

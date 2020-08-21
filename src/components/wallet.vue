@@ -48,10 +48,14 @@ export default {
     }
   },
   created () {
-    this.getBalanceAndCard()
-    this.getCardCount()
+    if (this.type === 'outer') return
+    this.getWalletData()
   },
   methods: {
+    getWalletData () {
+      this.getBalanceAndCard()
+      this.getCardCount()
+    },
     async getBalanceAndCard () {
       let res = await this.$Wallet.getBalance()
       let { balance = '', cardNum = 0 } = decryptInfo(res.data, 'balance')

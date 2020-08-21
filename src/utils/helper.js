@@ -29,7 +29,7 @@ const helper = {
       (typeOf(tailUrl) === 'string' ? tailUrl : '')
     )
   },
-  toast(msg, position = 'top', duration = 3000) {
+  toast(msg, position = 'center', duration = 3000) {
     clearTimeout(timer)
     const toast = Toast({
       duration: duration,       // 持续展示 toast

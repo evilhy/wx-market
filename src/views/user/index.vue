@@ -36,7 +36,7 @@
         <span class="label"><img src="../../assets/img/user/icon-user-invoice.png" alt="">开票报销</span>
         <span class="value"><span class="arrow"></span></span>
       </div>
-      <div class="item" @click="toPage('userTheme')">
+      <div class="item" v-if="apppartner !== 'NEWUP'" @click="toPage('userTheme')">
         <span class="label"><img src="../../assets/img/user/icon-user-theme.png" alt="">主题更换</span>
         <span class="value"><span class="arrow"></span></span>
       </div>
@@ -51,6 +51,7 @@ import storage from 'utils/storage'
 export default {
   data () {
     return {
+      apppartner: helper.getUserInfo('apppartner'),
       info: {}
     }
   },

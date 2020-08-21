@@ -73,9 +73,11 @@ export default {
         .$Roll
         .wageList(this.currentGroup.groupId, this.currentYear, this.currentType)
         .then((res) => {
-          this.initOutlineWage(res.data)
-          this.wageList = res.data.planList
-          this.years = res.data.years
+          let data = res.data
+          if (!data || !Object.keys(data).length) return
+          this.initOutlineWage(data)
+          this.wageList = data.planList
+          this.years = data.years
           if (isInit) {
             this.currentYear = this.years[this.years.length - 1]
             this.$nextTick(() => {
