@@ -38,7 +38,7 @@
       <img class="advert" src="../../assets/img/home-advert.png" alt="">
       <!-- 其他入口 -->
       <div class="link-wrap advert-link-wrap">
-        <div class="item">
+        <div class="item" @click="$refs['fxgj-mini-program-popup'].open()">
           <span class="img-wrap"><span class="tag-1">最多参与</span><img src="../../assets/img/icon-home-energy.png"
               alt=""></span>
           <span class="label">能量满满</span>
@@ -66,6 +66,7 @@
     <!-- // 后期去掉 -->
     <home-manager-dialog ref="home-manager-dialog" @getIsReadManager="isReadManager = true"
       @getIsReadManagerCurrent="isReadManagerCurrent = true" :manager-info="managerInfo"></home-manager-dialog>
+    <fxgj-mini-program-popup ref="fxgj-mini-program-popup"></fxgj-mini-program-popup>
   </div>
 </template>
 
@@ -74,6 +75,7 @@ import homeEntList from './homeEntList'
 import wallet from 'components/wallet'
 import homeBanner from './homeBanner'
 import homeNotice from './homeNotice'
+import fxgjMiniProgramPopup from 'components/fxgjMiniProgramPopup'
 import homeGameLink from './homeGameLink'
 import homeZxMenu from './homeZxMenu'
 import homeManagerDialog from './homeManagerDialog'
@@ -182,6 +184,7 @@ export default {
     wallet,
     homeBanner,
     homeNotice,
+    fxgjMiniProgramPopup,
     homeGameLink,
     homeZxMenu,
     homeManagerDialog
