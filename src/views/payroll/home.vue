@@ -78,6 +78,7 @@ import homeGameLink from './homeGameLink'
 import homeZxMenu from './homeZxMenu'
 import homeManagerDialog from './homeManagerDialog'
 import helper from 'utils/helper'
+import decryptInfo from 'utils/decryptInfo'
 import sysConfig from 'utils/constant'
 import Wxapi from 'utils/wxapi'
 const wxapi = new Wxapi()
@@ -115,7 +116,8 @@ export default {
   methods: {
     async getEntList () {
       let res = await this.$Inside.empEntList()
-      this.entList = this.transEntList(res.data)
+      let data = decryptInfo(res.data, 'entId', 'entName', 'shortEntName')
+      this.entList = this.transEntList(data)
       if (this.entList.length) {
         this.currentEntId = this.entList[0].value
         this.getDataByEnt()

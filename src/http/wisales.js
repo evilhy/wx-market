@@ -12,7 +12,7 @@ class Wisales {
     let http = new Http()
     http.path = `/${moduleName}/countWelfareEmpTicket`
     http.loading = false
-    return http.post()
+    return http.get()
   }
 }
 

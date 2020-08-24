@@ -133,7 +133,7 @@ class Inside {
     } else {
       let http = new Http()
       http.path = `/${moduleName}/empEntList`
-      return http.post().then(res => {
+      return http.get().then(res => {
         storage.setSession('entList', res.data)
         return res
       })

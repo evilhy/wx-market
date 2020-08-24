@@ -12,7 +12,7 @@ class Wallet {
     let http = new Http()
     http.path = `/${moduleName}/empCardAdnBalance`
     http.loading = false
-    return http.post()
+    return http.get()
   }
 }
 

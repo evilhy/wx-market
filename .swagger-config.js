@@ -72,13 +72,13 @@ module.exports = {
         post: null
       },
       '/wisales/countWelfareEmpTicket': {
-        post: cardCount
+        get: cardCount
       },
       '/inside/empEntList': {
-        post: empEntList
+        get: empEntList
       },
       '/wallet/empCardAdnBalance': {
-        post: balance
+        get: balance
       },
       '/password/queryHandPassword': {
         get: queryHandPassword
