@@ -136,5 +136,6 @@ export default {
   oilCard: '01002007', // 油卡
   queryCodeTip: '请不要将查询密码设置为生日、连续/重复数字',
   handLockTip: '手势密码请至少设置4个不重复的连接点',
-  handLockUnEnoughTip: '请设置至少4个连接点'
+  handLockUnEnoughTip: '请设置至少4个连接点',
+  defaultTheme: 'black'
 }

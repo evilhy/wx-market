@@ -15,10 +15,11 @@
 
 <script>
 import helper from 'utils/helper'
+import sysConfig from 'utils/constant'
 export default {
   data () {
     return {
-      currentTheme: helper.getUserInfo('theme', 'black'),
+      currentTheme: helper.getUserInfo('theme', sysConfig.defaultTheme),
       themeList: [
         {
           name: 'black',

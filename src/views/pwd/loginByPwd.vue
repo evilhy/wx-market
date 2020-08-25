@@ -59,7 +59,7 @@ export default {
       helper.saveFreePassword(this.passwordType)
       let { nextPage, wageSheetId } = this.$route.query
       if (nextPage === 'wageIndex') {
-        this.$router.replace({ name: nextPage, params: wageSheetId })
+        this.$router.replace({ name: nextPage, params: { wageSheetId } })
       } else {
         if (nextPage === 'home') {
           // 显示银行卡余额

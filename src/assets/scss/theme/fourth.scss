@@ -2,8 +2,8 @@
 
 #app.fourth{
   $theme-name: fourth !default;
-  $theme-active-color: blue !default;
-  $theme-bg-color: blue !default;
+  $theme-active-color: #F4415F !default;
+  $theme-bg-color: #F4415F !default;
   // 钱包区域
   .wallet-wrap{
     background-image: linear-gradient(-180deg, #FFFFFF 0%, #FFCBD6 99%);

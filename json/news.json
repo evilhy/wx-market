@@ -1,0 +1,62 @@
+{
+  "pageNum" : 1,
+  "pageSize" : 10,
+  "totalElements" : 0,
+  "totalPages" : 0,
+  "last" : true,
+  "first" : true,
+  "content" : [
+    {
+      "newsId": "newsId001",
+      "newsTitle": "牛市来袭，您的资金该如何分配？",
+      "newsContent": "最近股市表现强劲，下手早的已经赚得盆满钵满您还在为理财的0点几的收益左右为难吗？是稳稳的幸福最近股市表现强劲，下手早的已经赚得盆满钵满您还在为理财的0点几的收益左右为难吗？是稳稳的幸福",
+      "newsType": 5,
+      "newsTypeDesc": "最新资讯",
+      "readFlag": false,
+      "crtDateTime": 1598322740649,
+      "detailId": "detailId001"
+    },
+    {
+      "newsId": "newsId002",
+      "newsTitle": "最新资讯",
+      "newsContent": "最近股市表现强劲",
+      "newsType": 5,
+      "newsTypeDesc": "最新资讯",
+      "readFlag": true,
+      "crtDateTime": 1598362740649,
+      "detailId": "detailId002"
+    },
+    {
+      "newsId": "newsId003",
+      "newsTitle": "",
+      "newsContent": "<div class='row'><span class='label'>收款账户：</span><span class='value'>华夏银行</span></div><div class='row'><span class='label'>方案名称：</span><span class='value'>开科唯开科唯一识别4月份工资一识别4月份工资</span></div><div class='row'><span class='label'>资金月份：</span><span class='value'>4月</span></div><div class='row'><span class='label'>资金类型：</span><span class='value'>工资</span></div><div class='row'><span class='label'>实发金额：</span><span class='value'>8993.00</span></div>",
+      "newsType": 6,
+      "newsTypeDesc": "资金动态",
+      "readFlag": true,
+      "crtDateTime": 1598362740649,
+      "detailId": "detailId003"
+    },
+    {
+      "newsId": "newsId004",
+      "newsTitle": "",
+      "newsContent": "<div class='row'><span class='label'>原银行卡</span><span class='value'>华夏银行</span></div><div class='row'> <span class='label'>新银行卡</span><span class='value'>开科唯开科唯一识别4月份工资一识别4月份工资</span></div><div class='row'><span class='label'>审批人</span><span class='value'>4月</span></div><div class='row'><span class='label'>审批结果</span><span class='value'>工资</span></div>",
+      "newsType": 7,
+      "newsTypeDesc": "审核动态",
+      "readFlag": false,
+      "crtDateTime": 1596362750649,
+      "detailId": "detailId004|detailId00400"
+    },
+    {
+      "newsId": "newsId005",
+      "newsTitle": "您有3位同事报名了能量满满邀约有礼活动您有3位同事报名了能量满满邀约有礼活动",
+      "newsContent": "要不要一起来试试？",
+      "activityName": "能量满满邀约有礼能量满满邀约有礼",
+      "newsType": 8,
+      "newsTypeDesc": "活动通知",
+      "readFlag": false,
+      "crtDateTime": 1538362740649,
+      "detailId": "detailId005"
+    }
+  ],
+  "rankNo" : 0
+}

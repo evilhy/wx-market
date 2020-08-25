@@ -71,7 +71,7 @@ export default {
     },
     toHistory () {
       let ids = collect.getValueList(this.currentBank.bankCardGroups, 'id')
-      storage.setSession('ids', ids)
+      storage.setSession('ids', ids.join('|'))
       this.$router.push({ name: 'bankcardHistory' })
     }
   }

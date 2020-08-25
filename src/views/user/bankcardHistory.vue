@@ -15,7 +15,7 @@ export default {
   data () {
     return {
       list: [],
-      ids: storage.getSession('ids', []),
+      ids: storage.getSession('ids', ''),
       requested: false
     }
   },

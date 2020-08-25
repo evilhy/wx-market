@@ -24,7 +24,7 @@
       <span class="img-wrap"><img src="../../assets/img/zx/zx-icon-address.png" alt=""></span>
       <span class="label">地址管理</span>
     </div>
-    <div class="item">
+    <div class="item" @click="toPage('notice',  { type: 5, entry: 'news' })">
       <span class="img-wrap"><img src="../../assets/img/zx/zx-icon-news.png" alt=""></span>
       <span class="label">最新资讯</span>
     </div>

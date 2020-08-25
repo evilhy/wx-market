@@ -619,9 +619,6 @@ export default new Router({
     {
       path: '/notice',
       name: 'notice',
-      meta: {
-        title: '消息通知'
-      },
       component: resolve => {
         require(['../views/notice/index.vue'], resolve)
       }

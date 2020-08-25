@@ -6,7 +6,7 @@
     <!-- 轮播图 -->
     <home-banner></home-banner>
     <!-- 通知栏 没有通知的时候margin-left变小-->
-    <home-notice></home-notice>
+    <home-notice ref="notice" @to-page="toPage"></home-notice>
     <!-- 普通版菜单入口 -->
     <template v-if="apppartner === 'FXGJ'">
       <!-- 钱包 -->
@@ -47,7 +47,7 @@
           <span class="img-wrap"><img src="../../assets/img/icon-home-invest.png" alt=""></span>
           <span class="label">证券投资</span>
         </div>
-        <div class="item">
+        <div class="item" @click="toNews">
           <span class="img-wrap"><img src="../../assets/img/icon-home-news.png" alt=""></span>
           <span class="label">最新资讯</span>
         </div>
@@ -60,7 +60,7 @@
       <home-game-link></home-game-link>
     </template>
     <!-- 振兴银行菜单入口 -->
-    <home-zx-menu ref="zx-menu" v-if="apppartner === 'NEWUP'" @enter-payroll="enterPayroll"></home-zx-menu>
+    <home-zx-menu ref="zx-menu" v-if="apppartner === 'NEWUP' || apppartner === 'SJZHRB'" @enter-payroll="enterPayroll"></home-zx-menu>
     <!-- 底部logo -->
     <div class="bottom-logo"><img :class="logo.className" :src="logo.src" alt=""></div>
     <!-- // 后期去掉 -->
@@ -135,10 +135,10 @@ export default {
       })
     },
     getDataByEnt () {
-      console.log(this.currentEntId)
       helper.saveUserInfo({ entId: this.currentEntId })
+      // 获取企业下的消息
+      this.$refs['notice'].getNotice()
       if (this.apppartner === 'FXGJ') {
-        // 消息是否与企业相关 待确定todo
         // 获取企业下的钱包数据
         this.$refs['wallet'].getWalletData()
         // 微店上线之后需要去掉
@@ -174,6 +174,10 @@ export default {
         url = wxapi.getWxUrl(this.appId, url)
       }
       window.location.href = url
+    },
+    toNews () {
+      helper.saveNoticeInfo(5, 'news')
+      this.toPage('notice')
     },
     toBankSite () {
       window.location.href = sysConfig.bankSiteUrl

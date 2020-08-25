@@ -152,10 +152,19 @@ const helper = {
     return this.getBalanceStatus() && this.checkFreeLogin()
   },
   setTheme (themeId) {
+    if (!themeId) {
+      themeId = sysConfig.defaultTheme
+    }
     let app = document.querySelector('#app')
     if (app) {
       app.className = themeId
     }
+  },
+  saveNoticeInfo (type, entry) {
+    storage.setSession('noticeInfo', { type, entry })
+  },
+  getNoticeInfo () {
+    return storage.getSession('noticeInfo', {})
   },
   exit() {
     if (window.WeixinJSBridge) {

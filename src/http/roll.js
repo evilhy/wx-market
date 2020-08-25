@@ -136,14 +136,14 @@ class Roll {
   /**
    * 查询银行卡修改记录
    *
-   * @param {Array} [ids=[]]
+   * @param {String}
    * @returns
    * @memberof Roll
    */
-  empCardLog (ids = []) {
+  empCardLog (ids = '') {
     let http = new Http()
     http.path = `/${moduleName}/empCardLog`
-    http.query = { ids: ids.join('|') }
+    http.query = { ids }
     return http.get()
   }
   /**

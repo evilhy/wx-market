@@ -2,8 +2,8 @@
 
 #app.newyear{
   $theme-name: newyear !default;
-  $theme-active-color: yellow !default;
-  $theme-bg-color: yellow !default;
+  $theme-active-color: #F4415F !default;
+  $theme-bg-color: #F4415F !default;
   .wallet-wrap{
     background-image: linear-gradient(-180deg, #FFFFFF 0%, #FFCBD6 99%);
     .wallet-content{
