@@ -251,12 +251,9 @@
   }
 }
 .bankcard-list-page {
-  padding-top: 90px;
   min-height: 100%;
   background: white;
-  .bank-list {
-    padding: 30px 40px;
-  }
+  padding: 40px 0;
   .bank-item {
     width: 560px;
     height: 300px;
@@ -268,6 +265,9 @@
     &.todo {
       background: url('../img/user/bankcard-bg-todo.png') no-repeat;
       background-size: 100% 100%;
+    }
+    &:last-child{
+      margin-bottom: 0;
     }
     .bank-name {
       padding: 0 30px 0 105px;

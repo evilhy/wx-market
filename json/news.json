@@ -3,7 +3,7 @@
   "pageSize" : 10,
   "totalElements" : 0,
   "totalPages" : 0,
-  "last" : true,
+  "last" : false,
   "first" : true,
   "content" : [
     {
