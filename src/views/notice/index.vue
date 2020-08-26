@@ -7,19 +7,19 @@
         <van-pull-refresh v-else v-model="refreshing" @refresh="onRefresh">
           <van-list v-model="data[currentTab].loading" :finished="data[currentTab].finished"
             :finished-text="finishedText" @load="getList">
-            <van-swipe-cell :before-close="({ instance }) => {beforeClose(instance, item.newsId)}" v-for="(item, index) in data[currentTab].list" :key="index" >
+            <van-swipe-cell v-for="(item, index) in data[currentTab].list" :key="index">
               <components :is="noticeItem" :item="item"></components>
               <template #right>
-                <van-button square type="danger" text="删除" />
+                <van-button square type="danger" text="删除" @click="beforeDelete(item.newsId)" />
               </template>
             </van-swipe-cell>
           </van-list>
         </van-pull-refresh>
       </van-tab>
     </van-tabs>
-    <div class="oper-wrap" v-if="data[currentTab].request">
+    <div class="oper-wrap" v-if="!noMsg">
       <div class="oper-item"><img src="../../assets/img/oper-hasred.png" alt="" @click="readAll">全部标记为已读</div>
-      <div class="oper-item red"><img src="../../assets/img/oper-delete.png" alt="" @click="beforeDeleteAll">清空全部消息
+      <div class="oper-item red"><img src="../../assets/img/oper-delete.png" alt="" @click="beforeDelete('')">清空全部消息
       </div>
     </div>
   </div>
@@ -118,10 +118,11 @@ export default {
   },
   created () {
     helper.title(this.entry === 'notice' ? '消息通知' : '最新资讯')
-    this.entry === 'notice' && this.getUnReadCount()
+    this.getUnReadCount()
   },
   methods: {
     async getUnReadCount () {
+      if (this.entry !== 'notice') return
       let res = await this.$News.statisticInfo()
       let data = res.data
       if (!Array.isArray(data)) return
@@ -154,53 +155,53 @@ export default {
         finished: false,
         request: false
       })
+      this.refreshing = true
       this.getList()
     },
     changeTab (name) {
       helper.saveNoticeInfo(name, this.entry)
     },
-    beforeClose (instance, newsId) {
-      console.log('newsId:', newsId)
+    beforeDelete (newsId = '') {
+      let msg = newsId ? '确定要删除此条消息吗' : '确定要清空全部消息吗'
+      let confirmBtnText = newsId ? '确定删除' : '确定清空'
       Dialog.confirm({
         title: '系统提醒',
-        message: '确定要删除此条消息吗',
-        confirmButtonText: '确定删除',
+        message: msg,
+        confirmButtonText: confirmBtnText,
         cancelButtonText: '我再想想'
       }).then(() => {
-        instance.close()
-        this.deleteNotice()
-      }).catch(() => {
-        instance.close()
-      })
-    },
-    async deleteNotice () {
-      console.log('删除消息')
-    },
-    readAll () {
-      if (this.noMsg) return false
-    },
-    beforeDeleteAll () {
-      if (this.noMsg) return false
-      Dialog.confirm({
-        title: '系统提醒',
-        message: '确定要清空全部消息吗',
-        confirmButtonText: '确定清空',
-        cancelButtonText: '我再想想'
-      }).then(() => {
-        this.deleteAllNotice()
+        this.deleteNotice(newsId)
       }).catch(() => { })
     },
-    deleteAllNotice () {
-      console.log('全部清除')
-      Object.keys(this.data).forEach((key) => {
-        this.$set(this.data, key, {
-          list: [],
-          page: 1,
-          loading: false,
-          finished: true,
-          request: true
+    async deleteNotice (newsId = '') {
+      await this.$News.operate(1, newsId)
+      helper.toast('操作成功')
+      if (newsId) { // 删除单个
+        this.getUnReadCount()
+        this.onRefresh()
+      } else { // 删除全部
+        this.clearUnReadCount()
+        Object.keys(this.data).forEach((key) => {
+          this.$set(this.data, Number(key), {
+            list: [],
+            page: 1,
+            loading: false,
+            finished: true,
+            request: true
+          })
         })
-      })
+      }
+    },
+    async readAll () {
+      await this.$News.operate(0)
+      helper.toast('操作成功')
+      this.clearUnReadCount()
+      for (let key in this.data) {
+        this.data[key].list.forEach((item) => { item.readFlag = true })
+      }
+    },
+    clearUnReadCount () {
+      this.tabList.forEach((item) => { item.count = 0 })
     }
   },
   components: {

@@ -33,6 +33,7 @@
       "newsType": 6,
       "newsTypeDesc": "资金动态",
       "readFlag": true,
+      "groupId": "groupId2020",
       "crtDateTime": 1598362740649,
       "detailId": "detailId003"
     },

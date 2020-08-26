@@ -11,7 +11,7 @@ class News {
   bulletInfo () {
     let http = new Http()
     http.path = `/${moduleName}/bulletInfo`
-    return http.post()
+    return http.get()
   }
   /**
    * 每类消息未读个数
@@ -22,8 +22,7 @@ class News {
   statisticInfo () {
     let http = new Http()
     http.path = `/${moduleName}/statisticInfo`
-    http.loading = false
-    return http.post()
+    return http.get()
   }
   /**
    * 
@@ -36,8 +35,7 @@ class News {
     let http = new Http()
     http.path = `/${moduleName}`
     http.headers = { 'page-num': page, limit: 20 }
-    console.log('newsType:', newsType)
-    http.body = { newsType }
+    http.body = { newsType: Number(newsType) }
     http.loading = false
     return http.post()
   }
@@ -52,7 +50,6 @@ class News {
     let http = new Http()
     http.path = `/${moduleName}/operate`
     http.body = { operateType, newsId }
-    console.log('http.body:', http.body)
     return http.post()
   }
 }

@@ -31,11 +31,12 @@ export default {
   methods: {
     enterPayroll () {
       if (helper.getUserInfo('ifPwd', 0)) { // 有密码
-        let wageSheetId = this.item.detailId
+        let { detailId = '', groupId = '' } = this.item
+        helper.saveUserInfo({ groupId })
         if (helper.checkFreeLogin()) { // 近期输入过密码
-          this.$router.push({ name: 'wageIndex', params: { wageSheetId } })
+          this.$router.push({ name: 'wageIndex', params: { wageSheetId: detailId } })
         } else {
-          this.$router.push({ name: 'loginByPwd', query: { nextPage: 'wageIndex', wageSheetId } })
+          this.$router.push({ name: 'loginByPwd', query: { nextPage: 'wageIndex', wageSheetId: detailId } })
         }
       } else { // 设置查询密码
         this.$router.push({ name: 'setQueryCode' })

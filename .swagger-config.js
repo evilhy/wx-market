@@ -78,10 +78,10 @@ module.exports = {
         post: news
       },
       '/news/statisticInfo': {
-        post: statisticInfo
+        get: statisticInfo
       },
       '/news/bulletInfo': {
-        post: bulletInfo
+        get: bulletInfo
       },
       '/inside/theme': {
         post: null
