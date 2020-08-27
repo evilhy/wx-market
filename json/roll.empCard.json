@@ -1,73 +1,52 @@
-{
-  "shortEntName": "北京开科",
-  "entName": "北京开科唯识技术有限公司",
-  "salt": "cXdlam9pZmdqa2xkZmtnbw==",
-  "passwd": "ZGZna2xqMjEzcms0bDNvNDBpZmdmZGxtZzI0a21kZmc=",
-  "items": [
-    {
-      "employeeId": "string",
-      "employeeName": "string",
-      "idNumberStar": "string",
-      "phoneStar": "string",
-      "position": "string",
-      "inServiceStatus": "string",
-      "employeeNo": "string",
-      "groupName": "string",
-      "entryDate": 0,
-      "bankCardList": [
-        {
-          "bankName": "string",
-          "bankCard": "string"
-        }
-      ]
-    }
-  ],
-  "cards": [
-    {
-      "cardNo": "8YtUzZYFwCx+Ujuu2iImPCPLBbOSbOeD",
-      "issuerName": "华夏银行",
-      "isNew": 0,
-      "cardUpdStatus": 0,
-      "bankCardGroups": [
-        {
-          "id": "id001",
-          "groupId": "groupId001",
-          "groupName": "云服务中心",
-          "shortGroupName": "云中心"
-        }
-      ]
-    },
-    {
-      "cardNo": "8YtUzZYFwCx+Ujuu2iImPCPLBbOSbOeD",
-      "issuerName": "建设银行",
-      "isNew": 1,
-      "cardUpdStatus": 1,
-      "bankCardGroups": [
-        {
-          "id": "id002",
-          "groupId": "groupId002",
-          "groupName": "云中心",
-          "shortGroupName": "云中心"
-        },
-        {
-          "id": "id003",
-          "groupId": "groupId003",
-          "groupName": "互联网金融中心",
-          "shortGroupName": "互金中心"
-        },
-        {
-          "id": "id003",
-          "groupId": "groupId003",
-          "groupName": "互联网金融中心",
-          "shortGroupName": "互金中心"
-        },
-        {
-          "id": "id003",
-          "groupId": "groupId003",
-          "groupName": "互联网金融中心",
-          "shortGroupName": "互金中心"
-        }
-      ]
-    }
-  ]
-}
+[
+  {
+    "cardNo": "8YtUzZYFwCx+Ujuu2iImPCPLBbOSbOeD",
+    "issuerName": "华夏银行",
+    "isNew": 0,
+    "cardUpdStatus": 0,
+    "salt": "cXdlam9pZmdqa2xkZmtnbw==",
+    "passwd": "ZGZna2xqMjEzcms0bDNvNDBpZmdmZGxtZzI0a21kZmc=",
+    "bankCardGroups": [
+      {
+        "id": "id001",
+        "groupId": "groupId001",
+        "groupName": "云服务中心",
+        "shortGroupName": "云中心"
+      }
+    ]
+  },
+  {
+    "cardNo": "8YtUzZYFwCx+Ujuu2iImPCPLBbOSbOeD",
+    "issuerName": "建设银行",
+    "isNew": 1,
+    "cardUpdStatus": 1,
+    "salt": "cXdlam9pZmdqa2xkZmtnbw==",
+    "passwd": "ZGZna2xqMjEzcms0bDNvNDBpZmdmZGxtZzI0a21kZmc=",
+    "bankCardGroups": [
+      {
+        "id": "id002",
+        "groupId": "groupId002",
+        "groupName": "云中心",
+        "shortGroupName": "云中心"
+      },
+      {
+        "id": "id003",
+        "groupId": "groupId003",
+        "groupName": "互联网金融中心",
+        "shortGroupName": "互金中心"
+      },
+      {
+        "id": "id003",
+        "groupId": "groupId003",
+        "groupName": "互联网金融中心",
+        "shortGroupName": "互金中心"
+      },
+      {
+        "id": "id003",
+        "groupId": "groupId003",
+        "groupName": "互联网金融中心",
+        "shortGroupName": "互金中心"
+      }
+    ]
+  }
+]

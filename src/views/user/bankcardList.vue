@@ -19,11 +19,7 @@ export default {
   methods: {
     async getBankList () {
       let res = await this.$Roll.empCard()
-      let { cards, passwd, salt } = res.data
-      let banks = cards.map((item) => {
-        return Object.assign({}, item, { passwd, salt })
-      })
-      this.banks = decryptInfo(banks, 'cardNo')
+      this.banks = decryptInfo(res.data, 'cardNo')
     }
   },
   components: {
