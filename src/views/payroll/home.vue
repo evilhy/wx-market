@@ -60,7 +60,7 @@
       <home-game-link></home-game-link>
     </template>
     <!-- 振兴银行菜单入口 -->
-    <home-zx-menu ref="zx-menu" v-if="apppartner === 'NEWUP' || apppartner === 'SJZHRB'" @enter-payroll="enterPayroll"></home-zx-menu>
+    <home-zx-menu ref="zx-menu" v-if="apppartner === 'NEWUP' || apppartner === 'SJZHRB'" @enter-payroll="enterPayroll" @to-news="toNews"></home-zx-menu>
     <!-- 底部logo -->
     <div class="bottom-logo"><img :class="logo.className" :src="logo.src" alt=""></div>
     <!-- // 后期去掉 -->
