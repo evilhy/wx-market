@@ -92,7 +92,7 @@ module.exports = {
       '/inside/empEntList': {
         get: empEntList
       },
-      '/wallet/empCardAdnBalance': {
+      '/wallet/empCardAndBalance': {
         get: balance
       },
       '/password/queryHandPassword': {

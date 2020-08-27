@@ -10,7 +10,7 @@ class Wallet {
    */
   getBalance () {
     let http = new Http()
-    http.path = `/${moduleName}/empCardAdnBalance`
+    http.path = `/${moduleName}/empCardAndBalance`
     http.loading = false
     return http.get()
   }
