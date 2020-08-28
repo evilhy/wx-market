@@ -12,15 +12,13 @@
       <div class="title">{{item.newsTitle}}</div>
       <div class="detail van-multi-ellipsis--l2" v-html="item.newsContent"></div>
     </div>
-    <div class="footer" @click="$refs['fxgj-mini-program-popup'].open()">查看活动详情
+    <div class="footer" @click="toDetail">查看活动详情
       <van-icon name="arrow" />
     </div>
-    <fxgj-mini-program-popup ref="fxgj-mini-program-popup"></fxgj-mini-program-popup>
   </div>
 </template>
 
 <script>
-import fxgjMiniProgramPopup from 'components/fxgjMiniProgramPopup'
 export default {
   props: {
     item: {
@@ -34,9 +32,10 @@ export default {
     return {}
   },
   created () { },
-  methods: {},
-  components: {
-    fxgjMiniProgramPopup
+  methods: {
+    toDetail () {
+      this.$emit('to-detail')
+    }
   }
 }
 </script>

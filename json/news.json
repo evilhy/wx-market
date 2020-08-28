@@ -57,6 +57,17 @@
       "readFlag": false,
       "crtDateTime": 1538362740649,
       "detailId": "detailId005"
+    },
+    {
+      "newsId": "newsId006",
+      "newsTitle": "您有6位同事报名了能量满满邀约有礼活动您有3位同事报名了能量满满邀约有礼活动",
+      "newsContent": "要不要一起来试试？",
+      "activityName": "能量满满邀约有礼能量满满邀约有礼",
+      "newsType": 8,
+      "newsTypeDesc": "活动通知",
+      "readFlag": true,
+      "crtDateTime": 1538362740649,
+      "detailId": "detailId005"
     }
   ],
   "rankNo" : 0

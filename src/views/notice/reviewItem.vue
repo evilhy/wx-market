@@ -33,6 +33,7 @@ export default {
   methods: {
     toDetail () {
       storage.setSession('ids', this.item.detailId)
+      this.$emit('to-detail')
       this.$router.push({ name: 'bankcardHistory' })
     }
   },

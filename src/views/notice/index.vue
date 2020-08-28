@@ -8,7 +8,7 @@
           <van-list v-model="data[currentTab].loading" :finished="data[currentTab].finished"
             :finished-text="finishedText" @load="getList">
             <van-swipe-cell v-for="(item, index) in data[currentTab].list" :key="index">
-              <components :is="noticeItem" :item="item"></components>
+              <components :is="noticeItem" :item="item" @to-detail="updateRead(item)"></components>
               <template #right>
                 <van-button square type="danger" text="删除" @click="beforeDelete(item.newsId)" />
               </template>
@@ -22,6 +22,7 @@
       <div class="oper-item red"><img src="../../assets/img/oper-delete.png" alt="" @click="beforeDelete('')">清空全部消息
       </div>
     </div>
+    <fxgj-mini-program-popup ref="fxgj-mini-program-popup"></fxgj-mini-program-popup>
   </div>
 </template>
 
@@ -31,6 +32,7 @@ import reviewItem from './reviewItem'
 import newsItem from './newsItem'
 import activityItem from './activityItem'
 import noData from 'components/noData/index'
+import fxgjMiniProgramPopup from 'components/fxgjMiniProgramPopup'
 import sysConfig from 'utils/constant'
 import helper from 'utils/helper'
 import collect from 'utils/collect'
@@ -202,10 +204,16 @@ export default {
     },
     clearUnReadCount () {
       this.tabList.forEach((item) => { item.count = 0 })
+    },
+    async updateRead ({ readFlag, newsId, newsType } = {}) {
+      newsType === 8 && this.$refs['fxgj-mini-program-popup'].open()
+      if (readFlag) return
+      this.$News.operate(0, newsId)
     }
   },
   components: {
     noData,
+    fxgjMiniProgramPopup,
     wageItem,
     reviewItem,
     newsItem,

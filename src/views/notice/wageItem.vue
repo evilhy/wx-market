@@ -38,6 +38,7 @@ export default {
         } else {
           this.$router.push({ name: 'loginByPwd', query: { nextPage: 'wageIndex', wageSheetId: detailId } })
         }
+        this.$emit('to-detail')
       } else { // 设置查询密码
         this.$router.push({ name: 'setQueryCode' })
       }
