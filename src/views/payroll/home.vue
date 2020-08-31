@@ -171,9 +171,9 @@ export default {
     },
     toOuterPage (type) {
       let url = sysConfig[type][process.env.NODE_ENV]
-      /* if (type === 'zQUrl') {
+      if (type === 'zQUrl') {
         url = wxapi.getWxUrl(this.appId, url)
-      } */
+      }
       window.location.href = url
     },
     toNews () {
