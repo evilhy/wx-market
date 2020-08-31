@@ -3,7 +3,7 @@
     <van-tabs v-model="currentTab" sticky @click="changeTab">
       <van-tab v-for="(item, index) in tabList" :key="index" :name="item.value">
         <template #title>{{item.label}}<span class="notice-count" v-if="item.count">{{item.count}}</span></template>
-        <no-data text="暂无消息" name="news" v-if="data[currentTab].request && data[currentTab].list.length < 1"></no-data>
+        <no-data text="暂无数据" name="news" v-if="data[currentTab].request && data[currentTab].list.length < 1"></no-data>
         <van-pull-refresh v-else v-model="refreshing" @refresh="onRefresh">
           <van-list v-model="data[currentTab].loading" :finished="data[currentTab].finished"
             :finished-text="finishedText" @load="getList">
