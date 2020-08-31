@@ -121,7 +121,8 @@ export default {
       let data = decryptInfo(res.data, 'entId', 'entName', 'shortEntName')
       this.entList = this.transEntList(data)
       if (this.entList.length) {
-        this.currentEntId = this.entList[0].value
+        let endId = helper.getUserInfo('entId', '')
+        this.currentEntId = endId || this.entList[0].value
         this.getDataByEnt()
       }
     },
