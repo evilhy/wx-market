@@ -42,6 +42,7 @@ class Password {
   crateNumericKeypad () {
     let http = new Http()
     http.path = `/${moduleName}/crateNumericKeypad`
+    http.loading = { parent: document.querySelector('.pwd-keyboard-popup'), type: 'bounce' }
     return http.get()
   }
   /**

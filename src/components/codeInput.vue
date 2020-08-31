@@ -47,9 +47,11 @@ export default {
       this.toggleWrapClass(val)
     }
   },
-  async mounted () {
-    await this.crateNumericKeypad()
+  created () {
     this.open()
+  },
+  async mounted () {
+    this.crateNumericKeypad()
     this.toggleWrapClass()
   },
   methods: {

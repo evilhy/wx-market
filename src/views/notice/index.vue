@@ -101,9 +101,14 @@ export default {
   computed: {
     noMsg () {
       let data = this.data
-      return Object.keys(data).every((key) => {
-        return data[key].request && !data[key].list.length
-      })
+      if (this.entry === 'notice') {
+        return Object.keys(data).every((key) => {
+          return data[key].request && !data[key].list.length
+        })
+      } else {
+        let news = this.data[5]
+        return news.request && !news.list.length
+      }
     },
     noticeItem () {
       switch (this.currentTab) {

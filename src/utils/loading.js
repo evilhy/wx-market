@@ -90,7 +90,8 @@ export default {
     if (_parent === document.body) {
       loadingRoot.style.position = 'fixed'
     } else {
-      _parent.style.position = 'relative'
+      let position = window.getComputedStyle(_parent, null)['position']
+      _parent.style.position = (position === 'absolute' || position === 'fixed') ? position : 'relative'
     }
     this._container = loadingRoot
     _parent.appendChild(loadingRoot)

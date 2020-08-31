@@ -151,6 +151,9 @@ export default {
 
 <style lang="scss" scope>
 .pwd-keyboard-popup {
+  &.has-logo{
+    height: 410px;
+  }
   .van-loading {
     position: absolute;
     left: 50%;
