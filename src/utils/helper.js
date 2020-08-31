@@ -12,13 +12,13 @@ const helper = {
     window.document.title = title
   },
   getUserInfo (infoKey = '', defaultValue = '') {
-    return storage.getSessionObj('userInfo', infoKey, defaultValue)
+    return storage.getSessionObj('payrollUserInfo', infoKey, defaultValue)
   },
   saveUserInfo (infoObj) {
-    storage.updateSessionObj('userInfo', infoObj)
+    storage.updateSessionObj('payrollUserInfo', infoObj)
   },
   clearUserInfo() {
-    storage.removeSession('userInfo')
+    storage.removeSession('payrollUserInfo')
   },
   getImgUrl(tailUrl = '', urlKey) {
     urlKey = Object.keys(sysConfig.img_base_url).includes(urlKey)
