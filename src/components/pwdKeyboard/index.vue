@@ -2,7 +2,7 @@
   <van-popup class="pwd-keyboard-popup" :class="{ 'has-logo': showLogo }" v-model="show" position="bottom"
     safe-area-inset-bottom close-on-popstate :overlay="overlay" :lock-scroll="false" v-clickoutside="clickoutside">
     <!-- 键盘图 -->
-    <van-loading color="#1989fa" />
+    <!-- <van-loading color="#1989fa" /> -->
     <img v-if="type === 'complete'" class="pwd-keyboard-img" :src="imgSrc[completeImgType]" alt="">
     <img v-else class="pwd-keyboard-img" :src="imgSrc" alt="">
     <template v-if="showLogo">
