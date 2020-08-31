@@ -1,5 +1,6 @@
 <template>
   <div class="get-id-page">
+    <img src="../../assets/img/logo.png" alt="">
   </div>
 </template>
 
