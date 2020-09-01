@@ -5,7 +5,7 @@
     </home-ent-list>
     <!-- 轮播图 -->
     <home-banner></home-banner>
-    <!-- 通知栏 没有通知的时候margin-left变小-->
+    <!-- 通知栏 -->
     <home-notice ref="notice" @to-page="toPage"></home-notice>
     <!-- 普通版菜单入口 -->
     <template v-if="apppartner === 'FXGJ'">
@@ -82,8 +82,8 @@ import homeManagerDialog from './homeManagerDialog'
 import helper from 'utils/helper'
 import decryptInfo from 'utils/decryptInfo'
 import sysConfig from 'utils/constant'
-import Wxapi from 'utils/wxapi'
-const wxapi = new Wxapi()
+/* import Wxapi from 'utils/wxapi'
+const wxapi = new Wxapi() */
 export default {
   data () {
     return {

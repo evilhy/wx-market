@@ -8,14 +8,17 @@
 import helper from 'utils/helper'
 import { getPageQueryObject } from 'utils/assist'
 import decryptInfo from 'utils/decryptInfo'
+import loading from 'utils/loading'
 export default {
   data () {
     return {
-      query: {}
+      query: {},
+      loadingHash: null
     }
   },
   computed: {},
   created () {
+    this.loadingHash = loading.show({ type: 'bounce' })
     helper.clearSession()
     this.query = getPageQueryObject()
     this.getJsessionId()
@@ -62,7 +65,8 @@ export default {
       }
     }
   },
-  components: {
+  beforeDestroy () {
+    this.loadingHash && loading.hide(this.loadingHash)
   }
 }
 </script>

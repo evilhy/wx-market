@@ -10,6 +10,7 @@ class Wechat {
     let http = new Http()
     http.path = `/wechat/wxCallback`
     http.body = { code, appPartner }
+    http.loading = false
     return http.post()
   }
   /**
