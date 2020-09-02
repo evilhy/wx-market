@@ -18,7 +18,6 @@ export default {
     }
   },
   created () {
-    this.getBannerList()
   },
   methods: {
     async getBannerList () {

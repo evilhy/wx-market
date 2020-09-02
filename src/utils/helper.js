@@ -83,10 +83,12 @@ const helper = {
     return storage.getSessionObj('shareInfo', infoKey, defaultValue)
   },
   saveBannerList (list = []) {
-    storage.setSession('bannerList', list)
+    let entId = this.getUserInfo('entId')
+    storage.setSession(`${entId}-bannerList`, list)
   },
   getBannerList (defaultValue = []) {
-    return storage.getSession('bannerList', defaultValue)
+    let entId = this.getUserInfo('entId')
+    return storage.getSession(`${entId}-bannerList`, defaultValue)
   },
   clearBannerList () {
     storage.removeSession('bannerList')

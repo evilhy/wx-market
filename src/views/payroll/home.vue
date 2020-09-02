@@ -4,7 +4,7 @@
     <home-ent-list v-if="entList.length > 1" v-model="currentEntId" :ent-list="entList" @change="getDataByEnt">
     </home-ent-list>
     <!-- 轮播图 -->
-    <home-banner></home-banner>
+    <home-banner ref="banner"></home-banner>
     <!-- 通知栏 -->
     <home-notice ref="notice" @to-page="toPage"></home-notice>
     <!-- 普通版菜单入口 -->
@@ -82,6 +82,7 @@ import homeManagerDialog from './homeManagerDialog'
 import helper from 'utils/helper'
 import decryptInfo from 'utils/decryptInfo'
 import sysConfig from 'utils/constant'
+import url from 'utils/url'
 /* import Wxapi from 'utils/wxapi'
 const wxapi = new Wxapi() */
 export default {
@@ -137,6 +138,8 @@ export default {
     },
     getDataByEnt () {
       helper.saveUserInfo({ entId: this.currentEntId })
+      // 获取企业下的轮播图
+      this.$refs['banner'].getBannerList()
       // 获取企业下的消息
       this.$refs['notice'].getNotice()
       if (this.apppartner === 'FXGJ') {
@@ -170,11 +173,14 @@ export default {
       this.$router.push({ name: routerName, query: query })
     },
     toOuterPage (type) {
-      let url = sysConfig[type][process.env.NODE_ENV]
+      let path = sysConfig[type][process.env.NODE_ENV]
       /* if (type === 'zQUrl') {
         url = wxapi.getWxUrl(this.appId, url)
       } */
-      window.location.href = url
+      if (type === 'nobleMetalUrl') { // 贵金属
+        path = url.buildUrl(path, { jsessionId: helper.getUserInfo('jsessionId') })
+      }
+      window.location.href = path
     },
     toNews () {
       helper.saveNoticeInfo(5, 'news')
