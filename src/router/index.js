@@ -667,6 +667,13 @@ export default new Router({
       component: resolve => {
         require(['../views/virus/promise.vue'], resolve)
       }
+    },
+    {
+      path: '/zx-test', // 振兴银行测试
+      name: 'zxTest',
+      component: resolve => {
+        require(['../views/public/zxTest.vue'], resolve)
+      }
     }
   ],
   scrollBehavior(to, from, savedPosition) {
