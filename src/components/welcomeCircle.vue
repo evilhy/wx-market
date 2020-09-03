@@ -23,7 +23,9 @@ export default {
       currentPercent: 5,
       percent: 0,
       timer: null,
-      timeout: null
+      timeout: null,
+      normalSpeed: 2,
+      fastSpeed: 10
     }
   },
   created () {
@@ -40,13 +42,18 @@ export default {
     async stopAnimation () {
       clearTimeout(this.timeout)
       return new Promise((resolve) => {
-        this.setAnimationInterval(10)
-        this.timeout = setTimeout(() => {
+        this.setAnimationInterval(this.fastSpeed)
+        let remainPercent = 100 - this.percent
+        if (remainPercent < 0) { // 到达100%
           resolve()
-        }, 900)
+        } else {
+          this.timeout = setTimeout(() => {
+            resolve()
+          }, Math.ceil(remainPercent / this.fastSpeed + 1) * 100)
+        }
       })
     },
-    setAnimationInterval (per = 2, targetPercent = 100) { // per: 每100毫秒的+进度百分比
+    setAnimationInterval (per = this.normalSpeed, targetPercent = 100) { // per: 每100毫秒的+进度百分比
       clearInterval(this.timer)
       this.percent += per
       this.timer = setInterval(() => {
