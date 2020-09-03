@@ -5,7 +5,7 @@
     <!-- 数字密码 -->
     <div class="content-wrap" v-if="passwordType === '0'">
       <div class="tip">请输入6位数密码</div>
-      <code-input ref="code-input" v-model="code" @complete="complete"></code-input>
+      <code-input ref="code-input" v-model="code" :need-check-repeat="false" @complete="complete"></code-input>
       <div class="forget-pwd-link"><span @click="toForget">忘记密码</span></div>
     </div>
     <!-- 手势密码 -->

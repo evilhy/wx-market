@@ -4,7 +4,7 @@
     <div class="content-wrap">
       <div class="big-title">验证查询密码</div>
       <div class="tip">输入原查询密码</div>
-      <code-input ref="code-input" v-model="code"></code-input>
+      <code-input ref="code-input" :need-check-repeat="false" v-model="code"></code-input>
       <button class="btn btn-next" :disabled="code.length !== 6" @click="sure">下一步</button>
     </div>
   </div>

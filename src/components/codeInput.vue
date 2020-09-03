@@ -23,6 +23,10 @@ export default {
       default () {
         return 6
       }
+    },
+    needCheckRepeat: {
+      type: Boolean,
+      default: true
     }
   },
   data () {
@@ -65,7 +69,7 @@ export default {
       if (this.currentValue.length === this.maxLength) return
       this.currentValue.push(value)
       if (this.currentValue.length === this.maxLength) {
-        if (this.checkRepeat()) {
+        if (this.needCheckRepeat && this.checkRepeat()) {
           this.currentValue = []
           helper.toast('请不要输入重复的数字密码')
         } else {

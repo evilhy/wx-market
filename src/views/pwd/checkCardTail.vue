@@ -4,7 +4,7 @@
     <div class="content-wrap">
       <div class="big-title">验证查询密码</div>
       <div class="tip">{{employeeName}}，您好！工资条首次查询密码默认为您银行卡的后6位数字。</div>
-      <code-input ref="code-input" v-model="code"></code-input>
+      <code-input ref="code-input" :need-check-repeat="false" v-model="code"></code-input>
       <button class="btn btn-next" :disabled="code.length !== 6" @click="sure">确认</button>
     </div>
   </div>
