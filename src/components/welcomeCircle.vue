@@ -43,7 +43,7 @@ export default {
         this.setAnimationInterval(10)
         this.timeout = setTimeout(() => {
           resolve()
-        }, 1000)
+        }, 900)
       })
     },
     setAnimationInterval (per = 2, targetPercent = 100) { // per: 每100毫秒的+进度百分比
