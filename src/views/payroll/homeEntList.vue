@@ -1,6 +1,6 @@
 <template>
   <div class="business-toggle">
-    <div class="logo"></div>
+    <img class="icon" src="../../assets/img/icon-home-business.png" alt="">
     <van-dropdown-menu>
       <van-dropdown-item v-model="currentValue" :options="entList" @change="change" />
     </van-dropdown-menu>
