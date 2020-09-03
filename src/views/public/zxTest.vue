@@ -79,13 +79,11 @@
 </template>
 
 <script>
-// import loading from 'components/loading'
-import HttpEngine from 'core/plugins/http/HttpEngine.dev.js'
 import sysConfig from 'src/utils/constant'
 import loading from 'utils/loading'
 import helper from 'utils/helper'
 import { typeOf } from 'utils/assist'
-
+let HttpEngine = (require(`core/plugins/http/HttpEngine.${process.env.NODE_ENV === 'development' ? 'dev' : 'prod'}`)).default
 export default {
   data() {
     return {
