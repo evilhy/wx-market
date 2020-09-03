@@ -2,7 +2,7 @@ import 'babel-polyfill'
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import { Lazyload, DropdownMenu, DropdownItem, NoticeBar, Swipe, SwipeItem, Image, Popup, Icon, AddressList, AddressEdit, ActionSheet, Cell, CellGroup, Field, Switch, Button, PasswordInput, List, Tab, Tabs, PullRefresh, SwipeCell, NumberKeyboard, NavBar, RadioGroup, Radio, Sticky, Calendar, Step, Steps, Form } from 'vant'
+import { Lazyload, DropdownMenu, DropdownItem, NoticeBar, Swipe, SwipeItem, Image, Popup, Icon, AddressList, AddressEdit, ActionSheet, Cell, CellGroup, Field, Switch, Button, PasswordInput, List, Tab, Tabs, PullRefresh, SwipeCell, NumberKeyboard, NavBar, RadioGroup, Radio, Sticky, Calendar, Step, Steps, Form, Circle } from 'vant'
 import myPlugin from './utils/plugin'
 
 import './assets/fonts/iconfont.css'
@@ -50,6 +50,7 @@ Vue.use(Calendar)
 Vue.use(Step)
 Vue.use(Steps)
 Vue.use(Form)
+Vue.use(Circle)
 
 Vue.use(myPlugin)
 Vue.use(VueClipboard)

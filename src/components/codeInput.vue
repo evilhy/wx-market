@@ -9,6 +9,7 @@
 
 <script>
 import pwdKeyboard from 'components/pwdKeyboard'
+import helper from 'utils/helper'
 export default {
   props: {
     value: {
@@ -64,8 +65,13 @@ export default {
       if (this.currentValue.length === this.maxLength) return
       this.currentValue.push(value)
       if (this.currentValue.length === this.maxLength) {
-        this.show = false
-        this.$emit('complete')
+        if (this.checkRepeat()) {
+          this.currentValue = []
+          helper.toast('请不要输入重复的数字密码')
+        } else {
+          this.show = false
+          this.$emit('complete')
+        }
       }
     },
     onDelete (value) {
@@ -74,6 +80,10 @@ export default {
     },
     open () {
       this.show = true
+    },
+    checkRepeat () {
+      let first = this.currentValue[0]
+      return !!this.currentValue.every(item => item === first)
     },
     toggleWrapClass (val = true) {
       let wrap = document.querySelector('.content-wrap')
