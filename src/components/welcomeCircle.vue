@@ -11,7 +11,7 @@ export default {
   props: {
     startDelay: { // 进度开始时间，毫秒
       type: Number,
-      default: 4000
+      default: 3000
     },
     auto: { // 是否自动开始
       type: Boolean,
