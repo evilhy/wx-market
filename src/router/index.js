@@ -2,6 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import getId from '../views/public/getId.vue'
 import token from '../views/public/token.vue'
+import home from '../views/payroll/home.vue' // 避免首页跳转过慢
+import loginByPwd from '../views/pwd/loginByPwd.vue'
 
 Vue.use(Router)
 
@@ -110,9 +112,7 @@ export default new Router({
       meta: {
         title: '放薪管家'
       },
-      component: resolve => {
-        require(['../views/payroll/home.vue'], resolve)
-      }
+      component: home
     },
     {
       path: '/check-query-code/:name', // 验证查询密码
@@ -130,9 +130,7 @@ export default new Router({
       meta: {
         title: '放薪管家'
       },
-      component: resolve => {
-        require(['../views/pwd/loginByPwd.vue'], resolve)
-      }
+      component: loginByPwd
     },
     {
       path: '/forget-send-code', // 忘记查询密码--发送验证码
