@@ -22,7 +22,6 @@ import userAvatar from 'components/userAvatar'
 import codeInput from 'components/codeInput'
 import handLock from 'components/handLock'
 import helper from 'utils/helper'
-import sysConfig from 'utils/constant'
 export default {
   data () {
     return {
@@ -53,7 +52,7 @@ export default {
       this.goNextPage()
     },
     notEnough () {
-      helper.toast(sysConfig.handLockUnEnoughTip)
+      // helper.toast(sysConfig.handLockUnEnoughTip)
     },
     goNextPage () {
       helper.saveFreePassword(this.passwordType)

@@ -82,8 +82,8 @@ export default {
         }
       }
     },
-    toPage (routeName) {
-      this.$emit('to-page', routeName)
+    toPage (name) {
+      this.$router.push({ name })
     }
   }
 }

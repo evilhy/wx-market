@@ -10,7 +10,7 @@
     <!-- 普通版菜单入口 -->
     <template v-if="apppartner === 'FXGJ'">
       <!-- 钱包 -->
-      <wallet ref="wallet" @to-page="toPage"></wallet>
+      <wallet ref="wallet"></wallet>
       <!-- 主要信息入口 -->
       <div class="link-wrap">
         <div class="item" @click="enterPayroll">

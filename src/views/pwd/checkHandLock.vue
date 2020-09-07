@@ -19,7 +19,7 @@ export default {
   created () { },
   methods: {
     notEnough (res) {
-      helper.toast(sysConfig.handLockUnEnoughTip)
+      // helper.toast(sysConfig.handLockUnEnoughTip)
     },
     async checkPassword (res) {
       await this.$Password.checkPassword(helper.getPasswordStr(res), '1')
