@@ -90,7 +90,15 @@ export default {
     return {
       entList: [],
       currentEntId: '',
-      managerInfo: { empName: '' },
+      managerInfo: {
+        ownBank: 0, // 0他行卡，1是本行卡
+        hasManager: 0, // 0没有客户经理，1有客户经理
+        empName: '',
+        managerName: '',
+        branchName: '',
+        officer: '',
+        managerPhone: ''
+      },
       isReadManager: helper.getIsReadManager(),
       isReadManagerCurrent: helper.getIsReadManagerCurrent(),
       appId: sysConfig.appId[process.env.NODE_ENV],
