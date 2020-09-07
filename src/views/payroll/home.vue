@@ -90,7 +90,7 @@ export default {
     return {
       entList: [],
       currentEntId: '',
-      managerInfo: {},
+      managerInfo: { empName: '' },
       isReadManager: helper.getIsReadManager(),
       isReadManagerCurrent: helper.getIsReadManagerCurrent(),
       appId: sysConfig.appId[process.env.NODE_ENV],

@@ -45,7 +45,12 @@
   import helper from 'utils/helper'
   export default {
     props: {
-      managerInfo: Object
+      managerInfo: Object,
+      default () {
+        return {
+          empName: ''
+        }
+      }
     },
     data () {
       return {
