@@ -185,7 +185,7 @@ export default {
       /* if (type === 'zQUrl') {
         url = wxapi.getWxUrl(this.appId, url)
       } */
-      if (type === 'nobleMetalUrl') { // 贵金属
+      if (type === 'nobleMetalUrl' || type === 'zQUrl') { // 贵金属/证券投资
         path = url.buildUrl(path, { jsessionId: helper.getUserInfo('jsessionId') })
       }
       window.location.href = path
