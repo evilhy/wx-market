@@ -46,7 +46,7 @@ export default {
   methods: {
     toPage() {
      // this.$router.push({name: 'taxInstructions'})
-      this.$router.push({name: 'home'})
+      this.$router.replace({ name: 'home' })
     }
   },
   components: {
