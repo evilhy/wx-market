@@ -2,8 +2,7 @@
  * Created by duy on 2018/6/22 17:16.
  */
 
-import _ from 'lodash';
-import Utils from './Utils';
+import Utils, { typeOf } from './Utils';
 
 const $printMethod = Symbol('printMethod');
 const $url = Symbol('$url');
@@ -27,22 +26,22 @@ export default class DebugEngine {
   [$status] = 0;
 
   set printMethod (value) {
-    if (!_.isString(value)) throw new TypeError('DebugEngine.printMethod 类型应为 String');
+    if (typeOf(value) !== 'string') throw new TypeError('DebugEngine.printMethod 类型应为 String');
     this[$printMethod] = value;
   }
 
   set url (value) {
-    if (!_.isString(value)) throw new TypeError('DebugEngine.url 类型应为 String');
+    if (typeOf(value) !== 'string') throw new TypeError('DebugEngine.url 类型应为 String');
     this[$url] = value;
   }
 
   set method (value) {
-    if (!_.isString(value)) throw new TypeError('DebugEngine.method 类型应为 String');
+    if (typeOf(value) !== 'string') throw new TypeError('DebugEngine.method 类型应为 String');
     this[$method] = value.toUpperCase();
   }
 
   set headers (value) {
-    if (!_.isObject(value)) throw new TypeError('DebugEngine.headers 类型应为 Object');
+    if (typeOf(value) !== 'object') throw new TypeError('DebugEngine.headers 类型应为 Object');
     this[$headers] = value;
   }
 
@@ -73,13 +72,13 @@ export default class DebugEngine {
       {title: 'HTTP状态码', content: this[$status]},
       {title: '应答内容', content: this[$response]},
     ];
-    if (_.isString(this[$headers]['Content-Type'])) {
+    if (typeOf(this[$headers]['Content-Type']) === 'string') {
       if (this[$headers]['Content-Type'].indexOf('application/x-www-form-urlencoded') >= 0 ||
         this[$headers]['Content-Type'].indexOf('multipart/form-data') >= 0) {
         collection.splice(4, 1, {title: 'FormData参数', content: this[$body]});
       }
     }
-    if (_.includes(['GET', 'DELETE'], this[$method])) {
+    if (['GET', 'DELETE'].includes(this[$method])) {
       collection.splice(4, 1);
     }
     return collection;

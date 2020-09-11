@@ -2,12 +2,12 @@
   <!-- 身份绑定-输入身份证 -->
   <div class="public-page page fill-id-card-page">
     <public-logo></public-logo>
-    <div class="content-wrap">
+    <div class="content-wrap" :class="{'show': show}">
       <div class="big-title">身份验证</div>
       <div class="field-wrap mt" @click="show = true">
         <img class="field-icon" src="../../assets/img/public/field-id-card.png" />
         <span class="id-card-span" :class="{placeholder: !idCard.length}">{{idCardShow}}</span>
-        <van-number-keyboard :show="show" extra-key="X" @blur="show = false" @input="onInput"
+        <van-number-keyboard safe-area-inset-bottom :show="show" extra-key="X" @blur="show = false" @input="onInput"
           @delete="onDelete" />
       </div>
       <button class="btn btn-next" :disabled="idCard.length < 6" @click="getPhone">下一步</button>

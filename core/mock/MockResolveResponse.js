@@ -2,7 +2,7 @@
  * Created by duy on 2018/8/17 10:26.
  */
 
-import _ from 'lodash';
+import { typeOf } from '../plugins/http/Utils';
 
 const $config = Symbol('$config');
 const $headers = Symbol('$headers');
@@ -42,7 +42,7 @@ export default class MockResolveResponse {
   }
 
   set data (value) {
-    if (!(_.isString(value) || _.isBoolean(value) || _.isNumber(value) || _.isObject(value) || _.isUndefined(value))) throw new TypeError('data类型错误');
+    if ((typeOf(value) !== 'string' && typeOf(value) !== 'boolean' && typeOf(value) !== 'number' && typeOf(value) !== 'object' && typeOf(value) !== 'array' && typeOf(value) !== 'undefined')) throw new TypeError('data类型错误');
     this[$data] = value;
   }
 }

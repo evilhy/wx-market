@@ -13,18 +13,24 @@ export default class HttpForApplication extends HttpEngine {
   requestedSever = false;
 
   beforeSendRequestHandler (config) {
-    let { jsessionId, apppartner } = helper.getUserInfo('', {})
+    let { jsessionId, apppartner, entId } = helper.getUserInfo('', {})
     config.headers = Object.assign(config.headers, {
       'jsession-id': jsessionId,
       'route-name': window.router.app._route.name,
-      'apppartner': apppartner
+      'apppartner': apppartner,
+      'ent-id': entId
     })
     // 加密签名处理
     this.dealEncrypt(config)
 
     if (config.loading) {
-      let loadingType = typeOf(config.loading) === 'boolean' ? 'square' : config.loading
-      this.loadingHash = loading.show({ type: loadingType })
+      let loadingConfig = {}
+      if (typeOf(config.loading) === 'object') {
+        loadingConfig = config.loading
+      } else {
+        loadingConfig = { type: typeOf(config.loading) === 'boolean' ? 'bounce' : config.loading }
+      }
+      this.loadingHash = loading.show(loadingConfig)
     }
   }
 

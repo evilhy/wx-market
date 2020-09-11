@@ -59,11 +59,57 @@ const welfareOrderTrack = require('./json/welfare.orderTrack.json')
 const barrageList = require('./json/barrageList.json')
 const wUserInfo = require('./json/wUserInfo.json')
 const openingTips = require('./json/manager.openingTips.json')
-const checkFreePassword = require('./json/roll.checkFreePassword.json')
+const crateNumericKeypad = require('./json/password.crateNumericKeypad.json')
+const queryHandPassword = require('./json/password.queryHandPassword.json')
+const balance = require('./json/wallet.balance.json')
+const empEntList = require('./json/inside.empEntList.json')
+const cardCount = require('./json/wisales.cardCount.json')
+const bulletInfo = require('./json/news.bulletInfo.json')
+const statisticInfo = require('./json/news.statisticInfo.json')
+const news = require('./json/news.json')
 module.exports = {
   openApi: [{
     baseURL: 'https://sitgateway.cardpu.com/payroll',
     paths: {
+      '/news/operate': {
+        post: null
+      },
+      '/news': {
+        post: news
+      },
+      '/news/statisticInfo': {
+        get: statisticInfo
+      },
+      '/news/bulletInfo': {
+        get: bulletInfo
+      },
+      '/inside/theme': {
+        post: null
+      },
+      '/wisales/countWelfareEmpTicket': {
+        get: cardCount
+      },
+      '/inside/empEntList': {
+        get: empEntList
+      },
+      '/wallet/empCardAndBalance': {
+        get: balance
+      },
+      '/password/queryHandPassword': {
+        get: queryHandPassword
+      },
+      '/password/checkPassword': {
+        post: null
+      },
+      '/password/savePassword': {
+        post: null
+      },
+      '/password/closeHandPassword': {
+        get: null
+      },
+      '/password/crateNumericKeypad': {
+        get: crateNumericKeypad
+      },
       '/wisales/welfareActivity/listByPayRoll': {
         get: wActivityList
       },
@@ -257,11 +303,7 @@ module.exports = {
       },
       '/manager/openingTips': {
         get: openingTips
-      },
-      '/roll/checkFreePassword': {
-        get: checkFreePassword
       }
-
     }
   },{
     baseURL: 'https://demowisdom.wisales.cn:8213/easy-life',

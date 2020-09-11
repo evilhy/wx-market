@@ -1,6 +1,5 @@
 <template>
   <div class="public-page send-code-page">
-    <public-logo></public-logo>
     <div class="content-wrap">
       <div class="big-title">身份绑定</div>
       <div class="tip">{{userInfo.employeeName}}，您好！欢迎使用放薪管家工资条。</div>

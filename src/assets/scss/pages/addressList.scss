@@ -1,7 +1,7 @@
 @charset "utf-8";
 .address-list-page{
   .van-address-list{
-    padding-bottom: 60px;
+    padding-bottom: 116px;
     @for $i from 0 through 100 {
       &.default-#{$i} { 
         .van-address-item{

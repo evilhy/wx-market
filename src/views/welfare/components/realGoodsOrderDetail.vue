@@ -2,7 +2,7 @@
   <div class="real-goods">
     <img class="img-status" :src="statusImgSrc" />
     <div class="receive-address">
-      <van-icon name="location-o" class="location" size="15px" />
+      <van-icon name="location-o" class="location"/>
       <div class="text">
         <p class="name">{{orderInfo.receiveName}}&nbsp;{{orderInfo.receivePhone}}</p>
         <p class="detail">

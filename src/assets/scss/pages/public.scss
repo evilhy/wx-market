@@ -3,18 +3,21 @@
   min-height: 100%;
   background: white;
   .logo-wrap{
-    height: 174px;
+    height: 140px;
     display: flex;
     align-items: center;
     justify-content: center;
     background: #fafafa;
     img{
-      width: 248px;
-      height: 80px;
+      width: 223px;
+      height: 72px;
     }
   }
   .content-wrap{
     padding: 40px;
+    &.show{
+      padding-bottom: 440px;
+    }
   }
   .big-title{
     display: flex;
@@ -28,8 +31,8 @@
   }
   .tip{
     margin-top: 16px;
-    margin-bottom: 50px;
-    color: #666;
+    margin-bottom: 46px;
+    color: $text-color-gray;
   }
   .mt{
     margin-top: 40px;
@@ -55,24 +58,24 @@
     }
   }
   .btn{
-    display: block;
-    height: 70px;
-    line-height: 70px;
-    text-align: center;
+    display: inline-flex;
+    height: 80px;
+    align-items: center;
+    justify-content: center;
     font-size: 28px;
-    background: $primary-color;
+    background: $theme-color;
     color: white;
-    border-radius: $radius-xs;
+    border-radius: $radius-s;
     &[disabled]{
       background: $border-color;
       color: #a5a5a5;
     }
   }
   .btn-next{
-    margin-top: 76px;
+    margin-top: 60px;
   }
   .vcode-btn{
-    width: 220px;
+    width: 260px;
     font-size: 26px;
   }
   .bottom-tip{
@@ -124,6 +127,7 @@
     }
     .group{
       flex: 1;
+      margin-right: 8px;
       @extend %text-overflow;
     }
     .phone{
@@ -155,16 +159,14 @@
     text-align: center;
   }
 }
-.check-code-page{
+.login-by-pwd-page{
   padding-top: 40px;
   text-align: center;
-  .big-title{
-    margin-bottom: 40px;
-    justify-content: center;
-    font-size: 26px;
-    .iconfont{
-      font-size: 40px;
-    }
+}
+.querycode-page{
+  .tip{
+    margin-top: 0;
+    margin-bottom: 30px;
   }
   .forget-pwd-link{
     display: flex;
@@ -172,16 +174,52 @@
     color: $theme-color;
     text-align: right;
     line-height: 4;
+    padding: 0 20px;
   }
 }
+.handlock-page{
+  padding-bottom: 60px;
+  .tip{
+    margin-top: 40px;
+    margin-bottom: 0;
+  }
+  .hand-lock-container{
+    top:-30px;
+  }
+  .link{
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 50px;
+    line-height: 50px;
+  }
+}
+
 .fill-id-card-page{
   .field-wrap{
     padding: 24px 0;
   }
   .id-card-span{
     padding: 0 10px;
+    min-height: 40px;
+    display: inline-flex;
+    align-items: center;
   }
   .placeholder{
     color: $text-color-gray;
+  }
+}
+.set-code-page,.modify-query-code-page{
+  .small-tip{
+    text-align: center;
+    color: $text-color-gray;
+    padding-top: 20px;
+  }
+}
+.fill-id-card-page{
+  .content-wrap{
+    &.show{
+      padding-bottom: 390px;
+    }
   }
 }

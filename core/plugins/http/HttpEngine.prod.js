@@ -3,7 +3,7 @@
  */
 
 import axios from 'axios';
-import _ from 'lodash';
+import { typeOf } from './Utils';
 
 const $baseURL = Symbol('$baseURL');
 const $headers = Symbol('$headers');
@@ -12,6 +12,7 @@ const $query = Symbol('$query');
 const $path = Symbol('$path');
 const $body = Symbol('$body');
 const $loading = Symbol('$loading');
+const $loadingTypes = Symbol('$loadingTypes');
 const $mockStatusCode = Symbol('$mockStatusCode');
 const $mockTimeout = Symbol('$mockTimeout');
 const createInstance = Symbol('createInstance');
@@ -35,6 +36,8 @@ export default class HttpEngine {
   [$body] = undefined;
 
   [$loading] = true;
+  
+  [$loadingTypes] = ['normal', 'bounce', 'loader', 'square'];
 
   [$mockStatusCode] = 200;
 
@@ -46,7 +49,7 @@ export default class HttpEngine {
    * @param value {String}
    * */
   set baseURL (value) {
-    if (!_.isString(value)) throw new TypeError('baseURL类型应为String');
+    if (typeOf(value) !== 'string') throw new TypeError('baseURL类型应为String');
     this[$baseURL] = value;
   }
 
@@ -54,15 +57,15 @@ export default class HttpEngine {
    * @param value {Object}
    * */
   set headers (value) {
-    if (!_.isObject(value)) throw new TypeError('headers类型应为Object');
-    _.assign(this[$headers], value);
+    if (typeOf(value) !== 'object') throw new TypeError('headers类型应为Object');
+    Object.assign(this[$headers], value);
   }
 
   /**
    * @param value {Number}
    * */
   set timeout (value) {
-    if (!_.isNumber(value)) throw new TypeError('timeout类型应为Number');
+    if (typeOf(value) !== 'number') throw new TypeError('timeout类型应为Number');
     this[$timeout] = value * 1000;
   }
 
@@ -70,25 +73,25 @@ export default class HttpEngine {
    * @param value {Object}
    * */
   set query (value) {
-    if (!_.isObject(value)) throw new TypeError('query类型应为Object');
-    this[$query] = _.mapValues(value, function (value) {
-      return _.isEqual(value, '') || _.isUndefined(value) ? undefined : value;
-    });
+    if (typeOf(value) !== 'object') throw new TypeError('query类型应为Object');
+    for (let [key, val] of Object.entries(value)) {
+      this[$query][key] = val === '' ? undefined : val
+    }
   }
 
   /**
    * @param value {String}
    * */
   set path (value) {
-    if (!_.isString(value)) throw new TypeError('path类型应为String');
+    if (typeOf(value) !== 'string') throw new TypeError('path类型应为String');
     this[$path] = value;
   }
 
   /**
-   * @param value {String|Number|Object}
+   * @param value {String|Number|Object|Array}
    * */
   set body (value) {
-    if (!(_.isString(value) || _.isNumber(value) || _.isObject(value))) throw new TypeError('body类型支持String、Number、Object');
+    if (typeOf(value) !== 'string' && typeOf(value) !== 'array' && typeOf(value) !== 'number' && typeOf(value) !== 'object') throw new TypeError('body类型支持String、Number、Object、Array');
     this[$body] = value;
   }
   /**
@@ -97,7 +100,10 @@ export default class HttpEngine {
    * @memberof HttpEngine
    */
   set loading (value) { 
-    if (!(_.isBoolean(value) || _.isString(value))) throw new TypeError('loading类型支持Boolean、String');
+    if (typeOf(value) !== 'boolean' && typeOf(value) !== 'string' && typeOf(value) !== 'object') throw new TypeError('loading类型应为Boolean、String、Object');
+    if (typeOf(value) === 'string' && !this[$loadingTypes].includes(value)) {
+      throw new TypeError(`loading类型为String时，应传入${this[$loadingTypes].join('、')}中的一种`);
+    }
     this[$loading] = value;
   }
   /**
@@ -120,7 +126,7 @@ export default class HttpEngine {
    * @param value {Boolean}
    * */
   set requestedSever (value) {
-    if (!_.isBoolean(value)) throw new TypeError('isRequestSever类型应为Boolean');
+    if (typeOf(value) !== 'boolean') throw new TypeError('isRequestSever类型应为Boolean');
     this[requestedSever] = value;
   }
 

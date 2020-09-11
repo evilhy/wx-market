@@ -57,7 +57,6 @@ export default {
     }
   },
   created () {
-    document.title('工资走势')
     this.getWageTrend(true)
   },
   methods: {

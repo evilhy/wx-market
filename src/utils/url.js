@@ -5,14 +5,17 @@ class Url {
    * 根据url地址和params查询参数构建url?key=value&key2=value2
    * @param {String} url url地址
    * @param {Object} params 查询参数
+   * @param {Boolean} subHash 是否截取#
    */
-  buildUrl(url = '', params = {}) {
-    if (url) throw new TypeError('url应为String类型')
-    if (params) throw new TypeError('params应为Object类型')
+  buildUrl(url = '', params = {}, subHash = false) {
+    if (typeOf(url) !== 'string') throw new TypeError('url应为String类型')
+    if (typeOf(params) !== 'object') throw new TypeError('params应为Object类型')
     if (!params) return this.subHash(url)
 
     let serializedParams = this.serializeParams(params)
-    url = this.subHash(url)
+    if (subHash) { 
+      url = this.subHash(url)
+    }
     if (serializedParams) {
       url =
         url.indexOf('?') === -1

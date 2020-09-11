@@ -21,7 +21,14 @@ function dealArray (data, dealKeys) {
     return dealObject(item, dealKeys)
   })
 }
+export function cryptInfo (data, passwd, salt) { // 模拟加密数据
+  if (typeOf(data) !== 'string') throw new Error('需要加密的数据必须为String类型')
 
+  passwd = Base64.decode(passwd)
+  salt = Base64.decode(salt)
+  let jasypt = new Jasypt(passwd, salt)
+  return jasypt.encrypt(data)
+}
 export default function (data, ...dealKeys) {
   let dataType = typeOf(data)
   switch (dataType) { 

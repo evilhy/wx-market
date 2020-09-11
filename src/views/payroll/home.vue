@@ -1,188 +1,212 @@
 <template>
-  <div class="home-page">
-    <div class="banner">
-      <van-swipe class="swiper-container" v-if="imgList.length >= 1" :autoplay="3000" indicator-color="white">
-        <van-swipe-item v-for="(img, index) in imgList" :key="index" @click="clickImg(index)">
-          <img :src="img.url" alt="" class="img">
-        </van-swipe-item>
-      </van-swipe>
-    </div>
-    <div class="links-wrap">
-      <div class="my-income" @click="enterMyIncome">
-        <div class="title">我的收入</div>
-        <div class="recent-one" v-if="recentInfo.createDate">最近一笔:{{recentInfo.createDate | date('Y/m/d')}}</div>
-      </div>
-      <div class="link-right">
-        <div class="invoice-person">
-          <div v-if="apppartner !== 'NEWUP'" class="manager-info box bot-line" @click="toPage('manager')">
-            <div class="title"><span class="dot" v-if="managerInfo.hasManager === 1 && !isReadManager && !isReadManagerCurrent">1</span>客户经理</div>
-            <img src="../../assets/img/icon-manager.png" alt="">
-          </div>
-          <div class="welfare-info box bot-line" :class="{'zx': apppartner === 'NEWUP'}" @click="toPage('welfareList')">
-            <div class="title">员工福利</div>
-            <img src="../../assets/img/icon-welfare.png" alt="">
-          </div>
-          <div class="invoice-info box" @click="toPage('invoice')">
-            <div class="title">发票管家</div>
-            <img src="../../assets/img/icon-invoice.png" alt="">
-          </div>
-          <div class="person-info box" @click="toPage('user')">
-            <div class="title"><span class="dot" v-if="bankIsNew"></span>个人信息</div>
-            <img src="../../assets/img/icon-person.png" alt="">
-          </div>
+  <div class="page home-page white" :class="{ent: entList.length > 1}">
+    <!-- 企业切换栏 -->
+    <home-ent-list v-if="entList.length > 1" v-model="currentEntId" :ent-list="entList" @change="getDataByEnt">
+    </home-ent-list>
+    <!-- 轮播图 -->
+    <home-banner ref="banner"></home-banner>
+    <!-- 通知栏 -->
+    <home-notice ref="notice" @to-page="toPage"></home-notice>
+    <!-- 普通版菜单入口 -->
+    <template v-if="apppartner === 'FXGJ'">
+      <!-- 钱包 -->
+      <wallet ref="wallet"></wallet>
+      <!-- 主要信息入口 -->
+      <div class="link-wrap">
+        <div class="item" @click="enterPayroll">
+          <span class="img-wrap income"></span>
+          <span class="label">我的收入</span>
+        </div>
+        <div class="item">
+          <span class="img-wrap metal" @click="toOuterPage('nobleMetalUrl')"><span class="tag-1">新品上市</span></span>
+          <span class="label">贵金属投资</span>
+        </div>
+        <div class="item">
+          <span class="img-wrap manager" @click="toPage('manager')">
+            <div class="notice-count" v-if="managerInfo.hasManager === 1 && !isReadManager && !isReadManagerCurrent">1
+            </div>
+          </span>
+          <span class="label">客户经理</span>
+        </div>
+        <div class="item" @click="toPage('user')">
+          <span class="img-wrap user"></span>
+          <span class="label">个人信息</span>
         </div>
       </div>
-    </div>
-    <div class="bottom-logo">
-      <span class="img-wrap" v-for="(item, index) in logoList" :key="index">
-        <img :src="item.src" :class="item.className"/>
-      </span>
-    </div>
-    <home-manager-dialog ref="home-manager-dialog" @getIsReadManager="getIsReadManager"
-                         @getIsReadManagerCurrent="getIsReadManagerCurrent"
-                         :manager-info="managerInfo"></home-manager-dialog>
+      <!-- 推荐专区 -->
+      <div class="title">推荐专区</div>
+      <img class="advert" src="../../assets/img/home-advert.png" alt="">
+      <!-- 其他入口 -->
+      <div class="link-wrap advert-link-wrap">
+        <div class="item" @click="$refs['fxgj-mini-program-popup'].open()">
+          <span class="img-wrap"><span class="tag-1">最多参与</span><img src="../../assets/img/icon-home-energy.png"
+              alt=""></span>
+          <span class="label">能量满满</span>
+        </div>
+        <div class="item" @click="toOuterPage('zQUrl')">
+          <span class="img-wrap"><img src="../../assets/img/icon-home-invest.png" alt=""></span>
+          <span class="label">证券投资</span>
+        </div>
+        <div class="item" @click="toNews">
+          <span class="img-wrap"><img src="../../assets/img/icon-home-news.png" alt=""></span>
+          <span class="label">最新资讯</span>
+        </div>
+        <div class="item" @click="toBankSite">
+          <span class="img-wrap"><img src="../../assets/img/icon-home-site.png" alt=""></span>
+          <span class="label">网点查询</span>
+        </div>
+      </div>
+      <!-- 游戏专区 -->
+      <home-game-link></home-game-link>
+    </template>
+    <!-- 振兴银行菜单入口 -->
+    <home-zx-menu ref="zx-menu" v-if="apppartner === 'NEWUP' || apppartner === 'SJZHRB'" @enter-payroll="enterPayroll" @to-news="toNews"></home-zx-menu>
+    <!-- 底部logo -->
+    <div class="bottom-logo"><img :class="logo.className" :src="logo.src" alt=""></div>
+    <!-- // 后期去掉 -->
+    <home-manager-dialog ref="home-manager-dialog" @getIsReadManager="isReadManager = true"
+      @getIsReadManagerCurrent="isReadManagerCurrent = true" :manager-info="managerInfo"></home-manager-dialog>
+    <fxgj-mini-program-popup ref="fxgj-mini-program-popup"></fxgj-mini-program-popup>
   </div>
 </template>
+
 <script>
-  import Vue from 'vue'
-  import {ImagePreview} from 'vant'
-  import helper from 'utils/helper'
-  import validate from 'utils/validate'
-  import homeManagerDialog from './homeManagerDialog'
-  Vue.use(ImagePreview)
-
-  export default {
-    components: {
-      homeManagerDialog
-    },
-    data () {
-      return {
-        recentInfo: {
-          entId: '',
-          groupId: '',
-          groupName: '',
-          createDate: 0,
-          isRead: ''
-        },
-        bankIsNew: 0, // 银行卡变更
-        imgList: [],
-        requested: false,
-        isReadManager: false,
-        isReadManagerCurrent: false,
-        managerInfo: {
-          ownBank: 0, // 0他行卡，1是本行卡
-          hasManager: 0, // 0没有客户经理，1有客户经理
-          empName: '',
-          managerName: '',
-          branchName: '',
-          officer: '',
-          managerPhone: ''
-        },
-        apppartner: helper.getUserInfo('apppartner')
-      }
-    },
-    computed: {
-      logoList () {
-        switch (this.apppartner) {
-          case 'SJZHRB':
-            return [{
-              className: 'hr',
-              src: require('../../assets/img/hr-gray-logo.png')
-            }]
-          case 'NEWUP':
-            return [
-              {
-                className: 'fx',
-                src: require('../../assets/img/fx-gray-logo.png')
-              },
-              {
-                className: 'zx',
-                src: require('../../assets/img/zx-gray-logo.png')
-              }
-            ]
-          default:
-            return [
-              {
-                className: 'fx',
-                src: require('../../assets/img/fx-gray-logo.png')
-              }
-            ]
-        }
-
-      }
-    },
-    created () {
-      this.getRecentInfo()
-      this.getBannerList()
-      this.getManagerInfo()
-      this.getIsReadManager()
-      this.getIsReadManagerCurrent()
-    },
-    methods: {
-      getIsReadManager () {
-        this.isReadManager = helper.getIsReadManager()
+import homeEntList from './homeEntList'
+import wallet from 'components/wallet'
+import homeBanner from './homeBanner'
+import homeNotice from './homeNotice'
+import fxgjMiniProgramPopup from 'components/fxgjMiniProgramPopup'
+import homeGameLink from './homeGameLink'
+import homeZxMenu from './homeZxMenu'
+import homeManagerDialog from './homeManagerDialog'
+import helper from 'utils/helper'
+import decryptInfo from 'utils/decryptInfo'
+import sysConfig from 'utils/constant'
+import url from 'utils/url'
+/* import Wxapi from 'utils/wxapi'
+const wxapi = new Wxapi() */
+export default {
+  data () {
+    return {
+      entList: [],
+      currentEntId: '',
+      managerInfo: {
+        ownBank: 0, // 0他行卡，1是本行卡
+        hasManager: 0, // 0没有客户经理，1有客户经理
+        empName: '',
+        managerName: '',
+        branchName: '',
+        officer: '',
+        managerPhone: ''
       },
-      getIsReadManagerCurrent () {
-        this.isReadManagerCurrent = helper.getIsReadManagerCurrent()
-      },
-      async getManagerInfo () {
-        let res = await this.$Manager.openingTips()
-        this.managerInfo = res.data
-      },
-      async getBannerList () {
-        this.imgList = await this.$System.getBannerList()
-      },
-      async getRecentInfo () {
-        let res = await this.$Roll.index()
-        let {bean = {}, isNew = 0} = res.data
-        if (Object.keys(bean).length) {
-          this.recentInfo = bean
-          this.bankIsNew = isNew
-          helper.saveUserInfo({entId: this.recentInfo.entId})
-        }
-        this.requested = true
-      },
-      async checkFreePassword () {
-        let res = await this.$Roll.checkFreePassword()
-        if (res.data) {
-          if (this.recentInfo.groupId) {
-            this.$router.push({ name: 'wageList' })
-          } else {
-            this.$router.push({ name: 'noWage' })
+      isReadManager: helper.getIsReadManager(),
+      isReadManagerCurrent: helper.getIsReadManagerCurrent(),
+      appId: sysConfig.appId[process.env.NODE_ENV],
+      apppartner: helper.getUserInfo('apppartner')
+    }
+  },
+  computed: {
+    logo () {
+      switch (this.apppartner) {
+        case 'SJZHRB':
+          return {
+            className: 'hr',
+            src: require('../../assets/img/hr-gray-logo.png')
           }
-        } else {
-          this.$router.push({name: 'checkQueryCode', query: {'hasWage': this.recentInfo.groupId || ''}})
-        }
-      },
-      enterMyIncome () {
-        if (!this.requested) return
-        if (helper.getUserInfo('ifPwd', 0)) { // 有密码
-          this.checkFreePassword()
-        } else {
-          this.$router.push({name: 'setQueryCode'})
-        }
-      },
-      toPage (routerName, query = {}) {
-        let {hasManager} = this.managerInfo
-        if (routerName === 'manager' && hasManager === 1 && !this.isReadManager && !this.isReadManagerCurrent) {
-          this.$refs['home-manager-dialog'].open()
-          return false
-        }
-        this.$router.push({name: routerName, query: query})
-      },
-      clickImg (index) {
-        let {link = '', url = ''} = this.imgList[index]
-        if (link) {
-          if (validate.isUrl(link)) {
-            window.location.href = link
+        default:
+          return {
+            className: 'fx',
+            src: require('../../assets/img/fx-gray-logo.png')
           }
-        } else {
-          ImagePreview({
-            images: [url],
-            showIndex: false
-          })
-        }
       }
     }
+  },
+  mounted () {
+    this.getEntList()
+  },
+  methods: {
+    async getEntList () {
+      let res = await this.$Inside.empEntList()
+      let data = decryptInfo(res.data, 'entId', 'entName', 'shortEntName')
+      this.entList = this.transEntList(data)
+      if (this.entList.length) {
+        let endId = helper.getUserInfo('entId', '')
+        this.currentEntId = endId || this.entList[0].value
+        this.getDataByEnt()
+      }
+    },
+    transEntList (list = []) {
+      return list.map(item => {
+        let { entId, entName } = item
+        return {
+          value: entId,
+          text: entName
+        }
+      })
+    },
+    getDataByEnt () {
+      helper.saveUserInfo({ entId: this.currentEntId })
+      // 获取企业下的轮播图
+      this.$refs['banner'].getBannerList()
+      // 获取企业下的消息
+      this.$refs['notice'].getNotice()
+      if (this.apppartner === 'FXGJ') {
+        // 获取企业下的钱包数据
+        this.$refs['wallet'].getWalletData()
+        // 微店上线之后需要去掉
+        this.getManagerInfo()
+      }
+    },
+    async getManagerInfo () {
+      let res = await this.$Manager.openingTips()
+      this.managerInfo = res.data
+    },
+    enterPayroll () {
+      if (helper.getUserInfo('ifPwd', 0)) { // 有密码
+        if (helper.checkFreeLogin()) { // 近期输入过密码
+          this.$router.push({ name: 'wageList' })
+        } else {
+          this.$router.push({ name: 'loginByPwd', query: { nextPage: 'wageList' } })
+        }
+      } else { // 设置查询密码
+        this.$router.push({ name: 'setQueryCode' })
+      }
+    },
+    toPage (routerName, query = {}) {
+      let { hasManager } = this.managerInfo
+      if (routerName === 'manager' && hasManager === 1 && !this.isReadManager && !this.isReadManagerCurrent) {
+        this.$refs['home-manager-dialog'].open()
+        return false
+      }
+      this.$router.push({ name: routerName, query: query })
+    },
+    toOuterPage (type) {
+      let path = sysConfig[type][process.env.NODE_ENV]
+      /* if (type === 'zQUrl') {
+        url = wxapi.getWxUrl(this.appId, url)
+      } */
+      if (type === 'nobleMetalUrl' || type === 'zQUrl') { // 贵金属/证券投资
+        path = url.buildUrl(path, { jsessionId: helper.getUserInfo('jsessionId') })
+      }
+      window.location.href = path
+    },
+    toNews () {
+      helper.saveNoticeInfo(5, 'news')
+      this.toPage('notice')
+    },
+    toBankSite () {
+      window.location.href = sysConfig.bankSiteUrl
+    }
+  },
+  components: {
+    homeEntList,
+    wallet,
+    homeBanner,
+    homeNotice,
+    fxgjMiniProgramPopup,
+    homeGameLink,
+    homeZxMenu,
+    homeManagerDialog
   }
+}
 </script>

@@ -1,6 +1,6 @@
 <template>
   <div class="exchange-page">
-    <no-data text="空空如也，没有兑换记录哦！" type="exchange" v-if="request && !list.length"></no-data>
+    <no-data text="暂无兑换记录" v-if="request && list.length < 1"></no-data>
     <van-list v-else v-model="loading" :finished="finished" :finished-text="finishedText" @load="getList">
       <order-item v-for="(item, index) in list" :key="index" :order-info="item"></order-item>
     </van-list>
@@ -9,7 +9,7 @@
 
 <script>
 import orderItem from './components/orderItem'
-import noData from 'components/noData'
+import noData from 'components/noData/index'
 import sysConfig from 'utils/constant'
 
 export default {

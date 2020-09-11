@@ -1,0 +1,18 @@
+@charset "utf-8";
+.handlock-page{
+  padding-top: 54px;
+  text-align: center;
+  .title{
+    font-family: PingFangSC-Semibold;
+    font-size: 44px;
+    line-height: 62px;
+    margin-bottom: 16px;
+  }
+  .tip{
+    font-size: 24px;
+    color: $text-color-gray;
+  }
+  .hand-lock-container{
+    top: -30px;
+  }
+}

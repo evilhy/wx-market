@@ -1,5 +1,5 @@
 <template>
-  <div class="home-manager-dialog">
+  <div class="home-manager-dialog" v-if="Object.keys(managerInfo).length">
     <van-popup v-model="show" closeable @close="close(false)">
       <div class="wrap">
         <div class="main">
@@ -45,7 +45,12 @@
   import helper from 'utils/helper'
   export default {
     props: {
-      managerInfo: Object
+      managerInfo: Object,
+      default () {
+        return {
+          empName: ''
+        }
+      }
     },
     data () {
       return {

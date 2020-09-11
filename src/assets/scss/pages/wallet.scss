@@ -1,0 +1,25 @@
+@charset "utf-8";
+
+.wallet-page{
+  .white-box{
+    padding-top: 20px;
+    background-color: white;
+  }
+  .filter-wrap{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 34px 0 20px;
+    background: white;
+    img{
+      width: 40px;
+      height: 40px;
+      padding: 20px 0 20px 10px;
+    }
+    .date{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}

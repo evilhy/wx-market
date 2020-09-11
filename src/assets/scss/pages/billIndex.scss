@@ -1,168 +1,172 @@
 // bill-index-page
 .bill-index-page {
-    position: relative;
-    padding: 340px 40px 0;
-    background: url('../img/bill-index-bg.png') no-repeat;
-    background-size: 100% auto;
-    font-size: 26px;
-    .manager-box {
-      width: 110px;
-      height: 146px;
-      display: flex;
-      display: -webkit-flex;
-      flex-direction: column;
-      position: absolute;
-      right: 40px;
-      top: 45px;
-      background: #fff;
-      box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
-      border-radius: $radius-xs;
-      line-height: 40px;
-      text-align: center;
-      .pic {
-        width: 100%;
-        height: 108px;
-      }
-      .title {
-        position: relative;
-      }
-      .new-flag {
-        position: absolute;
-        right: 4px;
-        top: 2px;
-        @include circle(12px);
-        background: #f34b21;
-        border: 4px solid #ffffff;
-      }
+  position: relative;
+  padding: 340px 40px 0;
+  background: url('../img/bill-index-bg.png') no-repeat;
+  background-size: 100% auto;
+  font-size: 26px;
+  .manager-box {
+    width: 110px;
+    height: 146px;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    position: absolute;
+    right: 40px;
+    top: 45px;
+    background: #fff;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+    border-radius: $radius-xs;
+    line-height: 40px;
+    text-align: center;
+    .pic {
+      width: 100%;
+      height: 108px;
     }
-    .bill-index-main {
-      height: 520px;
-      background: #fff;
-      border-radius: 20px 20px 0 0;
+    .title {
       position: relative;
     }
-    .fx-logo {
+    .new-flag {
       position: absolute;
-      left: 50%;
-      top: 0;
-      margin-top: -90px;
-      margin-left: -90px;
+      right: 4px;
+      top: 2px;
+      @include circle(12px);
+      background: #f34b21;
+      border: 4px solid #ffffff;
+    }
+  }
+  .bill-index-main {
+    height: 520px;
+    background: #fff;
+    border-radius: 20px 20px 0 0;
+    position: relative;
+  }
+  .fx-logo {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    margin-top: -90px;
+    margin-left: -90px;
+    @include circle(180px);
+    background: #fff;
+    box-shadow: 0 7px 10px 0 rgba(201, 205, 216, 0.52);
+    overflow: hidden;
+    z-index: 99;
+    img {
       @include circle(180px);
-      background: #fff;
-      box-shadow: 0 7px 10px 0 rgba(201, 205, 216, 0.52);
-      overflow: hidden;
-      z-index: 99;
-      img {
-        @include circle(180px);
-      }
     }
-    .bill-item {
-      padding-top: 120px;
-      text-align: center;
-      .bill-status {
-        position: absolute;
-        right: 20px;
-        top: 20px;
-      }
+  }
+  .bill-item {
+    padding-top: 120px;
+    text-align: center;
+    .bill-status {
+      position: absolute;
+      right: 20px;
+      top: 20px;
     }
-    .swiper-pagination {
-      padding-left: 26px;
-      top: 26px;
-      height: 14px;
-      text-align: left;
+  }
+  .swiper-pagination {
+    padding-left: 26px;
+    top: 26px;
+    height: 14px;
+    text-align: left;
+    line-height: 1;
+  }
+  .swiper-pagination-bullet {
+    @include square(14px);
+    vertical-align: top;
+    background: #d6f3f2;
+    opacity: 1;
+  }
+  .swiper-pagination-bullet-active {
+    background: #41cdca;
+  }
+  .bank {
+    display: flex;
+    height: 34px;
+    align-items: center;
+    justify-content: center;
+  }
+  .bank-logo {
+    display: block;
+    height: 26px;
+    margin-right: 8px;
+  }
+  .amt-wrap {
+    padding: 24px 0;
+    .amt {
+      position: relative;
+      font-size: 64px;
       line-height: 1;
     }
-    .swiper-pagination-bullet {
-      @include square(14px);
-      vertical-align: top;
-      background: #d6f3f2;
-      opacity: 1;
-    }
-    .swiper-pagination-bullet-active {
-      background: #41cdca;
-    }
-    .bank {
-      display: flex;
-      height: 34px;
-      align-items: center;
-      justify-content: center;
-    }
-    .bank-logo {
-      display: block;
-      height: 26px;
-      margin-right: 8px;
-    }
-    .amt-wrap {
-      padding: 24px 0;
-      .amt {
-        position: relative;
-        font-size: 64px;
-        line-height: 1;
-      }
-      .iconfont {
-        position: absolute;
-        top: 10px;
-        right: 90px;
-        font-size: 46px;
-        color: $text-color-gray;
-      }
-    }
-    .amt-title {
-      margin-bottom: 40px;
+    .iconfont {
+      position: absolute;
+      top: 10px;
+      right: 90px;
+      font-size: 46px;
       color: $text-color-gray;
     }
-    .diff-wrap {
-      width: 530px;
-      height: 72px;
-      line-height: 72px;
-      padding: 0 24px;
-      background: #f6f6f7;
-      @include center-block;
-      display: flex;
-      display: -webkit-flex;
-      justify-content: space-between;
-      .shang {
-        color: orange;
-      }
-      .xia {
-        color: #f11a1a;
-      }
-      .iconfont {
-        font-size: 24px;
-        margin-right: 4px;
-      }
+  }
+  .amt-title {
+    margin-bottom: 40px;
+    color: $text-color-gray;
+  }
+  .diff-wrap {
+    width: 530px;
+    height: 72px;
+    line-height: 72px;
+    padding: 0 24px;
+    background: #f6f6f7;
+    @include center-block;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-between;
+    .shang {
+      color: orange;
     }
-    .action-wrap {
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      height: 80px;
-      line-height: 80px;
-      border-top: 1px solid #e9ebec;
-      display: flex;
-      .action {
-        width: 100%;
-        @include flex-center;
-        &:first-child {
-          border-right: 1px solid #e9ebec;
-        }
-        .icon-chakanxiangqing {
-          display: block;
-          font-size: 28px;
-        }
-      }
+    .xia {
+      color: #f11a1a;
     }
-    .bottom {
-      padding: 30px 0;
-      display: flex;
-      justify-content: space-between;
+    .iconfont {
       font-size: 24px;
-      .time {
-        color: $text-color-gray;
+      margin-right: 4px;
+    }
+    .star {
+      position: relative;
+      top: 10%;
+    }
+  }
+  .action-wrap {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 80px;
+    line-height: 80px;
+    border-top: 1px solid #e9ebec;
+    display: flex;
+    .action {
+      width: 100%;
+      @include flex-center;
+      &:first-child {
+        border-right: 1px solid #e9ebec;
       }
-      .return {
-        color: #5a9fff;
+      .icon-chakanxiangqing {
+        display: block;
+        font-size: 28px;
       }
     }
   }
+  .bottom {
+    padding: 30px 0;
+    display: flex;
+    justify-content: space-between;
+    font-size: 24px;
+    .time {
+      color: $text-color-gray;
+    }
+    .return {
+      color: #5a9fff;
+    }
+  }
+}

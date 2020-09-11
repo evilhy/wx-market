@@ -3,7 +3,7 @@
  */
 
 import DebugEngine from './DebugEngine';
-import _ from "lodash";
+import { typeOf } from './Utils';
 
 const $errorMessage = Symbol('errorMessage');
 
@@ -17,7 +17,7 @@ export default class DebugFail extends DebugEngine {
   [$errorMessage] = '';
 
   set message (value) {
-    if (!_.isString(value)) throw new TypeError('DebugFail.message 类型应为 String');
+    if (typeOf(value) !== 'string') throw new TypeError('DebugFail.message 类型应为 String');
     this[$errorMessage] = value;
   }
 

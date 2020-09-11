@@ -79,6 +79,18 @@ export default {
     demo: 'https://demowisdom.wisales.cn/zhsq-sh/#/',
     production: 'https://easylife.wisales.cn/zhsq-sh/#/'
   },
+  nobleMetalUrl: {
+    development: 'https://sitwxp.cardpu.com/wisale-h5-gjs/#/',
+    sit: 'https://sitwxp.cardpu.com/wisale-h5-gjs/#/',
+    demo: 'https://sitwxp.cardpu.com/wisale-h5-gjs/#/',
+    production: 'https://wxp.cardpu.com/wisale-h5-gjs/#/'
+  },
+  zQUrl: {
+    development: 'https://sitwxp.cardpu.com/security-account/#/code-payroll',
+    sit: 'https://sitwxp.cardpu.com/security-account/#/code-payroll',
+    demo: 'https://sitwxp.cardpu.com/security-account/#/code-payroll',
+    production: 'https://wxp.cardpu.com/security-account/#/code-payroll'
+  },
   appId: {
     development: 'wxb3a9cf98e372fa36',
     sit: 'wxb3a9cf98e372fa36',
@@ -121,5 +133,9 @@ export default {
   videoMember: '01002004', // 视频会员
   viewingTicket: '01002005', // 观影券
   starbucks: '01002006', // 星巴克
-  oilCard: '01002007' // 油卡
+  oilCard: '01002007', // 油卡
+  queryCodeTip: '请不要将查询密码设置为生日、连续/重复数字',
+  handLockTip: '手势密码请至少设置4个不重复的连接点',
+  handLockUnEnoughTip: '请设置至少4个连接点',
+  defaultTheme: 'black'
 }

@@ -2,6 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import getId from '../views/public/getId.vue'
 import token from '../views/public/token.vue'
+import home from '../views/payroll/home.vue' // 避免首页跳转过慢
+import loginByPwd from '../views/pwd/loginByPwd.vue'
 
 Vue.use(Router)
 
@@ -51,7 +53,7 @@ export default new Router({
         title: '放薪管家'
       },
       component: resolve => {
-        require(['../views/public/setQueryCode.vue'], resolve)
+        require(['../views/pwd/setQueryCode.vue'], resolve)
       }
     },
     {
@@ -88,10 +90,10 @@ export default new Router({
       path: '/check-card-tail', // 身份绑定--验证银行卡后6位
       name: 'checkCardTail',
       meta: {
-        title: '放薪管家'
+        title: '验证查询密码'
       },
       component: resolve => {
-        require(['../views/public/checkCardTail.vue'], resolve)
+        require(['../views/pwd/checkCardTail.vue'], resolve)
       }
     },
     {
@@ -110,38 +112,44 @@ export default new Router({
       meta: {
         title: '放薪管家'
       },
+      component: home
+    },
+    {
+      path: '/check-query-code/:name', // 验证查询密码
+      name: 'checkQueryCode',
+      meta: {
+        title: '验证查询密码'
+      },
       component: resolve => {
-        require(['../views/payroll/home.vue'], resolve)
+        require(['../views/pwd/checkQueryCode.vue'], resolve)
       }
     },
     {
-      path: '/check-query-code', // 密码验证
-      name: 'checkQueryCode',
+      path: '/login-by-pwd', // 密码登录
+      name: 'loginByPwd',
       meta: {
         title: '放薪管家'
       },
-      component: resolve => {
-        require(['../views/payroll/checkQueryCode.vue'], resolve)
-      }
+      component: loginByPwd
     },
     {
       path: '/forget-send-code', // 忘记查询密码--发送验证码
       name: 'forgetSendCode',
       meta: {
-        title: '放薪管家'
+        title: '忘记查询密码'
       },
       component: resolve => {
-        require(['../views/payroll/forgetSendCode.vue'], resolve)
+        require(['../views/pwd/forgetSendCode.vue'], resolve)
       }
     },
     {
       path: '/set-new-query-code', // 设置新的查询密码
       name: 'setNewQueryCode',
       meta: {
-        title: '放薪管家'
+        title: '设置查询密码'
       },
       component: resolve => {
-        require(['../views/payroll/setNewQueryCode.vue'], resolve)
+        require(['../views/pwd/setNewQueryCode.vue'], resolve)
       }
     },
     {
@@ -195,6 +203,26 @@ export default new Router({
       }
     },
     {
+      path: '/user-theme', // 个人信息-主题更换
+      name: 'userTheme',
+      meta: {
+        title: '主题更换'
+      },
+      component: resolve => {
+        require(['../views/user/theme.vue'], resolve)
+      }
+    },
+    {
+      path: '/pwd-manage', // 个人信息-密码安全
+      name: 'pwdManage',
+      meta: {
+        title: '密码安全'
+      },
+      component: resolve => {
+        require(['../views/pwd/pwdManage.vue'], resolve)
+      }
+    },
+    {
       path: '/user-detail', // 个人信息详情
       name: 'userDetail',
       meta: {
@@ -205,13 +233,33 @@ export default new Router({
       }
     },
     {
-      path: '/modify-query-code', // 个人信息-修改查询密码
-      name: 'modifyQueryCode',
+      path: '/set-handlock', // 个人信息-设置手势密码
+      name: 'setHandLock',
       meta: {
-        title: '修改查询密码'
+        title: '设置手势密码'
       },
       component: resolve => {
-        require(['../views/user/modifyQueryCode.vue'], resolve)
+        require(['../views/pwd/setHandLock.vue'], resolve)
+      }
+    },
+    {
+      path: '/check-handlock', // 个人信息-校验手势密码
+      name: 'checkHandLock',
+      meta: {
+        title: '修改手势密码'
+      },
+      component: resolve => {
+        require(['../views/pwd/checkHandLock.vue'], resolve)
+      }
+    },
+    {
+      path: '/set-new-handlock', // 个人信息-设置新手势密码
+      name: 'setNewHandLock',
+      meta: {
+        title: '修改手势密码'
+      },
+      component: resolve => {
+        require(['../views/pwd/setNewHandLock.vue'], resolve)
       }
     },
     {
@@ -338,6 +386,13 @@ export default new Router({
       name: 'taxCalculator',
       component: resolve => {
         require(['../views/tax/taxCalculator.vue'], resolve)
+      }
+    },
+    {
+      path: '/wallet', // 钱包记录页
+      name: 'wallet',
+      component: resolve => {
+        require(['../views/wallet/index.vue'], resolve)
       }
     },
     /* {
@@ -470,7 +525,7 @@ export default new Router({
       }
     },
     {
-      path: '/welfare-detail/:activityId', // 福利货柜（券详情）1
+      path: '/welfare-detail/:activityId',
       name: 'welfareDetail',
       meta: {
         title: '员工福利'
@@ -550,13 +605,20 @@ export default new Router({
       }
     },
     {
-      path: '/add-new-address', //
+      path: '/add-new-address',
       name: 'addNewAddress',
       meta: {
         title: '新增收货地址'
       },
       component: resolve => {
         require(['../views/user/addNewAddress.vue'], resolve)
+      }
+    },
+    {
+      path: '/notice',
+      name: 'notice',
+      component: resolve => {
+        require(['../views/notice/index.vue'], resolve)
       }
     },
     {
@@ -602,6 +664,13 @@ export default new Router({
       name: 'virusPromise',
       component: resolve => {
         require(['../views/virus/promise.vue'], resolve)
+      }
+    },
+    {
+      path: '/zx-test', // 振兴银行测试
+      name: 'zxTest',
+      component: resolve => {
+        require(['../views/public/zxTest.vue'], resolve)
       }
     }
   ],

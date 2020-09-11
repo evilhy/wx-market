@@ -136,14 +136,14 @@ class Roll {
   /**
    * 查询银行卡修改记录
    *
-   * @param {Array} [ids=[]]
+   * @param {String}
    * @returns
    * @memberof Roll
    */
-  empCardLog (ids = []) {
+  empCardLog (ids = '') {
     let http = new Http()
     http.path = `/${moduleName}/empCardLog`
-    http.query = { ids: ids.join('|') }
+    http.query = { ids }
     return http.get()
   }
   /**
@@ -167,17 +167,6 @@ class Roll {
     let http = new Http()
     http.path = `/${moduleName}/entUser`
     http.query = { entId }
-    return http.get()
-  }
-  /**
-   * 是否5分钟之内看过工资
-   *
-   * @returns
-   * @memberof Roll
-   */
-  checkFreePassword () {
-    let http = new Http()
-    http.path = `/${moduleName}/checkFreePassword`
     return http.get()
   }
 }

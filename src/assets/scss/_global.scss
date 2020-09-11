@@ -12,6 +12,9 @@ body {
 }
 .page {
   min-height: 100%;
+  &.white {
+    background-color: white;
+  }
 }
 
 div,
@@ -31,7 +34,7 @@ button {
 
 a {
   text-decoration: none;
-  color: $primary-color;
+  color: $theme-color;
 }
 
 input[type='text'],
@@ -84,4 +87,55 @@ button {
 
 .clearfix {
   @include clearfix;
+}
+
+.dot {
+  position: absolute;
+  @include circle(12px);
+  &.white {
+    background-color: white;
+  }
+  &.red {
+    background-color: #F4415F;
+  }
+}
+.tag-1 {
+  height: 32px;
+  padding: 0 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  font-family: PingFangSC-Semibold;
+  font-size: 18px;
+  color: white;
+  border-radius: 15px 15px 15px 0px;
+  background-color: $theme-color;
+}
+
+.notice-count {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  font-size: 20px;
+  height: 28px;
+  padding: 0 4px;
+  border-radius: 15px;
+  color: white;
+  background: $error-color;
+}
+
+.fixed-bottom-btn {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 90px;
+}
+.theme-btn {
+  border: none;
+  background-color: $theme-color;
+  color: white;
 }

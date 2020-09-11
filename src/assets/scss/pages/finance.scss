@@ -203,18 +203,18 @@ $text-finance-color: #525E70;
   }
   .content{
     padding: 20px 40px 20px;
-    height: 480px;
+    height: 460px;
     overflow: auto;
   }
   ul,li,div,p,span{
     word-break: break-all;
   }
-  ul,li,div,p{
+  ul,li,p{
     margin-bottom: 10px;
   }
   .close{
       position: absolute;
-      top: 740px;
+      top: 700px;
       left: 50%;
       margin-left: -34px;
       @include square(66px);
@@ -306,12 +306,9 @@ $text-finance-color: #525E70;
     width: 100%;
     bottom: 0;
     top: 0;
-    padding: 0 30px 30px;
+    padding: 100px 30px 30px;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
-    .van-space{
-      height: 56px;
-    }
     .content-title {
       display: flex;
       justify-content: center;
@@ -798,11 +795,12 @@ $text-finance-color: #525E70;
 }
 .ordered-popup{
   .content-wrap{
-    padding: 0;
+    padding-left: 0;
+    padding-right: 0;
   }
   .colleague-ordered-wrap{
     min-height: 100%;
-    background-color: $bg-color;
+    // background-color: $bg-color;
   }
   .tip{
     padding: 20px 0;

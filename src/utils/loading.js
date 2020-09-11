@@ -44,17 +44,18 @@ export default {
     if (typeOf(params) !== 'object') { 
       throw new TypeError('loading的参数类型应为Object')
     }
-    let { type = loadingTypes[0], parent = document.body } = params
+    let { type = loadingTypes[0], parent = document.body, opacity = 0.7 } = params
     
     if (!loadingTypes.includes(type)) throw new RangeError(`loading的type必须为${loadingTypes.join('、')}中的一种！`)
     if (parent.nodeType !== 1) throw new TypeError('loading的parent类型必须为NODE节点类型！')
+    if (typeOf(opacity) !== 'number') throw new TypeError('loading的背景opacity类型必须为数字类型！')
 
     if (this._checkExist()) {
       let id = Math.random().toString().replace('.', '')
       this._container.className = `${loadingRootClass} ${loadingRootClass}-${this._type} ${loadingRootClass}-${id}`
       this._id = id
     } else {
-      this._setOptions({ type, parent })
+      this._setOptions({ type, parent, opacity })
       this._createLoading()
     }
     return this._id
@@ -68,10 +69,11 @@ export default {
     this._setOptions({ id: '' })
   },
 
-  _setOptions({ type = 'normal', parent = document.body, id = Math.random().toString().replace('.', '') }) {
+  _setOptions({ type = 'normal', parent = document.body, id = Math.random().toString().replace('.', ''), opacity = 0.7 }) {
     this._type = type
     this._parent = parent
     this._id = id
+    this._opacity = opacity
     this._container = null
   },
 
@@ -80,14 +82,16 @@ export default {
   },
 
   _createLoading () {
-    let { _type, _parent, _id } = this
+    let { _type, _parent, _id, _opacity } = this
     let loadingRoot = document.createElement('div')
     loadingRoot.className = `${loadingRootClass} ${loadingRootClass}-${_type} ${loadingRootClass}-${_id}`
     loadingRoot.innerHTML = loadingDom[_type]
+    loadingRoot.style.background = `rgba(255, 255, 255, ${_opacity})`
     if (_parent === document.body) {
       loadingRoot.style.position = 'fixed'
     } else {
-      _parent.style.position = 'relative'
+      let position = window.getComputedStyle(_parent, null)['position']
+      _parent.style.position = (position === 'absolute' || position === 'fixed') ? position : 'relative'
     }
     this._container = loadingRoot
     _parent.appendChild(loadingRoot)

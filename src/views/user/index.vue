@@ -1,34 +1,43 @@
 <template>
-  <div class="user-page">
+  <div class="page user-page white">
     <div class="top">
       <user-avatar></user-avatar>
-      <span class="user-name">{{info.name}}</span>
-      <span class="authentication yes">已实名认证</span>
-    <!--  <span class="authentication no">未实名认证</span>-->
+      <div class="user-info">
+        <span class="user-name">{{info.name}}</span>
+        <img class="realname" src="../../assets/img/user/tag-realname.png" alt="">
+      </div>
     </div>
     <div class="list">
       <div class="item">
-        <span class="label"><i class="iconfont icon-shenfenzheng"></i>身份证</span>
+        <span class="label"><img src="../../assets/img/user/icon-user-idcard.png" alt="">证件号</span>
         <span class="value">{{info.idNumber}}</span>
       </div>
       <div class="item" @click="toPage('selectModifyWay', { phone: info.phone })">
-        <span class="label"><i class="iconfont icon-shoujihao"></i>手机号</span>
+        <span class="label"><img src="../../assets/img/user/icon-user-phone.png" alt="">手机号</span>
         <span class="value">{{info.phone}}<span class="arrow"></span></span>
       </div>
-      <div class="item" @click="checkQueryCode">
-        <span class="label"><i class="iconfont icon-chaxunmima"></i>查询密码</span>
+      <div class="item" @click="pwdManage">
+        <span class="label"><img src="../../assets/img/user/icon-user-password.png" alt="">密码安全</span>
         <span class="value"><span class="arrow"></span></span>
       </div>
       <div class="item" @click="toPage('userEnts')">
-        <span class="label"><i class="iconfont icon-renzhiqiye"></i>任职企业</span>
+        <span class="label"><img src="../../assets/img/user/icon-user-ent.png" alt="">任职企业</span>
         <span class="value"><span class="arrow"></span></span>
       </div>
       <div class="item" @click="toPage('bankcardList')">
-        <span class="label"><i class="iconfont icon-yinhangqia"></i>银行卡<span class="dot" v-if="info.isNew"></span></span>
+        <span class="label"><img src="../../assets/img/user/icon-user-bank.png" alt="">银行卡<span class="dot red" v-if="info.isNew"></span></span>
         <span class="value"><span class="arrow"></span></span>
       </div>
-       <div class="item" @click="toPage('addressList')">
-        <span class="label"><i class="iconfont icon-dizhiguanli"></i>地址管理</span>
+      <div class="item" @click="toPage('addressList')">
+        <span class="label"><img src="../../assets/img/user/icon-user-address.png" alt="">地址管理</span>
+        <span class="value"><span class="arrow"></span></span>
+      </div>
+      <div class="item" @click="toPage('invoice')">
+        <span class="label"><img src="../../assets/img/user/icon-user-invoice.png" alt="">开票报销</span>
+        <span class="value"><span class="arrow"></span></span>
+      </div>
+      <div class="item" v-if="apppartner !== 'NEWUP'" @click="toPage('userTheme')">
+        <span class="label"><img src="../../assets/img/user/icon-user-theme.png" alt="">主题更换</span>
         <span class="value"><span class="arrow"></span></span>
       </div>
     </div>
@@ -42,6 +51,7 @@ import storage from 'utils/storage'
 export default {
   data () {
     return {
+      apppartner: helper.getUserInfo('apppartner'),
       info: {}
     }
   },
@@ -54,9 +64,9 @@ export default {
       let res = await this.$Roll.emp()
       this.info = res.data
     },
-    checkQueryCode () {
+    pwdManage () {
       if (helper.getUserInfo('ifPwd', 0)) { // 有密码
-        this.toPage('modifyQueryCode')
+        this.toPage('pwdManage')
       } else {
         this.toPage('setQueryCode')
       }

@@ -1,9 +1,11 @@
 <template>
   <div class="get-id-page">
+    <welcome-circle ref="welcome-circle"></welcome-circle>
   </div>
 </template>
 
 <script>
+import welcomeCircle from 'components/welcomeCircle'
 import helper from 'utils/helper'
 import { getPageQueryObject } from 'utils/assist'
 import decryptInfo from 'utils/decryptInfo'
@@ -17,37 +19,30 @@ export default {
   created () {
     helper.clearSession()
     this.query = getPageQueryObject()
+  },
+  mounted () {
     this.getJsessionId()
   },
   methods: {
-    async checkFreePassword (wageSheetId) {
-      let res = await this.$Roll.checkFreePassword()
-      if (res.data) {
-        this.$router.replace({ name: 'wageIndex', params: { wageSheetId } })
-      } else {
-        this.$router.replace({ name: 'checkQueryCode', query: { wageSheetId } })
-      }
-    },
-    getJsessionId () {
+    async getJsessionId () {
       let { code, id } = this.query
       if (id) {
         helper.saveUserInfo({ apppartner: id })
       }
-      this
-        .$Weixin
-        .wxCallback(code, id)
-        .then((res) => {
-          let data = decryptInfo(res.data, 'bindStatus')
-          let { bindStatus, jsessionId, idNumber, ifPwd, headimgurl, apppartner } = data
-          
-          helper.saveUserInfo({ jsessionId, ifPwd, bindStatus, headimgurl, apppartner })
-          if (bindStatus === '0') {
-            this.$router.replace({ name: 'bindIdCard' })
-          } else {
-            helper.saveUserInfo({ idNumber })
-            this.toPage(ifPwd)
-          }
-        })
+      let res = await this.$Weixin.wxCallback(code, id)
+      let data = decryptInfo(res.data, 'bindStatus')
+      let { bindStatus, jsessionId, idNumber, ifPwd, headimgurl, apppartner, themeId } = data
+
+      helper.saveUserInfo({ jsessionId, ifPwd, bindStatus, headimgurl, apppartner, theme: themeId })
+      helper.setTheme(themeId)
+      if (bindStatus === '0') {
+        await this.$refs['welcome-circle'].stopAnimation()
+        this.$router.replace({ name: 'bindIdCard' })
+      } else {
+        helper.saveUserInfo({ idNumber })
+        await this.$refs['welcome-circle'].stopAnimation()
+        this.toPage(ifPwd)
+      }
     },
     toPage (ifPwd) {
       if (!this.query.state) {
@@ -58,7 +53,7 @@ export default {
         if (wageSheetId && groupId) {
           helper.saveUserInfo({ groupId })
           if (ifPwd) { // 有密码
-            this.checkFreePassword(wageSheetId)
+            this.$router.replace({ name: 'loginByPwd', query: { nextPage: 'wageIndex', wageSheetId } })
           } else {
             this.$router.replace({ name: 'setQueryCode' })
           }
@@ -68,7 +63,11 @@ export default {
       }
     }
   },
+  beforeDestroy () {
+    clearTimeout(this.timer)
+  },
   components: {
+    welcomeCircle
   }
 }
 </script>

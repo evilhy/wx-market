@@ -1,11 +1,16 @@
 import Http from './base'
 import helper from '../utils/helper'
+import storage from '../utils/storage'
 const moduleName = 'inside'
 class Inside {
   /**
    * @description 发送验证码
    */
-  sendCode(phone = helper.getUserInfo('phone', ''), busiType = '1', groupId = '') {
+  sendCode(
+    phone = helper.getUserInfo('phone', ''),
+    busiType = '1',
+    groupId = ''
+  ) {
     let http = new Http()
     http.path = `/${moduleName}/sendCode`
     http.body = { phone, busiType, groupId }
@@ -69,7 +74,7 @@ class Inside {
    * @param {Object} data
    * @memberof Inside
    */
-  bindTel (data) {
+  bindTel(data) {
     let idNumber = helper.getUserInfo('idNumber', '')
     let http = new Http()
     http.path = `/${moduleName}/rz`
@@ -83,7 +88,7 @@ class Inside {
    * @returns
    * @memberof Inside
    */
-  updBankCard (data) {
+  updBankCard(data) {
     let http = new Http()
     http.path = `/${moduleName}/updBankCard`
     http.body = data
@@ -96,7 +101,7 @@ class Inside {
    * @returns
    * @memberof Inside
    */
-  checkPhoneCode (data) { 
+  checkPhoneCode(data) {
     let http = new Http()
     http.path = `/${moduleName}/checkPhoneCode`
     http.body = data
@@ -109,10 +114,42 @@ class Inside {
    * @returns
    * @memberof Inside
    */
-  updPhone (data) { 
+  updPhone(data) {
     let http = new Http()
     http.path = `/${moduleName}/updPhone`
     http.body = data
+    return http.post()
+  }
+  /**
+   * 首页企业列表数
+   *
+   * @returns
+   * @memberof Inside
+   */
+  empEntList() {
+    let data = storage.getSession('entList', '')
+    if (data) {
+      return Promise.resolve({ data })
+    } else {
+      let http = new Http()
+      http.path = `/${moduleName}/empEntList`
+      return http.get().then(res => {
+        storage.setSession('entList', res.data)
+        return res
+      })
+    }
+  }
+  /**
+   * 设置用户主题
+   *
+   * @param {*} themeId
+   * @returns
+   * @memberof Inside
+   */
+  theme(themeId) {
+    let http = new Http()
+    http.path = `/${moduleName}/theme`
+    http.body = { themeId }
     return http.post()
   }
 }

@@ -10,7 +10,7 @@
       width: 550px;
       height: calc(100vh - 150px);
       padding:30px 20px 20px;
-      background: white;
+      background: rgba(255, 255, 255, .9);
       box-shadow: 0 0 26px 0 rgba(27, 117, 107, 0.3);
       border-radius: 20px;
       @include center-block;
@@ -164,7 +164,7 @@
       }
     }
     .swiper-pagination {
-      top: 26px;
+      top: 73px;
       bottom: 932px !important;
       height: 4px !important;
       display: flex;
@@ -183,7 +183,7 @@
       }
       &.swiper-pagination-bullet-active {
         border-radius: 4px;
-        background: rgba(255, 255, 255, 0.8) !important;
+        background: rgba(89, 84, 84, 0.8) !important;
       }
     }
     .bottom-group {

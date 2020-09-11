@@ -42,7 +42,7 @@ class WelfareCust {
    * @returns
    * @memberof WelfareCust
    */
-  addressList (page) {
+  addressList (page = 1) {
     let http = new Http()
     http.baseURL = sysConfig.wisalesBaseUrl[process.env.NODE_ENV]
     http.path = `/${moduleName}/address/get`

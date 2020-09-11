@@ -6,16 +6,17 @@ class Wechat {
    * @description 根据code获取jessionId、idNumber和bindStatus
    * @param {String} code 微信code
    */
-  wxCallback (code, appPartner) {
-      let http = new Http()
-      http.path = `/wechat/wxCallback`
-      http.body = { code, appPartner }
-      return http.post()
+  wxCallback(code, appPartner) {
+    let http = new Http()
+    http.path = `/wechat/wxCallback`
+    http.body = { code, appPartner }
+    http.loading = false
+    return http.post()
   }
   /**
    * 获取微信分享需要的config数据
    */
-  getJsapiSignature () {
+  getJsapiSignature() {
     let url = window.encodeURIComponent(window.location.href.split('#')[0])
     let http = new Http()
     http.path = `/${moduleName}/getJsapiSignature`

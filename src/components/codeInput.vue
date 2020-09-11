@@ -1,55 +1,103 @@
 <template>
   <div class="code-input-wrap">
     <!-- 密码输入框 -->
-    <van-password-input
-      :value="code"
-      :mask="!visible"
-      @focus="flag = true"
-    />
-
-    <!-- 数字键盘 -->
-    <van-number-keyboard
-      :value="code"
-      :show="flag"
-      @blur="show = false"
-      @input="onInput"
-      @delete="onDelete"
-    />
+    <van-password-input :value="dot" :focused="true" gutter="0.5em" @focus="show = true" />
+    <!-- 安全密码键盘 -->
+    <pwd-keyboard :show="show" type="number" :img-src="imgSrc" :hide-on-click-outside="false" @hide="show = false" @keydown="onKeydown" @delete="onDelete"></pwd-keyboard>
   </div>
 </template>
 
 <script>
+import pwdKeyboard from 'components/pwdKeyboard'
+import helper from 'utils/helper'
 export default {
   props: {
-    visible: {
+    value: {
+      type: Array,
+      default () {
+        return []
+      }
+    },
+    maxLength: {
+      type: Number,
+      default () {
+        return 6
+      }
+    },
+    needCheckRepeat: {
       type: Boolean,
-      default: false
+      default: true
     }
   },
   data () {
     return {
-      flag: false,
-      code: ''
+      currentValue: this.value,
+      show: false,
+      imgSrc: ''
     }
   },
-  created () {},
-  mounted () {
-    this.flag = true
+  computed: {
+    dot () {
+      return '.'.repeat(this.currentValue.length)
+    }
+  },
+  watch: {
+    currentValue (val) {
+      this.$emit('input', val)
+    },
+    value (val) {
+      this.currentValue = val
+    },
+    show (val) {
+      this.toggleWrapClass(val)
+    }
+  },
+  created () {
+    this.open()
+  },
+  async mounted () {
+    this.crateNumericKeypad()
+    this.toggleWrapClass()
   },
   methods: {
-    onInput(key) {
-      this.code = (this.code + key).slice(0, 6)
-      if (this.code.length === 6) {
-        this.flag = false
-        this.$emit('complete', this.code)
+    async crateNumericKeypad () {
+      let res = await this.$Password.crateNumericKeypad()
+      let { numberBase } = res.data
+      this.imgSrc = `data:image/jpeg;base64,${numberBase}`
+    },
+    onKeydown (value) {
+      if (this.currentValue.length === this.maxLength) return
+      this.currentValue.push(value)
+      if (this.currentValue.length === this.maxLength) {
+        if (this.needCheckRepeat && this.checkRepeat()) {
+          this.currentValue = []
+          helper.toast('请不要输入重复的数字密码')
+        } else {
+          this.show = false
+          this.$emit('complete')
+        }
       }
     },
-    onDelete() {
-      this.code = this.code.slice(0, this.code.length - 1)
+    onDelete (value) {
+      this.currentValue.pop()
+      this.$emit('delete')
     },
-    clearCode () {
-      this.code = ''
+    open () {
+      this.show = true
+    },
+    checkRepeat () {
+      let first = this.currentValue[0]
+      return !!this.currentValue.every(item => item === first)
+    },
+    toggleWrapClass (val = true) {
+      let wrap = document.querySelector('.content-wrap')
+      if (wrap) {
+        wrap.className = val ? 'content-wrap show' : 'content-wrap'
+      }
     }
+  },
+  components: {
+    pwdKeyboard
   }
 }
 </script>
