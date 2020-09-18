@@ -65,7 +65,7 @@ export default {
     demo: 'https://sitwxp.cardpu.com/fx-payroll/#/',
     production: 'https://wxp.cardpu.com/fx-payroll/#/'
   },
-  bankSiteUrl: 'https://m.hxb.com.cn/pwxweb/NearbyPwxQry.do',
+  bankSiteUrl: 'https://m.hxb.com.cn/pwxweb/NearbyPwxQry.do?key=21e43db1d55af8b25ece43e6b68c2806e5513d7e61f6b1d48e83c19e9a98db816b56a250bdc9c51b23e0e060a25def34b0997555f46a1cd4c0135ad8fe349ec01e37dbaa977d70b147227bf2c5e7402bbde14067668a3db129ffbae657da5177f0ea08099929d086114d6eda30e5e748',
   aboutUsUrl: 'https://mp.weixin.qq.com/s/X4mJZ1a55OkersW9yE0U0A',
   wisaleSquareUrl: {
     development: 'https://sitwxp.cardpu.com/wisale-h5/#/',
