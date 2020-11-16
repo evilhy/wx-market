@@ -54,10 +54,10 @@ export default {
     production: ''
   },
   wisalesImgUrl: {
-    development: 'https://sitgateway.cardpu.com/payroll/wisales/h5/unAuth/img',
-    sit: 'https://sitgateway.cardpu.com/payroll/wisales/h5/unAuth/img',
-    demo: 'https://sitgateway.cardpu.com/payroll/wisales/h5/unAuth/img',
-    production: 'https://gateway.cardpu.com/payroll/wisales/h5/unAuth/img'
+    development: 'https://sitgateway.cardpu.com/wisales/h5/unAuth/img',
+    sit: 'https://sitgateway.cardpu.com/wisales/h5/unAuth/img',
+    demo: 'https://sitgateway.cardpu.com/wisales/h5/unAuth/img',
+    production: 'https://gateway.cardpu.com/wisales/h5/unAuth/img'
   },
   proBaseUrl: {
     development: 'https://sitwxp.cardpu.com/fx-payroll/#/',
