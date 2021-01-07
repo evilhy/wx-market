@@ -67,6 +67,7 @@
     <home-manager-dialog ref="home-manager-dialog" @getIsReadManager="isReadManager = true"
       @getIsReadManagerCurrent="isReadManagerCurrent = true" :manager-info="managerInfo"></home-manager-dialog>
     <fxgj-mini-program-popup ref="fxgj-mini-program-popup"></fxgj-mini-program-popup>
+    <div style="position: fixed;top: 46%;right: 0;outline: 1px solid red" @click="$router.push({name: 'yearBill'})">年度账单</div>
   </div>
 </template>
 

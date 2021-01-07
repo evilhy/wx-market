@@ -672,6 +672,13 @@ export default new Router({
       component: resolve => {
         require(['../views/public/zxTest.vue'], resolve)
       }
+    },
+    {
+      path: '/year-bill', // 年度账单
+      name: 'yearBill',
+      component: resolve => {
+        require(['../views/yearBill/index.vue'], resolve)
+      }
     }
   ],
   scrollBehavior(to, from, savedPosition) {
