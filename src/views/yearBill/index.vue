@@ -147,13 +147,59 @@ export default {
     }
   },
   created () {
-    this.getYearBill()
+   this.getYearBill()
   },
   methods: {
     async getYearBill() {
-      let res = await this.$Bill.bill()
-      this.yearBill = res.data
-      this.currentRate = 100
+      try {
+        let res = await this.$Bill.bill()
+       // this.yearBill = res.data
+      } finally {
+        this.currentRate = 100
+        this.yearBill = {
+          "differDays": 367,
+          "pushTimes": 7,
+          "monthCount": 2,
+          "totalAmount": "69009.60",
+          "maxAmount": "9076.36",
+          "maxMonth": "10",
+          "minAmount": "1500",
+          "minMonth": "3",
+          "maxSingleAmountDate": "20201015",
+          "bindDateTime": "20180902",
+          "maxSingleAmount": "19076.36",
+          "differAmount": "10000.00",
+          "deductTotalAmt": "9000.00",
+          "industry": "电信、广播电视和卫星传输服务",
+          "fundWages": [
+            {
+              "fundType": "工资",
+              "fundAmount": "50230.1",
+              "fundPercent": "82.5"
+            } ,
+            {
+              "fundType": "报销",
+              "fundAmount": "0",
+              "fundPercent": "0"
+            } ,
+            {
+              "fundType": "补贴",
+              "fundAmount": "10000",
+              "fundPercent": "16.5"
+            } ,
+            {
+              "fundType": "其他",
+              "fundAmount": "93",
+              "fundPercent": "1"
+            }
+          ],
+          "industryAvgAmount": "10.3",
+          "firstTierCitiesAvgAmount": "9.9",
+          "secondTierCitiesAvgAmount": "6.8",
+          "percent": "30"
+        }
+      }
+
     }
   }
 }
