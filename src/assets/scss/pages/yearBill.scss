@@ -219,6 +219,7 @@
         height: 23px;
         margin-right: 10px;
         animation: move5 1.5s ease-in infinite alternate;
+        -webkit-animation: move5 1.5s ease-in infinite alternate;
       }
     }
   }
@@ -241,6 +242,7 @@
         left: 50%;
         transform: translateY(-50%) translateX(-50%);
         animation: move 1.5s ease-in 0s infinite alternate;
+        -webkit-animation: move 1.5s ease-in 0s infinite alternate;
       }
       .circle2{
         @include area(218px, 218px);
@@ -249,6 +251,7 @@
         left: 50%;
         transform: translateY(-50%) translateX(-50%);
         animation: move 1.5s ease-in 0.5s infinite alternate;
+        -webkit-animation: move 1.5s ease-in 0.5s infinite alternate;
       }
       .circle3{
         @include area(248px, 248px);
@@ -257,6 +260,7 @@
         left: 50%;
         transform: translateY(-50%) translateX(-50%);
         animation: move 1.5s ease-in 1s infinite alternate;
+        -webkit-animation: move 1.5s ease-in 1s infinite alternate;
       }
       .open-btn{
         @include area(170px, 170px);

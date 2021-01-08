@@ -1,7 +1,7 @@
 <template>
   <div class="year-bill-page">
     <div class="first-page" v-if="!showSwipe">
-      <img src="../../assets/img/yearBill/main.png" alt="">
+      <img v-lazy="imgPage.main" alt="">
       <div class="open-box">
         <template v-if="currentRate === 100">
           <img class="circle1" src="../../assets/img/yearBill/circle1.png" alt="">
@@ -20,7 +20,7 @@
     <van-swipe v-else class="my-swipe" vertical :show-indicators="false" :loop="false">
       <van-swipe-item>
         <div class="p1 wrap">
-          <img src="../../assets/img/yearBill/p1.png" alt="">
+          <img v-lazy="imgPage.p1" alt="">
           <div class="p1-d1 font1">{{yearBill.bindDateTime | date('Y年m月d日')}}</div>
           <div class="p1-d2 font1">{{yearBill.differDays}}天</div>
           <div class="p1-d3 font1">{{yearBill.pushTimes}}次</div>
@@ -32,7 +32,7 @@
       </van-swipe-item>
       <van-swipe-item>
         <div class="p2 wrap">
-          <img src="../../assets/img/yearBill/p2.png" alt="">
+          <img v-lazy="imgPage.p2" alt="">
           <div class="p2-d1 font1">{{yearBill.totalAmount}}元</div>
           <div class="p2-d2 font1">{{yearBill.deductTotalAmt}}元</div>
           <div class="p2-d3 font1">{{yearBill.monthCount}}</div>
@@ -45,7 +45,7 @@
       </van-swipe-item>
       <van-swipe-item>
         <div class="p3 wrap">
-          <img src="../../assets/img/yearBill/p3.png" alt="">
+          <img v-lazy="imgPage.p3" alt="">
           <div class="p3-d1">
             <div class="cell" v-for="(item, index) in yearBill.fundWages" :key="index">
               <div class="info">
@@ -66,7 +66,7 @@
       </van-swipe-item>
       <van-swipe-item>
         <div class="p4 wrap">
-          <img src="../../assets/img/yearBill/p4.png" alt="">
+          <img v-lazy="imgPage.p4" alt="">
           <div class="p4-d1 font1">{{yearBill.maxSingleAmountDate | date('Y年m月d日')}}</div>
           <div class="p4-d2 font1">{{yearBill.maxSingleAmount}}元</div>
           <div class="p4-d3 font1">{{yearBill.maxMonth}}月</div>
@@ -80,7 +80,7 @@
       </van-swipe-item>
       <van-swipe-item>
         <div class="p5 wrap">
-          <img src="../../assets/img/yearBill/p5.png" alt="">
+          <img v-lazy="imgPage.p5" alt="">
           <div class="p5-d1 font1">{{yearBill.industry}}</div>
           <div class="p5-d2 font1">{{yearBill.industryAvgAmount}}万元/年</div>
           <div class="p5-d3 font1">{{yearBill.firstTierCitiesAvgAmount}}万元/年</div>
@@ -92,7 +92,7 @@
       </van-swipe-item>
       <van-swipe-item>
         <div class="p6 wrap">
-          <img src="../../assets/img/yearBill/p6.png" alt="">
+          <img v-lazy="imgPage.p6" alt="">
           <div class="p6-d1 font1">{{yearBill.percent}}%</div>
           <div class="p6-d2">
             <img :src="percent.img" alt="">
@@ -112,6 +112,15 @@
 export default {
   data () {
     return {
+      imgPage: {
+        main: require(`../../assets/img/yearBill/main.png`),
+        p1: require(`../../assets/img/yearBill/p1.png`),
+        p2: require(`../../assets/img/yearBill/p2.png`),
+        p3: require(`../../assets/img/yearBill/p3.png`),
+        p4: require(`../../assets/img/yearBill/p4.png`),
+        p5: require(`../../assets/img/yearBill/p5.png`),
+        p6: require(`../../assets/img/yearBill/p6.png`),
+      },
       currentRate: 0,
       speed: 20,
       showSwipe: false,
