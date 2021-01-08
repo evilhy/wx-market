@@ -16,6 +16,9 @@
   .my-swipe{
     height: 100%;
   }
+  .van-swipe__track{
+    height: 100%;
+  }
   .van-swipe-item {
     height: 100%;
     font-size: 20px;
@@ -214,6 +217,7 @@
       justify-content: center;
       font-size: 26px;
       color: #00CCCC;
+      background: yellow;
       img{
         width: 28px;
         height: 23px;
