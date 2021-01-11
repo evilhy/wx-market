@@ -84,10 +84,10 @@
         </div>
       </van-swipe-item>
       <van-swipe-item>
-       <!-- <div class="p6 wrap">
+        <div class="p6 wrap">
           <img :src="imgPage[6]" alt="">
-          &lt;!&ndash;<img v-lazy="imgPage.p6" alt="">&ndash;&gt;
-          &lt;!&ndash;<van-image lazy-load :src="imgPage.p6" />&ndash;&gt;
+          <!--<img v-lazy="imgPage.p6" alt="">-->
+          <!--<van-image lazy-load :src="imgPage.p6" />-->
           <div class="p6-d1 font1">{{yearBill.percent}}%</div>
           <div class="p6-d2">
             <img :src="percent.img" alt="">
@@ -97,7 +97,7 @@
             <div class="desc">产品推荐</div>
             <div class="recommend-box"></div>
           </div>
-        </div>-->
+        </div>
       </van-swipe-item>
     </van-swipe>
     <div class="first-page" v-show="!showSwipe">
