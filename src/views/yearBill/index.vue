@@ -3,7 +3,7 @@
     <van-swipe ref="swipe" v-show="showSwipe" class="my-swipe" vertical :show-indicators="false" :loop="false">
       <van-swipe-item>
         <div class="p1 wrap">
-          <img src="../../assets/img/yearBill/p1.png" alt="">
+          <img :src="imgPage[1]" alt="">
           <!--<img v-lazy="imgPage.p1" alt="">-->
           <!--<van-image lazy-load :src="imgPage.p1" />-->
           <div class="p1-d1 font1">{{yearBill.bindDateTime | date('Y年m月d日')}}</div>
@@ -17,7 +17,7 @@
       </van-swipe-item>
       <van-swipe-item>
         <div class="p2 wrap">
-          <img src="../../assets/img/yearBill/p2.png" alt="">
+          <img :src="imgPage[2]" alt="">
           <!--<img v-lazy="imgPage.p2" alt="">-->
           <!--<van-image lazy-load :src="imgPage.p2" />-->
           <div class="p2-d1 font1">{{yearBill.totalAmount}}元</div>
@@ -32,7 +32,7 @@
       </van-swipe-item>
       <van-swipe-item>
         <div class="p3 wrap">
-          <img src="../../assets/img/yearBill/p3.png" alt="">
+          <img :src="imgPage[3]" alt="">
           <!--<img v-lazy="imgPage.p3" alt="">-->
           <!--<van-image lazy-load :src="imgPage.p3" />-->
           <div class="p3-d1">
@@ -44,7 +44,7 @@
                   <div class="percent">{{item.fundPercent}}%</div>
                 </div>
               </div>
-              <van-progress :percentage="item.fundPercent" track-color="rgba(205,143,70,0.20)" color="linear-gradient(90deg, #FF7C4C 0%, #EC3616 100%)" stroke-width="10" :show-pivot="false"/>
+              <van-progress ref="progress" percentage="20" track-color="rgba(205,143,70,0.20)" color="linear-gradient(90deg, #FF7C4C 0%, #EC3616 100%)" stroke-width="10" :show-pivot="false"/>
             </div>
           </div>
           <div class="p3-d2 font2">虽与我无缘，但愿君有钱！</div>
@@ -55,7 +55,7 @@
       </van-swipe-item>
       <van-swipe-item>
         <div class="p4 wrap">
-          <img src="../../assets/img/yearBill/p4.png" alt="">
+          <img :src="imgPage[4]" alt="">
           <!--<img v-lazy="imgPage.p4" alt="">-->
           <!--<van-image lazy-load :src="imgPage.p4" />-->
           <div class="p4-d1 font1">{{yearBill.maxSingleAmountDate | date('Y年m月d日')}}</div>
@@ -71,7 +71,7 @@
       </van-swipe-item>
       <van-swipe-item>
         <div class="p5 wrap">
-          <img src="../../assets/img/yearBill/p5.png" alt="">
+          <img :src="imgPage[5]" alt="">
           <!--<img v-lazy="imgPage.p5" alt="">-->
           <!-- <van-image lazy-load :src="imgPage.p5" />-->
           <div class="p5-d1 font1">{{yearBill.industry}}</div>
@@ -84,10 +84,10 @@
         </div>
       </van-swipe-item>
       <van-swipe-item>
-        <div class="p6 wrap">
-          <img src="../../assets/img/yearBill/p6.png" alt="">
-          <!--<img v-lazy="imgPage.p6" alt="">-->
-          <!--<van-image lazy-load :src="imgPage.p6" />-->
+       <!-- <div class="p6 wrap">
+          <img :src="imgPage[6]" alt="">
+          &lt;!&ndash;<img v-lazy="imgPage.p6" alt="">&ndash;&gt;
+          &lt;!&ndash;<van-image lazy-load :src="imgPage.p6" />&ndash;&gt;
           <div class="p6-d1 font1">{{yearBill.percent}}%</div>
           <div class="p6-d2">
             <img :src="percent.img" alt="">
@@ -97,11 +97,11 @@
             <div class="desc">产品推荐</div>
             <div class="recommend-box"></div>
           </div>
-        </div>
+        </div>-->
       </van-swipe-item>
     </van-swipe>
     <div class="first-page" v-show="!showSwipe">
-      <img src="../../assets/img/yearBill/main.png" alt="">
+      <img :src="imgPage[0]" alt="">
      <!-- <van-image lazy-load :src="imgPage.main" />-->
       <div class="open-box">
         <template v-if="currentRate === 100">
@@ -122,18 +122,19 @@
 </template>
 
 <script>
+  import loading from 'utils/loading'
 export default {
   data () {
     return {
-      imgPage: {
-        main: require(`../../assets/img/yearBill/main.png`),
-        p1: require(`../../assets/img/yearBill/p1.png`),
-        p2: require(`../../assets/img/yearBill/p2.png`),
-        p3: require(`../../assets/img/yearBill/p3.png`),
-        p4: require(`../../assets/img/yearBill/p4.png`),
-        p5: require(`../../assets/img/yearBill/p5.png`),
-        p6: require(`../../assets/img/yearBill/p6.png`)
-      },
+      imgPage: [
+        require(`../../assets/img/yearBill/main.png`),
+        require(`../../assets/img/yearBill/p1.png`),
+        require(`../../assets/img/yearBill/p2.png`),
+        require(`../../assets/img/yearBill/p3.png`),
+        require(`../../assets/img/yearBill/p4.png`),
+        require(`../../assets/img/yearBill/p5.png`),
+        require(`../../assets/img/yearBill/p6.png`)
+      ],
       currentRate: 0,
       speed: 20,
       showSwipe: false,
@@ -170,22 +171,50 @@ export default {
   },
   created () {
    this.getYearBill()
+   this.ready(this.imgPage)
+    this.loadingHash = loading.show({type: 'bounce'})
+  },
+  mounted() {
+
+  },
+  updated() {
+
   },
   methods: {
+    ready(pics) {
+      const picsAll = pics.map((imgurl) => {
+        return new Promise((resolve, reject) => {
+          const img = new Image()
+          img.src = imgurl
+          img.onload = () => {
+            resolve(imgurl)
+          }
+          img.onerror = () => reject(new Error(imgurl + ' load error'))
+        })
+      })
+      Promise.all(picsAll).then(() => {
+        console.log('load all success')
+        loading.hide(this.loadingHash)
+      }).catch((e) => {
+        console.log(e)
+        loading.hide(this.loadingHash)
+      })
+    },
     aa() {
       this.showSwipe = true
-       this.$nextTick(()=> {
-        this.$refs.swipe.resize()
+       this.$nextTick(() => {
+         this.$refs.swipe.resize()
+         this.$refs.progress.forEach(item => item.resize())
       })
     },
     async getYearBill() {
       try {
         let res = await this.$Bill.bill()
-        /* this.yearBill = res.data */
+         this.yearBill = res.data
       } finally {
         this.currentRate = 100
 
-         this.yearBill = {
+        /* this.yearBill = {
           "differDays": 367,
           "pushTimes": 7,
           "monthCount": 2,
@@ -226,7 +255,7 @@ export default {
           "firstTierCitiesAvgAmount": "9.9",
           "secondTierCitiesAvgAmount": "6.8",
           "percent": "30"
-        }
+        } */
       }
 
     }
