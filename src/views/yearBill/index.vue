@@ -210,11 +210,11 @@ export default {
     async getYearBill() {
       try {
         let res = await this.$Bill.bill()
-         this.yearBill = res.data
+         // this.yearBill = res.data
       } finally {
         this.currentRate = 100
 
-        /* this.yearBill = {
+         this.yearBill = {
           "differDays": 367,
           "pushTimes": 7,
           "monthCount": 2,
@@ -255,7 +255,7 @@ export default {
           "firstTierCitiesAvgAmount": "9.9",
           "secondTierCitiesAvgAmount": "6.8",
           "percent": "30"
-        } */
+        }
       }
 
     }
