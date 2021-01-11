@@ -1,27 +1,11 @@
 <template>
   <div class="year-bill-page">
-    <div class="first-page" v-if="!showSwipe">
-      <van-image lazy-load :src="imgPage.main" />
-      <div class="open-box">
-        <template v-if="currentRate === 100">
-          <img class="circle1" src="../../assets/img/yearBill/circle1.png" alt="">
-          <img class="circle2" src="../../assets/img/yearBill/circle2.png" alt="">
-          <img class="circle3" src="../../assets/img/yearBill/circle3.png" alt="">
-          <img @click="showSwipe = true" class="open-btn" src="../../assets/img/yearBill/open-btn.png" alt="">
-        </template>
-        <van-circle v-else v-model="currentRate" :rate="98" :speed="speed" layer-color="rgb(255,242,210,0.2)" color="#FFF2D2" stroke-width="16">
-          <div class="text-wrap">
-            <div class="progress">{{currentRate.toFixed(0)}}%</div>
-            <div class="start-desc">开启中</div>
-          </div>
-        </van-circle>
-      </div>
-    </div>
-    <van-swipe v-else class="my-swipe" vertical :show-indicators="false" :loop="false">
+    <van-swipe ref="swipe" v-show="showSwipe" class="my-swipe" vertical :show-indicators="false" :loop="false">
       <van-swipe-item>
         <div class="p1 wrap">
-         <!-- <img v-lazy="imgPage.p1" alt="">-->
-          <van-image lazy-load :src="imgPage.p1" />
+          <img src="../../assets/img/yearBill/p1.png" alt="">
+          <!--<img v-lazy="imgPage.p1" alt="">-->
+          <!--<van-image lazy-load :src="imgPage.p1" />-->
           <div class="p1-d1 font1">{{yearBill.bindDateTime | date('Y年m月d日')}}</div>
           <div class="p1-d2 font1">{{yearBill.differDays}}天</div>
           <div class="p1-d3 font1">{{yearBill.pushTimes}}次</div>
@@ -33,8 +17,9 @@
       </van-swipe-item>
       <van-swipe-item>
         <div class="p2 wrap">
+          <img src="../../assets/img/yearBill/p2.png" alt="">
           <!--<img v-lazy="imgPage.p2" alt="">-->
-          <van-image lazy-load :src="imgPage.p2" />
+          <!--<van-image lazy-load :src="imgPage.p2" />-->
           <div class="p2-d1 font1">{{yearBill.totalAmount}}元</div>
           <div class="p2-d2 font1">{{yearBill.deductTotalAmt}}元</div>
           <div class="p2-d3 font1">{{yearBill.monthCount}}</div>
@@ -47,8 +32,9 @@
       </van-swipe-item>
       <van-swipe-item>
         <div class="p3 wrap">
+          <img src="../../assets/img/yearBill/p3.png" alt="">
           <!--<img v-lazy="imgPage.p3" alt="">-->
-          <van-image lazy-load :src="imgPage.p3" />
+          <!--<van-image lazy-load :src="imgPage.p3" />-->
           <div class="p3-d1">
             <div class="cell" v-for="(item, index) in yearBill.fundWages" :key="index">
               <div class="info">
@@ -69,8 +55,9 @@
       </van-swipe-item>
       <van-swipe-item>
         <div class="p4 wrap">
+          <img src="../../assets/img/yearBill/p4.png" alt="">
           <!--<img v-lazy="imgPage.p4" alt="">-->
-          <van-image lazy-load :src="imgPage.p4" />
+          <!--<van-image lazy-load :src="imgPage.p4" />-->
           <div class="p4-d1 font1">{{yearBill.maxSingleAmountDate | date('Y年m月d日')}}</div>
           <div class="p4-d2 font1">{{yearBill.maxSingleAmount}}元</div>
           <div class="p4-d3 font1">{{yearBill.maxMonth}}月</div>
@@ -84,8 +71,9 @@
       </van-swipe-item>
       <van-swipe-item>
         <div class="p5 wrap">
+          <img src="../../assets/img/yearBill/p5.png" alt="">
           <!--<img v-lazy="imgPage.p5" alt="">-->
-          <van-image lazy-load :src="imgPage.p5" />
+          <!-- <van-image lazy-load :src="imgPage.p5" />-->
           <div class="p5-d1 font1">{{yearBill.industry}}</div>
           <div class="p5-d2 font1">{{yearBill.industryAvgAmount}}万元/年</div>
           <div class="p5-d3 font1">{{yearBill.firstTierCitiesAvgAmount}}万元/年</div>
@@ -97,8 +85,9 @@
       </van-swipe-item>
       <van-swipe-item>
         <div class="p6 wrap">
+          <img src="../../assets/img/yearBill/p6.png" alt="">
           <!--<img v-lazy="imgPage.p6" alt="">-->
-          <van-image lazy-load :src="imgPage.p6" />
+          <!--<van-image lazy-load :src="imgPage.p6" />-->
           <div class="p6-d1 font1">{{yearBill.percent}}%</div>
           <div class="p6-d2">
             <img :src="percent.img" alt="">
@@ -111,6 +100,24 @@
         </div>
       </van-swipe-item>
     </van-swipe>
+    <div class="first-page" v-show="!showSwipe">
+      <img src="../../assets/img/yearBill/main.png" alt="">
+     <!-- <van-image lazy-load :src="imgPage.main" />-->
+      <div class="open-box">
+        <template v-if="currentRate === 100">
+          <img class="circle1" src="../../assets/img/yearBill/circle1.png" alt="">
+          <img class="circle2" src="../../assets/img/yearBill/circle2.png" alt="">
+          <img class="circle3" src="../../assets/img/yearBill/circle3.png" alt="">
+          <img @click="aa" class="open-btn" src="../../assets/img/yearBill/open-btn.png" alt="">
+        </template>
+        <van-circle v-else v-model="currentRate" :rate="98" :speed="speed" layer-color="rgb(255,242,210,0.2)" color="#FFF2D2" stroke-width="16">
+          <div class="text-wrap">
+            <div class="progress">{{currentRate.toFixed(0)}}%</div>
+            <div class="start-desc">开启中</div>
+          </div>
+        </van-circle>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -125,7 +132,7 @@ export default {
         p3: require(`../../assets/img/yearBill/p3.png`),
         p4: require(`../../assets/img/yearBill/p4.png`),
         p5: require(`../../assets/img/yearBill/p5.png`),
-        p6: require(`../../assets/img/yearBill/p6.png`),
+        p6: require(`../../assets/img/yearBill/p6.png`)
       },
       currentRate: 0,
       speed: 20,
@@ -165,13 +172,20 @@ export default {
    this.getYearBill()
   },
   methods: {
+    aa() {
+      this.showSwipe = true
+       this.$nextTick(()=> {
+        this.$refs.swipe.resize()
+      })
+    },
     async getYearBill() {
       try {
         let res = await this.$Bill.bill()
-       // this.yearBill = res.data
+        /* this.yearBill = res.data */
       } finally {
         this.currentRate = 100
-        this.yearBill = {
+
+         this.yearBill = {
           "differDays": 367,
           "pushTimes": 7,
           "monthCount": 2,
