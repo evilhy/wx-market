@@ -676,6 +676,9 @@ export default new Router({
     {
       path: '/year-bill', // 年度账单
       name: 'yearBill',
+      meta: {
+        title: '放薪管家工资条年度账单'
+      },
       component: resolve => {
         require(['../views/yearBill/index.vue'], resolve)
       }

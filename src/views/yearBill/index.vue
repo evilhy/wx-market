@@ -8,7 +8,7 @@
           <img class="circle1" src="../../assets/img/yearBill/circle1.png" alt="">
           <img class="circle2" src="../../assets/img/yearBill/circle2.png" alt="">
           <img class="circle3" src="../../assets/img/yearBill/circle3.png" alt="">
-          <img @click="aa" class="open-btn" src="../../assets/img/yearBill/open-btn.png" alt="">
+          <img @click="toSwipe" class="open-btn" src="../../assets/img/yearBill/open-btn.png" alt="">
         </template>
         <van-circle v-else v-model="currentRate" :rate="98" :speed="speed" layer-color="rgb(255,242,210,0.2)" color="#FFF2D2" stroke-width="16" size="100px">
           <div class="text-wrap">
@@ -28,9 +28,9 @@
           <div class="p1-d2 font1">{{yearBill.differDays}}天</div>
           <div class="p1-d3 font1">{{yearBill.pushTimes}}次</div>
           <div class="p1-d4 font2">确认过眼神，你是对的人！</div>
-          <div class="next">
+         <!-- <div class="next">
             <img src="../../assets/img/yearBill/next.png" alt="">向上滑动翻页
-          </div>
+          </div>-->
         </div>
       </van-swipe-item>
       <van-swipe-item>
@@ -43,9 +43,9 @@
           <div class="p2-d3 font1">{{yearBill.monthCount}}</div>
           <div class="p2-d4 font3">{{monthCountDesc}}</div>
           <div class="p2-d5 font2">陌生到熟悉，我是你坚强的后盾。</div>
-          <div class="next">
+         <!-- <div class="next">
             <img src="../../assets/img/yearBill/next.png" alt="">向上滑动翻页
-          </div>
+          </div>-->
         </div>
       </van-swipe-item>
       <van-swipe-item>
@@ -66,9 +66,9 @@
             </div>
           </div>
           <div class="p3-d2 font2">虽与我无缘，但愿君有钱！</div>
-          <div class="next">
+         <!-- <div class="next">
             <img src="../../assets/img/yearBill/next.png" alt="">向上滑动翻页
-          </div>
+          </div>-->
         </div>
       </van-swipe-item>
       <van-swipe-item>
@@ -82,9 +82,9 @@
           <div class="p4-d4 font1">{{yearBill.minMonth}}月</div>
           <div class="p4-d5 font1">{{yearBill.differAmount}}元</div>
           <div class="p4-d6 font2">苟富贵，勿相忘，记得常回来看看！</div>
-          <div class="next">
+         <!-- <div class="next">
             <img src="../../assets/img/yearBill/next.png" alt="">向上滑动翻页
-          </div>
+          </div>-->
         </div>
       </van-swipe-item>
       <van-swipe-item>
@@ -96,9 +96,9 @@
           <div class="p5-d2 font1">{{yearBill.industryAvgAmount}}万元/年</div>
           <div class="p5-d3 font1">{{yearBill.firstTierCitiesAvgAmount}}万元/年</div>
           <div class="p5-d4 font1">{{yearBill.secondTierCitiesAvgAmount}}万元/年</div>
-          <div class="next">
+         <!-- <div class="next">
             <img src="../../assets/img/yearBill/next.png" alt="">向上滑动翻页
-          </div>
+          </div>-->
         </div>
       </van-swipe-item>
       <van-swipe-item>
@@ -200,7 +200,7 @@ export default {
         loading.hide(this.loadingHash)
       })
     },
-    aa() {
+    toSwipe() {
       this.showSwipe = true
        this.$nextTick(() => {
          this.$refs.swipe.resize()
