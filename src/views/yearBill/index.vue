@@ -1,5 +1,23 @@
 <template>
   <div class="year-bill-page">
+    <div class="first-page" v-show="!showSwipe">
+      <img :src="imgPage[0]" alt="">
+     <!-- <van-image lazy-load :src="imgPage.main" />-->
+      <div class="open-box">
+        <template v-if="currentRate === 100">
+          <img class="circle1" src="../../assets/img/yearBill/circle1.png" alt="">
+          <img class="circle2" src="../../assets/img/yearBill/circle2.png" alt="">
+          <img class="circle3" src="../../assets/img/yearBill/circle3.png" alt="">
+          <img @click="aa" class="open-btn" src="../../assets/img/yearBill/open-btn.png" alt="">
+        </template>
+        <van-circle v-else v-model="currentRate" :rate="98" :speed="speed" layer-color="rgb(255,242,210,0.2)" color="#FFF2D2" stroke-width="16" size="100px">
+          <div class="text-wrap">
+            <div class="progress">{{currentRate.toFixed(0)}}%</div>
+            <div class="start-desc">开启中</div>
+          </div>
+        </van-circle>
+      </div>
+    </div>
     <van-swipe ref="swipe" v-show="showSwipe" class="my-swipe" vertical :show-indicators="false" :loop="false">
       <van-swipe-item>
         <div class="p1 wrap">
@@ -100,24 +118,6 @@
         </div>
       </van-swipe-item>
     </van-swipe>
-    <div class="first-page" v-show="!showSwipe">
-      <img :src="imgPage[0]" alt="">
-     <!-- <van-image lazy-load :src="imgPage.main" />-->
-      <div class="open-box">
-        <template v-if="currentRate === 100">
-          <img class="circle1" src="../../assets/img/yearBill/circle1.png" alt="">
-          <img class="circle2" src="../../assets/img/yearBill/circle2.png" alt="">
-          <img class="circle3" src="../../assets/img/yearBill/circle3.png" alt="">
-          <img @click="aa" class="open-btn" src="../../assets/img/yearBill/open-btn.png" alt="">
-        </template>
-        <van-circle v-else v-model="currentRate" :rate="98" :speed="speed" layer-color="rgb(255,242,210,0.2)" color="#FFF2D2" stroke-width="16">
-          <div class="text-wrap">
-            <div class="progress">{{currentRate.toFixed(0)}}%</div>
-            <div class="start-desc">开启中</div>
-          </div>
-        </van-circle>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -171,8 +171,8 @@ export default {
   },
   created () {
    this.getYearBill()
-   this.ready(this.imgPage)
-    this.loadingHash = loading.show({type: 'bounce'})
+  // this.ready(this.imgPage)
+   // this.loadingHash = loading.show({type: 'bounce'})
   },
   mounted() {
 
@@ -213,7 +213,6 @@ export default {
          // this.yearBill = res.data
       } finally {
         this.currentRate = 100
-
          this.yearBill = {
           "differDays": 367,
           "pushTimes": 7,
