@@ -29,7 +29,8 @@
           <div class="p1-d3 font1">{{yearBill.pushTimes}}次</div>
           <div class="p1-d4 font2">确认过眼神，你是对的人！</div>
           <div class="next">
-            <img src="../../assets/img/yearBill/next.png" alt="">向上滑动翻页
+            <div class="next-img"><img src="../../assets/img/yearBill/next.png" alt=""></div>
+            <div class="next-desc">向上滑动翻页</div>
           </div>
         </div>
       </van-swipe-item>
