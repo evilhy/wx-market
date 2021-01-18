@@ -119,39 +119,6 @@
   }
 }
 
-@-moz-keyframes move5 {
-  0% {
-    -webkit-transform: translateY(0);
-    opacity: 1;
-  }
-  100% {
-    -webkit-transform: translateY(-40%);
-    opacity: 0.2;
-  }
-}
-
-@-o-keyframes move5 {
-  0% {
-    -webkit-transform: translateY(0);
-    opacity: 1;
-  }
-  100% {
-    -webkit-transform: translateY(-40%);
-    opacity: 0.2;
-  }
-}
-
-@-ms-keyframes move5 {
-  0% {
-    -webkit-transform: translateY(0);
-    opacity: 1;
-  }
-  100% {
-    -webkit-transform: translateY(-40%);
-    opacity: 0.2;
-  }
-}
-
 @keyframes move5 {
   0% {
     transform: translateY(0);
