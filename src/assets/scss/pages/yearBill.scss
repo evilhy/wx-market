@@ -217,16 +217,13 @@
       justify-content: center;
       font-size: 26px;
       color: #00CCCC;
-      background: yellow;
+    //  background: yellow;
       img{
         width: 28px;
         height: 23px;
         margin-right: 10px;
-
-      }
-      span{
-        animation: move5 1.5s ease-in infinite alternate;
-        -webkit-animation: move5 1.5s ease-in infinite alternate;
+       /* animation: move5 1.5s ease-in infinite alternate;
+        -webkit-animation: move5 1.5s ease-in infinite alternate; */
       }
     }
   }
