@@ -20,6 +20,22 @@
     </div>
     <van-swipe ref="swipe" v-show="showSwipe" class="my-swipe" vertical :show-indicators="false" :loop="false">
       <van-swipe-item>
+        <div class="p7 wrap">
+          <img :src="imgPage[7]" alt="">
+          <div class="next">
+            <img src="../../assets/img/yearBill/next.png" alt=""><span>向上滑动翻页</span>
+          </div>
+        </div>
+      </van-swipe-item>
+      <van-swipe-item>
+        <div class="p8 wrap">
+          <img :src="imgPage[8]" alt="">
+          <div class="next">
+            <img src="../../assets/img/yearBill/next.png" alt=""><span>向上滑动翻页</span>
+          </div>
+        </div>
+      </van-swipe-item>
+      <van-swipe-item>
         <div class="p1 wrap">
           <img :src="imgPage[1]" alt="">
           <!--<img v-lazy="imgPage.p1" alt="">-->
@@ -115,6 +131,14 @@
             <div class="desc">产品推荐</div>
             <div class="recommend-box"></div>
           </div>
+          <div class="next">
+            <img src="../../assets/img/yearBill/next.png" alt=""><span>向上滑动翻页</span>
+          </div>
+        </div>
+      </van-swipe-item>
+      <van-swipe-item>
+        <div class="p9 wrap">
+          <img :src="imgPage[9]" alt="">
         </div>
       </van-swipe-item>
     </van-swipe>
@@ -133,7 +157,10 @@ export default {
         require(`../../assets/img/yearBill/p3.png`),
         require(`../../assets/img/yearBill/p4.png`),
         require(`../../assets/img/yearBill/p5.png`),
-        require(`../../assets/img/yearBill/p6.png`)
+        require(`../../assets/img/yearBill/p6.png`),
+        require(`../../assets/img/yearBill/p7.png`),
+        require(`../../assets/img/yearBill/p8.png`),
+        require(`../../assets/img/yearBill/p9.png`)
       ],
       currentRate: 0,
       speed: 20,
@@ -171,8 +198,8 @@ export default {
   },
   created () {
    this.getYearBill()
-  // this.ready(this.imgPage)
-   // this.loadingHash = loading.show({type: 'bounce'})
+   this.ready(this.imgPage)
+   this.loadingHash = loading.show({type: 'bounce'})
   },
   mounted() {
 
@@ -193,10 +220,8 @@ export default {
         })
       })
       Promise.all(picsAll).then(() => {
-        console.log('load all success')
         loading.hide(this.loadingHash)
-      }).catch((e) => {
-        console.log(e)
+      }).catch(() => {
         loading.hide(this.loadingHash)
       })
     },
