@@ -67,6 +67,7 @@
     <home-manager-dialog ref="home-manager-dialog" @getIsReadManager="isReadManager = true"
       @getIsReadManagerCurrent="isReadManagerCurrent = true" :manager-info="managerInfo"></home-manager-dialog>
     <fxgj-mini-program-popup ref="fxgj-mini-program-popup"></fxgj-mini-program-popup>
+    <!--<year-bill-popup></year-bill-popup>-->
   </div>
 </template>
 
@@ -79,6 +80,7 @@ import fxgjMiniProgramPopup from 'components/fxgjMiniProgramPopup'
 import homeGameLink from './homeGameLink'
 import homeZxMenu from './homeZxMenu'
 import homeManagerDialog from './homeManagerDialog'
+import yearBillPopup from '../yearBill/yearBillPopup'
 import helper from 'utils/helper'
 import decryptInfo from 'utils/decryptInfo'
 import sysConfig from 'utils/constant'
@@ -88,6 +90,7 @@ const wxapi = new Wxapi() */
 export default {
   data () {
     return {
+      show: true,
       entList: [],
       currentEntId: '',
       managerInfo: {
@@ -206,7 +209,8 @@ export default {
     fxgjMiniProgramPopup,
     homeGameLink,
     homeZxMenu,
-    homeManagerDialog
+    homeManagerDialog,
+    yearBillPopup
   }
 }
 </script>

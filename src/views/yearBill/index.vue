@@ -118,6 +118,14 @@
         </div>
       </van-swipe-item>
       <van-swipe-item>
+        <div class="p9 wrap">
+          <img :src="imgPage[9]" alt="">
+          <div class="next">
+            <img src="../../assets/img/yearBill/next.png" alt=""><span>向上滑动翻页</span>
+          </div>
+        </div>
+      </van-swipe-item>
+      <van-swipe-item>
         <div class="p6 wrap">
           <img :src="imgPage[6]" alt="">
           <!--<img v-lazy="imgPage.p6" alt="">-->
@@ -127,18 +135,10 @@
             <img :src="percent.img" alt="">
           </div>
           <div class="p6-d3 font3">{{percent.desc}}</div>
-          <div class="p6-d4">
+          <!--<div class="p6-d4">
             <div class="desc">产品推荐</div>
             <div class="recommend-box"></div>
-          </div>
-          <div class="next">
-            <img src="../../assets/img/yearBill/next.png" alt=""><span>向上滑动翻页</span>
-          </div>
-        </div>
-      </van-swipe-item>
-      <van-swipe-item>
-        <div class="p9 wrap">
-          <img :src="imgPage[9]" alt="">
+          </div>-->
         </div>
       </van-swipe-item>
     </van-swipe>
