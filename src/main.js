@@ -2,7 +2,7 @@ import 'babel-polyfill'
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import { Lazyload, DropdownMenu, DropdownItem, NoticeBar, Swipe, SwipeItem, Image, Popup, Icon, AddressList, AddressEdit, ActionSheet, Cell, CellGroup, Field, Switch, Button, PasswordInput, List, Tab, Tabs, PullRefresh, SwipeCell, NumberKeyboard, NavBar, RadioGroup, Radio, Sticky, Calendar, Step, Steps, Form, Circle } from 'vant'
+import { Lazyload, DropdownMenu, DropdownItem, NoticeBar, Swipe, SwipeItem, Image, Popup, Icon, AddressList, AddressEdit, ActionSheet, Cell, CellGroup, Field, Switch, Button, PasswordInput, List, Tab, Tabs, PullRefresh, SwipeCell, NumberKeyboard, NavBar, RadioGroup, Radio, Sticky, Calendar, Step, Steps, Form, Circle, Progress } from 'vant'
 import myPlugin from './utils/plugin'
 
 import './assets/fonts/iconfont.css'
@@ -51,6 +51,7 @@ Vue.use(Step)
 Vue.use(Steps)
 Vue.use(Form)
 Vue.use(Circle)
+Vue.use(Progress)
 
 Vue.use(myPlugin)
 Vue.use(VueClipboard)
@@ -60,4 +61,4 @@ export default new Vue({
   el: '#app',
   router,
   render: h => h(App)
-}) 
+})

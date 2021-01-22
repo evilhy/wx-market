@@ -67,6 +67,8 @@ const cardCount = require('./json/wisales.cardCount.json')
 const bulletInfo = require('./json/news.bulletInfo.json')
 const statisticInfo = require('./json/news.statisticInfo.json')
 const news = require('./json/news.json')
+const bill = require('./json/bill.json')
+
 module.exports = {
   openApi: [{
     baseURL: 'https://sitgateway.cardpu.com/payroll',
@@ -303,6 +305,9 @@ module.exports = {
       },
       '/manager/openingTips': {
         get: openingTips
+      },
+      '/bill': {
+        get: bill
       }
     }
   },{
