@@ -131,7 +131,8 @@
       line-height: 50px;
     }
     .p4-d1{
-      @include position(130px, 240px)
+      @include position(130px, 240px);
+      letter-spacing: -1px;
     }
     .p4-d2{
       @include position(326px, 350px)
