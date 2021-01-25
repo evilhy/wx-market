@@ -62,12 +62,13 @@
     <!-- 振兴银行菜单入口 -->
     <home-zx-menu ref="zx-menu" v-if="apppartner === 'NEWUP' || apppartner === 'SJZHRB'" @enter-payroll="enterPayroll" @to-news="toNews"></home-zx-menu>
     <!-- 底部logo -->
-    <div class="bottom-logo"><img :class="logo.className" :src="logo.src" @click="$router.push({name: 'yearBill'})" alt=""></div>
+    <div class="bottom-logo"><img :class="logo.className" :src="logo.src"  alt=""></div>
     <!-- // 后期去掉 -->
     <home-manager-dialog ref="home-manager-dialog" @getIsReadManager="isReadManager = true"
       @getIsReadManagerCurrent="isReadManagerCurrent = true" :manager-info="managerInfo"></home-manager-dialog>
     <fxgj-mini-program-popup ref="fxgj-mini-program-popup"></fxgj-mini-program-popup>
-    <!--<year-bill-popup></year-bill-popup>-->
+    <div class="year-bill-entry" @click="$router.push({name: 'yearBill'})"><img src="../../assets/img/yearBill/year-bill-entry.gif" alt=""></div>
+    <year-bill-popup></year-bill-popup>
   </div>
 </template>
 
