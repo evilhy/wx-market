@@ -2,7 +2,6 @@
   <div class="year-bill-page">
     <div class="first-page" v-show="!showSwipe">
       <img :src="imgPage[0]" alt="">
-     <!-- <van-image lazy-load :src="imgPage.main" />-->
       <div class="open-box">
         <template v-if="currentRate === 100">
           <img class="circle1" src="../../assets/img/yearBill/circle1.png" alt="">
@@ -227,7 +226,7 @@ export default {
       this.currentRate = 100
     },
     toOutPage() {
-      window.location.replace('https://wxp.cardpu.com/wisale-h5/#/activityPreheat?activityId=E120210100436')
+      window.location = 'https://wxp.cardpu.com/wisale-h5/#/activityPreheat?activityId=E120210100436'
     }
   }
 }
