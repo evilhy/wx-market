@@ -168,13 +168,13 @@
       @include position(131px, 696px)
     }
     .p6-d1{
-      @include position(296px, 243px);
+      @include position(296px, 184px);
       width: 80px;
       text-align: center;
 
     }
     .p6-d2{
-      @include position(0px, 335px);
+      @include position(0px, 271px);
       width: 100%;
       text-align: center;
       img{
@@ -183,7 +183,7 @@
       }
     }
     .p6-d3{
-      @include position(0px, 590px);
+      @include position(0px, 480px);
       text-align: center;
       width: 100%;
       height: 50px;
@@ -206,6 +206,10 @@
         width: 100%;
         height: 170px;
       }
+    }
+    .p9-d1{
+      @include position(165px, 690px);
+      @include area(420px, 340px);
     }
     .next{
       width: 100%;
@@ -294,9 +298,6 @@
         }
       }
     }
-  }
-  .p6{
-    overflow: scroll;
   }
 }
 .year-bill-popup{
