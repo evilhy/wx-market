@@ -8,7 +8,8 @@
     <div class="bottom-group">
       该资金由{{wageDetailList[0].wageShowDTO.grantName || wageDetailList[0].groupName}}发放
     </div>
-    <div class="personal-tax" @click="toPage">返回首页</div>
+    <!--<div class="personal-tax" @click="toPage">返回首页</div>-->
+    <div class="year-bill-entry" @click="$router.push({name: 'yearBill'})"><img src="../../assets/img/yearBill/year-bill-entry.gif" alt=""></div>
   </div>
 </template>
 

@@ -2,7 +2,6 @@
   <div class="year-bill-page">
     <div class="first-page" v-show="!showSwipe">
       <img :src="imgPage[0]" alt="">
-     <!-- <van-image lazy-load :src="imgPage.main" />-->
       <div class="open-box">
         <template v-if="currentRate === 100">
           <img class="circle1" src="../../assets/img/yearBill/circle1.png" alt="">
@@ -38,8 +37,6 @@
       <van-swipe-item>
         <div class="p1 wrap">
           <img :src="imgPage[1]" alt="">
-          <!--<img v-lazy="imgPage.p1" alt="">-->
-          <!--<van-image lazy-load :src="imgPage.p1" />-->
           <div class="p1-d1 font1">{{yearBill.bindDateTime | date('Y年m月d日')}}</div>
           <div class="p1-d2 font1">{{yearBill.differDays}}天</div>
           <div class="p1-d3 font1">{{yearBill.pushTimes}}次</div>
@@ -52,8 +49,6 @@
       <van-swipe-item>
         <div class="p2 wrap">
           <img :src="imgPage[2]" alt="">
-          <!--<img v-lazy="imgPage.p2" alt="">-->
-          <!--<van-image lazy-load :src="imgPage.p2" />-->
           <div class="p2-d1 font1">{{yearBill.totalAmount}}元</div>
           <div class="p2-d2 font1">{{yearBill.deductTotalAmt}}元</div>
           <div class="p2-d3 font1">{{yearBill.monthCount}}</div>
@@ -67,8 +62,6 @@
       <van-swipe-item>
         <div class="p3 wrap">
           <img :src="imgPage[3]" alt="">
-          <!--<img v-lazy="imgPage.p3" alt="">-->
-          <!--<van-image lazy-load :src="imgPage.p3" />-->
           <div class="p3-d1">
             <div class="cell" v-for="(item, index) in yearBill.fundWages" :key="index">
               <div class="info">
@@ -90,8 +83,6 @@
       <van-swipe-item>
         <div class="p4 wrap">
           <img :src="imgPage[4]" alt="">
-          <!--<img v-lazy="imgPage.p4" alt="">-->
-          <!--<van-image lazy-load :src="imgPage.p4" />-->
           <div class="p4-d1 font1">{{yearBill.maxSingleAmountDate | date('Y年m月d日')}}</div>
           <div class="p4-d2 font1">{{yearBill.maxSingleAmount}}元</div>
           <div class="p4-d3 font1">{{yearBill.maxMonth}}月</div>
@@ -106,8 +97,6 @@
       <van-swipe-item>
         <div class="p5 wrap">
           <img :src="imgPage[5]" alt="">
-          <!--<img v-lazy="imgPage.p5" alt="">-->
-          <!-- <van-image lazy-load :src="imgPage.p5" />-->
           <div class="p5-d1 font1">{{yearBill.industry}}</div>
           <div class="p5-d2 font1">{{yearBill.industryAvgAmount}}万元/年</div>
           <div class="p5-d3 font1">{{yearBill.firstTierCitiesAvgAmount}}万元/年</div>
@@ -120,6 +109,7 @@
       <van-swipe-item>
         <div class="p9 wrap">
           <img :src="imgPage[9]" alt="">
+          <div class="p9-d1" @click="toOutPage"></div>
           <div class="next">
             <img src="../../assets/img/yearBill/next.png" alt=""><span>向上滑动翻页</span>
           </div>
@@ -128,17 +118,11 @@
       <van-swipe-item>
         <div class="p6 wrap">
           <img :src="imgPage[6]" alt="">
-          <!--<img v-lazy="imgPage.p6" alt="">-->
-          <!--<van-image lazy-load :src="imgPage.p6" />-->
           <div class="p6-d1 font1">{{yearBill.percent}}%</div>
           <div class="p6-d2">
             <img :src="percent.img" alt="">
           </div>
           <div class="p6-d3 font3">{{percent.desc}}</div>
-          <!--<div class="p6-d4">
-            <div class="desc">产品推荐</div>
-            <div class="recommend-box"></div>
-          </div>-->
         </div>
       </van-swipe-item>
     </van-swipe>
@@ -236,6 +220,9 @@ export default {
       let res = await this.$Bill.bill()
       this.yearBill = res.data
       this.currentRate = 100
+    },
+    toOutPage() {
+      window.location = 'https://wxp.cardpu.com/wisale-h5/#/activityPreheat?activityId=E120210100443'
     }
   }
 }
