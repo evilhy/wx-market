@@ -123,10 +123,6 @@
             <img :src="percent.img" alt="">
           </div>
           <div class="p6-d3 font3">{{percent.desc}}</div>
-          <!--<div class="p6-d4">
-            <div class="desc">产品推荐</div>
-            <div class="recommend-box"></div>
-          </div>-->
         </div>
       </van-swipe-item>
     </van-swipe>
