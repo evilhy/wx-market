@@ -226,7 +226,7 @@ export default {
       this.currentRate = 100
     },
     toOutPage() {
-      window.location = 'https://wxp.cardpu.com/wisale-h5/#/activityPreheat?activityId=E120210100436'
+      window.location = 'https://wxp.cardpu.com/wisale-h5/#/activityPreheat?activityId=E120210100443'
     }
   }
 }
