@@ -1,6 +1,6 @@
 <template>
   <div class="year-bill-page">
-    <div class="first-page" v-show="!showSwipe">
+    <div class="first-page" v-if="!showSwipe">
       <img :src="imgPage[0]" alt="">
       <div class="open-box">
         <template v-if="currentRate === 100">
@@ -17,7 +17,7 @@
         </van-circle>
       </div>
     </div>
-    <van-swipe ref="swipe" v-show="showSwipe" class="my-swipe" vertical :show-indicators="false" :loop="false">
+    <van-swipe ref="swipe" v-if="showSwipe" class="my-swipe" vertical :show-indicators="false" :loop="false">
       <van-swipe-item>
         <div class="p7 wrap">
           <img :src="imgPage[7]" alt="">
@@ -211,10 +211,6 @@ export default {
     },
     toSwipe() {
       this.showSwipe = true
-       this.$nextTick(() => {
-         this.$refs.swipe.resize()
-         this.$refs.progress.forEach(item => item.resize())
-      })
     },
     async getYearBill() {
       let res = await this.$Bill.bill()
