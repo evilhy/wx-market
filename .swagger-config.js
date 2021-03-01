@@ -41,6 +41,7 @@ var entPhone = require('./json/roll.entPhone.json')
 var entUser = require('./json/roll.entUser.json')
 var advertising = require('./json/system.advertising.rotation.json')
 var merchantToken = require('./json/merchant.callback.json')
+var njToken = require('./json/nj.callback.json')
 var wActivityList = require('./json/welfare.activityList.json')
 var wActivityDetail = require('./json/welfare.activityDetail.json')
 var wGoodsList = require('./json/welfare.goodsList.json')
@@ -292,6 +293,9 @@ module.exports = {
       },
       '/merchant/callback': {
         get: merchantToken
+      },
+      '/nj/callback': {
+        get: njToken
       },
       '/virus': {
         get: barrageList,

@@ -3,7 +3,7 @@
     <!-- <manager-avator></manager-avator> -->
     <div class="bill-index-main">
       <div class="fx-logo">
-        <img src="../../assets/img/logo.png" alt="">
+        <img :src="logo.src" :class="logo.className" alt="">
       </div>
       <swiper class="bill-info" :options="swiperOption">
         <wage-index-item v-for="(item, index) in bankWageList" :key="index" :wage="item" @to-detail="toDetail"></wage-index-item>
@@ -14,12 +14,13 @@
           <i class="iconfont icon-chakanzoushi"></i>查看走势</div> -->
         <div class="action" @click="toDetail">
           <i class="iconfont icon-chakanxiangqing"></i>
-          <p>查看详情</p></div>
+          <p>查看详情</p>
+        </div>
       </div>
     </div>
     <div class="bottom">
       <div class="return" @click="toPage('wageList')">我的收入</div>
-      <div class="return" @click="toPage('taxCalculator')">个税计算器</div>
+      <div class="return" @click="toPage('taxCalculator')" v-if="apppartner === 'FXGJ'">个税计算器</div>
     </div>
   </div>
 </template>
@@ -31,7 +32,7 @@ import wageIndexItem from 'components/wageIndexItem'
 import storage from 'utils/storage'
 import helper from 'utils/helper'
 export default {
-  data () {
+  data() {
     return {
       wageSheetId: this.$route.params.wageSheetId,
       bankWageList: [],
@@ -39,35 +40,46 @@ export default {
         pagination: {
           el: '.swiper-pagination'
         }
+      },
+      apppartner: helper.getUserInfo('apppartner')
+    }
+  },
+  computed: {
+    logo () {
+      switch (this.apppartner) {
+        case 'NJCB':
+          return {
+            className: 'nj',
+            src: require('../../assets/img/nj-logo.png')
+          }
+        default:
+          return {
+            className: 'fx',
+            src: require('../../assets/img/logo.png')
+          }
       }
     }
   },
-  computed: {},
-  created () {
+  created() {
     this.getWageDetail()
     this.isRead()
   },
-  mounted () { },
+  mounted() {},
   methods: {
-    getWageDetail () {
-      this
-        .$Roll
-        .wageDetail(this.wageSheetId)
-        .then((res) => {
-          this.bankWageList = res.data
-          helper.title(this.bankWageList[0].wageName)
-        })
+    getWageDetail() {
+      this.$Roll.wageDetail(this.wageSheetId).then((res) => {
+        this.bankWageList = res.data
+        helper.title(this.bankWageList[0].wageName)
+      })
     },
-    isRead () {
-      this
-        .$Inside
-        .read(this.wageSheetId)
+    isRead() {
+      this.$Inside.read(this.wageSheetId)
     },
-    toDetail () {
+    toDetail() {
       storage.setSession('bankWageList', this.bankWageList)
       this.$router.push({ name: 'wageDetail' })
     },
-    toPage (routeName = '', query = {}) {
+    toPage(routeName = '', query = {}) {
       this.$router.push({ name: routeName, query: query })
     }
   },

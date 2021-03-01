@@ -22,13 +22,15 @@ export default {
   },
   methods: {
     async getJsessionId () {
-      let { accessToken = '' } = getPageQueryObject()
-      let res = await this.$Merchant.callback(accessToken)
-
-      let { bindStatus, jsessionId, idNumber, ifPwd, headimgurl, apppartner } = res.data
-      helper.saveUserInfo({ jsessionId, ifPwd, bindStatus, headimgurl, idNumber, apppartner })
-      this.$router.replace({ name: 'home' })
+      let { accessToken = '', yearMonth = '' } = getPageQueryObject()
+      let res = await this.$Nj.callback(accessToken)
+      let { bindStatus, jsessionId, idNumber, ifPwd, headimgurl, apppartner, groupId, entId } = res.data
+      helper.saveUserInfo({ jsessionId, ifPwd, bindStatus, headimgurl, idNumber, apppartner, groupId, entId })
+      this.$router.replace({ name: 'wageList', query: { groupId, yearMonth } })
     }
+  },
+  components: {
+    loading
   }
 }
 </script>

@@ -67,8 +67,10 @@
     <home-manager-dialog ref="home-manager-dialog" @getIsReadManager="isReadManager = true"
       @getIsReadManagerCurrent="isReadManagerCurrent = true" :manager-info="managerInfo"></home-manager-dialog>
     <fxgj-mini-program-popup ref="fxgj-mini-program-popup"></fxgj-mini-program-popup>
-    <div class="year-bill-entry" @click="$router.push({name: 'yearBill'})"><img src="../../assets/img/yearBill/year-bill-entry.gif" alt=""></div>
-    <year-bill-popup></year-bill-popup>
+    <template v-if="yearBillOpen">
+      <div class="year-bill-entry" @click="$router.push({name: 'yearBill'})"><img src="../../assets/img/yearBill/year-bill-entry.gif" alt=""></div>
+      <year-bill-popup></year-bill-popup>
+    </template>
   </div>
 </template>
 
@@ -106,7 +108,8 @@ export default {
       isReadManager: helper.getIsReadManager(),
       isReadManagerCurrent: helper.getIsReadManagerCurrent(),
       appId: sysConfig.appId[process.env.NODE_ENV],
-      apppartner: helper.getUserInfo('apppartner')
+      apppartner: helper.getUserInfo('apppartner'),
+      yearBillOpen: helper.checkYearBillOpen()
     }
   },
   computed: {

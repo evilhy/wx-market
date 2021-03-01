@@ -4,94 +4,35 @@
     overflow: auto;
     -webkit-overflow-scrolling: touch;
     padding-bottom: 98px;
+    padding-top: 90px;
     .star {
       letter-spacing: 6px;
       padding-left: 6px;
     }
-    .wage-list-select {
+    .van-dropdown-menu{
       position: fixed;
       left: 0;
       top: 0;
       width: 100%;
-      height: 80px;
-      background: white;
-      z-index: 3;
-      display: flex;
-      &:after {
-        content: '';
-        position: absolute;
-        right: 50%;
-        top: 20%;
-        height: 60%;
-        width: 1px;
-        background: $border-color;
-        z-index: 3;
-      }
-      .select-item {
-        position: relative;
-        width: 50%;
-        display: flex;
-        height: 100%;
-        align-items: center;
-        justify-content: center;
-        height: 80px;
-        padding: 0 20px;
-        z-index: 3;
-        background: white;
-        border-bottom: 1px solid $border-color;
-        &.active {
-          color: $theme-color;
-          .triangle {
-            transform: rotate(180deg);
-            border-top-color: $theme-color;
-          }
-        }
-        .name-item {
-          @extend %text-overflow;
-          max-width: 80%;
-        }
-      }
-      .triangle {
-        margin-left: 10px;
-        @include triangle(bottom, 10px, #bfcbd8);
-        transition: all 0.2s;
-      }
-      .list {
-        position: fixed;
-        top: 80px;
-        left: 0;
-        width: 100%;
-        background: white;
+      z-index: 10;
+      .group-list{
         padding: 0 30px;
-        z-index: 3;
-        .list-item {
-          display: flex;
-          align-items: center;
-          height: 90px;
-          border-bottom: 1px solid $border-color;
-          &:last-child {
-            border-bottom: 0;
-          }
-          .iconfont {
-            font-size: 24px;
-            color: #bfcbd7;
-            margin-right: 10px;
-          }
-        }
       }
-      .group-list {
-        padding-top: 20px;
-        display: block;
-        max-height: 700px;
-        overflow-y: auto;
+      .group-item {
+        line-height: 1.4;
+        padding: 24px 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 26px;
+        border-bottom: 1px solid $border-color;
+        position: relative;
         .icon-yilizhi {
           position: absolute;
           z-index: 50;
-          right: 20px;
-          top: 4px;
-          display: block;
-          width: 118px;
-          height: 64px;
+          right: 10px;
+          top: 6px;
+          width: 100px;
           text-align: center;
           line-height: 64px;
           font-size: 60px;
@@ -116,18 +57,11 @@
           }
         }
         .group-name {
-          flex: 1;
-        }
-        .iconNew {
-          position: absolute;
-          z-index: 60;
-          right: 20px;
-          top: -4px;
-          width: 28px;
-          height: 30px;
+          width: 500px;
         }
       }
     }
+    
     .mask {
       position: fixed;
       top: 0;

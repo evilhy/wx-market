@@ -7,7 +7,7 @@ const $checkUnitRange = Symbol('$checkUnitRange')
 const $timeRefer = Symbol('$timeRefer')
 const $addSubstract = Symbol('$addSubstract')
 
-export default class Time {
+class Time {
   [$timeRange] = ['string', 'number', 'date'];
   [$unitRange] = ['y', 'm', 'd', 'h', 'i', 's', 'ms'];
   [$timeRefer] = {
@@ -229,3 +229,5 @@ export default class Time {
     return timeType
   }
 }
+
+export default new Time()

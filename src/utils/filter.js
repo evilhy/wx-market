@@ -1,8 +1,8 @@
 import { typeOf } from './assist'
 import { toFixed, unformat } from './money'
-import Time from './time'
+import TimeInstance from './time'
 import sysConfig from './constant'
-const TimeInstance = new Time()
+
 function date (timeVal, format = 'Y-m-d H:i:s') {
   return TimeInstance.format(timeVal, format)
 }

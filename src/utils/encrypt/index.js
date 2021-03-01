@@ -4,7 +4,7 @@ import sha256 from './sha256'
 import { typeOf } from 'utils/assist'
 import url from 'utils/url'
 import UUID from 'utils/uuid'
-import Time from 'utils/time'
+import TimeInstance from 'utils/time'
 import encryptConfig from './config'
 
 const $signMethod = Symbol('$signMethod')
@@ -197,8 +197,7 @@ class Encrypt {
    * @memberof Encrypt
    */
   getTimeStr() {
-    let time = new Time()
-    return time.format(new Date(), 'YmdHis')
+    return TimeInstance.format(new Date(), 'YmdHis')
   }
   /**
    * 将str用空格补全为len的整数倍
