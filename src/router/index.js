@@ -196,6 +196,16 @@ export default new Router({
       }
     },
     {
+      path: '/ent-wage-list', // 薪资列表页（企业下拉）
+      name: 'entWageList',
+      meta: {
+        title: '放薪管家'
+      },
+      component: resolve => {
+        require(['../views/payroll/entWageList.vue'], resolve)
+      }
+    },
+    {
       path: '/user', // 个人信息首页
       name: 'user',
       meta: {

@@ -15,5 +15,10 @@ class Nj {
       http.loading = false
       return http.get()
   }
+  entGroupList () {
+    let http = new Http()
+    http.path = `/${moduleName}/empEntGroupList`
+    return http.get()
+  }
 }
 export default new Nj()
