@@ -1,6 +1,6 @@
 <template>
   <div id="app" :class="theme">
-    <weixin-env-tip v-if="requireWeixin"></weixin-env-tip>
+    <!-- <weixin-env-tip v-if="requireWeixin"></weixin-env-tip> -->
     <vertical-screen-tip></vertical-screen-tip>
     <router-view />
   </div>
