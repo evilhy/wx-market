@@ -47,7 +47,6 @@ export default {
       await this.$Inside.theme(theme)
       helper.setTheme(theme)
       helper.toast('保存成功')
-      helper.saveUserInfo({theme})
       this.$router.replace('home')
     }
   }

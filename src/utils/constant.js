@@ -144,5 +144,5 @@ export default {
     newyear: '#F4415F',
     pink: '#F4415F'
   },
-  yearBillOpen: true
+  yearBillOpen: false
 }

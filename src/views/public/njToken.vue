@@ -26,6 +26,7 @@ export default {
       let res = await this.$Nj.callback(accessToken)
       let { bindStatus, jsessionId, idNumber, ifPwd, headimgurl, apppartner, groupId, entId } = res.data
       helper.saveUserInfo({ jsessionId, ifPwd, bindStatus, headimgurl, idNumber, apppartner, groupId, entId })
+      helper.setTheme('pink')
       this.$router.replace({ name: 'wageList', query: { groupId, yearMonth } })
     }
   },

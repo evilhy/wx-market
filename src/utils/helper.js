@@ -159,10 +159,11 @@ const helper = {
     let app = document.querySelector('#app')
     if (app) {
       app.className = themeId
+      storage.setSession('theme', themeId)
     }
   },
   getTheme () {
-    return this.getUserInfo('theme', sysConfig.defaultTheme)
+    return storage.getSession('theme', sysConfig.defaultTheme)
   },
   getThemeColor () {
     return sysConfig.themeColor[this.getTheme()]
