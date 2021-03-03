@@ -17,9 +17,9 @@ export default {
   created () {
   },
   mounted () {
+    helper.clearSession()
     helper.setTheme('pink')
     loading.show({ type: 'bounce', parent: document.querySelector('#app') })
-    helper.clearSession()
     this.getJsessionId()
   },
   beforeDestroy () {

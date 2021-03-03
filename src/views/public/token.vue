@@ -16,8 +16,8 @@ export default {
   created () {
   },
   mounted () {
-    loading.show({ type: 'bounce', parent: document.querySelector('#app') })
     helper.clearSession()
+    loading.show({ type: 'bounce', parent: document.querySelector('#app') })
     this.getJsessionId()
   },
   methods: {
