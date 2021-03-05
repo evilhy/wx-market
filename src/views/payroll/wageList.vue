@@ -42,7 +42,7 @@ export default {
     return {
       wageList: [],
       years: [],
-      currentYear: '',
+      currentYear: 0,
       currentMonth: '',
       groupList: [],
       currentGroupId: '',
@@ -104,6 +104,10 @@ export default {
       }
     },
     async getWageList() {
+      if (!this.currentYear) {
+        let group = collect.getItem(this.groupList, 'groupId', this.currentGroupId)
+        this.currentYear = Number(TimeInstance.getTimeObject(group.createDate).year)
+      }
       let res = await this.$Roll.wageList(
         this.currentGroupId,
         this.currentYear,
