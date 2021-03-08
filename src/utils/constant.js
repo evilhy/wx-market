@@ -17,7 +17,7 @@ export default {
     demo: 'https://demowisdom.wisales.cn:8213/easy-life',
     production: 'https://easylife.wisales.cn:8211/easy-life'
   },
-  taxBaseUrl: { // 个税api地址
+  njBaseUrl: { // 南京api地址
     development: 'https://sitgateway.cardpu.com/payroll/wisales',
     sit: 'https://sitgateway.cardpu.com/payroll/wisales',
     demo: 'https://sitgateway.cardpu.com/payroll/wisales',
@@ -41,7 +41,7 @@ export default {
     demo: 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCNotSn72NFXy92LCc09MjZOAlhngjbUGrDcj8y8pTUMy1tM9NvTjWTMc9OU+bN9pnBzS7sFPJ+aSDaC81p6LeetHwovSkZGdxXMogFow3PPvnc+oc/19oeqsrMrB/bDxjF4sWVNgn+RhXjuOmBLn43WS10ZZ7zEV9DwT8WiyZVqQIDAQAB',
     production: ''
   },
-  taxBaseUrlPublicKey: { // 工资条公钥
+  njBaseUrlPublicKey: { // 南京公钥
     development: 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCNotSn72NFXy92LCc09MjZOAlhngjbUGrDcj8y8pTUMy1tM9NvTjWTMc9OU+bN9pnBzS7sFPJ+aSDaC81p6LeetHwovSkZGdxXMogFow3PPvnc+oc/19oeqsrMrB/bDxjF4sWVNgn+RhXjuOmBLn43WS10ZZ7zEV9DwT8WiyZVqQIDAQAB',
     sit: 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCNotSn72NFXy92LCc09MjZOAlhngjbUGrDcj8y8pTUMy1tM9NvTjWTMc9OU+bN9pnBzS7sFPJ+aSDaC81p6LeetHwovSkZGdxXMogFow3PPvnc+oc/19oeqsrMrB/bDxjF4sWVNgn+RhXjuOmBLn43WS10ZZ7zEV9DwT8WiyZVqQIDAQAB',
     demo: 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCNotSn72NFXy92LCc09MjZOAlhngjbUGrDcj8y8pTUMy1tM9NvTjWTMc9OU+bN9pnBzS7sFPJ+aSDaC81p6LeetHwovSkZGdxXMogFow3PPvnc+oc/19oeqsrMrB/bDxjF4sWVNgn+RhXjuOmBLn43WS10ZZ7zEV9DwT8WiyZVqQIDAQAB',
@@ -65,7 +65,7 @@ export default {
     demo: 'zxyh7572',
     production: ''
   },
-  taxBaseUrlSignSalt: { // 工资条签名salt
+  njBaseUrlSignSalt: { // 南京签名salt
     development: 'zxyh7572',
     sit: 'zxyh7572',
     demo: 'zxyh7572',

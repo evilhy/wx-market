@@ -11,7 +11,7 @@ class Nj {
    */
   callback (accessToken) {
       let http = new Http()
-      http.baseURL = sysConfig.taxBaseUrl[process.env.NODE_ENV]
+      http.baseURL = sysConfig.njBaseUrl[process.env.NODE_ENV]
       http.path = `/${moduleName}/callback`
       http.query = { accessToken }
       http.loading = false
