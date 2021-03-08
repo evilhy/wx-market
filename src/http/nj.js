@@ -1,4 +1,5 @@
 import Http from './base'
+import sysConfig from 'utils/constant'
 const moduleName = 'nj'
 class Nj {
   /**
@@ -10,15 +11,11 @@ class Nj {
    */
   callback (accessToken) {
       let http = new Http()
+      http.baseURL = sysConfig.taxBaseUrl[process.env.NODE_ENV]
       http.path = `/${moduleName}/callback`
       http.query = { accessToken }
       http.loading = false
       return http.get()
-  }
-  entGroupList () {
-    let http = new Http()
-    http.path = `/${moduleName}/empEntGroupList`
-    return http.get()
   }
 }
 export default new Nj()
