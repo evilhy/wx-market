@@ -18,10 +18,10 @@ export default {
     production: 'https://easylife.wisales.cn:8211/easy-life'
   },
   njBaseUrl: { // 南京api地址
-    development: 'https://sitgateway.cardpu.com/payroll/wisales',
-    sit: 'https://sitgateway.cardpu.com/payroll/wisales',
-    demo: 'https://sitgateway.cardpu.com/payroll/wisales',
-    production: 'https://gateway.cardpu.com/payroll/wisales'
+    development: 'https://sitnjbank.cardpu.com/gateway/payroll',
+    sit: 'https://sitnjbank.cardpu.com/gateway/payroll',
+    demo: 'https://sitnjbank.cardpu.com/gateway/payroll',
+    production: 'https://sitnjbank.cardpu.com/gateway/payroll'
   },
   httpBaseUrlPublicKey: { // 工资条公钥
     development: 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCNotSn72NFXy92LCc09MjZOAlhngjbUGrDcj8y8pTUMy1tM9NvTjWTMc9OU+bN9pnBzS7sFPJ+aSDaC81p6LeetHwovSkZGdxXMogFow3PPvnc+oc/19oeqsrMrB/bDxjF4sWVNgn+RhXjuOmBLn43WS10ZZ7zEV9DwT8WiyZVqQIDAQAB',
