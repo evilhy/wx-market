@@ -1,13 +1,11 @@
 <template>
   <div class="wage-list-page">
     <van-dropdown-menu :active-color="themeColor">
-      <van-dropdown-item :title="currentGroupName" ref="group-dropdown">
+      <van-dropdown-item :title="currentEnt.entName" ref="group-dropdown">
         <div class="group-list">
-          <div v-for="(item, index) in groupList" :key="index" class="group-item" :class="{active: item.groupId === currentGroupId}" @click="changeGroup(item)">
-            <p class="group-name">{{item.groupName}}</p>
-            <i class="iconfont icon-yilizhi" v-if="item.inServiceStatus==='1'"></i>
-            <i class="iconfont icon-jiaobiao" v-if="item.isRead==='0'"></i>
-            <van-icon name="success" v-if="item.groupId === currentGroupId"/>
+          <div v-for="(item, index) in entList" :key="index" class="group-item" :class="{active: item.entId === currentEnt.entId}" @click="changeEnt(item)">
+            <p class="group-name">{{item.entName}}</p>
+            <van-icon name="success" v-if="item.entId === currentEnt.entId"/>
           </div>
         </div>
       </van-dropdown-item>
@@ -28,8 +26,6 @@ import amtPercentLine from 'components/amtPercentLine'
 import yearSwiper from 'components/yearSwiper'
 import helper from 'utils/helper'
 import storage from 'utils/storage'
-import TimeInstance from 'utils/time'
-import collect from 'utils/collect'
 
 export default {
   components: {
@@ -40,12 +36,11 @@ export default {
   },
   data() {
     return {
+      entList: storage.getSession('entList', []),
+      currentEnt: '',
       wageList: [],
       years: [],
-      currentYear: 0,
-      currentMonth: '',
-      groupList: [],
-      currentGroupId: '',
+      currentYear: '',
       typeList: [
         {
           text: '资金已到账',
@@ -70,46 +65,17 @@ export default {
   computed: {
     swiper() {
       return this.$refs['year-swiper'].swiper
-    },
-    currentGroupName () {
-      const group = collect.getItem(this.groupList, 'groupId', this.currentGroupId)
-      return (group && group.groupName) || ''
-    }
-  },
-  watch: {
-    currentGroupId (groupId) {
-      helper.saveUserInfo({ groupId })
     }
   },
   async created() {
     helper.title('我的收入')
-    this.getQueryData()
-    await this.getGroupList()
+    this.setCurrentInfo(this.entList[0])
     this.getWageList()
   },
   methods: {
-    getQueryData() {
-      let { groupId = '', yearMonth = '' } = this.query
-      this.currentGroupId = groupId
-      if (yearMonth) {
-        this.currentYear = Number(yearMonth.substring(0, 4))
-        this.currentMonth = Number(yearMonth.substring(4))
-      }
-    },
-    async getGroupList() {
-      let res = await this.$Roll.groupList()
-      this.groupList = res.data
-      if (!this.currentGroupId) {
-        this.setCurrentInfo(this.groupList[0])
-      }
-    },
     async getWageList() {
-      if (!this.currentYear) {
-        let group = collect.getItem(this.groupList, 'groupId', this.currentGroupId)
-        this.currentYear = Number(TimeInstance.getTimeObject(group.createDate).year)
-      }
       let res = await this.$Roll.wageList(
-        this.currentGroupId,
+        this.currentEnt.groupId,
         this.currentYear,
         this.currentType
       )
@@ -118,23 +84,25 @@ export default {
 
       this.initOutlineWage(data)
       this.wageList = data.planList
-      this.years = data.years
+      this.years = data.years || []
       this.$nextTick(() => {
         this.swiper.slideTo(this.years.indexOf(this.currentYear))
       })
     },
-    setCurrentInfo (group) {
-      this.currentGroupId = group.groupId
-      this.currentYear = Number(TimeInstance.getTimeObject(group.createDate).year)
+    setCurrentInfo (ent) {
+      let { entId = '', recentYear = 0, groupId = '' } = ent
+      this.currentEnt = ent
+      this.currentYear = recentYear
+      helper.saveUserInfo({ entId, groupId })
     },
     changeType (type) {
       this.currentType = type
       this.getWageList()
     },
-    changeGroup (group) {
+    changeEnt (ent) {
       this.$refs['group-dropdown'].toggle()
-      if (this.currentGroupId === group.groupId) return
-      this.setCurrentInfo(group)
+      if (this.currentEnt.entId === ent.entId) return
+      this.setCurrentInfo(ent)
       this.getWageList()
     },
     initOutlineWage(data) {

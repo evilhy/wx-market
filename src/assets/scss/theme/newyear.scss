@@ -61,4 +61,32 @@
   .van-dropdown-item__icon {
     color: $theme-active-color;
   }
+  // 工资列表页
+  .wage-list-page{
+    .van-dropdown-menu{
+      .group-item {
+        &.active{
+          color: $theme-active-color;
+        }
+      }
+    }
+  }
+  // loading组件
+  .loading-square {
+    .loading-dot {
+      background: $theme-active-color;
+    }
+  }
+  .loading-bounce {
+    &::before,
+    &::after {
+      background-color: $theme-active-color;
+    }
+  }
+  .loading-loader,
+  .loading-loader:before,
+  .loading-loader:after {
+    background: $theme-active-color;
+    color: $theme-active-color;
+  }
 }

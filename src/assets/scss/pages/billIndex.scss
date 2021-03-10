@@ -52,8 +52,14 @@
     box-shadow: 0 7px 10px 0 rgba(201, 205, 216, 0.52);
     overflow: hidden;
     z-index: 99;
-    img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .fx {
       @include circle(180px);
+    }
+    .nj{
+      @include circle(90px);
     }
   }
   .bill-item {

@@ -1,39 +1,34 @@
 <template>
   <div class="get-id-page">
-    <loading></loading>
   </div>
 </template>
 
 <script>
-import loading from 'components/loading'
+import loading from 'utils/loading'
 import helper from 'utils/helper'
 import { getPageQueryObject } from 'utils/assist'
 export default {
   data () {
     return {
-      query: {}
     }
   },
   computed: {},
   created () {
+  },
+  mounted () {
     helper.clearSession()
-    this.query = getPageQueryObject()
+    loading.show({ type: 'bounce', parent: document.querySelector('#app') })
     this.getJsessionId()
   },
   methods: {
-    getJsessionId () {
-      this
-        .$Merchant
-        .callback(this.query.accessToken)
-        .then((res) => {
-          let { bindStatus, jsessionId, idNumber, ifPwd, headimgurl, apppartner } = res.data
-          helper.saveUserInfo({ jsessionId, ifPwd, bindStatus, headimgurl, idNumber, apppartner })
-          this.$router.replace({ name: 'home' })
-        })
+    async getJsessionId () {
+      let { accessToken = '' } = getPageQueryObject()
+      let res = await this.$Merchant.callback(accessToken)
+
+      let { bindStatus, jsessionId, idNumber, ifPwd, headimgurl, apppartner } = res.data
+      helper.saveUserInfo({ jsessionId, ifPwd, bindStatus, headimgurl, idNumber, apppartner })
+      this.$router.replace({ name: 'home' })
     }
-  },
-  components: {
-    loading
   }
 }
 </script>

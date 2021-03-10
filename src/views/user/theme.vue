@@ -15,11 +15,11 @@
 
 <script>
 import helper from 'utils/helper'
-import sysConfig from 'utils/constant'
+
 export default {
   data () {
     return {
-      currentTheme: helper.getUserInfo('theme', sysConfig.defaultTheme),
+      currentTheme: helper.getTheme(),
       themeList: [
         {
           name: 'black',
@@ -47,7 +47,6 @@ export default {
       await this.$Inside.theme(theme)
       helper.setTheme(theme)
       helper.toast('保存成功')
-      helper.saveUserInfo({theme})
       this.$router.replace('home')
     }
   }

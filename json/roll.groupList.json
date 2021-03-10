@@ -13,7 +13,7 @@
     "entName": "entName",
     "groupId": "groupId002",
     "groupName": "武汉开科唯识技术有限公司分公司",
-    "createDate": 1538928000000,
+    "createDate": 1458928000000,
     "isRead": "0",
     "inServiceStatus": "1"
   },
@@ -21,15 +21,15 @@
     "entId": "entId003",
     "entName": "entName",
     "groupId": "groupId003",
-    "groupName": "机构3",
+    "groupName": "湖北恒信德龙股份有限公司武汉摩尔城分公司",
     "createDate": 1538928000000,
-    "isRead": "1",
-    "inServiceStatus": "0"
+    "isRead": "0",
+    "inServiceStatus": "1"
   },
   {
     "entId": "entId003",
     "entName": "entName",
-    "groupId": "groupId003",
+    "groupId": "groupId004",
     "groupName": "机构3",
     "createDate": 1538928000000,
     "isRead": "1",

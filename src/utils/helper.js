@@ -1,11 +1,10 @@
 import storage from './storage'
 import {typeOf} from './assist'
 import sysConfig from './constant'
-import Time from './time'
+import TimeInstance from './time'
 import {Toast} from 'vant'
 Toast.allowMultiple()
 
-const TimeInstance = new Time()
 let timer = null
 const helper = {
   title(title = '') {
@@ -160,7 +159,18 @@ const helper = {
     let app = document.querySelector('#app')
     if (app) {
       app.className = themeId
+      storage.setSession('theme', themeId)
     }
+  },
+  getTheme () {
+    return storage.getSession('theme', sysConfig.defaultTheme)
+  },
+  getThemeColor () {
+    return sysConfig.themeColor[this.getTheme()]
+  },
+  checkYearBillOpen () {
+    let apppartner = this.getUserInfo('apppartner')
+    return apppartner === 'FXGJ' && sysConfig.yearBillOpen
   },
   saveNoticeInfo (type, entry) {
     storage.setSession('noticeInfo', { type, entry })

@@ -33,7 +33,7 @@ export default {
       let data = decryptInfo(res.data, 'bindStatus')
       let { bindStatus, jsessionId, idNumber, ifPwd, headimgurl, apppartner, themeId } = data
 
-      helper.saveUserInfo({ jsessionId, ifPwd, bindStatus, headimgurl, apppartner, theme: themeId })
+      helper.saveUserInfo({ jsessionId, ifPwd, bindStatus, headimgurl, apppartner })
       helper.setTheme(themeId)
       if (bindStatus === '0') {
         await this.$refs['welcome-circle'].stopAnimation()

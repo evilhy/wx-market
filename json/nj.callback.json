@@ -1,0 +1,43 @@
+{
+    "jsessionId": "10292202",
+    "bindStatus": "1",
+    "idNumber": "001",
+    "ifPwd": 0,
+    "apppartner": "NJCB",
+    "headimgurl": "http://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83epaB0caBpqzMiadLicCKED9UfwrVmebengByvUYL3ic0tmD8tLBPXOeIkcJ9dkCjuiaWXw8WVXEl9BT5w/132",
+    "entList": [
+      {
+        "entId": "entId001",
+        "entName": "北京开科唯识技术有限公司武汉分公司",
+        "shortEntName": "北京开科",
+        "salt": "cXdlam9pZmdqa2xkZmtnbw==",
+        "passwd": "ZGZna2xqMjEzcms0bDNvNDBpZmdmZGxtZzI0a21kZmc=",
+        "groupId": "groupId001",
+        "groupName": "北京开科唯识技术有限公司武汉分公司",
+        "shortGroupName": "北京开科",
+        "recentYear": 2016
+      },
+      {
+        "entId": "entId002",
+        "entName": "北京兆信技术有限公司",
+        "shortEntName": "北京兆信",
+        "salt": "cXdlam9pZmdqa2xkZmtnbw==",
+        "passwd": "ZGZna2xqMjEzcms0bDNvNDBpZmdmZGxtZzI0a21kZmc=",
+        "groupId": "groupId002",
+        "groupName": "北京兆信技术有限公司",
+        "shortGroupName": "北京兆信",
+        "recentYear": 0
+      },
+      {
+        "entId": "entId003",
+        "entName": "湖北恒信德龙股份有限公司武汉摩尔城分公司",
+        "shortEntName": "摩尔城",
+        "salt": "cXdlam9pZmdqa2xkZmtnbw==",
+        "passwd": "ZGZna2xqMjEzcms0bDNvNDBpZmdmZGxtZzI0a21kZmc=",
+        "groupId": "groupId003",
+        "groupName": "湖北恒信德龙股份有限公司武汉摩尔城分公司",
+        "shortGroupName": "摩尔城",
+        "recentYear": 2018
+      }
+    ]
+}

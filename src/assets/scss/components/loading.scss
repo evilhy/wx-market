@@ -1,5 +1,4 @@
 .v-loading {
-  $theme: $theme-color;
   position: absolute;
   left: 0;
   top: 0;
@@ -104,7 +103,6 @@
       width: 24px;
       height: 24px;
       border-radius: 50%;
-      background: $theme;
       animation-duration: 1.4s;
       animation-iteration-count: infinite;
       animation-timing-function: ease-in-out;
@@ -152,7 +150,6 @@
       position: absolute;
       top: 0;
       left: 0;
-      background-color: $theme;
       -webkit-animation: loading-bounce 2s infinite ease-in-out;
       animation: loading-bounce 2s infinite ease-in-out;
     }
@@ -166,8 +163,6 @@
   .loading-loader,
   .loading-loader:before,
   .loading-loader:after {
-    background: $theme;
-    color: $theme;
     -webkit-animation: loading-loader 1s infinite ease-in-out;
     animation: loading-loader 1s infinite ease-in-out;
     width: 1em;
