@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import getId from '../views/public/getId.vue'
 import token from '../views/public/token.vue'
-import njToken from '../views/public/njToken.vue'
 import home from '../views/payroll/home.vue' // 避免首页跳转过慢
 import loginByPwd from '../views/pwd/loginByPwd.vue'
 
@@ -30,14 +29,6 @@ export default new Router({
         title: '放薪管家'
       },
       component: token
-    },
-    {
-      path: '/nj-token', // 南京银行入口页面token
-      name: 'njToken',
-      meta: {
-        title: '放薪管家'
-      },
-      component: njToken
     },
     {
       path: '/bind-id-card', // 身份绑定--输入身份证

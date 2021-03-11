@@ -17,12 +17,6 @@ export default {
     demo: 'https://demowisdom.wisales.cn:8213/easy-life',
     production: 'https://easylife.wisales.cn:8211/easy-life'
   },
-  njBaseUrl: { // 南京api地址
-    development: 'https://sitnjbank.cardpu.com/gateway/payroll',
-    sit: 'https://sitnjbank.cardpu.com/gateway/payroll',
-    demo: 'https://sitnjbank.cardpu.com/gateway/payroll',
-    production: 'https://sitnjbank.cardpu.com/gateway/payroll'
-  },
   httpBaseUrlPublicKey: { // 工资条公钥
     development: 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCNotSn72NFXy92LCc09MjZOAlhngjbUGrDcj8y8pTUMy1tM9NvTjWTMc9OU+bN9pnBzS7sFPJ+aSDaC81p6LeetHwovSkZGdxXMogFow3PPvnc+oc/19oeqsrMrB/bDxjF4sWVNgn+RhXjuOmBLn43WS10ZZ7zEV9DwT8WiyZVqQIDAQAB',
     sit: 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCNotSn72NFXy92LCc09MjZOAlhngjbUGrDcj8y8pTUMy1tM9NvTjWTMc9OU+bN9pnBzS7sFPJ+aSDaC81p6LeetHwovSkZGdxXMogFow3PPvnc+oc/19oeqsrMrB/bDxjF4sWVNgn+RhXjuOmBLn43WS10ZZ7zEV9DwT8WiyZVqQIDAQAB',
@@ -41,12 +35,6 @@ export default {
     demo: 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCNotSn72NFXy92LCc09MjZOAlhngjbUGrDcj8y8pTUMy1tM9NvTjWTMc9OU+bN9pnBzS7sFPJ+aSDaC81p6LeetHwovSkZGdxXMogFow3PPvnc+oc/19oeqsrMrB/bDxjF4sWVNgn+RhXjuOmBLn43WS10ZZ7zEV9DwT8WiyZVqQIDAQAB',
     production: ''
   },
-  njBaseUrlPublicKey: { // 南京公钥
-    development: 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCNotSn72NFXy92LCc09MjZOAlhngjbUGrDcj8y8pTUMy1tM9NvTjWTMc9OU+bN9pnBzS7sFPJ+aSDaC81p6LeetHwovSkZGdxXMogFow3PPvnc+oc/19oeqsrMrB/bDxjF4sWVNgn+RhXjuOmBLn43WS10ZZ7zEV9DwT8WiyZVqQIDAQAB',
-    sit: 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCNotSn72NFXy92LCc09MjZOAlhngjbUGrDcj8y8pTUMy1tM9NvTjWTMc9OU+bN9pnBzS7sFPJ+aSDaC81p6LeetHwovSkZGdxXMogFow3PPvnc+oc/19oeqsrMrB/bDxjF4sWVNgn+RhXjuOmBLn43WS10ZZ7zEV9DwT8WiyZVqQIDAQAB',
-    demo: 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCNotSn72NFXy92LCc09MjZOAlhngjbUGrDcj8y8pTUMy1tM9NvTjWTMc9OU+bN9pnBzS7sFPJ+aSDaC81p6LeetHwovSkZGdxXMogFow3PPvnc+oc/19oeqsrMrB/bDxjF4sWVNgn+RhXjuOmBLn43WS10ZZ7zEV9DwT8WiyZVqQIDAQAB',
-    production: 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDJAFvcRejgnbQd89Ypuyw02nyODvtZkCjY2cTQec/Qux1xkRpAXo7owzL2fDao8o3gDWDYuTG1jEKZV7enPaxFQxiMXHIEgqkwsbhvNIWSG+QJ3om8v2+hWshWum4U7rma7LxmSoDk0zbqYP4Lb7qnR4+tSyJl4F+phZAqUbGOuQIDAQAB'
-  },
   httpBaseUrlSignSalt: { // 工资条签名salt
     development: 'zxyh7572',
     sit: 'zxyh7572',
@@ -64,12 +52,6 @@ export default {
     sit: 'zxyh7572',
     demo: 'zxyh7572',
     production: ''
-  },
-  njBaseUrlSignSalt: { // 南京签名salt
-    development: 'zxyh7572',
-    sit: 'zxyh7572',
-    demo: 'zxyh7572',
-    production: 'PayK0420'
   },
   wisalesImgUrl: {
     development: 'https://sitgateway.cardpu.com/payroll/wisales/h5/unAuth/img',
