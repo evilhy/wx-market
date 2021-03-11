@@ -41,13 +41,18 @@ export default {
         .invoice()
         .then((res) => {
           this.invoiceList = res.data
-          this.currentInvoice = this.invoiceList[0]
+          this.currentInvoice = this.transInvoice(this.invoiceList[0])
         })
     },
     chooseGroup (group) {
-      this.currentInvoice = group
+      this.currentInvoice = this.transInvoice(group)
       this.flag = false
       this.$refs['invoice-item'].flag = false
+    },
+    transInvoice (group) {
+      let { groupPhonePrefix = '', groupPhone = '' } = group
+      let fullPhone = groupPhonePrefix ? `${groupPhonePrefix}-${groupPhone}` : groupPhone
+      return Object.assign({}, group, { fullPhone })
     },
     showGroupList () {
       if (this.invoiceList.length > 1) {

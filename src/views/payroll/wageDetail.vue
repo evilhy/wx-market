@@ -8,8 +8,8 @@
     <div class="bottom-group">
       该资金由{{wageDetailList[0].wageShowDTO.grantName || wageDetailList[0].groupName}}发放
     </div>
-    <!--<div class="personal-tax" @click="toPage">返回首页</div>-->
-    <div class="year-bill-entry" v-if="yearBillOpen" @click="$router.push({name: 'yearBill'})"><img src="../../assets/img/yearBill/year-bill-entry.gif" alt=""></div>
+    <div class="year-bill-entry" v-if="yearBillOpen" @click="toPage('yearBill')"><img src="../../assets/img/yearBill/year-bill-entry.gif" alt=""></div>
+    <div class="personal-tax" v-else @click="toPage('home')">返回首页</div>
   </div>
 </template>
 
@@ -46,9 +46,8 @@ export default {
     helper.title(this.wageDetailList[0].wageName)
   },
   methods: {
-    toPage() {
-     // this.$router.push({name: 'taxInstructions'})
-      this.$router.push({name: 'home'})
+    toPage(name = '') {
+      this.$router.push({ name })
     }
   },
   components: {

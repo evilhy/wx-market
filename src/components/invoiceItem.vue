@@ -59,7 +59,7 @@ export default {
                 },
                 {
                     label: '公司电话',
-                    key: 'groupPhone',
+                    key: 'fullPhone',
                     type: '2'
                 },
                 {
