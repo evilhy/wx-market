@@ -8,16 +8,12 @@
     </div>
     <div class="amt-wrap">
       <div class="amt">
-        <span @click="toDetail">
-          <template v-if="flag">
-            {{wage.realAmt | money}}
-            <i class="icon-ai44 iconfont" @click.stop="changeFlag"></i>
-          </template>
-          <template v-if="!flag">
-            ****
-            <i class="icon-ai47 iconfont" @click.stop="changeFlag"></i>
-          </template>
-        </span>
+        <template v-if="flag">
+          <span class="value">{{wage.realAmt | money}}</span><i class="icon-ai44 iconfont" @click.stop="changeFlag"></i>
+        </template>
+        <template v-if="!flag">
+          <span class="hidden">****</span><i class="icon-ai47 iconfont" @click.stop="changeFlag"></i>
+        </template>
       </div>
     </div>
     <p class="amt-title">实发金额(元)</p>
