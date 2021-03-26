@@ -142,7 +142,7 @@
           "hidden": false
         },
         {
-          "colName": "应扣个税",
+          "colName": "应补/退税额",
           "colNum": [24],
           "type": "DEDUCT_AMT",
           "hidden": false
@@ -191,6 +191,7 @@
     },
     "wageShowDTO": { "isShow0": 0, "isReceipt": 1, "receiptDay": null },
     "wageDetailId": "ff80808166626ebb016662727ad00009",
+    "businessType": 1,
     "bankName": "华夏银行",
     "cardNo": "6230********8877",
     "wageName": "大厦2018.8月工资表",
