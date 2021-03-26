@@ -1,4 +1,5 @@
 <template>
+<div class="fixed-container">
   <div class="wage-list-page">
     <van-dropdown-menu :active-color="themeColor">
       <van-dropdown-item :title="currentEnt.entName" ref="group-dropdown">
@@ -15,9 +16,10 @@
     <ul class="bill-list">
       <wage-item :wage="item" v-for="(item, index) in wageList" :key="index" :flag="flag"></wage-item>
     </ul>
-    <!-- swiper -->
-    <year-swiper ref="year-swiper" :years="years" @transitionEnd="changeYear"></year-swiper>
   </div>
+  <!-- swiper -->
+  <year-swiper ref="year-swiper" :years="years" @transitionEnd="changeYear"></year-swiper>
+</div>
 </template>
 <script type="text/ecmascript-6">
 import yearWageOutline from 'components/yearWageOutline'

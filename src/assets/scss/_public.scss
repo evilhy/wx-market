@@ -298,7 +298,7 @@
 
 // 选择年份swiper样式
 .year-swiper {
-  position: fixed;
+  position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
@@ -315,7 +315,7 @@
     border-radius: 18px 18px 0 0;
     border-bottom: 0;
     position: absolute;
-    z-index: 20;
+    z-index: 3;
     top: -16px;
     left: 50%;
     transform: translateX(-50%);
@@ -496,4 +496,10 @@
   align-items: center;
   justify-content: center;
   padding-bottom: 50px;
+}
+
+.fixed-container{
+  height: 100%;
+  overflow: hidden;
+  position: relative;
 }
