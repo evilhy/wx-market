@@ -9,59 +9,6 @@
       letter-spacing: 6px;
       padding-left: 6px;
     }
-    .van-dropdown-menu{
-      position: fixed;
-      left: 0;
-      top: 0;
-      width: 100%;
-      z-index: 10;
-      .group-list{
-        padding: 0 30px;
-      }
-      .group-item {
-        line-height: 1.4;
-        padding: 24px 0;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        font-size: 26px;
-        border-bottom: 1px solid $border-color;
-        position: relative;
-        .icon-yilizhi {
-          position: absolute;
-          z-index: 50;
-          right: 10px;
-          top: 6px;
-          width: 100px;
-          text-align: center;
-          line-height: 64px;
-          font-size: 60px;
-          color: #6f8f8f;
-        }
-        .icon-jiaobiao {
-          position: absolute;
-          right: 20px;
-          top: -4px;
-          font-size: 30px;
-          line-height: 30px;
-          color: #fb5d5d;
-          &:after {
-            content: '新';
-            position: absolute;
-            left: 0;
-            width: 100%;
-            text-align: center;
-            font-display: 18px;
-            line-height: 28px;
-            color: white;
-          }
-        }
-        .group-name {
-          width: 480px;
-          word-break: break-all;
-        }
-      }
-    }
     
     .mask {
       position: fixed;

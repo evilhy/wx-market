@@ -1,6 +1,5 @@
 <template>
-<div class="fixed-container">
-  <div class="wage-list-page">
+  <div class="fixed-container">
     <van-dropdown-menu :active-color="themeColor">
       <van-dropdown-item :title="currentGroupName" ref="group-dropdown">
         <div class="group-list">
@@ -8,20 +7,21 @@
             <p class="group-name">{{item.groupName}}</p>
             <i class="iconfont icon-yilizhi" v-if="item.inServiceStatus==='1'"></i>
             <i class="iconfont icon-jiaobiao" v-if="item.isRead==='0'"></i>
-            <van-icon name="success" v-if="item.groupId === currentGroupId"/>
+            <van-icon name="success" v-if="item.groupId === currentGroupId" />
           </div>
         </div>
       </van-dropdown-item>
-      <van-dropdown-item v-model="currentType" :options="typeList" @change="(value) => { changeType(value) }"/>
+      <van-dropdown-item v-model="currentType" :options="typeList" @change="(value) => { changeType(value) }" />
     </van-dropdown-menu>
-    <year-wage-outline :wage="outlineWage" :flag="flag" @toggle="toggle"></year-wage-outline>
-    <ul class="bill-list">
-      <wage-item :wage="item" v-for="(item, index) in wageList" :key="index" :flag="flag"></wage-item>
-    </ul>
+    <div class="wage-list-page">
+      <year-wage-outline :wage="outlineWage" :flag="flag" @toggle="toggle"></year-wage-outline>
+      <ul class="bill-list">
+        <wage-item :wage="item" v-for="(item, index) in wageList" :key="index" :flag="flag"></wage-item>
+      </ul>
+    </div>
+    <!-- swiper -->
+    <year-swiper ref="year-swiper" :years="years" @transitionEnd="changeYear"></year-swiper>
   </div>
-  <!-- swiper -->
-  <year-swiper ref="year-swiper" :years="years" @transitionEnd="changeYear"></year-swiper>
-</div>
 </template>
 <script type="text/ecmascript-6">
 import yearWageOutline from 'components/yearWageOutline'
@@ -73,13 +73,17 @@ export default {
     swiper() {
       return this.$refs['year-swiper'].swiper
     },
-    currentGroupName () {
-      const group = collect.getItem(this.groupList, 'groupId', this.currentGroupId)
+    currentGroupName() {
+      const group = collect.getItem(
+        this.groupList,
+        'groupId',
+        this.currentGroupId
+      )
       return (group && group.groupName) || ''
     }
   },
   watch: {
-    currentGroupId (groupId) {
+    currentGroupId(groupId) {
       helper.saveUserInfo({ groupId })
     }
   },
@@ -107,8 +111,14 @@ export default {
     },
     async getWageList() {
       if (!this.currentYear) {
-        let group = collect.getItem(this.groupList, 'groupId', this.currentGroupId)
-        this.currentYear = Number(TimeInstance.getTimeObject(group.createDate).year)
+        let group = collect.getItem(
+          this.groupList,
+          'groupId',
+          this.currentGroupId
+        )
+        this.currentYear = Number(
+          TimeInstance.getTimeObject(group.createDate).year
+        )
       }
       let res = await this.$Roll.wageList(
         this.currentGroupId,
@@ -125,15 +135,17 @@ export default {
         this.swiper.slideTo(this.years.indexOf(this.currentYear))
       })
     },
-    setCurrentInfo (group) {
+    setCurrentInfo(group) {
       this.currentGroupId = group.groupId
-      this.currentYear = Number(TimeInstance.getTimeObject(group.createDate).year)
+      this.currentYear = Number(
+        TimeInstance.getTimeObject(group.createDate).year
+      )
     },
-    changeType (type) {
+    changeType(type) {
       this.currentType = type
       this.getWageList()
     },
-    changeGroup (group) {
+    changeGroup(group) {
       this.$refs['group-dropdown'].toggle()
       if (this.currentGroupId === group.groupId) return
       this.setCurrentInfo(group)

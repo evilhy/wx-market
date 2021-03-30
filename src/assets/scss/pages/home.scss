@@ -1,57 +1,12 @@
 // 首页
 .home-page {
+  height: 100%;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
   $padding: 30px;
   padding-top: 30px;
   &.ent{
     padding-top: 90px;
-  }
-  .business-toggle {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    left: 0;
-    top: 0;
-    display: flex;
-    align-items: center;
-    padding: 0 $padding;
-    z-index: 99;
-    background-color: white;
-    .icon {
-      width: 40px;
-      height: 40px;
-      margin-right: 4px;
-    }
-    .van-dropdown-menu {
-      overflow: hidden;
-      flex: 1;
-      .van-dropdown-menu__bar {
-        box-shadow: none;
-      }
-      .van-dropdown-menu__item {
-        justify-content: flex-start;
-      }
-      .van-dropdown-menu__title {
-        width: 100%;
-        padding: 0 22px 0 16px;
-        font-family: PingFangSC-Semibold;
-        font-size: 28px;
-        color: $text-color;
-        &::after {
-          right: 4px;
-        }
-      }
-      .van-dropdown-menu__title--down::after {
-        margin-top: -1px;
-      }
-      .van-dropdown-item__content {
-        .van-cell__value {
-          flex: 0.1;
-        }
-      }
-      .van-cell__title {
-        word-break: break-all;
-      }
-    }
   }
 
   .banner {
