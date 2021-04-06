@@ -2,7 +2,7 @@
   <div class="welcome-circle">
     <van-circle v-model="currentPercent" :rate="percent" color="#00CCCC" layer-color="#f5f5f5" />
     <img class="logo" src="../assets/img/logo-2.png" alt="">
-    <p class="label">放薪工资条</p>
+    <p class="label">{{text}}</p>
   </div>
 </template>
 
@@ -16,6 +16,10 @@ export default {
     auto: { // 是否自动开始
       type: Boolean,
       default: true
+    },
+    text: {
+      type: String,
+      default: '放薪工资条'
     }
   },
   data () {
