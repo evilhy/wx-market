@@ -73,21 +73,29 @@
     }
   }
   // loading组件
-  .loading-square {
+  & ~ .v-loading-square {
     .loading-dot {
       background: $theme-active-color;
     }
   }
-  .loading-bounce {
-    &::before,
-    &::after {
-      background-color: $theme-active-color;
+  & ~ .v-loading-bounce {
+    .loading-bounce {
+      &::before,
+      &::after {
+        content: '';
+        background-color: $theme-active-color;
+      }
     }
   }
-  .loading-loader,
-  .loading-loader:before,
-  .loading-loader:after {
-    background: $theme-active-color;
-    color: $theme-active-color;
+  & ~ .v-loading-loader {
+    .loading-loader {
+      background: $theme-active-color;
+      color: $theme-active-color;
+      &::before,
+      &::after {
+        background: $theme-active-color;
+        color: $theme-active-color;
+      }
+    }
   }
 }
