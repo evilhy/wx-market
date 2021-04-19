@@ -22,13 +22,12 @@ export default class HttpForApplication extends HttpEngine {
     })
     // 加密签名处理
     this.dealEncrypt(config)
-
     if (config.loading) {
-      let loadingConfig = {}
+      let loadingConfig = { parent: document.querySelector('#app') }
       if (typeOf(config.loading) === 'object') {
-        loadingConfig = config.loading
+        loadingConfig = Object.assign({}, loadingConfig, config.loading)
       } else {
-        loadingConfig = { type: typeOf(config.loading) === 'boolean' ? 'bounce' : config.loading }
+        loadingConfig = Object.assign({}, loadingConfig, { type: typeOf(config.loading) === 'boolean' ? 'bounce' : config.loading })
       }
       this.loadingHash = loading.show(loadingConfig)
     }

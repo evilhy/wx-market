@@ -77,12 +77,12 @@
     }
   }
   // loading组件
-  & ~ .v-loading-square {
+  .v-loading-square {
     .loading-dot {
       background: $theme-active-color;
     }
   }
-  & ~ .v-loading-bounce {
+  .v-loading-bounce {
     .loading-bounce {
       &::before,
       &::after {
@@ -91,7 +91,7 @@
       }
     }
   }
-  & ~ .v-loading-loader {
+  .v-loading-loader {
     .loading-loader {
       background: $theme-active-color;
       color: $theme-active-color;
