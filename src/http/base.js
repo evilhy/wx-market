@@ -37,7 +37,7 @@ export default class HttpForApplication extends HttpEngine {
     let data
     if (config.method === 'post') {
       data = deepCopy(config.data)
-    } else { 
+    } else {
       data = ''
     }
     let { encodeKey, timestamp, reqId, sha256Sign, encryptBizData } = encrypt.httpEncrypt(data, config.method, config.baseURL)

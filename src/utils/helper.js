@@ -168,9 +168,12 @@ const helper = {
   getThemeColor () {
     return sysConfig.themeColor[this.getTheme()]
   },
-  checkYearBillOpen () {
+  isHxBank () {
     let apppartner = this.getUserInfo('apppartner')
-    return apppartner === 'FXGJ' && sysConfig.yearBillOpen
+    return apppartner === 'FXGJ'
+  },
+  checkYearBillOpen () {
+    return this.isHxBank() && sysConfig.yearBillOpen
   },
   saveNoticeInfo (type, entry) {
     storage.setSession('noticeInfo', { type, entry })

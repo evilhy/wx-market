@@ -137,12 +137,14 @@ export default {
   queryCodeTip: '请不要将查询密码设置为生日、连续/重复数字',
   handLockTip: '手势密码请至少设置4个不重复的连接点',
   handLockUnEnoughTip: '请设置至少4个连接点',
+  otherBankTheme: 'otherbank',
   defaultTheme: 'black',
   themeColor: {
     black: '#E2B789',
     fourth: '#F4415F',
     newyear: '#F4415F',
-    pink: '#F4415F'
+    pink: '#F4415F',
+    otherbank: '#00CCCC'
   },
   yearBillOpen: false
 }

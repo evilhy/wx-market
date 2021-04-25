@@ -3,7 +3,7 @@
     <!-- <manager-avator></manager-avator> -->
     <div class="bill-index-main">
       <div class="fx-logo">
-        <img :src="logo.src" :class="logo.className" alt="">
+        <img src="../../assets/img/logo.png" class="fx" alt="">
       </div>
       <swiper class="bill-info" :options="swiperOption">
         <wage-index-item v-for="(item, index) in bankWageList" :key="index" :wage="item" @to-detail="toDetail"></wage-index-item>
@@ -20,7 +20,7 @@
     </div>
     <div class="bottom">
       <div class="return" @click="toPage('wageList')">我的收入</div>
-      <div class="return" @click="toPage('taxCalculator')" v-if="apppartner === 'FXGJ'">个税计算器</div>
+      <div class="return" @click="toPage('taxCalculator')" v-if="isHxBank">个税计算器</div>
     </div>
   </div>
 </template>
@@ -41,24 +41,10 @@ export default {
           el: '.swiper-pagination'
         }
       },
-      apppartner: helper.getUserInfo('apppartner')
+      isHxBank: helper.isHxBank()
     }
   },
   computed: {
-    logo () {
-      switch (this.apppartner) {
-        case 'NJCB':
-          return {
-            className: 'nj',
-            src: require('../../assets/img/nj-logo.png')
-          }
-        default:
-          return {
-            className: 'fx',
-            src: require('../../assets/img/logo.png')
-          }
-      }
-    }
   },
   created() {
     this.getWageDetail()

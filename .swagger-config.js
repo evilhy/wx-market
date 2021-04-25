@@ -69,6 +69,7 @@ const bulletInfo = require('./json/news.bulletInfo.json')
 const statisticInfo = require('./json/news.statisticInfo.json')
 const news = require('./json/news.json')
 const bill = require('./json/bill.json')
+var nxCallback = require('./json/nx.callback.json')
 
 module.exports = {
   openApi: [{
@@ -293,6 +294,9 @@ module.exports = {
       },
       '/merchant/callback': {
         get: merchantToken
+      },
+      '/nx/callback': {
+        get: nxCallback
       },
       '/nj/callback': {
         get: njToken

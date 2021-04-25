@@ -7,9 +7,14 @@
 import loading from 'utils/loading'
 import helper from 'utils/helper'
 import { getPageQueryObject } from 'utils/assist'
+import sysConfig from 'utils/constant'
 export default {
   data () {
     return {
+      callbackInfo: {
+        NINGXIA: '$Nx',
+        NEWUP: '$Merchant'
+      }
     }
   },
   computed: {},
@@ -17,14 +22,15 @@ export default {
   },
   mounted () {
     helper.clearSession()
+    helper.setTheme(sysConfig.otherBankTheme)
     loading.show({ type: 'bounce', parent: document.querySelector('#app') })
     this.getJsessionId()
   },
   methods: {
     async getJsessionId () {
-      let { accessToken = '' } = getPageQueryObject()
-      let res = await this.$Merchant.callback(accessToken)
-
+      let { accessToken = '', appPartner = '' } = getPageQueryObject()
+      let httpM = this.callbackInfo[appPartner || 'NEWUP']
+      let res = await this[httpM].callback(accessToken)
       let { bindStatus, jsessionId, idNumber, ifPwd, headimgurl, apppartner } = res.data
       helper.saveUserInfo({ jsessionId, ifPwd, bindStatus, headimgurl, idNumber, apppartner })
       this.$router.replace({ name: 'home' })

@@ -9,7 +9,7 @@
       <!-- 通知栏 -->
       <home-notice ref="notice" @to-page="toPage"></home-notice>
       <!-- 普通版菜单入口 -->
-      <template v-if="apppartner === 'FXGJ'">
+      <template v-if="isHxBank">
         <!-- 钱包 -->
         <wallet ref="wallet"></wallet>
         <!-- 主要信息入口 -->
@@ -59,8 +59,8 @@
         <!-- 游戏专区 -->
         <home-game-link></home-game-link>
       </template>
-      <!-- 振兴银行菜单入口 -->
-      <home-zx-menu ref="zx-menu" v-if="apppartner === 'NEWUP' || apppartner === 'SJZHRB'" @enter-payroll="enterPayroll" @to-news="toNews"></home-zx-menu>
+      <!-- 振兴银行、宁夏银行菜单入口 -->
+      <home-zx-menu ref="zx-menu" v-else @enter-payroll="enterPayroll" @to-news="toNews"></home-zx-menu>
       <!-- 底部logo -->
       <div class="bottom-logo"><img :class="logo.className" :src="logo.src" alt=""></div>
       <!-- // 后期去掉 -->
@@ -109,7 +109,8 @@ export default {
       isReadManagerCurrent: helper.getIsReadManagerCurrent(),
       appId: sysConfig.appId[process.env.NODE_ENV],
       apppartner: helper.getUserInfo('apppartner'),
-      yearBillOpen: helper.checkYearBillOpen()
+      yearBillOpen: helper.checkYearBillOpen(),
+      isHxBank: helper.isHxBank()
     }
   },
   computed: {

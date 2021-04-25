@@ -120,7 +120,6 @@ export default {
     },
     query(params) {
       const http = new HttpEngine()
-      console.log(http)
       http.path = `${
         sysConfig.httpBaseUrl[process.env.NODE_ENV]
       }/merchant/getAccess`
@@ -164,7 +163,6 @@ export default {
       return http.post()
     },
     reset() {
-      // console.log('========')
       this.form = {
         name: '',
         idType: '',
