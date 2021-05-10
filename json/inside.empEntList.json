@@ -4,14 +4,32 @@
     "entName": "XILEUWqMpjwaWRcpIroQfQ==",
     "shortEntName": "t7L8Ch4gTEAVBu64pvHzMg==",
     "salt": "cXdlam9pZmdqa2xkZmtnbw==",
-    "passwd": "ZGZna2xqMjEzcms0bDNvNDBpZmdmZGxtZzI0a21kZmc="
+    "passwd": "ZGZna2xqMjEzcms0bDNvNDBpZmdmZGxtZzI0a21kZmc=",
+    "liquidation": "HXB"
   },
   {
     "entId": "4EqBrPfMnolcm3OPftUbiitc7ExxTv49ZFiyRkIsjEM=",
     "entName": "iTD2x7rxiByKsXjJ3qojL1FFni9CxbJ14DwsCijsYe0=",
     "shortEntName": "iTD2x7rxiByLqWx7UA0Sig==",
     "salt": "cXdlam9pZmdqa2xkZmtnbw==",
-    "passwd": "ZGZna2xqMjEzcms0bDNvNDBpZmdmZGxtZzI0a21kZmc="
+    "passwd": "ZGZna2xqMjEzcms0bDNvNDBpZmdmZGxtZzI0a21kZmc=",
+    "liquidation": "NINGXIA"
+  },
+  {
+    "entId": "4EqBrPfMnolcm3OPftUbiitc7ExxTv49mfPssfHDLZc=",
+    "entName": "XILEUWqMpjwaWRcpIroQfQ==",
+    "shortEntName": "sOl6wCKBT7iqadxytC0fVw==",
+    "salt": "cXdlam9pZmdqa2xkZmtnbw==",
+    "passwd": "ZGZna2xqMjEzcms0bDNvNDBpZmdmZGxtZzI0a21kZmc=",
+    "liquidation": "HXB"
+  },
+  {
+    "entId": "4EqBrPfMnolcm3OPftUbiitc7ExxTv49mfPssfHDLZc=",
+    "entName": "XILEUWqMpjwaWRcpIroQfQ==",
+    "shortEntName": "sOl6wCKBT7iqadxytC0fVw==",
+    "salt": "cXdlam9pZmdqa2xkZmtnbw==",
+    "passwd": "ZGZna2xqMjEzcms0bDNvNDBpZmdmZGxtZzI0a21kZmc=",
+    "liquidation": "HXB"
   },
   {
     "entId": "4EqBrPfMnolcm3OPftUbiitc7ExxTv49mfPssfHDLZc=",
@@ -60,27 +78,15 @@
     "entName": "XILEUWqMpjwaWRcpIroQfQ==",
     "shortEntName": "sOl6wCKBT7iqadxytC0fVw==",
     "salt": "cXdlam9pZmdqa2xkZmtnbw==",
-    "passwd": "ZGZna2xqMjEzcms0bDNvNDBpZmdmZGxtZzI0a21kZmc="
+    "passwd": "ZGZna2xqMjEzcms0bDNvNDBpZmdmZGxtZzI0a21kZmc=",
+    "liquidation": "HXB"
   },
   {
     "entId": "4EqBrPfMnolcm3OPftUbiitc7ExxTv49mfPssfHDLZc=",
     "entName": "XILEUWqMpjwaWRcpIroQfQ==",
     "shortEntName": "sOl6wCKBT7iqadxytC0fVw==",
     "salt": "cXdlam9pZmdqa2xkZmtnbw==",
-    "passwd": "ZGZna2xqMjEzcms0bDNvNDBpZmdmZGxtZzI0a21kZmc="
-  },
-  {
-    "entId": "4EqBrPfMnolcm3OPftUbiitc7ExxTv49mfPssfHDLZc=",
-    "entName": "XILEUWqMpjwaWRcpIroQfQ==",
-    "shortEntName": "sOl6wCKBT7iqadxytC0fVw==",
-    "salt": "cXdlam9pZmdqa2xkZmtnbw==",
-    "passwd": "ZGZna2xqMjEzcms0bDNvNDBpZmdmZGxtZzI0a21kZmc="
-  },
-  {
-    "entId": "4EqBrPfMnolcm3OPftUbiitc7ExxTv49mfPssfHDLZc=",
-    "entName": "XILEUWqMpjwaWRcpIroQfQ==",
-    "shortEntName": "sOl6wCKBT7iqadxytC0fVw==",
-    "salt": "cXdlam9pZmdqa2xkZmtnbw==",
-    "passwd": "ZGZna2xqMjEzcms0bDNvNDBpZmdmZGxtZzI0a21kZmc="
+    "passwd": "ZGZna2xqMjEzcms0bDNvNDBpZmdmZGxtZzI0a21kZmc=",
+    "liquidation": "NINGXIA"
   }
 ]

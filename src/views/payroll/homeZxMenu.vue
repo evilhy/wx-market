@@ -8,10 +8,6 @@
       <span class="img-wrap"><img src="../../assets/img/zx/zx-icon-bank.png" alt=""></span>
       <span class="label">银行卡</span>
     </div>
-    <div class="item" @click="toPage('welfareList')">
-      <span class="img-wrap"><img src="../../assets/img/zx/zx-icon-welfare.png" alt=""></span>
-      <span class="label">员工福利</span>
-    </div>
     <div class="item" @click="toPage('user')">
       <span class="img-wrap"><img src="../../assets/img/zx/zx-icon-user.png" alt=""></span>
       <span class="label">个人信息</span>
@@ -23,10 +19,6 @@
     <div class="item" @click="toPage('addressList')">
       <span class="img-wrap"><img src="../../assets/img/zx/zx-icon-address.png" alt=""></span>
       <span class="label">地址管理</span>
-    </div>
-    <div class="item" @click="toNews">
-      <span class="img-wrap"><img src="../../assets/img/zx/zx-icon-news.png" alt=""></span>
-      <span class="label">最新资讯</span>
     </div>
     <div class="item" @click="toPage('invoice')">
       <span class="img-wrap"><img src="../../assets/img/zx/zx-icon-invoice.png" alt=""></span>

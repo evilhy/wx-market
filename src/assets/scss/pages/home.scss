@@ -127,11 +127,11 @@
     height: 204px;
   }
   .zx-link-wrap{
-    padding-top: 30px;
+    padding: 30px 30px 0;
     height: auto;
     flex-wrap: wrap;
     .item{
-      width: 25%;
+      width: 33.33%;
       flex: auto;
       padding-bottom: 40px;
     }
@@ -155,6 +155,12 @@
     padding: 40px 30px;
     img{
       height: 46px;
+    }
+    &.other-bank-logo{
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
     }
   }
 }

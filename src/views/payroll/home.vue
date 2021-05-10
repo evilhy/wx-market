@@ -7,7 +7,7 @@
       <!-- 轮播图 -->
       <home-banner ref="banner"></home-banner>
       <!-- 通知栏 -->
-      <home-notice ref="notice" @to-page="toPage"></home-notice>
+      <home-notice v-if="isHxBank" ref="notice" @to-page="toPage"></home-notice>
       <!-- 普通版菜单入口 -->
       <template v-if="isHxBank">
         <!-- 钱包 -->
@@ -62,7 +62,7 @@
       <!-- 振兴银行、宁夏银行菜单入口 -->
       <home-zx-menu ref="zx-menu" v-else @enter-payroll="enterPayroll" @to-news="toNews"></home-zx-menu>
       <!-- 底部logo -->
-      <div class="bottom-logo"><img :class="logo.className" :src="logo.src" alt=""></div>
+      <div class="bottom-logo" :class="{'other-bank-logo': !isHxBank}"><img :class="logo.className" :src="logo.src" alt=""></div>
       <!-- // 后期去掉 -->
       <home-manager-dialog ref="home-manager-dialog" @getIsReadManager="isReadManager = true" @getIsReadManagerCurrent="isReadManagerCurrent = true" :manager-info="managerInfo"></home-manager-dialog>
       <fxgj-mini-program-popup ref="fxgj-mini-program-popup"></fxgj-mini-program-popup>
@@ -88,6 +88,7 @@ import helper from 'utils/helper'
 import decryptInfo from 'utils/decryptInfo'
 import sysConfig from 'utils/constant'
 import url from 'utils/url'
+import collect from 'utils/collect'
 /* import Wxapi from 'utils/wxapi'
 const wxapi = new Wxapi() */
 export default {
@@ -145,24 +146,29 @@ export default {
     },
     transEntList(list = []) {
       return list.map((item) => {
-        let { entId, entName } = item
+        let { entId, entName, liquidation = '' } = item
         return {
           value: entId,
-          text: entName
+          text: entName,
+          liquidation
         }
       })
     },
     getDataByEnt() {
-      helper.saveUserInfo({ entId: this.currentEntId })
+      let currentEnt = collect.getItem(this.entList, 'value', this.currentEntId)
+      helper.saveUserInfo({ entId: this.currentEntId, liquidation: currentEnt.liquidation })
+      this.isHxBank = helper.isHxBank()
       // 获取企业下的轮播图
-      this.$refs['banner'].getBannerList()
-      // 获取企业下的消息
-      this.$refs['notice'].getNotice()
-      if (this.apppartner === 'FXGJ') {
-        // 获取企业下的钱包数据
-        this.$refs['wallet'].getWalletData()
-        // 微店上线之后需要去掉
-        this.getManagerInfo()
+      this.$refs['banner'] && this.$refs['banner'].getBannerList()
+      if (this.isHxBank) {
+        this.$nextTick(() => {
+          // 获取企业下的消息
+          this.$refs['notice'].getNotice()
+          // 获取企业下的钱包数据
+          this.$refs['wallet'].getWalletData()
+          // 微店上线之后需要去掉
+          this.getManagerInfo()
+        })
       }
     },
     async getManagerInfo() {

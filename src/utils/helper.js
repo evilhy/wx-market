@@ -169,8 +169,14 @@ const helper = {
     return sysConfig.themeColor[this.getTheme()]
   },
   isHxBank () {
-    let apppartner = this.getUserInfo('apppartner')
-    return apppartner === 'FXGJ'
+    /**
+     * apppartner=>渠道:  FXGJ=>放薪管家 ZRL=>中人联 YDNSH=>尧都农商 SJZHRB=>汇融银行 NEWUP=>辽宁振兴银行 ZXGZT=>知心工资条 NJCB=>南京银行
+     * liquidation=>清算渠道: （银行）HXB=>华夏银行  YDNSH=>尧都农商 CRCBBANK=>长沙农商 SJZHRB=>汇融银行 NEWUP=>辽宁振兴银行 NJCB=>南京银行 NINGXIA=>宁夏银行
+     */
+
+    let { apppartner, liquidation } = this.getUserInfo()
+    let bankType = liquidation || apppartner
+    return bankType === 'FXGJ' || bankType === 'HXB'
   },
   checkYearBillOpen () {
     return this.isHxBank() && sysConfig.yearBillOpen
