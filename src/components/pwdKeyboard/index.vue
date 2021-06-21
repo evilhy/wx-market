@@ -17,13 +17,13 @@
         <!-- 全键盘-->
         <template v-if="type === 'complete'">
           <div class='key-item' v-for="(item, index) in dataSource[type][completeImgType]" :key="index"
-            :style="calKeyStyle(index)" @click="dealEvent(item)">
+            :style="calKeyStyle(index)" @touchstart="dealEvent(item)">
           </div>
         </template>
         <!--  数字、身份证键盘 -->
         <template v-else>
           <div class='key-item' v-for="(item, index) in dataSource[type]" :key="index" :style="calKeyStyle(index)"
-            @click="dealEvent(item)">
+            @touchstart="dealEvent(item)">
           </div>
         </template>
       </div>
