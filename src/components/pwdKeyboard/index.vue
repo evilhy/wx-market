@@ -210,7 +210,7 @@ export default {
           display: block;
           width: 100%;
           height: 100%;
-          background: rgba(173, 173, 173, 0.1);
+          background: rgba(173, 173, 173, 0.15);
         }
       }
     }
