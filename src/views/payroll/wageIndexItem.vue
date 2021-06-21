@@ -3,7 +3,7 @@
     <div class="bill-status error" v-if="wage.payStatus === '0'">资金未到账</div>
     <div class="bill-status success" v-if="wage.payStatus === '1'">资金已到账</div>
     <div class="bank">
-      <img class="bank-logo" src="../assets/img/icon-bank.png" />
+      <img class="bank-logo" src="../../assets/img/icon-bank.png" />
       <div class="bank-name">{{wage.bankName}}（{{wage.cardNo}}）</div>
     </div>
     <div class="amt-wrap">

@@ -10,10 +10,23 @@
       width: 550px;
       height: calc(100vh - 150px);
       padding:30px 20px 20px;
-      background: rgba(255, 255, 255, .9);
+      background: white;
       box-shadow: 0 0 26px 0 rgba(27, 117, 107, 0.3);
       border-radius: 20px;
       @include center-block;
+      .sign-wrap{
+        background-color: $bg-color;
+        border-radius: 4px;
+        text-align: center;
+        padding: 16px;
+        p{
+          text-align: left;
+          margin-bottom: 16px;
+        }
+        img{
+          max-width: 100%;
+        }
+      }
     }
     .bank-wrap {
       height: 34px;
@@ -210,7 +223,7 @@
       position: fixed;
       right: 0;
       top: 215px;
-      z-index: 10000000000;
+      z-index: 2;
     }
   }
   .img-viewer-wrap {

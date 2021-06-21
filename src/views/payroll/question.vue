@@ -27,8 +27,8 @@ export default {
         .$Inside
         .receipt(this.detailId, 1, this.msg)
         .then(() => {
-          helper.saveReceiptStatus(this.detailId, 1)
-          this.$router.replace({ name: 'wageDetail' })
+          helper.saveReceiptStatus(this.detailId, 'receiptStautus', 1)
+          this.$router.go(-1)
         })
     }
   }

@@ -201,6 +201,9 @@ module.exports = {
       '/roll/wageDetail': {
         get: wageDetail
       },
+      '/roll/saveSigned': {
+        post: null
+      },
       '/roll/wageList': {
         get: wageList
       },

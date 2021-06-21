@@ -17,17 +17,19 @@
 import storage from 'utils/storage'
 import helper from 'utils/helper'
 import { swiper } from 'vue-awesome-swiper'
-import wageDetailItem from 'components/wageDetailItem'
+import wageDetailItem from './wageDetailItem'
+
 export default {
   data () {
     return {
-      wageDetailList: storage.getSession('bankWageList', []),
+      wageDetailList: [],
       swiperOption: {
         pagination: {
           el: '.swiper-pagination'
         }
       },
-      yearBillOpen: helper.checkYearBillOpen()
+      yearBillOpen: helper.checkYearBillOpen(),
+      index: -1
     }
   },
   computed: {
@@ -43,6 +45,7 @@ export default {
     }
   },
   created () {
+    this.wageDetailList = storage.getSession('bankWageList', [])
     helper.title(this.wageDetailList[0].wageName)
   },
   methods: {

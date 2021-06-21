@@ -167,7 +167,7 @@ export default new Router({
       }
     },
     {
-      path: '/wage-detail', // 工资条详情页面
+      path: '/wage-detail/:wageSheetId', // 工资条详情页面
       name: 'wageDetail',
       meta: {
         title: '放薪管家'

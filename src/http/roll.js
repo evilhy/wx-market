@@ -169,5 +169,18 @@ class Roll {
     http.query = { entId }
     return http.get()
   }
+  /**
+   * 保存签名
+   * @param {*} wageDetailId
+   * @param {*} wageSheetId
+   * @param {*} sign
+   * @returns
+   */
+  saveSigned (wageDetailId, wageSheetId, sign) {
+    let http = new Http()
+    http.path = `/${moduleName}/saveSigned`
+    http.body = { wageDetailId, wageSheetId, sign }
+    return http.post()
+  }
 }
 export default new Roll()

@@ -59,11 +59,11 @@ const helper = {
     let phone = helper.getUserInfo('phone', '')
     storage.removeSession(`${phone}-remaintime`)
   },
-  saveReceiptStatus(wageDetailId, status) {
+  saveReceiptStatus(wageDetailId, key = 'receiptStautus', value) {
     let bankWageList = storage.getSession('bankWageList', [])
     for (let item of bankWageList.values()) {
       if (item.wageDetailId === wageDetailId) {
-        item.receiptStautus = status
+        item[key] = value
         storage.setSession('bankWageList', bankWageList)
         return
       }

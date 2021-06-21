@@ -28,7 +28,7 @@
 <script>
 import { swiper } from 'vue-awesome-swiper'
 import managerAvator from 'components/managerAvator'
-import wageIndexItem from 'components/wageIndexItem'
+import wageIndexItem from './wageIndexItem'
 import storage from 'utils/storage'
 import helper from 'utils/helper'
 export default {
@@ -63,7 +63,7 @@ export default {
     },
     toDetail() {
       storage.setSession('bankWageList', this.bankWageList)
-      this.$router.push({ name: 'wageDetail' })
+      this.$router.push({ name: 'wageDetail', params: { wageSheetId: this.wageSheetId } })
     },
     toPage(routeName = '', query = {}) {
       this.$router.push({ name: routeName, query: query })
