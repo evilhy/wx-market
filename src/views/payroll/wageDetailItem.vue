@@ -48,7 +48,7 @@
           </ul>
         </div>
         <!-- 备注 -->
-        <div class="amt-box remark" ref="remark">
+        <div class="amt-box remark">
           <div class="title">
             <p>事项说明</p>
           </div>
@@ -60,7 +60,7 @@
           </ul>
         </div>
         <!-- 签名 -->
-        <div class="sign-wrap" v-if="sign">
+        <div ref="sign-wrap" class="sign-wrap" v-if="sign">
           <p>签名回执</p>
           <img :src="sign" alt="">
         </div>
@@ -161,7 +161,7 @@ export default {
       this.confirmReceipt('receiptStautus', 0)
       this.confirmReceipt('sign', base64)
       setTimeout(() => {
-        this.$refs['remark'].scrollIntoView({ behavior: 'smooth', block: 'start' })
+        this.$refs['sign-wrap'].scrollIntoView({ behavior: 'smooth', block: 'start' })
       }, 500)
     }
   }
