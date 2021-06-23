@@ -180,6 +180,7 @@ class Roll {
     let http = new Http()
     http.path = `/${moduleName}/saveSigned`
     http.body = { wageDetailId, wageSheetId, sign }
+    // http.mockStatusCode = 400
     return http.post()
   }
 }
