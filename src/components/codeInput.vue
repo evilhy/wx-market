@@ -3,7 +3,7 @@
     <!-- 密码输入框 -->
     <van-password-input :value="dot" :focused="true" gutter="0.5em" @focus="show = true" />
     <!-- 安全密码键盘 -->
-    <pwd-keyboard :show="show" type="number" :img-src="imgSrc" :hide-on-click-outside="false" @hide="show = false" @keydown="onKeydown" @delete="onDelete"></pwd-keyboard>
+    <pwd-keyboard v-model="show" type="number" :img-src="imgSrc" :hide-on-click-outside="false" @keydown="onKeydown" @delete="onDelete"></pwd-keyboard>
   </div>
 </template>
 

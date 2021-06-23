@@ -1,5 +1,5 @@
 <template>
-  <van-popup class="pwd-keyboard-popup" :class="{ 'has-logo': showLogo }" v-model="show" position="bottom"
+  <van-popup class="pwd-keyboard-popup" :class="{ 'has-logo': showLogo }" v-model="currentValue" position="bottom"
     safe-area-inset-bottom close-on-popstate :overlay="overlay" :lock-scroll="false" v-clickoutside="clickoutside">
     <!-- 键盘图 -->
     <!-- <van-loading color="#1989fa" /> -->
@@ -7,7 +7,7 @@
     <img v-else class="pwd-keyboard-img" :src="imgSrc" alt="">
     <template v-if="showLogo">
       <!-- 隐藏tab -->
-      <div class='hide-tab' @click="$emit('hide')"></div>
+      <div class='hide-tab' @click="hidden"></div>
       <!-- 间隔 -->
       <div class='space-container' :class="type === 'complete' ? `complete-${completeImgType}` : ''"></div>
     </template>
@@ -39,7 +39,7 @@ const keyboardTypes = ['number', 'idcard', 'complete']
 
 export default {
   props: {
-    show: Boolean,
+    value: Boolean,
     imgSrc: { // 键盘真实图片源
       type: [String, Object],
       required: true,
@@ -85,15 +85,20 @@ export default {
   },
   data () {
     return {
+      currentValue: this.value,
       completeImgType: 'lowercase',
       dataSource
     }
   },
   watch: {
-    show (val) {
+    value (val) {
       if (val) {
         this.completeImgType = 'lowercase'
       }
+      this.currentValue = val
+    },
+    currentValue (val) {
+      this.$emit('input', val)
     }
   },
   created () {
@@ -106,7 +111,7 @@ export default {
         case 'confirm':
           if (this.type !== 'number' || this.showConfirm) {
             if (this.hideOnClickConfirm) {
-              this.$emit('hide')
+              this.hidden()
             }
             this.$emit('confirm')
           }
@@ -138,9 +143,13 @@ export default {
     },
     clickoutside () {
       if (this.hideOnClickOutside) {
-        this.$emit('hide')
+        this.hidden()
       }
       this.$emit('outside')
+    },
+    hidden () {
+      this.currentValue = false
+      this.$emit('hide')
     }
   },
   directives: {
