@@ -1,7 +1,7 @@
 import sysConfig from 'src/utils/constant'
 import helper from 'src/utils/helper'
 import encrypt from 'src/utils/encrypt'
-import { typeOf, deepCopy } from 'utils/assist'
+import { typeOf, deepCopy, log } from 'utils/assist'
 import loading from 'utils/loading'
 
 let HttpEngine = (require(`core/plugins/http/HttpEngine.${process.env.NODE_ENV === 'development' ? 'dev' : 'prod'}`)).default
@@ -37,6 +37,7 @@ export default class HttpForApplication extends HttpEngine {
     let data
     if (config.method === 'post') {
       data = deepCopy(config.data)
+      log('-----------------body data:', data)
     } else {
       data = ''
     }

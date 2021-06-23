@@ -66,6 +66,7 @@
     background: $theme-color;
     color: white;
     border-radius: $radius-s;
+    line-height: 1;
     &[disabled]{
       background: $border-color;
       color: #a5a5a5;

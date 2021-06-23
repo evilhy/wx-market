@@ -77,7 +77,7 @@ export function isEmojiCharacter(substring) {
         return true
       } else if (0x3297 <= hs && hs <= 0x3299) {
         return true
-      } else if (hs === 0xa9 || hs === 0xae || hs === 0x303d || hs === 0x3030 || 
+      } else if (hs === 0xa9 || hs === 0xae || hs === 0x303d || hs === 0x3030 ||
         hs === 0x2b55 || hs === 0x2b1c || hs === 0x2b1b || hs === 0x2b50) {
         return true
       }
@@ -127,4 +127,10 @@ export function isAndroid () {
 
 export function isIOS () {
   return /ios|iphone|ipad|ipod/.test(navigator.userAgent.toLowerCase())
+}
+
+export function log (...rest) {
+  if (process.env.NODE_ENV !== 'production') {
+    console.log(...rest)
+  }
 }

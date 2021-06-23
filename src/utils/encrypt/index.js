@@ -95,7 +95,7 @@ class Encrypt {
   }
   /**
    * 处理需要加密的原始数据
-   * @param {Number} data 
+   * @param {Number} data
    */
   dealOrginData (data) {
     let type = typeOf(data)
@@ -209,7 +209,7 @@ class Encrypt {
   padSpace (str, len = this[$padLen]) {
     if (typeOf(str) !== 'string') throw new TypeError('需要补全的数据应为String类型')
     if (typeOf(len) !== 'number') throw new TypeError('需要补全的长度应为Number类型')
-    
+
     let padLen = len - str.length % len
     return str.padEnd(str.length + padLen)
   }
