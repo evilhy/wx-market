@@ -51,7 +51,7 @@ export default {
     async bindTel () {
       let { code, phone, pwd } = this
       await this.$Inside.bindTel({ code, phone, pwd })
-      this.$router.replace({ name: 'complete' })
+      this.$router.replace({ name: 'setQueryCode' })
     }
   },
   components: {
