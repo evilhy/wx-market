@@ -176,10 +176,10 @@ class Roll {
    * @param {*} sign
    * @returns
    */
-  saveSigned (wageDetailId, wageSheetId, sign) {
+  saveSigned (wageSheetId, wageDetailId, sign) {
     let http = new Http()
     http.path = `/${moduleName}/saveSigned`
-    http.body = { wageDetailId, wageSheetId, sign }
+    http.body = { wageSheetId, wageDetailId, sign }
     // http.mockStatusCode = 400
     return http.post()
   }
