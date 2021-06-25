@@ -57,6 +57,7 @@ export default {
     async saveSigned(res, done) {
       try {
         await this.$Roll.saveSigned(this.wageSheetId, this.id, res)
+        await this.$Inside.receipt(this.id, 0)
         this.$emit('confirm', res)
         done()
       } catch (e) {
