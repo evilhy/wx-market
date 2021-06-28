@@ -65,17 +65,12 @@
           <img :src="sign" alt="">
         </div>
       </div>
-      <!-- 未开签名 -->
-      <div class="action-wrap" v-if="!isSign">
+      <div class="action-wrap">
         <div class="btn sured" v-if="receiptStautus === 0"><i class="iconfont icon-dui"></i>已向企业回执无误</div>
-        <div class="btn sure" @click="receipt" v-if="receiptStautus !== 0">确认无误</div>
-        <div class="btn question" v-if="receiptStautus === 3" @click="toQuestionPage(true)">我有疑问</div>
-        <div class="btn question" v-if="receiptStautus === 1 || receiptStautus === 2">已反馈</div>
-      </div>
-      <!-- 开通了签名 -->
-      <div class="action-wrap" v-else>
-        <div class="btn sured" v-if="sign"><i class="iconfont icon-dui"></i>已向企业回执无误</div>
-        <div class="btn sure" @click="openSign" v-if="!sign">确认无误</div>
+        <template v-if="receiptStautus !== 0">
+          <div class="btn sure" v-if="isSign" @click="openSign">确认无误</div>
+          <div class="btn sure" v-else @click="receipt">确认无误</div>
+        </template>
         <div class="btn question" v-if="receiptStautus === 3" @click="toQuestionPage(true)">我有疑问</div>
         <div class="btn question" v-if="receiptStautus === 1 || receiptStautus === 2">已反馈</div>
       </div>
