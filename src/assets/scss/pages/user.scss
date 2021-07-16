@@ -339,6 +339,114 @@
     }
   }
 }
+.bankcard-list-page1 {
+  min-height: 100%;
+  padding: 50px 0;
+  .swiper-slide {
+    color: #fff;
+    height: 260px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    .wrap{
+      width: 500px;
+      height: 260px;
+      box-shadow: 0 12px 30px 0 rgba(237,73,94,0.20);
+      border-radius: 18px;
+      padding: 20px 25px 10px 25px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      background: url(../../assets/img/user/bankcard-bg1.png) center center/100% 100% no-repeat;
+      .name{
+        font-size: 24px;
+      }
+      .account{
+        font-size: 32px;
+      }
+      .tip{
+        font-size: 20px;
+        color: #FFFFFF;
+        span{
+          opacity: 0.6;
+        }
+      }
+      .mark{
+        width: 88px;
+        height: 88px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        img{
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+  .indicator{
+    display: flex;
+    font-size: 24px;
+    color: #363C4D;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    .desc{
+      opacity: .6;
+    }
+    .number{
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+     // background: rgba(244, 244, 244, .4);
+      //border: 1px solid #363C4D;
+      border: 1px solid #A8AAB2;
+      color: #A8AAB2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      margin-left: 15px;
+      &.active{
+        color: #F4415F;
+        border: 1px solid #F4415F;
+        opacity: 1;
+      }
+      .dot{
+        width: 10px;
+        height: 10px;
+        background: #F4415F;
+        border-radius: 50%;
+        position: absolute;
+        top: -5px;
+        right: -5px;
+      }
+    }
+  }
+  .cell-title{
+    display: flex;
+    align-items: center;
+    .edit{
+      width: 31px;
+      height: 33px;
+    }
+    .record{
+      width: 29px;
+      height: 31px;
+    }
+    .name{
+      font-size: 28px;
+      color: #363C4D;
+      margin: 0 5px 0 15px;
+    }
+    .new{
+      width: 50px;
+      height: 32px;
+    }
+  }
+}
 .bankcard-history-page {
   .history-item {
     padding-bottom: 30px;
@@ -450,6 +558,22 @@
     align-items: center;
     justify-content: center;
     font-size: 26px;
+  }
+}
+.bankcard-edit-page{
+  padding-top: 20px;
+  .tip{
+    height: 60px;
+    line-height: 60px;
+    font-size: 24px;
+    color: #A8AAB2;
+    text-indent: 30px;
+  }
+  .btn-box{
+    padding: 50px 40px;
+  }
+  .van-button--plain {
+    background-color: #f4f4f4 !important;
   }
 }
 .select-modify-way-page {

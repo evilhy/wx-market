@@ -69,6 +69,7 @@ const bulletInfo = require('./json/news.bulletInfo.json')
 const statisticInfo = require('./json/news.statisticInfo.json')
 const news = require('./json/news.json')
 const bill = require('./json/bill.json')
+const checkCardBin = require('./json/roll.checkCardBin.{cardNo}.json')
 var nxCallback = require('./json/nx.callback.json')
 
 module.exports = {
@@ -319,6 +320,9 @@ module.exports = {
       },
       '/bill': {
         get: bill
+      },
+      '/roll/checkCardBin/{cardNo}': {
+        get: checkCardBin
       }
     }
   },{
