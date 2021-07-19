@@ -76,7 +76,6 @@ const withdrawalLedgerDetail = require('./json/wallet.withdrawalLedgerDetail.jso
 const withdrawalRecordDetail = require('./json/wallet.withdrawalRecordDetail.json')
 const selectWithdrawalStatusEnum = require('./json/select.WithdrawalStatusEnum.json')
 const checkCardBin = require('./json/roll.checkCardBin.{cardNo}.json')
-var nxCallback = require('./json/nx.callback.json')
 
 module.exports = {
   openApi: [{
