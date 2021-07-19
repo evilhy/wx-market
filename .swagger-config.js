@@ -75,6 +75,8 @@ const withdrawalLedgerPage = require('./json/wallet.withdrawalLedgerPage.json')
 const withdrawalLedgerDetail = require('./json/wallet.withdrawalLedgerDetail.json')
 const withdrawalRecordDetail = require('./json/wallet.withdrawalRecordDetail.json')
 const selectWithdrawalStatusEnum = require('./json/select.WithdrawalStatusEnum.json')
+const checkCardBin = require('./json/roll.checkCardBin.{cardNo}.json')
+var nxCallback = require('./json/nx.callback.json')
 
 module.exports = {
   openApi: [{
@@ -342,6 +344,9 @@ module.exports = {
       },
       '/bill': {
         get: bill
+      },
+      '/roll/checkCardBin/{cardNo}': {
+        get: checkCardBin
       }
     }
   },{

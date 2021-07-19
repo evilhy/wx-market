@@ -4,8 +4,10 @@
     "cardType": 0,
     "cardTypeVal": "工资卡",
     "issuerName": "华夏银行",
-    "isNew": 0,
+    "isNew": 1,
     "cardUpdStatus": 0,
+    "entName": "北京开科唯识技术有限公司",
+    "userName": "李厚铧",
     "salt": "cXdlam9pZmdqa2xkZmtnbw==",
     "passwd": "ZGZna2xqMjEzcms0bDNvNDBpZmdmZGxtZzI0a21kZmc=",
     "bankCardGroups": [
@@ -23,6 +25,224 @@
     "cardTypeVal": "提现卡",
     "issuerName": "建设银行",
     "isNew": 1,
+    "cardUpdStatus": 1,
+    "entName": "北京开科唯识技术有限公司1",
+    "userName": "李厚铧",
+    "salt": "cXdlam9pZmdqa2xkZmtnbw==",
+    "passwd": "ZGZna2xqMjEzcms0bDNvNDBpZmdmZGxtZzI0a21kZmc=",
+    "bankCardGroups": [
+      {
+        "id": "id002",
+        "groupId": "groupId002",
+        "groupName": "云中心",
+        "shortGroupName": "云中心"
+      },
+      {
+        "id": "id003",
+        "groupId": "groupId003",
+        "groupName": "互联网金融中心",
+        "shortGroupName": "互金中心"
+      },
+      {
+        "id": "id003",
+        "groupId": "groupId003",
+        "groupName": "互联网金融中心",
+        "shortGroupName": "互金中心"
+      },
+      {
+        "id": "id003",
+        "groupId": "groupId003",
+        "groupName": "互联网金融中心",
+        "shortGroupName": "互金中心"
+      }
+    ]
+  },
+  {
+    "cardNo": "8YtUzZYFwCx+Ujuu2iImPCPLBbOSbOeD",
+    "issuerName": "工商银行",
+    "entName": "北京开科唯识技术有限公司2",
+    "userName": "李厚铧",
+    "isNew": 0,
+    "cardUpdStatus": 1,
+    "salt": "cXdlam9pZmdqa2xkZmtnbw==",
+    "passwd": "ZGZna2xqMjEzcms0bDNvNDBpZmdmZGxtZzI0a21kZmc=",
+    "bankCardGroups": [
+      {
+        "id": "id002",
+        "groupId": "groupId002",
+        "groupName": "云中心",
+        "shortGroupName": "云中心"
+      },
+      {
+        "id": "id003",
+        "groupId": "groupId003",
+        "groupName": "互联网金融中心",
+        "shortGroupName": "互金中心"
+      },
+      {
+        "id": "id003",
+        "groupId": "groupId003",
+        "groupName": "互联网金融中心",
+        "shortGroupName": "互金中心"
+      },
+      {
+        "id": "id003",
+        "groupId": "groupId003",
+        "groupName": "互联网金融中心",
+        "shortGroupName": "互金中心"
+      }
+    ]
+  },
+  {
+    "cardNo": "8YtUzZYFwCx+Ujuu2iImPCPLBbOSbOeD",
+    "issuerName": "招商银行",
+    "isNew": 0,
+    "cardUpdStatus": 1,
+    "entName": "北京开科唯识技术有限公司3",
+    "userName": "李厚铧",
+    "salt": "cXdlam9pZmdqa2xkZmtnbw==",
+    "passwd": "ZGZna2xqMjEzcms0bDNvNDBpZmdmZGxtZzI0a21kZmc=",
+    "bankCardGroups": [
+      {
+        "id": "id002",
+        "groupId": "groupId002",
+        "groupName": "云中心",
+        "shortGroupName": "云中心"
+      },
+      {
+        "id": "id003",
+        "groupId": "groupId003",
+        "groupName": "互联网金融中心",
+        "shortGroupName": "互金中心"
+      },
+      {
+        "id": "id003",
+        "groupId": "groupId003",
+        "groupName": "互联网金融中心",
+        "shortGroupName": "互金中心"
+      },
+      {
+        "id": "id003",
+        "groupId": "groupId003",
+        "groupName": "互联网金融中心",
+        "shortGroupName": "互金中心"
+      }
+    ]
+  },
+  {
+    "cardNo": "8YtUzZYFwCx+Ujuu2iImPCPLBbOSbOeD",
+    "issuerName": "招商银行2",
+    "isNew": 1,
+    "cardUpdStatus": 1,
+    "entName": "北京开科唯识技术有限公司4",
+    "userName": "李厚铧",
+    "salt": "cXdlam9pZmdqa2xkZmtnbw==",
+    "passwd": "ZGZna2xqMjEzcms0bDNvNDBpZmdmZGxtZzI0a21kZmc=",
+    "bankCardGroups": [
+      {
+        "id": "id002",
+        "groupId": "groupId002",
+        "groupName": "云中心",
+        "shortGroupName": "云中心"
+      },
+      {
+        "id": "id003",
+        "groupId": "groupId003",
+        "groupName": "互联网金融中心",
+        "shortGroupName": "互金中心"
+      },
+      {
+        "id": "id003",
+        "groupId": "groupId003",
+        "groupName": "互联网金融中心",
+        "shortGroupName": "互金中心"
+      },
+      {
+        "id": "id003",
+        "groupId": "groupId003",
+        "groupName": "互联网金融中心",
+        "shortGroupName": "互金中心"
+      }
+    ]
+  },
+  {
+    "cardNo": "8YtUzZYFwCx+Ujuu2iImPCPLBbOSbOeD",
+    "issuerName": "招商银行3",
+    "isNew": 0,
+    "cardUpdStatus": 1,
+    "entName": "北京开科唯识技术有限公司5",
+    "userName": "李厚铧",
+    "salt": "cXdlam9pZmdqa2xkZmtnbw==",
+    "passwd": "ZGZna2xqMjEzcms0bDNvNDBpZmdmZGxtZzI0a21kZmc=",
+    "bankCardGroups": [
+      {
+        "id": "id002",
+        "groupId": "groupId002",
+        "groupName": "云中心",
+        "shortGroupName": "云中心"
+      },
+      {
+        "id": "id003",
+        "groupId": "groupId003",
+        "groupName": "互联网金融中心",
+        "shortGroupName": "互金中心"
+      },
+      {
+        "id": "id003",
+        "groupId": "groupId003",
+        "groupName": "互联网金融中心",
+        "shortGroupName": "互金中心"
+      },
+      {
+        "id": "id003",
+        "groupId": "groupId003",
+        "groupName": "互联网金融中心",
+        "shortGroupName": "互金中心"
+      }
+    ]
+  },
+  {
+    "cardNo": "8YtUzZYFwCx+Ujuu2iImPCPLBbOSbOeD",
+    "issuerName": "招商银行4",
+    "entName": "北京开科唯识技术有限公司6",
+    "userName": "李厚铧",
+    "isNew": 0,
+    "cardUpdStatus": 1,
+    "salt": "cXdlam9pZmdqa2xkZmtnbw==",
+    "passwd": "ZGZna2xqMjEzcms0bDNvNDBpZmdmZGxtZzI0a21kZmc=",
+    "bankCardGroups": [
+      {
+        "id": "id002",
+        "groupId": "groupId002",
+        "groupName": "云中心",
+        "shortGroupName": "云中心"
+      },
+      {
+        "id": "id003",
+        "groupId": "groupId003",
+        "groupName": "互联网金融中心",
+        "shortGroupName": "互金中心"
+      },
+      {
+        "id": "id003",
+        "groupId": "groupId003",
+        "groupName": "互联网金融中心",
+        "shortGroupName": "互金中心"
+      },
+      {
+        "id": "id003",
+        "groupId": "groupId003",
+        "groupName": "互联网金融中心",
+        "shortGroupName": "互金中心"
+      }
+    ]
+  },
+  {
+    "cardNo": "8YtUzZYFwCx+Ujuu2iImPCPLBbOSbOeD",
+    "issuerName": "招商银行5",
+    "entName": "北京开科唯识技术有限公司7",
+    "userName": "李厚铧",
+    "isNew": 0,
     "cardUpdStatus": 1,
     "salt": "cXdlam9pZmdqa2xkZmtnbw==",
     "passwd": "ZGZna2xqMjEzcms0bDNvNDBpZmdmZGxtZzI0a21kZmc=",

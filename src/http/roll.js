@@ -183,5 +183,18 @@ class Roll {
     // http.mockStatusCode = 400
     return http.post()
   }
+
+  /**
+   * 查询银行卡卡bin信息
+   *
+   * @param {String} cardNo  银行卡号
+   * @returns
+   * @memberof Inside
+   */
+  checkCardBin(cardNo) {
+    let http = new Http()
+    http.path = `/${moduleName}/checkCardBin/${cardNo}`
+    return http.get()
+  }
 }
 export default new Roll()
