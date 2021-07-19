@@ -154,6 +154,11 @@
   &--large{
     font-size: 30px;
   }
+  &--mini{
+    height: 48px;
+    padding: 0 8px;
+    font-size: 24px;
+  }
 }
 
 .van-nav-bar{
@@ -226,15 +231,39 @@
   }
 }
 
+//
+.van-tag{
+  padding: 0 8px;
+  font-size: 24px;
+  line-height: 32px;
+  border-radius: 4px;
+  &--small{
+    font-size: 20px;
+  }
+  &--medium{
+    padding: 4px 12px;
+  }
+  &--large{
+    padding: 8px 16px;
+    font-size: 28px;
+    border-radius: 8px;
+  }
+}
+
 // 动作面板
 .van-action-sheet{
-  .van-action-sheet__header{
+  &__header{
     font-size: 30px;
     line-height: 90px;
-    .van-action-sheet__close{
+    &__close{
       padding: 0 30px;
       font-size: 36px;
     }
+  }
+  &__item{
+    padding: 28px 30px;
+    font-size: 30px;
+    line-height: 1.2;
   }
 }
 

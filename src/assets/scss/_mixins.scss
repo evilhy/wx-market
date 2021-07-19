@@ -62,6 +62,14 @@
 %center-block {
   @include center-block(false);
 }
+
+%title{
+  font-size: $fontsize-m;
+  line-height: 48px;
+  .van-icon{
+    opacity: 0.4;
+  }
+}
 @mixin placeholder {
   &::-webkit-input-placeholder {
     @content;
@@ -92,8 +100,13 @@
   @include square($value);
   border-radius: 50%;
 }
-@mixin flex-center {
-  display: inline-flex;
+@mixin flex-between($dispaly: flex) {
+  display: $dispaly;
+  align-items: center;
+  justify-content: space-between;
+}
+@mixin flex-center($dispaly: inline-flex) {
+  display: $dispaly;
   align-items: center;
   justify-content: center;
   line-height: 1;

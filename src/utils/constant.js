@@ -126,7 +126,7 @@ export default {
     '17': '6月',
     '18': '12月'
   },
-  listFinishedText: '--- 我是底线 ---',
+  listFinishedText: '--- 加载结束 ---',
   phoneCharge: '01001001', // 话费
   phoneData: '01001002', // 流量
   carWashTicket: '01002003', // 洗车券

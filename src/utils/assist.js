@@ -134,3 +134,21 @@ export function log (...rest) {
     console.log(...rest)
   }
 }
+
+export function getHistoryYearList (startYear = new Date().getFullYear(), key) {
+  let endYear = new Date().getFullYear()
+  return new Array(endYear - startYear + 1).fill(0).map((year, index) => {
+    let value = (endYear - index) + '年'
+    return key ? { [key]: value } : value
+  })
+}
+
+export function getHistoryMonthList (year = new Date().getFullYear(), key) {
+  let nowYear = new Date().getFullYear()
+  let months = nowYear === parseInt(year) ? (new Date().getMonth() + 1) : 12
+  let all = new Array(months).fill(0).map((month, index) => {
+    let value = (months - index) + '月'
+    return key ? { [key]: value } : value
+  })
+  return [{ name: '全部' }].concat(all)
+}

@@ -409,6 +409,27 @@ export default new Router({
         require(['../views/wallet/index.vue'], resolve)
       }
     },
+    {
+      path: '/balance-list', // 余额提现列表
+      name: 'balanceList',
+      component: resolve => {
+        require(['../views/wallet/balanceList.vue'], resolve)
+      }
+    },
+    {
+      path: '/withdrawal-detail/:id', // 提现详情
+      name: 'withdrawalDetail',
+      component: resolve => {
+        require(['../views/wallet/withdrawalDetail.vue'], resolve)
+      }
+    },
+    {
+      path: '/withdrawal-confirm/:id', // 提现确认
+      name: 'withdrawalConfirm',
+      component: resolve => {
+        require(['../views/wallet/withdrawalConfirm.vue'], resolve)
+      }
+    },
     /* {
       path: '/elife-index', // 喜闻乐荐首页
       name: 'elifeIndex',

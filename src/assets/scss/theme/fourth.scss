@@ -11,6 +11,16 @@
       background: url('../img/theme/#{$theme-name}/wallet-bg.png') no-repeat;
       background-size: 100% 100%;
     }
+    &.e-wallet{
+      .wallet-content{
+        background: url('../img/theme/#{$theme-name}/e-wallet-bg.png') no-repeat;
+        background-size: 100% 100%;
+      }
+    }
+    .withdrawal-btn{
+      background-image: linear-gradient(#ffffff, #FFDADC);
+      color: $theme-active-color;
+    }
   }
   // 首页
   .home-page{

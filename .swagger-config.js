@@ -62,19 +62,27 @@ const wUserInfo = require('./json/wUserInfo.json')
 const openingTips = require('./json/manager.openingTips.json')
 const crateNumericKeypad = require('./json/password.crateNumericKeypad.json')
 const queryHandPassword = require('./json/password.queryHandPassword.json')
-const balance = require('./json/wallet.balance.json')
+const empCardAndBalance = require('./json/wallet.empCardAndBalance.json')
 const empEntList = require('./json/inside.empEntList.json')
 const cardCount = require('./json/wisales.cardCount.json')
 const bulletInfo = require('./json/news.bulletInfo.json')
 const statisticInfo = require('./json/news.statisticInfo.json')
 const news = require('./json/news.json')
 const bill = require('./json/bill.json')
-var nxCallback = require('./json/nx.callback.json')
+const nxCallback = require('./json/nx.callback.json')
+const balance = require('./json/wallet.balance.json')
+const withdrawalLedgerPage = require('./json/wallet.withdrawalLedgerPage.json')
+const withdrawalLedgerDetail = require('./json/wallet.withdrawalLedgerDetail.json')
+const withdrawalRecordDetail = require('./json/wallet.withdrawalRecordDetail.json')
+const selectWithdrawalStatusEnum = require('./json/select.WithdrawalStatusEnum.json')
 
 module.exports = {
   openApi: [{
     baseURL: 'https://sitgateway.cardpu.com/payroll',
     paths: {
+      '/base/WithdrawalStatusEnum/dictItem': {
+        get: selectWithdrawalStatusEnum
+      },
       '/news/operate': {
         post: null
       },
@@ -97,7 +105,22 @@ module.exports = {
         get: empEntList
       },
       '/wallet/empCardAndBalance': {
+        get: empCardAndBalance
+      },
+      '/wallet/balance': {
         get: balance
+      },
+      '/wallet/withdrawalLedgerPage': {
+        post: withdrawalLedgerPage
+      },
+      '/wallet/withdrawalLedgerDetail/{withdrawalLedgerId}': {
+        get: withdrawalLedgerDetail
+      },
+      '/wallet/withdrawalRecordDetail/{withdrawalLedgerId}': {
+        get: withdrawalRecordDetail
+      },
+      '/wallet/withdraw': {
+        post: null
       },
       '/password/queryHandPassword': {
         get: queryHandPassword

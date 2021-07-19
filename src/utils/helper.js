@@ -47,6 +47,13 @@ const helper = {
       }
     }, duration)
   },
+  getDic(type) {
+    return storage.getSession(`DIC_${type}`, [])
+  },
+  saveDic(type, data) {
+    if (typeOf(data) !== 'array' || !data.length) return
+    storage.setSession(`DIC_${type}`, data)
+  },
   saveRemainTime() {
     let phone = helper.getUserInfo('phone', '')
     storage.setSession(`${phone}-remaintime`, new Date().getTime())
@@ -179,13 +186,19 @@ const helper = {
 
     let { apppartner, liquidation } = this.getUserInfo()
     let bankType = liquidation || apppartner
-    return bankType === 'FXGJ' || bankType === 'HXB'
+    return bankType === 'FXGJ' || bankType === 'ZRL' || bankType === 'HXB'
   },
   checkYearBillOpen() {
     return this.isHxBank() && sysConfig.yearBillOpen
   },
   saveNoticeInfo(type, entry) {
     storage.setSession('noticeInfo', { type, entry })
+  },
+  saveWithdrawDetail (data) {
+    storage.setSession('withdrawDetail', data)
+  },
+  getWithdrawDetail () {
+    return storage.getSession('withdrawDetail', {})
   },
   getNoticeInfo() {
     return storage.getSession('noticeInfo', {})

@@ -10,7 +10,7 @@
   }
 
   .banner {
-    margin: 0 auto 10px;
+    margin: 0 auto;
     width: 580px;
     height: 262px;
     border-radius: 16px;
@@ -35,7 +35,7 @@
     position: relative;
     margin: 0 30px;
     padding: 0;
-    min-height: 1px;
+    min-height: 20px;
     .van-notice-bar{
       background: none;
       padding: 0;

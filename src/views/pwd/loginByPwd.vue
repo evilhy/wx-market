@@ -23,6 +23,12 @@ import codeInput from 'components/codeInput'
 import handLock from 'components/handLock'
 import helper from 'utils/helper'
 export default {
+  props: {
+    isPage: {
+      type: Boolean,
+      default: true
+    }
+  },
   data () {
     return {
       passwordType: '',
@@ -41,7 +47,7 @@ export default {
       try {
         let codeStr = helper.getPasswordStr(this.code)
         await this.$Password.checkPassword(codeStr, '0')
-        this.goNextPage()
+        this.next()
       } catch (e) {
         this.code = []
         this.$refs['code-input'].open()
@@ -49,10 +55,17 @@ export default {
     },
     async checkHandPassword (res) {
       await this.$Password.checkPassword(helper.getPasswordStr(res), '1')
-      this.goNextPage()
+      this.next()
     },
     notEnough () {
       // helper.toast(sysConfig.handLockUnEnoughTip)
+    },
+    next () {
+      if (this.isPage) {
+        this.goNextPage()
+      } else {
+        this.$emit('next')
+      }
     },
     goNextPage () {
       helper.saveFreePassword(this.passwordType)

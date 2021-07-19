@@ -1,6 +1,8 @@
 [
   {
     "cardNo": "8YtUzZYFwCx+Ujuu2iImPCPLBbOSbOeD",
+    "cardType": 0,
+    "cardTypeVal": "工资卡",
     "issuerName": "华夏银行",
     "isNew": 0,
     "cardUpdStatus": 0,
@@ -17,6 +19,8 @@
   },
   {
     "cardNo": "8YtUzZYFwCx+Ujuu2iImPCPLBbOSbOeD",
+    "cardType": 1,
+    "cardTypeVal": "提现卡",
     "issuerName": "建设银行",
     "isNew": 1,
     "cardUpdStatus": 1,
