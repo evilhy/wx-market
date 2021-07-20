@@ -283,16 +283,6 @@ export default new Router({
         title: '银行卡'
       },
       component: resolve => {
-        require(['../views/user/bankcardList1.vue'], resolve)
-      }
-    },
-    {
-      path: '/bankcard-list1', // 个人信息-银行卡列表
-      name: 'bankcardList',
-      meta: {
-        title: '银行卡'
-      },
-      component: resolve => {
         require(['../views/user/bankcardList.vue'], resolve)
       }
     },

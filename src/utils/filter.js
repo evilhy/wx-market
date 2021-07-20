@@ -102,6 +102,10 @@ function star(str = '') {
   }
   return str.replace(/^(.{6})(?:\d+)(.{4})$/, '$1******$2')
 }
+function accountStar(account) {
+  if (!account) return
+  return account.substring(0, 4) + '********' + account.substring(account.length - 4, account.length)
+}
 
 function numberToChinese(money) {
   // 汉字的数字
@@ -200,5 +204,6 @@ export default {
   bankSpace,
   phoneStar,
   star,
+  accountStar,
   numberToChinese
 }
