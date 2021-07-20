@@ -1,5 +1,5 @@
 <template>
-  <div class="wallet-wrap outer" :class="{ 'e-wallet': hasEWallet }">
+  <div class="wallet-wrap" :class="[{ 'e-wallet': hasEWallet }, type]">
     <div class="wallet-content">
       <div class="header">
         <div class="wallet-title">放薪钱包<span @click="toggleBalance"><i
