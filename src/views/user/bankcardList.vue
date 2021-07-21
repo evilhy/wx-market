@@ -1,31 +1,26 @@
 <template>
   <div class="bankcard-list-page1">
-    <swiper ref="mySwipe" class="my-swipe" :options="swiperOption">
+    <swiper ref="mySwipe" v-if="banks.length >0" class="my-swipe" :options="swiperOption">
       <swiper-slide v-for="(item, index) in banks" :key="index">
-       <div class="wrap">
-         <div class="name">{{item.issuerName}}</div>
-         <div class="account">
-           <span class="value" v-if="!eyeFlag">{{item.cardNo | bankSpace}}</span>
-           <span class="value star" v-if="eyeFlag">{{item.cardNo | accountStar}}</span>
-           <span class="label" @click="eyeFlag = !eyeFlag">
-             <i class="icon-ai44 iconfont" v-show="!eyeFlag"></i>
-             <i class="icon-ai47 iconfont" v-show="eyeFlag"></i>
+        <div class="name">{{item.issuerName}}</div>
+        <div class="account">
+          <span class="value" v-if="!item.eyeFlag">{{item.cardNo | bankSpace}}</span>
+          <span class="value star" v-if="item.eyeFlag">{{item.cardNo | accountStar}}</span>
+          <span class="label" @click="item.eyeFlag = !item.eyeFlag">
+             <i class="icon-ai44 iconfont" v-show="!item.eyeFlag"></i>
+             <i class="icon-ai47 iconfont" v-show="item.eyeFlag"></i>
            </span>
-         </div>
-         <div class="tip"><span>该账户为</span>【{{item.entName}}】<span>添加的指定收款账户</span></div>
-         <div class="mark">
-           <img v-if="item.cardUpdStatus === 0" src="../../assets/img/user/icon-examine.png" alt="">
-           <img v-else src="../../assets/img/user/icon-normal.png" alt="">
-         </div>
-       </div>
+        </div>
+        <div class="tip"><span>该账户为</span>【{{item.entName}}】<span>添加的指定收款账户</span></div>
+        <div class="mark">
+          <img v-if="item.cardUpdStatus === 0" src="../../assets/img/user/icon-examine.png" alt="">
+          <img v-else src="../../assets/img/user/icon-normal.png" alt="">
+        </div>
      </swiper-slide>
     </swiper>
     <div class="indicator">
       <div class="desc">我的工资卡</div>
-      <div :class="['number', activeIndex === index ? 'active': '']" v-for="(item, index) in banks" :key="index" @click="$refs['mySwipe'].swiper.slideTo(index)">
-        {{index + 1}}
-        <div v-if="item.isNew" class="dot"></div>
-      </div>
+      <div class="s-pagination"> </div>
     </div>
     <van-cell-group>
       <van-cell is-link @click="toEdit">
@@ -67,30 +62,55 @@ export default {
         watchSlidesProgress: true,
         slidesPerView: 'auto',
         centeredSlides: true,
+        loop: true,
+        loopedSlides: 5,
+        pagination: {
+          el: '.s-pagination',
+          bulletClass: 'number',
+          type: 'custom',
+          clickable: true,
+          renderCustom(swiper, current, total) {
+            vm.activeIndex = current - 1
+            let html = ''
+            for (let i = 1; i <= total; i++) {
+              if (current === i) {
+                if (vm.banks[i - 1].isNew) {
+                  html += `<div class="number active">${i}<div v-if="item.isNew" class="dot"></div></div>`
+                } else {
+                  html += `<div class="number active">${i}</div>`
+                }
+              } else {
+                if (vm.banks[i - 1].isNew) {
+                  html += `<div class="number">${i}<div v-if="item.isNew" class="dot"></div></div>`
+                } else {
+                  html += `<div class="number">${i}</div>`
+                }
+              }
+            }
+            return html
+          }
+        },
         on: {
-          slideChange() {
-            vm.activeIndex = this.activeIndex
-          },
           progress() {
-              for (let i = 0; i < this.slides.length; i++) {
+            for (let i = 0; i < this.slides.length; i++) {
               let slide = this.slides.eq(i)
               let slideProgress = this.slides[i].progress
               let modify = 1
               if (Math.abs(slideProgress) > 1) {
                 modify = (Math.abs(slideProgress) - 1) * 0.3 + 1
               }
-              let translate = slideProgress * modify * 90 + 'px'
+              let translate = slideProgress * modify * 10 + 'px'
               let scale = 1 - Math.abs(slideProgress) / 5
               let zIndex = 999 - Math.abs(Math.round(10 * slideProgress))
               slide.transform('translateX(' + translate + ') scale(' + scale + ')')
               slide.css('zIndex', zIndex)
               slide.css('opacity', 1)
-              if (Math.abs(slideProgress) > 10) {
+              if (Math.abs(slideProgress) > 3) {
                 slide.css('opacity', 0)
               }
             }
           },
-          setTransition (transition) {
+          setTransition(transition) {
             for (let i = 0; i < this.slides.length; i++) {
               let slide = this.slides.eq(i)
               slide.transition(transition)
@@ -104,12 +124,11 @@ export default {
     this.getBankList()
   },
   methods: {
-    onChange(index) {
-      this.current = index
-    },
     async getBankList () {
       let res = await this.$Roll.empCard()
-      this.banks = decryptInfo(res.data, 'cardNo')
+      this.banks = decryptInfo(res.data, 'cardNo').map((item) => {
+        return Object.assign(item, {eyeFlag: true})
+      })
     },
     toHistory () {
       let ids = collect.getValueList(this.banks[this.activeIndex].bankCardGroups, 'id')
