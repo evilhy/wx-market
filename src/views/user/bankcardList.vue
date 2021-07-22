@@ -1,23 +1,26 @@
 <template>
-  <div class="bankcard-list-page1">
-    <swiper ref="mySwipe" v-if="banks.length >0" class="my-swipe" :options="swiperOption">
-      <swiper-slide v-for="(item, index) in banks" :key="index">
-        <div class="name">{{item.issuerName}}</div>
-        <div class="account">
-          <span class="value" v-if="!item.eyeFlag">{{item.cardNo | bankSpace}}</span>
-          <span class="value star" v-if="item.eyeFlag">{{item.cardNo | accountStar}}</span>
-          <span class="label" @click="item.eyeFlag = !item.eyeFlag">
+  <div class="bankcard-list-page">
+    <div class="swiper-wrap">
+      <swiper v-if="banks.length >0" class="my-swiper" :options="swiperOption">
+        <swiper-slide v-for="(item, index) in banks" :key="index">
+          <div class="name">{{item.issuerName}}</div>
+          <div class="account">
+            <span class="value" v-if="!item.eyeFlag">{{item.cardNo | bankSpace}}</span>
+            <span class="value star" v-if="item.eyeFlag">{{item.cardNo | accountStar}}</span>
+            <span class="label" @click="item.eyeFlag = !item.eyeFlag">
              <i class="icon-ai44 iconfont" v-show="!item.eyeFlag"></i>
              <i class="icon-ai47 iconfont" v-show="item.eyeFlag"></i>
            </span>
-        </div>
-        <div class="tip"><span>该账户为</span>【{{item.entName}}】<span>添加的指定收款账户</span></div>
-        <div class="mark">
-          <img v-if="item.cardUpdStatus === 0" src="../../assets/img/user/icon-examine.png" alt="">
-          <img v-else src="../../assets/img/user/icon-normal.png" alt="">
-        </div>
-     </swiper-slide>
-    </swiper>
+          </div>
+          <div class="tip"><span>该账户为</span>【{{item.entName}}】<span>添加的指定收款账户</span></div>
+          <div class="mark">
+            <img v-if="item.cardUpdStatus === 0" src="../../assets/img/user/icon-examine.png" alt="">
+            <img v-else src="../../assets/img/user/icon-normal.png" alt="">
+          </div>
+        </swiper-slide>
+      </swiper>
+    </div>
+
     <div class="indicator">
       <div class="desc">我的工资卡</div>
       <div class="s-pagination"> </div>
