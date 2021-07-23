@@ -6,7 +6,7 @@
     </div>
     <div class="wage-flow-item__bottom">
       <div class="wage-flow-item__date">{{item.issueTime | date('Y/m/d h:i:s')}}</div>
-      <div class="wage-flow-item__status wage-flow-item__status--error">
+      <div class="wage-flow-item__status">
         <withdraw-tag :status="item.withdrawalStatus" :desc="item.withdrawalStatusVal"></withdraw-tag>
       </div>
     </div>
