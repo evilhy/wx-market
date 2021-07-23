@@ -1,8 +1,0 @@
-@charset "utf-8";
-
-#app.pink{
-  $theme-name: pink !default;
-  $theme-active-color: #F4415F !default;
-  $theme-bg-color: #F4415F !default;
-  @import "./common";
-}
