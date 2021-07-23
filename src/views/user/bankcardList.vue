@@ -20,7 +20,6 @@
         </swiper-slide>
       </swiper>
     </div>
-
     <div class="indicator">
       <div class="desc">我的工资卡</div>
       <div class="s-pagination"> </div>
@@ -49,7 +48,6 @@
 </template>
 
 <script>
-import bankItem from './bankItem'
 import decryptInfo from 'utils/decryptInfo'
 import collect from 'utils/collect'
 import storage from 'utils/storage'
@@ -58,7 +56,6 @@ export default {
   data () {
     let vm = this
     return {
-      eyeFlag: true,
       activeIndex: 0,
       banks: [],
       swiperOption: {
@@ -78,13 +75,13 @@ export default {
             for (let i = 1; i <= total; i++) {
               if (current === i) {
                 if (vm.banks[i - 1].isNew) {
-                  html += `<div class="number active">${i}<div v-if="item.isNew" class="dot"></div></div>`
+                  html += `<div class="number active">${i}<div class="dot"></div></div>`
                 } else {
                   html += `<div class="number active">${i}</div>`
                 }
               } else {
                 if (vm.banks[i - 1].isNew) {
-                  html += `<div class="number">${i}<div v-if="item.isNew" class="dot"></div></div>`
+                  html += `<div class="number">${i}<div class="dot"></div></div>`
                 } else {
                   html += `<div class="number">${i}</div>`
                 }
@@ -145,7 +142,6 @@ export default {
     }
   },
   components: {
-    bankItem,
     swiper,
     swiperSlide
   }
