@@ -1,5 +1,5 @@
 <template>
-  <div id="app" :class="theme">
+  <div id="app">
     <!-- <weixin-env-tip v-if="requireWeixin"></weixin-env-tip> -->
     <vertical-screen-tip></vertical-screen-tip>
     <router-view />
@@ -26,6 +26,7 @@ export default {
   },
   created () {
     window.router = this.$router
+    helper.setTheme(this.theme)
   },
   mounted () {
     document.body.addEventListener('blur', function () {

@@ -166,11 +166,8 @@ const helper = {
     if (!themeId) {
       themeId = sysConfig.defaultTheme
     }
-    let app = document.querySelector('#app')
-    if (app) {
-      app.className = themeId
-      storage.setSession('theme', themeId)
-    }
+    document.documentElement.setAttribute('data-theme', themeId)
+    storage.setSession('theme', themeId)
   },
   getTheme() {
     return storage.getSession('theme', sysConfig.defaultTheme)
