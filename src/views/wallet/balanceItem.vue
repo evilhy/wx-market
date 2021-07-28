@@ -17,9 +17,9 @@
       <template v-else>
         <div class="error-text" v-if="item.withdrawalStatus === 4">超过提现有效期，资金被撤回</div>
         <template v-else>
-          <!-- 自动提现 -->
-          <div class="theme-text" v-if="item.withdrawalMethod === 1">提现有效期截止{{item.cutoffTime | date('Y年m月d日')}}</div>
-          <!-- 手动提现 -->
+          <!-- 自动转到银行卡 -->
+          <div class="theme-text" v-if="item.dealType === 0">提现有效期截止{{item.cutoffTime | date('Y年m月d日')}}</div>
+          <!-- 到期撤回 -->
           <div class="theme-text" v-else>提现有效期仅剩<count-down class="error-text" :now="item.systemTime" :target="item.cutoffTime" @end="countEnd"></count-down></div>
         </template>
       </template>

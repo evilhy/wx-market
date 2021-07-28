@@ -145,7 +145,7 @@
       "accountStatusVal": "正常",
       "bankClose": false,
       "withdrawStatus": 1,
-      "withdrawalMethod": 0,
+      "dealType": 0,
       "systemTime": 1626330899814,
       "cutoffTime": 1626380899814
     },
@@ -181,7 +181,7 @@
       "accountStatusVal": "正常",
       "bankClose": false,
       "withdrawStatus": 1,
-      "withdrawalMethod": 1,
+      "dealType": 1,
       "systemTime": 1626330899814,
       "cutoffTime": 1626380899814
     },
@@ -217,7 +217,7 @@
       "accountStatusVal": "正常",
       "bankClose": false,
       "withdrawStatus": 1,
-      "withdrawalMethod": 0,
+      "dealType": 0,
       "systemTime": 1626330899814,
       "cutoffTime": 1626380899814
     },
@@ -253,7 +253,7 @@
       "accountStatusVal": "正常",
       "bankClose": false,
       "withdrawStatus": 1,
-      "withdrawalMethod": 0,
+      "dealType": 0,
       "systemTime": 1626330887814,
       "cutoffTime": 1626330899814
     },
