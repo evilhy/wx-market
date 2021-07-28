@@ -181,6 +181,9 @@ button {
 .orange-text{
   color: $orange-text-color;
 }
+.theme-text{
+  color: $theme-color
+}
 .van-button{
   &--primary{
     background-color: $theme-color;

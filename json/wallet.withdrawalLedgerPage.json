@@ -38,7 +38,9 @@
       "accountStatusVal": "正常",
       "bankClose": true,
       "groupName": "云服务中心",
-      "withdrawStatus": 0
+      "withdrawStatus": 0,
+      "systemTime": 1626330899814,
+      "cutoffTime": 1626380899814
     },
     {
       "wageSheetName": "超长名称超长名称超长名称11111111111112222222",
@@ -72,7 +74,9 @@
       "accountStatusVal": "正常",
       "bankClose": true,
       "groupName": "互金中心",
-      "withdrawStatus": 1
+      "withdrawStatus": 1,
+      "systemTime": 1626330899814,
+      "cutoffTime": 1626380899814
     },
     {
       "wageSheetName": "超长名称超长名",
@@ -105,10 +109,12 @@
       "accountStatus": 1,
       "accountStatusVal": "异常",
       "bankClose": false,
-      "withdrawStatus": 1
+      "withdrawStatus": 1,
+      "systemTime": 1626330899814,
+      "cutoffTime": 1626380899814
     },
     {
-      "wageSheetName": "超长名称超长名22",
+      "wageSheetName": "手动提现",
       "withdrawalLedgerId": "e75d4557cea84269a9ff18f5925d4683",
       "entId": "a0f60ab285fb4fc997fc1d7da0822d3b",
       "accountId": "8f02079dce1b49a0b1b9c4f5c16ceb16",
@@ -138,7 +144,118 @@
       "accountStatus": 0,
       "accountStatusVal": "正常",
       "bankClose": false,
-      "withdrawStatus": 1
+      "withdrawStatus": 1,
+      "withdrawalMethod": 0,
+      "systemTime": 1626330899814,
+      "cutoffTime": 1626380899814
+    },
+    {
+      "wageSheetName": "自动提现",
+      "withdrawalLedgerId": "e75d4557cea84269a9ff18f5925d4683",
+      "entId": "a0f60ab285fb4fc997fc1d7da0822d3b",
+      "accountId": "8f02079dce1b49a0b1b9c4f5c16ceb16",
+      "account": "10250000003208171",
+      "accountStar": "1025********8171",
+      "accountName": "张三",
+      "accountOpenBank": "华夏银行",
+      "custName": "张三",
+      "idNumber": "370782199612200038",
+      "transAmount": 12000.0,
+      "employeeCardNo": "6230200013873745",
+      "walletNumber": "818010100100065002",
+      "openBank": "华夏银行",
+      "issueTime": 1626330899814,
+      "fundType": 0,
+      "fundTypeVal": "工资",
+      "fundDate": 1,
+      "fundDateVal": "1月份",
+      "payDateTime": 192299361314600,
+      "withdrawalStatus": 2,
+      "withdrawalStatusVal": "提现失败",
+      "remark": "这是备注......",
+      "year": 2021,
+      "month": 6,
+      "crtDateTime": 1626330899814,
+      "updDateTime": 192299361360800,
+      "accountStatus": 0,
+      "accountStatusVal": "正常",
+      "bankClose": false,
+      "withdrawStatus": 1,
+      "withdrawalMethod": 1,
+      "systemTime": 1626330899814,
+      "cutoffTime": 1626380899814
+    },
+    {
+      "wageSheetName": "手动提现超时",
+      "withdrawalLedgerId": "e75d4557cea84269a9ff18f5925d4683",
+      "entId": "a0f60ab285fb4fc997fc1d7da0822d3b",
+      "accountId": "8f02079dce1b49a0b1b9c4f5c16ceb16",
+      "account": "10250000003208171",
+      "accountStar": "1025********8171",
+      "accountName": "张三",
+      "accountOpenBank": "华夏银行",
+      "custName": "张三",
+      "idNumber": "370782199612200038",
+      "transAmount": 12000.0,
+      "employeeCardNo": "6230200013873745",
+      "walletNumber": "818010100100065002",
+      "openBank": "华夏银行",
+      "issueTime": 1626330899814,
+      "fundType": 0,
+      "fundTypeVal": "工资",
+      "fundDate": 1,
+      "fundDateVal": "1月份",
+      "payDateTime": 192299361314600,
+      "withdrawalStatus": 4,
+      "withdrawalStatusVal": "提现超时",
+      "remark": "这是备注......",
+      "year": 2021,
+      "month": 6,
+      "crtDateTime": 1626330899814,
+      "updDateTime": 192299361360800,
+      "accountStatus": 0,
+      "accountStatusVal": "正常",
+      "bankClose": false,
+      "withdrawStatus": 1,
+      "withdrawalMethod": 0,
+      "systemTime": 1626330899814,
+      "cutoffTime": 1626380899814
+    },
+    {
+      "wageSheetName": "手动提现",
+      "withdrawalLedgerId": "e75d4557cea84269a9ff18f5925d4683",
+      "entId": "a0f60ab285fb4fc997fc1d7da0822d3b",
+      "accountId": "8f02079dce1b49a0b1b9c4f5c16ceb16",
+      "account": "10250000003208171",
+      "accountStar": "1025********8171",
+      "accountName": "张三",
+      "accountOpenBank": "华夏银行",
+      "custName": "张三",
+      "idNumber": "370782199612200038",
+      "transAmount": 12000.0,
+      "employeeCardNo": "6230200013873745",
+      "walletNumber": "818010100100065002",
+      "openBank": "华夏银行",
+      "issueTime": 1626330899814,
+      "fundType": 0,
+      "fundTypeVal": "工资",
+      "fundDate": 1,
+      "fundDateVal": "1月份",
+      "payDateTime": 192299361314600,
+      "withdrawalStatus": 0,
+      "withdrawalStatusVal": "待提现",
+      "remark": "这是备注......",
+      "year": 2021,
+      "month": 6,
+      "crtDateTime": 1626330899814,
+      "updDateTime": 192299361360800,
+      "accountStatus": 0,
+      "accountStatusVal": "正常",
+      "bankClose": false,
+      "withdrawStatus": 1,
+      "withdrawalMethod": 0,
+      "systemTime": 1626330887814,
+      "cutoffTime": 1626330899814
     },
     {
       "wageSheetName": "超长名称超长名333",
@@ -171,10 +288,12 @@
       "accountStatus": 1,
       "accountStatusVal": "异常",
       "bankClose": false,
-      "withdrawStatus": 1
+      "withdrawStatus": 1,
+      "systemTime": 1626330899814,
+      "cutoffTime": 1626380899814
     },
     {
-      "wageSheetName": "超长名称超长名12333333",
+      "wageSheetName": "待提现为0",
       "withdrawalLedgerId": "e75d4557cea84269a9ff18f5925d4683",
       "entId": "a0f60ab285fb4fc997fc1d7da0822d3b",
       "accountId": "8f02079dce1b49a0b1b9c4f5c16ceb16",
@@ -204,7 +323,44 @@
       "accountStatus": 0,
       "accountStatusVal": "正常",
       "bankClose": false,
-      "withdrawStatus": 1
+      "withdrawStatus": 1,
+      "systemTime": 1626330899814,
+      "cutoffTime": 1626380899814
+    },
+    {
+      "wageSheetName": "待提现10",
+      "withdrawalLedgerId": "e75d4557cea84269a9ff18f5925d4683",
+      "entId": "a0f60ab285fb4fc997fc1d7da0822d3b",
+      "accountId": "8f02079dce1b49a0b1b9c4f5c16ceb16",
+      "account": "10250000003208171",
+      "accountStar": "1025********8171",
+      "accountName": "张三",
+      "accountOpenBank": "华夏银行",
+      "custName": "张三",
+      "idNumber": "370782199612200038",
+      "transAmount": 10,
+      "employeeCardNo": "6230200013873745",
+      "walletNumber": "818010100100065002",
+      "openBank": "华夏银行",
+      "issueTime": 1626330899814,
+      "fundType": 0,
+      "fundTypeVal": "工资",
+      "fundDate": 1,
+      "fundDateVal": "1月份",
+      "payDateTime": 192299361314600,
+      "withdrawalStatus": 0,
+      "withdrawalStatusVal": "待提现",
+      "remark": "这是备注......",
+      "year": 2021,
+      "month": 5,
+      "crtDateTime": 1626330899814,
+      "updDateTime": 192299361360800,
+      "accountStatus": 0,
+      "accountStatusVal": "正常",
+      "bankClose": false,
+      "withdrawStatus": 1,
+      "systemTime": 1626330899814,
+      "cutoffTime": 1626380899814
     },
     {
       "wageSheetName": "超长名称超长名099",
@@ -237,7 +393,9 @@
       "accountStatus": 0,
       "accountStatusVal": "正常",
       "bankClose": false,
-      "withdrawStatus": 1
+      "withdrawStatus": 1,
+      "systemTime": 1626330899814,
+      "cutoffTime": 1626380899814
     },
     {
       "wageSheetName": "超长名称超长名3333",
@@ -270,7 +428,9 @@
       "accountStatus": 0,
       "accountStatusVal": "正常",
       "bankClose": false,
-      "withdrawStatus": 1
+      "withdrawStatus": 1,
+      "systemTime": 1626330899814,
+      "cutoffTime": 1626380899814
     },
     {
       "wageSheetName": "超长名称超长名",
@@ -303,7 +463,9 @@
       "accountStatus": 0,
       "accountStatusVal": "正常",
       "bankClose": false,
-      "withdrawStatus": 1
+      "withdrawStatus": 1,
+      "systemTime": 1626330899814,
+      "cutoffTime": 1626380899814
     },
     {
       "wageSheetName": "超长名称超长名34555",
@@ -336,7 +498,9 @@
       "accountStatus": 0,
       "accountStatusVal": "正常",
       "bankClose": false,
-      "withdrawStatus": 1
+      "withdrawStatus": 1,
+      "systemTime": 1626330899814,
+      "cutoffTime": 1626380899814
     },
     {
       "wageSheetName": "超长名称超长名87444",
@@ -369,7 +533,9 @@
       "accountStatus": 0,
       "accountStatusVal": "正常",
       "bankClose": true,
-      "withdrawStatus": 1
+      "withdrawStatus": 1,
+      "systemTime": 1626330899814,
+      "cutoffTime": 1626380899814
     },
     {
       "wageSheetName": "超长名称超长名3944044",
@@ -402,7 +568,9 @@
       "accountStatus": 0,
       "accountStatusVal": "正常",
       "bankClose": true,
-      "withdrawStatus": 1
+      "withdrawStatus": 1,
+      "systemTime": 1626330899814,
+      "cutoffTime": 1626380899814
     }
   ],
   "rankNo": 0,

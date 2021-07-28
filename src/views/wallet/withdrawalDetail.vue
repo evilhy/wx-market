@@ -83,7 +83,7 @@ export default {
     canWithdraw () {
       // 付款账户状态(0:正常、1:异常)
       let { accountStatus, transAmount } = this.wageDetail
-      return this.showWithdraw && accountStatus === 0 && transAmount > 0
+      return accountStatus === 0 && transAmount > 0
     },
     btnText () {
       let { withdrawalStatus } = this.wageDetail

@@ -22,6 +22,7 @@ export default {
         case 1:
           return '#12C465'
         case 2:
+        case 4:
           return '#F4415F'
         case 3:
           return '#FF9124'
