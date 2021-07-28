@@ -114,7 +114,7 @@
       "cutoffTime": 1626380899814
     },
     {
-      "wageSheetName": "手动提现",
+      "wageSheetName": "自动到银行卡",
       "withdrawalLedgerId": "e75d4557cea84269a9ff18f5925d4683",
       "entId": "a0f60ab285fb4fc997fc1d7da0822d3b",
       "accountId": "8f02079dce1b49a0b1b9c4f5c16ceb16",
@@ -150,7 +150,7 @@
       "cutoffTime": 1626380899814
     },
     {
-      "wageSheetName": "自动提现",
+      "wageSheetName": "到期撤回",
       "withdrawalLedgerId": "e75d4557cea84269a9ff18f5925d4683",
       "entId": "a0f60ab285fb4fc997fc1d7da0822d3b",
       "accountId": "8f02079dce1b49a0b1b9c4f5c16ceb16",
@@ -186,7 +186,7 @@
       "cutoffTime": 1626380899814
     },
     {
-      "wageSheetName": "手动提现超时",
+      "wageSheetName": "自动到银行卡",
       "withdrawalLedgerId": "e75d4557cea84269a9ff18f5925d4683",
       "entId": "a0f60ab285fb4fc997fc1d7da0822d3b",
       "accountId": "8f02079dce1b49a0b1b9c4f5c16ceb16",
@@ -222,7 +222,7 @@
       "cutoffTime": 1626380899814
     },
     {
-      "wageSheetName": "手动提现",
+      "wageSheetName": "自动到银行卡",
       "withdrawalLedgerId": "e75d4557cea84269a9ff18f5925d4683",
       "entId": "a0f60ab285fb4fc997fc1d7da0822d3b",
       "accountId": "8f02079dce1b49a0b1b9c4f5c16ceb16",
