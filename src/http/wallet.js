@@ -11,6 +11,7 @@ class Wallet {
    getBalanceAndCard () {
     let http = new Http()
     http.path = `/${moduleName}/empCardAndBalance`
+    http.mockTimeout = 5
     return http.get()
   }
   /**
