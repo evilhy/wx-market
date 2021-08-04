@@ -11,7 +11,7 @@
         <div class="step-item__line"></div>
         <div class="step-item__content">
           <div class="step-item__title">提现收款账户</div>
-          <div class="step-item__desc">{{info.custName}} | {{info.openBank}} | {{info.employeeCardStar}}</div>
+          <div class="step-item__desc">{{info.custName}} | {{info.openBank}}（尾号{{info.employeeCardNo.slice(-4)}}）</div>
         </div>
       </div>
       <div class="step-item" :class="caledClass">

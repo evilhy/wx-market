@@ -22,7 +22,7 @@
   "issueTime": 1626330976449,
   "payDateTime": 192375995382000,
   "withdrawalRecordLogId": "86c409c357c24e8b83410b5cec173c62",
-  "withdrawalStatus": 0,
+  "withdrawalStatus": 2,
   "withdrawalStatusVal": "待提现",
   "remark": "这是备注......",
   "year": 2021,
