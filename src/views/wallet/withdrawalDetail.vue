@@ -23,7 +23,7 @@
       <div class="row-flex row-flex--between"><span
           class="label">收款账号</span><span class="value">放薪钱包（尾号{{wageDetail.walletNumber.slice(-4)}}）</span></div>
       <div class="row-flex row-flex--between"><span
-          class="label">发放时间</span><span class="value">{{wageDetail.payDateTime | date('Y/m/d h:i:s')}}</span></div>
+          class="label">发放时间</span><span class="value">{{wageDetail.issueTime | date('Y/m/d h:i:s')}}</span></div>
       <div class="row-flex row-flex--between"><span
           class="label">交易编号</span><span class="value">{{wageDetail.transNo}}</span></div>
       <div class="row-flex row-flex--between"><span
