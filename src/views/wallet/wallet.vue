@@ -74,7 +74,7 @@ export default {
     async getBalanceAndCard() {
       let res = await this.$Wallet.getBalanceAndCard()
       let info = decryptInfo(res.data, 'balance', 'walletNumber')
-      this.info = info
+      this.info = { ...this.info, ...info }
     },
     async getCardCount() {
       let res = await this.$Wisales.getCardCount()
