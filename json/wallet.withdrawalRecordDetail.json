@@ -45,7 +45,7 @@
     "issueTime": 1626331050142,
     "payDateTime": 192449689184600,
     "withdrawalRecordLogId": "48196f998a684909a008a228c6e9afe1",
-    "withdrawStatus": 0,
+    "withdrawStatus": 1,
     "accountStatus": 0,
     "withdrawalStatus": 2,
     "withdrawalStatusVal": "待提现",

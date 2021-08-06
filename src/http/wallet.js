@@ -67,7 +67,6 @@ class Wallet {
     let http = new Http()
     http.path = `/${moduleName}/withdraw`
     http.body = body
-    http.mockStatusCode = 500
     return http.post()
   }
 }
