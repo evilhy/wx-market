@@ -49,6 +49,7 @@ export default {
       this.balanceInfo = decryptInfo(res.data, 'availableAmount')
     },
     async getList() {
+      this.loading = true
       let res = await this.$Wallet.withdrawalLedgerPage({ withdrawalStatus: [0, 2, 3] }, this.page)
       let { content = [], last = false, totalElements = 0, totalPages } = res.data
       content = decryptInfo(content, 'walletNumber', 'transAmount', 'custName', 'idNumber', 'account', 'employeeCardNo')
