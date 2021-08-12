@@ -8,14 +8,9 @@
         <van-icon v-if="type === 'outer' && hasEWallet" name="arrow" color="white" @click.native="toWallet" />
       </div>
       <div class="virtual-card" v-if="hasEWallet">
-        <template v-if="eyeFlag">
-          <p class="value">{{info.walletNumber | bankSpace}}</p>
-          <div class="desc orange-text">放薪管家 | 电子钱包</div> 
-        </template>
-        <template v-else>
-          <p class="value star">**** **** **** ****</p>
-          <div class="desc orange-text star-bottom"><span class="star">****</span> | <span class="star">****</span></div>
-        </template>
+        <p class="value" v-if="eyeFlag">{{info.walletNumber | bankSpace}}</p>
+        <p class="value star" v-else>**** **** **** ****</p>
+        <div class="desc orange-text">放薪管家 | 电子钱包</div>
       </div>
       <div class="main">
         <div class="col money">
