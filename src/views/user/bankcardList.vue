@@ -54,33 +54,36 @@ import storage from 'utils/storage'
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
 export default {
   data () {
-    let vm = this
     return {
       activeIndex: 0,
-      banks: [],
-      swiperOption: {
+      banks: []
+    }
+  },
+  computed: {
+    swiperOption({activeIndex, banks}) {
+      return {
         watchSlidesProgress: true,
-        slidesPerView: 'auto',
-        centeredSlides: true,
-        loop: true,
-        loopedSlides: 5,
-        pagination: {
+          slidesPerView: 'auto',
+          centeredSlides: true,
+          loop: banks.length > 2,
+          loopedSlides: 5,
+          pagination: {
           el: '.s-pagination',
-          bulletClass: 'number',
-          type: 'custom',
-          clickable: true,
-          renderCustom(swiper, current, total) {
-            vm.activeIndex = current - 1
+            bulletClass: 'number',
+            type: 'custom',
+            clickable: true,
+            renderCustom(swiper, current, total) {
+            activeIndex = current - 1
             let html = ''
             for (let i = 1; i <= total; i++) {
               if (current === i) {
-                if (vm.banks[i - 1].isNew) {
+                if (banks[i - 1].isNew) {
                   html += `<div class="number active">${i}<div class="dot"></div></div>`
                 } else {
                   html += `<div class="number active">${i}</div>`
                 }
               } else {
-                if (vm.banks[i - 1].isNew) {
+                if (banks[i - 1].isNew) {
                   html += `<div class="number">${i}<div class="dot"></div></div>`
                 } else {
                   html += `<div class="number">${i}</div>`
