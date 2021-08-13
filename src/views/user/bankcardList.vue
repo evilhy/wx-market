@@ -60,12 +60,13 @@ export default {
     }
   },
   computed: {
-    swiperOption({activeIndex, banks}) {
+    swiperOption() {
+      let vm = this
       return {
         watchSlidesProgress: true,
           slidesPerView: 'auto',
           centeredSlides: true,
-          loop: banks.length > 2,
+          loop: vm.banks.length > 2,
           loopedSlides: 5,
           pagination: {
           el: '.s-pagination',
@@ -73,17 +74,17 @@ export default {
             type: 'custom',
             clickable: true,
             renderCustom(swiper, current, total) {
-            activeIndex = current - 1
+              vm.activeIndex = current - 1
             let html = ''
             for (let i = 1; i <= total; i++) {
               if (current === i) {
-                if (banks[i - 1].isNew) {
+                if (vm.banks[i - 1].isNew) {
                   html += `<div class="number active">${i}<div class="dot"></div></div>`
                 } else {
                   html += `<div class="number active">${i}</div>`
                 }
               } else {
-                if (banks[i - 1].isNew) {
+                if (vm.banks[i - 1].isNew) {
                   html += `<div class="number">${i}<div class="dot"></div></div>`
                 } else {
                   html += `<div class="number">${i}</div>`
