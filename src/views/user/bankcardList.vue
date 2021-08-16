@@ -54,23 +54,27 @@ import storage from 'utils/storage'
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
 export default {
   data () {
-    let vm = this
     return {
       activeIndex: 0,
-      banks: [],
-      swiperOption: {
+      banks: []
+    }
+  },
+  computed: {
+    swiperOption() {
+      let vm = this
+      return {
         watchSlidesProgress: true,
-        slidesPerView: 'auto',
-        centeredSlides: true,
-        loop: true,
-        loopedSlides: 5,
-        pagination: {
+          slidesPerView: 'auto',
+          centeredSlides: true,
+          loop: vm.banks.length > 2,
+          loopedSlides: 5,
+          pagination: {
           el: '.s-pagination',
-          bulletClass: 'number',
-          type: 'custom',
-          clickable: true,
-          renderCustom(swiper, current, total) {
-            vm.activeIndex = current - 1
+            bulletClass: 'number',
+            type: 'custom',
+            clickable: true,
+            renderCustom(swiper, current, total) {
+              vm.activeIndex = current - 1
             let html = ''
             for (let i = 1; i <= total; i++) {
               if (current === i) {
