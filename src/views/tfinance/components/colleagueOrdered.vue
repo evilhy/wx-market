@@ -46,6 +46,7 @@ export default {
   methods: {
     async getList () {
       try {
+        this.loading = true
         let operate = this.type === 'all' ? 1 : -1
         let res = await this.$Tfinance.operateList(this.currentPage, operate)
         let { content = [], totalElements = -1, totalPages = 0 } = res.data

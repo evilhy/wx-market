@@ -3,52 +3,80 @@
     <div class="white-box">
       <wallet type="inner"></wallet>
       <!-- 筛选 -->
-      <van-sticky>
-        <div class="filter-wrap">
-          <van-dropdown-menu>
-            <van-dropdown-item v-model="value" :options="option" />
-          </van-dropdown-menu>
-          <div class="date" @click="calendarShow = true">
-            <template v-if="startDate && endDate">
-              {{startDate | date('Y-m-d')}} ~ {{endDate | date('Y-m-d')}}
-            </template>
-            <img src="../../assets/img/icon-wallet-date.png" alt="">
-          </div>
-        </div>
-      </van-sticky>
+      <wallet-filter ref="wallet-filter" @search="search"></wallet-filter>
     </div>
-    <no-data></no-data>
-    <van-calendar v-model="calendarShow" type="range" @confirm="onConfirm" />
+    <!-- 资金列表 -->
+    <no-data v-if="totalElements === 0"></no-data>
+    <van-list v-else v-model="loading" :immediate-check="false" :finished="finished" :finished-text="finishedText" @load="getList">
+      <div class="month-list" v-for="data in listData" :index="data.yearMonth">
+        <div class="flow-month">{{Number(data.yearMonth.slice(0, 4)) === new Date().getFullYear() ? '' : data.yearMonth.slice(0, 4) + '年'}}{{data.yearMonth.slice(4)}}月</div>
+        <wage-flow-item v-for="(item, index) in data.list" :key="index" :item="item"></wage-flow-item>
+      </div>
+    </van-list>
   </div>
 </template>
 
 <script>
-import wallet from 'components/wallet'
+import wallet from './wallet'
+import walletFilter from './walletFilter.vue'
+import wageFlowItem from './wageFlowItem.vue'
 import noData from 'components/noData/index'
+import sysConfig from 'utils/constant'
+import decryptInfo from 'utils/decryptInfo'
+import helper from 'utils/helper.js'
+
 export default {
-  data () {
+  data() {
     return {
-      calendarShow: false,
-      startDate: null,
-      endDate: null,
-      value: 0,
-      option: [
-        { text: '全部', value: 0 },
-        { text: '收款', value: 1 },
-        { text: '提现', value: 2 }
-      ]
+      listInfo: {},
+      listData: [],
+      page: 1,
+      loading: false,
+      finished: false,
+      totalElements: -1,
+      finishedText: sysConfig.listFinishedText
     }
   },
-  created () { },
+  created() {
+    helper.title('放薪管家')
+  },
   methods: {
-    onConfirm (dataArr = []) {
-      this.calendarShow = false
-      this.startDate = dataArr[0] || ''
-      this.endDate = dataArr[1] || ''
+    async getList (query) {
+      this.loading = true
+      if (!query) {
+        query = this.$refs['wallet-filter'] ? this.$refs['wallet-filter'].searchData : {}
+      }
+      let res = await this.$Wallet.withdrawalLedgerPage(query, this.page)
+      let { content = [], last = false, totalElements = 0, totalPages } = res.data
+      content = decryptInfo(content, 'walletNumber', 'transAmount', 'custName', 'idNumber', 'account', 'employeeCardNo')
+      content.forEach((item) => {
+        let { year, month } = item
+        let yearMonth = year.toString() + month.toString()
+        if (!this.listInfo[yearMonth]) {
+          this.$set(this.listInfo, yearMonth, [])
+          this.listData.push({ yearMonth: yearMonth, list: [] })
+        }
+        this.listInfo[yearMonth].push(item)
+        this.listData[this.listData.length - 1].list.push(item)
+      })
+      this.totalElements = totalElements
+      this.finished = last || this.page === totalPages
+      this.page++
+      this.loading = false
+    },
+    search (query = {}) {
+      this.$set(this, 'listInfo', {})
+      this.$set(this, 'listData', [])
+      this.finished = false
+      this.page = 1
+      this.totalElements = -1
+      this.getList(query)
     }
   },
   components: {
     wallet,
+    walletFilter,
+    wageFlowItem,
     noData
   }
 }

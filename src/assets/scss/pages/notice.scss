@@ -12,10 +12,13 @@
     .van-tab {
       font-size: 24px;
       color: $text-color-gray;
-    }
-    .van-tab--active {
-      color: $text-color;
-      font-family: PingFangSC-Semibold;
+      &--active {
+        color: $text-color;
+        font-family: PingFangSC-Semibold;
+      }
+      &__text{
+        overflow: inherit;
+      }
     }
     .van-tabs__line {
       display: none;
@@ -57,7 +60,7 @@
       }
     }
     .content {
-      padding: 0 30px;
+      padding: 0 30px 20px;
     }
     .row {
       padding-bottom: 18px;
@@ -71,6 +74,9 @@
       .value {
         word-break: break-all;
       }
+      &:last-child{
+        padding-bottom: 0;
+      }
     }
     .title {
       font-size: 28px;
@@ -81,7 +87,6 @@
     .detail {
       line-height: 40px;
       color: $text-color-gray;
-      margin-bottom: 30px;
     }
     .name {
       @extend %text-overflow;
@@ -132,19 +137,3 @@
   }
 }
 
-/* .tab-item{
-  position: relative;
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  color: $text-color-gray;
-  &.active{
-    color: $text-color;
-    font-family: PingFangSC-Semibold;
-  }
-  .notice-count{
-    top: 10px;
-  }
-} */

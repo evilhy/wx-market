@@ -76,7 +76,7 @@
 
 <script>
 import homeEntList from './homeEntList'
-import wallet from 'components/wallet'
+import wallet from '../wallet/wallet'
 import homeBanner from './homeBanner'
 import homeNotice from './homeNotice'
 import fxgjMiniProgramPopup from 'components/fxgjMiniProgramPopup'

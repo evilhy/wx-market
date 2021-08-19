@@ -1,0 +1,125 @@
+<template>
+  <div class="wallet-wrap" :class="[{ 'e-wallet': hasEWallet }, type]">
+    <div class="wallet-content">
+      <div class="header">
+        <div class="wallet-title">放薪钱包<span @click="toggleBalance"><i
+              class="icon-ai44 iconfont" v-show="eyeFlag"></i><i
+              class="icon-ai47 iconfont" v-show="!eyeFlag"></i></span></div>
+        <van-icon v-if="type === 'outer' && hasEWallet" name="arrow" color="white" @click.native="toWallet" />
+      </div>
+      <div class="virtual-card" v-if="hasEWallet">
+        <p class="value" v-if="eyeFlag">{{info.walletNumber | bankSpace}}</p>
+        <p class="value star" v-else>**** **** **** ****</p>
+        <div class="desc orange-text">放薪管家 | 电子钱包</div>
+      </div>
+      <div class="main">
+        <div class="col money">
+          <span class="value" v-if="eyeFlag">{{info.balance | money}}</span>
+          <span class="value star" v-if="!eyeFlag">****</span>
+          <span class="label">钱包余额(元)</span>
+        </div>
+        <div class="col bank" @click="toPage('bankcardList')">
+          <span class="value">{{info.cardNum}}<span class="label">张</span></span>
+          <span class="label">银行卡</span>
+        </div>
+        <div class="col welfare-card" @click="toPage('welfareList')">
+          <span class="value">{{info.cardCount}}<span class="label">张</span></span>
+          <span class="label">福利卡券</span>
+        </div>
+        <div v-if="hasEWallet && type !== 'outer'" class="withdrawal-btn" :class="{ disabled: withdrawDisabled }" @click="toWithdraw">提现</div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import helper from 'utils/helper'
+import decryptInfo from 'utils/decryptInfo'
+export default {
+  props: {
+    type: {
+      type: String,
+      default: 'outer'
+    }
+  },
+  data() {
+    return {
+      info: {},
+      eyeFlag: helper.checkShowBalance()
+    }
+  },
+  computed: {
+    withdrawDisabled () {
+      let { withdrawStatus = 0, balance = 0 } = this.info
+      return !withdrawStatus || !balance
+    },
+    hasEWallet () {
+      return this.info.walletNumber
+    }
+  },
+  created() {
+    if (this.type === 'outer') return
+    this.getWalletData()
+  },
+  methods: {
+    getWalletData() {
+      this.getBalanceAndCard()
+      this.getCardCount()
+    },
+    async getBalanceAndCard() {
+      let res = await this.$Wallet.getBalanceAndCard()
+      let info = decryptInfo(res.data, 'balance', 'walletNumber')
+      this.info = { ...this.info, ...info }
+    },
+    async getCardCount() {
+      let res = await this.$Wisales.getCardCount()
+      this.$set(this.info, 'cardCount', res.data.prizeExchangeNum)
+    },
+    toggleBalance() {
+      if (this.eyeFlag) {
+        // 关闭
+        this.eyeFlag = false
+        helper.saveBalanceStatus(false)
+      } else {
+        if (helper.getUserInfo('ifPwd', 0)) {
+          // 有密码
+          if (helper.checkFreeLogin()) {
+            // 近期输入过密码
+            this.eyeFlag = true
+          } else {
+            this.$router.push({
+              name: 'loginByPwd',
+              query: { nextPage: 'home' }
+            })
+          }
+        } else {
+          this.$router.push({ name: 'setQueryCode' })
+        }
+      }
+    },
+    toPage(name) {
+      this.$router.push({ name })
+    },
+    toWithdraw () {
+      if (this.withdrawDisabled) return
+      this.toPage('balanceList')
+    },
+    toWallet () {
+      if (helper.getUserInfo('ifPwd', 0)) {
+        // 有密码
+        if (helper.checkFreeLogin()) {
+          // 近期输入过密码
+          this.toPage('wallet')
+        } else {
+          this.$router.push({
+            name: 'loginByPwd',
+            query: { nextPage: 'wallet' }
+          })
+        }
+      } else {
+        this.$router.push({ name: 'setQueryCode' })
+      }
+    }
+  }
+}
+</script>

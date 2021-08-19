@@ -98,7 +98,7 @@
       border: none;
       color: #fff;
       padding: 14px 0;
-      @include placeholder () {
+      @include placeholder {
         color: #96E2E0;
       }
       &[disabled]{

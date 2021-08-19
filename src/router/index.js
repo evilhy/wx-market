@@ -287,6 +287,16 @@ export default new Router({
       }
     },
     {
+      path: '/bankcard-edit', // 个人信息-银行卡修改
+      name: 'bankcardEdit',
+      meta: {
+        title: '银行卡'
+      },
+      component: resolve => {
+        require(['../views/user/bankcardEdit.vue'], resolve)
+      }
+    },
+    {
       path: '/bankcard-history', // 个人信息-银行卡历史记录
       name: 'bankcardHistory',
       meta: {
@@ -407,6 +417,27 @@ export default new Router({
       name: 'wallet',
       component: resolve => {
         require(['../views/wallet/index.vue'], resolve)
+      }
+    },
+    {
+      path: '/balance-list', // 余额提现列表
+      name: 'balanceList',
+      component: resolve => {
+        require(['../views/wallet/balanceList.vue'], resolve)
+      }
+    },
+    {
+      path: '/withdrawal-detail/:id', // 提现详情
+      name: 'withdrawalDetail',
+      component: resolve => {
+        require(['../views/wallet/withdrawalDetail.vue'], resolve)
+      }
+    },
+    {
+      path: '/withdrawal-confirm/:id', // 提现确认
+      name: 'withdrawalConfirm',
+      component: resolve => {
+        require(['../views/wallet/withdrawalConfirm.vue'], resolve)
       }
     },
     /* {

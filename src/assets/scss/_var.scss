@@ -1,8 +1,9 @@
 @charset "utf-8";
 
 $theme-color: #00CCCC !default;
-$warning-color: #FFA323 !default;
+$warning-color: #FF9124 !default;
 $error-color: #F4415F !default;
+$success-color: #12C465 !default;
 $theme-reverse-color: #FB5E5E !default;
 $info-color: #1989fa !default;
 $text-color: #363C4D !default;
@@ -10,6 +11,8 @@ $text-color-gray: #A8AAB2 !default;
 $text-color-tip: #707579 !default;
 $text-color-dark: #41424a !default;
 $welfare-theme-color: #DE4444 !default;
+$money-text-color: #CF965B !default;
+$orange-text-color: #FFDC9F !default;
 
 $border-color:#F2F4F7 !default;
 $bg-color: #f5f5f5 !default;//
@@ -24,4 +27,3 @@ $radius-l: 15px;
 $radius-xs: 4px;
 
 $space-normal: 24px !default;
-
