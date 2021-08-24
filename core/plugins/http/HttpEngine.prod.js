@@ -17,6 +17,7 @@ const $mockStatusCode = Symbol('$mockStatusCode');
 const $mockTimeout = Symbol('$mockTimeout');
 const createInstance = Symbol('createInstance');
 const requestedSever = Symbol('requestedSever');
+const encrypt = Symbol('encrypt');
 
 export default class HttpEngine {
 
@@ -36,7 +37,7 @@ export default class HttpEngine {
   [$body] = undefined;
 
   [$loading] = true;
-  
+
   [$loadingTypes] = ['normal', 'bounce', 'loader', 'square'];
 
   [$mockStatusCode] = 200;
@@ -44,6 +45,8 @@ export default class HttpEngine {
   [$mockTimeout] = 3000;
 
   [requestedSever] = false;
+
+  [encrypt] = false;
 
   /**
    * @param value {String}
@@ -99,7 +102,7 @@ export default class HttpEngine {
    *
    * @memberof HttpEngine
    */
-  set loading (value) { 
+  set loading (value) {
     if (typeOf(value) !== 'boolean' && typeOf(value) !== 'string' && typeOf(value) !== 'object') throw new TypeError('loading类型应为Boolean、String、Object');
     if (typeOf(value) === 'string' && !this[$loadingTypes].includes(value)) {
       throw new TypeError(`loading类型为String时，应传入${this[$loadingTypes].join('、')}中的一种`);
@@ -130,6 +133,14 @@ export default class HttpEngine {
     this[requestedSever] = value;
   }
 
+  /**
+   * 是否签名加密
+   */
+   set encrypt (value) {
+    if (typeOf(value) !== 'boolean') throw TypeError('encrypt类型应为Boolean');
+    this[encrypt] = value;
+  }
+
   [createInstance] () {
     let instance = axios.create({
       baseURL: this[$baseURL],
@@ -139,6 +150,7 @@ export default class HttpEngine {
     });
     instance.interceptors.request.use(
       config => {
+        config = { ...config, encrypt: this[encrypt] }
         this.beforeSendRequestHandler(config);
         return config;
       },

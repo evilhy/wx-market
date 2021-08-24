@@ -36,7 +36,8 @@
       <div class="fixed-btn-wrap">
         <van-button class="short-btn" plain type="primary"
           @click="$router.go(-1)">返回</van-button>
-        <van-button type="primary" :disabled="btnDisabled" @click="step = 2">确认提现</van-button>
+        <van-button type="primary" :disabled="btnDisabled" @click="toWithdraw">
+          确认提现</van-button>
       </div>
       <van-action-sheet v-model="show" :actions="banks" close-on-popstate
         close-on-click-action @select="onSelect" />
@@ -44,6 +45,20 @@
     <template v-else>
       <login-by-pwd :is-page="false" @next="sure"></login-by-pwd>
     </template>
+    <van-action-sheet v-if="signInfo.signStatusVal" class="tax-signup-action-sheet" v-model="actionSheetShow" title="完成以下任务就可以提现啦！">
+      <div class="signup-item">
+        <span>① 完成身份信息认证</span>
+        <!-- 0：未认证、1：认证中、2：认证失败、3：认证成功 -->
+        <span class="success-text" v-if="signInfo.attestStatus === 3"><van-icon name="success" />认证成功</span>
+        <van-button v-else plain size="small" :color="attestBtn.color" @click="$router.push({ name: 'uploadIdentity' })">{{attestBtn.text}}</van-button>
+      </div>
+      <div class="signup-item">
+        <span>② 签约合作协议</span>
+        <!-- 0:未签约、1：已签约 -->
+        <span class="success-text" v-if="signInfo.signStatus === 1"><van-icon name="success" />已签约</span>
+        <van-button v-else type="primary" plain size="small" :disabled="signLoading" @click="toSign">去签约</van-button>
+      </div>
+    </van-action-sheet>
   </div>
 </template>
 
@@ -62,7 +77,10 @@ export default {
       show: false,
       banks: [],
       selectedBank: {},
-      wageDetail: helper.getWithdrawDetail()
+      wageDetail: helper.getWithdrawDetail(),
+      signInfo: {},
+      actionSheetShow: false,
+      signLoading: false
     }
   },
   computed: {
@@ -70,12 +88,35 @@ export default {
       return (
         this.loading ||
         !this.wageDetail.transAmount ||
-        !Object.keys(this.selectedBank).length
+        !Object.keys(this.selectedBank).length ||
+        !this.signInfo.attestStatusVal ||
+        !this.signInfo.signStatusVal
       )
+    },
+    attestBtn () {
+      let attestStatus = this.signInfo.attestStatus
+      switch (attestStatus) {
+        case 0:
+          return {
+            color: '#00CCCC',
+            text: '去认证'
+          }
+        case 1:
+          return {
+            color: '#FF9124',
+            text: '认证中'
+          }
+        case 2:
+          return {
+            color: '#F4415F',
+            text: '重新认证'
+          }
+      }
     }
   },
   created() {
     helper.title('余额提现')
+    this.getSignDetail()
     this.getCardList()
   },
   mounted() {},
@@ -92,6 +133,10 @@ export default {
         this.loading = false
       }
     },
+    async getSignDetail() {
+      let res = await this.$Tax.signingDetails()
+      this.signInfo = res.data
+    },
     transBanks(list = []) {
       return list.map((item) => {
         let { issuerName, cardNo, cardTypeVal } = item
@@ -105,10 +150,35 @@ export default {
     onSelect(item = {}) {
       this.selectedBank = item
     },
-    async sure () {
+    toWithdraw() {
+      let { attestStatus, signStatus } = this.signInfo
+      if (attestStatus === 3 && signStatus === 1) {
+        this.step = 2
+      } else {
+        this.actionSheetShow = true
+      }
+    },
+    async toSign () {
+      let { attestStatus, taxSignId } = this.signInfo
+      if (attestStatus === 0) {
+        helper.toast('请先完成身份信息认证再签约')
+        return
+      }
+      try {
+        this.signLoading = true
+        let res = await this.$Tax.signing(taxSignId)
+        window.location.href = res.data
+      } catch (e) {
+        this.signLoading = false
+      }
+    },
+    async sure() {
       try {
         this.loading = true
-        await this.$Wallet.withdraw({ withdrawalLedgerId: this.id, cardNo: this.selectedBank.cardNo })
+        await this.$Wallet.withdraw({
+          withdrawalLedgerId: this.id,
+          cardNo: this.selectedBank.cardNo
+        })
         this.$router.go(-1)
       } catch (e) {
         this.loading = false

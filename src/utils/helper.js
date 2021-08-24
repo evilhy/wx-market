@@ -185,6 +185,9 @@ const helper = {
     let bankType = liquidation || apppartner
     return bankType === 'FXGJ' || bankType === 'ZRL' || bankType === 'HXB'
   },
+  isZRL () {
+    return this.getUserInfo('apppartner') === 'ZRL'
+  },
   checkYearBillOpen() {
     return this.isHxBank() && sysConfig.yearBillOpen
   },

@@ -297,3 +297,46 @@
     text-align: left;
   }
 }
+
+.tax-signup-action-sheet{
+  padding-bottom: 50px;
+  padding-top: 20px;
+  .van-action-sheet__header{
+    margin-bottom: 20px;
+  }
+  .signup-item{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 30px;
+  }
+  .van-button{
+    width: 160px;
+    border-radius: 4px;
+  }
+  .success-text{
+    width: 160px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    .van-icon{
+      margin-right: 4px;
+    }
+  }
+}
+
+.upload-identity-page{
+  background-color: white;
+  .info-box{
+    padding: 10px 40px;
+  }
+  .row{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    .value{
+      color: $text-color-tip;
+    }
+  }
+}
