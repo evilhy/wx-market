@@ -111,6 +111,11 @@ export default {
             color: '#F4415F',
             text: '重新认证'
           }
+        default:
+          return {
+            color: '#00CCCC',
+            text: '去认证'
+          }
       }
     }
   },

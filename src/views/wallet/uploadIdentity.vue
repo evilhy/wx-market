@@ -109,7 +109,7 @@ export default {
       const oldFile = this[`${type}FileList`][0]
       try {
         this[`${type}FileList`] = [{ ...oldFile, status: 'uploading', message: '上传中...' }]
-        let res = await this.$Upload.upload({ path: '/tax/upload', file })
+        let res = await this.$Upload.upload({ path: '/tax/upload', file: file.file })
         this[`${type}FileList`] = [
           {
             url: res.data.filepath,
