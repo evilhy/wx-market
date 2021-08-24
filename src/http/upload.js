@@ -17,8 +17,9 @@ class Upload {
       })
     }
     formData.append('file', file)
+    http.body = formData
     http.encrypt = false
-    // http.mockStatusCode = 500
+    http.mockStatusCode = 500
     return http.post()
   }
 }

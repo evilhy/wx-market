@@ -107,6 +107,7 @@ export default {
     },
     async afterRead(file, type) {
       const oldFile = this[`${type}FileList`][0]
+      const hasOldFile = this[`${type}FileList`].length > 1
       try {
         this[`${type}FileList`] = [{ ...oldFile, status: 'uploading', message: '上传中...' }]
         let res = await this.$Upload.upload({ path: '/tax/upload', file: file.file })
@@ -117,7 +118,7 @@ export default {
           }
         ]
       } catch (e) {
-        this[`${type}FileList`] = [oldFile]
+        this[`${type}FileList`] = hasOldFile ? [oldFile] : []
       }
     },
     async attest () {
