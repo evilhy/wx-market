@@ -16,11 +16,11 @@ class Upload {
         formData.append(key, value)
       })
     }
-    const f = new window.File([file], file.name, {type: file.type})
+    const f = new File([file], file.name, {type: file.type})
     formData.append('file', f)
     http.body = formData
     http.encrypt = false
-    http.mockStatusCode = 500
+    // http.mockStatusCode = 500
     return http.post()
   }
 }
