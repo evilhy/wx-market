@@ -41,7 +41,7 @@ export default class HttpForApplication extends HttpEngine {
     let data
     if (config.method === 'post') {
       data = deepCopy(config.data)
-      log('-----------------body data:', data)
+      // log('-----------------body data:', data)
     } else {
       data = ''
     }
