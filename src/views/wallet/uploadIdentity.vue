@@ -111,6 +111,8 @@ export default {
         // 会将图片修正为正确方向
         // eslint-disable-next-line
         new Compressor(file, {
+          maxWidth: 750,
+          quality: 0.5,
           success: resolve,
           error(err) {
             console.log(err.message)
