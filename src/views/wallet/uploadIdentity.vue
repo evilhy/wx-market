@@ -39,7 +39,7 @@
     </div>
     <div class="info-box m-top-10">
       <van-button type="primary" block :disabled="btnDisabled" @click="attest">
-        去认证</van-button>
+        {{btnText}}</van-button>
     </div>
   </div>
 </template>
@@ -70,6 +70,19 @@ export default {
     btnDisabled () {
       let { attestStatus } = this.info
       return this.loading || attestStatus === 1 || attestStatus === 3 || !this.attestData.idCardFront || !this.attestData.idCardNegative
+    },
+    btnText () {
+      // 0：未认证、1：认证中、2：认证失败、3：认证成功
+      switch (this.info.attestStatus) {
+        case 1:
+          return '认证中'
+        case 2:
+          return '重新认证'
+        case 3:
+          return '已认证'
+        default:
+          return '去认证'
+      }
     }
   },
   created() {
@@ -110,6 +123,7 @@ export default {
       const hasOldFile = this[`${type}FileList`].length > 1
       try {
         this[`${type}FileList`] = [{ ...oldFile, status: 'uploading', message: '上传中...' }]
+
         let res = await this.$Upload.upload({ path: '/tax/upload', file: file.file })
         this[`${type}FileList`] = [
           {

@@ -16,7 +16,9 @@ export function typeOf(obj) {
     '[object Null]': 'null',
     '[object Object]': 'object',
     '[object Map]': 'map',
-    '[object Set]': 'set'
+    '[object Set]': 'set',
+    '[object File]': 'file',
+    '[object FormData]': 'formData'
   }
   return map[toString.call(obj)]
 }

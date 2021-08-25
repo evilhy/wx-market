@@ -100,7 +100,7 @@ export default class HttpEngine {
    * @param value {String|Number|Object|Array}
    * */
   set body (value) {
-    if (typeOf(value) !== 'string' && typeOf(value) !== 'array' && typeOf(value) !== 'number' && typeOf(value) !== 'object') throw new TypeError('body类型支持String、Number、Object、Array');
+    if (typeOf(value) !== 'string' && typeOf(value) !== 'number' && typeof value !== 'object') throw new TypeError('body类型应为String、Number、Object、Array、FormData');
     this[$body] = value;
   }
   /**
