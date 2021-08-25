@@ -31,10 +31,10 @@
     </div>
     <div class="info-box">
       <p class="m-bottom-10"><span class="star">*</span>身份证背面照片</p>
-      <van-uploader v-model="backFileList" :max-size="5 * 1024 * 1024"
+      <van-uploader v-model="negativeFileList" :max-size="5 * 1024 * 1024"
         :disabled="info.attestStatus === 1 || info.attestStatus === 3"
         :deletable="false" @oversize="oversize" :before-read="beforeRead"
-        :after-read="(file) => { afterRead(file, 'back') }" />
+        :after-read="(file) => { afterRead(file, 'negative') }" />
       <p class="gray-text">图片大小请勿超过5M</p>
     </div>
     <div class="info-box m-top-10">
@@ -55,21 +55,16 @@ export default {
     return {
       info: {},
       frontFileList: [],
-      backFileList: [],
+      negativeFileList: [],
+      frontUrl: '',
+      negativeUrl: '',
       loading: false
     }
   },
   computed: {
-    attestData () {
-      return {
-        ...this.info,
-        idCardFront: this.frontFileList.length ? this.frontFileList[0].url : '',
-        idCardNegative: this.backFileList.length ? this.backFileList[0].url : ''
-      }
-    },
     btnDisabled () {
       let { attestStatus } = this.info
-      return this.loading || attestStatus === 1 || attestStatus === 3 || !this.attestData.idCardFront || !this.attestData.idCardNegative
+      return this.loading || attestStatus === 1 || attestStatus === 3 || !this.frontUrl || !this.negativeUrl
     },
     btnText () {
       // 0：未认证、1：认证中、2：认证失败、3：认证成功
@@ -96,10 +91,10 @@ export default {
       this.info = decryptInfo(res.data, 'userName', 'idNumber', 'phone')
       let { idCardFront, idCardNegative } = this.info
       if (idCardFront) {
-        this.frontFileList = [{ url: idCardFront }]
+        this.frontFileList = [{ content: idCardFront }]
       }
       if (idCardNegative) {
-        this.backFileList = [{ url: idCardNegative }]
+        this.negativeFileList = [{ content: idCardNegative }]
       }
     },
     oversize() {
@@ -127,12 +122,14 @@ export default {
         this[`${type}FileList`] = [{ ...oldFile, status: 'uploading', message: '上传中...' }]
 
         let res = await this.$Upload.upload({ path: '/tax/upload', file: file.file })
+        let { imgBase, filepath } = res.data
         this[`${type}FileList`] = [
           {
-            url: res.data.filepath,
+            content: imgBase,
             status: 'done'
           }
         ]
+        this[`${type}Url`] = filepath
       } catch (e) {
         this[`${type}FileList`] = hasOldFile ? [oldFile] : []
       }
@@ -140,7 +137,7 @@ export default {
     async attest () {
       try {
         this.loading = true
-        await this.$Tax.attest(this.attestData)
+        await this.$Tax.attest({ ...this.info, idCardFront: this.frontUrl, idCardNegative: this.negativeUrl })
         this.$router.go(-1)
       } catch (e) {
         this.loading = false
