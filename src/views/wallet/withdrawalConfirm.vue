@@ -172,7 +172,7 @@ export default {
       try {
         this.signLoading = true
         let res = await this.$Tax.signing(taxSignId)
-        window.location.href = res.data
+        window.location.href = res.data.url
       } catch (e) {
         this.signLoading = false
       }

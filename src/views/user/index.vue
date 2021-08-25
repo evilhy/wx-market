@@ -97,7 +97,7 @@ export default {
     },
     async toSignPage () {
       let res = await this.$Tax.signRecord(this.info.taxSignId)
-      window.location.href = res.data
+      window.location.href = res.data.url
     }
   },
   components: {
