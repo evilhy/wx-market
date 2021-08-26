@@ -1,6 +1,7 @@
 import sysConfig from 'src/utils/constant'
 import helper from 'src/utils/helper'
 import encrypt from 'src/utils/encrypt'
+import UUID from 'utils/uuid'
 import { typeOf, deepCopy } from 'utils/assist'
 import loading from 'utils/loading'
 
@@ -9,8 +10,9 @@ export default class HttpForApplication extends HttpEngine {
 
   baseURL = sysConfig.httpBaseUrl[process.env.NODE_ENV];
   timeout = 60
-  mockTimeout = 2;
+  mockTimeout = 5;
   requestedSever = false;
+  encrypt = true;
 
   beforeSendRequestHandler (config) {
     let { jsessionId, apppartner, entId } = helper.getUserInfo('', {})
@@ -18,10 +20,12 @@ export default class HttpForApplication extends HttpEngine {
       'jsession-id': jsessionId,
       'route-name': window.router.app._route.name,
       'apppartner': apppartner,
-      'ent-id': entId
+      'ent-id': entId,
+      'plat-id': 'fx-payroll',
+      'req-id': UUID.createUUID()
     })
     // 加密签名处理
-    this.dealEncrypt(config)
+    config.encrypt && this.dealEncrypt(config)
     if (config.loading) {
       let loadingConfig = { parent: document.querySelector('#app') }
       if (typeOf(config.loading) === 'object') {
@@ -43,7 +47,6 @@ export default class HttpForApplication extends HttpEngine {
     }
     let { encodeKey, timestamp, reqId, sha256Sign, encryptBizData } = encrypt.httpEncrypt(data, config.method, config.baseURL)
     config.headers = Object.assign(config.headers, {
-      'plat-id': 'fx-payroll',
       'req-id': reqId,
       'encode-key': encodeKey,
       'timestamp': timestamp,

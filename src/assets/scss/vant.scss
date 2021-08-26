@@ -233,7 +233,7 @@
 
 //
 .van-tag{
-  padding: 0 8px;
+  padding: 0 6px;
   font-size: 24px;
   line-height: 32px;
   border-radius: 4px;
@@ -241,20 +241,27 @@
     font-size: 20px;
   }
   &--medium{
-    padding: 4px 12px;
+    padding: 4px 10px;
   }
   &--large{
-    padding: 8px 16px;
-    font-size: 28px;
+    padding: 6px 14px;
+    font-size: 26px;
     border-radius: 8px;
   }
 }
 
 // 动作面板
 .van-action-sheet{
+  &__description{
+    padding: 24px 30px;
+    color: #969799;
+    font-size: 26px;
+    line-height: 38px;
+  }
   &__header{
     font-size: 30px;
     line-height: 90px;
+    border-bottom: 1px solid #eee;
     &__close{
       padding: 0 30px;
       font-size: 36px;
@@ -264,9 +271,14 @@
     padding: 28px 30px;
     font-size: 30px;
     line-height: 1.2;
+    border-bottom: 1px solid #eee;
   }
   &__subname{
     font-size: 22px;
+  }
+  &__close{
+    padding: 0 26px;
+    font-size: 40px;
   }
 }
 
@@ -355,6 +367,41 @@
   font-size: 26px;
   height: 80px;
   line-height: 80px;
+}
+
+// van-uploader
+.van-uploader{
+  &__upload{
+    width: 150px;
+    height: 150px;
+    &-icon{
+      font-size: 46px;
+    }
+  }
+  &__preview-image{
+    width: 150px;
+    height: 150px;
+  }
+  &__preview-delete{
+    width: 28px;
+    height: 28px;
+  }
+  &__preview-delete-icon{
+    font-size: 30px;
+  }
+  &__loading{
+    width: 44px;
+    height: 44px;
+  }
+  &__mask-message{
+    font-size: 22px;
+  }
+}
+
+.van-image-preview{
+  &__index{
+    font-size: 22px;
+  }
 }
 
 @media screen and (max-width: 375px) {

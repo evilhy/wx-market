@@ -1,0 +1,14 @@
+{
+  "taxSignId": "dca4c924bb1b4e9c87ca825afb6fb5ad",
+  "userName": "xm/swHaHCspaBbkHg9iOPg==",
+  "idType": "1",
+  "idTypeVal": "身份证",
+  "idNumber": "KIntfoCG+Cg=",
+  "phone": "6y2KZQv03VRO1/iOvsTqXA==",
+  "attestStatusVal": "认证状态",
+  "attestStatus": 0,
+  "signStatus": 0,
+  "signStatusVal": "签约状态",
+  "salt": "cXdlam9pZmdqa2xkZmtnbw==",
+  "passwd": "ZGZna2xqMjEzcms0bDNvNDBpZmdmZGxtZzI0a21kZmc="
+}

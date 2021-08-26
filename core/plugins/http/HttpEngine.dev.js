@@ -23,6 +23,7 @@ const printResponseInfo = Symbol('printResponseInfo');
 const printResponseError = Symbol('printResponseError');
 const adapterHandler = Symbol('adapterHandler');
 const requestedSever = Symbol('requestedSever');
+const encrypt = Symbol('encrypt');
 
 export default class HttpEngine {
 
@@ -50,6 +51,8 @@ export default class HttpEngine {
   [$mockTimeout] = 3000;
 
   [requestedSever] = false;
+
+  [encrypt] = false;
 
   /**
    * @param value {String}
@@ -97,7 +100,7 @@ export default class HttpEngine {
    * @param value {String|Number|Object|Array}
    * */
   set body (value) {
-    if (typeOf(value) !== 'string' && typeOf(value) !== 'array' && typeOf(value) !== 'number' && typeOf(value) !== 'object') throw new TypeError('body类型支持String、Number、Object、Array');
+    if (typeOf(value) !== 'string' && typeOf(value) !== 'number' && typeof value !== 'object') throw new TypeError('body类型应为String、Number、Object、Array、FormData');
     this[$body] = value;
   }
   /**
@@ -105,7 +108,7 @@ export default class HttpEngine {
    *
    * @memberof HttpEngine
    */
-  set loading (value) { 
+  set loading (value) {
     if (typeOf(value) !== 'boolean' && typeOf(value) !== 'string' && typeOf(value) !== 'object') throw new TypeError('loading类型应为Boolean、String、Object');
     if (typeOf(value) === 'string' && !this[$loadingTypes].includes(value)) {
       throw new TypeError(`loading类型为String时，应传入${this[$loadingTypes].join('、')}中的一种`);
@@ -136,6 +139,14 @@ export default class HttpEngine {
     this[requestedSever] = value;
   }
 
+  /**
+   * 是否签名加密
+   */
+   set encrypt (value) {
+    if (typeOf(value) !== 'boolean') throw TypeError('encrypt类型应为Boolean');
+    this[encrypt] = value;
+  }
+
   [createInstance] () {
     let instance = axios.create({
       baseURL: this[$baseURL],
@@ -146,6 +157,7 @@ export default class HttpEngine {
     });
     instance.interceptors.request.use(
       config => {
+        config = { ...config, encrypt: this[encrypt] }
         this.beforeSendRequestHandler(config);
         return config;
       },

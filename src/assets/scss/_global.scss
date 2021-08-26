@@ -76,6 +76,17 @@ button {
   text-align: right;
 }
 
+@each $num in 5,10,15,20,25,30 {
+  @each $direction in top,bottom,left,right {
+    .m-#{$direction}-#{$num}{
+      margin-#{$direction}: #{$num * 2}px;
+    }
+    .p-#{$direction}-#{$num}{
+      margin-#{$direction}: #{$num * 2}px;
+    }
+  }
+}
+
 .input {
   font-size: $fontsize-default;
   padding: 14px 20px;
@@ -192,15 +203,15 @@ button {
       background-color: $text-color-gray;
       border: 1px solid $text-color-gray;
     }
-  }
-  &--plain{
-    background-color: white;
-    color: $theme-color !important;
-    border: 1px solid $theme-color;
-    &.van-button--disabled{
+   &.van-button--plain{
       background-color: white;
-      color: $text-color-gray !important;
-      border: 1px solid $text-color-gray;
+      color: $theme-color !important;
+      border: 1px solid $theme-color;
+      &.van-button--disabled{
+        background-color: white;
+        color: $text-color-gray !important;
+        border: 1px solid $text-color-gray;
+      }
     }
   }
 }
@@ -258,4 +269,16 @@ button {
   .short-btn {
     width: 200px;
   }
+}
+h2.title{
+  margin: 0;
+  padding: 20px;
+  font-weight: normal;
+  font-size: 26px;
+  line-height: 48px;
+  color: $text-color-tip;
+}
+
+.star{
+  color: $error-color;
 }

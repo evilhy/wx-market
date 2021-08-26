@@ -1,7 +1,8 @@
 <template>
   <div class="fixed-container">
     <!-- 企业切换栏 修复样式bug-->
-    <home-ent-list v-if="entList.length > 1" v-model="currentEntId" :ent-list="entList" @change="getDataByEnt">
+    <home-ent-list v-if="entList.length > 1" v-model="currentEntId"
+      :ent-list="entList" @change="getDataByEnt">
     </home-ent-list>
     <div class="page home-page white" :class="{ent: entList.length > 1}">
       <!-- 轮播图 -->
@@ -19,12 +20,16 @@
             <span class="label">我的收入</span>
           </div>
           <div class="item">
-            <span class="img-wrap metal" @click="toOuterPage('nobleMetalUrl')"><span class="tag-1">新品上市</span></span>
+            <span class="img-wrap metal"
+              @click="toOuterPage('nobleMetalUrl')"><span
+                class="tag-1">新品上市</span></span>
             <span class="label">贵金属投资</span>
           </div>
           <div class="item">
             <span class="img-wrap manager" @click="toPage('manager')">
-              <div class="notice-count" v-if="managerInfo.hasManager === 1 && !isReadManager && !isReadManagerCurrent">1
+              <div class="notice-count"
+                v-if="managerInfo.hasManager === 1 && !isReadManager && !isReadManagerCurrent">
+                1
               </div>
             </span>
             <span class="label">客户经理</span>
@@ -40,19 +45,23 @@
         <!-- 其他入口 -->
         <div class="link-wrap advert-link-wrap">
           <div class="item" @click="$refs['fxgj-mini-program-popup'].open()">
-            <span class="img-wrap"><span class="tag-1">最多参与</span><img src="../../assets/img/icon-home-energy.png" alt=""></span>
+            <span class="img-wrap"><span class="tag-1">最多参与</span><img
+                src="../../assets/img/icon-home-energy.png" alt=""></span>
             <span class="label">能量满满</span>
           </div>
           <div class="item" @click="toOuterPage('zQUrl')">
-            <span class="img-wrap"><img src="../../assets/img/icon-home-invest.png" alt=""></span>
+            <span class="img-wrap"><img
+                src="../../assets/img/icon-home-invest.png" alt=""></span>
             <span class="label">证券投资</span>
           </div>
           <div class="item" @click="toNews">
-            <span class="img-wrap"><img src="../../assets/img/icon-home-news.png" alt=""></span>
+            <span class="img-wrap"><img
+                src="../../assets/img/icon-home-news.png" alt=""></span>
             <span class="label">最新资讯</span>
           </div>
           <div class="item" @click="toBankSite">
-            <span class="img-wrap"><img src="../../assets/img/icon-home-site.png" alt=""></span>
+            <span class="img-wrap"><img
+                src="../../assets/img/icon-home-site.png" alt=""></span>
             <span class="label">网点查询</span>
           </div>
         </div>
@@ -60,14 +69,22 @@
         <home-game-link></home-game-link>
       </template>
       <!-- 振兴银行、宁夏银行菜单入口 -->
-      <home-zx-menu ref="zx-menu" v-else @enter-payroll="enterPayroll" @to-news="toNews"></home-zx-menu>
+      <home-zx-menu ref="zx-menu" v-else @enter-payroll="enterPayroll"
+        @to-news="toNews"></home-zx-menu>
       <!-- 底部logo -->
-      <div class="bottom-logo" :class="{'other-bank-logo': !isHxBank}"><img :class="logo.className" :src="logo.src" alt=""></div>
+      <div class="bottom-logo" :class="{'other-bank-logo': !isHxBank}"><img
+          :class="logo.className" :src="logo.src" alt=""></div>
       <!-- // 后期去掉 -->
-      <home-manager-dialog ref="home-manager-dialog" @getIsReadManager="isReadManager = true" @getIsReadManagerCurrent="isReadManagerCurrent = true" :manager-info="managerInfo"></home-manager-dialog>
-      <fxgj-mini-program-popup ref="fxgj-mini-program-popup"></fxgj-mini-program-popup>
+      <home-manager-dialog ref="home-manager-dialog"
+        @getIsReadManager="isReadManager = true"
+        @getIsReadManagerCurrent="isReadManagerCurrent = true"
+        :manager-info="managerInfo"></home-manager-dialog>
+      <fxgj-mini-program-popup ref="fxgj-mini-program-popup">
+      </fxgj-mini-program-popup>
       <template v-if="yearBillOpen">
-        <div class="year-bill-entry" @click="$router.push({name: 'yearBill'})"><img src="../../assets/img/yearBill/year-bill-entry.gif" alt=""></div>
+        <div class="year-bill-entry" @click="$router.push({name: 'yearBill'})">
+          <img src="../../assets/img/yearBill/year-bill-entry.gif" alt="">
+        </div>
         <year-bill-popup></year-bill-popup>
       </template>
     </div>
@@ -109,24 +126,23 @@ export default {
       isReadManager: helper.getIsReadManager(),
       isReadManagerCurrent: helper.getIsReadManagerCurrent(),
       appId: sysConfig.appId[process.env.NODE_ENV],
-      apppartner: helper.getUserInfo('apppartner'),
       yearBillOpen: helper.checkYearBillOpen(),
       isHxBank: helper.isHxBank()
     }
   },
   computed: {
     logo() {
-      switch (this.apppartner) {
-        case 'SJZHRB':
-          return {
-            className: 'hr',
-            src: require('../../assets/img/hr-gray-logo.png')
-          }
-        default:
-          return {
-            className: 'fx',
-            src: require('../../assets/img/fx-gray-logo.png')
-          }
+      let isHrBank = helper.isHrBank()
+      if (isHrBank) {
+        return {
+          className: 'hr',
+          src: require('../../assets/img/hr-gray-logo.png')
+        }
+      } else {
+        return {
+          className: 'fx',
+          src: require('../../assets/img/fx-gray-logo.png')
+        }
       }
     }
   },
@@ -146,17 +162,34 @@ export default {
     },
     transEntList(list = []) {
       return list.map((item) => {
-        let { entId, entName, liquidation = '' } = item
+        let {
+          entId,
+          entName,
+          liquidation = '',
+          version = '',
+          subVersion = ''
+        } = item
         return {
           value: entId,
           text: entName,
-          liquidation
+          liquidation,
+          version,
+          subVersion
         }
       })
     },
     getDataByEnt() {
-      let currentEnt = collect.getItem(this.entList, 'value', this.currentEntId)
-      helper.saveUserInfo({ entId: this.currentEntId, liquidation: currentEnt.liquidation })
+      let { liquidation, version, subVersion } = collect.getItem(
+        this.entList,
+        'value',
+        this.currentEntId
+      )
+      helper.saveUserInfo({
+        entId: this.currentEntId,
+        liquidation,
+        version,
+        subVersion
+      })
       this.isHxBank = helper.isHxBank()
       // 获取企业下的轮播图
       this.$refs['banner'] && this.$refs['banner'].getBannerList()

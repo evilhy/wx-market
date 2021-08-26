@@ -440,6 +440,13 @@ export default new Router({
         require(['../views/wallet/withdrawalConfirm.vue'], resolve)
       }
     },
+    {
+      path: '/upload-identity', // 上传身份证
+      name: 'uploadIdentity',
+      component: resolve => {
+        require(['../views/wallet/uploadIdentity.vue'], resolve)
+      }
+    },
     /* {
       path: '/elife-index', // 喜闻乐荐首页
       name: 'elifeIndex',

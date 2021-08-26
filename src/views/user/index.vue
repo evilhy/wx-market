@@ -4,7 +4,8 @@
       <user-avatar></user-avatar>
       <div class="user-info">
         <span class="user-name">{{info.name}}</span>
-        <img class="realname" src="../../assets/img/user/tag-realname.png" alt="">
+        <van-tag v-if="isZRL" :color="attestStatusColor" size="large">{{info.attestStatusVal}}</van-tag>
+        <img v-else class="realname" src="../../assets/img/user/tag-realname.png" alt="">
       </div>
     </div>
     <div class="list">
@@ -40,6 +41,10 @@
         <span class="label"><img src="../../assets/img/user/icon-user-theme.png" alt="">主题更换</span>
         <span class="value"><span class="arrow"></span></span>
       </div>
+      <div class="item" v-if="info.signStatus === 1 && info.taxSignId" @click="toSignPage">
+        <span class="label"><img src="../../assets/img/user/icon-user-sign.png" alt="">签约记录</span>
+        <span class="value"><span class="arrow"></span></span>
+      </div>
     </div>
   </div>
 </template>
@@ -52,7 +57,23 @@ export default {
   data () {
     return {
       isHxBank: helper.isHxBank(),
+      isZRL: helper.isZRL(),
       info: {}
+    }
+  },
+  computed: {
+    attestStatusColor () {
+      let attestStatus = this.info.attestStatus
+      switch (attestStatus) { // 0：未认证、1：认证中、2：认证失败、3：认证成功
+        case 0:
+          return '#A8AAB2'
+        case 1:
+          return '#FF9124'
+        case 2:
+          return '#F4415F'
+        case 3:
+          return '#12C465'
+      }
     }
   },
   created () {
@@ -73,6 +94,10 @@ export default {
     },
     toPage (name, query = {}) {
       this.$router.push({ name, query })
+    },
+    async toSignPage () {
+      let res = await this.$Tax.signRecord(this.info.taxSignId)
+      window.location.href = res.data.url
     }
   },
   components: {
