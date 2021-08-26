@@ -2,7 +2,7 @@ import sysConfig from 'src/utils/constant'
 import helper from 'src/utils/helper'
 import encrypt from 'src/utils/encrypt'
 import UUID from 'utils/uuid'
-import { typeOf, deepCopy, log } from 'utils/assist'
+import { typeOf, deepCopy } from 'utils/assist'
 import loading from 'utils/loading'
 
 let HttpEngine = (require(`core/plugins/http/HttpEngine.${process.env.NODE_ENV === 'development' ? 'dev' : 'prod'}`)).default
@@ -11,7 +11,7 @@ export default class HttpForApplication extends HttpEngine {
   baseURL = sysConfig.httpBaseUrl[process.env.NODE_ENV];
   timeout = 60
   mockTimeout = 5;
-  requestedSever = true;
+  requestedSever = false;
   encrypt = true;
 
   beforeSendRequestHandler (config) {

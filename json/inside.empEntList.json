@@ -5,7 +5,8 @@
     "shortEntName": "t7L8Ch4gTEAVBu64pvHzMg==",
     "salt": "cXdlam9pZmdqa2xkZmtnbw==",
     "passwd": "ZGZna2xqMjEzcms0bDNvNDBpZmdmZGxtZzI0a21kZmc=",
-    "liquidation": "HXB"
+    "liquidation": "HXB",
+    "version": "HR"
   },
   {
     "entId": "4EqBrPfMnolcm3OPftUbiitc7ExxTv49ZFiyRkIsjEM=",
@@ -21,72 +22,7 @@
     "shortEntName": "sOl6wCKBT7iqadxytC0fVw==",
     "salt": "cXdlam9pZmdqa2xkZmtnbw==",
     "passwd": "ZGZna2xqMjEzcms0bDNvNDBpZmdmZGxtZzI0a21kZmc=",
-    "liquidation": "HXB"
-  },
-  {
-    "entId": "4EqBrPfMnolcm3OPftUbiitc7ExxTv49mfPssfHDLZc=",
-    "entName": "XILEUWqMpjwaWRcpIroQfQ==",
-    "shortEntName": "sOl6wCKBT7iqadxytC0fVw==",
-    "salt": "cXdlam9pZmdqa2xkZmtnbw==",
-    "passwd": "ZGZna2xqMjEzcms0bDNvNDBpZmdmZGxtZzI0a21kZmc=",
-    "liquidation": "HXB"
-  },
-  {
-    "entId": "4EqBrPfMnolcm3OPftUbiitc7ExxTv49mfPssfHDLZc=",
-    "entName": "XILEUWqMpjwaWRcpIroQfQ==",
-    "shortEntName": "sOl6wCKBT7iqadxytC0fVw==",
-    "salt": "cXdlam9pZmdqa2xkZmtnbw==",
-    "passwd": "ZGZna2xqMjEzcms0bDNvNDBpZmdmZGxtZzI0a21kZmc="
-  },
-  {
-    "entId": "4EqBrPfMnolcm3OPftUbiitc7ExxTv49mfPssfHDLZc=",
-    "entName": "XILEUWqMpjwaWRcpIroQfQ==",
-    "shortEntName": "sOl6wCKBT7iqadxytC0fVw==",
-    "salt": "cXdlam9pZmdqa2xkZmtnbw==",
-    "passwd": "ZGZna2xqMjEzcms0bDNvNDBpZmdmZGxtZzI0a21kZmc="
-  },
-  {
-    "entId": "4EqBrPfMnolcm3OPftUbiitc7ExxTv49mfPssfHDLZc=",
-    "entName": "XILEUWqMpjwaWRcpIroQfQ==",
-    "shortEntName": "sOl6wCKBT7iqadxytC0fVw==",
-    "salt": "cXdlam9pZmdqa2xkZmtnbw==",
-    "passwd": "ZGZna2xqMjEzcms0bDNvNDBpZmdmZGxtZzI0a21kZmc="
-  },
-  {
-    "entId": "4EqBrPfMnolcm3OPftUbiitc7ExxTv49mfPssfHDLZc=",
-    "entName": "XILEUWqMpjwaWRcpIroQfQ==",
-    "shortEntName": "sOl6wCKBT7iqadxytC0fVw==",
-    "salt": "cXdlam9pZmdqa2xkZmtnbw==",
-    "passwd": "ZGZna2xqMjEzcms0bDNvNDBpZmdmZGxtZzI0a21kZmc="
-  },
-  {
-    "entId": "4EqBrPfMnolcm3OPftUbiitc7ExxTv49mfPssfHDLZc=",
-    "entName": "XILEUWqMpjwaWRcpIroQfQ==",
-    "shortEntName": "sOl6wCKBT7iqadxytC0fVw==",
-    "salt": "cXdlam9pZmdqa2xkZmtnbw==",
-    "passwd": "ZGZna2xqMjEzcms0bDNvNDBpZmdmZGxtZzI0a21kZmc="
-  },
-  {
-    "entId": "4EqBrPfMnolcm3OPftUbiitc7ExxTv49mfPssfHDLZc=",
-    "entName": "XILEUWqMpjwaWRcpIroQfQ==",
-    "shortEntName": "sOl6wCKBT7iqadxytC0fVw==",
-    "salt": "cXdlam9pZmdqa2xkZmtnbw==",
-    "passwd": "ZGZna2xqMjEzcms0bDNvNDBpZmdmZGxtZzI0a21kZmc="
-  },
-  {
-    "entId": "4EqBrPfMnolcm3OPftUbiitc7ExxTv49mfPssfHDLZc=",
-    "entName": "XILEUWqMpjwaWRcpIroQfQ==",
-    "shortEntName": "sOl6wCKBT7iqadxytC0fVw==",
-    "salt": "cXdlam9pZmdqa2xkZmtnbw==",
-    "passwd": "ZGZna2xqMjEzcms0bDNvNDBpZmdmZGxtZzI0a21kZmc=",
-    "liquidation": "HXB"
-  },
-  {
-    "entId": "4EqBrPfMnolcm3OPftUbiitc7ExxTv49mfPssfHDLZc=",
-    "entName": "XILEUWqMpjwaWRcpIroQfQ==",
-    "shortEntName": "sOl6wCKBT7iqadxytC0fVw==",
-    "salt": "cXdlam9pZmdqa2xkZmtnbw==",
-    "passwd": "ZGZna2xqMjEzcms0bDNvNDBpZmdmZGxtZzI0a21kZmc=",
-    "liquidation": "NINGXIA"
+    "liquidation": "HXB",
+    "version": "NORMAL"
   }
 ]
