@@ -39,7 +39,7 @@
         <van-button type="primary" :disabled="btnDisabled" @click="toWithdraw">
           确认提现</van-button>
       </div>
-      <van-action-sheet v-model="show" :actions="banks" close-on-popstate title="选择提现收款账户" @select="onSelect" />
+      <van-action-sheet v-model="show" :actions="banks" close-on-popstate close-on-click-action title="选择提现收款账户" @select="onSelect" />
     </template>
     <template v-else>
       <login-by-pwd :is-page="false" @next="sure"></login-by-pwd>

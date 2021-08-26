@@ -25,6 +25,7 @@
       <p class="m-bottom-10 m-top-5"><span class="star">*</span>身份证正面照片</p>
       <van-uploader v-model="frontFileList" :max-size="5 * 1024 * 1024"
         :disabled="info.attestStatus === 1 || info.attestStatus === 3"
+        :deletable="info.attestStatus === 1 || info.attestStatus === 3"
         @oversize="oversize" :before-read="beforeRead"
         :after-read="(file) => { afterRead(file, 'front') }"
         @delete="(file) => { deleteFile(file, 'front') }" />
@@ -34,6 +35,7 @@
       <p class="m-bottom-10"><span class="star">*</span>身份证背面照片</p>
       <van-uploader v-model="negativeFileList" :max-size="5 * 1024 * 1024"
         :disabled="info.attestStatus === 1 || info.attestStatus === 3"
+        :deletable="info.attestStatus === 1 || info.attestStatus === 3"
         @oversize="oversize" :before-read="beforeRead"
         :after-read="(file) => { afterRead(file, 'negative') }"
         @delete="(file) => { deleteFile(file, 'negative') }"/>
