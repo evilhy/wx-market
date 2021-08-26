@@ -25,16 +25,18 @@
       <p class="m-bottom-10 m-top-5"><span class="star">*</span>身份证正面照片</p>
       <van-uploader v-model="frontFileList" :max-size="5 * 1024 * 1024"
         :disabled="info.attestStatus === 1 || info.attestStatus === 3"
-        :deletable="false" @oversize="oversize" :before-read="beforeRead"
-        :after-read="(file) => { afterRead(file, 'front') }" />
+        @oversize="oversize" :before-read="beforeRead"
+        :after-read="(file) => { afterRead(file, 'front') }"
+        @delete="(file) => { deleteFile(file, 'front') }" />
       <p class="gray-text">图片大小请勿超过5M</p>
     </div>
     <div class="info-box">
       <p class="m-bottom-10"><span class="star">*</span>身份证背面照片</p>
       <van-uploader v-model="negativeFileList" :max-size="5 * 1024 * 1024"
         :disabled="info.attestStatus === 1 || info.attestStatus === 3"
-        :deletable="false" @oversize="oversize" :before-read="beforeRead"
-        :after-read="(file) => { afterRead(file, 'negative') }" />
+        @oversize="oversize" :before-read="beforeRead"
+        :after-read="(file) => { afterRead(file, 'negative') }"
+        @delete="(file) => { deleteFile(file, 'negative') }"/>
       <p class="gray-text">图片大小请勿超过5M</p>
     </div>
     <div class="info-box m-top-10">
@@ -134,10 +136,14 @@ export default {
         this[`${type}FileList`] = hasOldFile ? [oldFile] : []
       }
     },
+    deleteFile (file, type) {
+      this[`${type}Url`] = ''
+    },
     async attest () {
       try {
         this.loading = true
         await this.$Tax.attest({ ...this.info, idCardFront: this.frontUrl, idCardNegative: this.negativeUrl })
+        helper.toast('认证信息已提交')
         this.$router.go(-1)
       } catch (e) {
         this.loading = false

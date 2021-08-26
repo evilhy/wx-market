@@ -252,9 +252,16 @@
 
 // 动作面板
 .van-action-sheet{
+  &__description{
+    padding: 24px 30px;
+    color: #969799;
+    font-size: 26px;
+    line-height: 38px;
+  }
   &__header{
     font-size: 30px;
     line-height: 90px;
+    border-bottom: 1px solid #eee;
     &__close{
       padding: 0 30px;
       font-size: 36px;
@@ -264,6 +271,7 @@
     padding: 28px 30px;
     font-size: 30px;
     line-height: 1.2;
+    border-bottom: 1px solid #eee;
   }
   &__subname{
     font-size: 22px;

@@ -39,8 +39,7 @@
         <van-button type="primary" :disabled="btnDisabled" @click="toWithdraw">
           确认提现</van-button>
       </div>
-      <van-action-sheet v-model="show" :actions="banks" close-on-popstate
-        close-on-click-action @select="onSelect" />
+      <van-action-sheet v-model="show" :actions="banks" close-on-popstate title="选择提现收款账户" @select="onSelect" />
     </template>
     <template v-else>
       <login-by-pwd :is-page="false" @next="sure"></login-by-pwd>
@@ -119,9 +118,9 @@ export default {
       }
     }
   },
-  created() {
+  async created() {
     helper.title('余额提现')
-    this.getSignDetail()
+    await this.getSignDetail()
     this.getCardList()
   },
   mounted() {},
