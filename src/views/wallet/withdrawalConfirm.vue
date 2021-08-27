@@ -44,7 +44,7 @@
     <template v-else>
       <login-by-pwd :is-page="false" @next="sure"></login-by-pwd>
     </template>
-    <van-action-sheet v-if="signInfo.signStatusVal" class="tax-signup-action-sheet" v-model="actionSheetShow" title="完成以下任务就可以提现啦！">
+    <van-action-sheet v-if="signInfo.signStatusVal" class="tax-signup-action-sheet" close-on-popstate v-model="actionSheetShow" title="完成以下任务就可以提现啦！">
       <div class="signup-item">
         <span>① 完成身份信息认证</span>
         <!-- 0：未认证、1：认证中、2：认证失败、3：认证成功 -->
