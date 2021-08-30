@@ -87,6 +87,7 @@
   }
   &__title {
     width: 380px;
+    line-height: 1.2;
     @extend %text-overflow;
   }
   &__money {
