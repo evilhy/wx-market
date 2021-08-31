@@ -155,8 +155,8 @@ export default {
       this.selectedBank = item
     },
     toWithdraw() {
-      let { attestStatus, signStatus } = this.signInfo
-      if (attestStatus === 3 && signStatus === 1) {
+      let { attestStatus, signStatus, isSign } = this.signInfo
+      if ((attestStatus === 3 && signStatus === 1) || isSign === 0) {
         this.step = 2
       } else {
         this.actionSheetShow = true
