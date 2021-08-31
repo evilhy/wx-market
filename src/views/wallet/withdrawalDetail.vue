@@ -17,7 +17,7 @@
       <div class="row-flex row-flex--between"><span
           class="label">付款方</span><span class="value">{{wageDetail.accountName}}</span></div>
       <div class="row-flex row-flex--between"><span
-          class="label">付款帐号</span><span class="value">{{wageDetail.accountOpenBank}}（尾号{{wageDetail.account.slice(-4)}}）</span></div>
+          class="label">付款账号</span><span class="value">{{wageDetail.accountOpenBank}}（尾号{{wageDetail.account.slice(-4)}}）</span></div>
       <div class="row-flex row-flex--between"><span
           class="label">收款方</span><span class="value">{{wageDetail.custName}}</span></div>
       <div class="row-flex row-flex--between"><span
