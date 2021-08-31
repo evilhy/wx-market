@@ -5,7 +5,7 @@
       <div v-if="wageDetail.withdrawalStatus > -1" class="withdrawal-outline__tatus mb-30" :class="wageDescList[wageDetail.withdrawalStatus].className">{{wageDescList[wageDetail.withdrawalStatus].text}}</div>
     </div>
     <div class="line"></div>
-    <template v-if="wageDetail.withdrawalStatus > 0">
+    <template v-if="wageDetail.withdrawalStatus === 1 || wageDetail.withdrawalStatus === 2 || wageDetail.withdrawalStatus === 3">
       <withdrawal-steps :info="wageProgress"></withdrawal-steps>
       <div class="line"></div>
     </template>
