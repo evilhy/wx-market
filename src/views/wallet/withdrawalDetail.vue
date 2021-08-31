@@ -53,7 +53,7 @@ export default {
         walletNumber: ''
       },
       loading: false,
-      wageDescList: [ // 0:待提现、1:提现成功、2:提现失败、3:处理中
+      wageDescList: [ // 0:待提现、1:提现成功、2:提现失败、3:处理中 4.超时未提现
         {
           className: 'gray-text',
           text: '钱包收款'
@@ -69,6 +69,10 @@ export default {
         {
           className: 'warning-text',
           text: '处理中'
+        },
+        {
+          className: 'error-text',
+          text: '超时未提现'
         }
       ]
     }
