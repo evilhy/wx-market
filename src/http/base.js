@@ -10,7 +10,7 @@ export default class HttpForApplication extends HttpEngine {
 
   baseURL = sysConfig.httpBaseUrl[process.env.NODE_ENV];
   timeout = 60
-  mockTimeout = 5;
+  mockTimeout = 2;
   requestedSever = false;
   encrypt = true;
 

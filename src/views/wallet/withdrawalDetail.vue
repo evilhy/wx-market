@@ -5,7 +5,7 @@
       <div v-if="wageDetail.withdrawalStatus > -1" class="withdrawal-outline__tatus mb-30" :class="wageDescList[wageDetail.withdrawalStatus].className">{{wageDescList[wageDetail.withdrawalStatus].text}}</div>
     </div>
     <div class="line"></div>
-    <template v-if="wageDetail.withdrawalStatus > 0">
+    <template v-if="wageDetail.withdrawalStatus === 1 || wageDetail.withdrawalStatus === 2 || wageDetail.withdrawalStatus === 3">
       <withdrawal-steps :info="wageProgress"></withdrawal-steps>
       <div class="line"></div>
     </template>
@@ -54,7 +54,7 @@ export default {
       },
       wageProgress: {},
       loading: false,
-      wageDescList: [ // 0:待提现、1:提现成功、2:提现失败、3:处理中
+      wageDescList: [ // 0:待提现、1:提现成功、2:提现失败、3:处理中 4:超时未提现
         {
           className: 'gray-text',
           text: '钱包收款'
@@ -70,6 +70,10 @@ export default {
         {
           className: 'warning-text',
           text: '处理中'
+        },
+        {
+          className: 'error-text',
+          text: '超时未提现'
         }
       ]
     }
