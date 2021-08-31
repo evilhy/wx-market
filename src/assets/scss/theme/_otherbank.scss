@@ -1,73 +1,73 @@
 @charset "utf-8";
 
-#app.otherbank{
-  // 非华夏银行主题色
-  $theme-name: otherbank !default;
-  $theme-active-color: #00CCCC !default;
-  $theme-bg-color: #00CCCC !default;
-  .notice-count{
-    background-color: $theme-bg-color;
-  }
-  // 标签
-  .tag-1{
-    background: $theme-bg-color;
-    color: white;
-  }
-  // 日历控件
-  .van-calendar__day--end, .van-calendar__day--multiple-middle, .van-calendar__day--multiple-selected, .van-calendar__day--start, .van-calendar__day--start-end{
-    background-color: $theme-active-color;
-  }
-  .van-calendar__day--middle{
-    color: $theme-active-color;
-  }
-  .van-calendar__confirm{
-    background-color: $theme-bg-color;
-    border: 1px solid $theme-bg-color;
-  }
-  // 下拉菜单
-  .van-dropdown-menu__title--active {
-    color: $theme-active-color;
-  }
-  .van-dropdown-item__option--active {
-    color: $theme-active-color;
-  }
-  .van-dropdown-item__icon {
-    color: $theme-active-color;
-  }
-  // 工资列表页
-  .fixed-container{
-    .van-dropdown-menu{
-      .group-item {
-        &.active{
-          color: $theme-active-color;
-        }
-      }
-    }
-  }
-  // loading组件
-  .v-loading-square {
-    .loading-dot {
-      background: $theme-active-color;
-    }
-  }
-  .v-loading-bounce {
-    .loading-bounce {
-      &::before,
-      &::after {
-        content: '';
-        background-color: $theme-active-color;
-      }
-    }
-  }
-  .v-loading-loader {
-    .loading-loader {
-      background: $theme-active-color;
-      color: $theme-active-color;
-      &::before,
-      &::after {
-        background: $theme-active-color;
-        color: $theme-active-color;
-      }
-    }
-  }
+html[data-theme='otherbank']{
+   // 非华夏银行主题色
+   $theme-name: otherbank !default;
+   $theme-active-color: #00CCCC !default;
+   $theme-bg-color: #00CCCC !default;
+   .notice-count{
+     background-color: $theme-bg-color;
+   }
+   // 标签
+   .tag-1{
+     background: $theme-bg-color;
+     color: white;
+   }
+   // 日历控件
+   .van-calendar__day--end, .van-calendar__day--multiple-middle, .van-calendar__day--multiple-selected, .van-calendar__day--start, .van-calendar__day--start-end{
+     background-color: $theme-active-color;
+   }
+   .van-calendar__day--middle{
+     color: $theme-active-color;
+   }
+   .van-calendar__confirm{
+     background-color: $theme-bg-color;
+     border: 1px solid $theme-bg-color;
+   }
+   // 下拉菜单
+   .van-dropdown-menu__title--active {
+     color: $theme-active-color;
+   }
+   .van-dropdown-item__option--active {
+     color: $theme-active-color;
+   }
+   .van-dropdown-item__icon {
+     color: $theme-active-color;
+   }
+   // 工资列表页
+   .fixed-container{
+     .van-dropdown-menu{
+       .group-item {
+         &.active{
+           color: $theme-active-color;
+         }
+       }
+     }
+   }
+   // loading组件
+   .v-loading-square {
+     .loading-dot {
+       background: $theme-active-color;
+     }
+   }
+   .v-loading-bounce {
+     .loading-bounce {
+       &::before,
+       &::after {
+         content: '';
+         background-color: $theme-active-color;
+       }
+     }
+   }
+   .v-loading-loader {
+     .loading-loader {
+       background: $theme-active-color;
+       color: $theme-active-color;
+       &::before,
+       &::after {
+         background: $theme-active-color;
+         color: $theme-active-color;
+       }
+     }
+   }
 }

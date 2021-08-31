@@ -12,7 +12,6 @@ class Merchant {
       let http = new Http()
       http.path = `/${moduleName}/callback`
       http.query = { accessToken }
-      http.loading = false
       return http.get()
   }
 }

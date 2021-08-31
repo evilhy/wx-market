@@ -130,7 +130,7 @@
 </template>
 
 <script>
-  import loading from 'utils/loading'
+  import Loading from 'utils/loading'
 export default {
   data () {
     return {
@@ -149,7 +149,8 @@ export default {
       currentRate: 0,
       speed: 20,
       showSwipe: false,
-      yearBill: {}
+      yearBill: {},
+      loadingInstance: null
     }
   },
   computed: {
@@ -182,8 +183,8 @@ export default {
   },
   created () {
    this.getYearBill()
+   this.loadingInstance = new Loading({type: 'bounce'})
    this.ready(this.imgPage)
-   this.loadingHash = loading.show({type: 'bounce'})
   },
   mounted() {
 
@@ -204,9 +205,9 @@ export default {
         })
       })
       Promise.all(picsAll).then(() => {
-        loading.hide(this.loadingHash)
+        this.loadingInstance && this.loadingInstance.hide()
       }).catch(() => {
-        loading.hide(this.loadingHash)
+        this.loadingInstance && this.loadingInstance.hide()
       })
     },
     toSwipe() {
@@ -220,6 +221,9 @@ export default {
     toOutPage() {
       window.location = 'https://wxp.cardpu.com/wisale-h5/#/activityPreheat?activityId=E120210100443'
     }
+  },
+  destroyed () {
+    this.loadingInstance && this.loadingInstance.hide()
   }
 }
 </script>

@@ -49,7 +49,7 @@
         <span>① 完成身份信息认证</span>
         <!-- 0：未认证、1：认证中、2：认证失败、3：认证成功 -->
         <span class="success-text" v-if="signInfo.attestStatus === 3"><van-icon name="success" />认证成功</span>
-        <van-button v-else plain size="small" :color="attestBtn.color" @click="$router.push({ name: 'uploadIdentity' })">{{attestBtn.text}}</van-button>
+        <van-button v-else plain size="small" :color="attestBtn.color" @click="$router.push({ name: 'uploadIdentity', params: { withdrawalLedgerId: wageDetail.withdrawalLedgerId } })">{{attestBtn.text}}</van-button>
       </div>
       <div class="signup-item">
         <span>② 签约合作协议</span>
@@ -138,7 +138,7 @@ export default {
       }
     },
     async getSignDetail() {
-      let res = await this.$Tax.signingDetails()
+      let res = await this.$Tax.signingDetails(this.wageDetail.withdrawalLedgerId)
       this.signInfo = res.data
     },
     transBanks(list = []) {

@@ -11,6 +11,7 @@
   }
 }
 .van-toast {
+  z-index: 999999 !important;
   .van-toast__text {
     padding: 8px;
     font-size: 26px;
