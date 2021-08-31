@@ -156,7 +156,7 @@ export default {
     },
     toWithdraw() {
       let { attestStatus, signStatus, isSign } = this.signInfo
-      if ((attestStatus === 3 && signStatus === 1) || isSign === 0) {
+      if ((attestStatus === 3 && signStatus === 1) || !isSign) {
         this.step = 2
       } else {
         this.actionSheetShow = true
