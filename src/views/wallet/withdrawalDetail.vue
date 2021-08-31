@@ -6,7 +6,7 @@
     </div>
     <div class="line"></div>
     <template v-if="wageDetail.withdrawalStatus > 0">
-      <withdrawal-steps :info="wageDetail"></withdrawal-steps>
+      <withdrawal-steps :info="wageProgress"></withdrawal-steps>
       <div class="line"></div>
     </template>
     <div class="row-flex-wrap">
@@ -52,8 +52,9 @@ export default {
         account: '',
         walletNumber: ''
       },
+      wageProgress: {},
       loading: false,
-      wageDescList: [ // 0:待提现、1:提现成功、2:提现失败、3:处理中 4.超时未提现
+      wageDescList: [ // 0:待提现、1:提现成功、2:提现失败、3:处理中 4:超时未提现
         {
           className: 'gray-text',
           text: '钱包收款'
@@ -103,7 +104,9 @@ export default {
       try {
         this.loading = true
         let res = await this.$Wallet.withdrawalRecordDetail(this.id)
-        this.wageDetail = decryptInfo(res.data, 'walletNumber', 'transAmount', 'idNumber', 'employeeCardNo', 'custName', 'account')
+        let { withdrawalRecordLog = {}, withdrawalLedgerDetail = {} } = res.data
+        this.wageDetail = decryptInfo(withdrawalLedgerDetail, 'walletNumber', 'transAmount', 'idNumber', 'employeeCardNo', 'custName', 'account')
+        this.wageProgress = decryptInfo(withdrawalRecordLog, 'custName', 'transAmount', 'employeeCardNo')
       } finally {
         this.loading = false
       }
