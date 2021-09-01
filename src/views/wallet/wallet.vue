@@ -12,7 +12,7 @@
       </div>
       <div class="main">
         <div class="col money">
-          <span class="value" v-if="eyeFlag">{{info.balance}}</span>
+          <span class="value" v-if="eyeFlag">{{info.balance | money(2, '')}}</span>
           <span class="value star" v-if="!eyeFlag">****</span>
           <span class="label">钱包余额(元)</span>
         </div>
@@ -27,7 +27,7 @@
           <span class="label">卡券</span>
         </div>
         <div class="col money">
-          <span class="value" v-if="eyeFlag">{{info.recentlyIssuedAmt}}</span>
+          <span class="value" v-if="eyeFlag">{{info.recentlyIssuedAmt | money(2, '')}}</span>
           <span class="value star" v-if="!eyeFlag">****</span>
           <span class="label">最近一笔收入</span>
         </div>

@@ -36,7 +36,7 @@ export default {
   data() {
     return {
       year: new Date().getFullYear(),
-      month: new Date().getMonth() + 1,
+      month: '',
       status: '',
       yearList: getHistoryYearList(2020, 'name'),
       monthList: getHistoryMonthList(new Date().getFullYear(), 'name'),
