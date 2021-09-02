@@ -287,6 +287,9 @@
 // 提现确认页面
 .withdrawal-confirm-page{
   padding-bottom: 110px;
+  &.white{
+    background-color: white;
+  }
   .title-gray,.row-flex{
     padding-left: 30px;
     padding-right: 30px;

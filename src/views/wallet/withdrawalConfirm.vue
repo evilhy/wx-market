@@ -1,5 +1,5 @@
 <template>
-  <div class="page withdrawal-confirm-page">
+  <div class="page withdrawal-confirm-page" :class="{'white': step === 2}">
     <template v-if="step === 1">
       <div class="title-gray">资金详情</div>
       <div class="row-flex-wrap">
