@@ -3,7 +3,7 @@ import helper from 'src/utils/helper'
 import encrypt from 'src/utils/encrypt'
 import UUID from 'utils/uuid'
 import { typeOf, deepCopy } from 'utils/assist'
-import loading from 'utils/loading'
+import Loading from 'utils/loading'
 
 let HttpEngine = (require(`core/plugins/http/HttpEngine.${process.env.NODE_ENV === 'development' ? 'dev' : 'prod'}`)).default
 export default class HttpForApplication extends HttpEngine {
@@ -33,7 +33,7 @@ export default class HttpForApplication extends HttpEngine {
       } else {
         loadingConfig = Object.assign({}, loadingConfig, { type: typeOf(config.loading) === 'boolean' ? 'bounce' : config.loading })
       }
-      this.loadingHash = loading.show(loadingConfig)
+      this.loadingInstance = new Loading(loadingConfig)
     }
   }
 
@@ -58,11 +58,11 @@ export default class HttpForApplication extends HttpEngine {
   }
 
   afterResolveResponseHandler (response) {
-    this.loadingHash && loading.hide(this.loadingHash)
+    this.loadingInstance && this.loadingInstance.hide()
   }
 
   afterRejectResponseHandler (error) {
-    this.loadingHash && loading.hide(this.loadingHash)
+    this.loadingInstance && this.loadingInstance.hide()
     let errorMsg = error.message
     if (errorMsg === 'Network Error') {
       errorMsg = '网络异常'

@@ -441,7 +441,7 @@ export default new Router({
       }
     },
     {
-      path: '/upload-identity', // 上传身份证
+      path: '/upload-identity/:withdrawalLedgerId', // 上传身份证
       name: 'uploadIdentity',
       component: resolve => {
         require(['../views/wallet/uploadIdentity.vue'], resolve)

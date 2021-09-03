@@ -57,6 +57,7 @@ export default {
   components: {},
   data() {
     return {
+      withdrawalLedgerId: this.$route.params.withdrawalLedgerId,
       info: {},
       frontFileList: [],
       negativeFileList: [],
@@ -91,7 +92,7 @@ export default {
   mounted() {},
   methods: {
     async getSignDetail() {
-      let res = await this.$Tax.signingDetails()
+      let res = await this.$Tax.signingDetails(this.withdrawalLedgerId)
       this.info = decryptInfo(res.data, 'userName', 'idNumber', 'phone')
       let { idCardFront, idCardNegative } = this.info
       if (idCardFront) {

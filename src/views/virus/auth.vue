@@ -7,7 +7,7 @@
 import helper from 'utils/helper'
 import Wxapi from 'utils/wxapi'
 import sysConfig from 'utils/constant'
-import loading from 'utils/loading'
+import Loading from 'utils/loading'
 const wxapi = new Wxapi()
 export default {
   data () {
@@ -15,16 +15,16 @@ export default {
       promiseUrl: `${sysConfig.proBaseUrl[process.env.NODE_ENV]}virus-promise`,
       codeUrl: `${sysConfig.proBaseUrl[process.env.NODE_ENV]}virus-code`,
       appId: sysConfig.appId[process.env.NODE_ENV],
-      loadingHash: null
+      loadingInstance: null
     }
   },
   created () {
     helper.title('武汉加油')
-    this.loadingHash = loading.show({ type: 'square' })
+    this.loadingInstance = new Loading({ type: 'square' })
     wxapi.getAuth({ appId: this.appId, redirectUrl: this.codeUrl }).catch(() => { window.location.replace(this.promiseUrl) })
   },
   beforeDestroy () {
-    this.loadingHash && loading.hide(this.loadingHash)
+    this.loadingInstance && this.loadingInstance.hide()
   },
   methods: {}
 }

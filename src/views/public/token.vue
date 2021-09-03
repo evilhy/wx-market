@@ -1,10 +1,9 @@
 <template>
-  <div class="get-id-page">
+  <div class="token-page">
   </div>
 </template>
 
 <script>
-import loading from 'utils/loading'
 import helper from 'utils/helper'
 import { getPageQueryObject } from 'utils/assist'
 import sysConfig from 'utils/constant'
@@ -23,7 +22,6 @@ export default {
   mounted () {
     helper.clearSession()
     helper.setTheme(sysConfig.otherBankTheme)
-    loading.show({ type: 'bounce', parent: document.querySelector('#app') })
     this.getJsessionId()
   },
   methods: {

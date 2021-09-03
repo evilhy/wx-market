@@ -80,7 +80,6 @@
 
 <script>
 import sysConfig from 'src/utils/constant'
-import loading from 'utils/loading'
 import helper from 'utils/helper'
 import { typeOf } from 'utils/assist'
 let HttpEngine = (require(`core/plugins/http/HttpEngine.${process.env.NODE_ENV === 'development' ? 'dev' : 'prod'}`)).default
@@ -135,14 +134,7 @@ export default {
         version:
           'HucfxfT4bXNKKbl7sJKugg6j/IEtOhKDE2X6qfK9S2iolMAoumsqSu5KczALixlGxtVBdyZlyqY+1wzOJ7DzldtZZPLhQVfTzbpBY4/mYoIsd0nZKw5vFMnHp1UVYmRjcEdhTwjOOfQR9767U8aCXtlRaDNDQlWjzsx1aD+t1Cs='
       }
-      http.beforeSendRequestHandler = config => {
-        loading.show({ type: 'bounce' })
-      }
-      http.afterResolveResponseHandler = response => {
-        loading.hide()
-      }
       http.afterRejectResponseHandler = error => {
-        loading.hide()
         let errorMsg = error.message
         if (errorMsg === 'Network Error') {
           errorMsg = '网络异常'
@@ -178,8 +170,5 @@ export default {
       }
     }
   }
-  // components: {
-  //   loading
-  // }
 }
 </script>

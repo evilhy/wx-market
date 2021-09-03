@@ -9,6 +9,7 @@
   "attestStatus": 0,
   "signStatus": 0,
   "signStatusVal": "签约状态",
+  "isSign": 0,
   "salt": "cXdlam9pZmdqa2xkZmtnbw==",
   "passwd": "ZGZna2xqMjEzcms0bDNvNDBpZmdmZGxtZzI0a21kZmc="
 }

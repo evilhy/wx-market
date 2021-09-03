@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import loading from 'utils/loading'
+import Loading from 'utils/loading'
 import { deepCopy } from 'utils/assist'
 export default {
   data () {
@@ -64,7 +64,8 @@ export default {
       cityList: [],
       countyList: [],
       townList: [],
-      edit: !!this.$route.query.id
+      edit: !!this.$route.query.id,
+      loadingInstance: null
     }
   },
   computed: {
@@ -99,7 +100,7 @@ export default {
         return
       }
       try {
-        loading.show({ type: 'bounce', parent: document.querySelector('.van-action-sheet__content') })
+        this.loadingInstance = new Loading({ type: 'bounce', parent: document.querySelector('.van-action-sheet__content') })
         let parentCode = this.step === 0 ? '' : this.currentArea[`${this.typeList[this.step - 1]}Code`]
         if (this.step !== 3) {
           let res = await this.$WelfareCust.baseQuery(type.toUpperCase(), parentCode)
@@ -112,7 +113,7 @@ export default {
           }
         }
       } finally {
-        loading.hide()
+        this.loadingInstance && this.loadingInstance.hide()
       }
     },
     changeTab ({ step, type }) {
@@ -171,6 +172,9 @@ export default {
         townCode: ''
       }
     }
+  },
+  destroyed () {
+    this.loadingInstance && this.loadingInstance.hide()
   }
 }
 </script>

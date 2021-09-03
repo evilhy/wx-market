@@ -17,9 +17,10 @@ class Tax {
    * 签约详情
    * @returns
    */
-  signingDetails () {
+  signingDetails (withdrawalLedgerId) {
     let http = new Http()
     http.path = `/${moduleName}/signingDetails`
+    http.query = { withdrawalLedgerId }
     return http.get()
   }
   /**

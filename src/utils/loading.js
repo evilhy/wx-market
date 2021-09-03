@@ -39,35 +39,28 @@ const loadingDom = {
   `
 }
 
-export default {
-  show (params = {}) {
-    if (typeOf(params) !== 'object') { 
+export default class Loading {
+  constructor (params = {}) {
+    if (typeOf(params) !== 'object') {
       throw new TypeError('loading的参数类型应为Object')
     }
     let { type = loadingTypes[0], parent = document.body, opacity = 0.7 } = params
-    
+
     if (!loadingTypes.includes(type)) throw new RangeError(`loading的type必须为${loadingTypes.join('、')}中的一种！`)
     if (parent.nodeType !== 1) throw new TypeError('loading的parent类型必须为NODE节点类型！')
     if (typeOf(opacity) !== 'number') throw new TypeError('loading的背景opacity类型必须为数字类型！')
 
-    if (this._checkExist()) {
-      let id = Math.random().toString().replace('.', '')
-      this._container.className = `${loadingRootClass} ${loadingRootClass}-${this._type} ${loadingRootClass}-${id}`
-      this._id = id
-    } else {
-      this._setOptions({ type, parent, opacity })
-      this._createLoading()
-    }
-    return this._id
-  },
+    this._setOptions({ type, parent, opacity })
+    this._createLoading()
+  }
 
-  hide (id = this._id) {
-    let className = `${loadingRootClass}-${id}`
+  hide () {
+    let className = `${loadingRootClass}-${this._id}`
     if (!this._checkExist(className)) return
 
     this._parent.removeChild(document.querySelector(`.${className}`))
     this._setOptions({ id: '' })
-  },
+  }
 
   _setOptions({ type = 'normal', parent = document.body, id = Math.random().toString().replace('.', ''), opacity = 0.7 }) {
     this._type = type
@@ -75,11 +68,11 @@ export default {
     this._id = id
     this._opacity = opacity
     this._container = null
-  },
+  }
 
   _checkExist(className = loadingRootClass) {
     return document.body.contains(document.querySelector(`.${className}`))
-  },
+  }
 
   _createLoading () {
     let { _type, _parent, _id, _opacity } = this

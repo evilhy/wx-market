@@ -1,5 +1,5 @@
 <template>
-  <div class="page withdrawal-confirm-page">
+  <div class="page withdrawal-confirm-page" :class="{'white': step === 2}">
     <template v-if="step === 1">
       <div class="title-gray">资金详情</div>
       <div class="row-flex-wrap">
@@ -49,7 +49,7 @@
         <span>① 完成身份信息认证</span>
         <!-- 0：未认证、1：认证中、2：认证失败、3：认证成功 -->
         <span class="success-text" v-if="signInfo.attestStatus === 3"><van-icon name="success" />认证成功</span>
-        <van-button v-else plain size="small" :color="attestBtn.color" @click="$router.push({ name: 'uploadIdentity' })">{{attestBtn.text}}</van-button>
+        <van-button v-else plain size="small" :color="attestBtn.color" @click="$router.push({ name: 'uploadIdentity', params: { withdrawalLedgerId: wageDetail.withdrawalLedgerId } })">{{attestBtn.text}}</van-button>
       </div>
       <div class="signup-item">
         <span>② 签约合作协议</span>
@@ -138,7 +138,7 @@ export default {
       }
     },
     async getSignDetail() {
-      let res = await this.$Tax.signingDetails()
+      let res = await this.$Tax.signingDetails(this.wageDetail.withdrawalLedgerId)
       this.signInfo = res.data
     },
     transBanks(list = []) {
@@ -155,8 +155,8 @@ export default {
       this.selectedBank = item
     },
     toWithdraw() {
-      let { attestStatus, signStatus } = this.signInfo
-      if (attestStatus === 3 && signStatus === 1) {
+      let { attestStatus, signStatus, isSign } = this.signInfo
+      if ((attestStatus === 3 && signStatus === 1) || !isSign) {
         this.step = 2
       } else {
         this.actionSheetShow = true

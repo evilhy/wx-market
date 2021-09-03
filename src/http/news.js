@@ -25,7 +25,7 @@ class News {
     return http.get()
   }
   /**
-   * 
+   *
    * @param {Number} page 当前页数
    * @param {Number} newsType 消息类型 5:资讯 6:资金状态 7:审核动态 8:活动通知
    * @returns
@@ -40,7 +40,7 @@ class News {
     return http.post()
   }
   /**
-   * 
+   *
    * @param {Number} operateType 操作类型 0:已读 1：删除
    * @param {String} newsId 消息id 没传该值，默认全部操作
    * @returns
