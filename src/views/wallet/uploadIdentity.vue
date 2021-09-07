@@ -22,7 +22,7 @@
     </div>
     <div class="line"></div>
     <div class="info-box">
-      <p class="m-bottom-10 m-top-5"><span class="star">*</span>身份证正面照片</p>
+      <p class="m-bottom-10 m-top-5"><span class="star">*</span>请上传身份证国徽面图片</p>
       <van-uploader v-model="frontFileList" :max-size="5 * 1024 * 1024"
         :disabled="info.attestStatus === 1 || info.attestStatus === 3"
         :deletable="info.attestStatus !== 1 && info.attestStatus !== 3"
@@ -32,7 +32,7 @@
       <p class="gray-text">图片大小请勿超过5M</p>
     </div>
     <div class="info-box">
-      <p class="m-bottom-10"><span class="star">*</span>身份证背面照片</p>
+      <p class="m-bottom-10"><span class="star">*</span>请上传身份证人像面图片</p>
       <van-uploader v-model="negativeFileList" :max-size="5 * 1024 * 1024"
         :disabled="info.attestStatus === 1 || info.attestStatus === 3"
         :deletable="info.attestStatus !== 1 && info.attestStatus !== 3"
