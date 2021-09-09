@@ -3,12 +3,11 @@
 </template>
 <script>
 import sysConfig from 'utils/constant'
-export default {
-  data () {
 
-  },
-  created () {
-    window.location.replace(sysConfig.zhsqShUrl[process.env.NODE_ENV])
+export default {
+  data() {},
+  created() {
+    window.location.replace(sysConfig.zhsqShUrl[process.env.VUE_APP_ENV])
   }
 }
 </script>

@@ -3,11 +3,10 @@
 </template>
 <script>
 import sysConfig from 'utils/constant'
-export default {
-  data () {
 
-  },
-  created () {
+export default {
+  data() {},
+  created() {
     window.location.replace(sysConfig.bankSiteUrl)
   }
 }

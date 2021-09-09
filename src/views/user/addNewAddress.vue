@@ -7,10 +7,10 @@
       <van-cell title="所在地区" is-link @click="openAreaSelect">
         <template slot="label">
           <div class="area-wrap">
-            <span class="area-desc" v-if="info.province">{{info.province}}</span>
-            <span v-if="info.city">{{info.city}}</span>
-            <span v-if="info.county">{{info.county}}</span>
-            <span v-if="info.town">{{info.town}}</span>
+            <span class="area-desc" v-if="info.province">{{ info.province }}</span>
+            <span v-if="info.city">{{ info.city }}</span>
+            <span v-if="info.county">{{ info.county }}</span>
+            <span v-if="info.town">{{ info.town }}</span>
           </div>
         </template>
       </van-cell>
@@ -30,8 +30,9 @@ import areaSelect from 'components/areaSelect'
 import validate from 'utils/validate'
 import helper from 'utils/helper'
 import decryptInfo from 'utils/decryptInfo'
+
 export default {
-  data () {
+  data() {
     return {
       info: {
         addressId: this.$route.query.id || '',
@@ -52,40 +53,56 @@ export default {
     }
   },
   computed: {
-    title () {
+    title() {
       return this.info.addressId ? '编辑地址' : '新增收货地址'
     }
   },
   watch: {
-    isDefault (value) {
+    isDefault(value) {
       this.info.isDefault = value ? 'YES' : 'NO'
     }
   },
-  created () {
+  created() {
     if (this.info.addressId) {
       this.getAddressDetail()
     }
   },
   methods: {
-    async getAddressDetail () {
-      let res = await this.$WelfareCust.addressDetail(this.info.addressId)
-      let data = decryptInfo(res.data, 'custName', 'phoneNo', 'receiveName', 'receivePhone', 'province', 'provinceCode', 'city', 'cityCode', 'county', 'countyCode', 'town', 'townCode', 'address', 'idNumber')
+    async getAddressDetail() {
+      const res = await this.$WelfareCust.addressDetail(this.info.addressId)
+      const data = decryptInfo(
+        res.data,
+        'custName',
+        'phoneNo',
+        'receiveName',
+        'receivePhone',
+        'province',
+        'provinceCode',
+        'city',
+        'cityCode',
+        'county',
+        'countyCode',
+        'town',
+        'townCode',
+        'address',
+        'idNumber'
+      )
       Object.keys(this.info).forEach((key) => {
         this.info[key] = data[key]
       })
       this.isDefault = this.info.isDefault === 'YES'
     },
-    openAreaSelect () {
+    openAreaSelect() {
       this.$refs['area-select'].open(this.info)
     },
-    async saveAddress () {
+    async saveAddress() {
       if (!this.checkAddress()) return
       await this.$WelfareCust.addressSave(this.info)
       helper.toast('保存成功')
       this.$router.back()
     },
-    checkAddress () {
-      let { receiveName, receivePhone, provinceCode, address } = this.info
+    checkAddress() {
+      const { receiveName, receivePhone, provinceCode, address } = this.info
       if (!receiveName) {
         helper.toast('请输入收货人姓名')
         return false
@@ -108,7 +125,7 @@ export default {
       }
       return true
     },
-    selectSure ({ province = '', provinceCode = '', city = '', cityCode = '', county = '', countyCode = '', town = '', townCode = '' }) {
+    selectSure({ province = '', provinceCode = '', city = '', cityCode = '', county = '', countyCode = '', town = '', townCode = '' }) {
       this.info.province = province
       this.info.provinceCode = provinceCode
       this.info.city = city
@@ -118,7 +135,7 @@ export default {
       this.info.town = town
       this.info.townCode = townCode
     },
-    async removeAddress () {
+    async removeAddress() {
       await this.$WelfareCust.addressDelete(this.info.addressId)
       helper.toast('删除成功')
       this.$router.back()

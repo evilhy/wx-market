@@ -3,15 +3,23 @@
     <van-dropdown-menu :active-color="themeColor">
       <van-dropdown-item :title="currentGroupName" ref="group-dropdown">
         <div class="group-list">
-          <div v-for="(item, index) in groupList" :key="index" class="group-item" :class="{active: item.groupId === currentGroupId}" @click="changeGroup(item)">
-            <p class="group-name">{{item.groupName}}</p>
-            <i class="iconfont icon-yilizhi" v-if="item.inServiceStatus==='1'"></i>
-            <i class="iconfont icon-jiaobiao" v-if="item.isRead==='0'"></i>
+          <div v-for="(item, index) in groupList" :key="index" class="group-item" :class="{ active: item.groupId === currentGroupId }" @click="changeGroup(item)">
+            <p class="group-name">{{ item.groupName }}</p>
+            <i class="iconfont icon-yilizhi" v-if="item.inServiceStatus === '1'"></i>
+            <i class="iconfont icon-jiaobiao" v-if="item.isRead === '0'"></i>
             <van-icon name="success" v-if="item.groupId === currentGroupId" />
           </div>
         </div>
       </van-dropdown-item>
-      <van-dropdown-item v-model="currentType" :options="typeList" @change="(value) => { changeType(value) }" />
+      <van-dropdown-item
+        v-model="currentType"
+        :options="typeList"
+        @change="
+          (value) => {
+            changeType(value)
+          }
+        "
+      />
     </van-dropdown-menu>
     <div class="wage-list-page">
       <year-wage-outline :wage="outlineWage" :flag="flag" @toggle="toggle"></year-wage-outline>
@@ -26,7 +34,6 @@
 <script type="text/ecmascript-6">
 import yearWageOutline from 'components/yearWageOutline'
 import wageItem from 'components/wageItem'
-import amtPercentLine from 'components/amtPercentLine'
 import yearSwiper from 'components/yearSwiper'
 import helper from 'utils/helper'
 import storage from 'utils/storage'
@@ -37,7 +44,6 @@ export default {
   components: {
     yearWageOutline,
     wageItem,
-    amtPercentLine,
     yearSwiper
   },
   data() {
@@ -88,14 +94,13 @@ export default {
     }
   },
   async created() {
-    helper.title('我的收入')
     this.getQueryData()
     await this.getGroupList()
     this.getWageList()
   },
   methods: {
     getQueryData() {
-      let { groupId = '', yearMonth = '' } = this.query
+      const { groupId = '', yearMonth = '' } = this.query
       this.currentGroupId = groupId
       if (yearMonth) {
         this.currentYear = Number(yearMonth.substring(0, 4))
@@ -103,7 +108,7 @@ export default {
       }
     },
     async getGroupList() {
-      let res = await this.$Roll.groupList()
+      const res = await this.$Roll.groupList()
       this.groupList = res.data
       if (!this.currentGroupId) {
         this.setCurrentInfo(this.groupList[0])
@@ -111,7 +116,7 @@ export default {
     },
     async getWageList() {
       if (!this.currentYear) {
-        let group = collect.getItem(
+        const group = collect.getItem(
           this.groupList,
           'groupId',
           this.currentGroupId
@@ -120,12 +125,12 @@ export default {
           TimeInstance.getTimeObject(group.createDate).year
         )
       }
-      let res = await this.$Roll.wageList(
+      const res = await this.$Roll.wageList(
         this.currentGroupId,
         this.currentYear,
         this.currentType
       )
-      let data = res.data
+      const data = res.data
       if (!data || !Object.keys(data).length) return
 
       this.initOutlineWage(data)
@@ -152,7 +157,7 @@ export default {
       this.getWageList()
     },
     initOutlineWage(data) {
-      for (let key of Object.keys(this.outlineWage)) {
+      for (const key of Object.keys(this.outlineWage)) {
         this.outlineWage[key] = data[key]
       }
     },

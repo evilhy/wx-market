@@ -5,16 +5,18 @@
       <div class="bank-wrap">
         <div class="bank-name">
           <img class="bank-img" src="../../assets/img/icon-bank.png" />
-          <p>{{wage.bankName}}</p>
+          <p>{{ wage.bankName }}</p>
         </div>
-        <div class="bank-no">{{wage.cardNo | bankSpace}}</div>
+        <div class="bank-no">{{ wage.cardNo | bankSpace }}</div>
       </div>
       <!-- 实发总额 -->
       <div class="total-wrap">
-        <p class="total-amt" v-show="flag">{{wage.realAmt | money}}
+        <p class="total-amt" v-show="flag">
+          {{ wage.realAmt | money }}
           <i class="icon-ai44 iconfont" @click="changeFlag"></i>
         </p>
-        <p class="total-amt" v-show="!flag">****
+        <p class="total-amt" v-show="!flag">
+          ****
           <i class="icon-ai47 iconfont" @click="changeFlag"></i>
         </p>
         <div class="total-title">实发金额(元)</div>
@@ -27,9 +29,9 @@
             <p>应发金额</p>
           </div>
           <ul class="amt-list">
-            <li class="amt-item" v-for="(item, index) in shouldList" :key="'real-'+index" v-if="!item.hidden && (isShow0 === 1 || (isShow0 === 0 && item.colValue != 0))">
-              <div class="label">{{(wage.businessType === 1 && (item.colName.indexOf(taxDesc) > -1)) ? '个税缴纳' : item.colName}}</div>
-              <div class="value" v-if="flag">{{item.colValue | money}}</div>
+            <li class="amt-item" v-for="(item, index) in shouldList" :key="'real-' + index" v-if="!item.hidden && (isShow0 === 1 || (isShow0 === 0 && item.colValue != 0))">
+              <div class="label">{{ wage.businessType === 1 && item.colName.indexOf(taxDesc) > -1 ? '个税缴纳' : item.colName }}</div>
+              <div class="value" v-if="flag">{{ item.colValue | money }}</div>
               <div class="value" v-if="!flag">****</div>
             </li>
           </ul>
@@ -40,9 +42,9 @@
             <p>扣除金额</p>
           </div>
           <ul class="amt-list">
-            <li class="amt-item" v-for="(item, index) in deductList" :key="'sub-'+index" v-if="!item.hidden && (isShow0 === 1 || (isShow0 === 0 && item.colValue != 0))">
-              <div class="label">{{(wage.businessType === 1 && (item.colName.indexOf(taxDesc) > -1)) ? '个税缴纳' : item.colName}}</div>
-              <div class="value" v-if="flag">{{item.colValue | money}}</div>
+            <li class="amt-item" v-for="(item, index) in deductList" :key="'sub-' + index" v-if="!item.hidden && (isShow0 === 1 || (isShow0 === 0 && item.colValue != 0))">
+              <div class="label">{{ wage.businessType === 1 && item.colName.indexOf(taxDesc) > -1 ? '个税缴纳' : item.colName }}</div>
+              <div class="value" v-if="flag">{{ item.colValue | money }}</div>
               <div class="value" v-if="!flag">****</div>
             </li>
           </ul>
@@ -53,16 +55,16 @@
             <p>事项说明</p>
           </div>
           <ul class="amt-list">
-            <li class="amt-item" v-for="(item, index) in remarkList" :key="'remark-'+index" v-if="!item.hidden && (isShow0 === 1 || (isShow0 === 0 && item.colValue != 0))">
-              <div class="label">{{item.colName}}</div>
-              <div class="value">{{item.colValue}}</div>
+            <li class="amt-item" v-for="(item, index) in remarkList" :key="'remark-' + index" v-if="!item.hidden && (isShow0 === 1 || (isShow0 === 0 && item.colValue != 0))">
+              <div class="label">{{ item.colName }}</div>
+              <div class="value">{{ item.colValue }}</div>
             </li>
           </ul>
         </div>
         <!-- 签名 -->
         <div ref="sign-wrap" class="sign-wrap" v-if="sign">
           <p>签名回执</p>
-          <img :src="sign" alt="">
+          <img :src="sign" alt="" />
         </div>
       </div>
       <div class="action-wrap">
@@ -85,6 +87,7 @@ import collect from 'utils/collect'
 import { typeOf } from 'utils/assist'
 import helper from 'utils/helper'
 import signDialog from './signDialog'
+
 export default {
   components: { swiperSlide, signDialog },
   props: {
@@ -104,10 +107,10 @@ export default {
     }
   },
   computed: {
-    receiptStautus () {
+    receiptStautus() {
       return this.wage.receiptStautus
     },
-    sign () {
+    sign() {
       return this.wage.sign
     }
   },
@@ -116,20 +119,14 @@ export default {
   },
   methods: {
     initContentData() {
-      let heads = this.wage.wageHeadDTO.heads
+      const heads = this.wage.wageHeadDTO.heads
       heads.forEach((item) => {
-        let resultObj = collect.getItem(
-          this.wage.content,
-          'colNum',
-          item.colNum[0]
-        )
+        const resultObj = collect.getItem(this.wage.content, 'colNum', item.colNum[0])
         item.colValue = typeOf(resultObj) === 'object' ? resultObj.value : ''
       })
       this.shouldList = heads.filter((item) => item.type === 'SHOULD_AMT')
       this.deductList = heads.filter((item) => item.type === 'DEDUCT_AMT')
-      this.remarkList = heads.filter(
-        (item) => item.type === 'REMARK' || item.type === 'UNKNOWN'
-      )
+      this.remarkList = heads.filter((item) => item.type === 'REMARK' || item.type === 'UNKNOWN')
     },
     changeFlag() {
       this.flag = !this.flag
@@ -145,14 +142,14 @@ export default {
       await this.$Inside.receipt(this.wage.wageDetailId, 0)
       this.confirmReceipt('receiptStautus', 0)
     },
-    openSign () {
+    openSign() {
       this.$refs['sign-dialog'].open()
     },
-    confirmReceipt (key, value) {
+    confirmReceipt(key, value) {
       this.wage[key] = value
       helper.saveReceiptStatus(this.wage.wageDetailId, key, value)
     },
-    confirmSign (base64) {
+    confirmSign(base64) {
       this.confirmReceipt('receiptStautus', 0)
       this.confirmReceipt('sign', base64)
       setTimeout(() => {

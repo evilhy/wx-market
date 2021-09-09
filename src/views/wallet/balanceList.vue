@@ -1,26 +1,25 @@
 <template>
   <div class="page balance-list-page">
     <div class="balance-outline">
-      <div class="balance-value">￥{{balanceInfo.availableAmount | money}}</div>
+      <div class="balance-value">￥{{ balanceInfo.availableAmount | money }}</div>
       <div class="balance-desc mb-20">可提现额度</div>
       <template v-if="totalElements > 0 && list[0].bankClose">
         <div class="line"></div>
-        <div class="balance-tip mt-15 warning-text">22:00～24:00为银行通道维护时间，提现金额将在系统维护结束后到账</div>
+        <div class="balance-tip warning-text" mt15>22:00～24:00为银行通道维护时间，提现金额将在系统维护结束后到账</div>
       </template>
     </div>
     <no-data v-if="totalElements === 0"></no-data>
-    <van-list v-else v-model="loading" :immediate-check="false"
-      :finished="finished" :finished-text="finishedText" @load="getList">
+    <van-list v-else v-model="loading" :immediate-check="false" :finished="finished" :finished-text="finishedText" @load="getList">
       <balance-item v-for="(item, index) in list" :key="index" :item="item"></balance-item>
     </van-list>
   </div>
 </template>
 
 <script>
-import balanceItem from './balanceItem'
 import sysConfig from 'utils/constant'
 import decryptInfo from 'utils/decryptInfo'
-import helper from 'utils/helper.js'
+import balanceItem from './balanceItem'
+
 export default {
   name: '',
   components: {
@@ -38,7 +37,6 @@ export default {
     }
   },
   created() {
-    helper.title('余额提现')
     this.getBalance()
     this.getList()
   },

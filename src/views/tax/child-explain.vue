@@ -9,10 +9,10 @@
 <script>
 export default {
   name: 'child-explain',
-  data () {
+  data() {
     return {}
   },
-  created () { },
+  created() {},
   methods: {}
 }
 </script>

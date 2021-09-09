@@ -5,45 +5,68 @@
     <div class="info-box">
       <p class="row">
         <span class="label">姓名</span>
-        <span class="value">{{info.userName}}</span>
+        <span class="value">{{ info.userName }}</span>
       </p>
       <p class="row">
         <span class="label">证件类型</span>
-        <span class="value">{{info.idTypeVal}}</span>
+        <span class="value">{{ info.idTypeVal }}</span>
       </p>
       <p class="row">
         <span class="label">证件号</span>
-        <span class="value">{{info.idNumber}}</span>
+        <span class="value">{{ info.idNumber }}</span>
       </p>
       <p class="row">
         <span class="label">手机号</span>
-        <span class="value">{{info.phone}}</span>
+        <span class="value">{{ info.phone }}</span>
       </p>
     </div>
     <div class="line"></div>
     <div class="info-box">
-      <p class="m-bottom-10 m-top-5"><span class="star">*</span>请上传身份证人像面图片</p>
-      <van-uploader v-model="frontFileList" :max-size="5 * 1024 * 1024"
+      <p mb10 mt5><span class="star">*</span>请上传身份证人像面图片</p>
+      <van-uploader
+        v-model="frontFileList"
+        :max-size="5 * 1024 * 1024"
         :disabled="info.attestStatus === 1 || info.attestStatus === 3"
         :deletable="info.attestStatus !== 1 && info.attestStatus !== 3"
-        @oversize="oversize" :before-read="beforeRead"
-        :after-read="(file) => { afterRead(file, 'front') }"
-        @delete="(file) => { deleteFile(file, 'front') }" />
+        @oversize="oversize"
+        :before-read="beforeRead"
+        :after-read="
+          (file) => {
+            afterRead(file, 'front')
+          }
+        "
+        @delete="
+          (file) => {
+            deleteFile(file, 'front')
+          }
+        "
+      />
       <p class="gray-text">图片大小请勿超过5M</p>
     </div>
     <div class="info-box">
-      <p class="m-bottom-10"><span class="star">*</span>请上传身份证国徽面图片</p>
-      <van-uploader v-model="negativeFileList" :max-size="5 * 1024 * 1024"
+      <p mb10><span class="star">*</span>请上传身份证国徽面图片</p>
+      <van-uploader
+        v-model="negativeFileList"
+        :max-size="5 * 1024 * 1024"
         :disabled="info.attestStatus === 1 || info.attestStatus === 3"
         :deletable="info.attestStatus !== 1 && info.attestStatus !== 3"
-        @oversize="oversize" :before-read="beforeRead"
-        :after-read="(file) => { afterRead(file, 'negative') }"
-        @delete="(file) => { deleteFile(file, 'negative') }"/>
+        @oversize="oversize"
+        :before-read="beforeRead"
+        :after-read="
+          (file) => {
+            afterRead(file, 'negative')
+          }
+        "
+        @delete="
+          (file) => {
+            deleteFile(file, 'negative')
+          }
+        "
+      />
       <p class="gray-text">图片大小请勿超过5M</p>
     </div>
-    <div class="info-box m-top-10">
-      <van-button type="primary" block :disabled="btnDisabled" @click="attest">
-        {{btnText}}</van-button>
+    <div class="info-box" mt10>
+      <van-button type="primary" block :disabled="btnDisabled" @click="attest"> {{ btnText }}</van-button>
     </div>
   </div>
 </template>
@@ -52,6 +75,7 @@
 import helper from 'utils/helper'
 import decryptInfo from 'utils/decryptInfo'
 import Compressor from 'compressorjs'
+
 export default {
   name: '',
   components: {},
@@ -67,11 +91,11 @@ export default {
     }
   },
   computed: {
-    btnDisabled () {
+    btnDisabled() {
       let { attestStatus } = this.info
       return this.loading || attestStatus === 1 || attestStatus === 3 || !this.frontUrl || !this.negativeUrl
     },
-    btnText () {
+    btnText() {
       // 0：未认证、1：认证中、2：认证失败、3：认证成功
       switch (this.info.attestStatus) {
         case 1:
@@ -139,10 +163,10 @@ export default {
         this[`${type}FileList`] = hasOldFile ? [oldFile] : []
       }
     },
-    deleteFile (file, type) {
+    deleteFile(file, type) {
       this[`${type}Url`] = ''
     },
-    async attest () {
+    async attest() {
       try {
         this.loading = true
         await this.$Tax.attest({ ...this.info, idCardFront: this.frontUrl, idCardNegative: this.negativeUrl })

@@ -1,4 +1,5 @@
 import Http from './base'
+
 const moduleName = 'wisales'
 
 class Wisales {
@@ -8,8 +9,8 @@ class Wisales {
    * @returns
    * @memberof Wallet
    */
-  getCardCount () {
-    let http = new Http()
+  getCardCount() {
+    const http = new Http()
     http.path = `/${moduleName}/countWelfareEmpTicket`
     http.loading = false
     return http.get()

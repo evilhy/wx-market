@@ -2,14 +2,14 @@
   <div class="elife-login-page">
     <div class="input-form">
       <div class="input-wrap">
-        <img src="../../assets/img/elife/elife-name.png" alt="" class="icon">
+        <img src="../../assets/img/elife/elife-name.png" alt="" class="icon" />
         <span class="line"></span>
-        <input v-model.trim="name" type="text" placeholder="请输入姓名" class="input" maxlength="10">
+        <input v-model.trim="name" type="text" placeholder="请输入姓名" class="input" maxlength="10" />
       </div>
       <div class="input-wrap">
-        <img src="../../assets/img/elife/elife-phone.png" alt="" class="icon">
+        <img src="../../assets/img/elife/elife-phone.png" alt="" class="icon" />
         <span class="line"></span>
-        <input v-model.trim="phone" type="tel" placeholder="请输入手机号" class="input" maxlength="11">
+        <input v-model.trim="phone" type="tel" placeholder="请输入手机号" class="input" maxlength="11" />
       </div>
     </div>
     <div class="btn" @click="joinActivity">参与活动</div>
@@ -22,33 +22,31 @@
 <script>
 import elife from 'mixins/elife'
 import helper from 'utils/helper'
+
 export default {
   mixins: [elife],
-  data () {
+  data() {
     return {
       name: '',
       phone: ''
     }
   },
-  created () {
+  created() {
     this.getQueryParams()
   },
   methods: {
-    getQueryParams () {
-      let { name, phone } = this.$route.query
+    getQueryParams() {
+      const { name, phone } = this.$route.query
       this.name = name
       this.phone = phone
     },
-    joinActivity () {
+    joinActivity() {
       if (!this.checkInfo()) return
-      this
-        .$Elife
-        .joinActivity(this.name, this.phone)
-        .then((res) => {
-          this.postElife(res.data)
-        })
+      this.$Elife.joinActivity(this.name, this.phone).then((res) => {
+        this.postElife(res.data)
+      })
     },
-    checkInfo () {
+    checkInfo() {
       if (!this.name) {
         helper.toast('请输入姓名')
         return false

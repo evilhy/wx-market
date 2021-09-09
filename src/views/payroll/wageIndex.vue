@@ -3,7 +3,7 @@
     <!-- <manager-avator></manager-avator> -->
     <div class="bill-index-main">
       <div class="fx-logo">
-        <img src="../../assets/img/logo.png" class="fx" alt="">
+        <img src="../../assets/img/logo.png" class="fx" alt="" />
       </div>
       <swiper class="bill-info" :options="swiperOption">
         <wage-index-item v-for="(item, index) in bankWageList" :key="index" :wage="item" @to-detail="toDetail"></wage-index-item>
@@ -27,10 +27,10 @@
 
 <script>
 import { swiper } from 'vue-awesome-swiper'
-import managerAvator from 'components/managerAvator'
-import wageIndexItem from './wageIndexItem'
 import storage from 'utils/storage'
 import helper from 'utils/helper'
+import wageIndexItem from './wageIndexItem'
+
 export default {
   data() {
     return {
@@ -44,8 +44,7 @@ export default {
       isHxBank: helper.isHxBank()
     }
   },
-  computed: {
-  },
+  computed: {},
   created() {
     this.getWageDetail()
     this.isRead()
@@ -66,12 +65,11 @@ export default {
       this.$router.push({ name: 'wageDetail', params: { wageSheetId: this.wageSheetId } })
     },
     toPage(routeName = '', query = {}) {
-      this.$router.push({ name: routeName, query: query })
+      this.$router.push({ name: routeName, query })
     }
   },
   components: {
     swiper,
-    managerAvator,
     wageIndexItem
   }
 }

@@ -1,5 +1,7 @@
 import { isEmpty } from 'utils/assist'
+
 const crypto = require('crypto')
+
 const $algorithm = Symbol('$algorithm')
 const kdf = Symbol('kdf')
 const getKeyIV = Symbol('getKeyIV')
@@ -14,7 +16,7 @@ export default class Encryptor {
    * @param {String} algorithm 算法
    */
   setAlgorithm(algorithm) {
-    if (isEmpty(algorithm)) { 
+    if (isEmpty(algorithm)) {
       throw new TypeError(`Algorithm cannot be set empty: ${algorithm}`)
     }
     this[$algorithm] = algorithm
@@ -61,7 +63,7 @@ export default class Encryptor {
 
     return decrypted.join('')
   }
-  
+
   /**
    * 设置偏移量
    * @param {String} password 秘钥
@@ -72,9 +74,7 @@ export default class Encryptor {
     const pwd = Buffer.from(password, 'utf-8')
     let key = Buffer.concat([pwd, salt])
     for (let i = 0; i < iterations; i++) {
-      key = crypto.createHash('md5')
-        .update(key)
-        .digest()
+      key = crypto.createHash('md5').update(key).digest()
     }
     return key
   }

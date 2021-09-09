@@ -1,10 +1,11 @@
 import Http from './base'
+
 class Upload {
   /**
    * @description 文件上传
    */
   upload({ baseURL, path, file, headers, data }) {
-    let http = new Http()
+    const http = new Http()
     if (baseURL) {
       http.baseURL = baseURL
     }
@@ -16,7 +17,7 @@ class Upload {
         formData.append(key, value)
       })
     }
-    const f = new File([file], file.name, {type: file.type})
+    const f = new File([file], file.name, { type: file.type })
     formData.append('file', f)
     http.body = formData
     http.encrypt = false

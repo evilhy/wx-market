@@ -10,17 +10,18 @@
 <script>
 import pwdKeyboard from 'components/pwdKeyboard'
 import helper from 'utils/helper'
+
 export default {
   props: {
     value: {
       type: Array,
-      default () {
+      default() {
         return []
       }
     },
     maxLength: {
       type: Number,
-      default () {
+      default() {
         return 6
       }
     },
@@ -29,7 +30,7 @@ export default {
       default: true
     }
   },
-  data () {
+  data() {
     return {
       currentValue: this.value,
       show: false,
@@ -37,35 +38,35 @@ export default {
     }
   },
   computed: {
-    dot () {
+    dot() {
       return '.'.repeat(this.currentValue.length)
     }
   },
   watch: {
-    currentValue (val) {
+    currentValue(val) {
       this.$emit('input', val)
     },
-    value (val) {
+    value(val) {
       this.currentValue = val
     },
-    show (val) {
+    show(val) {
       this.toggleWrapClass(val)
     }
   },
-  created () {
+  created() {
     this.open()
   },
-  async mounted () {
+  async mounted() {
     this.crateNumericKeypad()
     this.toggleWrapClass()
   },
   methods: {
-    async crateNumericKeypad () {
-      let res = await this.$Password.crateNumericKeypad()
-      let { numberBase } = res.data
+    async crateNumericKeypad() {
+      const res = await this.$Password.crateNumericKeypad()
+      const { numberBase } = res.data
       this.imgSrc = `data:image/jpeg;base64,${numberBase}`
     },
-    onKeydown (value) {
+    onKeydown(value) {
       if (this.currentValue.length === this.maxLength) return
       this.currentValue.push(value)
       if (this.currentValue.length === this.maxLength) {
@@ -78,19 +79,19 @@ export default {
         }
       }
     },
-    onDelete (value) {
+    onDelete(value) {
       this.currentValue.pop()
       this.$emit('delete')
     },
-    open () {
+    open() {
       this.show = true
     },
-    checkRepeat () {
-      let first = this.currentValue[0]
-      return !!this.currentValue.every(item => item === first)
+    checkRepeat() {
+      const first = this.currentValue[0]
+      return !!this.currentValue.every((item) => item === first)
     },
-    toggleWrapClass (val = true) {
-      let wrap = document.querySelector('.content-wrap')
+    toggleWrapClass(val = true) {
+      const wrap = document.querySelector('.content-wrap')
       if (wrap) {
         wrap.className = val ? 'content-wrap show' : 'content-wrap'
       }

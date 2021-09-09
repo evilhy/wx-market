@@ -1,18 +1,19 @@
 <template>
   <div class="user-avatar">
-    <img :src="headimgurl" alt="" v-if="headimgurl">
+    <img :src="headimgurl" alt="" v-if="headimgurl" />
   </div>
 </template>
 
 <script>
 import helper from 'utils/helper'
+
 export default {
-  data () {
+  data() {
     return {
       headimgurl: helper.getUserInfo('headimgurl', '')
     }
   },
-  created () {},
+  created() {},
   methods: {}
 }
 </script>

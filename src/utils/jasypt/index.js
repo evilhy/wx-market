@@ -1,8 +1,7 @@
-import Jasyptor from './jasyptor'
 import { isEmpty } from 'utils/assist'
+import Jasyptor from './jasyptor'
 
 export default class Jasypt {
-
   jasyptor = new Jasyptor()
 
   constructor(password, salt) {
@@ -10,22 +9,24 @@ export default class Jasypt {
     if (isEmpty(salt)) throw new TypeError('salt cannot be set empty')
 
     this.jasyptor.setPassword(password)
-    let buf = Buffer.allocUnsafe(8)
+    const buf = Buffer.allocUnsafe(8)
     buf.write(salt)
     this.jasyptor.setSalt(buf)
   }
+
   /**
    * 加密
-   * @param {String} originalString 
+   * @param {String} originalString
    */
-  encrypt (originalString) {
+  encrypt(originalString) {
     return this.jasyptor.encrypt(originalString)
   }
+
   /**
    * 解密
-   * @param {String} encryptMsg 
+   * @param {String} encryptMsg
    */
-  decrypt (encryptMsg) {
+  decrypt(encryptMsg) {
     return this.jasyptor.decrypt(encryptMsg)
   }
 }

@@ -6,14 +6,15 @@
 <script>
 import popupPage from './popupPage'
 import colleagueOrdered from './colleagueOrdered'
+
 export default {
-  data () {
+  data() {
     return {
       showFlag: false
     }
   },
   methods: {
-    show () {
+    show() {
       this.$refs['ordered-popup'].show()
       this.showFlag = true
     }

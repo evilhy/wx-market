@@ -1,7 +1,8 @@
 import sysConfig from 'utils/constant'
+
 export default {
   computed: {
-    statusInfo () {
+    statusInfo() {
       /* ORDERCANCEL("订单取消"),
          ORDERFAIL("下单失败"),
          PREPAYMENT("下单成功,待支付"),
@@ -14,8 +15,8 @@ export default {
          MERORDERSUCCESS("商户下单成功"),
          MERFAIL("商户处理失败")
        */
-      let { itemCatId, orderDealStatus } = this.orderInfo
-      let { phoneCharge, phoneData, starbucks, videoMember, viewingTicket, oilCard } = sysConfig
+      const { itemCatId, orderDealStatus } = this.orderInfo
+      const { phoneCharge, phoneData, starbucks, videoMember, viewingTicket, oilCard } = sysConfig
       if (!itemCatId) return {}
       switch (itemCatId) {
         case phoneCharge: // 话费
@@ -24,15 +25,16 @@ export default {
         case videoMember: // 视频会员
         case viewingTicket: // 观影券
         case oilCard: // 油卡
-        case starbucks: // 星巴克 
+        case starbucks: // 星巴克
           return this.getVirtualOrderStatusInfo(orderDealStatus)
-        default: // 实物
+        default:
+          // 实物
           return this.getRealOrderStatusInfo(orderDealStatus)
       }
     }
   },
   methods: {
-    getPhoneOrderStatusInfo (orderDealStatus) {
+    getPhoneOrderStatusInfo(orderDealStatus) {
       switch (orderDealStatus) {
         case 'MERCOMPLETE':
           return {
@@ -53,7 +55,7 @@ export default {
           }
       }
     },
-    getVirtualOrderStatusInfo (orderDealStatus) {
+    getVirtualOrderStatusInfo(orderDealStatus) {
       switch (orderDealStatus) {
         case 'MERCOMPLETE':
           return {
@@ -74,7 +76,7 @@ export default {
           }
       }
     },
-    getRealOrderStatusInfo (orderDealStatus) {
+    getRealOrderStatusInfo(orderDealStatus) {
       switch (orderDealStatus) {
         case 'PREPAYMENT':
           return {

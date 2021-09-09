@@ -1,6 +1,6 @@
 <template>
   <div class="avator-wrap">
-    <img :src="src || defaultAvator" alt="" class="img" :class="[{'border': border }, size]">
+    <img :src="src || defaultAvator" alt="" class="img" :class="[{ border: border }, size]" />
   </div>
 </template>
 <script>
@@ -11,13 +11,13 @@ export default {
     size: {
       type: String,
       default: 'normal',
-      validator (val) {
+      validator(val) {
         if (!['small', 'normal', 'large'].includes(val)) throw new RangeError('size的值必须为small、normal或large')
         return true
       }
     }
   },
-  data () {
+  data() {
     return {
       defaultAvator: require('../../../assets/img/tfinance/avator-default.png')
     }

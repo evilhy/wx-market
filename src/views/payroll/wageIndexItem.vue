@@ -4,16 +4,15 @@
     <div class="bill-status success" v-if="wage.payStatus === '1'">资金已到账</div>
     <div class="bank">
       <img class="bank-logo" src="../../assets/img/icon-bank.png" />
-      <div class="bank-name">{{wage.bankName}}（{{wage.cardNo}}）</div>
+      <div class="bank-name">{{ wage.bankName }}（{{ wage.cardNo }}）</div>
     </div>
     <div class="amt-wrap">
       <div class="amt">
         <template v-if="flag">
-          <span class="value">{{wage.realAmt | money}}</span><i class="icon-ai44 iconfont" @click.stop="changeFlag"></i>
+          <span class="value">{{ wage.realAmt | money }}</span
+          ><i class="icon-ai44 iconfont" @click.stop="changeFlag"></i>
         </template>
-        <template v-if="!flag">
-          <span class="hidden">****</span><i class="icon-ai47 iconfont" @click.stop="changeFlag"></i>
-        </template>
+        <template v-if="!flag"> <span class="hidden">****</span><i class="icon-ai47 iconfont" @click.stop="changeFlag"></i> </template>
       </div>
     </div>
     <p class="amt-title">实发金额(元)</p>
@@ -23,7 +22,7 @@
         <template v-if="flag">
           <i class="icon-jiantouxia iconfont" v-show="wage.differRealAmt < 0"></i>
           <i class="icon-jiantoushang iconfont" v-show="wage.differRealAmt >= 0"></i>
-          {{wage.differRealAmt | money}}
+          {{ wage.differRealAmt | money }}
         </template>
         <template v-else>
           <span class="star">****</span>
@@ -35,6 +34,7 @@
 <script>
 import { swiperSlide } from 'vue-awesome-swiper'
 import storage from 'utils/storage'
+
 export default {
   components: { swiperSlide },
   props: {
@@ -42,17 +42,17 @@ export default {
       type: Object
     }
   },
-  data () {
+  data() {
     return {
       flag: storage.getSession('amtFlag', true)
     }
   },
   methods: {
-    changeFlag () {
+    changeFlag() {
       this.flag = !this.flag
       storage.setSession('amtFlag', this.flag)
     },
-    toDetail () {
+    toDetail() {
       this.$emit('to-detail')
     }
   }

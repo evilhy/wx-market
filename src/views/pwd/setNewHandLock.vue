@@ -4,15 +4,15 @@
 
 <script>
 import setHandLockCmp from './setHandLockCmp'
+
 export default {
-  data () {
+  data() {
     return {
       titleArr: ['输入新手势密码', '再输入一次']
     }
   },
-  created () { },
-  methods: {
-  },
+  created() {},
+  methods: {},
   components: {
     setHandLockCmp
   }

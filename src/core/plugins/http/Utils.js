@@ -3,18 +3,17 @@
  */
 
 export default class Utils {
-
-  static isDevelopmentEnv () {
-    return process.env.NODE_ENV === 'development';
+  static isDevelopmentEnv() {
+    return process.env.VUE_APP_ENV === 'development'
   }
 
-  static enableAdapterMode (isRequestSever) {
-    return this.isDevelopmentEnv() && !isRequestSever;
+  static enableAdapterMode(isRequestSever) {
+    return this.isDevelopmentEnv() && !isRequestSever
   }
 }
 
 export function typeOf(obj) {
-  const toString = Object.prototype.toString
+  const { toString } = Object.prototype
   const map = {
     '[object Boolean]': 'boolean',
     '[object Number]': 'number',

@@ -1,7 +1,7 @@
 import { typeOf } from './assist'
 
 export default {
-  getLocal (key, defaultValue = '') {
+  getLocal(key, defaultValue = '') {
     if (typeOf(key) !== 'string' || key === '' || typeOf(localStorage.getItem(key)) === 'null') return defaultValue
     try {
       return JSON.parse(localStorage.getItem(key))
@@ -9,10 +9,10 @@ export default {
       return defaultValue
     }
   },
-  getLocalObj (key = '', itemKey = '', defaultValue = '') {
+  getLocalObj(key = '', itemKey = '', defaultValue = '') {
     if (typeOf(key) !== 'string' || key === '') return ''
     if (typeOf(itemKey) === 'string' && itemKey) {
-      let storageObj = this.getLocal(key, {})
+      const storageObj = this.getLocal(key, {})
       if (typeOf(storageObj[itemKey]) === 'undefined') {
         return defaultValue
       }
@@ -20,19 +20,19 @@ export default {
     }
     return this.getLocal(key, itemKey)
   },
-  setLocal (key, val) {
-    if (typeOf(key) !== 'string' || key === '' || typeOf(val) === 'undefined') return false
+  setLocal(key, val) {
+    if (typeOf(key) !== 'string' || key === '' || typeOf(val) === 'undefined') return
     if (['string', 'boolean', 'number', 'array', 'object'].includes(typeOf(val))) {
       localStorage.setItem(key, JSON.stringify(val))
     }
   },
-  updateLocalObj (key = '', infoObj = {}) {
-    if (typeOf(key) !== 'string' || key === '' || typeOf(infoObj) !== 'object') return false
-    let storageObj = this.getLocal(key, {})
+  updateLocalObj(key = '', infoObj = {}) {
+    if (typeOf(key) !== 'string' || key === '' || typeOf(infoObj) !== 'object') return
+    const storageObj = this.getLocal(key, {})
     this.setLocal(key, { ...storageObj, ...infoObj })
   },
-  removeLocal (key) {
-    if (typeOf(key) === 'undefined') return false
+  removeLocal(key) {
+    if (typeOf(key) === 'undefined') return
     if (typeOf(key) === 'string') {
       localStorage.removeItem(key)
     }
@@ -44,10 +44,10 @@ export default {
       })
     }
   },
-  clearLocal () {
+  clearLocal() {
     localStorage.clear()
   },
-  getSession (key, defaultValue = '') {
+  getSession(key, defaultValue = '') {
     if (typeOf(key) !== 'string' || key === '' || typeOf(sessionStorage.getItem(key)) === 'null') return defaultValue
     try {
       return JSON.parse(sessionStorage.getItem(key))
@@ -55,10 +55,10 @@ export default {
       return defaultValue
     }
   },
-  getSessionObj (key = '', itemKey = '', defaultValue = '') {
+  getSessionObj(key = '', itemKey = '', defaultValue = '') {
     if (typeOf(key) !== 'string' || key === '') return ''
     if (typeOf(itemKey) === 'string' && itemKey) {
-      let storageObj = this.getSession(key, {})
+      const storageObj = this.getSession(key, {})
       if (typeOf(storageObj[itemKey]) === 'undefined') {
         return defaultValue
       }
@@ -66,19 +66,19 @@ export default {
     }
     return this.getSession(key, itemKey)
   },
-  setSession (key, val) {
-    if (typeOf(key) !== 'string' || key === '' || typeOf(val) === 'undefined') return false
+  setSession(key, val) {
+    if (typeOf(key) !== 'string' || key === '' || typeOf(val) === 'undefined') return
     if (['string', 'boolean', 'number', 'array', 'object'].includes(typeOf(val))) {
       sessionStorage.setItem(key, JSON.stringify(val))
     }
   },
-  updateSessionObj (key = '', infoObj = {}) {
-    if (typeOf(key) !== 'string' || key === '' || typeOf(infoObj) !== 'object') return false
-    let storageObj = this.getSession(key, {})
+  updateSessionObj(key = '', infoObj = {}) {
+    if (typeOf(key) !== 'string' || key === '' || typeOf(infoObj) !== 'object') return
+    const storageObj = this.getSession(key, {})
     this.setSession(key, { ...storageObj, ...infoObj })
   },
-  removeSession (key) {
-    if (typeOf(key) === 'undefined') return false
+  removeSession(key) {
+    if (typeOf(key) === 'undefined') return
     if (typeOf(key) === 'string') {
       sessionStorage.removeItem(key)
     }
@@ -90,7 +90,7 @@ export default {
       })
     }
   },
-  clearSession () {
+  clearSession() {
     sessionStorage.clear()
   }
 }

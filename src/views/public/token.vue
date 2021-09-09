@@ -1,14 +1,14 @@
 <template>
-  <div class="token-page">
-  </div>
+  <div class="token-page"></div>
 </template>
 
 <script>
 import helper from 'utils/helper'
 import { getPageQueryObject } from 'utils/assist'
 import sysConfig from 'utils/constant'
+
 export default {
-  data () {
+  data() {
     return {
       callbackInfo: {
         NINGXIA: '$Nx',
@@ -17,19 +17,18 @@ export default {
     }
   },
   computed: {},
-  created () {
-  },
-  mounted () {
+  created() {},
+  mounted() {
     helper.clearSession()
     helper.setTheme(sysConfig.otherBankTheme)
     this.getJsessionId()
   },
   methods: {
-    async getJsessionId () {
-      let { accessToken = '', appPartner = '' } = getPageQueryObject()
-      let httpM = this.callbackInfo[appPartner || 'NEWUP']
-      let res = await this[httpM].callback(accessToken)
-      let { bindStatus, jsessionId, idNumber, ifPwd, headimgurl, apppartner } = res.data
+    async getJsessionId() {
+      const { accessToken = '', appPartner = '' } = getPageQueryObject()
+      const httpM = this.callbackInfo[appPartner || 'NEWUP']
+      const res = await this[httpM].callback(accessToken)
+      const { bindStatus, jsessionId, idNumber, ifPwd, headimgurl, apppartner } = res.data
       helper.saveUserInfo({ jsessionId, ifPwd, bindStatus, headimgurl, idNumber, apppartner })
       this.$router.replace({ name: 'home' })
     }

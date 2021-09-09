@@ -1,11 +1,15 @@
-import Http from './base'
 import helper from 'utils/helper'
+import Http from './base'
+
+const imgBanner6 = require('../assets/img/home-banner6.png')
+const imgBanner3 = require('../assets/img/home-banner3.png')
+
 const defaultBannerList = [
   {
-    url: require('../assets/img/home-banner6.png')
+    url: imgBanner6
   },
   {
-    url: require('../assets/img/home-banner3.png')
+    url: imgBanner3
   }
 ]
 class System {
@@ -14,16 +18,16 @@ class System {
    * @return Promise
    * */
   async getBannerList() {
-    let bannerStorage = helper.getBannerList()
+    const bannerStorage = helper.getBannerList()
     return new Promise((resolve, reject) => {
       if (bannerStorage.length) {
         resolve(bannerStorage)
       } else {
-        let http = new Http()
+        const http = new Http()
         http.path = `/advertising/rotation`
         http.query = { channelId: 2 }
-        http.get().then(res => {
-          let data = res.data.length ? res.data : defaultBannerList
+        http.get().then((res) => {
+          const data = res.data.length ? res.data : defaultBannerList
           helper.saveBannerList(data)
           resolve(data)
         })

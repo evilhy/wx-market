@@ -1,27 +1,26 @@
 <template>
-  <div class="">
-  </div>
+  <div class=""></div>
 </template>
 
 <script>
 import helper from 'utils/helper'
 import { getPageQueryObject } from 'utils/assist'
 import sysConfig from 'utils/constant'
+
 export default {
-  data () {
+  data() {
     return {
       query: {},
-      promiseUrl: `${sysConfig.proBaseUrl[process.env.NODE_ENV]}virus-promise`
+      promiseUrl: `${sysConfig.proBaseUrl[process.env.VUE_APP_ENV]}virus-promise`
     }
   },
-  created () {
-    helper.title('武汉加油')
+  created() {
     this.query = getPageQueryObject()
     this.getUserInfo()
   },
   methods: {
-    async getUserInfo () {
-      let res = await this.$Virus.userInfo(this.query.code)
+    async getUserInfo() {
+      const res = await this.$Virus.userInfo(this.query.code)
       helper.saveVirusUserInfo(res.data)
       window.location.replace(this.promiseUrl)
     }

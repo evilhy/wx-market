@@ -8,12 +8,12 @@
 </template>
 
 <script>
-import welfareItem from './components/welfareItem'
 import noData from 'components/noData/index'
 import sysConfig from 'utils/constant'
+import welfareItem from './components/welfareItem'
 
 export default {
-  data () {
+  data() {
     return {
       list: [],
       page: 1,
@@ -23,10 +23,9 @@ export default {
       finishedText: sysConfig.listFinishedText
     }
   },
-  created () {
-  },
+  created() {},
   methods: {
-    async getList () {
+    async getList() {
       this.loading = true
       let res = await this.$WelfareActivity.activityList(this.page)
       let { content = [], last = false } = res.data

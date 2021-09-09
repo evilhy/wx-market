@@ -1,14 +1,12 @@
-import CryptoJs from './crypto'
-import Filter from './filter'
 import dealFixedInput from 'mixins/dealFixedInput'
-import upperFirst from 'lodash/upperFirst'
-import camelCase from 'lodash/camelCase'
+import { camelCase, upperFirst } from 'utils/assist'
+import Filter from './filter'
+import CryptoJs from './crypto'
 
 const requireHttp = require.context('../http', false, /[^./base].*\.js$/)
 
-const install = function (Vue, opts) {
-
-  requireHttp.keys().forEach(fileName => {
+const install = (Vue, opts) => {
+  requireHttp.keys().forEach((fileName) => {
     const name = upperFirst(
       camelCase(
         fileName
@@ -31,4 +29,4 @@ const install = function (Vue, opts) {
   Vue.directive('input', dealFixedInput)
 }
 
-export default { install: install }
+export default { install }

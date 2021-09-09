@@ -3,7 +3,7 @@
     <swiper :options="swiperOption" ref="imgSwiper">
       <swiper-slide v-for="(item, index) in [img]" :key="index">
         <div class="swiper-zoom-container" @click="close">
-          <img :src="item.url">
+          <img :src="item.url" />
         </div>
       </swiper-slide>
     </swiper>
@@ -11,6 +11,7 @@
 </template>
 <script>
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
+
 export default {
   components: { swiper, swiperSlide },
   props: {
@@ -22,7 +23,7 @@ export default {
       type: Object
     }
   },
-  data () {
+  data() {
     return {
       swiperOption: {
         zoom: true
@@ -30,19 +31,18 @@ export default {
     }
   },
   computed: {
-    swiper () {
+    swiper() {
       return this.$refs.imgSwiper.swiper
     }
   },
   watch: {
-    flag (val) {
+    flag(val) {
       this.swiper.zoom.scale > 1 && this.swiper.zoom.out()
     }
   },
-  created () {
-  },
+  created() {},
   methods: {
-    close () {
+    close() {
       this.$emit('close')
     }
   }

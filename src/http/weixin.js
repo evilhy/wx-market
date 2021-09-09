@@ -1,4 +1,5 @@
 import Http from './base'
+
 const moduleName = 'weixin'
 class Wechat {
   /**
@@ -7,18 +8,19 @@ class Wechat {
    * @param {String} code 微信code
    */
   wxCallback(code, appPartner) {
-    let http = new Http()
+    const http = new Http()
     http.path = `/wechat/wxCallback`
     http.body = { code, appPartner }
     http.loading = false
     return http.post()
   }
+
   /**
    * 获取微信分享需要的config数据
    */
   getJsapiSignature() {
-    let url = window.encodeURIComponent(window.location.href.split('#')[0])
-    let http = new Http()
+    const url = window.encodeURIComponent(window.location.href.split('#')[0])
+    const http = new Http()
     http.path = `/${moduleName}/getJsapiSignature`
     http.query = { url }
     http.loading = false

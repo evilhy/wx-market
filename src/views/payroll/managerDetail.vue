@@ -11,28 +11,28 @@
 import ManagerInfoBox from 'components/managerInfoBox'
 import MsgBox from 'components/msgBox'
 import storage from 'utils/storage'
+
 export default {
   components: {
     ManagerInfoBox,
     MsgBox
   },
-  data () {
+  data() {
     return {
       idInfo: storage.getSession('ID', {}),
       managerInfo: {}
     }
   },
-  created () {
+  created() {
     this.getManagerInfo()
   },
-  mounted () { },
+  mounted() {},
   methods: {
-    getManagerInfo () {
-      if (storage.getSession(this.idInfo.ent_id + 'ManagerInfo', '')) {
-        this.managerInfo = storage.getSession(this.idInfo.ent_id + 'ManagerInfo')
+    getManagerInfo() {
+      if (storage.getSession(`${this.idInfo.ent_id}ManagerInfo`, '')) {
+        this.managerInfo = storage.getSession(`${this.idInfo.ent_id}ManagerInfo`)
       } else {
-        this.Http
-          .connect(true)
+        this.Http.connect(true)
           .post('entUser100797.json', {
             ent_id: this.idInfo.ent_id ? this.idInfo.ent_id : ''
           })
@@ -40,7 +40,7 @@ export default {
             if (response.ret_code === '0000') {
               if (Object.keys(response.cust_manager_info).length) {
                 this.managerInfo = response.cust_manager_info
-                storage.setSession(this.idInfo.ent_id + 'ManagerInfo', this.managerInfo)
+                storage.setSession(`${this.idInfo.ent_id}ManagerInfo`, this.managerInfo)
               }
             }
           })

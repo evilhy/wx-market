@@ -4,7 +4,7 @@
       <span class="close" @click="close">
         <i class="icon iconfont icon-Close"></i>
       </span>
-      <img :src="ewmImg" alt="" class="ewm">
+      <img :src="ewmImg" alt="" class="ewm" />
       <p class="tip">长按识别二维码，添加客户经理微信</p>
     </div>
   </van-popup>
@@ -21,19 +21,17 @@ export default {
       default: true
     }
   },
-  data () {
-    return {
-    }
+  data() {
+    return {}
   },
   computed: {},
-  created () { },
-  mounted () { },
+  created() {},
+  mounted() {},
   methods: {
-    close () {
+    close() {
       this.$emit('close')
     }
   },
   components: {}
 }
 </script>
-

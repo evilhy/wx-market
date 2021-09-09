@@ -12,18 +12,16 @@ class Url {
     if (typeOf(params) !== 'object') throw new TypeError('params应为Object类型')
     if (!params) return this.subHash(url)
 
-    let serializedParams = this.serializeParams(params)
-    if (subHash) { 
+    const serializedParams = this.serializeParams(params)
+    if (subHash) {
       url = this.subHash(url)
     }
     if (serializedParams) {
-      url =
-        url.indexOf('?') === -1
-          ? `${url}?${serializedParams}`
-          : `${url}&${serializedParams}`
+      url = url.indexOf('?') === -1 ? `${url}?${serializedParams}` : `${url}&${serializedParams}`
     }
     return url
   }
+
   /**
    * 序列化params参数({a: 1, b: 2}===> a=1&b=2)
    * @param {Object} params params参数
@@ -31,7 +29,7 @@ class Url {
   serializeParams(params = {}, encode = true) {
     if (typeOf(params) !== 'object') throw new TypeError('params应为Object类型')
 
-    let paris = []
+    const paris = []
     Object.entries(params)
       .sort()
       .forEach(([key, val]) => {
@@ -45,34 +43,29 @@ class Url {
           values = [val]
         }
 
-        values.forEach(val => {
-          if (typeOf(val) === 'date') {
-            val = val.toISOString()
+        values.forEach((cval) => {
+          if (typeOf(cval) === 'date') {
+            cval = cval.toISOString()
           }
 
-          if (typeOf(val) === 'object') {
-            val = JSON.stringify(val)
+          if (typeOf(cval) === 'object') {
+            cval = JSON.stringify(cval)
           }
           if (encode) {
-            paris.push(`${this.encode(key)}=${this.encode(val)}`)
-          } else { 
-            paris.push(`${key}=${val}`)
+            paris.push(`${this.encode(key)}=${this.encode(cval)}`)
+          } else {
+            paris.push(`${key}=${cval}`)
           }
         })
       })
     return paris.join('&')
   }
+
   encode(val = '') {
     if (typeOf(val) !== 'string') throw new TypeError('val应为String类型')
-    return encodeURIComponent(val)
-      .replace(/%40/g, '@')
-      .replace(/%24/g, '$')
-      .replace(/%2C/g, ',')
-      .replace(/%5B/g, '[')
-      .replace(/%5D/g, ']')
-      .replace(/%20/g, '+')
-      .replace(/%3A/g, ':')
+    return encodeURIComponent(val).replace(/%40/g, '@').replace(/%24/g, '$').replace(/%2C/g, ',').replace(/%5B/g, '[').replace(/%5D/g, ']').replace(/%20/g, '+').replace(/%3A/g, ':')
   }
+
   subHash(val = '') {
     if (typeOf(val) !== 'string') throw new TypeError('val应为String类型')
     const hashIndex = val.indexOf('#')
@@ -81,8 +74,9 @@ class Url {
     }
     return val.trim()
   }
-  isUrl (url) {
-    return /(^[a-z][a-z\d\+\-\.]*:)?\/\//i.test(url)
+
+  isUrl(url) {
+    return /(^[a-z][a-z\d+\-.]*:)?\/\//i.test(url)
   }
 }
 

@@ -1,16 +1,16 @@
 <template>
-  <div class="hr-index-page">
-  </div>
+  <div class="hr-index-page"></div>
 </template>
 
 <script>
-import menuDic from './menuDic'
 import { getPageQueryObject } from 'utils/assist'
+import menuDic from './menuDic'
+
 export default {
-  data () {
+  data() {
     return {}
   },
-  created () {
+  created() {
     let { url } = getPageQueryObject()
     url && window.location.replace(menuDic[url])
   },

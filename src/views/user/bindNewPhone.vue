@@ -20,32 +20,31 @@
 import helper from 'utils/helper'
 import verifycodeBtn from 'components/verifycodeBtn'
 import validate from 'utils/validate'
+
 export default {
-  data () {
+  data() {
     return {
       code: '',
       phone: ''
     }
   },
   computed: {
-    verifyBtnDisabled () {
+    verifyBtnDisabled() {
       return !validate.isPhone(this.phone)
     },
-    btnDisabled () {
+    btnDisabled() {
       return !this.code || !this.phone
     }
   },
-  created () {
-  },
-  mounted () {
-  },
+  created() {},
+  mounted() {},
   methods: {
-    async sendCode () {
-      if (this.verifyBtnDisabled) return false
+    async sendCode() {
+      if (this.verifyBtnDisabled) return
       await this.$Inside.sendCode(this.phone, '0')
     },
-    async modifyPhone () {
-      let { code, phone } = this
+    async modifyPhone() {
+      const { code, phone } = this
       await this.$Inside.updPhone({ code, phone })
       helper.toast('手机号更换成功')
       this.$router.replace({ name: 'user' })

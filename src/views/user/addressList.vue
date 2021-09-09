@@ -1,10 +1,8 @@
 <template>
-  <div class="address-list-page" :class="{'my-address-list': noSelect}">
+  <div class="address-list-page" :class="{ 'my-address-list': noSelect }">
     <no-data v-if="list.length < 1 && requested" text="暂无收货地址" name="address" />
     <template>
-      <van-address-list :class="addressClasses" v-model="chosenAddressId" :list="list"
-        @add="$router.push({ name: 'addNewAddress' })" @edit="onEdit" @select="onSelect">
-      </van-address-list>
+      <van-address-list :class="addressClasses" v-model="chosenAddressId" :list="list" @add="$router.push({ name: 'addNewAddress' })" @edit="onEdit" @select="onSelect"> </van-address-list>
     </template>
   </div>
 </template>
@@ -12,8 +10,9 @@
 <script>
 import noData from 'components/noData/index'
 import storage from 'utils/storage'
+
 export default {
-  data () {
+  data() {
     return {
       orderInfo: storage.getSession('orderInfo', {
         activityId: '',
@@ -26,24 +25,24 @@ export default {
     }
   },
   computed: {
-    addressClasses () {
+    addressClasses() {
       return `default-${this.defaultIndex}`
     },
-    noSelect () {
+    noSelect() {
       return !this.orderInfo.activityId
     }
   },
-  created () {
+  created() {
     this.getAddressList()
   },
   methods: {
-    async getAddressList () {
-      let res = await this.$WelfareCust.addressList()
+    async getAddressList() {
+      const res = await this.$WelfareCust.addressList()
       this.list = this.transList(res.data.content)
       this.requested = true
     },
-    transList (list) {
-      let result = []
+    transList(list) {
+      const result = []
       if (Array.isArray(list)) {
         list.forEach(({ addressId = '', receiveName = '', receivePhone = '', province = '', city = '', county = '', town = '', address = '', isDefault = '' }, index) => {
           result.push({
@@ -59,12 +58,12 @@ export default {
       }
       return result
     },
-    onEdit ({ id }) {
+    onEdit({ id }) {
       this.$router.push({ name: 'addNewAddress', query: { id } })
     },
-    onSelect ({ id }) {
+    onSelect({ id }) {
       if (this.noSelect) return
-      let { activityId, goodsId } = this.orderInfo
+      const { activityId, goodsId } = this.orderInfo
       this.$router.replace({ name: 'welfareOrderConfirm', params: { activityId }, query: { goodsId, addressId: id } })
     }
   },

@@ -1,35 +1,32 @@
 <template>
   <div class="order-confirm-page">
     <div class="address-wrap">
-      <div class="title">
-        <van-icon name="location-o" />收货地址</div>
+      <div class="title"><van-icon name="location-o" />收货地址</div>
       <div class="content">
         <div class="stress" v-if="noAddress" @click="goAddNewAddress">请维护您的收货地址</div>
         <div class="stress" v-else-if="noDefaultAddress" @click="goAddressList('')">请选择您的收货地址</div>
         <div v-else class="address-detail" @click="goAddressList(selectAddress.addressId)">
-          <div class="name">{{selectAddress.receiveName}} {{selectAddress.receivePhone}}</div>
-          <div class="detail">
-            {{selectAddress.province}}{{selectAddress.city}}{{selectAddress.county}}{{selectAddress.town}}{{selectAddress.address}}
-          </div>
+          <div class="name">{{ selectAddress.receiveName }} {{ selectAddress.receivePhone }}</div>
+          <div class="detail">{{ selectAddress.province }}{{ selectAddress.city }}{{ selectAddress.county }}{{ selectAddress.town }}{{ selectAddress.address }}</div>
         </div>
       </div>
     </div>
     <go-exchange :item="goodsInfo" :activity-id="activityId"></go-exchange>
     <div class="fixed-btn-wrap">
       <div>共1件礼品</div>
-      <exchange-btn class-name="exchange-btn" :goods-info="goodsInfo" :disabled="disabled" @submit="confirm">
-      </exchange-btn>
+      <exchange-btn class-name="exchange-btn" :goods-info="goodsInfo" :disabled="disabled" @submit="confirm"> </exchange-btn>
     </div>
   </div>
 </template>
 
 <script>
 import goExchange from 'components/goExchange'
-import exchangeBtn from './components/exchangeBtn'
 import collect from 'utils/collect'
 import storage from 'utils/storage'
+import exchangeBtn from './components/exchangeBtn'
+
 export default {
-  data () {
+  data() {
     return {
       activityId: this.$route.params.activityId,
       goodsId: this.$route.query.goodsId,
@@ -55,16 +52,16 @@ export default {
     }
   },
   computed: {
-    disabled () {
+    disabled() {
       return this.loading || !this.selectAddress.addressId
     }
   },
-  created () {
+  created() {
     this.getSelectAddress()
     this.getGoodsDetail()
   },
   methods: {
-    async getSelectAddress () {
+    async getSelectAddress() {
       let res = await this.$WelfareCust.addressList()
       let addressList = res.data.content || []
       if (!addressList.length) {
@@ -85,22 +82,22 @@ export default {
         }
       }
     },
-    async getGoodsDetail () {
+    async getGoodsDetail() {
       let res = await this.$WelfareGoods.goodsDetail(this.activityId, this.goodsId)
       this.goodsInfo = res.data
     },
-    goAddNewAddress () {
+    goAddNewAddress() {
       this.savePageInfo()
       this.$router.push({ name: 'addNewAddress' })
     },
-    goAddressList (id = '') {
+    goAddressList(id = '') {
       this.savePageInfo()
       this.$router.push({ name: 'addressList', query: { id } })
     },
-    savePageInfo () {
+    savePageInfo() {
       storage.setSession('orderInfo', { activityId: this.activityId, goodsId: this.goodsId })
     },
-    confirm () {
+    confirm() {
       this.$dialog
         .confirm({
           message: '确认要兑换该礼品吗?',
@@ -110,9 +107,9 @@ export default {
         .then(() => {
           this.exhange()
         })
-        .catch(() => { })
+        .catch(() => {})
     },
-    async exhange () {
+    async exhange() {
       try {
         this.loading = true
         let res = await this.$WelfareCustOrder.welfareExchangeGoods(this.activityId, this.goodsId, this.selectAddress.addressId)

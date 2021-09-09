@@ -3,22 +3,21 @@ const $minStep = Symbol('$minStep')
 const $finished = Symbol('$finished')
 const $width = Symbol('$width')
 const $parentWidth = Symbol('$parentWidth')
-const defaultImg = require('../../../assets/img/virus/virus-share-img.png')
+
+const publicPath = process.env.BASE_URL
 
 class Bullet {
-
   [$speed] = 50; // 每秒移动的速度,单位px
 
   [$minStep] = 0.2; // 每条弹幕之间最少的间隔(以轨道宽度为基准)
 
-  [$finished] = false; // 动画是否完成
-  
+  [$finished] = false // 动画是否完成
+
   constructor(parent, data) {
-    
     this.container = document.createElement('div')
     this.container.className = 'bullet-container'
     this.container.innerHTML = `
-      <img class="headimg" src="${data.headimgurl ? data.headimgurl : defaultImg}"/>
+      <img class="headimg" src="${data.headimgurl ? data.headimgurl : `${publicPath}img/virus-share-img.png`}"/>
       <div class="content">
         <p class="nick-name">${data.nickname}</p>
         <p>${data.msg}</p>
@@ -29,12 +28,13 @@ class Bullet {
     // 所属轨道的宽度
     this[$parentWidth] = parent.width
 
-    let duration = ((this[$width] + this[$parentWidth]) / this[$speed]).toFixed(3)
+    const duration = ((this[$width] + this[$parentWidth]) / this[$speed]).toFixed(3)
     this.container.style.animation = `barrage ${duration}s linear`
     this.container.addEventListener('webkitAnimationEnd', () => {
       this[$finished] = true
     })
   }
+
   /**
    * 该弹幕是否完全显示
    *
@@ -42,12 +42,13 @@ class Bullet {
    * @memberof Bullet
    */
   isFullShowed() {
-    let right = this.container.getBoundingClientRect().right
+    const right = this.container.getBoundingClientRect().right
     if (right <= this[$parentWidth] * (1 - this[$minStep])) {
       return true
     }
     return false
   }
+
   /**
    * 动画是否结束
    *

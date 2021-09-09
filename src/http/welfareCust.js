@@ -1,5 +1,5 @@
-import Http from './base'
 import sysConfig from 'utils/constant'
+import Http from './base'
 
 const moduleName = 'welfareCust'
 
@@ -12,15 +12,16 @@ class WelfareCust {
    * @returns
    * @memberof WelfareCust
    */
-  orderList (activityId, page) {
-    let http = new Http()
-    http.baseURL = sysConfig.wisalesBaseUrl[process.env.NODE_ENV]
+  orderList(activityId, page) {
+    const http = new Http()
+    http.baseURL = sysConfig.wisalesBaseUrl[process.env.VUE_APP_ENV]
     http.path = `/${moduleName}/custOrderList`
     http.headers = { 'page-num': page, limit: 20 }
     http.query = { activityId }
     http.loading = false
     return http.get()
   }
+
   /**
    * 订单详情
    *
@@ -28,13 +29,14 @@ class WelfareCust {
    * @returns
    * @memberof WelfareCust
    */
-  orderDetail (transOrderId) {
-    let http = new Http()
-    http.baseURL = sysConfig.wisalesBaseUrl[process.env.NODE_ENV]
+  orderDetail(transOrderId) {
+    const http = new Http()
+    http.baseURL = sysConfig.wisalesBaseUrl[process.env.VUE_APP_ENV]
     http.path = `/${moduleName}/custOrderDetail`
     http.query = { transOrderId }
     return http.get()
   }
+
   /**
    * 获取收货地址列表
    *
@@ -42,13 +44,14 @@ class WelfareCust {
    * @returns
    * @memberof WelfareCust
    */
-  addressList (page = 1) {
-    let http = new Http()
-    http.baseURL = sysConfig.wisalesBaseUrl[process.env.NODE_ENV]
+  addressList(page = 1) {
+    const http = new Http()
+    http.baseURL = sysConfig.wisalesBaseUrl[process.env.VUE_APP_ENV]
     http.path = `/${moduleName}/address/get`
     http.headers = { 'page-num': page, limit: 100 }
     return http.get()
   }
+
   /**
    * 获取详细的收货地址
    *
@@ -56,13 +59,14 @@ class WelfareCust {
    * @returns
    * @memberof WelfareCust
    */
-  addressDetail (addressId) {
-    let http = new Http()
-    http.baseURL = sysConfig.wisalesBaseUrl[process.env.NODE_ENV]
+  addressDetail(addressId) {
+    const http = new Http()
+    http.baseURL = sysConfig.wisalesBaseUrl[process.env.VUE_APP_ENV]
     http.path = `/${moduleName}/address/getById`
     http.query = { addressId }
     return http.get()
   }
+
   /**
    * 保存地址
    *
@@ -70,13 +74,14 @@ class WelfareCust {
    * @returns
    * @memberof Address
    */
-  addressSave (info) { 
-    let http = new Http()
-    http.baseURL = sysConfig.wisalesBaseUrl[process.env.NODE_ENV]
+  addressSave(info) {
+    const http = new Http()
+    http.baseURL = sysConfig.wisalesBaseUrl[process.env.VUE_APP_ENV]
     http.path = `/${moduleName}/address/save`
     http.body = info
     return http.post()
   }
+
   /**
    * 删除地址
    *
@@ -84,13 +89,14 @@ class WelfareCust {
    * @returns
    * @memberof Address
    */
-  addressDelete (addressId) {
-    let http = new Http()
-    http.baseURL = sysConfig.wisalesBaseUrl[process.env.NODE_ENV]
+  addressDelete(addressId) {
+    const http = new Http()
+    http.baseURL = sysConfig.wisalesBaseUrl[process.env.VUE_APP_ENV]
     http.path = `/${moduleName}/address/delete`
     http.body = { addressId }
     return http.post()
   }
+
   /**
    * 查询省市区
    *
@@ -99,14 +105,15 @@ class WelfareCust {
    * @returns
    * @memberof Address
    */
-  baseQuery (areaType, code) {
-    let http = new Http()
-    http.baseURL = sysConfig.wisalesBaseUrl[process.env.NODE_ENV]
+  baseQuery(areaType, code) {
+    const http = new Http()
+    http.baseURL = sysConfig.wisalesBaseUrl[process.env.VUE_APP_ENV]
     http.path = `/${moduleName}/area/baseQuery`
     http.query = { areaType, code }
     http.loading = false
     return http.get()
   }
+
   /**
    * 查询乡镇
    *
@@ -114,14 +121,15 @@ class WelfareCust {
    * @returns
    * @memberof Address
    */
-  townQuery (code) {
-    let http = new Http()
-    http.baseURL = sysConfig.wisalesBaseUrl[process.env.NODE_ENV]
+  townQuery(code) {
+    const http = new Http()
+    http.baseURL = sysConfig.wisalesBaseUrl[process.env.VUE_APP_ENV]
     http.path = `/${moduleName}/area/townQuery`
     http.query = { code }
     http.loading = false
     return http.get()
   }
+
   /**
    * 物流详情
    *
@@ -129,9 +137,9 @@ class WelfareCust {
    * @returns
    * @memberof WelfareCust
    */
-  orderTrack (transOrderId) {
-    let http = new Http()
-    http.baseURL = sysConfig.wisalesBaseUrl[process.env.NODE_ENV]
+  orderTrack(transOrderId) {
+    const http = new Http()
+    http.baseURL = sysConfig.wisalesBaseUrl[process.env.VUE_APP_ENV]
     http.path = `/${moduleName}/orderTrack`
     http.query = { transOrderId }
     return http.get()

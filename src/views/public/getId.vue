@@ -9,29 +9,30 @@ import welcomeCircle from 'components/welcomeCircle'
 import helper from 'utils/helper'
 import { getPageQueryObject } from 'utils/assist'
 import decryptInfo from 'utils/decryptInfo'
+
 export default {
-  data () {
+  data() {
     return {
       query: {}
     }
   },
   computed: {},
-  created () {
+  created() {
     helper.clearSession()
     this.query = getPageQueryObject()
   },
-  mounted () {
+  mounted() {
     this.getJsessionId()
   },
   methods: {
-    async getJsessionId () {
-      let { code, id } = this.query
+    async getJsessionId() {
+      const { code, id } = this.query
       if (id) {
         helper.saveUserInfo({ apppartner: id })
       }
-      let res = await this.$Weixin.wxCallback(code, id)
-      let data = decryptInfo(res.data, 'bindStatus')
-      let { bindStatus, jsessionId, idNumber, ifPwd, headimgurl, apppartner, themeId } = data
+      const res = await this.$Weixin.wxCallback(code, id)
+      const data = decryptInfo(res.data, 'bindStatus')
+      const { bindStatus, jsessionId, idNumber, ifPwd, headimgurl, apppartner, themeId } = data
 
       helper.saveUserInfo({ jsessionId, ifPwd, bindStatus, headimgurl, apppartner })
       helper.setTheme(themeId)
@@ -44,15 +45,16 @@ export default {
         this.toPage(ifPwd)
       }
     },
-    toPage (ifPwd) {
+    toPage(ifPwd) {
       if (!this.query.state) {
         this.$router.replace({ name: 'home' })
       } else {
-        let stateObj = JSON.parse(this.query.state)
-        let { wageSheetId, groupId } = stateObj
+        const stateObj = JSON.parse(this.query.state)
+        const { wageSheetId, groupId } = stateObj
         if (wageSheetId && groupId) {
           helper.saveUserInfo({ groupId })
-          if (ifPwd) { // 有密码
+          if (ifPwd) {
+            // 有密码
             this.$router.replace({ name: 'loginByPwd', query: { nextPage: 'wageIndex', wageSheetId } })
           } else {
             this.$router.replace({ name: 'setQueryCode' })
@@ -63,7 +65,7 @@ export default {
       }
     }
   },
-  beforeDestroy () {
+  beforeDestroy() {
     clearTimeout(this.timer)
   },
   components: {

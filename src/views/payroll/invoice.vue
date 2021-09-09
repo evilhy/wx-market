@@ -1,7 +1,7 @@
 <template>
   <div class="invoice-page group-select">
     <div class="current" @click="showGroupList">
-      <span class="name">{{currentInvoice.groupName}}</span>
+      <span class="name">{{ currentInvoice.groupName }}</span>
       <div class="img" v-if="invoiceList.length > 1">
         <i class="iconfont icon-sanjiaoxing-copy" v-if="!flag"></i>
         <i class="iconfont icon-sanjiaoxingzhankai" v-if="flag"></i>
@@ -9,7 +9,7 @@
     </div>
     <ul class="group-list" :class="[flag ? 'show' : '']">
       <li v-for="(item, index) in invoiceList" :key="index" @click.stop="chooseGroup(item)" class="group-item">
-        <p>{{item.groupName}}</p>
+        <p>{{ item.groupName }}</p>
       </li>
     </ul>
     <invoice-item :invoice="currentInvoice" ref="invoice-item"></invoice-item>
@@ -17,9 +17,9 @@
   </div>
 </template>
 <script type="text/ecmascript-6">
-import helper from 'utils/helper'
 import invoiceRule from 'components/invoiceRule'
 import invoiceItem from 'components/invoiceItem'
+
 export default {
   data () {
     return {
@@ -29,7 +29,6 @@ export default {
     }
   },
   created () {
-    helper.title('发票抬头信息')
     this.getInvoiceList()
   },
   mounted () {
@@ -50,9 +49,9 @@ export default {
       this.$refs['invoice-item'].flag = false
     },
     transInvoice (group) {
-      let { groupPhonePrefix = '', groupPhone = '' } = group
-      let fullPhone = groupPhonePrefix ? `${groupPhonePrefix}-${groupPhone}` : groupPhone
-      return Object.assign({}, group, { fullPhone })
+      const { groupPhonePrefix = '', groupPhone = '' } = group
+      const fullPhone = groupPhonePrefix ? `${groupPhonePrefix}-${groupPhone}` : groupPhone
+      return { ...group, fullPhone}
     },
     showGroupList () {
       if (this.invoiceList.length > 1) {

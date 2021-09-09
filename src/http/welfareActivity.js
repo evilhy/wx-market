@@ -1,5 +1,5 @@
-import Http from './base'
 import sysConfig from 'utils/constant'
+import Http from './base'
 
 const moduleName = 'welfareActivity'
 
@@ -11,14 +11,15 @@ class WelfareActivity {
    * @returns
    * @memberof WelfareActivity
    */
-  activityList (page) {
-    let http = new Http()
-    http.baseURL = sysConfig.wisalesBaseUrl[process.env.NODE_ENV]
+  activityList(page) {
+    const http = new Http()
+    http.baseURL = sysConfig.wisalesBaseUrl[process.env.VUE_APP_ENV]
     http.path = `/${moduleName}/listByPayRoll`
     http.headers = { 'page-num': page, limit: 20 }
     http.loading = false
     return http.get()
   }
+
   /**
    * 福利货柜活动详情
    *
@@ -26,9 +27,9 @@ class WelfareActivity {
    * @returns
    * @memberof WelfareActivity
    */
-  activityDetail (activityId) { 
-    let http = new Http()
-    http.baseURL = sysConfig.wisalesBaseUrl[process.env.NODE_ENV]
+  activityDetail(activityId) {
+    const http = new Http()
+    http.baseURL = sysConfig.wisalesBaseUrl[process.env.VUE_APP_ENV]
     http.path = `/${moduleName}/detailByPayRoll`
     http.query = { activityId }
     return http.get()

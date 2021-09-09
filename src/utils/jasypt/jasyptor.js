@@ -1,7 +1,8 @@
-
-import Encryptor from './encryptor'
 import { isEmpty, typeOf } from 'utils/assist'
+import Encryptor from './encryptor'
+
 const crypto = require('crypto')
+
 const $encryptor = Symbol('$encryptor')
 const $password = Symbol('$password')
 const $salt = Symbol('$salt')
@@ -29,24 +30,20 @@ export default class Jasyptor {
     this[$salt] = salt
   }
 
-  setIterations (iterations) {
+  setIterations(iterations) {
     if (isEmpty(iterations)) throw new TypeError('iterations cannot be set empty')
     this[$iterations] = iterations
   }
+
   /**
    * 加密
    * @param {String} message 需要加密的文本
    */
-  encrypt (message) {
+  encrypt(message) {
     if (isEmpty(message)) {
       return message
     }
-    return this[$encryptor].encrypt(
-      message,
-      this[$password],
-      this[$salt],
-      this[$iterations]
-    )
+    return this[$encryptor].encrypt(message, this[$password], this[$salt], this[$iterations])
   }
 
   /**
@@ -57,12 +54,7 @@ export default class Jasyptor {
     if (isEmpty(encryptedMessage)) {
       return encryptedMessage
     }
-    return this[$encryptor].decrypt(
-      encryptedMessage,
-      this[$password],
-      this[$salt],
-      this[$iterations]
-    )
+    return this[$encryptor].decrypt(encryptedMessage, this[$password], this[$salt], this[$iterations])
   }
 
   /**
@@ -74,15 +66,12 @@ export default class Jasyptor {
       return
     }
     for (const key in obj) {
-      if (obj.hasOwnProperty(key)) {
+      if (Object.prototype.hasOwnProperty.call(obj, key)) {
         const value = obj[key]
         if (typeOf(obj) === 'object') {
           this.decryptConfig(value)
         } else if (typeOf(obj) === 'string') {
-          if (
-            value.indexOf('ENC(') === 0 &&
-            value.lastIndexOf(')') === value.length - 1
-          ) {
+          if (value.indexOf('ENC(') === 0 && value.lastIndexOf(')') === value.length - 1) {
             const encryptMsg = value.substring(4, value.length - 1)
             obj[key] = this.decrypt(encryptMsg)
           }
@@ -92,8 +81,6 @@ export default class Jasyptor {
               this.decryptConfig(item)
             }
           }
-        } else {
-          continue
         }
       }
     }

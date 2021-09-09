@@ -1,11 +1,12 @@
+import { Toast } from 'vant'
 import storage from './storage'
 import { typeOf } from './assist'
 import sysConfig from './constant'
 import TimeInstance from './time'
-import { Toast } from 'vant'
+
 Toast.allowMultiple()
 
-let timer = null
+const timer = null
 const helper = {
   title(title = '') {
     window.document.title = title
@@ -20,21 +21,16 @@ const helper = {
     storage.removeSession('payrollUserInfo')
   },
   getImgUrl(tailUrl = '', urlKey) {
-    urlKey = Object.keys(sysConfig.img_base_url).includes(urlKey)
-      ? urlKey
-      : process.env.NODE_ENV
-    return (
-      sysConfig.img_base_url[urlKey] +
-      (typeOf(tailUrl) === 'string' ? tailUrl : '')
-    )
+    urlKey = Object.keys(sysConfig.img_base_url).includes(urlKey) ? urlKey : process.env.VUE_APP_ENV
+    return sysConfig.img_base_url[urlKey] + (typeOf(tailUrl) === 'string' ? tailUrl : '')
   },
   toast(msg, position = 'center', duration = 3000) {
     clearTimeout(timer)
     const toast = Toast({
-      duration: duration, // 持续展示 toast
+      duration, // 持续展示 toast
       // loadingType: 'spinner',
       message: msg,
-      position: position
+      position
     })
     let second = 1
     const timers = setInterval(() => {
@@ -55,20 +51,20 @@ const helper = {
     storage.setSession(`DIC_${type}`, data)
   },
   saveRemainTime() {
-    let phone = helper.getUserInfo('phone', '')
+    const phone = helper.getUserInfo('phone', '')
     storage.setSession(`${phone}-remaintime`, new Date().getTime())
   },
   getRemainTime() {
-    let phone = helper.getUserInfo('phone', '')
+    const phone = helper.getUserInfo('phone', '')
     return storage.getSession(`${phone}-remaintime`, new Date().getTime())
   },
   removeRemainTime() {
-    let phone = helper.getUserInfo('phone', '')
+    const phone = helper.getUserInfo('phone', '')
     storage.removeSession(`${phone}-remaintime`)
   },
   saveReceiptStatus(wageDetailId, key = 'receiptStautus', value) {
-    let bankWageList = storage.getSession('bankWageList', [])
-    for (let item of bankWageList.values()) {
+    const bankWageList = storage.getSession('bankWageList', [])
+    for (const item of bankWageList.values()) {
       if (item.wageDetailId === wageDetailId) {
         item[key] = value
         storage.setSession('bankWageList', bankWageList)
@@ -89,11 +85,11 @@ const helper = {
     return storage.getSessionObj('shareInfo', infoKey, defaultValue)
   },
   saveBannerList(list = []) {
-    let entId = this.getUserInfo('entId')
+    const entId = this.getUserInfo('entId')
     storage.setSession(`${entId}-bannerList`, list)
   },
   getBannerList(defaultValue = []) {
-    let entId = this.getUserInfo('entId')
+    const entId = this.getUserInfo('entId')
     return storage.getSession(`${entId}-bannerList`, defaultValue)
   },
   clearBannerList() {
@@ -141,15 +137,15 @@ const helper = {
     return storage.getSession('freePassword')
   },
   clearFreePassword(type) {
-    let freePassword = this.getFreePassword()
+    const freePassword = this.getFreePassword()
     if (freePassword && freePassword.type === type) {
       storage.removeSession('freePassword')
     }
   },
   checkFreeLogin() {
     // 免密
-    let freePassword = this.getFreePassword()
-    let now = new Date().getTime()
+    const freePassword = this.getFreePassword()
+    const now = new Date().getTime()
     return !!(freePassword && TimeInstance.add(freePassword.time, 5, 'i') > now)
   },
   saveBalanceStatus(flag) {
@@ -181,16 +177,16 @@ const helper = {
      * apppartner=>渠道:  FXGJ=>放薪管家 YDNSH=>尧都农商 SJZHRB=>汇融银行 NEWUP=>辽宁振兴银行 ZXGZT=>知心工资条 NJCB=>南京银行
      * liquidation=>清算渠道: （银行）HXB=>华夏银行  YDNSH=>尧都农商 CRCBBANK=>长沙农商 SJZHRB=>汇融银行 NEWUP=>辽宁振兴银行 NJCB=>南京银行 NINGXIA=>宁夏银行
      */
-    let { apppartner, liquidation } = this.getUserInfo()
-    let bankType = liquidation || apppartner
+    const { apppartner, liquidation } = this.getUserInfo()
+    const bankType = liquidation || apppartner
     return bankType === 'FXGJ' || bankType === 'HXB'
   },
-  isZRL () {
-    let version = this.getUserInfo('version')
+  isZRL() {
+    const version = this.getUserInfo('version')
     return this.isHxBank && version === 'HR'
   },
-  isHrBank () {
-    let { apppartner, liquidation } = this.getUserInfo()
+  isHrBank() {
+    const { apppartner, liquidation } = this.getUserInfo()
     return apppartner === 'SJZHRB' || liquidation === 'SJZHRB'
   },
   checkYearBillOpen() {
@@ -199,10 +195,10 @@ const helper = {
   saveNoticeInfo(type, entry) {
     storage.setSession('noticeInfo', { type, entry })
   },
-  saveWithdrawDetail (data) {
+  saveWithdrawDetail(data) {
     storage.setSession('withdrawDetail', data)
   },
-  getWithdrawDetail () {
+  getWithdrawDetail() {
     return storage.getSession('withdrawDetail', {})
   },
   getNoticeInfo() {

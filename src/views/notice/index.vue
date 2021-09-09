@@ -1,12 +1,13 @@
 <template>
-  <div class="page notice-index-page" :class="{'news-index-page': entry === 'news'}">
+  <div class="page notice-index-page" :class="{ 'news-index-page': entry === 'news' }">
     <van-tabs v-model="currentTab" sticky @click="changeTab">
       <van-tab v-for="(item, index) in tabList" :key="index" :name="item.value">
-        <template #title>{{item.label}}<span class="notice-count" v-if="item.count">{{item.count}}</span></template>
+        <template #title
+          >{{ item.label }}<span class="notice-count" v-if="item.count">{{ item.count }}</span></template
+        >
         <no-data text="暂无数据" name="news" v-if="data[currentTab].request && data[currentTab].list.length < 1"></no-data>
         <van-pull-refresh v-else v-model="refreshing" @refresh="onRefresh">
-          <van-list v-model="data[currentTab].loading" :finished="data[currentTab].finished"
-            :finished-text="finishedText" @load="getList">
+          <van-list v-model="data[currentTab].loading" :finished="data[currentTab].finished" :finished-text="finishedText" @load="getList">
             <van-swipe-cell v-for="(item, index) in data[currentTab].list" :key="index">
               <components :is="noticeItem" :item="item" @to-detail="updateRead(item)"></components>
               <template #right>
@@ -18,27 +19,27 @@
       </van-tab>
     </van-tabs>
     <div class="oper-wrap" v-if="!noMsg">
-      <div class="oper-item"><img src="../../assets/img/oper-hasred.png" alt="" @click="readAll">全部标记为已读</div>
-      <div class="oper-item red"><img src="../../assets/img/oper-delete.png" alt="" @click="beforeDelete('')">清空全部消息
-      </div>
+      <div class="oper-item"><img src="../../assets/img/oper-hasred.png" alt="" @click="readAll" />全部标记为已读</div>
+      <div class="oper-item red"><img src="../../assets/img/oper-delete.png" alt="" @click="beforeDelete('')" />清空全部消息</div>
     </div>
     <fxgj-mini-program-popup ref="fxgj-mini-program-popup"></fxgj-mini-program-popup>
   </div>
 </template>
 
 <script>
-import wageItem from './wageItem'
-import reviewItem from './reviewItem'
-import newsItem from './newsItem'
-import activityItem from './activityItem'
 import noData from 'components/noData/index'
 import fxgjMiniProgramPopup from 'components/fxgjMiniProgramPopup'
 import sysConfig from 'utils/constant'
 import helper from 'utils/helper'
 import collect from 'utils/collect'
 import { Dialog } from 'vant'
+import activityItem from './activityItem'
+import newsItem from './newsItem'
+import reviewItem from './reviewItem'
+import wageItem from './wageItem'
+
 export default {
-  data () {
+  data() {
     return {
       currentTab: helper.getNoticeInfo().type,
       entry: helper.getNoticeInfo().entry,
@@ -99,18 +100,17 @@ export default {
     }
   },
   computed: {
-    noMsg () {
-      let data = this.data
+    noMsg() {
+      const data = this.data
       if (this.entry === 'notice') {
         return Object.keys(data).every((key) => {
           return data[key].request && !data[key].list.length
         })
-      } else {
-        let news = this.data[5]
-        return news.request && !news.list.length
       }
+      const news = this.data[5]
+      return news.request && !news.list.length
     },
-    noticeItem () {
+    noticeItem() {
       switch (this.currentTab) {
         case 5:
           return 'news-item'
@@ -120,32 +120,34 @@ export default {
           return 'review-item'
         case 8:
           return 'activity-item'
+        default:
+          return 'news-item'
       }
     }
   },
-  created () {
+  created() {
     helper.title(this.entry === 'notice' ? '消息通知' : '最新资讯')
     this.getUnReadCount()
   },
   methods: {
-    async getUnReadCount () {
+    async getUnReadCount() {
       if (this.entry !== 'notice') return
-      let res = await this.$News.statisticInfo()
-      let data = res.data
+      const res = await this.$News.statisticInfo()
+      const data = res.data
       if (!Array.isArray(data)) return
       this.tabList.forEach((item) => {
-        let info = collect.getItem(data, 'newsType', item.value)
+        const info = collect.getItem(data, 'newsType', item.value)
         if (info) {
           item.count = info.unReadCnt
         }
       })
     },
-    async getList () {
-      let currentTab = this.currentTab
+    async getList() {
+      const currentTab = this.currentTab
       let page = this.data[currentTab].page
       this.data[currentTab].loading = true
-      let res = await this.$News.list(page, currentTab)
-      let { content = [], last = false } = res.data
+      const res = await this.$News.list(page, currentTab)
+      const { content = [], last = false } = res.data
       Object.assign(this.data[currentTab], {
         list: this.refreshing ? content : this.data[currentTab].list.concat(content),
         finished: last,
@@ -155,7 +157,7 @@ export default {
       })
       this.refreshing = false
     },
-    onRefresh () {
+    onRefresh() {
       Object.assign(this.data[this.currentTab], {
         page: 1,
         loading: false,
@@ -165,28 +167,32 @@ export default {
       this.refreshing = true
       this.getList()
     },
-    changeTab (name) {
+    changeTab(name) {
       helper.saveNoticeInfo(name, this.entry)
     },
-    beforeDelete (newsId = '') {
-      let msg = newsId ? '确定要删除此条消息吗' : '确定要清空全部消息吗'
-      let confirmBtnText = newsId ? '确定删除' : '确定清空'
+    beforeDelete(newsId = '') {
+      const msg = newsId ? '确定要删除此条消息吗' : '确定要清空全部消息吗'
+      const confirmBtnText = newsId ? '确定删除' : '确定清空'
       Dialog.confirm({
         title: '系统提醒',
         message: msg,
         confirmButtonText: confirmBtnText,
         cancelButtonText: '我再想想'
-      }).then(() => {
-        this.deleteNotice(newsId)
-      }).catch(() => { })
+      })
+        .then(() => {
+          this.deleteNotice(newsId)
+        })
+        .catch(() => {})
     },
-    async deleteNotice (newsId = '') {
+    async deleteNotice(newsId = '') {
       await this.$News.operate(1, newsId)
       helper.toast('操作成功')
-      if (newsId) { // 删除单个
+      if (newsId) {
+        // 删除单个
         this.getUnReadCount()
         this.onRefresh()
-      } else { // 删除全部
+      } else {
+        // 删除全部
         this.clearUnReadCount()
         Object.keys(this.data).forEach((key) => {
           this.$set(this.data, Number(key), {
@@ -199,18 +205,22 @@ export default {
         })
       }
     },
-    async readAll () {
+    async readAll() {
       await this.$News.operate(0)
       helper.toast('操作成功')
       this.clearUnReadCount()
-      for (let key in this.data) {
-        this.data[key].list.forEach((item) => { item.readFlag = true })
+      for (const key in this.data) {
+        this.data[key].list.forEach((item) => {
+          item.readFlag = true
+        })
       }
     },
-    clearUnReadCount () {
-      this.tabList.forEach((item) => { item.count = 0 })
+    clearUnReadCount() {
+      this.tabList.forEach((item) => {
+        item.count = 0
+      })
     },
-    async updateRead ({ readFlag, newsId, newsType } = {}) {
+    async updateRead({ readFlag, newsId, newsType } = {}) {
       newsType === 8 && this.$refs['fxgj-mini-program-popup'].open()
       if (readFlag) return
       this.$News.operate(0, newsId)

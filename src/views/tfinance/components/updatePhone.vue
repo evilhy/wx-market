@@ -2,7 +2,7 @@
   <div class="update-phone-wrap">
     <div class="content-wrap">
       <div class="title">请输入新的手机号</div>
-      <input class="input" type="tel" maxlength="11" v-model="currentPhone">
+      <input class="input" type="tel" maxlength="11" v-model="currentPhone" />
       <div class="action-wrap">
         <div class="action-item cancel" @click="cancel">取消</div>
         <div class="action-item sure" @click="sure">确定</div>
@@ -14,32 +14,33 @@
 <script>
 import validate from 'utils/validate'
 import helper from 'utils/helper'
+
 export default {
   props: {
     phone: String
   },
-  data () {
+  data() {
     return {
       currentPhone: ''
     }
   },
   watch: {
-    phone (val) {
+    phone(val) {
       this.currentPhone = val
     }
   },
-  created () {
+  created() {
     this.currentPhone = this.phone
   },
   methods: {
-    sure () {
+    sure() {
       if (!validate.isPhone(this.currentPhone)) {
         helper.toast('请输入正确的手机号')
-        return false
+        return
       }
       this.$emit('sure', this.currentPhone)
     },
-    cancel () {
+    cancel() {
       this.$emit('cancel')
     }
   }

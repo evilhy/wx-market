@@ -9,13 +9,14 @@ class Canvas {
    * @param {*} r
    * @memberof Canvas
    */
-  drawSolidCircle (ctx, color, x, y, r) {
+  drawSolidCircle(ctx, color, x, y, r) {
     ctx.fillStyle = color
     ctx.beginPath()
     ctx.arc(x, y, r, 0, 2 * Math.PI, true)
     ctx.fill()
     ctx.closePath()
   }
+
   /**
    * 画空心圆
    *
@@ -26,13 +27,14 @@ class Canvas {
    * @param {*} r
    * @memberof Canvas
    */
-  drawHollowCircle (ctx, color, x, y, r) {
+  drawHollowCircle(ctx, color, x, y, r) {
     ctx.strokeStyle = color
     ctx.beginPath()
     ctx.arc(x, y, r, 0, 2 * Math.PI, true)
     ctx.stroke()
     ctx.closePath()
   }
+
   /**
    * 画线
    *
@@ -44,7 +46,7 @@ class Canvas {
    * @param {*} y2
    * @memberof Canvas
    */
-  drawLine (ctx, color, x1, y1, x2, y2) {
+  drawLine(ctx, color, x1, y1, x2, y2) {
     ctx.strokeStyle = color
     ctx.beginPath()
     ctx.moveTo(x1, y1)
@@ -52,14 +54,15 @@ class Canvas {
     ctx.stroke()
     ctx.closePath()
   }
+
   /**
    * 清除画布
    *
    * @param {*} canvas
    * @memberof Canvas
    */
-  clearCanvas (canvas) { 
-    let ctx = canvas.getContext('2d')
+  clearCanvas(canvas) {
+    const ctx = canvas.getContext('2d')
     ctx.clearRect(0, 0, canvas.width, canvas.height)
   }
 }

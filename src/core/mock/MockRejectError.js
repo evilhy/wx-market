@@ -2,7 +2,7 @@
  * Created by duy on 2018/8/17 10:28.
  */
 
-import ErrorModel from './ErrorModel';
+import ErrorModel from './ErrorModel'
 
 const errorHttpStatusCode = new Map([
   [400, 'Bad Request'],
@@ -40,19 +40,18 @@ const errorHttpStatusCode = new Map([
   [507, 'Insufficient Storage'],
   [509, 'Bandwidth Limit Exceeded'],
   [510, 'Not Extended'],
-  [600, 'Unparseable Response Headers'],
-]);
+  [600, 'Unparseable Response Headers']
+])
 
 export default class MockRejectError {
-
-  constructor (config, headers, status) {
-    let error = new Error(`Request failed with status code ${status}`);
-    let statusText = errorHttpStatusCode.get(status) || 'Unknown Error';
-    let request = {};
-    let data = new ErrorModel();
-    error.config = config;
-    error.request = request;
-    error.response = {config, headers, status, statusText, request, data};
-    return error;
+  constructor(config, headers, status) {
+    const error = new Error(`Request failed with status code ${status}`)
+    const statusText = errorHttpStatusCode.get(status) || 'Unknown Error'
+    const request = {}
+    const data = new ErrorModel()
+    error.config = config
+    error.request = request
+    error.response = { config, headers, status, statusText, request, data }
+    return error
   }
 }

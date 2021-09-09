@@ -11,13 +11,13 @@ export default {
   isPhone(value) {
     return /^1[0-9]{10}$/.test(value)
   },
-  isCode (value) {
+  isCode(value) {
     return /[0-9]{6}/.test(value)
   },
-  isUrl (value) {
-    return /(^[a-z][a-z\d\+\-\.]*:)?\/\//i.test(value)
+  isUrl(value) {
+    return /(^[a-z][a-z\d+\-.]*:)?\/\//i.test(value)
   },
-  isNumber (value) {
+  isNumber(value) {
     return /^\d+(\.\d+)?$/.test(value)
   }
 }

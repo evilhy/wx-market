@@ -1,4 +1,5 @@
 import wx from 'weixin-js-sdk'
+
 const apiList = ['updateAppMessageShareData', 'updateTimelineShareData']
 export default class Wxapi {
   /**
@@ -8,9 +9,10 @@ export default class Wxapi {
    * @memberof Wxapi
    */
   checkIsWeixin() {
-    let useragent = navigator.userAgent.toLowerCase()
+    const useragent = navigator.userAgent.toLowerCase()
     return !!useragent.match(/micromessenger/i)
   }
+
   /**
    * 判断当前客户端版本是否支持指定JS接口
    *
@@ -28,7 +30,7 @@ export default class Wxapi {
           if (typeof checkResult === 'string') {
             checkResult = JSON.parse(checkResult)
           }
-          let result = jsApiList.every(api => checkResult[api])
+          const result = jsApiList.every((api) => checkResult[api])
           if (result) {
             resolve()
           } else {
@@ -38,6 +40,7 @@ export default class Wxapi {
       })
     })
   }
+
   /**
    * 使用JS-SDK的页面需先注入配置信息
    *
@@ -48,7 +51,7 @@ export default class Wxapi {
   config({ appId, timestamp, nonceStr, signature }) {
     return new Promise((resolve, reject) => {
       wx.config({
-        debug: process.env.NODE_ENV === 'development', // 开启调试模式
+        debug: process.env.VUE_APP_ENV === 'development', // 开启调试模式
         appId, // 必填，公众号的唯一标识
         timestamp, // 必填，生成签名的时间戳
         nonceStr, // 必填，生成签名的随机串
@@ -58,11 +61,12 @@ export default class Wxapi {
       wx.ready(() => {
         resolve()
       })
-      wx.error(res => {
+      wx.error((res) => {
         reject(res)
       })
     })
   }
+
   /**
    * 自定义“分享给朋友”及“分享到QQ”按钮的分享内容
    *
@@ -72,7 +76,7 @@ export default class Wxapi {
    */
   updateAppMessageShareData(options = {}) {
     return new Promise((resolve, reject) => {
-      let defaultOpts = {
+      const defaultOpts = {
         title: '', // 分享标题
         desc: '', // 分享描述
         link: '', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
@@ -87,6 +91,7 @@ export default class Wxapi {
       wx.updateAppMessageShareData({ ...defaultOpts, ...options })
     })
   }
+
   /**
    * 自定义“分享到朋友圈”及“分享到QQ空间”按钮的分享内容
    *
@@ -96,7 +101,7 @@ export default class Wxapi {
    */
   updateTimelineShareData(options = {}) {
     return new Promise((resolve, reject) => {
-      let defaultOpts = {
+      const defaultOpts = {
         title: '', // 分享标题
         link: '', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
         imgUrl: '', // 分享图标
@@ -110,6 +115,7 @@ export default class Wxapi {
       wx.updateTimelineShareData({ ...defaultOpts, ...options })
     })
   }
+
   isMiniProgram() {
     return new Promise((resolve, reject) => {
       wx.miniProgram.getEnv(({ miniprogram = false }) => {
@@ -117,6 +123,7 @@ export default class Wxapi {
       })
     })
   }
+
   /**
    * 调用静默授权和非静默授权
    * appid appid
@@ -128,17 +135,16 @@ export default class Wxapi {
   getAuth({ appId, redirectUrl, type = 'snsapi_userinfo' }) {
     return new Promise((resolve, reject) => {
       if (this.checkIsWeixin()) {
-        window.location.replace(
-          this.getWxUrl(appId, redirectUrl, (type = 'snsapi_userinfo'))
-        )
+        window.location.replace(this.getWxUrl(appId, redirectUrl, (type = 'snsapi_userinfo')))
         resolve()
       } else {
-        reject('非微信渠道')
+        reject(new Error('非微信渠道'))
       }
     })
   }
+
   getWxUrl(appId, redirectUrl, type = 'snsapi_userinfo') {
-    let encodeRedirectUrl = window.encodeURIComponent(redirectUrl)
+    const encodeRedirectUrl = window.encodeURIComponent(redirectUrl)
     return `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${appId}&redirect_uri=${encodeRedirectUrl}&response_type=code&scope=${type}&state=STATE&connect_redirect=1#wechat_redirect`
   }
 }

@@ -4,9 +4,9 @@
       <div class="big-title">身份绑定</div>
       <div class="tip">发现您在多个企业任职，请选择任意一项进行验证。</div>
       <div class="phone-list">
-        <div @click="choosePhone(employee, index)" class="phone-item" :class="{ active:  selectedIndex === index }" v-for="(employee, index) in employeeList" :key="index">
-          <span class="group">{{employee.entName}}</span>
-          <span class="phone" v-if="employee.phoneStar">{{employee.phoneStar}}</span>
+        <div @click="choosePhone(employee, index)" class="phone-item" :class="{ active: selectedIndex === index }" v-for="(employee, index) in employeeList" :key="index">
+          <span class="group">{{ employee.entName }}</span>
+          <span class="phone" v-if="employee.phoneStar">{{ employee.phoneStar }}</span>
           <span class="no-phone" v-else>无手机号</span>
         </div>
       </div>
@@ -15,23 +15,20 @@
 </template>
 
 <script>
-import publicLogo from 'components/publicLogo'
 import storage from 'utils/storage'
 import helper from 'utils/helper'
 
 export default {
-  data () {
+  data() {
     return {
       employeeList: storage.getSession('employeeList', []),
       selectedIndex: -1
     }
   },
-  created () {
-  },
-  mounted () {
-  },
+  created() {},
+  mounted() {},
   methods: {
-    choosePhone (item, index) {
+    choosePhone(item, index) {
       this.selectedIndex = index
       helper.saveUserInfo(item)
       if (item.phone) {
@@ -41,8 +38,6 @@ export default {
       }
     }
   },
-  components: {
-    publicLogo
-  }
+  components: {}
 }
 </script>

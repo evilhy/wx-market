@@ -76,17 +76,6 @@ button {
   text-align: right;
 }
 
-@each $num in 5,10,15,20,25,30 {
-  @each $direction in top,bottom,left,right {
-    .m-#{$direction}-#{$num}{
-      margin-#{$direction}: #{$num * 2}px;
-    }
-    .p-#{$direction}-#{$num}{
-      margin-#{$direction}: #{$num * 2}px;
-    }
-  }
-}
-
 .input {
   font-size: $fontsize-default;
   padding: 14px 20px;

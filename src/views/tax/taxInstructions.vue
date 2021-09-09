@@ -1,13 +1,13 @@
 <template>
   <div class="instructions-page">
-    <img v-for="(img,index) in imageList" :key="index" v-lazy="img" >
+    <img v-for="(img, index) in imageList" :key="index" v-lazy="img" />
   </div>
 </template>
 
 <script>
 export default {
   name: 'child-explain',
-  data () {
+  data() {
     return {
       imageList: [
         require('../../assets/img/tax/instructions-1.png'),
@@ -18,7 +18,7 @@ export default {
       ]
     }
   },
-  created () { },
+  created() {},
   methods: {}
 }
 </script>
