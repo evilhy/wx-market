@@ -18,6 +18,12 @@
   }
 }
 
+@for $i from 1 through 10{
+  [br#{$i}]{
+    border-radius: #{$i * 2}px;
+  }
+}
+
 // 间距
 $direction: (l left, r right, t top, b bottom);
 @for $i from 1 through 30 {

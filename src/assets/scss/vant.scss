@@ -6,6 +6,19 @@
   margin: 0;
 }
 .van-picker {
+  &__toolbar{
+    height: 80px;
+  }
+  &__cancel,&__confirm{
+    font-size: 26px;
+    padding: 0 28px;
+  }
+  &-column{
+    font-size: 30px;
+    &__item{
+      padding: 0 6px;
+    }
+  }
   button {
     width: auto;
   }
@@ -45,9 +58,21 @@
 // 单元格
 .van-cell{
   font-size: 26px;
-  line-height: 48px;
-  padding: 20px 30px;
+  line-height: 46px;
+  padding: 18px 26px;
   align-items: center;
+  &[star]{
+    .van-cell__title{
+      position: relative;
+      &::before{
+        content: '*';
+        color: red;
+        position: absolute;
+        left: -8px;
+        top: 4px;
+      }
+    }
+  }
   .van-cell__label{
     margin-top: 8px;
     font-size: 24px;

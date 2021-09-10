@@ -38,7 +38,8 @@ import {
   Progress,
   Dialog,
   Tag,
-  Uploader
+  Uploader,
+  Area
 } from 'vant'
 import VueClipboard from 'vue-clipboard2'
 import vueEsign from 'vue-esign'
@@ -97,6 +98,7 @@ Vue.use(Dialog)
 Vue.use(vueEsign)
 Vue.use(Tag)
 Vue.use(Uploader)
+Vue.use(Area)
 
 Vue.use(myPlugin)
 Vue.use(VueClipboard)

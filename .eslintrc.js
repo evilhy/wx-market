@@ -43,7 +43,10 @@ module.exports = {
     'max-classes-per-file': 'off',
     'vue/no-use-v-if-with-v-for': 'off',
     'no-array-constructor': 'off',
-    'func-names': 'off'
+    'func-names': 'off',
+    'import/newline-after-import': 'off',
+    'no-shadow': 'off',
+    'no-new': 'off'
   },
   settings: {
     'import/resolver': {

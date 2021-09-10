@@ -5,7 +5,7 @@
       <van-field v-model.trim="info.receiveName" placeholder="请输入收货人姓名" label="收货人" />
       <van-field v-model.trim="info.receivePhone" maxlength="11" placeholder="请输入收货人手机号" label="手机号" />
       <van-cell title="所在地区" is-link @click="openAreaSelect">
-        <template slot="label">
+        <template #label>
           <div class="area-wrap">
             <span class="area-desc" v-if="info.province">{{ info.province }}</span>
             <span v-if="info.city">{{ info.city }}</span>
@@ -14,7 +14,7 @@
           </div>
         </template>
       </van-cell>
-      <van-field v-model.trim="info.address" maxlength="50" placeholder="请输入详细地址" type="textarea" />
+      <van-field v-model.trim="info.address" maxlength="100" placeholder="请输入详细地址" type="textarea" />
       <van-cell title="设为默认地址">
         <van-switch v-model="isDefault" size="22px" active-color="#0ba10b" />
       </van-cell>
@@ -126,14 +126,14 @@ export default {
       return true
     },
     selectSure({ province = '', provinceCode = '', city = '', cityCode = '', county = '', countyCode = '', town = '', townCode = '' }) {
-      this.info.province = province
-      this.info.provinceCode = provinceCode
-      this.info.city = city
-      this.info.cityCode = cityCode
-      this.info.county = county
-      this.info.countyCode = countyCode
-      this.info.town = town
-      this.info.townCode = townCode
+      this.$set(this.info, 'province', province)
+      this.$set(this.info, 'provinceCode', provinceCode)
+      this.$set(this.info, 'city', city)
+      this.$set(this.info, 'cityCode', cityCode)
+      this.$set(this.info, 'county', county)
+      this.$set(this.info, 'countyCode', countyCode)
+      this.$set(this.info, 'town', town)
+      this.$set(this.info, 'townCode', townCode)
     },
     async removeAddress() {
       await this.$WelfareCust.addressDelete(this.info.addressId)

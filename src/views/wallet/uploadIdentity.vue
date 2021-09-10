@@ -1,99 +1,113 @@
 <template>
-  <div class="page upload-identity-page">
-    <h2 class="title">请补充个人身份信息</h2>
-    <div class="line"></div>
-    <div class="info-box">
-      <p class="row">
-        <span class="label">姓名</span>
-        <span class="value">{{ info.userName }}</span>
-      </p>
-      <p class="row">
-        <span class="label">证件类型</span>
-        <span class="value">{{ info.idTypeVal }}</span>
-      </p>
-      <p class="row">
-        <span class="label">证件号</span>
-        <span class="value">{{ info.idNumber }}</span>
-      </p>
-      <p class="row">
-        <span class="label">手机号</span>
-        <span class="value">{{ info.phone }}</span>
-      </p>
+  <div class="page">
+    <van-cell-group>
+      <van-cell title="姓名" :value="info.userName" readonly />
+      <van-cell title="证件类型" :value="info.idTypeVal" readonly />
+      <van-cell title="证件号" :value="info.idNumber" readonly />
+      <van-cell title="手机号" :value="info.phone" readonly />
+      <van-cell star title="身份证人像面图片">
+        <template #label>
+          <van-uploader
+            v-model="frontFileList"
+            :max-size="imgMaxSize"
+            :disabled="fieldDisabled"
+            :deletable="!fieldDisabled"
+            @oversize="oversize"
+            :before-read="beforeRead"
+            :after-read="
+              (file) => {
+                afterRead(file, 'front')
+              }
+            "
+            @delete="
+              (file) => {
+                deleteFile(file, 'front')
+              }
+            "
+          />
+          <p class="gray-text">图片大小请勿超过5M</p>
+        </template>
+      </van-cell>
+      <van-cell star title="身份证国徽面图片">
+        <template #label>
+          <van-uploader
+            v-model="negativeFileList"
+            :max-size="imgMaxSize"
+            :disabled="fieldDisabled"
+            :deletable="!fieldDisabled"
+            @oversize="oversize"
+            :before-read="beforeRead"
+            :after-read="
+              (file) => {
+                afterRead(file, 'negative')
+              }
+            "
+            @delete="
+              (file) => {
+                deleteFile(file, 'negative')
+              }
+            "
+          />
+          <p class="gray-text">图片大小请勿超过5M</p>
+        </template>
+      </van-cell>
+      <van-cell title="所在地区" is-link @click="openAreaPopup">
+        <template #icon>
+          <span class="area-star star">*</span>
+        </template>
+        <template #label>
+          <div class="area-wrap" v-if="info.provinceCode">
+            <span class="area-desc">{{ info.provinceName }}</span>
+            <span>{{ info.cityName }}</span>
+            <span>{{ info.areaName }}</span>
+          </div>
+        </template>
+      </van-cell>
+      <van-field v-model.trim="info.address" :disabled="fieldDisabled" maxlength="100" placeholder="请输入详细地址" type="textarea" show-word-limit />
+    </van-cell-group>
+    <div pa10>
+      <van-button br4 type="primary" :disabled="btnDisabled" @click="attest"> {{ btnText }}</van-button>
     </div>
-    <div class="line"></div>
-    <div class="info-box">
-      <p mb10 mt5><span class="star">*</span>请上传身份证人像面图片</p>
-      <van-uploader
-        v-model="frontFileList"
-        :max-size="5 * 1024 * 1024"
-        :disabled="info.attestStatus === 1 || info.attestStatus === 3"
-        :deletable="info.attestStatus !== 1 && info.attestStatus !== 3"
-        @oversize="oversize"
-        :before-read="beforeRead"
-        :after-read="
-          (file) => {
-            afterRead(file, 'front')
-          }
-        "
-        @delete="
-          (file) => {
-            deleteFile(file, 'front')
-          }
-        "
-      />
-      <p class="gray-text">图片大小请勿超过5M</p>
-    </div>
-    <div class="info-box">
-      <p mb10><span class="star">*</span>请上传身份证国徽面图片</p>
-      <van-uploader
-        v-model="negativeFileList"
-        :max-size="5 * 1024 * 1024"
-        :disabled="info.attestStatus === 1 || info.attestStatus === 3"
-        :deletable="info.attestStatus !== 1 && info.attestStatus !== 3"
-        @oversize="oversize"
-        :before-read="beforeRead"
-        :after-read="
-          (file) => {
-            afterRead(file, 'negative')
-          }
-        "
-        @delete="
-          (file) => {
-            deleteFile(file, 'negative')
-          }
-        "
-      />
-      <p class="gray-text">图片大小请勿超过5M</p>
-    </div>
-    <div class="info-box" mt10>
-      <van-button type="primary" block :disabled="btnDisabled" @click="attest"> {{ btnText }}</van-button>
-    </div>
+    <area-popup ref="area-popup" @select="changeArea"></area-popup>
   </div>
 </template>
 
 <script>
-import helper from 'utils/helper'
 import decryptInfo from 'utils/decryptInfo'
+import helper from 'utils/helper'
 import Compressor from 'compressorjs'
-
+import areaPopup from 'components/areaPopup'
 export default {
   name: '',
-  components: {},
+  components: { areaPopup },
   data() {
     return {
       withdrawalLedgerId: this.$route.params.withdrawalLedgerId,
-      info: {},
+      info: {
+        provinceCode: '',
+        provinceName: '',
+        cityCode: '',
+        cityName: '',
+        areaCode: '',
+        areaName: '',
+        address: ''
+      },
       frontFileList: [],
       negativeFileList: [],
       frontUrl: '',
       negativeUrl: '',
+      imgMaxSize: 5 * 1024 * 1024,
       loading: false
     }
   },
   computed: {
-    btnDisabled() {
+    fieldDisabled() {
       let { attestStatus } = this.info
-      return this.loading || attestStatus === 1 || attestStatus === 3 || !this.frontUrl || !this.negativeUrl
+      return this.loading || attestStatus === 1 || attestStatus === 3
+    },
+    btnDisabled() {
+      let { provinceCode, address } = this.info
+      return this.fieldDisabled || !this.frontUrl || !this.negativeUrl || !provinceCode || !address
     },
     btnText() {
       // 0：未认证、1：认证中、2：认证失败、3：认证成功
@@ -105,12 +119,11 @@ export default {
         case 3:
           return '已认证'
         default:
-          return '去认证'
+          return '提交认证信息'
       }
     }
   },
   created() {
-    helper.title('身份认证')
     this.getSignDetail()
   },
   mounted() {},
@@ -130,10 +143,15 @@ export default {
       helper.toast('照片不能超过5M')
     },
     beforeRead(file) {
-      return new Promise((resolve) => {
+      return new Promise((resolve, reject) => {
         // compressorjs 默认开启 checkOrientation 选项
         // 会将图片修正为正确方向
         // eslint-disable-next-line
+        
+        if (!['image/jpeg', 'image/jpg', 'image/png'].includes(file.type)) {
+          helper.toast('请上传jpg或png格式的图片')
+          reject()
+        }
         new Compressor(file, {
           maxWidth: 750,
           quality: 0.5,
@@ -169,12 +187,25 @@ export default {
     async attest() {
       try {
         this.loading = true
+        console.log({ ...this.info, idCardFront: this.frontUrl, idCardNegative: this.negativeUrl })
         await this.$Tax.attest({ ...this.info, idCardFront: this.frontUrl, idCardNegative: this.negativeUrl })
         helper.toast('认证信息已提交')
         this.$router.go(-1)
       } catch (e) {
         this.loading = false
       }
+    },
+    openAreaPopup() {
+      this.$refs['area-popup'].open(this.info.areaCode)
+    },
+    changeArea(list) {
+      let [province = {}, city = {}, area = {}] = list
+      this.$set(this.info, 'provinceCode', province.code)
+      this.$set(this.info, 'provinceName', province.name)
+      this.$set(this.info, 'cityCode', city.code)
+      this.$set(this.info, 'cityName', city.name)
+      this.$set(this.info, 'areaCode', area.code)
+      this.$set(this.info, 'areaName', area.name)
     }
   }
 }

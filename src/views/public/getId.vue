@@ -1,6 +1,7 @@
 <template>
   <div class="get-id-page">
     <welcome-circle ref="welcome-circle"></welcome-circle>
+    <img class="ipv6" src="../../assets/img/icon-ipv6.png" alt="" />
   </div>
 </template>
 
