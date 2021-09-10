@@ -19,7 +19,7 @@ class EncryptConfig {
 
     for (let [sysKey, sysValue] of Object.entries(sysConfig)) {
       if (typeOf(sysValue) === 'object') {
-        let env = process.env.NODE_ENV
+        let env = process.env.VUE_APP_ENV
         let baseUrl = sysValue[env]
         if (baseUrl && url.isUrl(baseUrl) && requestUrl.includes(baseUrl)) {
           let resultKey = sysKey + key

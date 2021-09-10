@@ -187,7 +187,6 @@ export default {
     async attest() {
       try {
         this.loading = true
-        console.log({ ...this.info, idCardFront: this.frontUrl, idCardNegative: this.negativeUrl })
         await this.$Tax.attest({ ...this.info, idCardFront: this.frontUrl, idCardNegative: this.negativeUrl })
         helper.toast('认证信息已提交')
         this.$router.go(-1)
