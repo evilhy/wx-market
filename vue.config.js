@@ -68,11 +68,11 @@ module.exports = {
         args[0].cdn = cdn.html
         return args
       })
-      config.plugin('webpack-report').use(BundleAnalyzerPlugin, [
+      /* config.plugin('webpack-report').use(BundleAnalyzerPlugin, [
         {
           analyzerMode: 'static'
         }
-      ])
+      ]) */
     }
   },
   configureWebpack: (config) => {
