@@ -1,5 +1,5 @@
 const CompressionWebpackPlugin = require('compression-webpack-plugin')
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const path = require('path')
 const packageConfig = require('./package.json')
 
