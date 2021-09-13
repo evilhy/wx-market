@@ -1,15 +1,15 @@
 import Vue from 'vue'
-import Router from 'vue-router'
+import VueRouter from 'vue-router'
 import getId from '../views/public/getId'
 import token from '../views/public/token'
 import home from '../views/payroll/home' // 避免首页跳转过慢
 import loginByPwd from '../views/pwd/loginByPwd'
 
-const originalPush = Router.prototype.push
-Router.prototype.push = function push(location) {
+const originalPush = VueRouter.prototype.push
+VueRouter.prototype.push = function push(location) {
   return originalPush.call(this, location).catch((err) => err)
 }
-Vue.use(Router)
+Vue.use(VueRouter)
 
 const routes = [
   {
@@ -500,7 +500,7 @@ const routes = [
   }
 ]
 
-const router = new Router({
+const router = new VueRouter({
   routes
 })
 

@@ -63,7 +63,7 @@
           </div>
         </template>
       </van-cell>
-      <van-field v-model.trim="info.address" :disabled="fieldDisabled" maxlength="100" placeholder="请输入详细地址" type="textarea" show-word-limit />
+      <van-field v-model.trim="info.address" :disabled="fieldDisabled" maxlength="50" placeholder="请输入详细地址" type="textarea" show-word-limit />
     </van-cell-group>
     <div pa10>
       <van-button br4 type="primary" :disabled="btnDisabled" @click="attest"> {{ btnText }}</van-button>

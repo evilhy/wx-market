@@ -95,13 +95,14 @@ Vue.use(Form)
 Vue.use(Circle)
 Vue.use(Progress)
 Vue.use(Dialog)
-Vue.use(vueEsign)
 Vue.use(Tag)
 Vue.use(Uploader)
 Vue.use(Area)
 
-Vue.use(myPlugin)
+Vue.use(vueEsign)
 Vue.use(VueClipboard)
+
+Vue.use(myPlugin)
 
 /* eslint-disable no-new */
 new Vue({

@@ -309,8 +309,15 @@
 }
 
 //
-.van-field__clear{
-  font-size: 30px;
+.van-field{
+  &__clear{
+    font-size: 30px;
+  }
+  &__word-limit{
+    margin-top: 6px;
+    font-size: 22px;
+    line-height: 28px;
+  }
 }
 
 // 步骤
