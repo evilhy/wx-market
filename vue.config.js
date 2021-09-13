@@ -1,5 +1,5 @@
 const CompressionWebpackPlugin = require('compression-webpack-plugin')
-// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const path = require('path')
 const packageConfig = require('./package.json')
 
@@ -68,11 +68,14 @@ module.exports = {
         args[0].cdn = cdn.html
         return args
       })
-      /* config.plugin('webpack-report').use(BundleAnalyzerPlugin, [
-        {
-          analyzerMode: 'static'
-        }
-      ]) */
+      if (process.env.VUE_APP_ANALYZER === 'yes') {
+        console.log()
+        config.plugin('webpack-report').use(BundleAnalyzerPlugin, [
+          {
+            analyzerMode: 'static'
+          }
+        ])
+      }
     }
   },
   configureWebpack: (config) => {
