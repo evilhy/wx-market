@@ -69,7 +69,6 @@ module.exports = {
         return args
       })
       if (process.env.VUE_APP_ANALYZER === 'yes') {
-        console.log()
         config.plugin('webpack-report').use(BundleAnalyzerPlugin, [
           {
             analyzerMode: 'static'
