@@ -1,5 +1,5 @@
-import Http from './base'
 import sysConfig from 'utils/constant'
+import Http from './base'
 
 const moduleName = 'welfareGoods'
 
@@ -11,15 +11,16 @@ class WelfareGoods {
    * @returns
    * @memberof WelfareGoods
    */
-  goodsList (activityId, page) {
-    let http = new Http()
-    http.baseURL = sysConfig.wisalesBaseUrl[process.env.NODE_ENV]
+  goodsList(activityId, page) {
+    const http = new Http()
+    http.baseURL = sysConfig.wisalesBaseUrl[process.env.VUE_APP_ENV]
     http.path = `/${moduleName}/list`
     http.headers = { 'page-num': page, limit: 20 }
     http.query = { activityId, pickFlag: true }
     http.loading = false
     return http.get()
   }
+
   /**
    * 商品详情
    *
@@ -28,9 +29,9 @@ class WelfareGoods {
    * @returns
    * @memberof WelfareGoods
    */
-  goodsDetail (activityId, goodsInfoId) { 
-    let http = new Http()
-    http.baseURL = sysConfig.wisalesBaseUrl[process.env.NODE_ENV]
+  goodsDetail(activityId, goodsInfoId) {
+    const http = new Http()
+    http.baseURL = sysConfig.wisalesBaseUrl[process.env.VUE_APP_ENV]
     http.path = `/${moduleName}/detail`
     http.query = { activityId, goodsInfoId }
     return http.get()

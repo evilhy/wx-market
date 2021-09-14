@@ -10,8 +10,8 @@ export default {
   methods: {
     async wxCustomShare({ link = window.location.href, title, desc, imgUrl }) {
       // if (!title || !desc || !imgUrl) throw new Error('请设置微信分享的标题title、描述desc和图片imgUrl')
-      let res = await this.$Weixin.getJsapiSignature()
-      let { appid, timestamp, noncestr, signature } = res.data
+      const res = await this.$Weixin.getJsapiSignature()
+      const { appid, timestamp, noncestr, signature } = res.data
       try {
         await wxapi.checkJsApi()
         try {

@@ -1,6 +1,9 @@
 <template>
   <van-popup v-model="visible" :overlay="true" class="explain-popup">
-    <div class="header"><span class="title">{{titleInfo[type]}}</span><img class="close" src="../../assets/img/tax/icon-close.png" alt="" @click="visible=false"></div>
+    <div class="header">
+      <span class="title">{{ titleInfo[type] }}</span
+      ><img class="close" src="../../assets/img/tax/icon-close.png" alt="" @click="visible = false" />
+    </div>
     <component :is="`${type}Explain`" v-if="type"></component>
   </van-popup>
 </template>
@@ -12,18 +15,19 @@ import houseLoanExplain from './houseLoan-explain'
 import rentExplain from './rent-explain'
 import parentExplain from './parent-explain'
 import illnessExplain from './illness-explain'
+
 export default {
   name: 'explain-popup',
   props: {
     type: String
   },
-  data () {
+  data() {
     return {
       visible: false
     }
   },
   computed: {
-    titleInfo () {
+    titleInfo() {
       return {
         normal: '输入说明',
         child: '子女教育',
@@ -36,7 +40,7 @@ export default {
     }
   },
   methods: {
-    show () {
+    show() {
       this.visible = true
     }
   },

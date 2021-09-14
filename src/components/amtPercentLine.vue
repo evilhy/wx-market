@@ -21,16 +21,15 @@ export default {
       default: ''
     }
   },
-  data () {
-    return {
-    }
+  data() {
+    return {}
   },
   computed: {
-    realAmtPercent () {
-      return (this.real / this.total) * 100 + '%'
+    realAmtPercent() {
+      return `${(this.real / this.total) * 100}%`
     },
-    subAmtPercent () {
-      return (this.sub / this.total) * 100 + '%'
+    subAmtPercent() {
+      return `${(this.sub / this.total) * 100}%`
     }
   }
 }

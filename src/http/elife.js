@@ -1,7 +1,8 @@
-import Http from './base'
 import helper from 'utils/helper'
 import sysConfig from 'utils/constant'
 import crypto from 'utils/crypto'
+import Http from './base'
+
 const moduleName = 'elife'
 class Elife {
   /**
@@ -9,41 +10,35 @@ class Elife {
    * @param {String} code 用户微信code
    */
   getUserInfo(code) {
-    let http = new Http()
+    const http = new Http()
     http.path = `/${moduleName}`
     http.query = { code }
     return http.get()
   }
+
   /**
    * 参与喜闻乐荐活动
    * @param {String} name 参与者姓名
    * @param {*} phone 参与者手机号
    */
   joinActivity(name, phone) {
-    let jsessionId = helper.getUserInfo('jsessionId', '')
-    let http = new Http()
+    const jsessionId = helper.getUserInfo('jsessionId', '')
+    const http = new Http()
     http.path = `/${moduleName}`
     http.body = { name, phone, jsessionId }
     return http.post()
   }
+
   /**
    * 喜闻乐荐--智慧社区接口
    * @param {*} param0
    */
-  postElife({
-    name = '',
-    phone = '',
-    managerName = '',
-    mobile = '',
-    branchOrgNo = '',
-    branchOrgName = '',
-    officer = ''
-  }) {
-    let http = new Http()
-    let appKey = 'testappkey'
-    let timestamp = new Date().getTime().toString()
-    let sign = crypto.MD5(appKey + timestamp.toString()).toUpperCase()
-    http.baseURL = sysConfig.elifeBaseUrl[process.env.NODE_ENV]
+  postElife({ name = '', phone = '', managerName = '', mobile = '', branchOrgNo = '', branchOrgName = '', officer = '' }) {
+    const http = new Http()
+    const appKey = 'testappkey'
+    const timestamp = new Date().getTime().toString()
+    const sign = crypto.MD5(appKey + timestamp.toString()).toUpperCase()
+    http.baseURL = sysConfig.elifeBaseUrl[process.env.VUE_APP_ENV]
     http.path = '/plantform710001.json'
     http.body = {
       appKey,
@@ -59,45 +54,40 @@ class Elife {
     }
     return http.post()
   }
+
   /**
    * 根据code获取用户信息(薪有所属，畅想福利)
    * @param {String} code 用户微信code
    */
-  xuser (code) {
-    let http = new Http()
+  xuser(code) {
+    const http = new Http()
     http.path = `/${moduleName}/xuser`
     http.query = { code }
     return http.get()
   }
+
   /**
    * 参与薪有所属活动
-   * @param {Object} param0 
+   * @param {Object} param0
    */
-  xjoin (idNumber = '', phone = '', code = '', codeId = '') {
-    let jsessionId = helper.getUserInfo('jsessionId', '')
-    let http = new Http()
+  xjoin(idNumber = '', phone = '', code = '', codeId = '') {
+    const jsessionId = helper.getUserInfo('jsessionId', '')
+    const http = new Http()
     http.path = `/${moduleName}/xjoin`
     http.body = { idNumber, phone, code, codeId, jsessionId }
     return http.post()
   }
+
   /**
    * 心有所属--智慧社区接口
    * @param {*} param0
    */
-  postElifeX({
-    name = '',
-    phone = '',
-    managerName = '',
-    mobile = '',
-    branchOrgNo = '',
-    branchOrgName = '',
-    officer = ''
-  }) {
-    let http = new Http()
-    let appKey = 'testappkey'
-    let timestamp = new Date().getTime().toString()
-    let sign = crypto.MD5(appKey + timestamp.toString()).toUpperCase()
-    http.baseURL = sysConfig.elifeBaseUrl[process.env.NODE_ENV]
+  postElifeX({ name = '', phone = '', managerName = '', mobile = '', branchOrgNo = '', branchOrgName = '', officer = '' }) {
+    const http = new Http()
+    const appKey = 'testappkey'
+    const timestamp = new Date().getTime().toString()
+    const sign = crypto.MD5(appKey + timestamp.toString()).toUpperCase()
+    http.baseURL = sysConfig.elifeBaseUrl[process.env.VUE_APP_ENV]
     http.path = '/plantform710002.json'
     http.body = {
       appKey,

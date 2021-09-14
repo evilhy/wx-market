@@ -1,13 +1,12 @@
 <template>
   <div class="notice-item">
     <div class="header">
-      <div class="type"><img src="../../assets/img/icon-notice-003.png" alt=""><span class="dot red"
-          v-if="!item.readFlag"></span></div>
-      <span class="time">{{item.crtDateTime | date}}</span>
+      <div class="type"><img src="../../assets/img/icon-notice-003.png" alt="" /><span class="dot red" v-if="!item.readFlag"></span></div>
+      <span class="time">{{ item.crtDateTime | date }}</span>
     </div>
-    <div class="content" v-html="item.newsContent">
-    </div>
-    <div class="footer" @click="enterPayroll">查看资金详情
+    <div class="content" v-html="item.newsContent"></div>
+    <div class="footer" @click="enterPayroll">
+      查看资金详情
       <van-icon name="arrow" />
     </div>
   </div>
@@ -15,31 +14,35 @@
 
 <script>
 import helper from 'utils/helper'
+
 export default {
   props: {
     item: {
       type: Object,
-      default () {
+      default() {
         return {}
       }
     }
   },
-  data () {
+  data() {
     return {}
   },
-  created () { },
+  created() {},
   methods: {
-    enterPayroll () {
-      if (helper.getUserInfo('ifPwd', 0)) { // 有密码
-        let { detailId = '', groupId = '' } = this.item
+    enterPayroll() {
+      if (helper.getUserInfo('ifPwd', 0)) {
+        // 有密码
+        const { detailId = '', groupId = '' } = this.item
         helper.saveUserInfo({ groupId })
-        if (helper.checkFreeLogin()) { // 近期输入过密码
+        if (helper.checkFreeLogin()) {
+          // 近期输入过密码
           this.$router.push({ name: 'wageIndex', params: { wageSheetId: detailId } })
         } else {
           this.$router.push({ name: 'loginByPwd', query: { nextPage: 'wageIndex', wageSheetId: detailId } })
         }
         this.$emit('to-detail')
-      } else { // 设置查询密码
+      } else {
+        // 设置查询密码
         this.$router.push({ name: 'setQueryCode' })
       }
     }

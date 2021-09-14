@@ -4,7 +4,7 @@ import { typeOf } from 'utils/assist'
 
 const getConfigData = Symbol('getConfigData')
 
-class EncryptConfig { 
+class EncryptConfig {
   /**
    * 根据模块获取不同的配置数据
    *
@@ -13,13 +13,13 @@ class EncryptConfig {
    * @returns
    * @memberof EncryptConfig
    */
-  [getConfigData] (requestUrl, key) {
+  [getConfigData](requestUrl, key) {
     if (typeOf(requestUrl) !== 'string' || !url.isUrl(requestUrl)) throw new Error('请传入请求的url')
     if (!key || typeOf(key) !== 'string') throw new Error('请传入获取的key')
 
     for (let [sysKey, sysValue] of Object.entries(sysConfig)) {
       if (typeOf(sysValue) === 'object') {
-        let env = process.env.NODE_ENV
+        let env = process.env.VUE_APP_ENV
         let baseUrl = sysValue[env]
         if (baseUrl && url.isUrl(baseUrl) && requestUrl.includes(baseUrl)) {
           let resultKey = sysKey + key
@@ -32,6 +32,7 @@ class EncryptConfig {
     }
     return ''
   }
+
   /**
    * 获取公钥
    *
@@ -39,9 +40,10 @@ class EncryptConfig {
    * @returns
    * @memberof EncryptConfig
    */
-  getPublicKey (requestUrl) {
+  getPublicKey(requestUrl) {
     return this[getConfigData](requestUrl, 'PublicKey')
   }
+
   /**
    * 获取签名salt
    *
@@ -49,9 +51,10 @@ class EncryptConfig {
    * @returns
    * @memberof EncryptConfig
    */
-  getSignSalt (requestUrl) {
+  getSignSalt(requestUrl) {
     return this[getConfigData](requestUrl, 'SignSalt')
   }
+
   /**
    * 获取私钥
    *
@@ -59,7 +62,7 @@ class EncryptConfig {
    * @returns
    * @memberof EncryptConfig
    */
-  getPrivateKey (requestUrl) {
+  getPrivateKey(requestUrl) {
     return this[getConfigData](requestUrl, 'PrivateKey')
   }
 }

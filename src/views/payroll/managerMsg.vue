@@ -6,11 +6,12 @@
 
 <script>
 import MsgBox from '../components/msgBox'
+
 export default {
   props: {
     managerInfo: {
       type: Object,
-      default () {
+      default() {
         return {
           cust_manager_name: '',
           cust_manager_id: '',
@@ -19,13 +20,12 @@ export default {
       }
     }
   },
-  data () {
-    return {
-    }
+  data() {
+    return {}
   },
   computed: {},
-  created () { },
-  mounted () {
+  created() {},
+  mounted() {
     this.$parent.tabList[1].flag = '0'
   },
   methods: {},
@@ -34,5 +34,3 @@ export default {
   }
 }
 </script>
-
-

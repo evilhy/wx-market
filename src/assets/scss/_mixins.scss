@@ -37,6 +37,23 @@
   -ms-text-overflow: ellipsis;
   text-overflow: ellipsis;
 }
+
+@mixin ellipsis($lines: 1, $substract: 0) {
+  @if $lines == 1 {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100% - $substract;
+    overflow: hidden;
+  } @else {
+    overflow:hidden;
+    display:-webkit-box;
+    -webkit-line-clamp: $lines;
+    line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    box-orient: vertical;
+    word-break: break-all;
+  }
+}
 @mixin word-break($extend: true) {
   @if $extend {
     @extend %word-break;

@@ -5,7 +5,7 @@
       <swiper-slide v-for="(item, index) in years" :key="index">
         <div class="item-bg">
           <div class="span-bg">
-            <span class="span">{{item}}</span>
+            <span class="span">{{ item }}</span>
           </div>
         </div>
       </swiper-slide>
@@ -15,21 +15,22 @@
 
 <script>
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
+
 export default {
   components: {
-    swiper, 
+    swiper,
     swiperSlide
   },
   props: {
     years: {
       type: Array,
-      default () {
+      default() {
         return []
       }
     },
     options: {
       type: Object,
-      default () {
+      default() {
         return {
           slidesPerView: 5,
           slidesPerGroup: 1,
@@ -39,21 +40,18 @@ export default {
       }
     }
   },
-  data () {
-    return {
-    }
+  data() {
+    return {}
   },
   computed: {
-    swiper () {
+    swiper() {
       return this.$refs.mySwiper.swiper
     }
   },
   methods: {
-    end () {
+    end() {
       this.$emit('transitionEnd')
     }
   }
 }
 </script>
-
-

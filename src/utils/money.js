@@ -14,7 +14,7 @@ export default class Money {
    */
   toMoney(number, precision = 0, thousand = ',') {
     if (typeOf(number) === 'array') {
-      return number.map(val => this.toMoney(val, precision, thousand))
+      return number.map((val) => this.toMoney(val, precision, thousand))
     }
 
     number = this.unformat(number)
@@ -50,27 +50,27 @@ export default class Money {
    */
   toCurrency(number, symbol = '￥', precision = 2, thousand = ',', zero = '%s%v') {
     if (typeOf(number) === 'array') {
-      return number.map(val => this.toCurrency(val, symbol, precision, thousand, zero))
+      return number.map((val) => this.toCurrency(val, symbol, precision, thousand, zero))
     }
     number = this.unformat(number)
 
     const defaultOpt = { symbol: '￥', precision: 2, thousand: ',', zero: '%s%v' }
-    const opts =
-      typeOf(symbol) === 'object'
-        ? Object.assign({}, defaultOpt, symbol)
-        : { symbol, precision, thousand, zero }
+    const opts = typeOf(symbol) === 'object' ? { ...defaultOpt, ...symbol } : { symbol, precision, thousand, zero }
     opts.symbol = typeOf(opts.symbol) === 'string' ? opts.symbol : defaultOpt.symbol
-    opts.precision = Number.isNaN(Math.round(Math.abs(opts.precision)))
-      ? defaultOpt.precision
-      : Math.round(Math.abs(opts.precision))
+    opts.precision = Number.isNaN(Math.round(Math.abs(opts.precision))) ? defaultOpt.precision : Math.round(Math.abs(opts.precision))
     opts.thousand = typeOf(opts.thousand) === 'string' ? opts.thousand : defaultOpt.thousand
     opts.zero = typeOf(symbol.zero) === 'string' ? symbol.zero : defaultOpt.zero
 
-    const useFormat = number > 0 ? '%s%v' : number < 0 ? '%s-%v' : opts.zero
+    let useFormat
+    if (number > 0) {
+      useFormat = '%s%v'
+    } else if (number < 0) {
+      useFormat = '%s-%v'
+    } else {
+      useFormat = opts.zero
+    }
 
-    return useFormat
-      .replace('%s', opts.symbol)
-      .replace('%v', this.toMoney(Math.abs(number), opts.precision, opts.thousand))
+    return useFormat.replace('%s', opts.symbol).replace('%v', this.toMoney(Math.abs(number), opts.precision, opts.thousand))
   }
 
   /**
@@ -83,7 +83,7 @@ export default class Money {
    */
   unformat(value) {
     if (typeOf(value) === 'array') {
-      return value.map(val => this.unformat(val))
+      return value.map((val) => this.unformat(val))
     }
     value = value || 0
 

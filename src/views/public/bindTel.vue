@@ -2,7 +2,7 @@
   <div class="public-page send-code-page">
     <div class="content-wrap">
       <div class="big-title">身份绑定</div>
-      <div class="tip">{{userInfo.employeeName}}，您好！欢迎使用放薪管家工资条。</div>
+      <div class="tip">{{ userInfo.employeeName }}，您好！欢迎使用放薪管家工资条。</div>
       <div class="field-wrap mt">
         <img class="field-icon field-icon-phone" src="../../assets/img/public/field-phone.png" />
         <input class="input" type="tel" maxlength="11" placeholder="请输入手机号" v-model.trim="phone" />
@@ -18,12 +18,12 @@
 </template>
 
 <script>
-import publicLogo from 'components/publicLogo'
 import helper from 'utils/helper'
 import verifycodeBtn from 'components/verifycodeBtn'
 import validate from 'utils/validate'
+
 export default {
-  data () {
+  data() {
     return {
       userInfo: helper.getUserInfo(),
       code: '',
@@ -32,30 +32,27 @@ export default {
     }
   },
   computed: {
-    verifyBtnDisabled () {
+    verifyBtnDisabled() {
       return !validate.isPhone(this.phone)
     },
-    btnDisabled () {
+    btnDisabled() {
       return !this.code || !this.phone || !this.pwd
     }
   },
-  created () {
-  },
-  mounted () {
-  },
+  created() {},
+  mounted() {},
   methods: {
-    async sendCode () {
-      if (this.verifyBtnDisabled) return false
+    async sendCode() {
+      if (this.verifyBtnDisabled) return
       await this.$Inside.sendCode(this.phone, '0')
     },
-    async bindTel () {
-      let { code, phone, pwd } = this
+    async bindTel() {
+      const { code, phone, pwd } = this
       await this.$Inside.bindTel({ code, phone, pwd })
       this.$router.replace({ name: 'setQueryCode' })
     }
   },
   components: {
-    publicLogo,
     verifycodeBtn
   }
 }

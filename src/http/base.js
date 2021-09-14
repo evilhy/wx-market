@@ -5,21 +5,27 @@ import UUID from 'utils/uuid'
 import { typeOf, deepCopy } from 'utils/assist'
 import Loading from 'utils/loading'
 
-let HttpEngine = (require(`core/plugins/http/HttpEngine.${process.env.NODE_ENV === 'development' ? 'dev' : 'prod'}`)).default
+let HttpEngine = require(`core/plugins/http/HttpEngine.${process.env.VUE_APP_ENV === 'development' ? 'dev' : 'prod'}`).default
 export default class HttpForApplication extends HttpEngine {
+  constructor() {
+    super()
+    this.baseURL = sysConfig.httpBaseUrl[process.env.VUE_APP_ENV]
 
-  baseURL = sysConfig.httpBaseUrl[process.env.NODE_ENV];
-  timeout = 60
-  mockTimeout = 2;
-  requestedSever = false;
-  encrypt = true;
+    this.timeout = 60
 
-  beforeSendRequestHandler (config) {
+    this.mockTimeout = 2
+
+    this.requestedSever = false
+
+    this.encrypt = true
+  }
+
+  beforeSendRequestHandler(config) {
     let { jsessionId, apppartner, entId } = helper.getUserInfo('', {})
     config.headers = Object.assign(config.headers, {
       'jsession-id': jsessionId,
       'route-name': window.router.app._route.name,
-      'apppartner': apppartner,
+      apppartner,
       'ent-id': entId,
       'plat-id': 'fx-payroll',
       'req-id': UUID.createUUID()
@@ -29,15 +35,15 @@ export default class HttpForApplication extends HttpEngine {
     if (config.loading) {
       let loadingConfig = { parent: document.querySelector('#app') }
       if (typeOf(config.loading) === 'object') {
-        loadingConfig = Object.assign({}, loadingConfig, config.loading)
+        loadingConfig = { ...loadingConfig, ...config.loading }
       } else {
-        loadingConfig = Object.assign({}, loadingConfig, { type: typeOf(config.loading) === 'boolean' ? 'bounce' : config.loading })
+        loadingConfig = { ...loadingConfig, type: typeOf(config.loading) === 'boolean' ? 'bounce' : config.loading }
       }
       this.loadingInstance = new Loading(loadingConfig)
     }
   }
 
-  dealEncrypt (config) {
+  dealEncrypt(config) {
     let data
     if (config.method === 'post') {
       data = deepCopy(config.data)
@@ -49,7 +55,7 @@ export default class HttpForApplication extends HttpEngine {
     config.headers = Object.assign(config.headers, {
       'req-id': reqId,
       'encode-key': encodeKey,
-      'timestamp': timestamp,
+      timestamp,
       'sha256-sign': sha256Sign
     })
     if (config.method === 'post') {
@@ -57,11 +63,11 @@ export default class HttpForApplication extends HttpEngine {
     }
   }
 
-  afterResolveResponseHandler (response) {
+  afterResolveResponseHandler(response) {
     this.loadingInstance && this.loadingInstance.hide()
   }
 
-  afterRejectResponseHandler (error) {
+  afterRejectResponseHandler(error) {
     this.loadingInstance && this.loadingInstance.hide()
     let errorMsg = error.message
     if (errorMsg === 'Network Error') {
@@ -73,7 +79,7 @@ export default class HttpForApplication extends HttpEngine {
     let response = error.response
     if (typeOf(response) === 'object') {
       if (typeOf(response.data) === 'object') {
-        errorMsg = response.data['error_msg']
+        errorMsg = response.data.error_msg
       } else if (typeOf(response.data) === 'string') {
         errorMsg = response.data
       }

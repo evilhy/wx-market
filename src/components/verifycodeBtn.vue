@@ -1,22 +1,21 @@
 <template>
   <span class="vcode-btn">
-    <span class="start-btn" :class="{'disabled': disabled}"
-          v-if="!timer || seconds < 0" @click="clickHandle">{{startText}}</span>
-    <span class="down-btn"
-          v-else>{{seconds}}s</span>
+    <span class="start-btn" :class="{ disabled: disabled }" v-if="!timer || seconds < 0" @click="clickHandle">{{ startText }}</span>
+    <span class="down-btn" v-else>{{ seconds }}s</span>
   </span>
 </template>
 <style>
-  .vcode-btn{
-    display: inline-flex;
-    justify-content: flex-end;
-  }
-  .disabled{
-    color: #999;
-  }
+.vcode-btn {
+  display: inline-flex;
+  justify-content: flex-end;
+}
+.disabled {
+  color: #999;
+}
 </style>
 <script>
 import storage from 'utils/storage'
+
 export default {
   props: {
     max: {
@@ -31,37 +30,39 @@ export default {
       type: Boolean,
       default: false
     },
-    limit: {  // 是否限制max时间内只发送一次，默认限制
+    limit: {
+      // 是否限制max时间内只发送一次，默认限制
       type: Boolean,
       default: true
     },
-    auto: { // 点击后是否自动开始倒计时，默认自动,如果不自动，需手动调用start方法
+    auto: {
+      // 点击后是否自动开始倒计时，默认自动,如果不自动，需手动调用start方法
       type: Boolean,
       default: true
     }
   },
-  data () {
+  data() {
     return {
       timer: null,
       seconds: this.max,
       timeSessionKey: `${this.$route.name}-codetime`
     }
   },
-  created () {
+  created() {
     this.limit && this.checkCountDownInfo()
   },
   methods: {
-    checkCountDownInfo () {
-      let now = new Date()
-      let sendTimeStamp = storage.getSession(this.timeSessionKey, now.getTime())
-      this.seconds = parseInt((sendTimeStamp + this.max * 1000 - now.getTime()) / 1000)
+    checkCountDownInfo() {
+      const now = new Date()
+      const sendTimeStamp = storage.getSession(this.timeSessionKey, now.getTime())
+      this.seconds = parseInt((sendTimeStamp + this.max * 1000 - now.getTime()) / 1000, 10)
       if (this.seconds > 0 && this.seconds < this.max) {
         this.countDown()
       } else {
         this.initCountDown()
       }
     },
-    countDown () {
+    countDown() {
       clearInterval(this.timer)
       this.timer = setInterval(() => {
         this.seconds--
@@ -70,19 +71,25 @@ export default {
         }
       }, 1000)
     },
-    initCountDown () {
+    initCountDown() {
       clearInterval(this.timer)
       this.seconds = this.max
       this.timer = null
-      this.limit && storage.removeSession(this.timeSessionKey)
+      if (this.limit) {
+        storage.removeSession(this.timeSessionKey)
+      }
     },
-    start () {
+    start() {
       if (this.disabled || (this.seconds > 0 && this.seconds < this.max)) return
-      this.limit && storage.setSession(this.timeSessionKey, new Date().getTime())
+      if (this.limit) {
+        storage.setSession(this.timeSessionKey, new Date().getTime())
+      }
       this.countDown()
     },
-    clickHandle () {
-      this.auto && this.start()
+    clickHandle() {
+      if (this.auto) {
+        this.start()
+      }
       this.$emit('tap')
     }
   }

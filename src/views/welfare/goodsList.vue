@@ -8,12 +8,12 @@
 </template>
 
 <script>
-import goodsItem from './components/goodsItem'
 import noData from 'components/noData/index'
 import sysConfig from 'utils/constant'
+import goodsItem from './components/goodsItem'
 
 export default {
-  data () {
+  data() {
     return {
       activityId: this.$route.params.activityId,
       list: [],
@@ -24,13 +24,12 @@ export default {
       finishedText: sysConfig.listFinishedText
     }
   },
-  created () {
-  },
+  created() {},
   methods: {
-    async getList () {
+    async getList() {
       this.loading = true
-      let res = await this.$WelfareGoods.goodsList(this.activityId, this.page)
-      let { content = [], last = false } = res.data
+      const res = await this.$WelfareGoods.goodsList(this.activityId, this.page)
+      const { content = [], last = false } = res.data
       this.list = this.list.concat(content)
       this.finished = last
       this.page++

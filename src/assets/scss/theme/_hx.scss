@@ -1,7 +1,7 @@
 @charset "utf-8";
 
-$theme-list: (black, #e2b789, #42495c), (fourth, #f4415f, #f4415f),
-  (newyear, #f4415f, #f4415f), (pink, #f4415f, #f4415f);
+$theme-list: (heiyao, #e2b789, #42495c), (fourth, #f4415f, #f4415f),
+  (newyear, #f4415f, #f4415f), (brightred, #f4415f, #f4415f);
 
 @each $theme-name, $theme-active-color, $theme-bg-color in $theme-list {
   [data-theme='#{$theme-name}'] {
@@ -117,7 +117,7 @@ $theme-list: (black, #e2b789, #42495c), (fourth, #f4415f, #f4415f),
   }
 }
 
-[data-theme='black'] {
+[data-theme='heiyao'] {
   // 标签
   .tag-1 {
     background-image: linear-gradient(-90deg, #fff2e3 0%, #ffca94 100%);

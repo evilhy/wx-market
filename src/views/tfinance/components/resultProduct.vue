@@ -1,23 +1,29 @@
 <template>
   <div class="result-product-wrap white-box">
-    <div class="line-title"><span class="title">{{productInfo.productName}}</span><tag :content="tagContent"
-           :color="tagColor" v-if="tagContent"></tag>
+    <div class="line-title">
+      <span class="title">{{ productInfo.productName }}</span
+      ><tag :content="tagContent" :color="tagColor" v-if="tagContent"></tag>
     </div>
     <div class="rate-wrap">
       <span class="label">预期收益率(%)</span>
-      <span class="value"
-            v-if="productInfo.markList && productInfo.markList.length">{{productInfo.markList[0].levelRate}}%<span class="stress"
-              v-if="addedRate > 0">+{{addedRate}}%</span></span>
+      <span class="value" v-if="productInfo.markList && productInfo.markList.length"
+        >{{ productInfo.markList[0].levelRate }}%<span class="stress" v-if="addedRate > 0">+{{ addedRate }}%</span></span
+      >
     </div>
     <div class="limit-info">
-      <p class="days"><span class="label">产品期限(天)</span><span class="value">&nbsp;&nbsp;{{productInfo.productTerm}}</span></p>
-      <p class="money"><span class="label">最低起购(元)</span><span class="value">&nbsp;&nbsp;{{productInfo.minIntentAmt | money}}</span></p>
+      <p class="days">
+        <span class="label">产品期限(天)</span><span class="value">&nbsp;&nbsp;{{ productInfo.productTerm }}</span>
+      </p>
+      <p class="money">
+        <span class="label">最低起购(元)</span><span class="value">&nbsp;&nbsp;{{ productInfo.minIntentAmt | money }}</span>
+      </p>
     </div>
   </div>
 </template>
 <script>
-import tag from './tag'
 import collect from 'utils/collect'
+import tag from './tag'
+
 export default {
   props: {
     term: {
@@ -26,11 +32,11 @@ export default {
     },
     status: {
       type: Number,
-      default: 1   // 1.预约成功 2.认购成功
+      default: 1 // 1.预约成功 2.认购成功
     },
     productInfo: {
       type: Object,
-      default () {
+      default() {
         return {
           productName: '',
           markList: [],
@@ -40,7 +46,7 @@ export default {
       }
     }
   },
-  data () {
+  data() {
     return {
       currentIndex: 0,
       addedRate: 0,
@@ -49,20 +55,20 @@ export default {
     }
   },
   watch: {
-    productInfo (val) {
+    productInfo(val) {
       this.calData()
     },
-    term (val) {
+    term(val) {
       this.calStatus(val)
     }
   },
   methods: {
-    calData () {
+    calData() {
       let { markList, nowMark } = this.productInfo
       this.currentIndex = collect.indexOf(markList, 'markLevel', nowMark)
       this.addedRate = (markList[this.currentIndex].levelRate * 1000 - markList[0].levelRate * 1000) / 1000
     },
-    calStatus (term) {
+    calStatus(term) {
       this.$nextTick(() => {
         switch (term) {
           case 0:
@@ -80,6 +86,9 @@ export default {
             this.tagContent = this.status === 1 ? '未认购' : '已认购'
             this.tagColor = this.status === 1 ? 'red' : 'green'
             break
+          default:
+            this.tagContent = ''
+            this.tagColor = 'orange'
         }
       })
     }

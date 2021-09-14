@@ -1,11 +1,11 @@
 <template>
   <div class="wage-flow-item" @click="toDetail">
     <div class="wage-flow-item__top">
-      <div class="wage-flow-item__title">{{item.wageSheetName}}</div>
-      <div class="wage-flow-item__money">+{{item.transAmount | money}}</div>
+      <div class="wage-flow-item__title">{{ item.wageSheetName }}</div>
+      <div class="wage-flow-item__money">+{{ item.transAmount | money }}</div>
     </div>
     <div class="wage-flow-item__bottom">
-      <div class="wage-flow-item__date">{{item.issueTime | date('Y/m/d h:i:s')}}</div>
+      <div class="wage-flow-item__date">{{ item.issueTime | date('Y/m/d h:i:s') }}</div>
       <div class="wage-flow-item__status">
         <withdraw-tag :status="item.withdrawalStatus" :desc="item.withdrawalStatusVal"></withdraw-tag>
       </div>
@@ -16,6 +16,7 @@
 
 <script>
 import WithdrawTag from './withdrawTag.vue'
+
 export default {
   name: 'wageFlowItem',
   components: {
@@ -24,16 +25,13 @@ export default {
   props: {
     item: Object
   },
-  data () {
-    return {
-    }
+  data() {
+    return {}
   },
-  created () {
-  },
-  mounted () {
-  },
+  created() {},
+  mounted() {},
   methods: {
-    toDetail () {
+    toDetail() {
       this.$router.push({ name: 'withdrawalDetail', params: { id: this.item.withdrawalLedgerId } })
     }
   }

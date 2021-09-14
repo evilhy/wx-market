@@ -40,11 +40,11 @@ const loadingDom = {
 }
 
 export default class Loading {
-  constructor (params = {}) {
+  constructor(params = {}) {
     if (typeOf(params) !== 'object') {
       throw new TypeError('loading的参数类型应为Object')
     }
-    let { type = loadingTypes[0], parent = document.body, opacity = 0.7 } = params
+    const { type = loadingTypes[0], parent = document.body, opacity = 0.7 } = params
 
     if (!loadingTypes.includes(type)) throw new RangeError(`loading的type必须为${loadingTypes.join('、')}中的一种！`)
     if (parent.nodeType !== 1) throw new TypeError('loading的parent类型必须为NODE节点类型！')
@@ -54,8 +54,8 @@ export default class Loading {
     this._createLoading()
   }
 
-  hide () {
-    let className = `${loadingRootClass}-${this._id}`
+  hide() {
+    const className = `${loadingRootClass}-${this._id}`
     if (!this._checkExist(className)) return
 
     this._parent.removeChild(document.querySelector(`.${className}`))
@@ -74,17 +74,17 @@ export default class Loading {
     return document.body.contains(document.querySelector(`.${className}`))
   }
 
-  _createLoading () {
-    let { _type, _parent, _id, _opacity } = this
-    let loadingRoot = document.createElement('div')
+  _createLoading() {
+    const { _type, _parent, _id, _opacity } = this
+    const loadingRoot = document.createElement('div')
     loadingRoot.className = `${loadingRootClass} ${loadingRootClass}-${_type} ${loadingRootClass}-${_id}`
     loadingRoot.innerHTML = loadingDom[_type]
     loadingRoot.style.background = `rgba(255, 255, 255, ${_opacity})`
     if (_parent === document.body) {
       loadingRoot.style.position = 'fixed'
     } else {
-      let position = window.getComputedStyle(_parent, null)['position']
-      _parent.style.position = (position === 'absolute' || position === 'fixed') ? position : 'relative'
+      const { position } = window.getComputedStyle(_parent, null)
+      _parent.style.position = position === 'absolute' || position === 'fixed' ? position : 'relative'
     }
     this._container = loadingRoot
     _parent.appendChild(loadingRoot)

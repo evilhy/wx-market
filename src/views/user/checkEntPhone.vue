@@ -3,8 +3,8 @@
     <div class="top">
       <div class="tip">选择您要验证的企业信息中的手机号</div>
       <div class="current-ent" @click="openAction">
-        <div class="ent-name">{{currentEnt.entName}}</div>
-        <div class="phone">{{currentEnt.phone || '无手机号'}}</div>
+        <div class="ent-name">{{ currentEnt.entName }}</div>
+        <div class="phone">{{ currentEnt.phone || '无手机号' }}</div>
         <span class="arrow"></span>
       </div>
     </div>
@@ -25,10 +25,11 @@
 <script>
 import verifycodeBtn from 'components/verifycodeBtn'
 import validate from 'utils/validate'
-import entListAction from './entListAction'
 import helper from 'utils/helper'
+import entListAction from './entListAction'
+
 export default {
-  data () {
+  data() {
     return {
       code: '',
       currentEnt: {
@@ -41,33 +42,33 @@ export default {
     }
   },
   computed: {
-    verifyBtnDisabled () {
+    verifyBtnDisabled() {
       return !validate.isPhone(this.currentEnt.phone)
     },
-    btnDisabled () {
+    btnDisabled() {
       return !validate.isCode(this.code) || this.currentEnt.phone === this.bindedPhone
     }
   },
-  created () {},
+  created() {},
   methods: {
-    selectEnt (item) {
+    selectEnt(item) {
       this.currentEnt = item
     },
-    async sendCode () {
-      let { phone } = this.currentEnt
+    async sendCode() {
+      const { phone } = this.currentEnt
       if (phone === this.bindedPhone) {
         helper.toast('当前手机号与已绑定手机号相同')
-        return false
+        return
       }
       this.$refs['verifycode-btn'].start()
       await this.$Inside.sendCode(phone, '0')
     },
-    openAction () {
+    openAction() {
       this.$refs['ent-action'].openAction()
     },
-    async checkPhoneCode () {
-      let code = this.code
-      let { phone } = this.currentEnt
+    async checkPhoneCode() {
+      const code = this.code
+      const { phone } = this.currentEnt
       try {
         await this.$Inside.checkPhoneCode({ code, phone, busiType: '0' })
         this.$router.replace({ name: 'confirmModifyPhone', query: { oldPhone: this.bindedPhone, newPhone: phone } })
@@ -75,8 +76,8 @@ export default {
         this.code = ''
       }
     },
-    toConcat () {
-      let entId = this.currentEnt.entId
+    toConcat() {
+      const entId = this.currentEnt.entId
       this.$router.push({ name: 'concatEntManager', query: { entId } })
     }
   },

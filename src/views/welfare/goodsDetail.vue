@@ -6,12 +6,13 @@
 </template>
 
 <script>
+import sysConfig from 'utils/constant'
 import returnListBtn from './components/returnListBtn'
 import phoneChargeDetail from './components/phoneChargeDetail'
 import commonGoodsDetail from './components/commonGoodsDetail'
-import sysConfig from 'utils/constant'
+
 export default {
-  data () {
+  data() {
     return {
       activityId: this.$route.params.activityId,
       goodsId: this.$route.query.goodsId,
@@ -19,7 +20,7 @@ export default {
     }
   },
   computed: {
-    componentType () {
+    componentType() {
       let itemCatId = this.goodsInfo.itemCatId
       if (!itemCatId) return ''
       let { phoneCharge, phoneData } = sysConfig
@@ -32,11 +33,11 @@ export default {
       }
     }
   },
-  created () {
+  created() {
     this.getGoodsDetail()
   },
   methods: {
-    async getGoodsDetail () {
+    async getGoodsDetail() {
       let res = await this.$WelfareGoods.goodsDetail(this.activityId, this.goodsId)
       this.goodsInfo = res.data
     }

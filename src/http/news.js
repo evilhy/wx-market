@@ -1,4 +1,5 @@
 import Http from './base'
+
 const moduleName = 'news'
 
 class News {
@@ -8,22 +9,24 @@ class News {
    * @returns
    * @memberof News
    */
-  bulletInfo () {
-    let http = new Http()
+  bulletInfo() {
+    const http = new Http()
     http.path = `/${moduleName}/bulletInfo`
     return http.get()
   }
+
   /**
    * 每类消息未读个数
    *
    * @returns
    * @memberof News
    */
-  statisticInfo () {
-    let http = new Http()
+  statisticInfo() {
+    const http = new Http()
     http.path = `/${moduleName}/statisticInfo`
     return http.get()
   }
+
   /**
    *
    * @param {Number} page 当前页数
@@ -31,14 +34,15 @@ class News {
    * @returns
    * @memberof News
    */
-  list (page, newsType) {
-    let http = new Http()
+  list(page, newsType) {
+    const http = new Http()
     http.path = `/${moduleName}`
     http.headers = { 'page-num': page, limit: 20 }
     http.body = { newsType: Number(newsType) }
     http.loading = false
     return http.post()
   }
+
   /**
    *
    * @param {Number} operateType 操作类型 0:已读 1：删除
@@ -46,8 +50,8 @@ class News {
    * @returns
    * @memberof News
    */
-  operate (operateType, newsId = '') {
-    let http = new Http()
+  operate(operateType, newsId = '') {
+    const http = new Http()
     http.path = `/${moduleName}/operate`
     http.body = { operateType, newsId }
     return http.post()

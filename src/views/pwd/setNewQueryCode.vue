@@ -5,18 +5,19 @@
   </div>
 </template>
 <script>
-import setQueryCode from './setQueryCodeCmp'
 import helper from 'utils/helper'
+import setQueryCode from './setQueryCodeCmp'
+
 export default {
-  data () {
+  data() {
     return {
       titleArr: ['输入新查询密码', '再输入一次'],
       tipArr: ['请设置6位数纯数字密码。', '请设置6位数纯数字密码。']
     }
   },
-  created () { },
+  created() {},
   methods: {
-    async savePassword (code, reCode) {
+    async savePassword(code, reCode) {
       try {
         await this.$Password.savePassword(code, reCode, '0')
         // 清除近期登录过的密码

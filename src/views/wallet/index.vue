@@ -8,8 +8,8 @@
     <!-- 资金列表 -->
     <no-data v-if="totalElements === 0"></no-data>
     <van-list v-else v-model="loading" :immediate-check="false" :finished="finished" :finished-text="finishedText" @load="getList">
-      <div class="month-list" v-for="data in listData" :index="data.yearMonth">
-        <div class="flow-month">{{Number(data.yearMonth.slice(0, 4)) === new Date().getFullYear() ? '' : data.yearMonth.slice(0, 4) + '年'}}{{data.yearMonth.slice(4)}}月</div>
+      <div class="month-list" v-for="data in listData" :key="data.yearMonth">
+        <div class="flow-month">{{ Number(data.yearMonth.slice(0, 4)) === new Date().getFullYear() ? '' : data.yearMonth.slice(0, 4) + '年' }}{{ data.yearMonth.slice(4) }}月</div>
         <wage-flow-item v-for="(item, index) in data.list" :key="index" :item="item"></wage-flow-item>
       </div>
     </van-list>
@@ -17,13 +17,12 @@
 </template>
 
 <script>
-import wallet from './wallet'
-import walletFilter from './walletFilter.vue'
-import wageFlowItem from './wageFlowItem.vue'
 import noData from 'components/noData/index'
 import sysConfig from 'utils/constant'
 import decryptInfo from 'utils/decryptInfo'
-import helper from 'utils/helper.js'
+import wageFlowItem from './wageFlowItem.vue'
+import walletFilter from './walletFilter.vue'
+import wallet from './wallet'
 
 export default {
   data() {
@@ -37,11 +36,9 @@ export default {
       finishedText: sysConfig.listFinishedText
     }
   },
-  created() {
-    helper.title('放薪管家')
-  },
+  created() {},
   methods: {
-    async getList (query) {
+    async getList(query) {
       this.loading = true
       if (!query) {
         query = this.$refs['wallet-filter'] ? this.$refs['wallet-filter'].searchData : {}
@@ -54,7 +51,7 @@ export default {
         let yearMonth = year.toString() + month.toString()
         if (!this.listInfo[yearMonth]) {
           this.$set(this.listInfo, yearMonth, [])
-          this.listData.push({ yearMonth: yearMonth, list: [] })
+          this.listData.push({ yearMonth, list: [] })
         }
         this.listInfo[yearMonth].push(item)
         this.listData[this.listData.length - 1].list.push(item)
@@ -64,7 +61,7 @@ export default {
       this.page++
       this.loading = false
     },
-    search (query = {}) {
+    search(query = {}) {
       this.$set(this, 'listInfo', {})
       this.$set(this, 'listData', [])
       this.finished = false

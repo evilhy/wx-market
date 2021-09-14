@@ -1,6 +1,6 @@
 <template>
   <div class="business-toggle">
-    <img class="icon" src="../../assets/img/icon-home-business.png" alt="">
+    <img class="icon" src="../../assets/img/icon-home-business.png" alt="" />
     <van-dropdown-menu>
       <van-dropdown-item v-model="currentValue" :options="entList" @change="change" />
     </van-dropdown-menu>
@@ -16,27 +16,27 @@ export default {
     },
     entList: {
       type: Array,
-      default () {
+      default() {
         return []
       }
     }
   },
-  data () {
+  data() {
     return {
       currentValue: this.value
     }
   },
   watch: {
-    value (val) {
+    value(val) {
       this.currentValue = val
     },
-    currentValue (val) {
+    currentValue(val) {
       this.$emit('input', val)
     }
   },
-  created () { },
+  created() {},
   methods: {
-    change (entId) {
+    change(entId) {
       this.$nextTick(() => {
         this.$emit('change', entId)
       })

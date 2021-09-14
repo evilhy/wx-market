@@ -10,11 +10,11 @@
 </template>
 
 <script>
-import helper from 'utils/helper'
+import TaxState from 'utils/TaxCalculator/state'
 import taxCalculatorStep1 from './taxCalculatorStep1'
 import taxCalculatorStep2 from './taxCalculatorStep2'
 import taxCalculatorStep3 from './taxCalculatorStep3'
-import TaxState from 'utils/TaxCalculator/state'
+
 export default {
   components: {
     taxCalculatorStep1,
@@ -22,12 +22,10 @@ export default {
     taxCalculatorStep3
   },
   computed: {
-    currentStep () {
+    currentStep() {
       return TaxState.state.currentStep
     }
   },
-  created () {
-    helper.title('个税计算器')
-  }
+  created() {}
 }
 </script>

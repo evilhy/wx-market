@@ -1,4 +1,5 @@
 import Http from './base'
+
 const moduleName = 'wallet'
 
 class Wallet {
@@ -8,21 +9,23 @@ class Wallet {
    * @returns
    * @memberof Wallet
    */
-   getBalanceAndCard () {
-    let http = new Http()
+  getBalanceAndCard() {
+    const http = new Http()
     http.path = `/${moduleName}/empCardAndBalance`
     http.mockTimeout = 5
     return http.get()
   }
+
   /**
    * 查询钱包余额
    * @returns
    */
-  getBalance () {
-    let http = new Http()
+  getBalance() {
+    const http = new Http()
     http.path = `/${moduleName}/balance`
     return http.get()
   }
+
   /**
    * 提现列表
    * @param {*} body
@@ -30,41 +33,44 @@ class Wallet {
    * @param {*} limit
    * @returns
    */
-  withdrawalLedgerPage (body = {}, page, limit = 20) {
-    let http = new Http()
+  withdrawalLedgerPage(body = {}, page, limit = 20) {
+    const http = new Http()
     http.path = `/${moduleName}/withdrawalLedgerPage`
     http.headers = { 'page-num': page, limit }
     http.body = body
     http.loading = false
     return http.post()
   }
+
   /**
    * 提现详情
    * @param {String} withdrawalLedgerId
    * @returns
    */
-  withdrawalLedgerDetail (withdrawalLedgerId) {
-    let http = new Http()
+  withdrawalLedgerDetail(withdrawalLedgerId) {
+    const http = new Http()
     http.path = `/${moduleName}/withdrawalLedgerDetail/${withdrawalLedgerId}`
     return http.get()
   }
+
   /**
    * 提现进度
    * @param {String} withdrawalLedgerId
    * @returns
    */
-   withdrawalRecordDetail (withdrawalLedgerId) {
-    let http = new Http()
+  withdrawalRecordDetail(withdrawalLedgerId) {
+    const http = new Http()
     http.path = `/${moduleName}/withdrawalRecordDetail/${withdrawalLedgerId}`
     return http.get()
   }
+
   /**
    * 确认提现
    * @param {*} body
    * @returns
    */
-  withdraw (body = {}) {
-    let http = new Http()
+  withdraw(body = {}) {
+    const http = new Http()
     http.path = `/${moduleName}/withdraw`
     http.body = body
     return http.post()

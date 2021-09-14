@@ -8,14 +8,11 @@
 # 安装依赖
 npm install
 
-# 端口号:8017
-npm run dev
+# 端口号:9001
+npm run serve
 
 # 打包sit环境
 npm run sit
-
-# 打包demo环境
-npm run demo
 
 # 打包正式环境
 npm run build
@@ -113,4 +110,7 @@ npm run build
 > 电子签名
 
 ### 2021-08-19
->虚拟账户、钱包提现
+> 虚拟账户、钱包提现
+
+### 2021-09-09
+> 升级到vue-cli4

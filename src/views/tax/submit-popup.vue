@@ -1,18 +1,17 @@
 <template>
-  <popup-page title="专项扣除" ref="submit-detail" class="submit-detail">
-    
-  </popup-page>
+  <popup-page title="专项扣除" ref="submit-detail" class="submit-detail"> </popup-page>
 </template>
 
 <script>
 import popupPage from '../tfinance/components/popupPage'
+
 export default {
-  data () {
+  data() {
     return {}
   },
-  created () { },
+  created() {},
   methods: {
-    show () {
+    show() {
       this.$refs['submit-detail'].show()
     }
   },

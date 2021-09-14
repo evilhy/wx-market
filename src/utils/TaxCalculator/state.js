@@ -9,27 +9,33 @@ export default new Vuex.Store({
     deduction: '',
     specialDeduction: '',
     specialDeductionDetail: {
-      child: { // 子女教育
+      child: {
+        // 子女教育
         option: -1,
         value: 0
       },
-      learn: { // 继续教育
+      learn: {
+        // 继续教育
         option: -1,
         value: 0
       },
-      houseLoan: { // 首套房贷利息
+      houseLoan: {
+        // 首套房贷利息
         option: -1,
         value: 0
       },
-      rent: { // 住房租金
+      rent: {
+        // 住房租金
         option: -1,
         value: 0
       },
-      parent: { // 赡养老人
+      parent: {
+        // 赡养老人
         option: -1,
         value: 0
       },
-      illness: { // 大病医保
+      illness: {
+        // 大病医保
         option: -1,
         value: 0
       }
@@ -37,9 +43,9 @@ export default new Vuex.Store({
     currentStep: 'taxCalculatorStep1'
   },
   getters: {
-    deductionDetailTotal ({ specialDeductionDetail }) { 
+    deductionDetailTotal({ specialDeductionDetail }) {
       let sum = 0
-      for (let item of Object.values(specialDeductionDetail)) {
+      for (const item of Object.values(specialDeductionDetail)) {
         if (item.option !== -1) {
           sum += Number(item.value)
         }
@@ -48,27 +54,27 @@ export default new Vuex.Store({
     }
   },
   mutations: {
-    changeStep (state, stepName = 'taxCalculatorStep1') {
+    changeStep(state, stepName = 'taxCalculatorStep1') {
       state.currentStep = stepName
     },
-    updateData (state, { type, value = '' }) {
+    updateData(state, { type, value = '' }) {
       state[type] = value
     },
-    setDeduction (state, { type, option, value }) {
+    setDeduction(state, { type, option, value }) {
       state.specialDeductionDetail[type] = {
         option,
         value
       }
     },
-    clearDeductionDetail ({ specialDeductionDetail }, type = '') {
-      let emptyItem = {
+    clearDeductionDetail({ specialDeductionDetail }, type = '') {
+      const emptyItem = {
         option: -1,
         value: ''
       }
       if (type) {
         specialDeductionDetail[type] = emptyItem
       } else {
-        for (let key of Object.keys(specialDeductionDetail)) {
+        for (const key of Object.keys(specialDeductionDetail)) {
           specialDeductionDetail[key] = emptyItem
         }
       }

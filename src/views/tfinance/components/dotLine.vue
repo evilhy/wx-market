@@ -11,12 +11,12 @@
   </div>
 </template>
 <script>
-  export default {
-    props: {
-      direction: String
-    },
-    data () {
-      return {}
-    }
+export default {
+  props: {
+    direction: String
+  },
+  data() {
+    return {}
   }
+}
 </script>

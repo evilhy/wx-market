@@ -2,8 +2,8 @@
   <div class="user-ents-page">
     <div class="ent-groups">
       <div class="group-item" v-for="(group, index) in ent.items" :key="`group-${index}`" @click="enterDetail(group)">
-        <div class="label">{{group.groupName}}</div>
-        <div class="value" :class="{ gray: group.inServiceStatus !== '0' }">{{group.inServiceStatusVal}}</div>
+        <div class="label">{{ group.groupName }}</div>
+        <div class="value" :class="{ gray: group.inServiceStatus !== '0' }">{{ group.inServiceStatusVal }}</div>
         <span class="arrow"></span>
       </div>
     </div>
@@ -12,21 +12,22 @@
 
 <script>
 import storage from 'utils/storage'
+
 export default {
-  data () {
+  data() {
     return {
       ent: {}
     }
   },
-  created () {
+  created() {
     this.getEnt()
   },
   methods: {
-    async getEnt () {
-      let res = await this.$Roll.empEnt()
+    async getEnt() {
+      const res = await this.$Roll.empEnt()
       this.ent = res.data
     },
-    enterDetail (group) {
+    enterDetail(group) {
       storage.setSession('userDetail', group)
       this.$router.push({ name: 'userDetail' })
     }

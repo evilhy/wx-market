@@ -1,9 +1,9 @@
 // file文件转换为base64
 export function fileToBase64(file) {
-  return new Promise(resolve => {
-    let reader = new FileReader()
+  return new Promise((resolve) => {
+    const reader = new FileReader()
     reader.readAsDataURL(file)
-    reader.onload = function() {
+    reader.onload = function () {
       resolve(reader.result)
     }
   })
@@ -12,11 +12,11 @@ export function fileToBase64(file) {
 // base64转换为file
 export function dataURLtoFile(dataurl, filename) {
   // 将base64转换为文件
-  let arr = dataurl.split(',')
-  let mime = arr[0].match(/:(.*?);/)[1]
-  let bstr = atob(arr[1])
+  const arr = dataurl.split(',')
+  const mime = arr[0].match(/:(.*?);/)[1]
+  const bstr = atob(arr[1])
   let n = bstr.length
-  let u8arr = new Uint8Array(n)
+  const u8arr = new Uint8Array(n)
   while (n--) {
     u8arr[n] = bstr.charCodeAt(n)
   }
@@ -25,10 +25,10 @@ export function dataURLtoFile(dataurl, filename) {
 
 // blob流转换为base64
 export function blobToDataURI(blob) {
-  return new Promise(resolve => {
-    let reader = new FileReader()
+  return new Promise((resolve) => {
+    const reader = new FileReader()
     reader.readAsDataURL(blob)
-    reader.onload = function(e) {
+    reader.onload = function (e) {
       resolve(e.target.result)
     }
   })
@@ -41,18 +41,15 @@ export function dataURItoBlob(base64Data) {
   } else {
     byteString = unescape(base64Data.split(',')[1])
   }
-  let mimeString = base64Data
-    .split(',')[0]
-    .split(':')[1]
-    .split(';')[0] // mime类型 -- image/png
+  const mimeString = base64Data.split(',')[0].split(':')[1].split(';')[0] // mime类型 -- image/png
 
   // var arrayBuffer = new ArrayBuffer(byteString.length); //创建缓冲数组
   // var ia = new Uint8Array(arrayBuffer); // 创建视图
-  let ia = new Uint8Array(byteString.length) // 创建视图
+  const ia = new Uint8Array(byteString.length) // 创建视图
   for (let i = 0, len = byteString.length; i < len; i++) {
     ia[i] = byteString.charCodeAt(i)
   }
-  let blob = new Blob([ia], {
+  const blob = new Blob([ia], {
     type: mimeString
   })
   return blob

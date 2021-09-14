@@ -1,5 +1,6 @@
-import Http from './base'
 import helper from 'utils/helper'
+import Http from './base'
+
 const moduleName = 'virus'
 
 class Virus {
@@ -10,12 +11,13 @@ class Virus {
    * @returns
    * @memberof Wechat
    */
-  userInfo (code) {
-    let http = new Http()
+  userInfo(code) {
+    const http = new Http()
     http.path = `/${moduleName}/userInfo`
     http.query = { code }
     return http.get()
   }
+
   /**
    * 获取弹幕列表
    *
@@ -23,20 +25,21 @@ class Virus {
    * @returns
    * @memberof Wechat
    */
-  getBarrageList (page) {
-    let openid = helper.getVirusUserInfo('openid', '')
-    let http = new Http()
+  getBarrageList(page) {
+    const openid = helper.getVirusUserInfo('openid', '')
+    const http = new Http()
     http.path = `/${moduleName}`
     http.headers = { 'page-num': page, limit: 100 }
     http.query = { openid }
     http.loading = false
     return http.get()
   }
+
   /**
    * 提交用户抗病毒承诺
    */
   addPromise(data) {
-    let http = new Http()
+    const http = new Http()
     http.path = `/${moduleName}`
     http.body = data
     http.loading = false

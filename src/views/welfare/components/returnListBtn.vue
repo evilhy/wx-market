@@ -1,7 +1,5 @@
 <template>
-  <div class="return-list-btn" @click="returnList">
-    返回列表
-  </div>
+  <div class="return-list-btn" @click="returnList">返回列表</div>
 </template>
 
 <script>
@@ -9,12 +7,12 @@ export default {
   props: {
     activityId: String
   },
-  data () {
+  data() {
     return {}
   },
-  created () {},
+  created() {},
   methods: {
-    returnList () {
+    returnList() {
       this.$router.replace({ name: 'welfareGoodsList', params: { activityId: this.activityId } })
     }
   }

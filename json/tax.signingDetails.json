@@ -9,7 +9,14 @@
   "attestStatus": 0,
   "signStatus": 0,
   "signStatusVal": "签约状态",
-  "isSign": 0,
+  "isSign": 1,
+  "provinceName": "湖北省",
+  "provinceCode": "420000",
+  "cityCode": "420100",
+  "cityName": "武汉市",
+  "areaCode": "420103",
+  "areaName": "江汉区",
+  "address": "",
   "salt": "cXdlam9pZmdqa2xkZmtnbw==",
   "passwd": "ZGZna2xqMjEzcms0bDNvNDBpZmdmZGxtZzI0a21kZmc="
 }

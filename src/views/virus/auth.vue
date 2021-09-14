@@ -1,30 +1,32 @@
 <template>
-  <div class="">
-  </div>
+  <div class=""></div>
 </template>
 
 <script>
-import helper from 'utils/helper'
 import Wxapi from 'utils/wxapi'
 import sysConfig from 'utils/constant'
 import Loading from 'utils/loading'
+
 const wxapi = new Wxapi()
 export default {
-  data () {
+  data() {
     return {
-      promiseUrl: `${sysConfig.proBaseUrl[process.env.NODE_ENV]}virus-promise`,
-      codeUrl: `${sysConfig.proBaseUrl[process.env.NODE_ENV]}virus-code`,
-      appId: sysConfig.appId[process.env.NODE_ENV],
+      promiseUrl: `${sysConfig.proBaseUrl[process.env.VUE_APP_ENV]}virus-promise`,
+      codeUrl: `${sysConfig.proBaseUrl[process.env.VUE_APP_ENV]}virus-code`,
+      appId: sysConfig.appId[process.env.VUE_APP_ENV],
       loadingInstance: null
     }
   },
-  created () {
-    helper.title('武汉加油')
+  created() {
     this.loadingInstance = new Loading({ type: 'square' })
-    wxapi.getAuth({ appId: this.appId, redirectUrl: this.codeUrl }).catch(() => { window.location.replace(this.promiseUrl) })
+    wxapi.getAuth({ appId: this.appId, redirectUrl: this.codeUrl }).catch(() => {
+      window.location.replace(this.promiseUrl)
+    })
   },
-  beforeDestroy () {
-    this.loadingInstance && this.loadingInstance.hide()
+  beforeDestroy() {
+    if (this.loadingInstance) {
+      this.loadingInstance.hide()
+    }
   },
   methods: {}
 }

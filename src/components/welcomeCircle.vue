@@ -1,19 +1,21 @@
 <template>
   <div class="welcome-circle">
     <van-circle v-model="currentPercent" :rate="percent" color="#00CCCC" layer-color="#f5f5f5" />
-    <img class="logo" src="../assets/img/logo-2.png" alt="">
-    <p class="label">{{text}}</p>
+    <img class="logo" src="../assets/img/logo-2.png" alt="" />
+    <p class="label">{{ text }}</p>
   </div>
 </template>
 
 <script>
 export default {
   props: {
-    startDelay: { // 进度开始时间，毫秒
+    startDelay: {
+      // 进度开始时间，毫秒
       type: Number,
       default: 3000
     },
-    auto: { // 是否自动开始
+    auto: {
+      // 是否自动开始
       type: Boolean,
       default: true
     },
@@ -22,7 +24,7 @@ export default {
       default: '放薪工资条'
     }
   },
-  data () {
+  data() {
     return {
       currentPercent: 5,
       percent: 0,
@@ -32,23 +34,23 @@ export default {
       fastSpeed: 10
     }
   },
-  created () {
+  created() {
     this.auto && this.startAnimation()
   },
-  mounted () {
-  },
+  mounted() {},
   methods: {
-    startAnimation () {
+    startAnimation() {
       this.timeout = setTimeout(() => {
         this.setAnimationInterval(2, this.createRandomNumber(70, 95))
       }, this.startDelay)
     },
-    async stopAnimation () {
+    async stopAnimation() {
       clearTimeout(this.timeout)
       return new Promise((resolve) => {
         this.setAnimationInterval(this.fastSpeed)
-        let remainPercent = 100 - this.percent
-        if (remainPercent < 0) { // 到达100%
+        const remainPercent = 100 - this.percent
+        if (remainPercent < 0) {
+          // 到达100%
           resolve()
         } else {
           this.timeout = setTimeout(() => {
@@ -57,7 +59,8 @@ export default {
         }
       })
     },
-    setAnimationInterval (per = this.normalSpeed, targetPercent = 100) { // per: 每100毫秒的+进度百分比
+    setAnimationInterval(per = this.normalSpeed, targetPercent = 100) {
+      // per: 每100毫秒的+进度百分比
       clearInterval(this.timer)
       this.percent += per
       this.timer = setInterval(() => {
@@ -67,13 +70,13 @@ export default {
         }
       }, 100)
     },
-    createRandomNumber (min = 0, max = 0) {
+    createRandomNumber(min = 0, max = 0) {
       if (typeof min !== 'number' || typeof max !== 'number' || min >= max) throw new Error('请传入合适的参数')
 
       return Math.floor(Math.random() * (max - min) + (min + 1))
     }
   },
-  beforeDestroy () {
+  beforeDestroy() {
     clearTimeout(this.timeout)
     clearInterval(this.timer)
   }

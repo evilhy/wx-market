@@ -2,31 +2,28 @@
   <div class="product-point-wrap">
     <div class="point-outline" @click="showPointDetail">
       <div class="item" v-for="(item, index) in pointList" :key="index">
-        <img class="icon" src="../../../assets/img/tfinance/icon-save.png" alt="">
-        <span>{{item}}</span>
+        <img class="icon" src="../../../assets/img/tfinance/icon-save.png" alt="" />
+        <span>{{ item }}</span>
       </div>
     </div>
     <popup-page title="服务说明" ref="point-detail">
       <div class="detail-item" v-for="(item, index) in pointDetailList" :key="index">
         <div class="title-wrap">
-          <img class="detail-icon" :src="item.icon" alt="">
-          <p class="title">{{item.title}}</p>
+          <img class="detail-icon" :src="item.icon" alt="" />
+          <p class="title">{{ item.title }}</p>
         </div>
-        <div class="content">{{item.content}}</div>
+        <div class="content">{{ item.content }}</div>
       </div>
     </popup-page>
   </div>
 </template>
 <script>
 import popupPage from './popupPage'
+
 export default {
-  data () {
+  data() {
     return {
-      pointList: [
-        '安全理财',
-        '收益更高',
-        '一对一服务'
-      ],
+      pointList: ['安全理财', '收益更高', '一对一服务'],
       pointDetailList: [
         {
           icon: require('../../../assets/img/tfinance/product-point-1.png'),
@@ -47,7 +44,7 @@ export default {
     }
   },
   methods: {
-    showPointDetail () {
+    showPointDetail() {
       this.$refs['point-detail'].show()
     }
   },

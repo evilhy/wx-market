@@ -1,5 +1,5 @@
-import Http from './base'
 import sysConfig from 'utils/constant'
+import Http from './base'
 
 const moduleName = 'welfareCustOrder'
 
@@ -12,13 +12,14 @@ class WelfareCustOrder {
    * @returns
    * @memberof WelfareCustOrder
    */
-  welfareExchange (activityId, goodsId) {
-    let http = new Http()
-    http.baseURL = sysConfig.wisalesBaseUrl[process.env.NODE_ENV]
+  welfareExchange(activityId, goodsId) {
+    const http = new Http()
+    http.baseURL = sysConfig.wisalesBaseUrl[process.env.VUE_APP_ENV]
     http.path = `/${moduleName}/welfareExchange`
     http.body = { activityId, goodsId }
     return http.post()
   }
+
   /**
    * 兑换话费
    *
@@ -28,13 +29,14 @@ class WelfareCustOrder {
    * @returns
    * @memberof WelfareCustOrder
    */
-  welfareExchangePhone (activityId, goodsId, rechargePhone) {
-    let http = new Http()
-    http.baseURL = sysConfig.wisalesBaseUrl[process.env.NODE_ENV]
+  welfareExchangePhone(activityId, goodsId, rechargePhone) {
+    const http = new Http()
+    http.baseURL = sysConfig.wisalesBaseUrl[process.env.VUE_APP_ENV]
     http.path = `/${moduleName}/welfareExchangePhone`
     http.body = { activityId, goodsId, rechargePhone }
     return http.post()
   }
+
   /**
    * 实物兑换
    *
@@ -44,9 +46,9 @@ class WelfareCustOrder {
    * @returns
    * @memberof WelfareCustOrder
    */
-  welfareExchangeGoods (activityId, goodsId, addressId) {
-    let http = new Http()
-    http.baseURL = sysConfig.wisalesBaseUrl[process.env.NODE_ENV]
+  welfareExchangeGoods(activityId, goodsId, addressId) {
+    const http = new Http()
+    http.baseURL = sysConfig.wisalesBaseUrl[process.env.VUE_APP_ENV]
     http.path = `/${moduleName}/welfareExchangeGoods`
     http.body = { activityId, goodsId, addressId }
     return http.post()

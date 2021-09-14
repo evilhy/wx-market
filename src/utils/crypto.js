@@ -1,32 +1,31 @@
 import CryptoJs from 'crypto-js'
 import storage from './storage'
-let iv = 'keys'
+
+const iv = 'keys'
 export default {
-  MD5 (data) {
+  MD5(data) {
     return CryptoJs.MD5(data).toString()
   },
   // 设置加密localStorage
-  aesEnLocal (key, value) {
+  aesEnLocal(key, value) {
     storage.setLocal(key, CryptoJs.AES.encrypt(value, iv).toString())
   },
   // 得到解密localStorage
-  aesDeLocal (key) {
+  aesDeLocal(key) {
     if (storage.getLocal(key)) {
       return CryptoJs.AES.decrypt(storage.getLocal(key), iv).toString(CryptoJs.enc.Utf8)
-    } else {
-      return false
     }
+    return false
   },
   // 设置加密localStorage对象
-  aesEnLocalObj (key, value) {
+  aesEnLocalObj(key, value) {
     storage.setLocal(key, CryptoJs.AES.encrypt(JSON.stringify(value), iv).toString())
   },
   // 得到解密localStorage对象
-  aesDeLocalObj (key) {
+  aesDeLocalObj(key) {
     if (storage.getLocal(key, []).length) {
       return JSON.parse(CryptoJs.AES.decrypt(storage.getLocal(key), iv).toString(CryptoJs.enc.Utf8))
-    } else {
-      return false
     }
+    return false
   }
 }

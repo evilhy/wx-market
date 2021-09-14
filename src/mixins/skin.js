@@ -1,8 +1,9 @@
 import sysConfig from '../utils/constant'
+
 export default {
   data() {
     return {
-      currentImgSkinUrl: sysConfig.img_skin_url[process.env.NODE_ENV]
+      currentImgSkinUrl: sysConfig.img_skin_url[process.env.VUE_APP_ENV]
     }
   },
   methods: {
@@ -11,7 +12,7 @@ export default {
     },
     getSkinBg(name = '') {
       return {
-        background: 'url(' + this.currentImgSkinUrl + sysConfig.skin_bg_info[name].bg_suffix,
+        background: `url(${this.currentImgSkinUrl}${sysConfig.skin_bg_info[name].bg_suffix}`,
         backgroundSize: sysConfig.skin_bg_info[name].bg_size
       }
     }

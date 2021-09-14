@@ -1,7 +1,7 @@
 <template>
   <div class="page handlock-page white">
     <div class="title">输入原手势密码</div>
-    <div class="tip">{{handLockTip}}</div>
+    <div class="tip">{{ handLockTip }}</div>
     <hand-lock @not-enough="notEnough" @finished="checkPassword"></hand-lock>
   </div>
 </template>
@@ -10,18 +10,19 @@
 import handLock from 'components/handLock'
 import sysConfig from 'utils/constant'
 import helper from 'utils/helper'
+
 export default {
-  data () {
+  data() {
     return {
       handLockTip: sysConfig.handLockTip
     }
   },
-  created () { },
+  created() {},
   methods: {
-    notEnough (res) {
+    notEnough(res) {
       // helper.toast(sysConfig.handLockUnEnoughTip)
     },
-    async checkPassword (res) {
+    async checkPassword(res) {
       await this.$Password.checkPassword(helper.getPasswordStr(res), '1')
       this.$router.replace({ name: 'setNewHandLock' })
     }

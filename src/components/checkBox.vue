@@ -1,11 +1,12 @@
 <template>
   <label :for="name" class="v-checkbox-wrap" @click.stop="toggle">
-    <input type="checkbox" :id="name" class="input" :checked="checked">
+    <input type="checkbox" :id="name" class="input" :checked="checked" />
     <span class="v-checkbox"></span>
   </label>
 </template>
 <script>
 import UUID from 'utils/uuid'
+
 export default {
   props: {
     checked: {
@@ -13,15 +14,14 @@ export default {
       default: false
     }
   },
-  data () {
+  data() {
     return {
       name: `name-${UUID.createUUID()}`
     }
   },
-  created () {
-  },
+  created() {},
   methods: {
-    toggle () {
+    toggle() {
       this.$emit('tap')
     }
   }

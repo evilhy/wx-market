@@ -1,5 +1,6 @@
-import Http from './base'
 import helper from 'utils/helper'
+import Http from './base'
+
 const moduleName = 'password'
 
 class Password {
@@ -9,42 +10,44 @@ class Password {
    * @returns
    * @memberof Password
    */
-  queryHandPassword () {
-    let hasHandPassword = helper.getUserInfo('handPassword', -1)
+  queryHandPassword() {
+    const hasHandPassword = helper.getUserInfo('handPassword', -1)
     if (hasHandPassword > -1) {
       return Promise.resolve({ data: { status: hasHandPassword } })
-    } else {
-      let http = new Http()
-      http.path = `/${moduleName}/queryHandPassword`
-      return http.get().then((res) => {
-        helper.saveUserInfo({ handPassword: res.data.status })
-        return res
-      })
     }
+    const http = new Http()
+    http.path = `/${moduleName}/queryHandPassword`
+    return http.get().then((res) => {
+      helper.saveUserInfo({ handPassword: res.data.status })
+      return res
+    })
   }
+
   /**
    * 关闭手势密码
    *
    * @returns
    * @memberof Password
    */
-  closeHandPassword () {
-    let http = new Http()
+  closeHandPassword() {
+    const http = new Http()
     http.path = `/${moduleName}/closeHandPassword`
     return http.get()
   }
+
   /**
    * 创建数字键盘
    *
    * @returns
    * @memberof Password
    */
-  crateNumericKeypad () {
-    let http = new Http()
+  crateNumericKeypad() {
+    const http = new Http()
     http.path = `/${moduleName}/crateNumericKeypad`
     http.loading = { parent: document.querySelector('.pwd-keyboard-popup'), type: 'bounce' }
     return http.get()
   }
+
   /**
    * 校验数字密码和手势密码
    *
@@ -53,12 +56,13 @@ class Password {
    * @returns
    * @memberof Password
    */
-  checkPassword (password, type) {
-    let http = new Http()
+  checkPassword(password, type) {
+    const http = new Http()
     http.path = `/${moduleName}/checkPassword`
     http.body = { password, type }
     return http.post()
   }
+
   /**
    * 设置数字密码和手势密码
    *
@@ -67,8 +71,8 @@ class Password {
    * @returns
    * @memberof Password
    */
-  savePassword (firstPassword, password, type) {
-    let http = new Http()
+  savePassword(firstPassword, password, type) {
+    const http = new Http()
     http.path = `/${moduleName}/savePassword`
     http.body = { firstPassword, password, type }
     return http.post()

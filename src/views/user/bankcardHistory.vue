@@ -3,29 +3,30 @@
     <template v-if="list.length">
       <bank-history-item v-for="(item, index) in list" :key="index" :item="item"></bank-history-item>
     </template>
-    <no-data v-if="list.length < 1 && requested" text="暂无记录"/>
+    <no-data v-if="list.length < 1 && requested" text="暂无记录" />
   </div>
 </template>
 
 <script>
 import storage from 'utils/storage'
-import bankHistoryItem from './bankcardHistoryItem'
 import noData from 'components/noData/index'
+import bankHistoryItem from './bankcardHistoryItem'
+
 export default {
-  data () {
+  data() {
     return {
       list: [],
       ids: storage.getSession('ids', ''),
       requested: false
     }
   },
-  created () {
+  created() {
     this.getHistory()
   },
   methods: {
-    async getHistory () {
+    async getHistory() {
       try {
-        let res = await this.$Roll.empCardLog(this.ids)
+        const res = await this.$Roll.empCardLog(this.ids)
         this.list = res.data
       } finally {
         this.requested = true

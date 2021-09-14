@@ -13,16 +13,17 @@
 <script>
 import codeInput from 'components/codeInput'
 import helper from 'utils/helper'
+
 export default {
-  data () {
+  data() {
     return {
       employeeName: helper.getUserInfo('employeeName', ''),
       code: []
     }
   },
-  created () { },
+  created() {},
   methods: {
-    async sure () {
+    async sure() {
       try {
         let codeStr = helper.getPasswordStr(this.code)
         await this.$Password.checkPassword(codeStr, '0')

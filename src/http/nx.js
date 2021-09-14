@@ -1,4 +1,5 @@
 import Http from './base'
+
 const moduleName = 'nx'
 class Nx {
   /**
@@ -8,11 +9,11 @@ class Nx {
    * @returns
    * @memberof Nx
    */
-  callback (accessToken) {
-      let http = new Http()
-      http.path = `/${moduleName}/callback`
-      http.query = { accessToken }
-      return http.get()
+  callback(accessToken) {
+    const http = new Http()
+    http.path = `/${moduleName}/callback`
+    http.query = { accessToken }
+    return http.get()
   }
 }
 export default new Nx()

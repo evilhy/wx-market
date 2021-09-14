@@ -1,23 +1,20 @@
 <template>
-  <van-tag :color="color">{{desc}}</van-tag>
+  <van-tag :color="color">{{ desc }}</van-tag>
 </template>
 
 <script>
-
 export default {
   name: 'WithdrawTag',
-  components: {
-  },
+  components: {},
   props: {
     status: Number,
     desc: String
   },
-  data () {
-    return {
-    }
+  data() {
+    return {}
   },
   computed: {
-    color () {
+    color() {
       switch (this.status) {
         case 1:
           return '#12C465'
@@ -31,11 +28,8 @@ export default {
       }
     }
   },
-  created () {
-  },
-  mounted () {
-  },
-  methods: {
-  }
+  created() {},
+  mounted() {},
+  methods: {}
 }
 </script>

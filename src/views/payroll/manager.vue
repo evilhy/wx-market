@@ -13,9 +13,9 @@
 import managerInfoOutline from 'components/managerInfoOutline'
 import managerContact from 'components/managerContact'
 import noManager from 'components/noManager'
-import helper from 'utils/helper'
+
 export default {
-  data () {
+  data() {
     return {
       managerInfo: {
         managerName: '',
@@ -24,22 +24,18 @@ export default {
       hasManager: true
     }
   },
-  created () {
-    helper.title('华夏管家')
+  created() {
     this.getManagerInfo()
   },
   methods: {
-    getManagerInfo () {
-      this
-        .$Manager
-        .managerInfo()
-        .then((res) => {
-          if (res.data.id) {
-            this.managerInfo = res.data
-          } else {
-            this.hasManager = false
-          }
-        })
+    getManagerInfo() {
+      this.$Manager.managerInfo().then((res) => {
+        if (res.data.id) {
+          this.managerInfo = res.data
+        } else {
+          this.hasManager = false
+        }
+      })
     }
   },
   components: {

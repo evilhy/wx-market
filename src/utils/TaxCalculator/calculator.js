@@ -1,4 +1,3 @@
-
 import { typeOf } from '../assist'
 
 const $baseTax = Symbol('$baseTax')
@@ -13,7 +12,6 @@ const $totalLastTaxPay = Symbol('$totalLastTaxPay')
 const $monthRange = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
 class Calculator {
-
   [$baseTax] = 5000; // 起征点
 
   [$wage] = 0; // 当月工资
@@ -25,14 +23,15 @@ class Calculator {
   [$currentMonth] = 1; // 当前月份
 
   [$lastMonth] = 0; // 上一月份
-  
+
   [$taxRate] = 0; // 当月税率
 
   [$quickDeduction] = 0; // 速算扣除数
 
-  [$totalLastTaxPay] = 0; // 累计已纳个税
+  [$totalLastTaxPay] = 0 // 累计已纳个税
 
-  constructor(wage = 0, socialSecurityFund = 0, specialDeFund = 0, currentMonth = 1) { // wage
+  constructor(wage = 0, socialSecurityFund = 0, specialDeFund = 0, currentMonth = 1) {
+    // wage
     if (typeOf(wage) !== 'number') throw new TypeError('应发金额类型应为Number')
     if (typeOf(socialSecurityFund) !== 'number') throw new TypeError('免税收入金额类型应为Number')
     if (typeOf(specialDeFund) !== 'number') throw new TypeError('专项扣除金额类型应为Number')
@@ -43,8 +42,9 @@ class Calculator {
     this[$socialSecurityFund] = Number(socialSecurityFund)
     this[$specialDeFund] = Number(specialDeFund)
     this[$currentMonth] = Number(currentMonth)
-    this[$lastMonth] = (this[$currentMonth] - 1) > 0 ? (this[$currentMonth] - 1) : 0
+    this[$lastMonth] = this[$currentMonth] - 1 > 0 ? this[$currentMonth] - 1 : 0
   }
+
   /**
    * 计算累计应纳税所得额
    *
@@ -52,13 +52,14 @@ class Calculator {
    * @returns
    * @memberof Calculator
    */
-  calTotalTaxIncome (month = 1) {
+  calTotalTaxIncome(month = 1) {
     if (month === 0) return 0
 
     let deFund = this[$wage] - this[$socialSecurityFund] - this[$specialDeFund] - this[$baseTax]
     deFund = deFund > 0 ? deFund : 0
     return deFund * month
   }
+
   /**
    * 计算累计应纳税额信息
    *
@@ -66,8 +67,9 @@ class Calculator {
    * @returns
    * @memberof Calculator
    */
-  calTotalTaxInfo (month = 1) {
-    let result = { // 适应界面需求
+  calTotalTaxInfo(month = 1) {
+    const result = {
+      // 适应界面需求
       rate: 0,
       quickDeduction: 0,
       totalTaxPay: 0
@@ -100,39 +102,42 @@ class Calculator {
     result.totalTaxPay = totalTaxIncome * result.rate - result.quickDeduction
     return result
   }
+
   /**
    * 计算本月应纳税额
    *
    * @memberof Calculator
    */
-  calCurrentTaxPay () {
-    let currentTotalInfo = this.calTotalTaxInfo(this[$currentMonth])
-    let lastTotalTaxPay = this.calTotalTaxInfo(this[$lastMonth]).totalTaxPay
+  calCurrentTaxPay() {
+    const currentTotalInfo = this.calTotalTaxInfo(this[$currentMonth])
+    const lastTotalTaxPay = this.calTotalTaxInfo(this[$lastMonth]).totalTaxPay
     this[$taxRate] = currentTotalInfo.rate
     this[$quickDeduction] = currentTotalInfo.quickDeduction
     this[$totalLastTaxPay] = lastTotalTaxPay
 
     return currentTotalInfo.totalTaxPay - lastTotalTaxPay
   }
+
   /**
    * 计算本月税后工资
    *
    * @memberof Calculator
    */
-  calAfterTaxWage () {
+  calAfterTaxWage() {
     return this[$wage] - this[$socialSecurityFund] - this.calCurrentTaxPay()
   }
+
   /**
    * 计算页面展示数据
    *
    * @memberof Calculator
    */
-  calShowData () { 
-    let shouldTaxPay = this.calCurrentTaxPay()
-    let afterTaxWage = this.calAfterTaxWage()
+  calShowData() {
+    const shouldTaxPay = this.calCurrentTaxPay()
+    const afterTaxWage = this.calAfterTaxWage()
     return {
-      shouldTaxPay,  // 本月个税
-      afterTaxWage,  // 本月税后工资
+      shouldTaxPay, // 本月个税
+      afterTaxWage, // 本月税后工资
       totalWage: this[$wage] * this[$currentMonth], // 累计工资
       totalBaseTax: this[$baseTax] * this[$currentMonth], // 累计免税收入额
       totalSocialSecurityFund: this[$socialSecurityFund] * this[$currentMonth], // 累计专项扣除

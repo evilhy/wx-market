@@ -3,8 +3,8 @@
     <div class="info-box">
       <avator size="normal"></avator>
       <div class="name-phone">
-        <span class="name">{{name}}</span>
-        <span class="phone">{{phone}}</span>
+        <span class="name">{{ name }}</span>
+        <span class="phone">{{ phone }}</span>
       </div>
       <a class="call" :href="`tel: ${phone}`">一键拨号</a>
     </div>
@@ -16,13 +16,14 @@
 </template>
 <script>
 import avator from './avator'
+
 export default {
   props: {
     name: String,
     phone: String,
     avator: String
   },
-  data () {
+  data() {
     return {}
   },
   components: {

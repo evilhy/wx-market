@@ -1,12 +1,12 @@
 @charset "utf-8";
 @mixin position($left, $top) {
   position: absolute;
-  left:  $left * 640 / 750;
-  top:  $top * 640 / 750;
+  left:  $left * 0.8533333;
+  top:  $top * 0.8533333;
 }
 @mixin area($width, $height) {
-  width:  $width * 640 / 750;
-  height:  $height * 640 / 750;
+  width:  $width * 0.8533333;
+  height:  $height * 0.8533333;
 }
 .year-bill-page{
   height: 100%;
@@ -330,4 +330,3 @@
     height: 100%;
   }
 }
-

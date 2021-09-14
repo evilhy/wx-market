@@ -11,18 +11,18 @@
         </div>
         <ul class="pro-main">
           <li>
-            <i>总实发</i><br>
+            <i>总实发</i><br />
             <span>
               <em v-show="flag">&yen;</em>
-              <b v-show="flag">{{wage.realTotalAmt | money}}</b>
+              <b v-show="flag">{{ wage.realTotalAmt | money }}</b>
               <b class="star" v-show="!flag">****</b>
             </span>
           </li>
           <li>
-            <i>总扣除</i><br>
+            <i>总扣除</i><br />
             <span>
               <em v-show="flag">&yen;</em>
-              <b v-show="flag">{{wage.deductTotalAmt | money}}</b>
+              <b v-show="flag">{{ wage.deductTotalAmt | money }}</b>
               <b class="star" v-show="!flag">****</b>
             </span>
           </li>
@@ -32,7 +32,7 @@
           总应发：
           <span>
             <em v-show="flag">&yen;</em>
-            <i v-show="flag">{{wage.shouldTotalAmt | money}}</i>
+            <i v-show="flag">{{ wage.shouldTotalAmt | money }}</i>
             <i class="star" v-show="!flag">****</i>
           </span>
         </p>
@@ -44,6 +44,7 @@
 <script>
 import billExplain from 'components/billExplain'
 import amtPercentLine from 'components/amtPercentLine'
+
 export default {
   props: {
     wage: {
@@ -53,15 +54,14 @@ export default {
       type: Boolean
     }
   },
-  data () {
-    return {
-    }
+  data() {
+    return {}
   },
   methods: {
-    toggle () {
+    toggle() {
       this.$emit('toggle')
     },
-    openExplainPopup () {
+    openExplainPopup() {
       this.$refs['bill-explain'].show()
     }
   },

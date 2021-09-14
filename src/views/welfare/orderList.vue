@@ -8,12 +8,12 @@
 </template>
 
 <script>
-import orderItem from './components/orderItem'
 import noData from 'components/noData/index'
 import sysConfig from 'utils/constant'
+import orderItem from './components/orderItem'
 
 export default {
-  data () {
+  data() {
     return {
       activityId: this.$route.params.activityId,
       list: [],
@@ -24,10 +24,9 @@ export default {
       finishedText: sysConfig.listFinishedText
     }
   },
-  created () {
-  },
+  created() {},
   methods: {
-    async getList () {
+    async getList() {
       this.loading = true
       let res = await this.$WelfareCust.orderList(this.activityId, this.page)
       let { content = [], last = false } = res.data

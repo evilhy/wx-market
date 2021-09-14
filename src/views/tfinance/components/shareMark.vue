@@ -1,16 +1,15 @@
 <template>
   <div class="share-mark mask">
-    <img class="img" src="../../../assets/img/tfinance/share-tfinance-guide.png" alt="" @click="close">
+    <img class="img" src="../../../assets/img/tfinance/share-tfinance-guide.png" alt="" @click="close" />
   </div>
 </template>
 <script>
 export default {
-  data () {
-    return {
-    }
+  data() {
+    return {}
   },
   methods: {
-    close () {
+    close() {
       this.$emit('close')
     }
   }

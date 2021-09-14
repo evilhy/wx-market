@@ -1,19 +1,60 @@
-import 'babel-polyfill'
+import 'core-js/stable'
+import 'regenerator-runtime/runtime'
 import Vue from 'vue'
+import {
+  Lazyload,
+  DropdownMenu,
+  DropdownItem,
+  NoticeBar,
+  Swipe,
+  SwipeItem,
+  Image,
+  Popup,
+  Icon,
+  AddressList,
+  AddressEdit,
+  ActionSheet,
+  Cell,
+  CellGroup,
+  Field,
+  Switch,
+  Button,
+  PasswordInput,
+  List,
+  Tab,
+  Tabs,
+  PullRefresh,
+  SwipeCell,
+  NumberKeyboard,
+  NavBar,
+  RadioGroup,
+  Radio,
+  Sticky,
+  Calendar,
+  Step,
+  Steps,
+  Form,
+  Circle,
+  Progress,
+  Dialog,
+  Tag,
+  Uploader,
+  Area
+} from 'vant'
+import VueClipboard from 'vue-clipboard2'
+import vueEsign from 'vue-esign'
 import App from './App'
 import router from './router'
-import { Lazyload, DropdownMenu, DropdownItem, NoticeBar, Swipe, SwipeItem, Image, Popup, Icon, AddressList, AddressEdit, ActionSheet, Cell, CellGroup, Field, Switch, Button, PasswordInput, List, Tab, Tabs, PullRefresh, SwipeCell, NumberKeyboard, NavBar, RadioGroup, Radio, Sticky, Calendar, Step, Steps, Form, Circle, Progress, Dialog, Tag, Uploader } from 'vant'
-import vueEsign from 'vue-esign'
+import store from './store'
 import myPlugin from './utils/plugin'
 
 import './assets/fonts/iconfont.css'
 import './assets/scss/common.scss'
 // 项目的import
 
+// eslint-disable-next-line import/no-extraneous-dependencies
 import 'swiper/dist/css/swiper.css'
-// import VeHistogram from 'v-charts/lib/histogram'
-// import VeLine from 'v-charts/lib/line'
-import VueClipboard from 'vue-clipboard2'
+
 Vue.config.productionTip = false
 // vant
 Vue.use(Lazyload, {
@@ -54,16 +95,18 @@ Vue.use(Form)
 Vue.use(Circle)
 Vue.use(Progress)
 Vue.use(Dialog)
-Vue.use(vueEsign)
 Vue.use(Tag)
 Vue.use(Uploader)
+Vue.use(Area)
 
-Vue.use(myPlugin)
+Vue.use(vueEsign)
 Vue.use(VueClipboard)
 
+Vue.use(myPlugin)
+
 /* eslint-disable no-new */
-export default new Vue({
-  el: '#app',
+new Vue({
   router,
-  render: h => h(App)
-})
+  store,
+  render: (h) => h(App)
+}).$mount('#app')

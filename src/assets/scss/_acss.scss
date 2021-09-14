@@ -1,0 +1,108 @@
+@charset "utf-8";
+
+[circle]{
+  border-radius: 50%;
+}
+
+// 省略号
+@for $i from 1 through 3 {
+  [ellipsis#{$i}] {
+    @include ellipsis(#{$i});
+  }
+}
+
+// 字体大小
+@for $i from 12 through 30{
+  [fz#{$i}]{
+    font-size: #{$i * 2}px;
+  }
+}
+
+@for $i from 1 through 10{
+  [br#{$i}]{
+    border-radius: #{$i * 2}px;
+  }
+}
+
+// 间距
+$direction: (l left, r right, t top, b bottom);
+@for $i from 1 through 30 {
+  @each $type in m, p, v, h, a{
+    @if $type == m {
+      @each $d in $direction {
+        [m#{nth($d, 1)}#{$i}]{
+          margin-#{nth($d, 2)}: #{$i * 2}px;
+        }
+      }
+    } @else if $type == p {
+      @each $d in $direction {
+        [p#{nth($d, 1)}#{$i}]{
+          padding-#{nth($d, 2)}: #{$i * 2}px;
+        }
+      }
+    } @else if $type == v {
+      [pv#{$i}]{
+        padding-top: #{$i * 2}px;
+        padding-bottom: #{$i * 2}px;
+      }
+      [mv#{$i}]{
+        margin-top: #{$i * 2}px;
+        margin-bottom: #{$i * 2}px;
+      }
+    } @else if $type == h {
+      [ph#{$i}]{
+        padding-left: #{$i * 2}px;
+        padding-right: #{$i * 2}px;
+      }
+      [mh#{$i}]{
+        margin-left: #{$i * 2}px;
+        margin-right: #{$i * 2}px;
+      }
+    } @else {
+      [pa#{$i}]{
+        padding: #{$i * 2}px;
+      }
+      [ma#{$i}]{
+        margin: #{$i * 2}px;
+      }
+    }
+  }
+}
+
+// 布局
+// 垂直居中布局
+[center-v]{
+  display: flex;
+  align-items: center;
+}
+// 水平居中布局
+[center-h]{
+  display: flex;
+  justify-content: center;
+}
+// 水平、垂直都居中
+[center-a]{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+// 元素垂直排列
+[center-c-v]{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+// 元素垂直排列
+[center-c-h]{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+[center-c-a]{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

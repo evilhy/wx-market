@@ -12,41 +12,43 @@ export default {
       default: 1
     }
   },
-  data () {
+  data() {
     return {
       currentMonth: 1,
       visible: false,
-      months: [{
-        values: [
-          { value: 1, text: '一月' },
-          { value: 2, text: '二月' },
-          { value: 3, text: '三月' },
-          { value: 4, text: '四月' },
-          { value: 5, text: '五月' },
-          { value: 6, text: '六月' },
-          { value: 7, text: '七月' },
-          { value: 8, text: '八月' },
-          { value: 9, text: '九月' },
-          { value: 10, text: '十月' },
-          { value: 11, text: '十一月' },
-          { value: 12, text: '十二月' }
-        ]
-      }]
+      months: [
+        {
+          values: [
+            { value: 1, text: '一月' },
+            { value: 2, text: '二月' },
+            { value: 3, text: '三月' },
+            { value: 4, text: '四月' },
+            { value: 5, text: '五月' },
+            { value: 6, text: '六月' },
+            { value: 7, text: '七月' },
+            { value: 8, text: '八月' },
+            { value: 9, text: '九月' },
+            { value: 10, text: '十月' },
+            { value: 11, text: '十一月' },
+            { value: 12, text: '十二月' }
+          ]
+        }
+      ]
     }
   },
   methods: {
-    show () {
+    show() {
       this.visible = true
       this.currentMonth = this.month
     },
-    onValuesChange (picker, value, index) {
+    onValuesChange(picker, value, index) {
       this.currentMonth = value[0].value
     },
-    onConfirm () {
+    onConfirm() {
       this.$emit('sure', this.months[0].values[this.currentMonth - 1])
       this.visible = false
     },
-    onCancel (picker, value, index) {
+    onCancel(picker, value, index) {
       this.currentMonth = this.month
       this.visible = false
     }

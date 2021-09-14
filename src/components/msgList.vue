@@ -3,11 +3,12 @@
     <!-- 有留言 -->
     <template v-if="list.length || allCount">
       <div class="pull-down-more" v-show="pullStatus === 'down'">加载中...</div>
-      <div class="list-wrapper" ref="scroll" :class="{'pull-up': pullStatus === 'up','pull-down': pullStatus === 'down'}">
+      <div class="list-wrapper" ref="scroll" :class="{ 'pull-up': pullStatus === 'up', 'pull-down': pullStatus === 'down' }">
         <ul class="list">
-          <li class="item" :class="[msg.chat_msg_type === '1' ? 'self': 'manager', 'item-' + msg.chat_msg_id]" v-for="(msg,index) in list" :key="index">
+          <li class="item" :class="[msg.chat_msg_type === '1' ? 'self' : 'manager', 'item-' + msg.chat_msg_id]" v-for="(msg, index) in list" :key="index">
             <div class="pic"></div>
-            <div class="msg">{{msg.msg_content}}
+            <div class="msg">
+              {{ msg.msg_content }}
               <span class="triangle"></span>
             </div>
           </li>
@@ -16,21 +17,19 @@
       <div class="pull-up-more" v-show="pullStatus === 'up'">刷新中...</div>
     </template>
     <template v-else>
-      <div class="no-msg">
-        有任何疑问可在此留言，我会尽快为您提供服务
-      </div>
+      <div class="no-msg">有任何疑问可在此留言，我会尽快为您提供服务</div>
     </template>
   </div>
 </template>
 
 <script>
-
 import BScroll from 'better-scroll'
+
 export default {
   props: {
     list: {
       type: Array,
-      default () {
+      default() {
         return []
       }
     },
@@ -39,7 +38,7 @@ export default {
       default: 0
     }
   },
-  data () {
+  data() {
     return {
       scroll: null,
       scrollListener: true,
@@ -48,12 +47,11 @@ export default {
     }
   },
   computed: {},
-  watch: {
-  },
-  created () { },
-  mounted () { },
+  watch: {},
+  created() {},
+  mounted() {},
   methods: {
-    initScroll () {
+    initScroll() {
       this.$nextTick(() => {
         this.scroll = new BScroll(this.$refs.scroll, {
           scrollbar: true,
@@ -61,7 +59,7 @@ export default {
             threshold: 5
           }
         })
-        this.scroll.scrollToElement('.item-' + this.list[this.list.length - 1].chat_msg_id)
+        this.scroll.scrollToElement(`.item-${this.list[this.list.length - 1].chat_msg_id}`)
         this.scroll.on('scroll', (pos) => {
           if (!this.scrollListener || this.allCount === this.list.length) return
           if (pos.y >= 0) {
@@ -79,10 +77,10 @@ export default {
         })
       })
     },
-    freshScroll () {
+    freshScroll() {
       this.$nextTick(() => {
         if (this.pullStatus === 'down') {
-          this.scroll.scrollToElement('.item-' + this.scrollEleClass)
+          this.scroll.scrollToElement(`.item-${this.scrollEleClass}`)
         } else {
           this.scroll.finishPullUp()
         }
@@ -95,6 +93,4 @@ export default {
   components: {}
 }
 </script>
-<style lang='scss' rel='stylesheet/scss' scoped>
-
-</style>
+<style lang="scss" rel="stylesheet/scss" scoped></style>

@@ -7,11 +7,11 @@
     <buy-notice ref="buy-notice" :buy-start="productInfo.subscribeStartDate" :buy-end="productInfo.subscribeEndDate" :phone="result.managerPhone"></buy-notice>
     <div class="bottom-action">
       <a class="btn white-btn ask-btn" :href="`tel: ${result.managerPhone}`" v-if="result.managerPhone">
-        <img class="icon" src="../../assets/img/tfinance/icon-tel.png" alt=""/>
+        <img class="icon" src="../../assets/img/tfinance/icon-tel.png" alt="" />
         咨询
       </a>
       <div class="btn white-btn site-btn" @click="toBankSite">
-        <img class="icon" src="../../assets/img/tfinance/icon-site.png" alt=""/>
+        <img class="icon" src="../../assets/img/tfinance/icon-site.png" alt="" />
         网点
       </div>
       <div class="btn theme-btn notice-btn" @click="openNotice">认购须知</div>
@@ -21,22 +21,23 @@
   </div>
 </template>
 <script>
+import sysConfig from 'utils/constant'
+import helper from 'utils/helper'
+import tShare from 'mixins/tShare'
 import resultOutline from './components/resultOutline'
 import resultProduct from './components/resultProduct'
 import resultClient from './components/resultClient'
 import shareMark from './components/shareMark'
 import buyNotice from './components/buyNotice'
 import orderedPopup from './components/orderedPopup'
-import sysConfig from 'utils/constant'
-import helper from 'utils/helper'
-import tShare from 'mixins/tShare'
+
 export default {
   mixins: [tShare],
-  data () {
+  data() {
     return {
-      currentTerm: 0,  // 1.预约期 2.过渡期 3.认购期 4.认购结束 5.兑付结束
+      currentTerm: 0, // 1.预约期 2.过渡期 3.认购期 4.认购结束 5.兑付结束
       result: {
-        status: 1,   // 1.预约成功 2.认购成功
+        status: 1, // 1.预约成功 2.认购成功
         intentAmount: 0,
         crtDateTime: 0,
         subcribeAmount: 0,
@@ -58,42 +59,47 @@ export default {
       noticeFlag: false
     }
   },
-  created () {
+  created() {
     helper.title('理财预约')
     this.shareConfig()
     this.getResult()
   },
   methods: {
-    async getResult () {
+    async getResult() {
       let res = await this.$Tfinance.intentInfo()
       this.result = res.data
       this.productInfo = res.data.productInfoDTO
       this.calTerm()
     },
-    calTerm () {
+    calTerm() {
       let { nowDate, intentEndDate, subscribeStartDate, subscribeEndDate } = this.productInfo
-      if (nowDate < intentEndDate) { // 预约期
+      if (nowDate < intentEndDate) {
+        // 预约期
         this.currentTerm = 1
-      } else if (nowDate >= intentEndDate && nowDate < subscribeStartDate) { // 过渡期
+      } else if (nowDate >= intentEndDate && nowDate < subscribeStartDate) {
+        // 过渡期
         this.currentTerm = 2
-      } else if (nowDate >= subscribeStartDate && nowDate < subscribeEndDate) { // 认购期
+      } else if (nowDate >= subscribeStartDate && nowDate < subscribeEndDate) {
+        // 认购期
         this.currentTerm = 3
-      } else if (nowDate >= subscribeEndDate && nowDate < this.result.dealDateTime) { // 认购结束
+      } else if (nowDate >= subscribeEndDate && nowDate < this.result.dealDateTime) {
+        // 认购结束
         this.currentTerm = 4
-      } else { // 兑付结束
+      } else {
+        // 兑付结束
         this.currentTerm = 5
       }
     },
-    countDownEnd (term) {
+    countDownEnd(term) {
       this.currentTerm = term
     },
-    openNotice () {
+    openNotice() {
       this.$refs['buy-notice'].show()
     },
-    openMore () {
+    openMore() {
       this.$refs['ordered-popup'].show()
     },
-    toBankSite () {
+    toBankSite() {
       window.location.href = sysConfig.bankSiteUrl
     }
   },

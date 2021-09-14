@@ -2,38 +2,33 @@
   <div class="tax-calculator-step2">
     <div class="white-box total-wrap">
       <div class="label">专项扣除(元)</div>
-      <div class="value">{{deductionDetailTotal | money}}</div>
+      <div class="value">{{ deductionDetailTotal | money }}</div>
       <!-- <div class="finance-btn" @click="openSubmitPopup">提交给财务</div> -->
     </div>
     <div class="tip">请选择符合标准的扣除专项</div>
     <div class="deduction-list">
-      <div class="deduction-item" v-for="(item, index) in list" :key="index" :class="{'open': item.open}">
+      <div class="deduction-item" v-for="(item, index) in list" :key="index" :class="{ open: item.open }">
         <div class="parent-item" @click="toggleDeduction(item)">
-          <div class="v-checkbox" :class="{'checked':specialDeductionDetail[item.type].option !== -1}"></div>
+          <div class="v-checkbox" :class="{ checked: specialDeductionDetail[item.type].option !== -1 }"></div>
           <div class="center-wrap">
-            <div class="title">{{item.title}}<i class="iconfont icon-wenhao"
-                @click.stop="openExplainPopup(item.type)"></i></div>
-            <div class="short-desc">{{item.shortDesc}}</div>
+            <div class="title">{{ item.title }}<i class="iconfont icon-wenhao" @click.stop="openExplainPopup(item.type)"></i></div>
+            <div class="short-desc">{{ item.shortDesc }}</div>
           </div>
           <template v-if="item.options.length > 1">
-            <span class="value"
-              v-if="specialDeductionDetail[item.type].option !== -1">{{specialDeductionDetail[item.type].value}}</span>
+            <span class="value" v-if="specialDeductionDetail[item.type].option !== -1">{{ specialDeductionDetail[item.type].value }}</span>
             <span class="arrow"></span>
           </template>
           <template v-else>
-            <span class="value" v-if="item.options[0].type==='fixed'">{{item.options[0].value}}</span>
-            <input type="tel" class="input" placeholder="请输入" v-else v-model.number="item.options[0].value" @click.stop
-              @blur="changeOptionValue(item, 0)" @focus="changeMargin">
+            <span class="value" v-if="item.options[0].type === 'fixed'">{{ item.options[0].value }}</span>
+            <input type="tel" class="input" placeholder="请输入" v-else v-model.number="item.options[0].value" @click.stop @blur="changeOptionValue(item, 0)" @focus="changeMargin" />
           </template>
         </div>
         <div class="option-list" v-if="item.options.length > 1">
-          <div class="option-item" v-for="(optionItem, optionIndex) in item.options" :key="`option-${optionIndex}`"
-            @click="selectOption($event, item, optionIndex)">
-            <div class="v-checkbox" :class="{'checked':specialDeductionDetail[item.type].option === optionIndex}"></div>
-            <div class="label" :class="{'fixed':optionItem.type === 'fixed'}">{{optionItem.label}}</div>
-            <div class="value" v-if="optionItem.type === 'fixed'">{{optionItem.value}}</div>
-            <input type="tel" class="input" placeholder="请输入" v-else v-model.number="optionItem.value"
-              @blur="changeOptionValue(item, optionIndex)" @focus="changeMargin">
+          <div class="option-item" v-for="(optionItem, optionIndex) in item.options" :key="`option-${optionIndex}`" @click="selectOption($event, item, optionIndex)">
+            <div class="v-checkbox" :class="{ checked: specialDeductionDetail[item.type].option === optionIndex }"></div>
+            <div class="label" :class="{ fixed: optionItem.type === 'fixed' }">{{ optionItem.label }}</div>
+            <div class="value" v-if="optionItem.type === 'fixed'">{{ optionItem.value }}</div>
+            <input type="tel" class="input" placeholder="请输入" v-else v-model.number="optionItem.value" @blur="changeOptionValue(item, optionIndex)" @focus="changeMargin" />
           </div>
         </div>
       </div>
@@ -48,14 +43,14 @@
 </template>
 
 <script>
-import checkBox from 'components/checkBox'
 import TaxState from 'utils/TaxCalculator/state'
 import { Dialog } from 'vant'
 import explainPopup from './explain-popup'
 import submitPopup from './submit-popup'
+
 export default {
-  data () {
-    let { child, parent } = TaxState.state.specialDeductionDetail
+  data() {
+    const { child, parent } = TaxState.state.specialDeductionDetail
     return {
       list: [
         {
@@ -95,19 +90,23 @@ export default {
           type: 'learn',
           title: '继续教育',
           shortDesc: '学历教育',
-          options: [{
-            value: 400,
-            type: 'fixed'
-          }]
+          options: [
+            {
+              value: 400,
+              type: 'fixed'
+            }
+          ]
         },
         {
           type: 'houseLoan',
           title: '住房贷款利息',
           shortDesc: '本人或配偶首套房贷款利息（商业贷款），夫妻择一',
-          options: [{
-            value: 1000,
-            type: 'fixed'
-          }]
+          options: [
+            {
+              value: 1000,
+              type: 'fixed'
+            }
+          ]
         },
         {
           type: 'rent',
@@ -157,37 +156,36 @@ export default {
     }
   },
   computed: {
-    deductionDetailTotal () {
+    deductionDetailTotal() {
       return TaxState.getters.deductionDetailTotal
     },
-    specialDeductionDetail () {
+    specialDeductionDetail() {
       return TaxState.state.specialDeductionDetail
     }
   },
-  created () { },
+  created() {},
   methods: {
-    toggleDeduction (data) {
-      let { open = false, options, type } = data
-      !open && this.list.forEach(item => { item.open = false })
+    toggleDeduction(data) {
+      const { open = false, options, type } = data
+      !open &&
+        this.list.forEach((item) => {
+          item.open = false
+        })
       if (options.length > 1) {
         data.open = !open
       } else {
-        let option = this.specialDeductionDetail[type].option
+        const option = this.specialDeductionDetail[type].option
         if (type === 'houseLoan' && option === -1) {
           this.showTip()
           TaxState.commit('clearDeductionDetail', 'rent')
         }
-        this.setDeduction(
-          type,
-          option === -1 ? 0 : -1,
-          option === -1 ? options[0].value : ''
-        )
+        this.setDeduction(type, option === -1 ? 0 : -1, option === -1 ? options[0].value : '')
       }
     },
-    selectOption (e, data, index) {
-      let { type, options } = data
-      let tagName = e.target.tagName
-      let option = this.specialDeductionDetail[type].option
+    selectOption(e, data, index) {
+      const { type, options } = data
+      const tagName = e.target.tagName
+      const option = this.specialDeductionDetail[type].option
       if (type === 'rent' && option !== index) {
         this.showTip()
         TaxState.commit('clearDeductionDetail', 'houseLoan')
@@ -198,53 +196,53 @@ export default {
         this.setDeduction(type, -1, '')
       }
     },
-    setDeduction (type, index, value) {
+    setDeduction(type, index, value) {
       TaxState.commit('setDeduction', {
         type,
         option: index,
         value
       })
     },
-    showTip () {
-      !this.hasShowTip && Dialog.alert({
-        title: '提示',
-        message: '首套房贷利息和住房租金扣减只可二选一'
-      })
+    showTip() {
+      !this.hasShowTip &&
+        Dialog.alert({
+          title: '提示',
+          message: '首套房贷利息和住房租金扣减只可二选一'
+        })
       this.hasShowTip = true
     },
-    changeOptionValue (data, index) {
-      let { type, options, max } = data
-      let currentDeduction = this.specialDeductionDetail[type]
+    changeOptionValue(data, index) {
+      const { type, options, max } = data
+      const currentDeduction = this.specialDeductionDetail[type]
       if (type === 'child') {
         options[index].value = Math.floor(options[index].value / 1000) * 1000
       }
-      if ((type === 'parent') && options[index].value > max / 2) {
+      if (type === 'parent' && options[index].value > max / 2) {
         options[index].value = max / 2
       }
-      if (currentDeduction.option !== index) return false
+      if (currentDeduction.option !== index) return
       currentDeduction.value = options[index].value
       window.document.getElementsByTagName('html')[0].style.marginTop = `1px`
     },
-    confirm () {
+    confirm() {
       TaxState.commit('updateData', { type: 'specialDeduction', value: this.deductionDetailTotal })
       TaxState.commit('changeStep')
     },
-    cancel () {
+    cancel() {
       TaxState.commit('changeStep', 'taxCalculatorStep1')
     },
-    openExplainPopup (type) {
+    openExplainPopup(type) {
       this.popupType = type
       this.$refs['explain-popup'].show()
     },
-    openSubmitPopup () {
+    openSubmitPopup() {
       this.$refs['submit-popup'].show()
     },
-    changeMargin () {
+    changeMargin() {
       window.document.getElementsByTagName('html')[0].style.marginTop = `0px`
     }
   },
   components: {
-    checkBox,
     explainPopup,
     submitPopup
   }

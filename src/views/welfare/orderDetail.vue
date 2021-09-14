@@ -2,35 +2,36 @@
   <div class="order-detail-page">
     <component :is="componentType" :order-info="orderInfo" :status-info="statusInfo"></component>
     <div class="detail-img-wrap" v-if="orderInfo.detailImgIdSet && orderInfo.detailImgIdSet.length && componentType !== 'realGoodsOrderDetail'">
-      <img v-for="(id, index) in orderInfo.detailImgIdSet" :key="index" v-lazy="`${imgBaseUrl}/${id}`">
+      <img v-for="(id, index) in orderInfo.detailImgIdSet" :key="index" v-lazy="`${imgBaseUrl}/${id}`" />
     </div>
     <return-list-btn :activity-id="orderInfo.activityId" v-if="componentType !== 'realGoodsOrderDetail'"></return-list-btn>
   </div>
 </template>
 
 <script>
+import sysConfig from 'utils/constant'
 import phoneChargeOrderDetail from './components/phoneChargeOrderDetail'
 import virtualOrderDetail from './components/virtualOrderDetail'
 import realGoodsOrderDetail from './components/realGoodsOrderDetail'
 import returnListBtn from './components/returnListBtn'
-import sysConfig from 'utils/constant'
 import orderStatus from './orderStatus'
+
 export default {
   mixins: [orderStatus],
-  data () {
+  data() {
     return {
       transOrderId: this.$route.params.transOrderId,
       orderInfo: {
         detailImgIdSet: []
       },
-      imgBaseUrl: sysConfig.wisalesImgUrl[process.env.NODE_ENV]
+      imgBaseUrl: sysConfig.wisalesImgUrl[process.env.VUE_APP_ENV]
     }
   },
   computed: {
-    componentType () {
-      let itemCatId = this.orderInfo.itemCatId
+    componentType() {
+      const itemCatId = this.orderInfo.itemCatId
       if (!itemCatId) return ''
-      let { phoneCharge, phoneData, starbucks, videoMember, viewingTicket, oilCard } = sysConfig
+      const { phoneCharge, phoneData, starbucks, videoMember, viewingTicket, oilCard } = sysConfig
       switch (itemCatId) {
         case phoneCharge: // 话费
         case phoneData: // 流量
@@ -40,17 +41,18 @@ export default {
         case oilCard: // 油卡
         case starbucks: // 星巴克
           return 'virtualOrderDetail'
-        default: // 实物
+        default:
+          // 实物
           return 'realGoodsOrderDetail'
       }
     }
   },
-  created () {
+  created() {
     this.getOrderDetail()
   },
   methods: {
-    async getOrderDetail () {
-      let res = await this.$WelfareCust.orderDetail(this.transOrderId)
+    async getOrderDetail() {
+      const res = await this.$WelfareCust.orderDetail(this.transOrderId)
       this.orderInfo = res.data
     }
   },

@@ -15,59 +15,61 @@ export default {
    * @param {string} valName item中的key（非必填，不填时返回对象的value由item组成）
    * @returns 对象
    */
-  createObj (collect = [], keyName = '', valName) {
-    if (typeOf(collect) !== 'array' || typeOf(keyName) !== 'string') return
-    if (valName && typeOf(valName) !== 'string') return
-    collect = collect.filter(item => typeOf(item) === 'object')
+  createObj(collect = [], keyName = '', valName) {
+    if (typeOf(collect) !== 'array' || typeOf(keyName) !== 'string') return false
+    if (valName && typeOf(valName) !== 'string') return false
+    collect = collect.filter((item) => typeOf(item) === 'object')
 
-    let obj = {}
+    const obj = {}
     collect.forEach((item) => {
       if (typeOf(item[keyName]) === 'string') {
         if (typeOf(valName) === 'undefined') {
-          obj[item[keyName]] = Object.assign({}, item)
+          obj[item[keyName]] = { ...item }
         } else {
-          let val = typeOf(item[valName]) === 'undefined' ? '' : deepCopy(item[valName])
+          const val = typeOf(item[valName]) === 'undefined' ? '' : deepCopy(item[valName])
           obj[item[keyName]] = val
         }
       }
     })
     return obj
   },
-  include (collect = [], keyName = '', val) {
+  include(collect = [], keyName = '', val) {
     if (typeOf(collect) !== 'array' || typeOf(keyName) !== 'string') return false
-    return collect.some(item => item[keyName] === val)
+    return collect.some((item) => item[keyName] === val)
   },
-  indexOf (collect = [], keyName = '', val) {
+  indexOf(collect = [], keyName = '', val) {
     if (typeOf(collect) !== 'array' || typeOf(keyName) !== 'string') return -1
-    for (let [index, item] of collect.entries()) {
+    for (const [index, item] of collect.entries()) {
       if (item[keyName] === val) {
         return index
       }
     }
     return -1
   },
-  remove (collect = [], keyName = '', val) {
-    if (typeOf(collect) !== 'array' || typeOf(keyName) !== 'string') return false
+  remove(collect = [], keyName = '', val) {
+    if (typeOf(collect) !== 'array' || typeOf(keyName) !== 'string') return
     collect.forEach((item, index) => {
       if (item[keyName] === val) {
         collect.splice(index, 1)
       }
     })
   },
-  getItem (collect = [], keyName = '', val) {
+  getItem(collect = [], keyName = '', val) {
     if (typeOf(collect) !== 'array' || typeOf(keyName) !== 'string') return false
-    for (let item of collect) {
+    for (const item of collect) {
       if (item[keyName] === val) {
         return item
       }
     }
     return false
   },
-  getValueList (collect = [], keyName = '') {
+  getValueList(collect = [], keyName = '') {
     if (typeOf(collect) !== 'array' || typeOf(keyName) !== 'string') return []
-    let result = []
+    const result = []
     collect.forEach((item) => {
-      typeOf(item[keyName]) !== 'undefined' && result.push(item[keyName])
+      if (typeOf(item[keyName]) !== 'undefined') {
+        result.push(item[keyName])
+      }
     })
     return result
   }

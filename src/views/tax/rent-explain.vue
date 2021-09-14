@@ -9,10 +9,10 @@
 <script>
 export default {
   name: 'rent-explain',
-  data () {
+  data() {
     return {}
   },
-  created () { },
+  created() {},
   methods: {}
 }
 </script>

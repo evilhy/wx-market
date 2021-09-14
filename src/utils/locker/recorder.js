@@ -40,10 +40,13 @@ export default class Recorder {
     innerRadius: 30, // 内心圆半径(设计稿)
     baseWidth: 640 // 屏幕宽度基准值
   };
+
   // 圆的行数
   [$rows] = 3;
+
   // 圆的位置信息
   [$circles] = [];
+
   // 默认canvas样式
   [$defaultCanvasStyle] = {
     position: 'absolute',
@@ -53,7 +56,9 @@ export default class Recorder {
   }
 
   constructor(container, options = {}) {
-    if (!container || container.nodeType !== 1) { throw new Error('请指定NODE节点类型的container容器') }
+    if (!container || container.nodeType !== 1) {
+      throw new Error('请指定NODE节点类型的container容器')
+    }
     if (typeOf(options) !== 'object') {
       throw new TypeError('options的类型必须为Object')
     }
@@ -72,16 +77,17 @@ export default class Recorder {
    * @memberof Recorder
    */
   render() {
-    if (this[$baseCanvas]) return false
-    let container = this[$container]
+    if (this[$baseCanvas]) return
+    const container = this[$container]
 
-    let { width, height } = container.getBoundingClientRect()
+    const { width, height } = container.getBoundingClientRect()
 
-    let baseCanvas = document.createElement('canvas')
-    baseCanvas.width = baseCanvas.height = 2 * Math.min(width, height)
+    const baseCanvas = document.createElement('canvas')
+    baseCanvas.width = 2 * Math.min(width, height)
+    baseCanvas.height = 2 * Math.min(width, height)
     Object.assign(baseCanvas.style, this[$defaultCanvasStyle])
-    let tempCanvas = baseCanvas.cloneNode(true)
-    let recordCanvas = baseCanvas.cloneNode(true)
+    const tempCanvas = baseCanvas.cloneNode(true)
+    const recordCanvas = baseCanvas.cloneNode(true)
 
     container.appendChild(recordCanvas)
     container.appendChild(tempCanvas)
@@ -93,48 +99,50 @@ export default class Recorder {
 
     this[init]()
   }
+
   /**
    * 初始化手势密码、绑定手势事件
    *
    * @memberof Recorder
    */
-  [init] () {
+  [init]() {
     this[reset]()
     this[bindEvnet]()
   }
+
   /**
    * 重置手势canvas
    *
    * @memberof Recorder
    */
   [reset]() {
-    let baseCanvas = this[$baseCanvas]
-    let baseCtx = baseCanvas.getContext('2d')
-    let width = baseCanvas.width
-    let { color, outerRadius, innerRadius } = this[$options]
+    const baseCanvas = this[$baseCanvas]
+    const baseCtx = baseCanvas.getContext('2d')
+    const { width } = baseCanvas
+    const { color, outerRadius, innerRadius } = this[$options]
     Canvas.clearCanvas(baseCanvas)
     Canvas.clearCanvas(this[$recordCanvas])
     Canvas.clearCanvas(this[$tempCanvas])
-    let space = Math.floor(
-      (width - this[$rows] * 2 * outerRadius) / (this[$rows] + 1)
-    )
-    let circles = []
-    for (let i = 1; i <= this[$rows]; i++) {
-      for (let j = 1; j <= this[$rows]; j++) {
-        let x = i * space + (2 * i - 1) * outerRadius
-        let y = j * space + (2 * j - 1) * outerRadius
+    const space = Math.floor((width - this[$rows] * 2 * outerRadius) / (this[$rows] + 1))
+    const circles = []
+    for (let i = 1; i <= this[$rows]; i += 1) {
+      for (let j = 1; j <= this[$rows]; j += 1) {
+        const x = i * space + (2 * i - 1) * outerRadius
+        const y = j * space + (2 * j - 1) * outerRadius
         Canvas.drawSolidCircle(baseCtx, color, x, y, innerRadius)
         circles.push({ x, y, pos: [i, j] })
       }
     }
     this[$circles] = circles
   }
-  [setRadiusByBaseWidth] () {
-    let clientWidth = document.documentElement.clientWidth
-    let { outerRadius, innerRadius, baseWidth } = this[$options]
+
+  [setRadiusByBaseWidth]() {
+    const { clientWidth } = document.documentElement
+    const { outerRadius, innerRadius, baseWidth } = this[$options]
     this[$options].outerRadius = (clientWidth / baseWidth) * outerRadius
     this[$options].innerRadius = (clientWidth / baseWidth) * innerRadius
   }
+
   /**
    * 绑定事件
    *
@@ -142,41 +150,25 @@ export default class Recorder {
    */
   [bindEvnet]() {
     let records = this[$records]
-    let baseCanvas = this[$baseCanvas]
-    let tempCanvas = this[$tempCanvas]
-    let { outerRadius, innerRadius, activeInnerColor, activeOuterColor } = this[$options]
-    let baseCtx = baseCanvas.getContext('2d')
-    let recordCtx = this[$recordCanvas].getContext('2d')
-    let tempCtx = tempCanvas.getContext('2d')
-    baseCanvas.addEventListener('touchstart', e => {
+    const baseCanvas = this[$baseCanvas]
+    const tempCanvas = this[$tempCanvas]
+    const { outerRadius, innerRadius, activeInnerColor, activeOuterColor } = this[$options]
+    const baseCtx = baseCanvas.getContext('2d')
+    const recordCtx = this[$recordCanvas].getContext('2d')
+    const tempCtx = tempCanvas.getContext('2d')
+    baseCanvas.addEventListener('touchstart', (e) => {
       e.preventDefault()
       records = []
-      let { clientX, clientY } = e.targetTouches[0]
-      let circles = this[$circles]
-      let touchPoint = this[getPointInCanvas](
-        this[$baseCanvas],
-        clientX,
-        clientY
-      )
-      for (let i = 0; i < circles.length; i++) {
-        let circle = circles[i]
+      const { clientX, clientY } = e.targetTouches[0]
+      const circles = this[$circles]
+      const touchPoint = this[getPointInCanvas](this[$baseCanvas], clientX, clientY)
+      for (let i = 0; i < circles.length; i += 1) {
+        const circle = circles[i]
         // 触摸点落在某个圆中
         if (this[getDistance](circle, touchPoint) < outerRadius) {
           this[$touchFlag] = true
-          Canvas.drawSolidCircle(
-            recordCtx,
-            activeOuterColor,
-            circle.x,
-            circle.y,
-            outerRadius
-          )
-          Canvas.drawSolidCircle(
-            baseCtx,
-            activeInnerColor,
-            circle.x,
-            circle.y,
-            innerRadius
-          )
+          Canvas.drawSolidCircle(recordCtx, activeOuterColor, circle.x, circle.y, outerRadius)
+          Canvas.drawSolidCircle(baseCtx, activeInnerColor, circle.x, circle.y, innerRadius)
           circles.splice(i, 1)
           records.push(circle)
           break
@@ -184,44 +176,21 @@ export default class Recorder {
       }
     })
 
-    baseCanvas.addEventListener('touchmove', e => {
-      if (!this[$touchFlag]) return false
-      let { clientX, clientY } = e.targetTouches[0]
-      let touchPoint = this[getPointInCanvas](
-        this[$baseCanvas],
-        clientX,
-        clientY
-      )
-      let lastPoint = records[records.length - 1]
-      let circles = this[$circles]
-      for (let i = 0; i < circles.length; i++) {
-        let circle = circles[i]
+    baseCanvas.addEventListener('touchmove', (e) => {
+      if (!this[$touchFlag]) return
+      const { clientX, clientY } = e.targetTouches[0]
+      const touchPoint = this[getPointInCanvas](this[$baseCanvas], clientX, clientY)
+      const lastPoint = records[records.length - 1]
+      const circles = this[$circles]
+      for (let i = 0; i < circles.length; i += 1) {
+        const circle = circles[i]
         // 触摸点落在某个圆中
         if (this[getDistance](circle, touchPoint) < outerRadius) {
           this[$touchFlag] = true
-          Canvas.drawSolidCircle(
-            recordCtx,
-            activeOuterColor,
-            circle.x,
-            circle.y,
-            outerRadius
-          )
-          Canvas.drawSolidCircle(
-            baseCtx,
-            activeInnerColor,
-            circle.x,
-            circle.y,
-            innerRadius
-          )
+          Canvas.drawSolidCircle(recordCtx, activeOuterColor, circle.x, circle.y, outerRadius)
+          Canvas.drawSolidCircle(baseCtx, activeInnerColor, circle.x, circle.y, innerRadius)
           if (records.length) {
-            Canvas.drawLine(
-              recordCtx,
-              activeInnerColor,
-              lastPoint.x,
-              lastPoint.y,
-              circle.x,
-              circle.y
-            )
+            Canvas.drawLine(recordCtx, activeInnerColor, lastPoint.x, lastPoint.y, circle.x, circle.y)
           }
           circles.splice(i, 1)
           records.push(circle)
@@ -229,17 +198,10 @@ export default class Recorder {
         }
       }
       Canvas.clearCanvas(this[$tempCanvas])
-      Canvas.drawLine(
-        tempCtx,
-        activeInnerColor,
-        lastPoint.x,
-        lastPoint.y,
-        touchPoint.x,
-        touchPoint.y
-      )
+      Canvas.drawLine(tempCtx, activeInnerColor, lastPoint.x, lastPoint.y, touchPoint.x, touchPoint.y)
     })
-    baseCanvas.addEventListener('touchend', e => {
-      if (!this[$touchFlag]) return false
+    baseCanvas.addEventListener('touchend', (e) => {
+      if (!this[$touchFlag]) return
       Canvas.clearCanvas(tempCanvas)
       this[afterDraw](records)
       this[$touchFlag] = false
@@ -248,6 +210,7 @@ export default class Recorder {
       }, 200)
     })
   }
+
   /**
    * 获取触摸点在canvas上的pos
    *
@@ -258,12 +221,13 @@ export default class Recorder {
    * @memberof Recorder
    */
   [getPointInCanvas](canvas, x, y) {
-    let rect = canvas.getBoundingClientRect()
+    const rect = canvas.getBoundingClientRect()
     return {
       x: 2 * (x - rect.left),
       y: 2 * (y - rect.top)
     }
   }
+
   /**
    * 获取两点之间的距离
    *
@@ -273,10 +237,11 @@ export default class Recorder {
    * @memberof Recorder
    */
   [getDistance](point1, point2) {
-    let x = point2.x - point1.x
-    let y = point2.y - point1.y
+    const x = point2.x - point1.x
+    const y = point2.y - point1.y
     return Math.sqrt(x * x + y * y)
   }
+
   /**
    * 绘制完成的钩子函数
    *
@@ -285,19 +250,21 @@ export default class Recorder {
    */
   [afterDraw](records) {
     if (records.length < this[$options].minPoints) {
-      typeOf(this.afterDrawNotEnough) === 'function' &&
-        this.afterDrawNotEnough(records)
+      if (typeOf(this.afterDrawNotEnough) !== 'function') return
+      this.afterDrawNotEnough(records)
     } else {
-      typeOf(this.afterDrawFinished) === 'function' &&
-        this.afterDrawFinished(records)
+      if (typeOf(this.afterDrawFinished) !== 'function') return
+      this.afterDrawFinished(records)
     }
   }
+
   /**
    * 绘制不足最少点数时回调函数
    *
    * @memberof Recorder
    */
   afterDrawNotEnough() {}
+
   /**
    * 绘制完成时回调函数
    *

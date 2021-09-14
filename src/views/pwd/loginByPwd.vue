@@ -22,6 +22,7 @@ import userAvatar from 'components/userAvatar'
 import codeInput from 'components/codeInput'
 import handLock from 'components/handLock'
 import helper from 'utils/helper'
+
 export default {
   props: {
     isPage: {
@@ -29,23 +30,23 @@ export default {
       default: true
     }
   },
-  data () {
+  data() {
     return {
       passwordType: '',
       code: []
     }
   },
-  created () {
+  created() {
     this.queryHandPassword()
   },
   methods: {
-    async queryHandPassword () {
-      let res = await this.$Password.queryHandPassword()
+    async queryHandPassword() {
+      const res = await this.$Password.queryHandPassword()
       this.passwordType = res.data.status.toString()
     },
-    async complete () {
+    async complete() {
       try {
-        let codeStr = helper.getPasswordStr(this.code)
+        const codeStr = helper.getPasswordStr(this.code)
         await this.$Password.checkPassword(codeStr, '0')
         this.next()
       } catch (e) {
@@ -53,23 +54,23 @@ export default {
         this.$refs['code-input'].open()
       }
     },
-    async checkHandPassword (res) {
+    async checkHandPassword(res) {
       await this.$Password.checkPassword(helper.getPasswordStr(res), '1')
       this.next()
     },
-    notEnough () {
+    notEnough() {
       // helper.toast(sysConfig.handLockUnEnoughTip)
     },
-    next () {
+    next() {
       if (this.isPage) {
         this.goNextPage()
       } else {
         this.$emit('next')
       }
     },
-    goNextPage () {
+    goNextPage() {
       helper.saveFreePassword(this.passwordType)
-      let { nextPage, wageSheetId } = this.$route.query
+      const { nextPage, wageSheetId } = this.$route.query
       if (nextPage === 'wageIndex') {
         this.$router.replace({ name: nextPage, params: { wageSheetId } })
       } else {
@@ -80,7 +81,7 @@ export default {
         this.$router.replace({ name: nextPage })
       }
     },
-    toForget () {
+    toForget() {
       this.$router.push({ name: 'forgetSendCode' })
     }
   },
