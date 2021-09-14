@@ -17,6 +17,7 @@ export function typeOf(obj) {
     '[object Object]': 'object',
     '[object Map]': 'map',
     '[object Set]': 'set',
+    '[object Symbol]': 'symbol',
     '[object File]': 'file',
     '[object FormData]': 'formData'
   }
