@@ -28,6 +28,7 @@ class Manager {
   openingTips() {
     const http = new Http()
     http.path = `/${moduleName}/openingTips`
+    http.loading = false
     return http.get()
   }
 }

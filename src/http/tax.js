@@ -43,10 +43,10 @@ class Tax {
    * @param {String} taxSignId
    * @returns
    */
-  signing(taxSignId) {
+  signing(taxSignId, withdrawalLedgerId = '') {
     const http = new Http()
     http.path = `/${moduleName}/signing`
-    http.body = { taxSignId }
+    http.body = { taxSignId, withdrawalLedgerId }
     return http.post()
   }
 }

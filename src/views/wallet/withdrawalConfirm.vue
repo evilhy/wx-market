@@ -164,7 +164,7 @@ export default {
       }
       try {
         this.signLoading = true
-        const res = await this.$Tax.signing(taxSignId)
+        const res = await this.$Tax.signing(taxSignId, this.wageDetail.withdrawalLedgerId)
         window.location.href = res.data.url
       } catch (e) {
         this.signLoading = false
