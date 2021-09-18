@@ -9,7 +9,7 @@
   "attestStatus": 0,
   "signStatus": 0,
   "signStatusVal": "签约状态",
-  "isSign": 1,
+  "isSign": 0,
   "provinceName": "湖北省",
   "provinceCode": "420000",
   "cityCode": "420100",

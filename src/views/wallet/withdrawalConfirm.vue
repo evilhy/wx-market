@@ -86,7 +86,7 @@ export default {
   computed: {
     btnDisabled() {
       let { isSign, attestStatusVal, signStatusVal } = this.signInfo
-      return this.loading || !this.wageDetail.transAmount || !Object.keys(this.selectedBank).length || (isSign && (!attestStatusVal || !signStatusVal))
+      return this.loading || !this.wageDetail.transAmount || !Object.keys(this.selectedBank).length || (!!isSign && (!attestStatusVal || !signStatusVal))
     },
     attestBtn() {
       const attestStatus = this.signInfo.attestStatus
