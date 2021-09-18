@@ -85,7 +85,8 @@ export default {
   },
   computed: {
     btnDisabled() {
-      return this.loading || !this.wageDetail.transAmount || !Object.keys(this.selectedBank).length || !this.signInfo.attestStatusVal || !this.signInfo.signStatusVal
+      let { isSign, attestStatusVal, signStatusVal } = this.signInfo
+      return this.loading || !this.wageDetail.transAmount || !Object.keys(this.selectedBank).length || (isSign && (!attestStatusVal || !signStatusVal))
     },
     attestBtn() {
       const attestStatus = this.signInfo.attestStatus
