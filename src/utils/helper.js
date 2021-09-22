@@ -24,24 +24,16 @@ const helper = {
     urlKey = Object.keys(sysConfig.img_base_url).includes(urlKey) ? urlKey : process.env.VUE_APP_ENV
     return sysConfig.img_base_url[urlKey] + (typeOf(tailUrl) === 'string' ? tailUrl : '')
   },
-  toast(msg, position = 'center', duration = 3000) {
-    clearTimeout(timer)
-    const toast = Toast({
-      duration, // 持续展示 toast
-      // loadingType: 'spinner',
-      message: msg,
-      position
-    })
-    let second = 1
-    const timers = setInterval(() => {
-      second--
-      if (second) {
-        toast.message = msg
-      } else {
-        clearInterval(timers)
-        Toast.clear()
-      }
-    }, duration)
+  toast(message, duration = 5000) {
+    if (typeof message === 'string') {
+      Toast({
+        duration,
+        message
+      })
+    }
+    if (typeof message === 'object') {
+      Toast(message)
+    }
   },
   getDic(type) {
     return storage.getSession(`DIC_${type}`, [])

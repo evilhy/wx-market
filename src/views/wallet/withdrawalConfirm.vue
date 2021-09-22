@@ -85,7 +85,8 @@ export default {
   },
   computed: {
     btnDisabled() {
-      return this.loading || !this.wageDetail.transAmount || !Object.keys(this.selectedBank).length || !this.signInfo.attestStatusVal || !this.signInfo.signStatusVal
+      let { isSign, attestStatusVal, signStatusVal } = this.signInfo
+      return this.loading || !this.wageDetail.transAmount || !Object.keys(this.selectedBank).length || (!!isSign && (!attestStatusVal || !signStatusVal))
     },
     attestBtn() {
       const attestStatus = this.signInfo.attestStatus
@@ -150,7 +151,7 @@ export default {
     },
     toWithdraw() {
       const { attestStatus, signStatus, isSign } = this.signInfo
-      if ((attestStatus === 3 && signStatus === 1) || !isSign) {
+      if (!isSign || (attestStatus === 3 && signStatus === 1)) {
         this.step = 2
       } else {
         this.actionSheetShow = true
@@ -164,7 +165,7 @@ export default {
       }
       try {
         this.signLoading = true
-        const res = await this.$Tax.signing(taxSignId)
+        const res = await this.$Tax.signing(taxSignId, this.wageDetail.withdrawalLedgerId)
         window.location.href = res.data.url
       } catch (e) {
         this.signLoading = false
