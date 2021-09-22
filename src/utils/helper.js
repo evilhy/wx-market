@@ -6,7 +6,6 @@ import TimeInstance from './time'
 
 Toast.allowMultiple()
 
-const timer = null
 const helper = {
   title(title = '') {
     window.document.title = title
