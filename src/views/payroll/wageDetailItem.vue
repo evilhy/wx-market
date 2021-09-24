@@ -77,7 +77,6 @@
         <div class="btn question" v-if="receiptStautus === 1 || receiptStautus === 2">已反馈</div>
       </div>
     </div>
-    <sign-dialog ref="sign-dialog" :id="wage.wageDetailId" @confirm="confirmSign"></sign-dialog>
   </swiper-slide>
 </template>
 <script>
@@ -86,10 +85,9 @@ import storage from 'utils/storage'
 import collect from 'utils/collect'
 import { typeOf } from 'utils/assist'
 import helper from 'utils/helper'
-import signDialog from './signDialog'
 
 export default {
-  components: { swiperSlide, signDialog },
+  components: { swiperSlide },
   props: {
     wage: {
       type: Object
@@ -142,12 +140,12 @@ export default {
       await this.$Inside.receipt(this.wage.wageDetailId, 0)
       this.confirmReceipt('receiptStautus', 0)
     },
-    openSign() {
-      this.$refs['sign-dialog'].open()
-    },
     confirmReceipt(key, value) {
       this.wage[key] = value
       helper.saveReceiptStatus(this.wage.wageDetailId, key, value)
+    },
+    openSign() {
+      this.$emit('sign', this.wage.wageDetailId)
     },
     confirmSign(base64) {
       this.confirmReceipt('receiptStautus', 0)

@@ -23,6 +23,7 @@
     "js-base64": "^3.7.0",
     "jsencrypt": "^3.2.1",
     "regenerator-runtime": "^0.13.9",
+    "signature_pad": "^3.0.0-beta.4",
     "swagger-paths": "^1.0.5",
     "vant": "^2.12.27",
     "vue": "^2.6.11",
