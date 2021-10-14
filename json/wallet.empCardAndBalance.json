@@ -4,6 +4,8 @@
   "balance": "PsLAkiodYsICwb2FLwtm1w==",
   "recentlyIssuedAmt": "PsLAkiodYsICwb2FLwtm1w==",
   "withdrawStatus": 1,
+  "isAttest": false,
+  "signNumber": 2,
   "salt": "cXdlam9pZmdqa2xkZmtnbw==",
   "passwd": "ZGZna2xqMjEzcms0bDNvNDBpZmdmZGxtZzI0a21kZmc="
 }

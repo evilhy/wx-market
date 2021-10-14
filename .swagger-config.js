@@ -77,12 +77,20 @@ const withdrawalRecordDetail = require('./json/wallet.withdrawalRecordDetail.jso
 const selectWithdrawalStatusEnum = require('./json/select.WithdrawalStatusEnum.json')
 const checkCardBin = require('./json/roll.checkCardBin.{cardNo}.json')
 const signingDetails = require('./json/tax.signingDetails.json')
+const signingList = require('./json/tax.signingList.json')
+const taxAttestDetail = require('./json/tax.taxAttestDetail.json')
 
 module.exports = {
   openApi: [
     {
       baseURL: 'https://sitgateway.cardpu.com/payroll',
       paths: {
+        '/tax/signingList': {
+          get: signingList
+        },
+        '/tax/taxAttestDetail': {
+          get: taxAttestDetail
+        },
         '/tax/signRecord': {
           get: 'https://www.baidu.com'
         },

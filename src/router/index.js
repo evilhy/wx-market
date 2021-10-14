@@ -497,6 +497,38 @@ const routes = [
       title: '放薪管家工资条年度账单'
     },
     component: () => import(/* webpackChunkName: "yearBill" */ '../views/yearBill/index.vue')
+  },
+  {
+    path: '/sign-auth', // 扫码签约获取权限
+    name: 'signAuth',
+    meta: {
+      title: '放薪管家'
+    },
+    component: () => import(/* webpackChunkName: "signAuth" */ '../views/sign/auth.vue')
+  },
+  {
+    path: '/sign-code', // 扫码签约获取用户信息
+    name: 'signCode',
+    meta: {
+      title: '放薪管家'
+    },
+    component: () => import(/* webpackChunkName: "signCode" */ '../views/sign/code.vue')
+  },
+  {
+    path: '/service-attention', // 扫码签约提示关注公众号
+    name: 'serviceAttention',
+    meta: {
+      title: '放薪管家'
+    },
+    component: () => import(/* webpackChunkName: "serviceAttention" */ '../views/public/serviceAttention.vue')
+  },
+  {
+    path: '/sign-attest', // 扫码签约认证和签约
+    name: 'signAttest',
+    meta: {
+      title: '放薪管家'
+    },
+    component: () => import(/* webpackChunkName: "signAttest" */ '../views/sign/attest.vue')
   }
 ]
 

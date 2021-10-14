@@ -49,6 +49,29 @@ class Tax {
     http.body = { taxSignId, withdrawalLedgerId }
     return http.post()
   }
+
+  /**
+   * 查询需要签约的协议列表
+   * @param {String} groupId
+   * @param {String} templateId
+   * @returns
+   */
+  signingList(groupId = '', templateId = '') {
+    const http = new Http()
+    http.path = `/${moduleName}/signingList`
+    http.query = { groupId, templateId }
+    return http.get()
+  }
+
+  /**
+   * 认证状态查询
+   * @returns
+   */
+  taxAttestDetail() {
+    const http = new Http()
+    http.path = `/${moduleName}/taxAttestDetail`
+    return http.get()
+  }
 }
 
 export default new Tax()

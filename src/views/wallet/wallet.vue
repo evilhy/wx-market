@@ -31,6 +31,12 @@
         </div>
       </div>
     </div>
+    <!-- isAttest -->
+    <!-- signNumber -->
+    <div class="sign-link" v-if="info.isAttest !== true || info.signNumber > 0" @click="$router.push({ name: 'signAttest' })">
+      <img src="../../assets/img/icon-sign-num.png" alt="" />
+      <span class="notice-count">{{ Number(!info.isAttest) + info.signNumber }}</span>
+    </div>
   </div>
 </template>
 
@@ -47,7 +53,10 @@ export default {
   },
   data() {
     return {
-      info: {},
+      info: {
+        isAttest: true,
+        signNumber: 0
+      },
       eyeFlag: helper.checkShowBalance()
     }
   },

@@ -159,7 +159,7 @@ export default {
     },
     async toSign() {
       const { attestStatus, taxSignId } = this.signInfo
-      if (attestStatus === 0) {
+      if (attestStatus !== 3) {
         helper.toast('请先完成身份信息认证再签约')
         return
       }
