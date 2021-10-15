@@ -25,7 +25,7 @@
             <van-button class="sign-btn" type="primary" size="small" round :disabled="signLoading" @click="toSign(item.taxSignId)">去签约 </van-button>
           </div>
         </div>
-        <p class="sing-history-link theme-text" fz12 @click="toSignListPage">查看签约记录</p>
+        <p class="sing-history-link theme-text" fz12 @click="toSignListPage" v-if="attestDetail.attestStatus === 3">查看签约记录</p>
       </template>
     </template>
   </div>

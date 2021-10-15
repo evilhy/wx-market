@@ -41,7 +41,7 @@
         <span class="label"><img src="../../assets/img/user/icon-user-theme.png" alt="" />主题更换</span>
         <span class="value"><span class="arrow"></span></span>
       </div>
-      <div class="item" v-if="info.signStatus === 1 && info.taxSignId" @click="toSignPage">
+      <div class="item" v-if="info.attestStatus === 3" @click="toSignPage">
         <span class="label"><img src="../../assets/img/user/icon-user-sign.png" alt="" />签约记录</span>
         <span class="value"><span class="arrow"></span></span>
       </div>
