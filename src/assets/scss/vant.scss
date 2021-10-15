@@ -6,16 +6,17 @@
   margin: 0;
 }
 .van-picker {
-  &__toolbar{
+  &__toolbar {
     height: 80px;
   }
-  &__cancel,&__confirm{
+  &__cancel,
+  &__confirm {
     font-size: 26px;
     padding: 0 28px;
   }
-  &-column{
+  &-column {
     font-size: 30px;
-    &__item{
+    &__item {
       padding: 0 6px;
     }
   }
@@ -33,38 +34,38 @@
   }
 }
 // 下拉菜单
-.van-dropdown-menu{
-  .van-dropdown-menu__bar{
+.van-dropdown-menu {
+  .van-dropdown-menu__bar {
     height: 90px;
     box-shadow: none;
   }
-  .van-dropdown-menu__title{
+  .van-dropdown-menu__title {
     padding: 0 16px;
     font-size: 26px;
     line-height: 40px;
   }
-  .van-dropdown-menu__title::after{
+  .van-dropdown-menu__title::after {
     right: -10px;
     margin-top: -10px;
     border: 6px solid;
     border-color: transparent transparent #bbb #bbb;
     opacity: 1;
   }
-  .van-dropdown-menu__title--active::after{
+  .van-dropdown-menu__title--active::after {
     border-color: transparent transparent currentColor currentColor;
     margin-top: -2px;
   }
 }
 // 单元格
-.van-cell{
+.van-cell {
   font-size: 26px;
   line-height: 46px;
   padding: 18px 26px;
   align-items: center;
-  &[star]{
-    .van-cell__title{
+  &[star] {
+    .van-cell__title {
       position: relative;
-      &::before{
+      &::before {
         content: '*';
         color: red;
         position: absolute;
@@ -73,56 +74,58 @@
       }
     }
   }
-  .van-cell__label{
+  .van-cell__label {
     margin-top: 8px;
     font-size: 24px;
     line-height: 36px;
   }
-  .van-cell__right-icon{
+  .van-cell__right-icon {
     font-size: 30px;
   }
 }
 
 // 通知栏
-.van-notice-bar{
+.van-notice-bar {
   height: 80px;
   padding: 0 32px;
   font-size: 26px;
   line-height: 48px;
-  .van-notice-bar__left-icon, .van-notice-bar__right-icon{
+  .van-notice-bar__left-icon,
+  .van-notice-bar__right-icon {
     min-width: 48px;
     font-size: 32px;
   }
 }
 
 // 数字键盘
-.van-number-keyboard{
+.van-number-keyboard {
   padding-bottom: 0;
-  .van-number-keyboard__body{
+  .van-number-keyboard__body {
     padding: 10px 0 0 10px;
   }
-  .van-key__wrapper{
+  .van-key__wrapper {
     padding: 0 10px 10px 0;
-    .van-key{
+    .van-key {
       height: 80px;
       font-size: 44px;
       border-radius: 12px;
     }
   }
-  .van-key__delete-icon,.van-key__collapse-icon{
+  .van-key__delete-icon,
+  .van-key__collapse-icon {
     width: 50px;
     height: 34px;
   }
 }
 // 密码输入框
-.van-password-input{
+.van-password-input {
   font-size: 36px;
-  .van-password-input__security{
+  .van-password-input__security {
     height: 88px;
-    li{
+    li {
       font-size: 32px;
     }
-    i{
+    i {
       width: 20px;
       height: 20px;
     }
@@ -130,146 +133,149 @@
 }
 
 // 弹出框
-.van-dialog{
+.van-dialog {
   width: 90%;
   font-size: 30px;
   border-radius: 32px;
-  &__header{
+  &__header {
     padding-top: 48px;
     line-height: 48px;
   }
-  &__message{
+  &__message {
     padding: 48px;
     font-size: 28px;
     line-height: 40px;
   }
-  &__message--has-title{
+  &__message--has-title {
     padding-top: 16px;
   }
-  &__confirm{
+  &__confirm {
     color: $info-color;
-    &:active{
+    &:active {
       color: $info-color;
     }
   }
-  .van-button--large{
+  .van-button--large {
     height: 100px;
   }
 }
 //
-.van-popup{
-  .van-popup__close-icon--top-right{
+.van-popup {
+  .van-popup__close-icon--top-right {
     font-size: 42px;
     top: 28px;
     right: 28px;
   }
 }
 // 按钮
-.van-button{
+.van-button {
   font-size: 30px;
   height: 80px;
-  &--small{
+  &--small {
     font-size: 24px;
     padding: 0 14px;
     height: 54px;
   }
-  &--normal{
+  &--normal {
     padding: 0 28px;
     font-size: 26px;
   }
-  &--large{
+  &--large {
     font-size: 30px;
   }
-  &--mini{
+  &--mini {
     height: 48px;
     padding: 0 8px;
     font-size: 24px;
   }
 }
 
-.van-nav-bar{
+.van-nav-bar {
   height: 84px;
-  .van-nav-bar__left, .van-nav-bar__right{
+  .van-nav-bar__left,
+  .van-nav-bar__right {
     padding: 0 30px;
     font-size: 26px;
   }
-  .van-nav-bar__arrow{
+  .van-nav-bar__arrow {
     font-size: 30px;
     margin-right: 8px;
   }
-  .van-nav-bar__title{
+  .van-nav-bar__title {
     font-size: 30px;
   }
 }
 
 // 下拉列表
-.van-list{
-  .van-list__error-text, .van-list__finished-text, .van-list__loading{
+.van-list {
+  .van-list__error-text,
+  .van-list__finished-text,
+  .van-list__loading {
     font-size: 26px;
     line-height: 70px;
   }
 }
-.van-loading__spinner{
+.van-loading__spinner {
   width: 40px !important;
   height: 40px !important;
 }
-.van-loading__text{
+.van-loading__text {
   margin-left: 14px;
   font-size: 26px;
 }
 
 // 地址列表
-.van-address-list{
+.van-address-list {
   padding: 20px 20px 80px;
-  .van-address-item:not(:last-child){
+  .van-address-item:not(:last-child) {
     margin-bottom: 20px;
   }
-  .van-address-item{
+  .van-address-item {
     padding: 20px;
     border-radius: 8px;
-    .van-radio__label{
+    .van-radio__label {
       margin-left: 20px;
     }
-    .van-address-item__name{
+    .van-address-item__name {
       margin-bottom: 12px;
       font-size: 30px;
       line-height: 42px;
     }
-    .van-address-item__address{
+    .van-address-item__address {
       font-size: 24px;
       line-height: 34px;
       word-break: break-all;
     }
-    .van-address-item__value{
+    .van-address-item__value {
       padding-right: 80px;
     }
-    .van-address-item__edit{
+    .van-address-item__edit {
       right: 30px;
       font-size: 38px;
     }
   }
 }
-.van-address-list__bottom{
+.van-address-list__bottom {
   padding: 0 30px;
-  .van-address-list__add{
+  .van-address-list__add {
     height: 76px;
     margin: 10px 0;
   }
 }
 
 //
-.van-tag{
+.van-tag {
   padding: 0 6px;
   font-size: 24px;
   line-height: 32px;
   border-radius: 4px;
-  &--small{
+  &--small {
     font-size: 20px;
   }
-  &--medium{
+  &--medium {
     padding: 4px 10px;
   }
-  &--large{
+  &--large {
     padding: 6px 14px;
     font-size: 26px;
     border-radius: 8px;
@@ -277,43 +283,43 @@
 }
 
 // 动作面板
-.van-action-sheet{
-  &__description{
+.van-action-sheet {
+  &__description {
     padding: 24px 30px;
     color: #969799;
     font-size: 26px;
     line-height: 38px;
   }
-  &__header{
+  &__header {
     font-size: 30px;
     line-height: 90px;
     border-bottom: 1px solid #eee;
-    &__close{
+    &__close {
       padding: 0 30px;
       font-size: 36px;
     }
   }
-  &__item{
+  &__item {
     padding: 28px 30px;
     font-size: 30px;
     line-height: 1.2;
     border-bottom: 1px solid #eee;
   }
-  &__subname{
+  &__subname {
     font-size: 22px;
   }
-  &__close{
+  &__close {
     padding: 0 26px;
     font-size: 40px;
   }
 }
 
 //
-.van-field{
-  &__clear{
+.van-field {
+  &__clear {
     font-size: 30px;
   }
-  &__word-limit{
+  &__word-limit {
     margin-top: 6px;
     font-size: 22px;
     line-height: 28px;
@@ -321,128 +327,159 @@
 }
 
 // 步骤
-.van-steps--vertical{
+.van-steps--vertical {
   padding: 0 0 0 64px;
-  .van-step--vertical{
+  .van-step--vertical {
     padding: 20px 20px 20px 0;
     line-height: 36px;
   }
-  .van-step__circle-container{
+  .van-step__circle-container {
     top: 38px;
     left: -30px;
     font-size: 24px;
   }
-  .van-step__line{
+  .van-step__line {
     top: 32px;
     left: -30px;
   }
-  .van-step__circle{
+  .van-step__circle {
     width: 10px;
     height: 10px;
   }
 }
 
 // 日历
-.van-calendar{
-  .van-calendar__month-title, .van-calendar__header-title, .van-calendar__header-subtitle{
+.van-calendar {
+  .van-calendar__month-title,
+  .van-calendar__header-title,
+  .van-calendar__header-subtitle {
     height: 84px;
     line-height: 84px;
   }
-  .van-calendar__month-title{
+  .van-calendar__month-title {
     font-size: 28px;
   }
-  .van-calendar__header{
+  .van-calendar__header {
     box-shadow: 0 4px 20px rgba(125, 126, 128, 0.16);
   }
-  .van-calendar__header-title{
+  .van-calendar__header-title {
     font-size: 30px;
   }
-  .van-calendar__header-subtitle{
+  .van-calendar__header-subtitle {
     font-size: 28px;
   }
-  .van-calendar__weekday{
+  .van-calendar__weekday {
     font-size: 24px;
     line-height: 58px;
   }
-  .van-calendar__day{
+  .van-calendar__day {
     height: 120px;
     font-size: 30px;
   }
-  .van-calendar__selected-day{
+  .van-calendar__selected-day {
     width: 100px;
     height: 100px;
     border-radius: 8px;
   }
-  .van-calendar__month-mark{
+  .van-calendar__month-mark {
     font-size: 300px;
   }
-  .van-calendar__day--start{
+  .van-calendar__day--start {
     border-radius: 8px 0 0 8px;
   }
-  .van-calendar__day--end{
+  .van-calendar__day--end {
     border-radius: 0 8px 8px 0;
   }
-  .van-calendar__bottom-info{
+  .van-calendar__bottom-info {
     bottom: 16px;
     font-size: 20px;
   }
 }
 
 // van-switch
-.van-switch{
+.van-switch {
   font-size: 34px !important;
-  &.van-switch--on{
+  &.van-switch--on {
     background-color: $theme-color;
   }
 }
 
-.van-pull-refresh__head{
+.van-pull-refresh__head {
   font-size: 26px;
   height: 80px;
   line-height: 80px;
 }
 
 // van-uploader
-.van-uploader{
-  &__upload{
+.van-uploader {
+  &__upload {
     width: 150px;
     height: 150px;
-    &-icon{
+    &-icon {
       font-size: 46px;
     }
   }
-  &__preview-image{
+  &__preview-image {
     width: 150px;
     height: 150px;
   }
-  &__preview-delete{
+  &__preview-delete {
     width: 28px;
     height: 28px;
   }
-  &__preview-delete-icon{
+  &__preview-delete-icon {
     font-size: 30px;
   }
-  &__loading{
+  &__loading {
     width: 44px;
     height: 44px;
   }
-  &__mask-message{
+  &__mask-message {
     font-size: 22px;
   }
 }
 
-.van-image-preview{
-  &__index{
+.van-image-preview {
+  &__index {
     font-size: 22px;
+  }
+}
+.van-tabs {
+  .van-tabs__wrap {
+    height: 76px;
+    display: flex;
+    align-items: center;
+    .van-tab {
+      font-size: 26px;
+      line-height: 32px;
+      padding: 0 6px;
+    }
+    .van-tabs__nav--card {
+      height: 56px;
+      margin: 0 30px;
+      border: 1px solid $theme-color;
+      width: 80%;
+      margin: 0 auto;
+      border-radius: 4px;
+      .van-tab.van-tab--active {
+        color: white;
+        background-color: $theme-color;
+      }
+      .van-tab {
+        color: $theme-color;
+        border-right: 1px solid white;
+        border-radius: 4px;
+      }
+    }
   }
 }
 
 @media screen and (max-width: 375px) {
-  .van-switch{
+  .van-switch {
     font-size: 38px !important;
   }
 }
 
-[class*=van-hairline]::after{
+[class*='van-hairline']::after {
   border-color: #e0e1e2;
 }

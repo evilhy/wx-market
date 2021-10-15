@@ -106,7 +106,7 @@ module.exports = {
           }
         },
         '/tax/signing': {
-          post: 'https://www.baidu.com'
+          post: { url: 'https://www.baidu.com' }
         },
         '/base/WithdrawalStatusEnum/dictItem': {
           get: selectWithdrawalStatusEnum

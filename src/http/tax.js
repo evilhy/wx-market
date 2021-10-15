@@ -8,10 +8,9 @@ class Tax {
    * @param {签约id} taxSignId
    * @returns
    */
-  signRecord(taxSignId) {
+  signRecord() {
     const http = new Http()
     http.path = `/${moduleName}/signRecord`
-    http.query = { taxSignId }
     return http.get()
   }
 
@@ -56,7 +55,7 @@ class Tax {
    * @param {String} templateId
    * @returns
    */
-  signingList(groupId = '', templateId = '') {
+  signingList({ groupId = '', templateId = '' }) {
     const http = new Http()
     http.path = `/${moduleName}/signingList`
     http.query = { groupId, templateId }

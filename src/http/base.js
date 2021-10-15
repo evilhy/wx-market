@@ -15,7 +15,7 @@ export default class HttpForApplication extends HttpEngine {
 
     this.mockTimeout = 2
 
-    this.requestedSever = true
+    this.requestedSever = false
 
     this.encrypt = true
   }

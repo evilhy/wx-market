@@ -6,7 +6,7 @@
   "phone" : "18607559997",
   "idCardFront" : "/webserver/www/upload/sign/20210922/min/IDCARD-7167343432770591979Screenshot_20210916_164138_com.tencent.mm.jpg",
   "idCardNegative" : "/webserver/www/upload/sign/20210922/min/IDCARD-1863685373598381325Screenshot_20210916_164130_com.tencent.mm.jpg",
-  "attestStatus" : 2,
+  "attestStatus" : 3,
   "attestStatusVal" : "认证失败",
   "provinceCode" : "110000",
   "provinceName" : "北京市",

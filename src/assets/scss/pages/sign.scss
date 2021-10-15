@@ -1,43 +1,116 @@
 @charset "utf-8";
 
-.service-attention-page{ // 公众号关注提示页
-  .steps{
+.service-attention-page {
+  // 公众号关注提示页
+  .steps {
     padding: 30px;
     margin-bottom: 66px;
     background-color: white;
     border-radius: 4px;
-    .step-tip{
+    .step-tip {
       margin-bottom: 12px;
       font-family: PingFangSC-Semibold;
     }
-    .step-item{
+    .step-item {
       color: $theme-color;
       line-height: 38px;
     }
   }
-  .ewm{
+  .ewm {
     display: block;
     padding: 20px;
     @include square(240px);
     background-color: white;
     margin: 0 auto;
   }
-  .tip{
-    color:#525E70;
+  .tip {
+    color: #525e70;
     line-height: 38px;
   }
 }
-.sign-link{
+.sign-link {
   position: fixed;
   right: 13px;
   bottom: 198px;
   z-index: 2;
-  .notice-count{
+  .notice-count {
     right: 0;
     top: -10px;
   }
-  img{
+  img {
     width: 68px;
     height: 73px;
+  }
+}
+.sign-attest-page {
+  padding: 104px 20px 0;
+  height: calc(100vh - 130px);
+  min-height: auto;
+  overflow: auto;
+  &.attest{
+    height: 100vh;
+  }
+  .tab-list {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 82px;
+    padding-left: 20px;
+    border-bottom: 5px solid #dfdfdf;
+    background-color: white;
+    color: $text-color-gray;
+    font-size: 26px;
+    z-index: 10;
+    .tab-item {
+      position: relative;
+      padding: 0 20px;
+      height: 100%;
+      &.active {
+        color: $text-color;
+        &::after {
+          content: '';
+          position: absolute;
+          top: 100%;
+          width: 50%;
+          left: 50%;
+          height: 5px;
+          transform: translateX(-50%);
+          background-color: $text-color;
+        }
+      }
+      .notice-count{
+        right: -8px;
+        top: 8px;
+      }
+    }
+  }
+  .sign-item{
+    background-color: white;
+    padding: 20px 30px;
+    margin-top: 22px;
+    border-radius: 8px;
+    justify-content: space-between;
+    .left{
+      flex: 1;
+    }
+    .name{
+      font-family: PingFangSC-Semibold;
+    }
+    .no{
+      color: $text-color-gray;
+      line-height: 40px;
+    }
+  }
+  .sign-btn{
+    width: 120px;
+    height: 48px;
+    margin-left: 30px;
+  }
+  .sing-history-link{
+    position: fixed;
+    bottom: 86px;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }

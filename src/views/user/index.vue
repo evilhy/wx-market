@@ -102,7 +102,7 @@ export default {
       this.$router.push({ name, query })
     },
     async toSignPage() {
-      const res = await this.$Tax.signRecord(this.info.taxSignId)
+      const res = await this.$Tax.signRecord()
       window.location.href = res.data.url
     }
   },
