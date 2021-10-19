@@ -35,6 +35,7 @@
 import storage from 'utils/storage'
 import noData from 'components/noData'
 import helper from 'utils/helper'
+import decryptInfo from 'utils/decryptInfo'
 import uploadIdentity from './uploadIdentity'
 export default {
   name: '',
@@ -71,7 +72,7 @@ export default {
     },
     async getTaxAttestDetail() {
       let res = await this.$Tax.taxAttestDetail()
-      this.attestDetail = res.data
+      this.attestDetail = decryptInfo(res.data, 'userName', 'idNumber', 'phone')
       if (this.attestDetail.attestStatus === 3) {
         if (this.signingList.length === 1) {
           this.toSign(this.signingList[0].taxSignId)

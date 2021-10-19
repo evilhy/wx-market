@@ -25,10 +25,9 @@ export default {
       const { code } = getPageQueryObject()
       const res = await this.$Weixin.wxCallback(code, 'FXGJ')
       const data = decryptInfo(res.data, 'bindStatus')
-      const { bindStatus, jsessionId, idNumber, ifPwd, headimgurl, apppartner, themeId } = data
+      const { bindStatus, jsessionId, idNumber, ifPwd, headimgurl, apppartner } = data
 
       helper.saveUserInfo({ jsessionId, ifPwd, bindStatus, headimgurl, apppartner })
-      helper.setTheme(themeId)
       if (bindStatus === '0') {
         this.$router.replace({ name: 'serviceAttention' })
       } else {
