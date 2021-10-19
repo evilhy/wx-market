@@ -13,10 +13,10 @@ const cdn = {
   html: {
     css: [],
     js: [
-      'https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js',
-      'https://cdn.jsdelivr.net/npm/vue-router@3.5.2/dist/vue-router.min.js',
-      'https://cdn.jsdelivr.net/npm/axios@0.21.4/dist/axios.min.js',
-      'https://cdn.jsdelivr.net/npm/vuex@3.6.2/dist/vuex.min.js'
+      'https://unpkg.com/vue@2.6.14/dist/vue.min.js',
+      'https://unpkg.com/vue-router@3.5.2/dist/vue-router.min.js',
+      'https://unpkg.com/axios@0.21.4/dist/axios.min.js',
+      'https://unpkg.com/vuex@3.6.2/dist/vuex.min.js'
     ]
   },
   externals: {
