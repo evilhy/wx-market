@@ -51,18 +51,27 @@ export default {
         this.$router.replace({ name: 'home' })
       } else {
         const stateObj = JSON.parse(this.query.state)
-        const { wageSheetId, groupId } = stateObj
-        if (wageSheetId && groupId) {
-          helper.saveUserInfo({ groupId })
-          if (ifPwd) {
-            // 有密码
-            this.$router.replace({ name: 'loginByPwd', query: { nextPage: 'wageIndex', wageSheetId } })
-          } else {
-            this.$router.replace({ name: 'setQueryCode' })
-          }
-          return
+        const { wageSheetId, groupId, type = '0', withdrawId } = stateObj
+        switch (type) {
+          case '1': // 提现推送
+            if (withdrawId) {
+              this.$router.replace({ name: 'withdrawalDetail', params: { id: withdrawId }, query: { routeName: 'wallet' } })
+            }
+            break
+          default:
+            // 工资推送
+            if (wageSheetId && groupId) {
+              helper.saveUserInfo({ groupId })
+              if (ifPwd) {
+                // 有密码
+                this.$router.replace({ name: 'loginByPwd', query: { nextPage: 'wageIndex', wageSheetId } })
+              } else {
+                this.$router.replace({ name: 'setQueryCode' })
+              }
+            } else {
+              this.$router.replace({ name: 'home' })
+            }
         }
-        this.$router.replace({ name: 'home' })
       }
     }
   },

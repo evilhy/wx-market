@@ -41,7 +41,7 @@
       </div>
     </div>
     <div class="fixed-btn-wrap">
-      <van-button :class="showWithdraw ? 'short-btn' : 'long-btn'" plain type="primary" @click="$router.go(-1)">返回</van-button>
+      <van-button :class="showWithdraw ? 'short-btn' : 'long-btn'" plain type="primary" @click="back">返回</van-button>
       <van-button v-if="showWithdraw" type="primary" :disabled="!canWithdraw" @click="toWithdraw">{{ btnText }}</van-button>
     </div>
   </div>
@@ -125,6 +125,14 @@ export default {
     async toWithdraw() {
       helper.saveWithdrawDetail(this.wageDetail)
       this.$router.push({ name: 'withdrawalConfirm', params: { id: this.id } })
+    },
+    back() {
+      let routeName = this.$route.query.routeName
+      if (routeName) {
+        this.$router.replace({ name: routeName })
+      } else {
+        this.$router.go(-1)
+      }
     }
   }
 }
