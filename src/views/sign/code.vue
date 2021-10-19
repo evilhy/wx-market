@@ -16,7 +16,7 @@ export default {
   },
   created() {
     this.loadingInstance = new Loading({ type: 'square' })
-    helper.clearSession()
+    helper.clearSession('payrollUserInfo')
     this.getUserInfo()
   },
   mounted() {},
@@ -33,7 +33,7 @@ export default {
         this.$router.replace({ name: 'serviceAttention' })
       } else {
         helper.saveUserInfo({ idNumber })
-        this.$router.replace({ name: 'attestSign' })
+        this.$router.replace({ name: 'signAttest' })
       }
     }
   },
