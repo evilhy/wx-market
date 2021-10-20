@@ -90,7 +90,7 @@ export default {
         this.signLoading = true
         const res = await this.$Tax.signing(taxSignId)
         window.location.href = res.data.url
-      } catch (e) {
+      } finally {
         this.signLoading = false
       }
     },
