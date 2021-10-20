@@ -1,16 +1,16 @@
 <template>
-  <div class="page sign-attest-page" :class="{ attest: tabIndex === 1 }" v-if="finished">
+  <div class="page sign-attest-page" :class="{ attest: tabIndex === 1, 'has-attest': hasAttest }" v-if="finished">
     <no-data v-if="!signingList.length" name="sign" text="暂时没有需要签署的协议哦！"> </no-data>
     <template v-else>
-      <div class="tab-list" center-v>
-        <div class="tab-item" center-v :class="{ active: tabIndex === 1 }" @click="tabIndex = 1">身份认证<span class="notice-count" v-if="neddAttest">1</span></div>
+      <div class="tab-list" center-v v-if="!hasAttest">
+        <div class="tab-item" center-v :class="{ active: tabIndex === 1 }" @click="tabIndex = 1">身份认证<span class="notice-count" v-if="needAttest">1</span></div>
         <div class="tab-item" center-v :class="{ active: tabIndex === 2 }" @click="tabIndex = 2">
           协议签约<span class="notice-count">{{ signingList.length }}</span>
         </div>
       </div>
       <!-- 身份认证 -->
       <template v-if="tabIndex === 1">
-        <p class="error-text ac" v-if="neddAttest" mb10>请补充身份认证信息，否则部分功能使用将受限</p>
+        <p class="error-text ac" v-if="needAttest" mb10>请补充身份认证信息，否则部分功能使用将受限</p>
         <upload-identity :info.sync="attestDetail"></upload-identity>
       </template>
       <!-- 待签约列表 -->
@@ -25,7 +25,7 @@
             <van-button class="sign-btn" type="primary" size="small" round :disabled="signLoading" @click="toSign(item.taxSignId)">去签约 </van-button>
           </div>
         </div>
-        <p class="sing-history-link theme-text" fz12 @click="toSignListPage" v-if="attestDetail.attestStatus === 3">查看签约记录</p>
+        <p class="sing-history-link theme-text" fz12 @click="toSignListPage" v-if="hasAttest">查看签约记录</p>
       </template>
     </template>
   </div>
@@ -51,9 +51,12 @@ export default {
     }
   },
   computed: {
-    neddAttest() {
+    needAttest() {
       let attestStatus = this.attestDetail.attestStatus
       return attestStatus === 0 || attestStatus === 2
+    },
+    hasAttest() {
+      return this.attestDetail.attestStatus === 3
     }
   },
   created() {

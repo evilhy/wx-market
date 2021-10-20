@@ -50,6 +50,9 @@
   &.attest{
     height: 100vh;
   }
+  &.has-attest{
+    padding-top: 20px;
+  }
   .tab-list {
     position: fixed;
     left: 0;
