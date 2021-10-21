@@ -34,8 +34,8 @@
     <!-- isAttest -->
     <!-- signNumber -->
     <div class="sign-link" v-if="info.isAttest !== true || info.signNumber > 0" @click="$router.push({ name: 'signAttest' })">
-      <img src="../../assets/img/icon-sign-num.png" alt="" />
-      <span class="notice-count">{{ Number(!info.isAttest) + info.signNumber }}</span>
+      <img id="sign-tip" :class="tipClass" src="../../assets/img/icon-sign-num.png" alt="" />
+      <span class="notice-count" :class="tipClass">{{ Number(!info.isAttest) + info.signNumber }}</span>
     </div>
   </div>
 </template>
@@ -57,7 +57,9 @@ export default {
         isAttest: true,
         signNumber: 0
       },
-      eyeFlag: helper.checkShowBalance()
+      eyeFlag: helper.checkShowBalance(),
+      timer: null,
+      tipClass: 'pulse'
     }
   },
   computed: {
@@ -72,6 +74,14 @@ export default {
   created() {
     if (this.type === 'outer') return
     this.getWalletData()
+  },
+  mounted() {
+    this.timer = setInterval(() => {
+      let el = document.querySelector('#sign-tip')
+      if (el) {
+        this.tipClass = this.tipClass ? '' : 'pulse'
+      }
+    }, 1000)
   },
   methods: {
     getWalletData() {
@@ -130,6 +140,9 @@ export default {
         this.$router.push({ name: 'setQueryCode' })
       }
     }
+  },
+  destroyed() {
+    clearInterval(this.timer)
   }
 }
 </script>
