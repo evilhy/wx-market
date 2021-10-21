@@ -35,7 +35,7 @@
     <!-- signNumber -->
     <div class="sign-link" v-if="info.isAttest !== true || info.signNumber > 0" @click="$router.push({ name: 'signAttest' })">
       <img id="sign-tip" :class="tipClass" src="../../assets/img/icon-sign-num.png" alt="" />
-      <span class="notice-count" :class="tipClass">{{ Number(!info.isAttest) + info.signNumber }}</span>
+      <span class="notice-count">{{ Number(!info.isAttest) + info.signNumber }}</span>
     </div>
   </div>
 </template>
@@ -81,7 +81,7 @@ export default {
       if (el) {
         this.tipClass = this.tipClass ? '' : 'pulse'
       }
-    }, 1000)
+    }, 600)
   },
   methods: {
     getWalletData() {
