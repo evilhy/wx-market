@@ -51,10 +51,11 @@ export default {
         this.$router.replace({ name: 'home' })
       } else {
         const stateObj = JSON.parse(this.query.state)
-        const { wageSheetId, groupId, type = '0', withdrawId } = stateObj
+        const { wageSheetId, groupId, type = '0', withdrawId, entId } = stateObj
         switch (type) {
           case '1': // 提现推送
-            if (withdrawId) {
+            if (withdrawId && entId) {
+              helper.saveUserInfo({ entId })
               this.$router.replace({ name: 'withdrawalDetail', params: { id: withdrawId }, query: { routeName: 'wallet' } })
             }
             break
