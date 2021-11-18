@@ -11,7 +11,7 @@
     </div>
     <div class="field">
       <span class="label">手机号</span>
-      <span class="value">{{ phone | phoneStar }}</span>
+      <span class="value">{{ $filter.phoneStar(phone) }}</span>
       <span class="theme-color" @click="update">修改</span>
     </div>
   </div>

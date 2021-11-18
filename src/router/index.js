@@ -1,15 +1,8 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import getId from '../views/public/getId'
+import { createRouter, createWebHashHistory } from 'vue-router'
+import getId from 'views/public/getId'
 import token from '../views/public/token'
 import home from '../views/payroll/home' // 避免首页跳转过慢
 import loginByPwd from '../views/pwd/loginByPwd'
-
-const originalPush = VueRouter.prototype.push
-VueRouter.prototype.push = function push(location) {
-  return originalPush.call(this, location).catch((err) => err)
-}
-Vue.use(VueRouter)
 
 const routes = [
   {
@@ -284,11 +277,6 @@ const routes = [
     component: () => import(/* webpackChunkName: "manager" */ '../views/payroll/manager.vue')
   },
   {
-    path: '/manager-detail',
-    name: 'managerDetail',
-    component: () => import(/* webpackChunkName: "managerDetail" */ '../views/payroll/managerDetail.vue')
-  },
-  {
     path: '/tax-instructions', // 个税说明
     name: 'taxInstructions',
     component: () => import(/* webpackChunkName: "taxInstructions" */ '../views/tax/taxInstructions.vue')
@@ -532,7 +520,8 @@ const routes = [
   }
 ]
 
-const router = new VueRouter({
+const router = createRouter({
+  history: createWebHashHistory(),
   routes
 })
 

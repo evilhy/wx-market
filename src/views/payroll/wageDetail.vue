@@ -1,10 +1,10 @@
 <template>
   <div class="bill-detail-page" :style="billDetailPageStyle">
-    <swiper class="swiper-container" :options="swiperOption" ref="mySwiper">
-      <!-- slides -->
-      <wage-detail-item :ref="item.wageDetailId" v-for="(item, index) in wageDetailList" :key="index" :wage="item" @sign="toSign"></wage-detail-item>
-      <div class="swiper-pagination" slot="pagination"></div>
-    </swiper>
+    <van-swipe class="swiper-container">
+      <van-swipe-item v-for="(item, index) in wageDetailList" :key="index">
+        <wage-detail-item :ref="wageDetailList[index].wageDetailId" v-model:wage="wageDetailList[index]" @sign="toSign"></wage-detail-item>
+      </van-swipe-item>
+    </van-swipe>
     <div class="bottom-group">该资金由{{ wageDetailList[0].wageShowDTO.grantName || wageDetailList[0].groupName }}发放</div>
     <div class="year-bill-entry" v-if="yearBillOpen" @click="toPage('yearBill')"><img src="../../assets/img/yearBill/year-bill-entry.gif" alt="" /></div>
     <div class="personal-tax" v-else @click="toPage('home')">返回首页</div>
@@ -15,7 +15,6 @@
 <script>
 import storage from 'utils/storage'
 import helper from 'utils/helper'
-import { swiper } from 'vue-awesome-swiper'
 import signature from 'components/signature'
 import wageDetailItem from './wageDetailItem'
 
@@ -24,11 +23,6 @@ export default {
     return {
       wageSheetId: this.$route.params.wageSheetId,
       wageDetailList: [],
-      swiperOption: {
-        pagination: {
-          el: '.swiper-pagination'
-        }
-      },
       yearBillOpen: helper.checkYearBillOpen(),
       index: -1,
       wageDetailId: ''
@@ -65,7 +59,6 @@ export default {
     }
   },
   components: {
-    swiper,
     wageDetailItem,
     signature
   }

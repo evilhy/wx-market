@@ -1,20 +1,19 @@
 <template>
   <li @click="toWage">
-    <div class="bill-date">{{ wage.createDateTime | date('m.d') }}</div>
+    <div class="bill-date">{{ $filter.date(wage.createDateTime, 'm.d') }}</div>
     <div class="bill-main">
       <div class="item_before"></div>
       <div class="bill-left">
-        <div class="bill-type">
-          <i class="iconfont" :class="typeIcon[wage.spTypeIcon]"></i>
-          <span>{{ wage.fundType }}</span
-          ><span v-if="wage.fundDateDesc">({{ wage.fundDateDesc }})</span>
+        <div class="bill-type" center-v>
+          <svg-icon :svg-name="typeIcon[wage.spTypeIcon]" fill="#333"></svg-icon>
+          <span>{{ wage.fundType }}</span><span v-if="wage.fundDateDesc">({{ wage.fundDateDesc }})</span>
         </div>
         <p class="bill-name">{{ wage.spName }}</p>
       </div>
       <div class="bill-right">
         <div class="bill-amt">
           <i v-show="flag">&yen;</i>
-          <span v-show="flag">{{ wage.totalAmt | money }}</span>
+          <span v-show="flag">{{ $filter.money(wage.totalAmt) }}</span>
           <span class="star" v-show="!flag">****</span>
         </div>
         <div class="bill-status error" v-if="wage.payStatus === '0'">资金未到账</div>
@@ -37,10 +36,10 @@ export default {
   data() {
     return {
       typeIcon: {
-        0: 'icon-x-1',
-        1: 'icon-x-2',
-        2: 'icon-x-',
-        3: 'icon-x-_fuzhi-copy'
+        0: 'wage',
+        1: 'bonus',
+        2: 'guarantee',
+        3: 'more'
       }
     }
   },

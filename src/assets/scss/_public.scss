@@ -93,8 +93,14 @@
       max-width: 580px;
       @extend %text-overflow;
     }
-    .img {
-      margin-left: 5px;
+    .triangle{
+      margin-left: 12px;
+      &-up{
+        @include triangle(top, 12px, $text-color);
+      }
+      &-down{
+        @include triangle(bottom, 12px, $text-color);
+      }
     }
   }
   .group-list {
@@ -144,33 +150,20 @@
   width: 100%;
   line-height: 42px;
   font-size: 30px;
+  justify-content: space-between;
+  .icon-wrap{
+    color: #ccc;
+  }
   h2 {
     width: 80%;
     @extend %text-overflow;
-    float: left;
-  }
-  span {
-    float: right;
   }
   em {
     font-weight: bold;
     vertical-align: middle;
   }
-  .icon-wenhao {
-    padding: 20px;
-    font-size: 24px;
-    margin-left: -20px;
-  }
-  .iconfont {
-    color: #ccc;
-  }
-  .icon-flag {
+  .svg-icon {
     font-size: 48px;
-    padding: 15px 20px;
-    margin-right: -20px;
-    float: right;
-    position: relative;
-    top: -15px;
   }
 }
 
@@ -188,11 +181,6 @@
   }
   .icon-blue {
     color: #32a2f2;
-  }
-  .iconfont {
-    position: absolute;
-    top: -16px;
-    font-size: 30px;
   }
   li {
     em {
@@ -217,18 +205,12 @@
       span {
         color: $theme-color;
       }
-      .iconfont {
-        right: -66px;
-      }
     }
     &:last-child {
       float: right;
       text-align: end;
       span {
         color: $theme-reverse-color;
-      }
-      .iconfont {
-        left: -66px;
       }
     }
   }
@@ -330,7 +312,10 @@
     height: 100%;
     left: 0;
   }
-  .swiper-slide {
+  .carousel__viewport,.carousel__track{
+    height: 100%;
+  }
+  .carousel__slide {
     width: 20%;
   }
   .item-bg {
@@ -338,7 +323,7 @@
     width: 100%;
     height: 100%;
   }
-  .swiper-slide-active {
+  .carousel__slide--active {
     .span-bg {
       color: $text-color;
       font-size: 32px;
@@ -421,16 +406,9 @@
 
 .point {
   display: flex;
-  display: -webkit-flex;
   justify-content: center;
   padding: 0 80px 70px;
   line-height: 33px;
-  .iconfont {
-    color: $theme-color;
-    font-size: 60px;
-    line-height: 66px;
-    margin-right: 12px;
-  }
 }
 
 .font-999 {
@@ -527,40 +505,28 @@
       font-size: 26px;
       border-bottom: 1px solid $border-color;
       position: relative;
-      .icon-yilizhi {
+      .svg-quit{
         position: absolute;
         z-index: 50;
-        right: 10px;
+        right: 25px;
         top: 6px;
-        width: 100px;
-        text-align: center;
-        line-height: 64px;
-        font-size: 60px;
-        color: #6f8f8f;
+        font-size: 70px;
       }
-      .icon-jiaobiao {
+      .svg-recent {
         position: absolute;
         right: 20px;
-        top: -4px;
-        font-size: 30px;
-        line-height: 30px;
-        color: #fb5d5d;
-        &:after {
-          content: '新';
-          position: absolute;
-          left: 0;
-          width: 100%;
-          text-align: center;
-          font-display: 18px;
-          line-height: 28px;
-          color: white;
-        }
+        top: 0;
+        font-size: 26px;
       }
       .group-name {
         width: 480px;
         word-break: break-all;
       }
     }
+  }
+  .van-dropdown-item--down{
+    top: 90px !important;
+    border-top: 1px solid $border-color;
   }
   .business-toggle {
     position: absolute;

@@ -7,9 +7,9 @@
       <img class="signature__img" :class="`${wClass}__img`" :src="signImgData" alt="" />
       <!-- 操作按钮 -->
       <div class="signature__actions" :class="`${wClass}__actions`">
-        <van-button type="info" plain @click.stop="close">返回</van-button>
-        <van-button type="info" plain @click.stop="clear">清除重写</van-button>
-        <van-button type="info" :loading="loading" @click.stop="sure">确认提交 </van-button>
+        <van-button type="primary" plain @click.stop="close">返回</van-button>
+        <van-button type="primary" plain @click.stop="clear">清除重写</van-button>
+        <van-button type="primary" :loading="loading" @click.stop="sure">确认提交 </van-button>
       </div>
     </template>
   </div>

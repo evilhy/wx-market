@@ -3,8 +3,8 @@
     <van-list
       class="white-box"
       :class="{ 'no-pad': totalElements <= 0 }"
-      v-model="loading"
-      :error.sync="error"
+      v-model:loading="loading"
+      v-model:error="error"
       error-text="请求失败，点击重新加载"
       :finished="finished"
       finished-text=""
@@ -22,7 +22,7 @@
           <p class="text">
             <span class="name">{{ item.nickname }}</span> <span class="action" v-if="item.operate === 0">查看</span><span class="stress action" v-else>预约</span>了该产品
           </p>
-          <span class="relative-time">{{ item.crtDateTime | pastTime(item.nowDate) }}</span>
+          <span class="relative-time">{{ $filter.pastTime(item.nowDate) }}</span>
         </div>
       </div>
     </van-list>

@@ -83,15 +83,10 @@
     }
     .bill-type {
       height: 34px;
-      line-height: 34px;
+      line-height: 1;
       font-size: 24px;
       @extend %text-overflow;
-      i,
-      span {
-        display: inline-block;
-        vertical-align: middle;
-      }
-      i {
+      .svg-icon {
         margin-right: 5px;
         font-size: 40px;
       }

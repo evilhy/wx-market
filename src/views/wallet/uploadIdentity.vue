@@ -199,12 +199,12 @@ export default {
     },
     changeArea(list) {
       let [province = {}, city = {}, area = {}] = list
-      this.$set(this.info, 'provinceCode', province.code)
-      this.$set(this.info, 'provinceName', province.name)
-      this.$set(this.info, 'cityCode', city.code)
-      this.$set(this.info, 'cityName', city.name)
-      this.$set(this.info, 'areaCode', area.code)
-      this.$set(this.info, 'areaName', area.name)
+      this.info.provinceCode = province.code
+      this.info.provinceName = province.name
+      this.info.cityCode = city.code
+      this.info.cityName = city.name
+      this.info.areaCode = area.code
+      this.info.areaName = area.name
     }
   }
 }

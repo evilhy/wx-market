@@ -155,17 +155,18 @@
     .title {
       display: flex;
       align-items: center;
-      margin-bottom: 4px;
+      margin-bottom: 10px;
       font-size: 30px;
+      line-height: 1;
     }
     .short-desc {
       width: 300px;
       color: $text-color-gray;
     }
-    .iconfont {
-      color: #d6d6d6;
-      font-size: 24px;
-      padding: 4px 12px;
+    .icon-wrap {
+      color: $text-color-gray;
+      font-size: 30px;
+      margin-left: 8px;
     }
     .arrow {
       color: $text-color-gray;

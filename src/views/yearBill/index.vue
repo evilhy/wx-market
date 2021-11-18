@@ -9,7 +9,7 @@
           <img class="circle3" src="../../assets/img/yearBill/circle3.png" alt="" />
           <img @click="toSwipe" class="open-btn" src="../../assets/img/yearBill/open-btn.png" alt="" />
         </template>
-        <van-circle v-else v-model="currentRate" :rate="98" :speed="speed" layer-color="rgb(255,242,210,0.2)" color="#FFF2D2" stroke-width="16" size="100px">
+        <van-circle v-else v-model:current-rate="currentRate" :rate="98" :speed="speed" layer-color="rgb(255,242,210,0.2)" color="#FFF2D2" stroke-width="16" size="100px">
           <div class="text-wrap">
             <div class="progress">{{ currentRate.toFixed(0) }}%</div>
             <div class="start-desc">开启中</div>
@@ -33,7 +33,7 @@
       <van-swipe-item>
         <div class="p1 wrap">
           <img :src="imgPage[1]" alt="" />
-          <div class="p1-d1 font1">{{ yearBill.bindDateTime | date('Y年m月d日') }}</div>
+          <div class="p1-d1 font1">{{ $filter.date(yearBill.bindDateTime, 'Y年m月d日') }}</div>
           <div class="p1-d2 font1">{{ yearBill.differDays }}天</div>
           <div class="p1-d3 font1">{{ yearBill.pushTimes }}次</div>
           <div class="p1-d4 font2">确认过眼神，你是对的人！</div>
@@ -80,7 +80,7 @@
       <van-swipe-item>
         <div class="p4 wrap">
           <img :src="imgPage[4]" alt="" />
-          <div class="p4-d1 font1">{{ yearBill.maxSingleAmountDate | date('Y年m月d日') }}</div>
+          <div class="p4-d1 font1">{{ $filter.date(yearBill.maxSingleAmountDate, 'Y年m月d日') }}</div>
           <div class="p4-d2 font1">{{ yearBill.maxSingleAmount }}元</div>
           <div class="p4-d3 font1">{{ yearBill.maxMonth }}月</div>
           <div class="p4-d4 font1">{{ yearBill.minMonth }}月</div>

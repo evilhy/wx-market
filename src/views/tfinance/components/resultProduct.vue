@@ -15,7 +15,7 @@
         <span class="label">产品期限(天)</span><span class="value">&nbsp;&nbsp;{{ productInfo.productTerm }}</span>
       </p>
       <p class="money">
-        <span class="label">最低起购(元)</span><span class="value">&nbsp;&nbsp;{{ productInfo.minIntentAmt | money }}</span>
+        <span class="label">最低起购(元)</span><span class="value">&nbsp;&nbsp;{{ $filter.money(productInfo.minIntentAmt) }}</span>
       </p>
     </div>
   </div>

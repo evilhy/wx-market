@@ -46,7 +46,17 @@ module.exports = {
     'func-names': 'off',
     'import/newline-after-import': 'off',
     'no-shadow': 'off',
-    'no-new': 'off'
+    'no-new': 'off',
+    'vue/no-multiple-template-root': 'off',
+    'vue/no-v-model-argument': 'off',
+    'no-multi-assign': 'off',
+    'import/prefer-default-export': 'off',
+    'no-nested-ternary': 'off',
+    'prettier/prettier': 'off',
+    'valid-v-bind-sync': 'off',
+    'no-extraneous-dependencies': 'off',
+    'no-extraneous-dependencies': 'off',
+    'vue/no-unused-components': 'off'
   },
   settings: {
     'import/resolver': {

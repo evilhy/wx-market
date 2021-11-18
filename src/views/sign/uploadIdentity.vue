@@ -59,7 +59,7 @@
           </div>
         </template>
       </van-cell>
-      <van-field v-model.trim="info.address" :disabled="fieldDisabled" maxlength="50" placeholder="请输入详细地址" type="textarea" show-word-limit />
+      <van-field v-model.trim="address" :disabled="fieldDisabled" maxlength="50" placeholder="请输入详细地址" type="textarea" show-word-limit />
     </van-cell-group>
     <div pa10>
       <van-button br4 block type="primary" :disabled="btnDisabled" @click="attest"> {{ btnText }}</van-button>
@@ -101,7 +101,19 @@ export default {
       loading: false
     }
   },
+  emits: ['update:info'],
   computed: {
+    address: {
+      getter (val) {
+        return this.info.address
+      },
+      setter (val) {
+        this.$emit('info:update', {
+          ...this.info,
+          address: val
+        })
+      }
+    },
     fieldDisabled() {
       let { attestStatus } = this.info
       return this.loading || attestStatus === 1 || attestStatus === 3

@@ -1,6 +1,6 @@
 <template>
   <div class="year-bill-popup">
-    <van-popup v-model="showYearBillPopup" closeable @close="showYearBillPopup = false">
+    <van-popup v-model:show="showYearBillPopup" closeable @close="showYearBillPopup = false">
       <div class="wrap">
         <img @click="toPage" src="../../assets/img/yearBill/popup.png" alt="" />
         <div class="not-notice" @click="notNotice">不再提醒</div>

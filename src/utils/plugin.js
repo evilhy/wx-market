@@ -1,11 +1,13 @@
-import dealFixedInput from 'mixins/dealFixedInput'
+import dealFixedInput from 'directives/dealFixedInput'
+import loading from 'directives/loading'
+import noResult from 'directives/noResult'
+import SvgIcon from 'components/svgIcon/index.vue'
 import { camelCase, upperFirst } from 'utils/assist'
 import Filter from './filter'
-import CryptoJs from './crypto'
 
-const requireHttp = require.context('../http', false, /[^./base].*\.js$/)
+const requireHttp = require.context('../apis', false, /[^./base].*\.js$/)
 
-const install = (Vue, opts) => {
+const install = (app, opts) => {
   requireHttp.keys().forEach((fileName) => {
     const name = upperFirst(
       camelCase(
@@ -15,18 +17,20 @@ const install = (Vue, opts) => {
           .replace(/\.\w+$/, '')
       )
     )
-    Vue.prototype[`$${name}`] = requireHttp(fileName).default || requireHttp(fileName)
+    app.config.globalProperties[`$${name}`] = requireHttp(fileName).default || requireHttp(fileName)
   })
 
-  Object.entries(CryptoJs).forEach(([key, value]) => {
-    Vue.prototype[`$${key}`] = value
-  })
 
+  let filter = {}
   Object.entries(Filter).forEach(([key, value]) => {
-    Vue.filter(key, value)
+    filter[key] = value
   })
 
-  Vue.directive('input', dealFixedInput)
+  app.config.globalProperties.$filter = filter
+
+  app.directive('input', dealFixedInput).directive('loading', loading).directive('no-result', noResult)
+
+  app.component('svg-icon', SvgIcon)
 }
 
 export default { install }

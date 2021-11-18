@@ -1,6 +1,6 @@
 <template>
   <div class="home-manager-dialog" v-if="Object.keys(managerInfo).length">
-    <van-popup v-model="show" closeable @close="close(false)">
+    <van-popup v-model:show="show" closeable @close="close(false)">
       <div class="wrap">
         <div class="main">
           <div class="name">尊敬的{{ managerInfo.empName.substring(0, 1) }}先生/女士</div>

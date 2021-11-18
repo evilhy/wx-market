@@ -1,6 +1,6 @@
 <template>
   <div class="welcome-circle">
-    <van-circle v-model="currentPercent" :rate="percent" color="#00CCCC" layer-color="#f5f5f5" />
+    <van-circle v-model:current-rate="currentPercent" :rate="percent" color="#00CCCC" layer-color="#f5f5f5" />
     <img class="logo" src="../assets/img/logo-2.png" alt="" />
     <p class="label">{{ text }}</p>
   </div>

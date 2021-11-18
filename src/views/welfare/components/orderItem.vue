@@ -1,7 +1,7 @@
 <template>
   <div class="item">
     <div class="title">
-      <div class="title-l">{{ orderInfo.transTime | date('y/m/d h:i:s') }}</div>
+      <div class="title-l">{{ $filter.date(orderInfo.transTime, 'y/m/d h:i:s') }}</div>
       <div class="title-r">{{ statusInfo.desc }}</div>
     </div>
     <go-exchange :item="orderInfo" type="order"></go-exchange>

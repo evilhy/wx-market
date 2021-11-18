@@ -1,98 +1,112 @@
 <template>
-  <swiper-slide>
-    <div class="detail-wrap">
-      <!-- 银行卡相关 -->
-      <div class="bank-wrap">
-        <div class="bank-name">
-          <img class="bank-img" src="../../assets/img/icon-bank.png" />
-          <p>{{ wage.bankName }}</p>
-        </div>
-        <div class="bank-no">{{ wage.cardNo | bankSpace }}</div>
+  <div class="detail-wrap">
+    <!-- 银行卡相关 -->
+    <div class="bank-wrap">
+      <div class="bank-name">
+        <img class="bank-img" src="../../assets/img/icon-bank.png" />
+        <p>{{ wage.bankName }}</p>
       </div>
-      <!-- 实发总额 -->
-      <div class="total-wrap">
-        <p class="total-amt" v-show="flag">
-          {{ wage.realAmt | money }}
-          <i class="icon-ai44 iconfont" @click="changeFlag"></i>
-        </p>
-        <p class="total-amt" v-show="!flag">
-          ****
-          <i class="icon-ai47 iconfont" @click="changeFlag"></i>
-        </p>
-        <div class="total-title">实发金额(元)</div>
+      <div class="bank-no">{{ $filter.bankSpace(wage.cardNo) }}</div>
+    </div>
+    <!-- 实发总额 -->
+    <div class="total-wrap">
+      <p class="total-amt" v-show="flag">
+        {{ $filter.money(wage.realAmt) }}
+        <svg-icon svg-name="eye-show" @click="changeFlag"></svg-icon>
+      </p>
+      <p class="total-amt" v-show="!flag">
+        ****
+        <svg-icon svg-name="eye-hidden" @click="changeFlag"></svg-icon>
+      </p>
+      <div class="total-title">实发金额(元)</div>
+    </div>
+    <!-- 详情 -->
+    <div class="main-wrap">
+      <!-- 应发 -->
+      <div class="amt-box should">
+        <div class="title">
+          <p>应发金额</p>
+        </div>
+        <ul class="amt-list">
+          <li class="amt-item" v-for="(item, index) in shouldList" :key="'real-' + index">
+            <template
+              v-if="!item.hidden && (isShow0 === 1 || (isShow0 === 0 && item.colValue != 0))">
+              <div class="label">
+                {{ wage.businessType === 1 && item.colName.indexOf(taxDesc) > -1 ? '个税缴纳' : item.colName }}
+              </div>
+              <div class="value" v-if="flag">{{ $filter.money(item.colValue) }}
+              </div>
+              <div class="value" v-if="!flag">****</div>
+            </template>
+          </li>
+        </ul>
       </div>
-      <!-- 详情 -->
-      <div class="main-wrap">
-        <!-- 应发 -->
-        <div class="amt-box should">
-          <div class="title">
-            <p>应发金额</p>
-          </div>
-          <ul class="amt-list">
-            <li class="amt-item" v-for="(item, index) in shouldList" :key="'real-' + index" v-if="!item.hidden && (isShow0 === 1 || (isShow0 === 0 && item.colValue != 0))">
-              <div class="label">{{ wage.businessType === 1 && item.colName.indexOf(taxDesc) > -1 ? '个税缴纳' : item.colName }}</div>
-              <div class="value" v-if="flag">{{ item.colValue | money }}</div>
-              <div class="value" v-if="!flag">****</div>
-            </li>
-          </ul>
+      <!-- 扣除 -->
+      <div class="amt-box sub">
+        <div class="title">
+          <p>扣除金额</p>
         </div>
-        <!-- 扣除 -->
-        <div class="amt-box sub">
-          <div class="title">
-            <p>扣除金额</p>
-          </div>
-          <ul class="amt-list">
-            <li class="amt-item" v-for="(item, index) in deductList" :key="'sub-' + index" v-if="!item.hidden && (isShow0 === 1 || (isShow0 === 0 && item.colValue != 0))">
-              <div class="label">{{ wage.businessType === 1 && item.colName.indexOf(taxDesc) > -1 ? '个税缴纳' : item.colName }}</div>
-              <div class="value" v-if="flag">{{ item.colValue | money }}</div>
+        <ul class="amt-list">
+          <li class="amt-item" v-for="(item, index) in deductList" :key="'sub-' + index">
+            <template v-if="!item.hidden && (isShow0 === 1 || (isShow0 === 0 && item.colValue != 0))">
+              <div class="label">
+                {{ wage.businessType === 1 && item.colName.indexOf(taxDesc) > -1 ? '个税缴纳' : item.colName }}
+              </div>
+              <div class="value" v-if="flag">{{ $filter.money(item.colValue) }}
+              </div>
               <div class="value" v-if="!flag">****</div>
-            </li>
-          </ul>
+            </template>
+          </li>
+        </ul>
+      </div>
+      <!-- 备注 -->
+      <div class="amt-box remark">
+        <div class="title">
+          <p>事项说明</p>
         </div>
-        <!-- 备注 -->
-        <div class="amt-box remark">
-          <div class="title">
-            <p>事项说明</p>
-          </div>
-          <ul class="amt-list">
-            <li class="amt-item" v-for="(item, index) in remarkList" :key="'remark-' + index" v-if="!item.hidden && (isShow0 === 1 || (isShow0 === 0 && item.colValue != 0))">
+        <ul class="amt-list">
+          <li class="amt-item" v-for="(item, index) in remarkList" :key="'remark-' + index">
+            <template v-if="!item.hidden && (isShow0 === 1 || (isShow0 === 0 && item.colValue != 0))">
               <div class="label">{{ item.colName }}</div>
               <div class="value">{{ item.colValue }}</div>
-            </li>
-          </ul>
-        </div>
-        <!-- 签名 -->
-        <div ref="sign-wrap" class="sign-wrap" v-if="sign">
-          <p>签名回执</p>
-          <img :src="sign" alt="" />
-        </div>
+            </template>
+          </li>
+        </ul>
       </div>
-      <div class="action-wrap">
-        <div class="btn sured" v-if="receiptStautus === 0"><i class="iconfont icon-dui"></i>已向企业回执无误</div>
-        <template v-if="receiptStautus !== 0">
-          <div class="btn sure" v-if="isSign" @click="openSign">确认无误</div>
-          <div class="btn sure" v-else @click="receipt">确认无误</div>
-        </template>
-        <div class="btn question" v-if="receiptStautus === 3" @click="toQuestionPage(true)">我有疑问</div>
-        <div class="btn question" v-if="receiptStautus === 1 || receiptStautus === 2">已反馈</div>
+      <!-- 签名 -->
+      <div ref="sign-wrap" class="sign-wrap" v-if="sign">
+        <p>签名回执</p>
+        <img :src="sign" alt="" />
       </div>
     </div>
-  </swiper-slide>
+    <div class="action-wrap">
+      <div class="btn sured" v-if="receiptStautus === 0">
+        <van-icon name="success" mr2/>已向企业回执无误</div>
+      <template v-if="receiptStautus !== 0">
+        <div class="btn sure" v-if="isSign" @click="openSign">确认无误</div>
+        <div class="btn sure" v-else @click="receipt">确认无误</div>
+      </template>
+      <div class="btn question" v-if="receiptStautus === 3"
+        @click="toQuestionPage(true)">我有疑问</div>
+      <div class="btn question"
+        v-if="receiptStautus === 1 || receiptStautus === 2">已反馈</div>
+    </div>
+  </div>
 </template>
 <script>
-import { swiperSlide } from 'vue-awesome-swiper'
 import storage from 'utils/storage'
 import collect from 'utils/collect'
 import { typeOf } from 'utils/assist'
 import helper from 'utils/helper'
 
 export default {
-  components: { swiperSlide },
+  components: {},
   props: {
     wage: {
       type: Object
     }
   },
+  emits: ['update:wage'],
   data() {
     return {
       taxDesc: '应补/退税额',
@@ -141,7 +155,7 @@ export default {
       this.confirmReceipt('receiptStautus', 0)
     },
     confirmReceipt(key, value) {
-      this.wage[key] = value
+      this.$emit('update:wage', { ...this.wage, [key]: value })
       helper.saveReceiptStatus(this.wage.wageDetailId, key, value)
     },
     openSign() {

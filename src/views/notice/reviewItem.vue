@@ -5,7 +5,7 @@
         <img src="../../assets/img/icon-notice-002.png" alt="" />
         <span class="dot red" v-if="!item.readFlag"></span>
       </div>
-      <span class="time">{{ item.crtDateTime | date }}</span>
+      <span class="time">{{ $filter.date(item.crtDateTime) }}</span>
     </div>
     <div class="content" v-html="item.newsContent"></div>
     <div class="footer" @click="toDetail">

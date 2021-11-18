@@ -4,7 +4,7 @@
       <div class="step-item__line"></div>
       <div class="step-item__content">
         <div class="step-item__title">提现申请已提交，等待银行处理</div>
-        <div class="step-item__desc">{{ info.applyDateTime | date('m/d H:i:s') }}</div>
+        <div class="step-item__desc">{{ $filter.date(info.applyDateTime, 'm/d H:i:s') }}</div>
       </div>
     </div>
     <div class="step-item" :class="info.transStatus === 1 ? 'step-item--active' : 'step-item--finish'">
@@ -18,7 +18,7 @@
       <div class="step-item__line"></div>
       <div class="step-item__content">
         <div class="step-item__title">{{ info.transStatus === 1 ? '预计到账时间' : info.transStatusVal }}</div>
-        <div class="step-item__desc">{{ caledTime | date('m/d H:i:s') }}</div>
+        <div class="step-item__desc">{{ $filter.date(caledTime, 'm/d H:i:s') }}</div>
         <div v-if="info.transStatus === 2 && info.failDesc" class="step-item__desc step-item__desc--error">{{ info.failDesc }}</div>
       </div>
     </div>

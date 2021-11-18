@@ -8,14 +8,16 @@
         </div>
         <van-dropdown-menu>
           <van-dropdown-item ref="item">
-            <span slot="title"><img src="../../assets/img/icon-filter.png" alt="" /></span>
+            <template #title>
+              <img src="../../assets/img/icon-filter.png" alt="" />
+            </template>
             <van-button v-for="item in statusList" :key="item.value" :class="{ active: status === item.value }" round size="small" @click="selectStatus(item)">{{ item.text }} </van-button>
           </van-dropdown-item>
         </van-dropdown-menu>
       </div>
     </van-sticky>
-    <van-action-sheet v-model="yearShow" :actions="yearList" close-on-click-action close-on-popstate @select="selectYear" />
-    <van-action-sheet v-model="monthShow" :actions="monthList" close-on-click-action close-on-popstate @select="selectMonth" />
+    <van-action-sheet v-model:show="yearShow" :actions="yearList" close-on-click-action close-on-popstate @select="selectYear" />
+    <van-action-sheet v-model:show="monthShow" :actions="monthList" close-on-click-action close-on-popstate @select="selectMonth" />
   </div>
 </template>
 
@@ -55,7 +57,7 @@ export default {
     },
     selectYear(item, index) {
       this.year = parseInt(item.name, 10)
-      this.$set(this, 'monthList', getHistoryMonthList(item.name, 'name'))
+      this.monthList = getHistoryMonthList(item.name, 'name')
       this.search()
     },
     selectMonth(item, index) {

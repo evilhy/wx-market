@@ -1,8 +1,8 @@
 <template>
-  <van-popup v-model="visible" :closeOnClickModal="false" :overlay="false" class="ewm-wrap">
+  <van-popup v-model:show="show" :closeOnClickModal="false" :overlay="false" class="ewm-wrap">
     <div>
       <span class="close" @click="close">
-        <i class="icon iconfont icon-Close"></i>
+        <van-icon name="close" />
       </span>
       <img :src="ewmImg" alt="" class="ewm" />
       <p class="tip">长按识别二维码，添加客户经理微信</p>
@@ -15,21 +15,22 @@ export default {
     ewmImg: {
       type: String,
       default: ''
-    },
-    visible: {
-      type: Boolean,
-      default: true
     }
   },
   data() {
-    return {}
+    return {
+      show: false
+    }
   },
   computed: {},
   created() {},
   mounted() {},
   methods: {
+    open () {
+      this.show = true
+    },
     close() {
-      this.$emit('close')
+      this.show = false
     }
   },
   components: {}

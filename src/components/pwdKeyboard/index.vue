@@ -2,7 +2,7 @@
   <van-popup
     class="pwd-keyboard-popup"
     :class="{ 'has-logo': showLogo }"
-    v-model="currentValue"
+    v-model:show="currentShow"
     position="bottom"
     safe-area-inset-bottom
     close-on-popstate
@@ -45,7 +45,7 @@ const keyboardTypes = ['number', 'idcard', 'complete']
 
 export default {
   props: {
-    value: Boolean,
+    show: Boolean,
     imgSrc: {
       // 键盘真实图片源
       type: [String, Object],
@@ -98,20 +98,20 @@ export default {
   },
   data() {
     return {
-      currentValue: this.value,
+      currentShow: this.show,
       completeImgType: 'lowercase',
       dataSource
     }
   },
   watch: {
-    value(val) {
+    show(val) {
       if (val) {
         this.completeImgType = 'lowercase'
       }
-      this.currentValue = val
+      this.currentShow = val
     },
-    currentValue(val) {
-      this.$emit('input', val)
+    currentShow(val) {
+      this.$emit('update:show', val)
     }
   },
   created() {},
@@ -160,7 +160,7 @@ export default {
       this.$emit('outside')
     },
     hidden() {
-      this.currentValue = false
+      this.currentShow = false
       this.$emit('hide')
     }
   },

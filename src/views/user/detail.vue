@@ -18,7 +18,7 @@
         <span class="label">职位</span><span class="value">{{ info.position }}</span>
       </div>
       <div class="field">
-        <span class="label">入职日期</span><span class="value">{{ info.entryDate | date('Y-m-d') }}</span>
+        <span class="label">入职日期</span><span class="value">{{ $filter.date(info.entryDate, 'Y-m-d') }}</span>
       </div>
       <div class="field">
         <span class="label">在职状态</span><span class="value">{{ info.inServiceStatusVal }}</span>
@@ -29,7 +29,7 @@
       <div class="field-2" v-for="(item, index) in info.bankCardList" :key="index">
         <div class="row">
           <span class="label">银行卡{{ index + 1 }}</span
-          ><span class="value">{{ item.bankCard | bankSpace }}</span>
+          ><span class="value">{{ $filter.bankSpace(item.bankCard) }}</span>
         </div>
         <div class="row bank-name">{{ item.bankName }}</div>
       </div>

@@ -4,11 +4,11 @@
       <div class="page-title">试算结果</div>
       <div class="result-wrap">
         <div class="result-item">
-          <p class="value">{{ currentMonthData.shouldTaxPay | money }}</p>
+          <p class="value">{{ $filter.money(currentMonthData.shouldTaxPay) }}</p>
           <p class="label">当月个税(元)</p>
         </div>
         <div class="result-item">
-          <p class="value">{{ currentMonthData.afterTaxWage | money }}</p>
+          <p class="value">{{ $filter.money(currentMonthData.afterTaxWage) }}</p>
           <p class="label">税后工资(元)</p>
         </div>
       </div>
@@ -18,7 +18,7 @@
           <div class="tax">税率{{ allMonthTaxData[item - 1].taxRate * 100 }}%</div>
         </div>
       </div>
-      <button class="submit-btn" @click="submitFun">重新试算</button>
+      <button class="submit-btn" @click="changeStep('taxCalculatorStep1')">重新试算</button>
       <p class="bar" @click="openFlag = !openFlag">展开试算过程<span class="arrow" :class="[openFlag ? 'top' : 'bottom']"></span></p>
     </div>
     <div class="result-explain" :style="{ height: `${explainHeight}px;` }">
@@ -42,15 +42,15 @@
         </div>
         <div class="row">
           <span class="label">速算扣除数(元)</span>
-          <span class="value">- {{ currentMonthData.quickDeduction | money }}</span>
+          <span class="value">- {{ $filter.money(currentMonthData.quickDeduction) }}</span>
         </div>
         <div class="row">
           <span class="label">累计已缴税额(元)</span>
-          <span class="value">- {{ currentMonthData.totalLastTaxPay | money }}</span>
+          <span class="value">- {{ $filter.money(currentMonthData.totalLastTaxPay) }}</span>
         </div>
         <div class="row">
           <span class="label active-color">个税(元)</span>
-          <span class="value active-color">{{ currentMonthData.shouldTaxPay | money }}</span>
+          <span class="value active-color">{{ $filter.money(currentMonthData.shouldTaxPay) }}</span>
         </div>
         <div class="tip">当应纳税所得额超过一定额度时，则税率向上提高一级，详细可参考下表。</div>
       </div>
@@ -61,7 +61,8 @@
 
 <script>
 import TaxCalculator from 'utils/TaxCalculator/calculator'
-import TaxState from 'utils/TaxCalculator/state'
+import { createNamespacedHelpers } from 'vuex'
+const { mapState, mapMutations } = createNamespacedHelpers('calculator')
 
 export default {
   data() {
@@ -73,15 +74,7 @@ export default {
     }
   },
   computed: {
-    income() {
-      return TaxState.state.income
-    },
-    deduction() {
-      return TaxState.state.deduction
-    },
-    specialDeduction() {
-      return TaxState.state.specialDeduction
-    },
+    ...mapState(['income', 'deduction', 'specialDeduction']),
     explainHeight() {
       if (this.openFlag) {
         return document.querySelector('.result-explain').offsetHeight
@@ -96,9 +89,7 @@ export default {
     this.getPageData()
   },
   methods: {
-    submitFun() {
-      TaxState.commit('changeStep', 'taxCalculatorStep1')
-    },
+    ...mapMutations(['changeStep']),
     getPageData() {
       this.monthRange.forEach((item) => {
         const taxCalculator = new TaxCalculator(this.income, this.deduction, this.specialDeduction, item)

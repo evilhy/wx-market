@@ -21,7 +21,7 @@
     <van-button class="van-btn promise-btn" round color="linear-gradient(to bottom, #eae629, #fed04d)" :disabled="hasPromised" @click="sheetFlag = true">{{
       hasPromised ? '我已承诺' : '我要承诺'
     }}</van-button>
-    <van-action-sheet class="promise-form" v-model="sheetFlag" title="填写您要承诺的内容">
+    <van-action-sheet class="promise-form" v-model:show="sheetFlag" title="填写您要承诺的内容">
       <div class="content">
         <van-field v-model.trim="nickname" label="昵  称" v-input clearable placeholder="限5字以内" />
         <van-field v-model.trim="phone" label="手机号" v-input maxlength="11" clearable placeholder="请输入" />
@@ -97,7 +97,7 @@ export default {
           text: '配合检查、遵从医嘱。'
         }
       ],
-      userInfo: helper.getVirusUserInfo({}),
+      userInfo: helper.getVirusUserInfo({ rankNo: '' }),
       shareUrl: `${sysConfig.proBaseUrl[process.env.VUE_APP_ENV]}virus-auth`,
       shareImgUrl: `${process.env.BASE_URL}img/virus-share-img.png`,
       videoSrc: `${process.env.BASE_URL}img/virus.mp4`,
@@ -188,7 +188,7 @@ export default {
       })
     },
     updateRankNo(rankNo) {
-      this.$set(this.userInfo, 'rankNo', rankNo)
+      this.userInfo.rankNo = rankNo
       helper.saveVirusUserInfo(this.userInfo)
     },
     async submit() {

@@ -1,28 +1,40 @@
 <template>
-  <div class="page notice-index-page" :class="{ 'news-index-page': entry === 'news' }">
-    <van-tabs v-model="currentTab" sticky @click="changeTab">
+  <div class="page notice-index-page"
+    :class="{ 'news-index-page': entry === 'news' }">
+    <van-tabs v-model:active="currentTab" sticky @click="changeTab">
       <van-tab v-for="(item, index) in tabList" :key="index" :name="item.value">
-        <template #title
-          >{{ item.label }}<span class="notice-count" v-if="item.count">{{ item.count }}</span></template
-        >
-        <no-data text="暂无数据" name="news" v-if="data[currentTab].request && data[currentTab].list.length < 1"></no-data>
-        <van-pull-refresh v-else v-model="refreshing" @refresh="onRefresh">
-          <van-list v-model="data[currentTab].loading" :finished="data[currentTab].finished" :finished-text="finishedText" @load="getList">
-            <van-swipe-cell v-for="(item, index) in data[currentTab].list" :key="index">
-              <component :is="noticeItem" :item="item" @to-detail="updateRead(item)"></component>
-              <template #right>
-                <van-button square type="danger" text="删除" @click="beforeDelete(item.newsId)" />
-              </template>
-            </van-swipe-cell>
-          </van-list>
-        </van-pull-refresh>
+        <template #title>{{ item.label }}<span class="notice-count"
+            v-if="item.count">{{ item.count }}</span></template>
+        <no-data text="暂无数据" name="news"
+          v-if="data[currentTab].request && data[currentTab].list.length < 1">
+        </no-data>
+        <template v-else>
+          <van-pull-refresh v-model="refreshing" @refresh="onRefresh">
+            <van-list v-model:loading="data[currentTab].loading"
+              :finished="data[currentTab].finished"
+              :finished-text="finishedText" @load="getList">
+              <van-swipe-cell v-for="(item, index) in data[currentTab].list"
+                :key="index">
+                <component :is="noticeItem" :item="item"
+                  @to-detail="updateRead(item)"></component>
+                <template #right>
+                  <van-button square type="danger" text="删除"
+                    @click="beforeDelete(item.newsId)" />
+                </template>
+              </van-swipe-cell>
+            </van-list>
+          </van-pull-refresh>
+        </template>
       </van-tab>
     </van-tabs>
     <div class="oper-wrap" v-if="!noMsg">
-      <div class="oper-item"><img src="../../assets/img/oper-hasred.png" alt="" @click="readAll" />全部标记为已读</div>
-      <div class="oper-item red"><img src="../../assets/img/oper-delete.png" alt="" @click="beforeDelete('')" />清空全部消息</div>
+      <div class="oper-item"><img src="../../assets/img/oper-hasred.png" alt=""
+          @click="readAll" />全部标记为已读</div>
+      <div class="oper-item red"><img src="../../assets/img/oper-delete.png"
+          alt="" @click="beforeDelete('')" />清空全部消息</div>
     </div>
-    <fxgj-mini-program-popup ref="fxgj-mini-program-popup"></fxgj-mini-program-popup>
+    <fxgj-mini-program-popup ref="fxgj-mini-program-popup">
+    </fxgj-mini-program-popup>
   </div>
 </template>
 
@@ -194,15 +206,7 @@ export default {
       } else {
         // 删除全部
         this.clearUnReadCount()
-        Object.keys(this.data).forEach((key) => {
-          this.$set(this.data, Number(key), {
-            list: [],
-            page: 1,
-            loading: false,
-            finished: true,
-            request: true
-          })
-        })
+        this.initData()
       }
     },
     async readAll() {
@@ -224,6 +228,38 @@ export default {
       newsType === 8 && this.$refs['fxgj-mini-program-popup'].open()
       if (readFlag) return
       this.$News.operate(0, newsId)
+    },
+    initData() {
+      this.data = {
+        8: {
+          list: [],
+          page: 1,
+          loading: false,
+          finished: true,
+          request: true
+        },
+        7: {
+          list: [],
+          page: 1,
+          loading: false,
+          finished: true,
+          request: true
+        },
+        6: {
+          list: [],
+          page: 1,
+          loading: false,
+          finished: true,
+          request: true
+        },
+        5: {
+          list: [],
+          page: 1,
+          loading: false,
+          finished: true,
+          request: true
+        }
+      }
     }
   },
   components: {

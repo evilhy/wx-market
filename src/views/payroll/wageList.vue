@@ -3,38 +3,52 @@
     <van-dropdown-menu :active-color="themeColor">
       <van-dropdown-item :title="currentGroupName" ref="group-dropdown">
         <div class="group-list">
-          <div v-for="(item, index) in groupList" :key="index" class="group-item" :class="{ active: item.groupId === currentGroupId }" @click="changeGroup(item)">
+          <div v-for="(item, index) in groupList" :key="index"
+            class="group-item"
+            :class="{ active: item.groupId === currentGroupId }"
+            @click="changeGroup(item)">
             <p class="group-name">{{ item.groupName }}</p>
-            <i class="iconfont icon-yilizhi" v-if="item.inServiceStatus === '1'"></i>
-            <i class="iconfont icon-jiaobiao" v-if="item.isRead === '0'"></i>
+            <svg-icon class="svg-quit" svg-name="quit"
+              v-if="item.inServiceStatus === '1'"></svg-icon>
+            <svg-icon class="svg-recent" svg-name="recent"
+              v-if="item.isRead === '0'"></svg-icon>
             <van-icon name="success" v-if="item.groupId === currentGroupId" />
           </div>
         </div>
       </van-dropdown-item>
-      <van-dropdown-item
-        v-model="currentType"
-        :options="typeList"
-        @change="
+      <van-dropdown-item v-model="currentType" :options="typeList" @change="
           (value) => {
             changeType(value)
           }
-        "
-      />
+        " />
     </van-dropdown-menu>
     <div class="wage-list-page">
-      <year-wage-outline :wage="outlineWage" :flag="flag" @toggle="toggle"></year-wage-outline>
+      <year-wage-outline :wage="outlineWage" :flag="flag" @toggle="toggle">
+      </year-wage-outline>
       <ul class="bill-list">
-        <wage-item :wage="item" v-for="(item, index) in wageList" :key="index" :flag="flag"></wage-item>
+        <wage-item :wage="item" v-for="(item, index) in wageList" :key="index"
+          :flag="flag"></wage-item>
       </ul>
     </div>
     <!-- swiper -->
-    <year-swiper ref="year-swiper" :years="years" @transitionEnd="changeYear"></year-swiper>
+    <div class="year-swiper" v-if="years.length && currentYear">
+      <Carousel class="swiper-container" :itemsToShow="5" v-model="activeIndex"
+        :wrapAround="true">
+        <Slide v-for="(year, index) in years" :key="`year-${index}`">
+          <div class="item-bg">
+            <div class="span-bg">
+              <span class="span">{{ year }}</span>
+            </div>
+          </div>
+        </Slide>
+      </Carousel>
+    </div>
   </div>
 </template>
 <script type="text/ecmascript-6">
+import { Carousel, Slide } from 'vue3-carousel'
 import yearWageOutline from 'components/yearWageOutline'
 import wageItem from 'components/wageItem'
-import yearSwiper from 'components/yearSwiper'
 import helper from 'utils/helper'
 import storage from 'utils/storage'
 import TimeInstance from 'utils/time'
@@ -42,18 +56,18 @@ import collect from 'utils/collect'
 
 export default {
   components: {
+    Carousel,
+    Slide,
     yearWageOutline,
-    wageItem,
-    yearSwiper
+    wageItem
   },
   data() {
     return {
+      groupList: [],
       wageList: [],
       years: [],
-      currentYear: 0,
-      currentMonth: '',
-      groupList: [],
       currentGroupId: '',
+      currentYear: 0,
       typeList: [
         {
           text: '资金已到账',
@@ -71,101 +85,69 @@ export default {
         realTotalAmt: 0
       },
       flag: storage.getSession('amtFlag', true),
-      query: this.$route.query,
-      themeColor: helper.getThemeColor()
+      themeColor: helper.getThemeColor(),
+      activeIndex: 0
     }
   },
   computed: {
-    swiper() {
-      return this.$refs['year-swiper'].swiper
-    },
     currentGroupName() {
-      const group = collect.getItem(
-        this.groupList,
-        'groupId',
-        this.currentGroupId
-      )
+      const group = collect.getItem(this.groupList, 'groupId', this.currentGroupId)
       return (group && group.groupName) || ''
     }
   },
   watch: {
     currentGroupId(groupId) {
       helper.saveUserInfo({ groupId })
+    },
+    activeIndex(val) {
+      let year = this.years[val]
+      if (year === this.currentYear) return
+      this.currentYear = year
+      this.getWageList()
     }
   },
   async created() {
-    this.getQueryData()
     await this.getGroupList()
-    this.getWageList()
+    await this.getWageList()
+    this.$nextTick(() => {
+      this.activeIndex = this.years.findIndex((year) => year === this.currentYear)
+    })
   },
   methods: {
-    getQueryData() {
-      const { groupId = '', yearMonth = '' } = this.query
-      this.currentGroupId = groupId
-      if (yearMonth) {
-        this.currentYear = Number(yearMonth.substring(0, 4))
-        this.currentMonth = Number(yearMonth.substring(4))
-      }
-    },
     async getGroupList() {
       const res = await this.$Roll.groupList()
       this.groupList = res.data
-      if (!this.currentGroupId) {
-        this.setCurrentInfo(this.groupList[0])
-      }
-    },
-    async getWageList() {
-      if (!this.currentYear) {
-        const group = collect.getItem(
-          this.groupList,
-          'groupId',
-          this.currentGroupId
-        )
-        this.currentYear = Number(
-          TimeInstance.getTimeObject(group.createDate).year
-        )
-      }
-      const res = await this.$Roll.wageList(
-        this.currentGroupId,
-        this.currentYear,
-        this.currentType
-      )
-      const data = res.data
-      if (!data || !Object.keys(data).length) return
-
-      this.initOutlineWage(data)
-      this.wageList = data.planList
-      this.years = data.years
-      this.$nextTick(() => {
-        this.swiper.slideTo(this.years.indexOf(this.currentYear))
-      })
+      this.setCurrentInfo(this.groupList[0])
     },
     setCurrentInfo(group) {
       this.currentGroupId = group.groupId
-      this.currentYear = Number(
-        TimeInstance.getTimeObject(group.createDate).year
-      )
+      this.currentYear = Number(TimeInstance.getTimeObject(group.createDate).year)
     },
-    changeType(type) {
-      this.currentType = type
-      this.getWageList()
-    },
-    changeGroup(group) {
-      this.$refs['group-dropdown'].toggle()
-      if (this.currentGroupId === group.groupId) return
-      this.setCurrentInfo(group)
-      this.getWageList()
+    async getWageList() {
+      const res = await this.$Roll.wageList(this.currentGroupId, this.currentYear, this.currentType)
+      const data = res.data
+      if (!data || !Object.keys(data).length) return
+      this.initOutlineWage(data)
+      this.wageList = data.planList
+      this.years = data.years
     },
     initOutlineWage(data) {
       for (const key of Object.keys(this.outlineWage)) {
         this.outlineWage[key] = data[key]
       }
     },
-    changeYear() {
-      if (this.currentYear !== this.years[this.swiper.activeIndex]) {
-        this.currentYear = this.years[this.swiper.activeIndex]
-        this.getWageList()
-      }
+    changeType(type) {
+      this.currentType = type
+      this.getWageList()
+    },
+    async changeGroup(group) {
+      this.$refs['group-dropdown'].toggle()
+      if (this.currentGroupId === group.groupId) return
+      this.setCurrentInfo(group)
+      await this.getWageList()
+      this.$nextTick(() => {
+        this.activeIndex = this.years.findIndex((year) => year === this.currentYear)
+      })
     },
     toggle() {
       this.flag = !this.flag

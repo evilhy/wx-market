@@ -1,7 +1,7 @@
 <template>
   <div class="invoice-rule">
     <img class="wacth-out" :class="[invoiceImg ? 'move-in' : 'move-out']" src="../assets/img/invoice-pop.png" alt="" v-show="visible == false" @click="show" />
-    <van-popup v-model="visible" class="pop" :safe-area-inset-bottom="true">
+    <van-popup v-model:show="visible" class="pop" :safe-area-inset-bottom="true">
       <div class="pop-hui"></div>
       <div class="content">
         <div class="title">开票规则</div>
@@ -39,7 +39,7 @@
           <div class="content-shadow"></div>
         </div>
         <div class="pop-close">
-          <i class="iconfont icon-guanbianniu" @click="visible = false"></i>
+          <van-icon name="clear" @click="visible = false"/>
         </div>
       </div>
     </van-popup>

@@ -3,7 +3,7 @@
     <!-- 密码输入框 -->
     <van-password-input :value="dot" :focused="true" gutter="0.5em" @focus="show = true" />
     <!-- 安全密码键盘 -->
-    <pwd-keyboard v-model="show" type="number" :img-src="imgSrc" :hide-on-click-outside="false" @keydown="onKeydown" @delete="onDelete"></pwd-keyboard>
+    <pwd-keyboard v-model:show="show" type="number" :img-src="imgSrc" :hide-on-click-outside="false" @keydown="onKeydown" @delete="onDelete"></pwd-keyboard>
   </div>
 </template>
 
@@ -13,7 +13,7 @@ import helper from 'utils/helper'
 
 export default {
   props: {
-    value: {
+    modelValue: {
       type: Array,
       default() {
         return []
@@ -32,7 +32,7 @@ export default {
   },
   data() {
     return {
-      currentValue: this.value,
+      currentValue: this.modelValue,
       show: false,
       imgSrc: ''
     }
@@ -44,9 +44,9 @@ export default {
   },
   watch: {
     currentValue(val) {
-      this.$emit('input', val)
+      this.$emit('update:modelValue', val)
     },
-    value(val) {
+    modelValue(val) {
       this.currentValue = val
     },
     show(val) {

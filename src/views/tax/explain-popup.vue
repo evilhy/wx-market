@@ -1,5 +1,5 @@
 <template>
-  <van-popup v-model="visible" :overlay="true" class="explain-popup">
+  <van-popup v-model:show="visible" :overlay="true" class="explain-popup">
     <div class="header">
       <span class="title">{{ titleInfo[type] }}</span
       ><img class="close" src="../../assets/img/tax/icon-close.png" alt="" @click="visible = false" />

@@ -1,5 +1,5 @@
 <template>
-  <van-action-sheet class="area-select" v-model="show" title="配送至">
+  <van-action-sheet class="area-select" v-model:show="show" title="配送至">
     <div class="area-select-tab">
       <div class="tab-item" v-for="(item, index) in tabList" :key="index" :class="{ active: step === item.step }" v-show="step === item.step || currentArea[item.type]" @click="changeTab(item)">
         {{ currentArea[item.type] || '请选择' }}

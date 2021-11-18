@@ -1,5 +1,5 @@
 <template>
-  <van-popup ref="month-popup" v-model="visible" :overlay="true" position="bottom" class="month-popup" :safe-area-inset-bottom="true">
+  <van-popup ref="month-popup" v-model:show="visible" :overlay="true" position="bottom" class="month-popup" :safe-area-inset-bottom="true">
     <van-picker ref="month-picker" show-toolbar title="选择月份" :default-index="currentMonth - 1" :columns="months" @change="onValuesChange" @confirm="onConfirm" @cancel="onCancel" />
   </van-popup>
 </template>
@@ -41,14 +41,14 @@ export default {
       this.visible = true
       this.currentMonth = this.month
     },
-    onValuesChange(picker, value, index) {
+    onValuesChange(value, index) {
       this.currentMonth = value[0].value
     },
     onConfirm() {
       this.$emit('sure', this.months[0].values[this.currentMonth - 1])
       this.visible = false
     },
-    onCancel(picker, value, index) {
+    onCancel() {
       this.currentMonth = this.month
       this.visible = false
     }

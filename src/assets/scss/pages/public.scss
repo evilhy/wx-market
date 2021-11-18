@@ -24,10 +24,6 @@
     align-items: center;
     font-size: 36px;
     color: #4c4c4c;
-    .iconfont{
-      font-size: 48px;
-      margin-left: 10px;
-    }
   }
   .tip{
     margin-top: 16px;
@@ -92,8 +88,7 @@
 .complete-page{
   padding: 220px 60px 0;
   text-align: center;
-  .iconfont{
-    display: inline-block;
+  .van-icon-checked{
     font-size: 100px;
     color: $theme-color;
     margin: 0 auto 20px;

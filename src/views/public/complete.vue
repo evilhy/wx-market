@@ -1,6 +1,6 @@
 <template>
   <div class="public-page complete-page">
-    <i class="iconfont icon-success"></i>
+    <van-icon name="checked" />
     <p class="result-title">{{ title }}</p>
     <p class="result-tip">{{ tip }}</p>
     <button class="btn btn-reserve" @click="toHome">查看工资条</button>

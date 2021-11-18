@@ -1,5 +1,5 @@
 <template>
-  <van-popup v-model="show" round close-on-popstate position="bottom">
+  <van-popup v-model:show="show" round close-on-popstate position="bottom">
     <van-area ref="van-area" :area-list="areaList" @confirm="confirm" @cancel="cancel" />
   </van-popup>
 </template>

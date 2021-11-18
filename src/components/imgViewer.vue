@@ -1,5 +1,5 @@
 <template>
-  <van-popup v-model="flag" position="right" class="img-viewer-wrap">
+  <van-popup v-model:show="flag" position="right" class="img-viewer-wrap">
     <swiper :options="swiperOption" ref="imgSwiper">
       <swiper-slide v-for="(item, index) in [img]" :key="index">
         <div class="swiper-zoom-container" @click="close">

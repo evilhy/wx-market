@@ -13,7 +13,7 @@
       </div>
       <div class="item">
         <div class="label">经理微信</div>
-        <div class="value" v-if="managerInfo.wechatQrImgae" @click="popupVisible = true">
+        <div class="value" v-if="managerInfo.wechatQrImgae" @click="openPopup('ewm-popup')">
           <span>{{ managerInfo.wechatId }}</span
           ><span class="v-arrow"></span>
         </div>
@@ -31,7 +31,7 @@
         </div>
       </div>
     </div>
-    <ewm-popup :visible="popupVisible" @close="popupVisible = false" :ewm-img="managerInfo.wechatQrImgae"></ewm-popup>
+    <ewm-popup ref="ewm-popup" :ewm-img="managerInfo.wechatQrImgae"></ewm-popup>
   </div>
 </template>
 
@@ -56,7 +56,6 @@ export default {
   },
   data() {
     return {
-      popupVisible: false
     }
   },
   computed: {
@@ -70,7 +69,11 @@ export default {
   },
   created() {},
   mounted() {},
-  methods: {},
+  methods: {
+    openPopup (refName) {
+      this.$refs[refName].open()
+    }
+  },
   components: {
     ewmPopup
   }

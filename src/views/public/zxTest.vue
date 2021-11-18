@@ -12,7 +12,7 @@
     <!-- <van-field v-model.trim="form.dataAuths" label="数据权限" placeholder="数据权限" /> -->
     <van-field v-model.trim="form.registerType" name="registerType" label="注册类型" placeholder="注册类型" />
     <div style="margin: 16px">
-      <van-button round block type="info" @click="onSubmit">提交</van-button>
+      <van-button round block type="primary" @click="onSubmit">提交</van-button>
       <van-button round block type="primary" @click="reset">清除默认数据</van-button>
     </div>
   </van-form>

@@ -14,7 +14,7 @@
     </div>
     <img v-if="item.unExchangeCnt && item.activityStatus !== 3" class="img" src="../../../assets/img/welfare/activity-bg.png" alt="" />
     <img v-else class="img" src="../../../assets/img/welfare/activity-bg-disabled.png" alt="" />
-    <div class="time">兑换时间：<br />{{ item.startDateTime | date('y/m/d h:i:s') }} 至 {{ item.endDateTime | date('y/m/d h:i:s') }}</div>
+    <div class="time">兑换时间：<br />{{ $filter.date(item.startDateTime, 'y/m/d h:i:s') }} 至 {{ $filter.date(item.endDateTime, 'y/m/d h:i:s')}}</div>
   </div>
 </template>
 

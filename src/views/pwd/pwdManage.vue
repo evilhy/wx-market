@@ -3,7 +3,7 @@
     <div class="title">手势密码</div>
     <van-cell center title="设置手势密码">
       <template #right-icon>
-        <van-switch :value="checked" :inactive-value="0" :active-value="1" @input="switchToggle" />
+        <van-switch :model-value="checked" :inactive-value="0" :active-value="1" @update:model-value="switchToggle" />
       </template>
     </van-cell>
     <div class="title">修改密码</div>

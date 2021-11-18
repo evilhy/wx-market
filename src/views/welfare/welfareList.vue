@@ -1,7 +1,7 @@
 <template>
   <div class="welfare-list-page page">
     <no-data text="暂无福利活动" name="activity" v-if="request && list.length < 1"></no-data>
-    <van-list v-else v-model="loading" :finished="finished" :finished-text="finishedText" @load="getList">
+    <van-list v-else v-model:loading="loading" :finished="finished" :finished-text="finishedText" @load="getList">
       <welfare-item v-for="(item, index) in list" :key="index" :item="item"></welfare-item>
     </van-list>
   </div>

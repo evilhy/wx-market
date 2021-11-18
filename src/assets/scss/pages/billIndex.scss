@@ -41,6 +41,20 @@
     border-radius: 20px 20px 0 0;
     position: relative;
   }
+  .bill-info{
+    .van-swipe__indicators{
+      left: 40px;
+      top: 26px;
+      .van-swipe__indicator{
+        width: 14px;
+        height: 14px;
+        background-color: #6ee7e2;
+        &--active{
+          background-color: $theme-color;
+        }
+      }
+    }
+  }
   .fx-logo {
     position: absolute;
     left: 50%;
@@ -110,7 +124,7 @@
         word-break: break-all;
       }
     }
-    .iconfont {
+    .svg-icon {
       padding: 0 4px;
       font-size: 46px;
       color: $text-color-gray;
@@ -136,13 +150,12 @@
     justify-content: space-between;
     .shang {
       color: orange;
+      .van-icon-down {
+        transform: rotate(180deg);
+      }
     }
     .xia {
       color: #f11a1a;
-    }
-    .iconfont {
-      font-size: 24px;
-      margin-right: 4px;
     }
     .star {
       position: relative;
@@ -164,8 +177,7 @@
       &:first-child {
         border-right: 1px solid #e9ebec;
       }
-      .icon-chakanxiangqing {
-        display: block;
+      .svg-icon {
         font-size: 28px;
       }
     }

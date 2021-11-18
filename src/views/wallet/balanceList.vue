@@ -1,7 +1,7 @@
 <template>
   <div class="page balance-list-page">
     <div class="balance-outline">
-      <div class="balance-value">￥{{ balanceInfo.availableAmount | money }}</div>
+      <div class="balance-value">￥{{ $filter.money(balanceInfo.availableAmount) }}</div>
       <div class="balance-desc mb-20">可提现额度</div>
       <template v-if="totalElements > 0 && list[0].bankClose">
         <div class="line"></div>
@@ -9,8 +9,8 @@
       </template>
     </div>
     <no-data v-if="totalElements === 0"></no-data>
-    <van-list v-else v-model="loading" :immediate-check="false" :finished="finished" :finished-text="finishedText" @load="getList">
-      <balance-item v-for="(item, index) in list" :key="index" :item="item"></balance-item>
+    <van-list v-else v-model:loading="loading" :immediate-check="false" :finished="finished" :finished-text="finishedText" @load="getList">
+      <balance-item v-for="(item, index) in list" :key="index" v-model:item="list[index]"></balance-item>
     </van-list>
   </div>
 </template>

@@ -10,7 +10,7 @@
 <script>
 export default {
   props: {
-    value: {
+    modelValue: {
       type: String,
       default: ''
     },
@@ -23,15 +23,15 @@ export default {
   },
   data() {
     return {
-      currentValue: this.value
+      currentValue: this.modelValue
     }
   },
   watch: {
-    value(val) {
+    modelValue(val) {
       this.currentValue = val
     },
     currentValue(val) {
-      this.$emit('input', val)
+      this.$emit('update:modelValue', val)
     }
   },
   created() {},

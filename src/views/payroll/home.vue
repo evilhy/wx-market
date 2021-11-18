@@ -58,7 +58,7 @@
         <home-game-link></home-game-link>
       </template>
       <!-- 振兴银行、宁夏银行菜单入口 -->
-      <home-zx-menu ref="zx-menu" v-else @enter-payroll="enterPayroll" @to-news="toNews"></home-zx-menu>
+      <home-zx-menu ref="zx-menu" v-if="!isHxBank" @enter-payroll="enterPayroll" @to-news="toNews"></home-zx-menu>
       <!-- 底部logo -->
       <div class="bottom-logo" :class="{ 'other-bank-logo': !isHxBank }"><img :class="logo.className" :src="logo.src" alt="" /></div>
       <!-- // 后期去掉 -->

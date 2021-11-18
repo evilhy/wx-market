@@ -1,8 +1,8 @@
 <template>
   <div class="address-list-page" :class="{ 'my-address-list': noSelect }">
     <no-data v-if="list.length < 1 && requested" text="暂无收货地址" name="address" />
-    <template>
-      <van-address-list :class="addressClasses" v-model="chosenAddressId" :list="list" @add="$router.push({ name: 'addNewAddress' })" @edit="onEdit" @select="onSelect"> </van-address-list>
+    <template v-else>
+      <van-address-list v-model="chosenAddressId" :list="list" default-tag-text="默认" @add="$router.push({ name: 'addNewAddress' })" @edit="onEdit" @select="onSelect"> </van-address-list>
     </template>
   </div>
 </template>
@@ -20,14 +20,10 @@ export default {
       }),
       chosenAddressId: this.$route.query.id,
       list: [],
-      defaultIndex: -1,
       requested: false
     }
   },
   computed: {
-    addressClasses() {
-      return `default-${this.defaultIndex}`
-    },
     noSelect() {
       return !this.orderInfo.activityId
     }
@@ -49,11 +45,9 @@ export default {
             id: addressId,
             name: receiveName,
             tel: receivePhone,
-            address: `${province} ${city} ${county} ${town} ${address}`
+            address: `${province} ${city} ${county} ${town} ${address}`,
+            isDefault: isDefault === 'YES'
           })
-          if (isDefault === 'YES') {
-            this.defaultIndex = index
-          }
         })
       }
       return result

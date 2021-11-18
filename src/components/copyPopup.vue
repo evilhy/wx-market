@@ -1,5 +1,5 @@
 <template>
-  <van-popup v-model="show" :closeOnClickModal="false" class="copy-popup" :overlay="false">
+  <van-popup v-model:show="show" :closeOnClickModal="false" class="copy-popup" :overlay="false">
     <div class="tip">您的浏览器不支持此复制功能，请长按进行复制</div>
     <!-- <input type="text" :value="text" class="input" autofocus/> -->
     <p class="text">{{ text }}</p>
@@ -10,24 +10,25 @@
 <script>
 export default {
   props: {
-    show: {
-      type: Boolean,
-      default: false
-    },
     text: {
       type: String,
       default: ''
     }
   },
   data() {
-    return {}
+    return {
+      show: false
+    }
   },
   computed: {},
   created() {},
   mounted() {},
   methods: {
+    open () {
+      this.show = true
+    },
     close() {
-      this.$emit('close')
+      this.show = false
     }
   },
   components: {}

@@ -1,7 +1,7 @@
 <template>
   <div class="history-item" :class="itemClass">
     <div class="time">
-      {{ item.crtDateTime | date }}
+      {{ $filter.date(item.crtDateTime) }}
       <span class="tag"
         ><span class="text">{{ item.updStatusVal }}</span></span
       >
@@ -9,11 +9,11 @@
     <div class="row-list">
       <div class="row">
         <div class="label">原银行卡</div>
-        <div class="value">{{ item.issuerNameOld }}&nbsp;&nbsp;{{ item.cardNoOld | bankSpace }}</div>
+        <div class="value">{{ item.issuerNameOld }}&nbsp;&nbsp;{{ $filter.bankSpace(item.cardNoOld) }}</div>
       </div>
       <div class="row">
         <div class="label">修改为</div>
-        <div class="value">{{ item.issuerName }}&nbsp;&nbsp;{{ item.cardNo | bankSpace }}</div>
+        <div class="value">{{ item.issuerName }}&nbsp;&nbsp;{{ $filter.bankSpace(item.cardNo) }}</div>
       </div>
       <div class="row">
         <div class="label">所属机构</div>

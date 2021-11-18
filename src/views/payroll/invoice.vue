@@ -2,10 +2,7 @@
   <div class="invoice-page group-select">
     <div class="current" @click="showGroupList">
       <span class="name">{{ currentInvoice.groupName }}</span>
-      <div class="img" v-if="invoiceList.length > 1">
-        <i class="iconfont icon-sanjiaoxing-copy" v-if="!flag"></i>
-        <i class="iconfont icon-sanjiaoxingzhankai" v-if="flag"></i>
-      </div>
+      <span class="triangle" :class="flag ? 'triangle-up' : 'triangle-down'" v-if="invoiceList.length > 1"></span>
     </div>
     <ul class="group-list" :class="[flag ? 'show' : '']">
       <li v-for="(item, index) in invoiceList" :key="index" @click.stop="chooseGroup(item)" class="group-item">

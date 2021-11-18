@@ -18,9 +18,9 @@
       </div>
       <div class="title-gray">提现金额</div>
       <div class="balance-outline">
-        <div class="balance-value">￥{{ wageDetail.transAmount | money }}</div>
+        <div class="balance-value">￥{{ $filter.money(wageDetail.transAmount) }}</div>
         <div class="balance-desc mb-20">
-          大写金额：<span class="warning-text">{{ wageDetail.transAmount | numberToChinese }}</span>
+          大写金额：<span class="warning-text">{{ $filter.numberToChinese(wageDetail.transAmount) }}</span>
         </div>
       </div>
       <div class="title-gray">提现收款账户</div>
@@ -37,12 +37,12 @@
         <van-button class="short-btn" plain type="primary" @click="$router.go(-1)">返回</van-button>
         <van-button type="primary" :disabled="btnDisabled" @click="toWithdraw"> 确认提现</van-button>
       </div>
-      <van-action-sheet v-model="show" :actions="banks" close-on-popstate close-on-click-action title="选择提现收款账户" @select="onSelect" />
+      <van-action-sheet v-model:show="show" :actions="banks" close-on-popstate close-on-click-action title="选择提现收款账户" @select="onSelect" />
     </template>
     <template v-else>
       <login-by-pwd :is-page="false" @next="sure"></login-by-pwd>
     </template>
-    <van-action-sheet v-if="signInfo.signStatusVal" class="tax-signup-action-sheet" close-on-popstate v-model="actionSheetShow" title="完成以下任务就可以提现啦！">
+    <van-action-sheet v-if="signInfo.signStatusVal" class="tax-signup-action-sheet" close-on-popstate v-model:show="actionSheetShow" title="完成以下任务就可以提现啦！">
       <div class="signup-item">
         <span>① 完成身份信息认证</span>
         <!-- 0：未认证、1：认证中、2：认证失败、3：认证成功 -->

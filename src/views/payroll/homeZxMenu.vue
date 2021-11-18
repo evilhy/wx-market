@@ -29,12 +29,15 @@
 
 <script>
 import helper from 'utils/helper'
+import storage from 'utils/storage'
 
 export default {
   data() {
     return {}
   },
-  created() {},
+  created() {
+    storage.removeSession('orderInfo')
+  },
   methods: {
     pwdManage() {
       if (helper.getUserInfo('ifPwd', 0)) {

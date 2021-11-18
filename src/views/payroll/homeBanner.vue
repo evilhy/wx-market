@@ -1,18 +1,17 @@
 <template>
   <van-swipe class="banner" :autoplay="5000">
-    <van-swipe-item v-for="(img, index) in imgList" :key="index" @click="clickImg(index)">
+    <van-swipe-item v-for="(img, index) in imgList" :key="index"
+      @click="clickImg(index)">
       <img v-lazy="img.url" />
     </van-swipe-item>
   </van-swipe>
 </template>
 
 <script>
-import Vue from 'vue'
-import { ImagePreview } from 'vant'
 import validate from 'utils/validate'
-
-Vue.use(ImagePreview)
+import { ImagePreview } from 'vant'
 export default {
+  components: { [ImagePreview.Component.name]: ImagePreview.Component },
   data() {
     return {
       imgList: []

@@ -1,7 +1,7 @@
 <template>
   <div class="exchange-page">
     <no-data text="暂无兑换记录" v-if="request && list.length < 1"></no-data>
-    <van-list v-else v-model="loading" :finished="finished" :finished-text="finishedText" @load="getList">
+    <van-list v-else v-model:loading="loading" :finished="finished" :finished-text="finishedText" @load="getList">
       <order-item v-for="(item, index) in list" :key="index" :order-info="item"></order-item>
     </van-list>
   </div>

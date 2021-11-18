@@ -2,10 +2,10 @@
   <div class="wage-flow-item" @click="toDetail">
     <div class="wage-flow-item__top">
       <div class="wage-flow-item__title">{{ item.wageSheetName }}</div>
-      <div class="wage-flow-item__money">+{{ item.transAmount | money }}</div>
+      <div class="wage-flow-item__money">+{{ $filter.money(item.transAmount) }}</div>
     </div>
     <div class="wage-flow-item__bottom">
-      <div class="wage-flow-item__date">{{ item.issueTime | date('Y/m/d h:i:s') }}</div>
+      <div class="wage-flow-item__date">{{ $filter.date(item.issueTime, 'Y/m/d h:i:s') }}</div>
       <div class="wage-flow-item__status">
         <withdraw-tag :status="item.withdrawalStatus" :desc="item.withdrawalStatusVal"></withdraw-tag>
       </div>

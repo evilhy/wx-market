@@ -14,10 +14,10 @@
     <go-exchange :item="orderInfo" :activity-id="orderInfo.activityId"></go-exchange>
     <div class="row">
       <span class="label">订单编号：</span><span class="value">{{ orderInfo.transOrderId }}</span>
-      <i class="iconfont icon-fuzhi" v-clipboard:copy="orderInfo.transOrderId" v-clipboard:success="onCopy"></i>
+      <svg-icon svg-name="copy" @click="copy(orderInfo.transOrderId)"></svg-icon>
     </div>
     <div class="row">
-      <span class="label">下单时间：</span><span class="value">{{ orderInfo.transTime | date }}</span>
+      <span class="label">下单时间：</span><span class="value">{{ $filter.date(orderInfo.transTime) }}</span>
     </div>
     <div class="fixed-bottom-wrap">售后请联系 <a href="tel: 400-882-1081">400-882-1081</a></div>
   </div>
@@ -27,6 +27,9 @@
 import goExchange from 'components/goExchange'
 import helper from 'utils/helper'
 import storage from 'utils/storage'
+import { computed } from 'vue'
+import { useRouter } from 'vue-router'
+import useClipboard from 'vue-clipboard3'
 
 export default {
   props: {
@@ -43,23 +46,29 @@ export default {
       }
     }
   },
-  data() {
-    return {}
-  },
-  computed: {
-    statusImgSrc() {
-      // eslint-disable-next-line import/no-dynamic-require
-      return require(`../../../assets/img/welfare/real-order-${this.statusInfo.status}.png`)
+  setup (props) {
+    const router = useRouter()
+    // computed
+    const statusImgSrc = computed(() => require(`../../../assets/img/welfare/real-order-${props.statusInfo.status}.png`))
+    // methods
+    const toLogistics = () => {
+      storage.setSession('orderInfo', props.orderInfo)
+      router.push({ name: 'welfareLogisticsDetail', params: { id: props.orderInfo.transOrderId } })
     }
-  },
-  created() {},
-  methods: {
-    toLogistics() {
-      storage.setSession('orderInfo', this.orderInfo)
-      this.$router.push({ name: 'welfareLogisticsDetail', params: { id: this.orderInfo.transOrderId } })
-    },
-    onCopy(e) {
-      helper.toast('复制成功')
+
+    const { toClipboard } = useClipboard()
+    const copy = async(text) => {
+      try {
+        await toClipboard(text)
+        helper.toast('复制成功')
+      } catch (e) {
+        console.error(e)
+      }
+    }
+    return {
+      statusImgSrc,
+      toLogistics,
+      copy
     }
   },
   components: {

@@ -5,28 +5,26 @@
       <div class="fx-logo">
         <img src="../../assets/img/logo.png" class="fx" alt="" />
       </div>
-      <swiper class="bill-info" :options="swiperOption">
-        <wage-index-item v-for="(item, index) in bankWageList" :key="index" :wage="item" @to-detail="toDetail"></wage-index-item>
-        <div class="swiper-pagination" slot="pagination"></div>
-      </swiper>
+      <van-swipe class="bill-info" :loop="false">
+        <wage-index-item v-for="(item, index) in bankWageList" :key="index"
+          :wage="item" @to-detail="toDetail"></wage-index-item>
+      </van-swipe>
       <div class="action-wrap">
-        <!-- <div class="action" @click="toPage('trend')">
-          <i class="iconfont icon-chakanzoushi"></i>查看走势</div> -->
         <div class="action" @click="toDetail">
-          <i class="iconfont icon-chakanxiangqing"></i>
+          <svg-icon svg-name="see"></svg-icon>
           <p>查看详情</p>
         </div>
       </div>
     </div>
     <div class="bottom">
       <div class="return" @click="toPage('wageList')">我的收入</div>
-      <div class="return" @click="toPage('taxCalculator')" v-if="isHxBank">个税计算器</div>
+      <div class="return" @click="toPage('taxCalculator')" v-if="isHxBank">个税计算器
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import { swiper } from 'vue-awesome-swiper'
 import storage from 'utils/storage'
 import helper from 'utils/helper'
 import wageIndexItem from './wageIndexItem'
@@ -36,11 +34,6 @@ export default {
     return {
       wageSheetId: this.$route.params.wageSheetId,
       bankWageList: [],
-      swiperOption: {
-        pagination: {
-          el: '.swiper-pagination'
-        }
-      },
       isHxBank: helper.isHxBank()
     }
   },
@@ -69,7 +62,6 @@ export default {
     }
   },
   components: {
-    swiper,
     wageIndexItem
   }
 }

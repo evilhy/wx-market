@@ -1,7 +1,7 @@
 <template>
   <div class="public-page concat-ent-manager-page">
     <div class="tip-wrap">
-      <div class="tip-title"><i class="iconfont icon-tanhao"></i>手机号已更换无法通过短信登录怎么办？</div>
+      <div class="tip-title"><van-icon name="info" />手机号已更换无法通过短信登录怎么办？</div>
       <div class="tip-content">若您的手机号码已经更换无法接收短信，请联系企业管理员修改您的员工手机号。</div>
     </div>
     <div class="space"></div>

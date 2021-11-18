@@ -21,6 +21,10 @@
       span{
         padding: 6px 10px;
       }
+      .svg-icon{
+        color: white;
+        font-size: 36px;
+      }
     }
     .van-icon {
       opacity: 0.8;
@@ -98,13 +102,6 @@
       letter-spacing: 2px !important;
     }
     .star-bottom{
-      position: relative;
-      top: 2px;
-    }
-    .iconfont {
-      padding: 0 10px;
-      font-size: 32px;
-      line-height: 1;
       position: relative;
       top: 2px;
     }

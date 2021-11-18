@@ -108,7 +108,11 @@ export default {
         return false
       }
       if (!receivePhone) {
-        helper.toast('请输入收货人手机号码')
+        helper.toast('请输入收货人手机号')
+        return false
+      }
+      if (!validate.isPhone(receivePhone)) {
+        helper.toast('手机号格式不对，请重新输入')
         return false
       }
       if (!provinceCode) {
@@ -119,21 +123,17 @@ export default {
         helper.toast('请输入详细地址')
         return false
       }
-      if (!validate.isPhone(receivePhone)) {
-        helper.toast('联系电话格式不对，请重新输入')
-        return false
-      }
       return true
     },
     selectSure({ province = '', provinceCode = '', city = '', cityCode = '', county = '', countyCode = '', town = '', townCode = '' }) {
-      this.$set(this.info, 'province', province)
-      this.$set(this.info, 'provinceCode', provinceCode)
-      this.$set(this.info, 'city', city)
-      this.$set(this.info, 'cityCode', cityCode)
-      this.$set(this.info, 'county', county)
-      this.$set(this.info, 'countyCode', countyCode)
-      this.$set(this.info, 'town', town)
-      this.$set(this.info, 'townCode', townCode)
+      this.info.province = province
+      this.info.provinceCode = provinceCode
+      this.info.city = city
+      this.info.cityCode = cityCode
+      this.info.county = county
+      this.info.countyCode = countyCode
+      this.info.town = town
+      this.info.townCode = townCode
     },
     async removeAddress() {
       await this.$WelfareCust.addressDelete(this.info.addressId)

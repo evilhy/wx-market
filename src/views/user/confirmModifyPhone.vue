@@ -2,7 +2,7 @@
   <div class="public-page confirm-modify-phone-page">
     <div class="tip">手机号验证成功！是否确认用新手机号替换旧手机号？</div>
     <div class="phone-item old">{{ oldPhone }}<img class="tag" src="../../assets/img/user/tag-old.png" alt="" /></div>
-    <i class="iconfont icon-jiantouxia"></i>
+    <van-icon name="down" />
     <div class="phone-item new">{{ newPhone }}<img class="tag" src="../../assets/img/user/tag-new.png" alt="" /></div>
     <button class="btn btn-next" @click="confirm">确认</button>
   </div>

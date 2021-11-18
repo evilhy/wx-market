@@ -1,6 +1,6 @@
 import 'core-js/stable'
 import 'regenerator-runtime/runtime'
-import Vue from 'vue'
+import { createApp } from 'vue'
 import {
   Lazyload,
   DropdownMenu,
@@ -39,74 +39,64 @@ import {
   Dialog,
   Tag,
   Uploader,
-  Area
+  Area,
+  ImagePreview
 } from 'vant'
-import VueClipboard from 'vue-clipboard2'
-import vueEsign from 'vue-esign'
-import App from './App'
+import plugin from 'utils/plugin'
+import App from './App.vue'
 import router from './router'
 import store from './store'
-import myPlugin from './utils/plugin'
+import 'components/svgIcon'
 
-import './assets/fonts/iconfont.css'
-import './assets/scss/common.scss'
-// 项目的import
+import 'vue3-carousel/dist/carousel.css'
+import 'assets/scss/common.scss'
 
-// eslint-disable-next-line import/no-extraneous-dependencies
-import 'swiper/dist/css/swiper.css'
+const app = createApp(App)
 
-Vue.config.productionTip = false
-// vant
-Vue.use(Lazyload, {
-  preLoad: 1.3,
-  attempt: 1
-})
-Vue.use(DropdownMenu)
-Vue.use(DropdownItem)
-Vue.use(NoticeBar)
-Vue.use(Swipe)
-Vue.use(SwipeItem)
-Vue.use(Image)
-Vue.use(Popup)
-Vue.use(Icon)
-Vue.use(AddressList)
-Vue.use(AddressEdit)
-Vue.use(ActionSheet)
-Vue.use(Cell)
-Vue.use(CellGroup)
-Vue.use(Field)
-Vue.use(Switch)
-Vue.use(Button)
-Vue.use(PasswordInput)
-Vue.use(List)
-Vue.use(Tab)
-Vue.use(Tabs)
-Vue.use(PullRefresh)
-Vue.use(SwipeCell)
-Vue.use(NumberKeyboard)
-Vue.use(NavBar)
-Vue.use(Radio)
-Vue.use(RadioGroup)
-Vue.use(Sticky)
-Vue.use(Calendar)
-Vue.use(Step)
-Vue.use(Steps)
-Vue.use(Form)
-Vue.use(Circle)
-Vue.use(Progress)
-Vue.use(Dialog)
-Vue.use(Tag)
-Vue.use(Uploader)
-Vue.use(Area)
-
-Vue.use(vueEsign)
-Vue.use(VueClipboard)
-
-Vue.use(myPlugin)
-
-/* eslint-disable no-new */
-new Vue({
-  router,
-  store,
-  render: (h) => h(App)
-}).$mount('#app')
+app
+  .use(store)
+  .use(router)
+  .use(DropdownMenu)
+  .use(DropdownItem)
+  .use(NoticeBar)
+  .use(Swipe)
+  .use(SwipeItem)
+  .use(Image)
+  .use(Popup)
+  .use(Icon)
+  .use(AddressList)
+  .use(AddressEdit)
+  .use(ActionSheet)
+  .use(Cell)
+  .use(CellGroup)
+  .use(Field)
+  .use(Switch)
+  .use(Button)
+  .use(PasswordInput)
+  .use(List)
+  .use(Tab)
+  .use(Tabs)
+  .use(PullRefresh)
+  .use(SwipeCell)
+  .use(NumberKeyboard)
+  .use(NavBar)
+  .use(Radio)
+  .use(RadioGroup)
+  .use(Sticky)
+  .use(Calendar)
+  .use(Step)
+  .use(Steps)
+  .use(Form)
+  .use(Circle)
+  .use(Progress)
+  .use(Dialog)
+  .use(Tag)
+  .use(Uploader)
+  .use(Area)
+  .use(Lazyload, {
+    preLoad: 1.3,
+    attempt: 1
+  })
+  .use(ImagePreview)
+  .use(plugin)
+  .mount('#app')

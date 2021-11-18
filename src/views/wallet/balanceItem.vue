@@ -4,20 +4,20 @@
       <span class="van-ellipsis">{{ item.wageSheetName }}</span>
       <van-icon name="arrow" />
     </div>
-    <div class="balance-item__value">¥ {{ item.transAmount | money }}<withdraw-tag :status="item.withdrawalStatus" :desc="item.withdrawalStatusVal"></withdraw-tag></div>
+    <div class="balance-item__value">¥ {{ $filter.money(item.transAmount) }}<withdraw-tag :status="item.withdrawalStatus" :desc="item.withdrawalStatusVal"></withdraw-tag></div>
     <div class="balance-item__footer">
-      <span><span class="gray-text">付款账户：</span>{{ item.accountOpenBank }}({{ item.account.slice(-4) }}）</span><span class="gray-text">发放时间：{{ item.issueTime | date('Y/m/d h:i:s') }}</span>
+      <span><span class="gray-text">付款账户：</span>{{ item.accountOpenBank }}({{ item.account.slice(-4) }}）</span><span class="gray-text">发放时间：{{ $filter.date(item.issueTime, 'Y/m/d h:i:s') }}</span>
     </div>
     <van-button v-if="showWithdraw" class="balance-item__action" round type="primary" size="small" :disabled="!canWithdraw" @click="toPage('withdrawalConfirm')">提现</van-button>
     <template v-if="showWithdraw">
-      <div class="line" mb20 mt10></div>
+      <div class="line" mb10 mt10></div>
       <!-- 账户异常 -->
       <div class="error-text" v-if="item.accountStatus === 1">付款账户异常，暂时无法提现</div>
       <template v-else>
         <div class="error-text" v-if="item.withdrawalStatus === 4">超过提现有效期，资金被撤回</div>
         <template v-else>
           <!-- 自动转到银行卡 -->
-          <div class="theme-text" v-if="item.dealType === 0">提现有效期截止{{ item.cutoffTime | date('Y年m月d日H时i分s秒') }}</div>
+          <div class="theme-text" v-if="item.dealType === 0">提现有效期截止{{ $filter.date(item.cutoffTime, 'Y年m月d日H时i分s秒') }}</div>
           <!-- 到期撤回 -->
           <div class="theme-text" v-else>提现有效期仅剩<count-down class="error-text" :now="item.systemTime" :target="item.cutoffTime" @end="countEnd"></count-down></div>
         </template>
@@ -38,8 +38,10 @@ export default {
     item: Object
   },
   data() {
-    return {}
+    return {
+    }
   },
+  emits: ['update:item'],
   computed: {
     showWithdraw() {
       // withdrawStatus: 是否启用员工提现（0.停用 1.启用） withdrawalStatus: 提现状态： 0待提现 1提现成功 2提现失败 3处理中 4提现超时
@@ -56,8 +58,11 @@ export default {
   mounted() {},
   methods: {
     countEnd() {
-      this.item.withdrawalStatus = 4
-      this.item.withdrawalStatusVal = '超时未提现'
+      this.$emit('update:item', {
+        ...this.item,
+        withdrawalStatus: 4,
+        withdrawalStatusVal: '超时未提现'
+      })
     },
     toPage(name) {
       if (name === 'withdrawalConfirm') {

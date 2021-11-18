@@ -11,7 +11,7 @@ export default {
       type: String,
       required: true
     },
-    value: {
+    modelValue: {
       type: [String, Number, Boolean],
       default: 0
     },
@@ -26,11 +26,11 @@ export default {
   },
   data() {
     return {
-      currentValue: this.value
+      currentValue: this.modelValue
     }
   },
   watch: {
-    value: {
+    modelValue: {
       deep: true,
       handler(val) {
         this.currentValue = val
@@ -39,7 +39,7 @@ export default {
     currentValue: {
       deep: true,
       handler(val) {
-        this.$emit('input', val)
+        this.$emit('update:modelValue', val)
       }
     }
   },

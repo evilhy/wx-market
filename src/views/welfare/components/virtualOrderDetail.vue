@@ -17,12 +17,12 @@
             <div class="row" v-if="cardInfo.cardNumber && cardInfo.cardNumber !== '无卡号'">
               <p class="label">卡号</p>
               <p class="value">{{ cardInfo.cardNumber }}</p>
-              <span class="copy-btn" v-clipboard:copy="cardInfo.cardNumber" v-clipboard:success="onCopy">复制</span>
+              <span class="copy-btn" @click="copy(cardInfo.cardNumber)">复制</span>
             </div>
             <div class="row" v-if="cardInfo.cardPwd">
               <p class="label">卡密</p>
               <p class="value">{{ cardInfo.cardPwd }}</p>
-              <span class="copy-btn" v-clipboard:copy="cardInfo.cardPwd" v-clipboard:success="onCopy">复制</span>
+              <span class="copy-btn" @click="copy(cardInfo.cardPwd)">复制</span>
             </div>
           </template>
           <p class="status" v-else-if="statusInfo.status === 'waiting'">卡密获取中</p>
@@ -37,7 +37,7 @@
       </div>
       <div class="row"><span class="label">支出</span><span class="value">礼品兑换券x1</span></div>
       <div class="row">
-        <span class="label">创建时间</span><span class="value">{{ orderInfo.transTime | date }}</span>
+        <span class="label">创建时间</span><span class="value">{{ $filter.date(orderInfo.transTime) }}</span>
       </div>
       <div class="row">
         <span class="label">订单编号</span><span class="value">{{ orderInfo.transOrderId }}</span>
@@ -53,6 +53,8 @@
 import sysConfig from 'utils/constant'
 import { typeOf } from 'utils/assist'
 import helper from 'utils/helper'
+import { computed } from 'vue'
+import useClipboard from 'vue-clipboard3'
 
 export default {
   props: {
@@ -69,15 +71,11 @@ export default {
       }
     }
   },
-  data() {
-    return {}
-  },
-  computed: {
-    componentType() {
-      return this.orderInfo.itemCatId === sysConfig.starbucks ? 'starbucks' : 'virtual'
-    },
-    cardInfo() {
-      let orderInfo = this.orderInfo.orderInfo
+  setup (props) {
+    // computed
+    const componentType = computed(() => props.orderInfo.itemCatId === sysConfig.starbucks ? 'starbucks' : 'virtual')
+    const cardInfo = computed(() => {
+      let orderInfo = props.orderInfo.orderInfo
       if (typeOf(orderInfo) === 'array') {
         return orderInfo[0]
       }
@@ -86,12 +84,21 @@ export default {
         cardNumber: '',
         cardDeadline: ''
       }
+    })
+    // methods
+    const { toClipboard } = useClipboard()
+    const copy = async(text) => {
+      try {
+        await toClipboard(text)
+        helper.toast('复制成功')
+      } catch (e) {
+        console.error(e)
+      }
     }
-  },
-  created() {},
-  methods: {
-    onCopy() {
-      helper.toast('复制成功')
+    return {
+      componentType,
+      cardInfo,
+      copy
     }
   }
 }

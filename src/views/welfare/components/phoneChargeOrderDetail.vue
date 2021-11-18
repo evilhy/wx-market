@@ -9,7 +9,7 @@
       </div>
       <div class="row"><span class="label">支出</span><span class="value">礼品兑换券x1</span></div>
       <div class="row">
-        <span class="label">创建时间</span><span class="value">{{ orderInfo.transTime | date }}</span>
+        <span class="label">创建时间</span><span class="value">{{ $filter.date(orderInfo.transTime) }}</span>
       </div>
       <div class="row">
         <span class="label">订单编号</span><span class="value">{{ orderInfo.transOrderId }}</span>

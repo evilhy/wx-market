@@ -6,7 +6,7 @@
         <span class="num">已有<span class="black">{{intentNum >= size ? intentNum * 3 : intentNum}}</span>人预约</span>
       </div>
       <table><th><td>姓名</td><td>预约额度(元)</td><td>预期收益(元)</td><td>预约时间</td></th>
-        <tr v-for="(item, index) in list" :key="index"><td>{{item.clientName | nameStar}}</td><td>{{item.intentAmount| money}}</td><td>{{item.profit | money}}</td><td>{{item.crtDateTime | pastTime(nowDate)}}</td></tr>
+        <tr v-for="(item, index) in list" :key="index"><td>{{$filter.nameStar(item.clientName) }}</td><td>{{$filter.money(item.intentAmount)}}</td><td>{{ $filter.money(item.profit)}}</td><td>{{item.crtDateTime | $filter.pastTime(nowDate)}}</td></tr>
       </table>
     </div>
     <p class="tip" v-if="intentNum > size">-- 仅展示前{{size}}条 --</p>

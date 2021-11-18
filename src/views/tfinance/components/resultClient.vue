@@ -4,29 +4,29 @@
     <template v-if="result.status === 1">
       <div class="field">
         <span class="label">预约金额(元)</span>
-        <span class="value">{{ result.intentAmount | money }}</span>
+        <span class="value">{{ $filter.money(result.intentAmount) }}</span>
       </div>
       <div class="field">
         <span class="label">提交时间</span>
-        <span class="value">{{ result.crtDateTime | date('Y/m/d H:i:s') }}</span>
+        <span class="value">{{ $filter.date(result.crtDateTime, 'Y/m/d H:i:s') }}</span>
       </div>
       <div class="field">
         <span class="label">预期收益(元)</span>
-        <span class="value">{{ result.profit | money }}</span>
+        <span class="value">{{ $filter.money(result.profit) }}</span>
       </div>
       <div class="field">
         <span class="label">预约期</span>
-        <span class="value order-term">{{ productInfo.intentStartDate | date('Y/m/d H:i:s') }}<br />{{ productInfo.intentEndDate | date('Y/m/d H:i:s') }}</span>
+        <span class="value order-term">{{ $filter.date(productInfo.intentStartDate, 'Y/m/d H:i:s') }}<br />{{ $filter.date(productInfo.intentEndDate, 'Y/m/d H:i:s') }}</span>
       </div>
     </template>
     <template v-else>
       <div class="field">
         <span class="label">实际认购金额(元)</span>
-        <span class="value">{{ result.subcribeAmount | money }}</span>
+        <span class="value">{{ $filter.money(result.subcribeAmount) }}</span>
       </div>
       <div class="field">
         <span class="label">认购时间</span>
-        <span class="value">{{ result.subcribeDateTime | date('Y/m/d H:i:s') }}</span>
+        <span class="value">{{ $filter.date(result.subcribeDateTime, 'Y/m/d H:i:s') }}</span>
       </div>
       <div class="field">
         <span class="label">认购利率</span>
@@ -34,11 +34,11 @@
       </div>
       <div class="field">
         <span class="label">预期收益(元)</span>
-        <span class="value">{{ result.profit | money }}</span>
+        <span class="value">{{ $filter.money(result.profit) }}</span>
       </div>
       <div class="field">
         <span class="label">到期兑付时间</span>
-        <span class="value order-term">{{ result.dealDateTime | date('Y/m/d') }}</span>
+        <span class="value order-term">{{ $filter.date(result.dealDateTime, 'Y/m/d') }}</span>
       </div>
     </template>
   </div>

@@ -1,5 +1,5 @@
 <template>
-  <van-popup v-model="flag" position="right" class="popup-page">
+  <van-popup v-model:show="flag" position="right" class="popup-page">
     <van-nav-bar :title="title" left-arrow left-text="" @click-left="close" class="protocol-title back-wrap"> </van-nav-bar>
     <div class="content-wrap">
       <slot></slot>

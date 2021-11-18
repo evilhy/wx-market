@@ -1,13 +1,13 @@
 @charset "utf-8";
 .notice-index-page {
   padding-bottom: 140px;
-  .van-tabs__nav{
-    width: 100%;
-  }
   &.news-index-page{
     .van-tabs__wrap{
       display: none;
     }
+  }
+  .van-tabs__nav{
+    width: 100%;
   }
   .van-tabs__wrap {
     height: 80px;

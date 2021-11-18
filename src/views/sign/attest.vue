@@ -11,7 +11,7 @@
       <!-- 身份认证 -->
       <template v-if="tabIndex === 1">
         <p class="error-text ac" v-if="needAttest" mb10>请补充身份认证信息，否则部分功能使用将受限</p>
-        <upload-identity :info.sync="attestDetail"></upload-identity>
+        <upload-identity v-model:info="attestDetail"></upload-identity>
       </template>
       <!-- 待签约列表 -->
       <template v-if="tabIndex === 2">

@@ -6,7 +6,7 @@
         <span class="dot red" v-if="!item.readFlag"></span>
         <span class="name">{{ item.activityName }}</span>
       </div>
-      <span class="time">{{ item.crtDateTime | date }}</span>
+      <span class="time">{{ $filter.date(item.crtDateTime) }}</span>
     </div>
     <div class="content">
       <div class="title">{{ item.newsTitle }}</div>

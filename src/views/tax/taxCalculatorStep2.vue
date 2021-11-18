@@ -2,7 +2,7 @@
   <div class="tax-calculator-step2">
     <div class="white-box total-wrap">
       <div class="label">专项扣除(元)</div>
-      <div class="value">{{ deductionDetailTotal | money }}</div>
+      <div class="value">{{ $filter.money(deductionDetailTotal) }}</div>
       <!-- <div class="finance-btn" @click="openSubmitPopup">提交给财务</div> -->
     </div>
     <div class="tip">请选择符合标准的扣除专项</div>
@@ -11,7 +11,12 @@
         <div class="parent-item" @click="toggleDeduction(item)">
           <div class="v-checkbox" :class="{ checked: specialDeductionDetail[item.type].option !== -1 }"></div>
           <div class="center-wrap">
-            <div class="title">{{ item.title }}<i class="iconfont icon-wenhao" @click.stop="openExplainPopup(item.type)"></i></div>
+            <div class="title">
+              {{ item.title }}
+              <span class="icon-wrap" extend-click @click.stop="openExplainPopup(item.type)">
+                <van-icon name="question"/>
+              </span>
+            </div>
             <div class="short-desc">{{ item.shortDesc }}</div>
           </div>
           <template v-if="item.options.length > 1">
@@ -43,14 +48,14 @@
 </template>
 
 <script>
-import TaxState from 'utils/TaxCalculator/state'
 import { Dialog } from 'vant'
+import { createNamespacedHelpers } from 'vuex'
 import explainPopup from './explain-popup'
 import submitPopup from './submit-popup'
+const { mapGetters, mapState, mapMutations } = createNamespacedHelpers('calculator')
 
 export default {
   data() {
-    const { child, parent } = TaxState.state.specialDeductionDetail
     return {
       list: [
         {
@@ -81,7 +86,7 @@ export default {
             },
             {
               label: '自定义',
-              value: child.value || '',
+              value: '',
               type: 'auto'
             }
           ]
@@ -145,7 +150,7 @@ export default {
             },
             {
               label: '非独生子女',
-              value: parent.value || '',
+              value: '',
               type: 'auto'
             }
           ]
@@ -156,15 +161,19 @@ export default {
     }
   },
   computed: {
-    deductionDetailTotal() {
-      return TaxState.getters.deductionDetailTotal
-    },
-    specialDeductionDetail() {
-      return TaxState.state.specialDeductionDetail
-    }
+    ...mapState(['specialDeductionDetail']),
+    ...mapGetters(['deductionDetailTotal'])
   },
-  created() {},
+  created() {
+    this.initList()
+  },
   methods: {
+    ...mapMutations(['clearDeductionDetail', 'setDeduction', 'updateData', 'changeStep']),
+    initList () {
+      let { child, parent } = this.specialDeductionDetail
+      this.list[0].options[4].value = child.value || ''
+      this.list[4].options[1].value = parent.value || ''
+    },
     toggleDeduction(data) {
       const { open = false, options, type } = data
       !open &&
@@ -174,34 +183,27 @@ export default {
       if (options.length > 1) {
         data.open = !open
       } else {
-        const option = this.specialDeductionDetail[type].option
-        if (type === 'houseLoan' && option === -1) {
+        const o = this.specialDeductionDetail[type].option
+        if (type === 'houseLoan' && o === -1) {
           this.showTip()
-          TaxState.commit('clearDeductionDetail', 'rent')
+          this.clearDeductionDetail('rent')
         }
-        this.setDeduction(type, option === -1 ? 0 : -1, option === -1 ? options[0].value : '')
+        this.setDeduction({ type, option: o === -1 ? 0 : -1, value: o === -1 ? options[0].value : '' })
       }
     },
     selectOption(e, data, index) {
       const { type, options } = data
       const tagName = e.target.tagName
-      const option = this.specialDeductionDetail[type].option
-      if (type === 'rent' && option !== index) {
+      const o = this.specialDeductionDetail[type].option
+      if (type === 'rent' && o !== index) {
         this.showTip()
-        TaxState.commit('clearDeductionDetail', 'houseLoan')
+        this.clearDeductionDetail('houseLoan')
       }
-      if (option !== index || tagName === 'INPUT') {
-        this.setDeduction(type, index, options[index].value)
+      if (o !== index || tagName === 'INPUT') {
+        this.setDeduction({ type, option: index, value: options[index].value })
       } else {
-        this.setDeduction(type, -1, '')
+        this.setDeduction({ type, option: -1, value: '' })
       }
-    },
-    setDeduction(type, index, value) {
-      TaxState.commit('setDeduction', {
-        type,
-        option: index,
-        value
-      })
     },
     showTip() {
       !this.hasShowTip &&
@@ -221,15 +223,15 @@ export default {
         options[index].value = max / 2
       }
       if (currentDeduction.option !== index) return
-      currentDeduction.value = options[index].value
+      this.setDeduction({ type, option: currentDeduction.option, value: options[index].value })
       window.document.getElementsByTagName('html')[0].style.marginTop = `1px`
     },
     confirm() {
-      TaxState.commit('updateData', { type: 'specialDeduction', value: this.deductionDetailTotal })
-      TaxState.commit('changeStep')
+      this.updateData({ type: 'specialDeduction', value: this.deductionDetailTotal })
+      this.changeStep()
     },
     cancel() {
-      TaxState.commit('changeStep', 'taxCalculatorStep1')
+      this.changeStep('taxCalculatorStep1')
     },
     openExplainPopup(type) {
       this.popupType = type

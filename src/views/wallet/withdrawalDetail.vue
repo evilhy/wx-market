@@ -1,7 +1,7 @@
 <template>
   <div class="page withdrawal-detail-page">
     <div class="withdrawal-outline">
-      <div class="withdrawal-outline__value mb-10">￥{{ wageDetail.transAmount | money }}</div>
+      <div class="withdrawal-outline__value mb-10">￥{{ $filter.money(wageDetail.transAmount) }}</div>
       <div v-if="wageDetail.withdrawalStatus > -1" class="withdrawal-outline__tatus mb-30" :class="wageDescList[wageDetail.withdrawalStatus].className">
         {{ wageDescList[wageDetail.withdrawalStatus].text }}
       </div>
@@ -31,7 +31,7 @@
         <span class="label">收款账号</span><span class="value">放薪钱包（尾号{{ wageDetail.walletNumber.slice(-4) }}）</span>
       </div>
       <div class="row-flex row-flex--between">
-        <span class="label">发放时间</span><span class="value">{{ wageDetail.issueTime | date('Y/m/d h:i:s') }}</span>
+        <span class="label">发放时间</span><span class="value">{{ $filter.date(wageDetail.issueTime, 'Y/m/d h:i:s') }}</span>
       </div>
       <div class="row-flex row-flex--between">
         <span class="label">交易编号</span><span class="value">{{ wageDetail.transNo }}</span>

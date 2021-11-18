@@ -10,10 +10,11 @@
 </template>
 
 <script>
-import TaxState from 'utils/TaxCalculator/state'
+import { createNamespacedHelpers } from 'vuex'
 import taxCalculatorStep1 from './taxCalculatorStep1'
 import taxCalculatorStep2 from './taxCalculatorStep2'
 import taxCalculatorStep3 from './taxCalculatorStep3'
+const { mapState } = createNamespacedHelpers('calculator')
 
 export default {
   components: {
@@ -22,9 +23,7 @@ export default {
     taxCalculatorStep3
   },
   computed: {
-    currentStep() {
-      return TaxState.state.currentStep
-    }
+    ...mapState(['currentStep'])
   },
   created() {}
 }

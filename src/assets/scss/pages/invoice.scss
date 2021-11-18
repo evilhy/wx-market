@@ -91,13 +91,9 @@
       position: absolute;
       right: 25px;
       top: 20px;
-      i {
-        padding: 20px;
-        color: #fff;
-        margin: 0 auto;
-        font-size: 44px;
-        line-height: 84px;
-      }
+      font-size: 50px;
+      padding: 12px;
+      color: white;
     }
     .wacth-out {
       width: 144px;
@@ -149,24 +145,22 @@
     .invoice-type {
       width: 100%;
       height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      line-height: 1;
       p {
-        float: left;
-        font-weight: bold;
         font-size: 30px;
-        line-height: 42px;
       }
     }
     .switch {
-      line-height: 42px;
+      display: flex;
+      align-items: center;
       font-size: 22px;
       color: $theme-color;
-      float: right;
-      i {
-        font-size: 30px;
-        vertical-align: middle;
-      }
-      span {
-        vertical-align: middle;
+      .svg-icon {
+        font-size: 28px;
+        margin-right: 4px;
       }
     }
     .msg {
@@ -181,7 +175,7 @@
         i {
           vertical-align: middle;
         }
-        i {
+        .svg-icon{
           color: #52bdbd;
           font-size: 30px;
           margin-left: 16px;
