@@ -18,12 +18,14 @@
 <script>
 import sysConfig from 'utils/constant'
 import decryptInfo from 'utils/decryptInfo'
+import noData from 'components/noData'
 import balanceItem from './balanceItem'
 
 export default {
   name: '',
   components: {
-    balanceItem
+    balanceItem,
+    noData
   },
   data() {
     return {

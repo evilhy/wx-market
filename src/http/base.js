@@ -50,6 +50,7 @@ export default class HttpForApplication extends HttpEngine {
     } else {
       data = ''
     }
+    console.log(data)
     let { encodeKey, timestamp, reqId, sha256Sign, encryptBizData } = encrypt.httpEncrypt(data, config.method, config.baseURL)
     config.headers = Object.assign(config.headers, {
       'req-id': reqId,

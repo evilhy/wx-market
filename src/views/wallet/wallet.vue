@@ -110,7 +110,7 @@ export default {
         } else {
           this.$router.push({
             name: 'loginByPwd',
-            query: { nextPage: 'home' }
+            query: { nextPage: this.$route.name }
           })
         }
       } else {

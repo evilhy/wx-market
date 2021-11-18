@@ -9,7 +9,7 @@
         <van-pull-refresh v-else v-model="refreshing" @refresh="onRefresh">
           <van-list v-model="data[currentTab].loading" :finished="data[currentTab].finished" :finished-text="finishedText" @load="getList">
             <van-swipe-cell v-for="(item, index) in data[currentTab].list" :key="index">
-              <components :is="noticeItem" :item="item" @to-detail="updateRead(item)"></components>
+              <component :is="noticeItem" :item="item" @to-detail="updateRead(item)"></component>
               <template #right>
                 <van-button square type="danger" text="删除" @click="beforeDelete(item.newsId)" />
               </template>

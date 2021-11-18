@@ -423,7 +423,7 @@ const routes = [
     component: () => import(/* webpackChunkName: "welfareOrderConfirm" */ '../views/welfare/orderConfirm.vue')
   },
   {
-    path: '/address-List', // 收货地址
+    path: '/address-list', // 收货地址
     name: 'addressList',
     meta: {
       title: '收货地址'

@@ -200,7 +200,7 @@
     "groupName": "陈小妹",
     "groupId": "ff80808165cb9d0b0165cb9db9ab0000",
     "pushDateTime": null,
-    "receiptStautus": 3,
+    "receiptStautus": 0,
     "sign": null,
     "content": [
       { "colNum": 0, "value": 1 },
