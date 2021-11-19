@@ -43,7 +43,7 @@
     </div>
     <!-- isAttest -->
     <!-- signNumber -->
-    <div class="sign-link" v-if="info.isAttest !== true || info.signNumber > 0"
+    <div class="sign-link" v-if="info.signNumber > 0"
       @click="$router.push({ name: 'signAttest' })">
       <img id="sign-tip" :class="tipClass"
         src="../../assets/img/icon-sign-num.png" alt="" />

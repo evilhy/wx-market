@@ -1,5 +1,5 @@
 <template>
-  <div class="page sign-attest-page" :class="{ attest: tabIndex === 1, 'has-attest': hasAttest }" v-if="finished">
+  <div class="page sign-attest-page" :class="{ 'has-attest': hasAttest }" v-if="finished">
     <no-data v-if="!signingList.length" name="sign" text="暂时没有需要签署的协议哦！"> </no-data>
     <template v-else>
       <div class="tab-list" center-v v-if="!hasAttest">

@@ -1,5 +1,5 @@
 <template>
-  <div class="page">
+  <div>
     <van-cell-group>
       <van-cell star title="身份证人像面图片">
         <template #label>

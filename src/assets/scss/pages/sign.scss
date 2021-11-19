@@ -43,15 +43,13 @@
   }
 }
 .sign-attest-page {
-  padding: 104px 20px 0;
-  height: calc(100vh - 130px);
+  padding: 104px 20px 20px;
+  height: 100vh;;
   min-height: auto;
   overflow: auto;
-  &.attest{
-    height: 100vh;
-  }
   &.has-attest{
     padding-top: 20px;
+    height: calc(100vh - 130px);
   }
   .tab-list {
     position: fixed;
@@ -112,7 +110,7 @@
   }
   .sing-history-link{
     position: fixed;
-    bottom: 86px;
+    bottom: 60px;
     left: 50%;
     transform: translateX(-50%);
   }
