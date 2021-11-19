@@ -104,10 +104,10 @@ export default {
   emits: ['update:info'],
   computed: {
     address: {
-      getter (val) {
+      get (val) {
         return this.info.address
       },
-      setter (val) {
+      set (val) {
         this.$emit('info:update', {
           ...this.info,
           address: val
