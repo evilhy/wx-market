@@ -53,15 +53,11 @@ const helper = {
     const phone = helper.getUserInfo('phone', '')
     storage.removeSession(`${phone}-remaintime`)
   },
-  saveReceiptStatus(wageDetailId, key = 'receiptStautus', value) {
+  saveReceiptStatus(wageDetailId, obj = {}) {
     const bankWageList = storage.getSession('bankWageList', [])
-    for (const item of bankWageList.values()) {
-      if (item.wageDetailId === wageDetailId) {
-        item[key] = value
-        storage.setSession('bankWageList', bankWageList)
-        return
-      }
-    }
+    const index = bankWageList.findIndex(item => item.wageDetailId === wageDetailId)
+    Object.assign(bankWageList[index], obj)
+    storage.setSession('bankWageList', bankWageList)
   },
   saveTFinanceInfo(info) {
     storage.updateSessionObj('tFinanceInfo', info)

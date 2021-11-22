@@ -52,7 +52,7 @@ export default {
     async finfishSign(base64) {
       await this.$Roll.saveSigned(this.wageSheetId, this.wageDetailId, base64)
       await this.$Inside.receipt(this.wageDetailId, 0)
-      this.$refs[`${this.wageDetailId}`][0].confirmSign(base64)
+      this.$refs[`${this.wageDetailId}`].confirmSign(base64)
     },
     toPage(name = '') {
       this.$router.push({ name })

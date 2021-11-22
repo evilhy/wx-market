@@ -1,7 +1,7 @@
 <template>
   <div class="bankcard-list-page">
     <template v-if="banks.length">
-      <Carousel v-model="activeIndex" :itemsToShow="1.3" :wrapAround="true">
+      <Carousel :class="{ single: banks.length === 1 }" v-model="activeIndex" :itemsToShow="banks.length > 1 ? 1.3 : 1" :wrapAround="true">
         <Slide v-for="(item, index) in banks" :key="index">
           <div class="name">{{ item.issuerName }}</div>
           <div class="account">

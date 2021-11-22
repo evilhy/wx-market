@@ -108,7 +108,7 @@ export default {
         return this.info.address
       },
       set (val) {
-        this.$emit('info:update', {
+        this.$emit('update:info', {
           ...this.info,
           address: val
         })

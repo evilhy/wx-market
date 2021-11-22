@@ -106,7 +106,7 @@ export default {
       type: Object
     }
   },
-  emits: ['update:wage'],
+  emits: ['update:wage', 'sign'],
   data() {
     return {
       taxDesc: '应补/退税额',
@@ -152,18 +152,17 @@ export default {
     },
     async receipt() {
       await this.$Inside.receipt(this.wage.wageDetailId, 0)
-      this.confirmReceipt('receiptStautus', 0)
+      this.confirmReceipt({ receiptStautus: 0 })
     },
-    confirmReceipt(key, value) {
-      this.$emit('update:wage', { ...this.wage, [key]: value })
-      helper.saveReceiptStatus(this.wage.wageDetailId, key, value)
+    confirmReceipt(obj) {
+      this.$emit('update:wage', { ...this.wage, ...obj })
+      helper.saveReceiptStatus(this.wage.wageDetailId, obj)
     },
     openSign() {
       this.$emit('sign', this.wage.wageDetailId)
     },
     confirmSign(base64) {
-      this.confirmReceipt('receiptStautus', 0)
-      this.confirmReceipt('sign', base64)
+      this.confirmReceipt({ receiptStautus: 0, sign: base64 })
       setTimeout(() => {
         this.$refs['sign-wrap'].scrollIntoView({ behavior: 'smooth', block: 'start' })
       }, 500)
