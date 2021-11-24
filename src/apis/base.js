@@ -24,7 +24,7 @@ export default class HttpForApplication extends HttpEngine {
     let { jsessionId, apppartner, entId } = helper.getUserInfo('', {})
     config.headers = Object.assign(config.headers, {
       'jsession-id': jsessionId,
-      'route-name': window.router.currentRoute.name,
+      'route-name': window.router.currentRoute.value.name,
       apppartner,
       'ent-id': entId,
       'plat-id': 'fx-payroll',

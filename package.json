@@ -1,6 +1,7 @@
 {
   "name": "fx-payroll",
   "version": "0.1.0",
+  "description": "放薪工资条",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
