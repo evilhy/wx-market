@@ -121,7 +121,11 @@ export default {
     },
     setCurrentInfo(group) {
       this.currentGroupId = group.groupId
-      this.currentYear = Number(TimeInstance.getTimeObject(group.createDate).year)
+      if (group.createDate) {
+        this.currentYear = Number(TimeInstance.getTimeObject(group.createDate).year)
+      } else {
+        this.$router.push({ name: 'noWage' })
+      }
     },
     async getWageList() {
       const res = await this.$Roll.wageList(this.currentGroupId, this.currentYear, this.currentType)
