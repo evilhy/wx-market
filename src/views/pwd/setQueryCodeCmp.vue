@@ -3,16 +3,9 @@
   <div class="content-wrap">
     <div class="big-title">{{ titleArr[step] }}</div>
     <div class="tip">{{ tipArr[step] }}</div>
-    <template v-if="step === 0">
-      <code-input ref="code-input" v-model="code"></code-input>
-      <div class="small-tip">{{ queryCodeTip }}</div>
-      <button class="btn btn-next" :disabled="code.length !== 6" @click="next">确认</button>
-    </template>
-    <template v-if="step === 1">
-      <code-input ref="recode-input" v-model="reCode"></code-input>
-      <div class="small-tip">{{ queryCodeTip }}</div>
-      <button class="btn btn-next" :disabled="reCode.length !== 6" @click="sure">确认</button>
-    </template>
+    <code-input ref="code-input" v-model="code"></code-input>
+    <div class="small-tip">{{ queryCodeTip }}</div>
+    <button class="btn btn-next" @click="sure">确认</button>
   </div>
 </template>
 
@@ -20,6 +13,7 @@
 import codeInput from 'components/codeInput'
 import helper from 'utils/helper'
 import sysConfig from 'utils/constant'
+import { deepCopy } from 'utils/assist.js'
 
 export default {
   props: {
@@ -31,25 +25,35 @@ export default {
     return {
       step: 0,
       code: [],
+      firstCode: [],
       reCode: [],
       queryCodeTip: sysConfig.queryCodeTip
     }
   },
   created() {},
   methods: {
-    next() {
-      this.step++
-      this.$nextTick(() => {
-        this.$refs['recode-input'].open()
-      })
-    },
     sure() {
-      this.$emit('sure', helper.getPasswordStr(this.code), helper.getPasswordStr(this.reCode))
+      if (this.step === 0) {
+        this.firstCode = deepCopy(this.code)
+        this.step = 1
+        this.code = []
+        this.$nextTick(() => {
+          this.$refs['code-input'].open()
+        })
+      } else {
+        this.reCode = deepCopy(this.code)
+        this.$emit('sure', helper.getPasswordStr(this.firstCode), helper.getPasswordStr(this.reCode))
+        this.init()
+      }
     },
-    reset() {
+    init() {
       this.step = 0
       this.code = []
+      this.firstCode = []
       this.reCode = []
+    },
+    reset() {
+      this.init()
       this.$nextTick(() => {
         this.$refs['code-input'].open()
       })

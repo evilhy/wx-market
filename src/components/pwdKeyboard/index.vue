@@ -94,7 +94,7 @@ export default {
       default: false
     }
   },
-  emits: ['update:show', 'confirm', 'change', 'hide', 'keydown', 'clear'],
+  emits: ['update:show', 'confirm', 'change', 'hide', 'keydown', 'clear', 'delete'],
   data() {
     return {
       currentShow: this.show,

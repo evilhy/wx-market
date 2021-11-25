@@ -15,6 +15,7 @@ export default {
   props: {
     modelValue: {
       type: Array,
+      required: true,
       default() {
         return []
       }
