@@ -8,7 +8,6 @@
     close-on-popstate
     :overlay="overlay"
     :lock-scroll="false"
-    v-clickoutside="clickoutside"
   >
     <!-- 键盘图 -->
     <!-- <van-loading color="#1989fa" /> -->
@@ -38,7 +37,6 @@
 
 <script>
 import { typeOf } from 'utils/assist'
-import clickoutside from './clickoutside'
 import dataSource from './data'
 
 const keyboardTypes = ['number', 'idcard', 'complete']
@@ -96,6 +94,7 @@ export default {
       default: false
     }
   },
+  emits: ['update:show', 'confirm', 'change', 'hide', 'keydown', 'clear'],
   data() {
     return {
       currentShow: this.show,
@@ -153,19 +152,10 @@ export default {
       }
       return `left:${(index % 3) * 33.6}vw;top:${parseInt(index / 3, 10) * 13.733}vw;width: 32.93vw;height: 13.06vw;`
     },
-    clickoutside() {
-      if (this.hideOnClickOutside) {
-        this.hidden()
-      }
-      this.$emit('outside')
-    },
     hidden() {
       this.currentShow = false
       this.$emit('hide')
     }
-  },
-  directives: {
-    clickoutside
   }
 }
 </script>

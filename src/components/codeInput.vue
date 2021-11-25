@@ -30,25 +30,22 @@ export default {
       default: true
     }
   },
+  emits: ['update:modelValue', 'complete', 'delete'],
   data() {
     return {
-      currentValue: this.modelValue,
       show: false,
       imgSrc: ''
     }
   },
   computed: {
     dot() {
-      return '.'.repeat(this.currentValue.length)
+      return '.'.repeat(this.modelValue.length)
+    },
+    valueLen () {
+      return this.modelValue.length
     }
   },
   watch: {
-    currentValue(val) {
-      this.$emit('update:modelValue', val)
-    },
-    modelValue(val) {
-      this.currentValue = val
-    },
     show(val) {
       this.toggleWrapClass(val)
     }
@@ -67,11 +64,12 @@ export default {
       this.imgSrc = `data:image/jpeg;base64,${numberBase}`
     },
     onKeydown(value) {
-      if (this.currentValue.length === this.maxLength) return
-      this.currentValue.push(value)
-      if (this.currentValue.length === this.maxLength) {
+      if (this.valueLen === this.maxLength) return
+      let newValue = this.modelValue.concat(value)
+      this.$emit('update:modelValue', newValue)
+      if (newValue.length === this.maxLength) {
         if (this.needCheckRepeat && this.checkRepeat()) {
-          this.currentValue = []
+          this.$emit('update:modelValue', [])
           helper.toast('请不要输入重复的数字密码')
         } else {
           this.show = false
@@ -80,15 +78,15 @@ export default {
       }
     },
     onDelete(value) {
-      this.currentValue.pop()
+      this.$emit('update:modelValue', this.modelValue.slice(0, this.valueLen - 1))
       this.$emit('delete')
     },
     open() {
       this.show = true
     },
     checkRepeat() {
-      const first = this.currentValue[0]
-      return !!this.currentValue.every((item) => item === first)
+      const first = this.modelValue[0]
+      return !!this.modelValue.every((item) => item === first)
     },
     toggleWrapClass(val = true) {
       const wrap = document.querySelector('.content-wrap')

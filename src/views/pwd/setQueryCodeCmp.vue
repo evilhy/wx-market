@@ -26,6 +26,7 @@ export default {
     titleArr: Array,
     tipArr: Array
   },
+  emits: ['sure'],
   data() {
     return {
       step: 0,

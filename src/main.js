@@ -1,5 +1,6 @@
 import 'core-js/stable'
 import 'regenerator-runtime/runtime'
+import 'default-passive-events'
 import { createApp } from 'vue'
 import {
   Lazyload,
