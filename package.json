@@ -21,7 +21,6 @@
     "core-js": "^3.6.5",
     "crypto-js": "^4.1.1",
     "css-loader": "^6.5.1",
-    "default-passive-events": "^2.0.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-import-resolver-webpack": "^0.13.2",
     "eslint-plugin-import": "^2.25.2",
