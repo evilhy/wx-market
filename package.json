@@ -26,6 +26,7 @@
     "eslint-plugin-import": "^2.25.2",
     "js-base64": "^3.7.2",
     "jsencrypt": "^3.2.1",
+    "object-sizeof": "^1.6.1",
     "postcss-px-to-viewport": "^1.1.1",
     "regenerator-runtime": "^0.13.9",
     "signature_pad": "^3.0.0-beta.4",

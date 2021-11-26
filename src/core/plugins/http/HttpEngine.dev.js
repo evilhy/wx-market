@@ -7,6 +7,7 @@ import Utils, { typeOf } from './Utils'
 import DebugOk from './DebugOk'
 import DebugFail from './DebugFail'
 import MockerEngine from '../../mock/MockerEngine'
+import { createLog, SUCCESS_TYPE, ERROR_TYPE } from './HttpLog'
 
 const $baseURL = Symbol('$baseURL')
 const $headers = Symbol('$headers')
@@ -14,6 +15,7 @@ const $timeout = Symbol('$timeout')
 const $query = Symbol('$query')
 const $path = Symbol('$path')
 const $body = Symbol('$body')
+const $responseType = Symbol('$responseType')
 const $loading = Symbol('$loading')
 const $loadingTypes = Symbol('$loadingTypes')
 const $mockStatusCode = Symbol('$mockStatusCode')
@@ -40,6 +42,8 @@ export default class HttpEngine {
   [$path] = '';
 
   [$body] = undefined;
+
+  [$responseType] = 'json';
 
   [$loading] = true;
 
@@ -104,6 +108,14 @@ export default class HttpEngine {
   }
 
   /**
+   * @param value {String}
+   * */
+   set responseType (value) {
+    if (typeOf(value) !== 'string') throw TypeError('responseType类型应为String')
+    this[$responseType] = value
+  }
+
+  /**
    * 设置是否loading
    *
    * @memberof HttpEngine
@@ -153,6 +165,7 @@ export default class HttpEngine {
       baseURL: this[$baseURL],
       timeout: this[$timeout],
       headers: this[$headers],
+      responseType: this[$responseType],
       adapter: Utils.enableAdapterMode(this[requestedSever]) ? (config) => this[adapterHandler](config) : undefined,
       loading: this[$loading]
     })
@@ -160,17 +173,19 @@ export default class HttpEngine {
       (config) => {
         config = { ...config, encrypt: this[encrypt] }
         this.beforeSendRequestHandler(config)
-        return config
+        return { ...config, startTime: new Date().getTime(), path: this[$path], baseURL: this[$baseURL] }
       },
       (error) => Promise.reject(error)
     )
     instance.interceptors.response.use(
       (response) => {
+        createLog(response, SUCCESS_TYPE)
         this[printResponseInfo](response)
         this.afterResolveResponseHandler(response)
         return response
       },
       (error) => {
+        createLog(error, ERROR_TYPE)
         this[printResponseError](error)
         this.afterRejectResponseHandler(error)
         return Promise.reject(error)
