@@ -1,4 +1,3 @@
-import sysConfig from 'utils/constant'
 import url from 'utils/url'
 import { typeOf } from 'utils/assist'
 
@@ -10,24 +9,20 @@ class EncryptConfig {
    *
    * @param {String} requestUrl http请求url
    * @param {String} key 公钥还是签名盐值
+   * @param {String} joinSymbol 连接符
    * @returns
    * @memberof EncryptConfig
    */
-  [getConfigData](requestUrl, key) {
+  [getConfigData](requestUrl, key, joinSymbol = '_') {
     if (typeOf(requestUrl) !== 'string' || !url.isUrl(requestUrl)) throw new Error('请传入请求的url')
     if (!key || typeOf(key) !== 'string') throw new Error('请传入获取的key')
 
-    for (let [sysKey, sysValue] of Object.entries(sysConfig)) {
-      if (typeOf(sysValue) === 'object') {
-        let env = process.env.VUE_APP_ENV
-        let baseUrl = sysValue[env]
-        if (baseUrl && url.isUrl(baseUrl) && requestUrl.includes(baseUrl)) {
-          let resultKey = sysKey + key
-          if (sysConfig[resultKey] && typeOf(sysConfig[resultKey]) === 'object') {
-            return sysConfig[resultKey][env] || ''
-          }
-          return ''
-        }
+    let config = process.env
+    for (let [envKey, envValue] of Object.entries(config)) {
+      if (url.isUrl(envValue) && requestUrl.includes(envValue)) {
+        // 该baseURL对应在env中的公钥KEY或签名盐值KEY
+        let resultKey = envKey + joinSymbol + key
+        return config[resultKey] || ''
       }
     }
     return ''
@@ -41,7 +36,7 @@ class EncryptConfig {
    * @memberof EncryptConfig
    */
   getPublicKey(requestUrl) {
-    return this[getConfigData](requestUrl, 'PublicKey')
+    return this[getConfigData](requestUrl, 'PUBLIC_KEY')
   }
 
   /**
@@ -52,7 +47,7 @@ class EncryptConfig {
    * @memberof EncryptConfig
    */
   getSignSalt(requestUrl) {
-    return this[getConfigData](requestUrl, 'SignSalt')
+    return this[getConfigData](requestUrl, 'SIGN_SALT')
   }
 
   /**
@@ -63,7 +58,7 @@ class EncryptConfig {
    * @memberof EncryptConfig
    */
   getPrivateKey(requestUrl) {
-    return this[getConfigData](requestUrl, 'PrivateKey')
+    return this[getConfigData](requestUrl, 'PRIVATE_KEY')
   }
 }
 

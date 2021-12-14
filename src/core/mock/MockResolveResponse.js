@@ -1,7 +1,3 @@
-/**
- * Created by duy on 2018/8/17 10:26.
- */
-
 import { typeOf } from '../plugins/http/Utils'
 
 const $config = Symbol('$config')

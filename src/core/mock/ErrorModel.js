@@ -1,7 +1,3 @@
-/**
- * Created by duy on 2018/8/16 16:14.
- */
-
 export default class ErrorModel {
   error_code = '错误码'
 

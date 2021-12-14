@@ -1,7 +1,3 @@
-/**
- * Created by duy on 2018/8/17 10:28.
- */
-
 import ErrorModel from './ErrorModel'
 
 const errorHttpStatusCode = new Map([

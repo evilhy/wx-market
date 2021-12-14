@@ -3,7 +3,7 @@ import CryptoJS from 'crypto-js'
 import { typeOf } from 'utils/assist'
 import url from 'utils/url'
 import UUID from 'utils/uuid'
-import TimeInstance from 'utils/time'
+import timeUtil from 'utils/time'
 import sha256 from './sha256'
 import encryptConfig from './config'
 
@@ -29,13 +29,13 @@ class Encrypt {
    * 5、生成签名 sha256Sign_client （reqId、encodeKey、encryptBizData、signMethod、timestamp、signSalt）
    * @memberof Encrypt
    */
-  httpEncrypt(data, method, requestUrl) {
-    const aesKey = this.getRandomStr()
-    const encodeKey = this.RSAEncrypt(aesKey, this.getPublicKey(requestUrl))
-    const encryptBizData = method.toLowerCase() === 'post' ? this.AESEncrypt(this.dealOrginData(data), aesKey) : ''
-    const timestamp = this.getTimeStr()
-    const reqId = UUID.createUUID()
-    const sha256Sign = this.getSha256Sign(reqId, encodeKey, encryptBizData, this[$signMethod], timestamp, this.getSignSalt(requestUrl))
+  httpEncrypt(data, method = '', requestUrl = '') {
+    let aesKey = this.getRandomStr()
+    let encodeKey = this.RSAEncrypt(aesKey, this.getPublicKey(requestUrl))
+    let encryptBizData = method.toLowerCase() === 'post' ? this.AESEncrypt(this.dealOrginData(data), aesKey) : ''
+    let timestamp = this.getTimeStr()
+    let reqId = UUID.createUUID()
+    let sha256Sign = this.getSha256Sign(reqId, encodeKey, encryptBizData, this[$signMethod], timestamp, this.getSignSalt(requestUrl))
     return {
       encodeKey,
       timestamp,
@@ -106,7 +106,7 @@ class Encrypt {
    * @param {Number} data
    */
   dealOrginData(data) {
-    const type = typeOf(data)
+    let type = typeOf(data)
     switch (type) {
       case 'object':
       case 'number':
@@ -163,11 +163,11 @@ class Encrypt {
     if (typeOf(word) !== 'string') throw new TypeError('需要加密的数据应为String类型')
     if (typeOf(aesKey) !== 'string' || aesKey.length !== this[$padLen]) throw new TypeError(`aesKey应为String类型且长度为${this[$padLen]}`)
 
-    const aesKeyParse = CryptoJS.enc.Utf8.parse(aesKey)
-    const parseLen = CryptoJS.enc.Utf8.parse(word).sigBytes
-    const padLen = this[$padLen] - (parseLen % this[$padLen])
+    let aesKeyParse = CryptoJS.enc.Utf8.parse(aesKey)
+    let parseLen = CryptoJS.enc.Utf8.parse(word).sigBytes
+    let padLen = this[$padLen] - (parseLen % this[$padLen])
     word = word.padEnd(word.length + padLen)
-    const encrypt = CryptoJS.AES.encrypt(word, aesKeyParse, { iv: this[$iv], mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.NoPadding })
+    let encrypt = CryptoJS.AES.encrypt(word, aesKeyParse, { iv: this[$iv], mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.NoPadding })
     return encrypt.toString()
   }
 
@@ -183,9 +183,9 @@ class Encrypt {
     if (typeOf(word) !== 'string') throw new TypeError('需要解密的数据应为String类型')
     if (typeOf(aesKey) !== 'string') throw new TypeError('aesKey应为String类型')
 
-    const aesKeyParse = CryptoJS.enc.Utf8.parse(aesKey)
-    const decrypt = CryptoJS.AES.decrypt(word, aesKeyParse, { iv: this[$iv], mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.NoPadding })
-    const decryptedStr = decrypt.toString(CryptoJS.enc.Utf8)
+    let aesKeyParse = CryptoJS.enc.Utf8.parse(aesKey)
+    let decrypt = CryptoJS.AES.decrypt(word, aesKeyParse, { iv: this[$iv], mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.NoPadding })
+    let decryptedStr = decrypt.toString(CryptoJS.enc.Utf8)
     return decryptedStr.toString()
   }
 
@@ -211,7 +211,7 @@ class Encrypt {
    * @memberof Encrypt
    */
   getTimeStr() {
-    return TimeInstance.format(new Date(), 'YmdHis')
+    return timeUtil.format(new Date(), 'YmdHis')
   }
 
   /**
@@ -225,7 +225,7 @@ class Encrypt {
     if (typeOf(str) !== 'string') throw new TypeError('需要补全的数据应为String类型')
     if (typeOf(len) !== 'number') throw new TypeError('需要补全的长度应为Number类型')
 
-    const padLen = len - (str.length % len)
+    let padLen = len - (str.length % len)
     return str.padEnd(str.length + padLen)
   }
 }

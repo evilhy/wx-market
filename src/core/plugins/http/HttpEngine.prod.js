@@ -1,10 +1,5 @@
-/**
- * Created by duy on 2018/6/20 15:38.
- */
-
 import axios from 'axios'
 import { typeOf } from './Utils'
-import { createLog, SUCCESS_TYPE, ERROR_TYPE } from './HttpLog';
 
 const $baseURL = Symbol('$baseURL')
 const $headers = Symbol('$headers')
@@ -172,12 +167,10 @@ export default class HttpEngine {
     )
     instance.interceptors.response.use(
       (response) => {
-        createLog(response, SUCCESS_TYPE)
         this.afterResolveResponseHandler(response)
         return response
       },
       (error) => {
-        createLog(error, ERROR_TYPE)
         this.afterRejectResponseHandler(error)
         return Promise.reject(error)
       }

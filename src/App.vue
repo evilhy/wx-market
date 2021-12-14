@@ -1,43 +1,32 @@
 <template>
-  <div id="app">
-    <vertical-screen-tip></vertical-screen-tip>
-    <router-view />
+  <div class="app">
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import verticalScreenTip from 'components/verticalScreenTip'
-import helper from 'utils/helper'
+import { defineComponent, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 
-export default {
-  name: 'app',
-  data() {
-    return {
-      theme: helper.getTheme()
-    }
-  },
-  watch: {
-    $route({ meta }) {
-      let title = meta.title || '放薪管家'
-      helper.title(title)
-    }
-  },
-  created() {
-    window.router = this.$router
-    helper.setTheme(this.theme)
-  },
-  mounted() {
-    document.body.addEventListener(
-      'blur',
-      () => {
-        window.scrollTo(0, 0)
-      },
-      true
-    )
-  },
-  methods: {},
-  components: {
-    verticalScreenTip
+export default defineComponent({
+  name: '',
+  components: {},
+  setup(props) {
+    const route = useRouter()
+    window.router = route
+
+    onMounted(() => {
+      document.body.addEventListener(
+        'blur',
+        () => {
+          window.scrollTo(0, 0)
+        },
+        true
+      )
+    })
+    return {}
   }
-}
+})
 </script>
+
+<style lang="scss" scoped></style>

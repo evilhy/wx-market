@@ -1,6 +1,6 @@
-import dealFixedInput from 'directives/dealFixedInput'
+import dealFixedInput from 'directives/deal-fixed-input'
 import loading from 'directives/loading'
-import noResult from 'directives/noResult'
+import noResult from 'directives/no-result'
 import SvgIcon from 'components/svgIcon/index.vue'
 import { camelCase, upperFirst } from 'utils/assist'
 import Filter from './filter'

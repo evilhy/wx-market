@@ -1,6 +1,4 @@
 const CompressionWebpackPlugin = require("compression-webpack-plugin");
-const BundleAnalyzerPlugin =
-  require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 const path = require("path");
 const packageConfig = require("./package.json");
 
@@ -9,24 +7,6 @@ function resolve(dir) {
 }
 
 const isProduction = process.env.NODE_ENV === "production";
-
-const cdn = {
-  html: {
-    css: [],
-    js: [
-      "https://unpkg.com/vue@3.2.20/dist/vue.global.js",
-      "https://unpkg.com/vue-router@4.0.12/dist/vue-router.global.js",
-      "https://unpkg.com/axios@0.23.0/dist/axios.min.js",
-      "https://unpkg.com/vuex@4.0.2/dist/vuex.global.js",
-    ],
-  },
-  externals: {
-    vue: "Vue",
-    "vue-router": "VueRouter",
-    axios: "axios",
-    vuex: "Vuex",
-  },
-};
 
 module.exports = {
   publicPath: "./",
@@ -63,21 +43,7 @@ module.exports = {
       .set("store", resolve("src/store"))
       .set("utils", resolve("src/utils"))
       .set("views", resolve("src/views"));
-    // 注入cdn
-    if (isProduction) {
-      config.plugin("html").tap((args) => {
-        // 生产环境或本地需要cdn时，才注入cdn
-        args[0].cdn = cdn.html;
-        return args;
-      });
-      if (process.env.VUE_APP_ANALYZER === "yes") {
-        config.plugin("webpack-report").use(BundleAnalyzerPlugin, [
-          {
-            analyzerMode: "static",
-          },
-        ]);
-      }
-    }
+
     // svg
     config.module.rules.delete("svg"); // 删除默认配置中处理svg,
     config.module
@@ -105,8 +71,6 @@ module.exports = {
           deleteOriginalAssets: false, // 删除原文件
         })
       );
-      // cdn
-      config.externals = cdn.externals;
     }
   },
 };

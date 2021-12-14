@@ -24,7 +24,6 @@ module.exports = {
       }
     ],
     'import/no-unresolved': 'off',
-    camelcase: 'off',
     'class-methods-use-this': 'off',
     'no-param-reassign': 'off',
     'no-plusplus': 'off',

@@ -1,7 +1,3 @@
-/**
- * Created by duy on 2018/6/22 17:16.
- */
-
 import Utils, { typeOf } from './Utils'
 
 const $printMethod = Symbol('printMethod')
