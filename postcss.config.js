@@ -7,10 +7,10 @@ module.exports = {
       overrideBrowserslist: ["Android 4.1", "iOS 8", "Chrome > 31", "ff > 31"],
     },
     "postcss-px-to-viewport": {
-      viewportWidth: 640,
+      viewportWidth: 375,
       selectorBlackList: [],
       mediaQuery: true,
-      landscapeWidth: 1136,
+      landscapeWidth: 667,
     },
   },
 };

@@ -1,6 +1,6 @@
 import { typeOf } from './assist'
 
-export default class Money {
+class Money {
   /**
    * 将数字格式化为金额,添加千位分隔符和精度显示
    * toMoney(10002, 2) => '10,002.00'
@@ -117,3 +117,5 @@ export default class Money {
     return finalResult
   }
 }
+
+export default new Money()

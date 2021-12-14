@@ -1,12 +1,8 @@
-/**
- * Created by duy on 2018/7/2 15:51.
- */
-
 import Paths from 'swagger-paths'
 import { typeOf } from '../plugins/http/Utils'
 import MockResolveResponse from './MockResolveResponse'
 import MockRejectError from './MockRejectError'
-import { openApi, unknown } from '../../../.swagger-config'
+import swaggerConfig from '../../../.swagger-config'
 
 const $url = Symbol('$url')
 const $method = Symbol('$method')
@@ -77,7 +73,7 @@ export default class MockerEngine {
   [getResponseData]() {
     let data
     let hasFindApi = false
-    for (const { baseURL, paths } of openApi) {
+    for (const { baseURL, paths } of swaggerConfig.openApi) {
       if (this[$url].indexOf(baseURL) === 0) {
         const pathsInstance = new Paths(paths || {})
         const result = pathsInstance.match(this[$url].replace(baseURL, ''))
@@ -87,7 +83,7 @@ export default class MockerEngine {
         break
       }
     }
-    for (const [requestURL, result] of Object.entries(unknown)) {
+    for (const [requestURL, result] of Object.entries(swaggerConfig.unknown)) {
       if (this[$url] === requestURL) {
         if (!(this[$method] in result)) this[notFoundApi]()
         data = result[this[$method]] || undefined

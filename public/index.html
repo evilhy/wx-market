@@ -10,37 +10,12 @@
     <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico" />
     <link rel="bookmark" href="./favicon.ico" />
     <title></title>
-    <!-- 使用CDN的JS文件 -->
-    <% for (var i in htmlWebpackPlugin.options.cdn && htmlWebpackPlugin.options.cdn.js) { %>
-    <script src="<%= htmlWebpackPlugin.options.cdn.js[i] %>"></script>
-    <% } %>
-    <!-- 使用CDN的JS文件 -->
   </head>
   <body>
     <noscript>
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
     <div id="app"></div>
-    <script>
-      var _hmt = _hmt || []
-      ;(function () {
-        var hm = document.createElement('script')
-        hm.src = 'https://hm.baidu.com/hm.js?c14a90d7fcfe5771c1e1e1ee513deea8'
-        var s = document.getElementsByTagName('script')[0]
-        s.parentNode.insertBefore(hm, s)
-      })()
-    </script>
-    <!-- cdn统计 -->
-    <div style="display: none">
-      <script type="text/javascript">
-        var cnzz_protocol = 'https:' == document.location.protocol ? ' https://' : ' http://'
-        document.write(
-          unescape(
-            "%3Cspan id='cnzz_stat_icon_1272949114'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/stat.php%3Fid%3D1272949114%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"
-          )
-        )
-      </script>
-    </div>
     <!-- built files will be auto injected -->
   </body>
 </html>

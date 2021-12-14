@@ -1,7 +1,3 @@
-/**
- * Created by duy on 2018/7/3 15:06.
- */
-
 import DebugEngine from './DebugEngine'
 import { typeOf } from './Utils'
 

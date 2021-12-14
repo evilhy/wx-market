@@ -11,7 +11,7 @@
  * Configurable variables. You may need to tweak these to be compatible with
  * the server-side, but the defaults work in most cases.
  */
-const hexcase = 0
+let hexcase = 0
 let b64pad = ''
 /*
  * These are the functions you'll usually want to call

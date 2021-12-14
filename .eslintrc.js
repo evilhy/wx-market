@@ -24,7 +24,7 @@ module.exports = {
       }
     ],
     'import/no-unresolved': 'off',
-    camelcase: 'off',
+    'camelcase': 'off',
     'class-methods-use-this': 'off',
     'no-param-reassign': 'off',
     'no-plusplus': 'off',
@@ -51,18 +51,6 @@ module.exports = {
     'vue/no-v-model-argument': 'off',
     'no-multi-assign': 'off',
     'import/prefer-default-export': 'off',
-    'no-nested-ternary': 'off',
-    'prettier/prettier': 'off',
-    'valid-v-bind-sync': 'off',
-    'no-extraneous-dependencies': 'off',
-    'no-extraneous-dependencies': 'off',
-    'vue/no-unused-components': 'off'
-  },
-  settings: {
-    'import/resolver': {
-      webpack: {
-        config: 'node_modules/@vue/cli-service/webpack.config.js'
-      }
-    }
+    'no-nested-ternary': 'off'
   }
 }

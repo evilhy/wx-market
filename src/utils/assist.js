@@ -171,7 +171,7 @@ export function getHistoryMonthList(year = new Date().getFullYear(), key) {
 
 export function camelCase(str) {
   if (typeof str !== 'string' || !str) return str
-  let reg = /[-_](\w)/g
+  const reg = /[-_](\w)/g
   return str.replace(reg, ($0, $1) => {
     return $1.toUpperCase()
   })

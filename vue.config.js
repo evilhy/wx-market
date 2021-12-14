@@ -1,35 +1,15 @@
-const CompressionWebpackPlugin = require("compression-webpack-plugin");
-const BundleAnalyzerPlugin =
-  require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
-const path = require("path");
-const packageConfig = require("./package.json");
+const CompressionWebpackPlugin = require('compression-webpack-plugin')
+const path = require('path')
+const packageConfig = require('./package.json')
 
 function resolve(dir) {
-  return path.join(__dirname, dir);
+  return path.join(__dirname, dir)
 }
 
-const isProduction = process.env.NODE_ENV === "production";
-
-const cdn = {
-  html: {
-    css: [],
-    js: [
-      "https://unpkg.com/vue@3.2.20/dist/vue.global.js",
-      "https://unpkg.com/vue-router@4.0.12/dist/vue-router.global.js",
-      "https://unpkg.com/axios@0.23.0/dist/axios.min.js",
-      "https://unpkg.com/vuex@4.0.2/dist/vuex.global.js",
-    ],
-  },
-  externals: {
-    vue: "Vue",
-    "vue-router": "VueRouter",
-    axios: "axios",
-    vuex: "Vuex",
-  },
-};
+const isProduction = process.env.NODE_ENV === 'production'
 
 module.exports = {
-  publicPath: "./",
+  publicPath: './',
   outputDir: packageConfig.name,
   runtimeCompiler: true,
   productionSourceMap: false,
@@ -45,68 +25,52 @@ module.exports = {
         prependData: `
           @import "~src/assets/scss/_var.scss";
           @import "~src/assets/scss/_mixins.scss";
-        `,
-      },
-    },
+        `
+      }
+    }
   },
   chainWebpack: (config) => {
     // 别名
     config.resolve.alias
-      .set("src", resolve("src"))
-      .set("core", resolve("src/core"))
-      .set("apis", resolve("src/apis"))
-      .set("assets", resolve("src/assets"))
-      .set("mixins", resolve("src/mixins"))
-      .set("directives", resolve("src/directives"))
-      .set("components", resolve("src/components"))
-      .set("router", resolve("src/router"))
-      .set("store", resolve("src/store"))
-      .set("utils", resolve("src/utils"))
-      .set("views", resolve("src/views"));
-    // 注入cdn
-    if (isProduction) {
-      config.plugin("html").tap((args) => {
-        // 生产环境或本地需要cdn时，才注入cdn
-        args[0].cdn = cdn.html;
-        return args;
-      });
-      if (process.env.VUE_APP_ANALYZER === "yes") {
-        config.plugin("webpack-report").use(BundleAnalyzerPlugin, [
-          {
-            analyzerMode: "static",
-          },
-        ]);
-      }
-    }
+      .set('src', resolve('src'))
+      .set('core', resolve('src/core'))
+      .set('apis', resolve('src/apis'))
+      .set('assets', resolve('src/assets'))
+      .set('mixins', resolve('src/mixins'))
+      .set('directives', resolve('src/directives'))
+      .set('components', resolve('src/components'))
+      .set('router', resolve('src/router'))
+      .set('store', resolve('src/store'))
+      .set('utils', resolve('src/utils'))
+      .set('views', resolve('src/views'))
+
     // svg
-    config.module.rules.delete("svg"); // 删除默认配置中处理svg,
+    config.module.rules.delete('svg') // 删除默认配置中处理svg,
     config.module
-      .rule("svg-sprite-loader")
+      .rule('svg-sprite-loader')
       .test(/\.svg$/)
-      .include.add(resolve("src/components/svgIcon")) // 处理svg目录（根据你建的文件路径）
+      .include.add(resolve('src/components/svgIcon')) // 处理svg目录（根据你建的文件路径）
       .end()
-      .use("svg-sprite-loader")
-      .loader("svg-sprite-loader")
+      .use('svg-sprite-loader')
+      .loader('svg-sprite-loader')
       .options({
-        symbolId: "icon-[name]",
-      });
+        symbolId: 'icon-[name]'
+      })
   },
   configureWebpack: (config) => {
     if (isProduction) {
       // gzip压缩
-      const productionGzipExtensions = ["html", "js", "css"];
+      const productionGzipExtensions = ['html', 'js', 'css']
       config.plugins.push(
         new CompressionWebpackPlugin({
-          filename: "[path].gz[query]",
-          algorithm: "gzip",
-          test: new RegExp(`\\.(${productionGzipExtensions.join("|")})$`),
+          filename: '[path].gz[query]',
+          algorithm: 'gzip',
+          test: new RegExp(`\\.(${productionGzipExtensions.join('|')})$`),
           threshold: 10240, // 只有大小大于该值的资源会被处理 10240
           minRatio: 0.8, // 只有压缩率小于这个值的资源才会被处理
-          deleteOriginalAssets: false, // 删除原文件
+          deleteOriginalAssets: false // 删除原文件
         })
-      );
-      // cdn
-      config.externals = cdn.externals;
+      )
     }
-  },
-};
+  }
+}

@@ -1,7 +1,3 @@
-/**
- * Created by duy on 2018/6/20 15:38.
- */
-
 import axios from 'axios'
 import { typeOf } from './Utils'
 
@@ -11,6 +7,7 @@ const $timeout = Symbol('$timeout')
 const $query = Symbol('$query')
 const $path = Symbol('$path')
 const $body = Symbol('$body')
+const $responseType = Symbol('$responseType')
 const $loading = Symbol('$loading')
 const $loadingTypes = Symbol('$loadingTypes')
 const $mockStatusCode = Symbol('$mockStatusCode')
@@ -34,6 +31,8 @@ export default class HttpEngine {
   [$path] = '';
 
   [$body] = undefined;
+
+  [$responseType] = 'json';
 
   [$loading] = true;
 
@@ -98,6 +97,14 @@ export default class HttpEngine {
   }
 
   /**
+   * @param value {String}
+   * */
+  set responseType(value) {
+    if (typeOf(value) !== 'string') throw TypeError('responseType类型应为String')
+    this[$responseType] = value
+  }
+
+  /**
    * 设置是否loading
    *
    * @memberof HttpEngine
@@ -147,13 +154,14 @@ export default class HttpEngine {
       baseURL: this[$baseURL],
       timeout: this[$timeout],
       headers: this[$headers],
-      loading: this[$loading]
+      loading: this[$loading],
+      responseType: this[$responseType]
     })
     instance.interceptors.request.use(
       (config) => {
         config = { ...config, encrypt: this[encrypt] }
         this.beforeSendRequestHandler(config)
-        return config
+        return { ...config, startTime: new Date().getTime(), path: this[$path], baseURL: this[$baseURL] }
       },
       (error) => Promise.reject(error)
     )

@@ -1,7 +1,3 @@
-/**
- * Created by duy on 2018/7/3 15:49.
- */
-
 export default class Utils {
   static isDevelopmentEnv() {
     return process.env.VUE_APP_ENV === 'development'
