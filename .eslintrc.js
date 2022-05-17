@@ -51,6 +51,10 @@ module.exports = {
     'vue/no-v-model-argument': 'off',
     'no-multi-assign': 'off',
     'import/prefer-default-export': 'off',
-    'no-nested-ternary': 'off'
+    'no-nested-ternary': 'off',
+    'no-else-return': 'off',
+    'lines-between-class-members': 'off',
+    'no-unused-vars': 'off',
+    'vue/valid-v-for': 'off'
   }
 }

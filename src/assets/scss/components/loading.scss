@@ -1,6 +1,6 @@
 
 .v-loading {
-  $theme: $theme-color;
+  $theme: var(--theme-color);
   position: absolute;
   left: 0;
   top: 0;
@@ -9,7 +9,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 9999;
+  z-index: 9998;
   background: rgba(255, 255, 255, 0.7);
   &.v-loading-normal{
     background: rgba(255, 255, 255, 0) !important;

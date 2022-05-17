@@ -1,19 +1,27 @@
 <template>
-  <div class="app">
-    <router-view></router-view>
-  </div>
+  <router-view></router-view>
 </template>
 
 <script>
-import { defineComponent, onMounted } from 'vue'
-import { useRouter } from 'vue-router'
+import { defineComponent, onMounted, watchEffect } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
+import helper from 'utils/helper'
 
 export default defineComponent({
   name: '',
   components: {},
   setup(props) {
-    const route = useRouter()
-    window.router = route
+    const route = useRoute()
+    window.router = useRouter()
+    // 设置主题
+    helper.setTheme()
+    // 修改标题
+    watchEffect(() => {
+      let title = route.meta ? route.meta.title : ''
+      if (title) {
+        helper.title(title)
+      }
+    })
 
     onMounted(() => {
       document.body.addEventListener(

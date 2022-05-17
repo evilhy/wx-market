@@ -42,5 +42,24 @@ export default {
     if (typeof message === 'object') {
       Toast(message)
     }
+  },
+  saveTheme(color = '') {
+    if (color) {
+      storage.setSession('theme', color)
+      this.setTheme()
+    }
+  },
+  setTheme() {
+    let themeColor = this.getTheme()
+    let style = document.createElement('style')
+    style.innerHTML = `
+      :root{
+        --theme-color: ${themeColor};
+      }
+    `
+    document.head.appendChild(style)
+  },
+  getTheme() {
+    return storage.getSession('theme', '#F66246')
   }
 }

@@ -1,3 +1,4 @@
+import { typeOf } from 'utils/assist'
 import timeUtil from 'utils/time'
 import MoneyUtil from 'utils/money'
 
@@ -96,10 +97,23 @@ function bankSpace(str = '') {
     .replace(/[^\d]/g, '')
     .replace(/(\d{4})(?=\d)/g, '$1 ')
 }
+export function second2hour(value, format = 'H时i分s秒') {
+  if (typeOf(value) === 'undefined') return ''
+  const { days, hours, minutes, seconds } = timeUtil.getTimeDiffObj(value)
+  const h = Number(days) * 24 + Number(hours)
+  const lowerFormat = format.toLowerCase()
+  const iIndex = lowerFormat.indexOf('i')
+  if (Number(h)) {
+    return lowerFormat.replace('h', h).replace('i', minutes).replace('s', seconds)
+  } else {
+    return lowerFormat.substring(iIndex).replace('i', minutes).replace('s', seconds)
+  }
+}
 
 export default {
   date,
   money,
   numberToChinese,
-  bankSpace
+  bankSpace,
+  second2hour
 }

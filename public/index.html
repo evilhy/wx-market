@@ -17,5 +17,101 @@
     </noscript>
     <div id="app"></div>
     <!-- built files will be auto injected -->
+    <script>
+      /* var myComponent = {
+        render() {
+          return {
+            tag: 'div',
+            props: {
+              id: 'root',
+              onClick: () => {
+                alert('hello')
+              }
+            },
+            children: 'hello'
+          }
+        }
+      }
+      var node = {
+        tag: myComponent
+      }
+      function mountElement(vNode, container) {
+        let { tag = '', props = {}, children = [] } = vNode
+        let el = document.createElement(tag)
+        for (key in props) {
+          if (/^on/.test(key)) {
+            el.addEventListener(key.substring(2).toLowerCase(), props[key])
+          } else {
+            el.setAttribute(key, props[key])
+          }
+        }
+        if (typeof children === 'string') {
+          el.appendChild(document.createTextNode(children))
+        }
+        if (Array.isArray(children)) {
+          children.forEach((child) => {
+            render(child, el)
+          })
+        }
+        container.appendChild(el)
+      }
+      function mountComponent(vNode, container) {
+        const suttree = vNode.tag.render()
+        render(suttree, container)
+      }
+      function render(vNode, container) {
+        let { tag = '', props = {}, children = [] } = vNode
+        if (typeof tag === 'string') {
+          mountElement(vNode, container)
+        } else if (typeof tag === 'object') {
+          mountComponent(vNode, container)
+        }
+      }
+      render(node, document.body) */
+      const bucket = new WeakMap()
+      let activeEffect = null
+      function effect (fn) {
+        activeEffect = fn
+        fn()
+      }
+      let t = {
+        ok: true,
+        value: 0
+      }
+      function track (target, key) {
+        if (!activeEffect) return
+        let depMaps = bucket.get(target)
+        if (!depMaps) {
+          bucket.set(target, (depMaps = new Map()))
+        }
+        let deps = depMaps.get(key)
+        if (!deps) {
+          depMaps.set(key, (deps = new Set()))
+        }
+        deps.add(activeEffect)
+      }
+      function trick (target, key) {
+        let depMaps = bucket.get(target)
+        if (!depMaps) return
+        let effects = depMaps.get(key)
+        effects && effects.forEach(fn => fn())
+      }
+      const obj = new Proxy(t, {
+        get (target, key) {
+          track(target, key)
+          return target[key]
+        },
+        set (target, key, value) {
+          target[key] = value
+          trick(target, key)
+        }
+      })
+      effect(() => {
+        document.body.innerHTML = obj.ok ? obj.value : '-1'
+      })
+      setTimeout(() => {
+        obj.ok = false
+      }, 1000)
+    </script>
   </body>
 </html>

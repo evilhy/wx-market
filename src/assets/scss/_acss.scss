@@ -12,7 +12,7 @@
 }
 
 // 字体大小
-@for $i from 12 through 30{
+@for $i from 10 through 30{
   [fz#{$i}]{
     font-size: #{$i}px;
   }

@@ -80,13 +80,6 @@
   @include center-block(false);
 }
 
-%title{
-  font-size: $fontsize-m;
-  line-height: 48px;
-  .van-icon{
-    opacity: 0.4;
-  }
-}
 @mixin placeholder {
   &::-webkit-input-placeholder {
     @content;

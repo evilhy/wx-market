@@ -1,28 +1,41 @@
 @charset "utf-8";
 
-$theme-color: #1989fa !default;
-$warning-color: #FF9124 !default;
-$error-color: #F4415F !default;
-$success-color: #12C465 !default;
-$info-color: #1989fa !default;
-$text-color: #363C4D !default;
-$text-color-gray: #A8AAB2 !default;
-$text-color-tip: #707579 !default;
-$text-color-dark: #41424a !default;
 
-$border-color:#F2F4F7 !default;
+:root{
+  --theme-color: #1989fa;
+  --text-color: #333;
+  --text-color-gray: #999;
+  --text-color-dark: #000;
+  --text-color-error: #F4415F;
+  --text-color-orange: #FF9124;
+  --text-color-orange: #12C465;
+  --border-color: #eee;
+  --page-color-gray: #f5f5f5;
+  --font-size-normal: 12px;
+  --font-size-small: 11px;
+  --font-size-large: 15px;
+  --family-bold: PingFangSC-Semibold;
+}
 
-$fontsize-default: 12px !default;
-$fontsize-l: 16px !default;
-$fontsize-m: 14px !default;
-$fontsize-s: 10px !default;
-
-$radius-s: 4px;
-$radius-l: 10px;
-$radius-xs: 2px;
-
-$space-default: 10px !default;
-$space-s: 6px !default;
-$space-m: 15px !default;
-$space-l: 20px !default;
-$space-xl: 30px !default;
+// vant
+:root{
+  --van-button-primary-background-color: var(--theme-color);
+  --van-button-primary-border-color: var(--theme-color);
+  --van-dropdown-menu-box-shadow: none;
+  --van-dropdown-menu-title-font-size: 13px;
+  --van-dropdown-menu-title-text-color: #666;
+  --van-dropdown-menu-title-active-text-color: var(--theme-color);
+  --van-dropdown-menu-option-active-color: var(--theme-color);
+  --van-tab-active-text-color: var(--theme-color);
+  --van-tabs-bottom-bar-color: var(--theme-color);
+  --van-radio-checked-icon-color: var(--theme-color);
+  --van-progress-color: var(--theme-color);
+  --van-progress-pivot-background-color: var(--theme-color);
+  --van-popup-close-icon-margin: 0;
+  --van-field-text-area-min-height: 10vw;
+  --van-tabs-default-color: var(--theme-color);
+  --van-button-danger-background-color: var(--theme-color);
+  --van-button-danger-border-color: var(--theme-color);
+  --van-calendar-selected-day-background-color: var(--theme-color);
+  --van-calendar-range-edge-background-color: var(--theme-color);
+}
