@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <div id="container"></div>
+    <div class="container theme-text">1111</div>
   </div>
 </template>
 
