@@ -1,7 +1,7 @@
 <template>
   <div class="page">
     <van-cell-group>
-      <van-cell title="h5跳转至小程序--开放标签方式" label="wx-open-launch-weapp" />
+      <van-cell title="h5跳转至小程序--开放标签方式" label="wx-open-launch-weapp" is-link :to="{ name: 'toWeapp' }" />
     </van-cell-group>
   </div>
 </template>
