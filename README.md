@@ -1,6 +1,6 @@
-#vue3-mobile-template
+#wx-market
 
-> vue3移动端h5模板
+> 微信api相关试验集合
 
 ## Build Setup
 

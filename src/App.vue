@@ -15,6 +15,16 @@ export default defineComponent({
     window.router = useRouter()
     // 设置主题
     helper.setTheme()
+    /* let arr1 = new Set()
+    arr1.add(1)
+    arr1.add(2)
+    let arr2 = new Set()
+    console.log(arr2)
+    for (let i of arr2) {
+      console.log(i)
+    } */
+    let arr1 = new Array(1, 2, 4)
+    console.log(arr1)
     // 修改标题
     watchEffect(() => {
       let title = route.meta ? route.meta.title : ''

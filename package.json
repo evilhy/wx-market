@@ -1,7 +1,7 @@
 {
-  "name": "vue3-mobile-template",
+  "name": "wx-market",
   "version": "0.1.0",
-  "description": "vue3移动端h5模板",
+  "description": "微信api相关试验集合",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
