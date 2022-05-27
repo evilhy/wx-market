@@ -3,8 +3,47 @@
     <div class="item">
       <wx-open-launch-weapp id="launch-btn" class="img-wrap opentag" username="gh_8e854ec807ff" path="pages/update/update.html" @ready="toMiniappReady" @launch="handleLaunchFn" @error="handleErrorFn">
         <div v-is="'script'" type="text/wxtag-template">
-          <div v-is="'style'">.openbtn{background-color:#38f;color:#fff;width:100px;height:40px;line-height:40px;}</div>
-          <div class="openbtn">跳转小程序</div>
+          <div v-is="'style'">
+            img { width: 100%; height: 100%; display: block; border-radius: 20px; } .hot { width: 52px; height: 32px; position: absolute; right: -26px; top: -16px; border-radius: 0; } .notice-count {
+            top: 0; left: 76px; }
+          </div>
+          <img class="hot" src="../assets/img/icon-hot.png" alt="" /><img src="../assets/img/icon-home-energy.png" alt="" />
+        </div>
+      </wx-open-launch-weapp>
+      <span class="label">小龙人寻宝记</span>
+    </div>
+    <div class="item">
+      <wx-open-launch-weapp id="launch-btn" class="img-wrap opentag" username="gh_8e854ec807ff" path="pages/update/update.html" @ready="toMiniappReady" @launch="handleLaunchFn" @error="handleErrorFn">
+        <div v-is="'script'" type="text/wxtag-template">
+          <div v-is="'style'">
+            img { width: 100%; height: 100%; display: block; border-radius: 20px; } .hot { width: 52px; height: 32px; position: absolute; right: -26px; top: -16px; border-radius: 0; } .notice-count {
+            top: 0; left: 76px; }
+          </div>
+          <img class="hot" src="../assets/img/icon-hot.png" alt="" /><img src="../assets/img/icon-home-energy.png" alt="" />
+        </div>
+      </wx-open-launch-weapp>
+      <span class="label">小龙人寻宝记</span>
+    </div>
+    <div class="item">
+      <wx-open-launch-weapp id="launch-btn" class="img-wrap opentag" username="gh_8e854ec807ff" path="pages/update/update.html" @ready="toMiniappReady" @launch="handleLaunchFn" @error="handleErrorFn">
+        <div v-is="'script'" type="text/wxtag-template">
+          <div v-is="'style'">
+            img { width: 100%; height: 100%; display: block; border-radius: 20px; } .hot { width: 52px; height: 32px; position: absolute; right: -26px; top: -16px; border-radius: 0; } .notice-count {
+            top: 0; left: 76px; }
+          </div>
+          <img class="hot" src="../assets/img/icon-hot.png" alt="" /><img src="../assets/img/icon-home-energy.png" alt="" />
+        </div>
+      </wx-open-launch-weapp>
+      <span class="label">小龙人寻宝记</span>
+    </div>
+    <div class="item">
+      <wx-open-launch-weapp id="launch-btn" class="img-wrap opentag" username="gh_8e854ec807ff" path="pages/update/update.html" @ready="toMiniappReady" @launch="handleLaunchFn" @error="handleErrorFn">
+        <div v-is="'script'" type="text/wxtag-template">
+          <div v-is="'style'">
+            img { width: 100%; height: 100%; display: block; border-radius: 20px; } .hot { width: 52px; height: 32px; position: absolute; right: -26px; top: -16px; border-radius: 0; } .notice-count {
+            top: 0; left: 76px; }
+          </div>
+          <img class="hot" src="../assets/img/icon-hot.png" alt="" /><img src="../assets/img/icon-home-energy.png" alt="" />
         </div>
       </wx-open-launch-weapp>
       <span class="label">小龙人寻宝记</span>
@@ -14,14 +53,17 @@
 
 <script>
 import { defineComponent, reactive, toRefs } from 'vue'
-import wxToMiniProgram from 'mixins/wxToMiniProgram'
+import wxOpentag from 'mixins/wx-opentag'
 
 export default defineComponent({
   name: '',
   components: {},
-  mixins: [wxToMiniProgram],
+  mixins: [wxOpentag],
   setup(props) {
-    const data = reactive({})
+    const data = reactive({
+      imgHot: require('../assets/img/icon-hot.png'),
+      imgEnergy: require('../assets/img/icon-home-energy.png')
+    })
     const refs = reactive({})
     // ready
     function toMiniappReady() {}
@@ -59,24 +101,6 @@ export default defineComponent({
       width: 80px;
       height: 80px;
       margin-bottom: 20px;
-      img {
-        width: 100%;
-        height: 100%;
-        display: block;
-        border-radius: 20px;
-      }
-      .hot {
-        width: 52px;
-        height: 32px;
-        position: absolute;
-        right: -26px;
-        top: -16px;
-        border-radius: 0;
-      }
-      .notice-count {
-        top: 0;
-        left: 76px;
-      }
     }
   }
 }

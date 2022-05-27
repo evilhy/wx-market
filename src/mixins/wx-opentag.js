@@ -9,13 +9,13 @@ export default {
     }
   },
   created() {
-    this.configToMinProgram()
+    this.configWxapiOpenTag()
     document.addEventListener('WeixinOpenTagsError', function (e) {
       helper.toast(e.detail.errMsg) // 无法使用开放标签的错误原因，需回退兼容。仅无法使用开放标签，JS-SDK其他功能不受影响
     })
   },
   methods: {
-    async configToMinProgram() {
+    async configWxapiOpenTag() {
       const res = await this.$Weixin.getJsapiSignatureById()
       const { appid, timestamp, noncestr, signature } = res.data
       try {
