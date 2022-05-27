@@ -4,12 +4,13 @@
       <wx-open-launch-weapp id="launch-btn" class="img-wrap opentag" username="gh_8e854ec807ff" path="pages/update/update.html" @ready="toMiniappReady" @launch="handleLaunchFn" @error="handleErrorFn">
         <div v-is="'script'" type="text/wxtag-template">
           <div v-is="'style'">
-            img { width: 100%; height: 100%; display: block; border-radius: 20px; } .hot { width: 52px; height: 32px; position: absolute; right: -26px; top: -16px; border-radius: 0; } .notice-count {
-            top: 0; left: 76px; }
+            img { width: 100%; height: 100%; display: block; border-radius: 3.125vw; } .hot { width: 8.125vw; height: 5vw; position: absolute; right: -4.06vw; top: -2.5vw; border-radius: 0; }
+            .notice-count { top: 0; left: 11.875vw; }
           </div>
-          <img class="hot" src="https://sitwxp.cardpu.com/icon-hot.png" alt="" /><img src="https://sitwxp.cardpu.com/icon-home-energy.png" alt="" />
+          <img src="https://sitwxp.cardpu.com/icon-home-energy.png" alt="" />
         </div>
       </wx-open-launch-weapp>
+      <img class="hot" src="https://sitwxp.cardpu.com/icon-hot.png" alt="" />
       <span class="label">小龙人寻宝记</span>
     </div>
     <div class="item">
@@ -60,7 +61,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .link-wrap {
-  height: 228px;
+  height: 35.625vw;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -74,9 +75,12 @@ export default defineComponent({
     flex: 1;
     .img-wrap {
       position: relative;
-      width: 80px;
-      height: 80px;
-      margin-bottom: 20px;
+      width: 12.5vw;
+      height: 12.5vw;
+      margin-bottom: 3.125vw;
+    }
+    .hot {
+      right: 0;
     }
   }
 }
