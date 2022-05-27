@@ -7,7 +7,7 @@
             img { width: 100%; height: 100%; display: block; border-radius: 20px; } .hot { width: 52px; height: 32px; position: absolute; right: -26px; top: -16px; border-radius: 0; } .notice-count {
             top: 0; left: 76px; }
           </div>
-          <img class="hot" :src="imgHot" alt="" /><img :src="imgEnergy" alt="" />
+          <img class="hot" src="{{imgHot}}" alt="" /><img src="{{imgEnergy}}" alt="" />
         </div>
       </wx-open-launch-weapp>
       <span class="label">小龙人寻宝记</span>
@@ -19,7 +19,7 @@
             img { width: 100%; height: 100%; display: block; border-radius: 20px; } .hot { width: 52px; height: 32px; position: absolute; right: -26px; top: -16px; border-radius: 0; } .notice-count {
             top: 0; left: 76px; }
           </div>
-          <img class="hot" :src="imgHot" alt="" /><img :src="imgEnergy" alt="" />
+          <img class="hot" src="{{imgHot}}" alt="" /><img src="{{imgEnergy}}" alt="" />
         </div>
       </wx-open-launch-weapp>
       <span class="label">小龙人寻宝记</span>
@@ -31,7 +31,7 @@
             img { width: 100%; height: 100%; display: block; border-radius: 20px; } .hot { width: 52px; height: 32px; position: absolute; right: -26px; top: -16px; border-radius: 0; } .notice-count {
             top: 0; left: 76px; }
           </div>
-          <img class="hot" :src="imgHot" alt="" /><img :src="imgEnergy" alt="" />
+          <img class="hot" src="{{imgHot}}" alt="" /><img src="{{imgEnergy}}" alt="" />
         </div>
       </wx-open-launch-weapp>
       <span class="label">小龙人寻宝记</span>
@@ -43,7 +43,7 @@
             img { width: 100%; height: 100%; display: block; border-radius: 20px; } .hot { width: 52px; height: 32px; position: absolute; right: -26px; top: -16px; border-radius: 0; } .notice-count {
             top: 0; left: 76px; }
           </div>
-          <img class="hot" :src="imgHot" alt="" /><img :src="imgEnergy" alt="" />
+          <img class="hot" src="{{imgHot}}" alt="" /><img src="{{imgEnergy}}" alt="" />
         </div>
       </wx-open-launch-weapp>
       <span class="label">小龙人寻宝记</span>
