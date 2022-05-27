@@ -1,6 +1,6 @@
 import wx from 'weixin-js-sdk'
 
-const apiList = ['updateAppMessageShareData', 'updateTimelineShareData']
+const apiList = ['chooseImage', 'previewImage', 'updateAppMessageShareData', 'updateTimelineShareData']
 export default class Wxapi {
   /**
    * 检测是否在微信浏览器中
@@ -56,7 +56,8 @@ export default class Wxapi {
         timestamp, // 必填，生成签名的时间戳
         nonceStr, // 必填，生成签名的随机串
         signature, // 必填，签名
-        jsApiList: apiList // 必填，需要使用的JS接口列表
+        jsApiList: apiList, // 必填，需要使用的JS接口列表
+        openTagList: ['wx-open-launch-weapp'] // 可选，需要使用的开放标签列表
       })
       wx.ready(() => {
         resolve()

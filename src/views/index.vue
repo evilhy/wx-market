@@ -1,6 +1,8 @@
 <template>
   <div class="page">
-    <div class="container theme-text">1111</div>
+    <van-cell-group>
+      <van-cell title="h5跳转至小程序--开放标签方式" label="wx-open-launch-weapp" />
+    </van-cell-group>
   </div>
 </template>
 
