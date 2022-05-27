@@ -1,10 +1,15 @@
 <template>
   <div class="link-wrap">
     <div class="item">
-      <span class="img-wrap">
-        <wx-open-launch-weapp id="launch-btn" class="img-wrap opentag" username="gh_8e854ec807ff" path="pages/update/update.html"> </wx-open-launch-weapp
-        ><img class="hot" src="../assets/img/icon-hot.png" alt="" /><img src="../assets/img/icon-home-energy.png" alt=""
-      /></span>
+      <wx-open-launch-weapp id="launch-btn" class="img-wrap opentag" username="gh_8e854ec807ff" path="pages/update/update.html" @ready="toMiniappReady" @launch="handleLaunchFn" @error="handleErrorFn">
+        <div v-is="'script'" type="text/wxtag-template">
+          <div v-is="'style'">
+            img { width: 100%; height: 100%; display: block; border-radius: 20px; } .hot { width: 52px; height: 32px; position: absolute; right: -26px; top: -16px; border-radius: 0; } .notice-count {
+            top: 0; left: 76px; }
+          </div>
+          <img class="hot" src="https://sitwxp.cardpu.com/icon-hot.png" alt="" /><img src="https://sitwxp.cardpu.com/icon-home-energy.png" alt="" />
+        </div>
+      </wx-open-launch-weapp>
       <span class="label">小龙人寻宝记</span>
     </div>
     <div class="item">
@@ -55,11 +60,11 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .link-wrap {
-  height: 35.625vw;
+  height: 228px;
   display: flex;
   align-items: center;
   justify-content: space-around;
-  padding: 0 1.5625vw;
+  padding: 0 10px;
   .item {
     position: relative;
     display: flex;
@@ -69,33 +74,9 @@ export default defineComponent({
     flex: 1;
     .img-wrap {
       position: relative;
-      width: 12.5vw;
-      height: 12.5vw;
-      margin-bottom: 3px;
-      .opentag {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        z-index: 2;
-      }
-      img {
-        width: 100%;
-        height: 100%;
-        display: block;
-        border-radius: 3px;
-      }
-      .hot {
-        width: 30px;
-        height: 30px;
-        position: absolute;
-        right: -15px;
-        top: -9.4px;
-        border-radius: 0;
-      }
-      .notice-count {
-        top: 0;
-        left: 44px;
-      }
+      width: 80px;
+      height: 80px;
+      margin-bottom: 20px;
     }
   }
 }
