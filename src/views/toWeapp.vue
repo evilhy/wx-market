@@ -3,10 +3,7 @@
     <div class="item">
       <wx-open-launch-weapp id="launch-btn" class="img-wrap opentag" username="gh_8e854ec807ff" path="pages/update/update.html" @ready="toMiniappReady" @launch="handleLaunchFn" @error="handleErrorFn">
         <div v-is="'script'" type="text/wxtag-template">
-          <div v-is="'style'">
-            img { width: 100%; height: 100%; display: block; border-radius: 3.125vw; } .hot { width: 8.125vw; height: 5vw; position: absolute; right: -4.06vw; top: -2.5vw; border-radius: 0; }
-            .notice-count { top: 0; left: 11.875vw; }
-          </div>
+          <div v-is="'style'">img { width: 100%; height: 100%; display: block; border-radius: 0; }</div>
           <img src="https://sitwxp.cardpu.com/icon-home-energy.png" alt="" />
         </div>
       </wx-open-launch-weapp>
