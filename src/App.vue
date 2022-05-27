@@ -4,13 +4,13 @@
 
 <script>
 import { defineComponent, onMounted, watchEffect } from 'vue'
-import { useRouter, useRoute } from 'vue-router'
-import helper from 'utils/helper'
+import { useRouter } from 'vue-router'
 
 export default defineComponent({
   name: '',
   components: {},
   setup(props) {
+    window.router = useRouter()
     return {}
   }
 })
