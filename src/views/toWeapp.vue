@@ -4,7 +4,7 @@
       <span class="img-wrap">
         <wx-open-launch-weapp id="launch-btn" class="img-wrap opentag" username="gh_8e854ec807ff" path="pages/update/update.html">
           <div v-is="'script'" type="text/wxtag-template">
-            <div v-is="'style'">.block{ width: 50px; height: 50px; }</div>
+            <div v-is="'style'">.block{ width: 12.5vw; height: 12.5vw; }</div>
             <div class="block"></div>
           </div> </wx-open-launch-weapp
         ><img class="hot" src="../assets/img/icon-hot.png" alt="" /><img src="../assets/img/icon-home-energy.png" alt=""
