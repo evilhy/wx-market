@@ -55,6 +55,15 @@ module.exports = {
       .options({
         symbolId: 'icon-[name]'
       })
+    config.module
+      .rule('vue')
+      .use('vue-loader')
+      .tap((options) => {
+        options.compilerOptions = {
+          isCustomElement: (tag) => tag.startsWith('wx-')
+        }
+        return options
+      })
   },
   configureWebpack: (config) => {
     if (isProduction) {

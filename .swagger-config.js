@@ -1,15 +1,11 @@
-import demoData from './json/test.json'
-import getJsapiSignature from './json/weixin.getJsapiSignature.json'
+import getJsapiSignatureById from './json/weixin.getJsapiSignatureById.json'
 export default {
   openApi: [
     {
-      baseURL: 'http://test.com',
+      baseURL: 'https://sitgateway.cardpu.com/payroll',
       paths: {
-        '/test': {
-          get: demoData
-        },
-        '/weixin/getJsapiSignature': {
-          get: getJsapiSignature
+        '/weixin/getJsapiSignatureById': {
+          get: getJsapiSignatureById
         }
       }
     }

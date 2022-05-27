@@ -6,12 +6,11 @@ class Wechat {
   /**
    * 获取微信分享需要的config数据
    */
-  getJsapiSignature() {
+  getJsapiSignatureById() {
     let url = window.encodeURIComponent(window.location.href.split('#')[0])
     let http = new Http()
-    http.path = `/${moduleName}/getJsapiSignature`
-    http.query = { url }
-    http.loading = false
+    http.path = `/${moduleName}/getJsapiSignatureById`
+    http.query = { url, id: 'ZXGZT' }
     return http.get()
   }
 }

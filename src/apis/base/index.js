@@ -16,7 +16,7 @@ export default class HttpForApplication extends HttpEngine {
 
     this.requestedSever = false
 
-    this.encrypt = true
+    this.encrypt = false
   }
 
   beforeSendRequestHandler(config) {
