@@ -84,4 +84,3 @@ steps:
       script:
         - echo "Hello World"
         - sh /home/freemem.sh
-       
