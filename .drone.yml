@@ -5,7 +5,6 @@ kind: pipeline
 name: default
 
 steps:
-  
   - name: build
     image: node:14.17.6-alpine3.13
     commands:
